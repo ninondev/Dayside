@@ -1,0 +1,32 @@
+# 迁移门的已知差异（understand::tests::migration_gate_old_sentences_stay_read）：旧 colloquial.rs 测试表里新引擎还没按旧版读的句子。
+# 每行「原文 \t 类:归类」。批准的改变 / 批准的扩展不会再按旧版读；「退步」是待修的，修好后测试会提醒把它删掉。
+# 2026-09-27 第一遍：78 条（相对时间 12 条已修完）。
+明天下班前 东京	positive:批准的改变：截止习语默认 17:00（旧版 18:00）
+EOD Friday in Tokyo	positive:批准的改变：截止习语默认 17:00（旧版 18:00）
+cob today New York	positive:批准的改变：截止习语默认 17:00（旧版 18:00）
+Sonntag mittags	positive:批准的改变：光有时段词不当钟点（不猜钟点，旧版把 mittags 读成 12:00）
+Freitag bis Feierabend	positive:批准的改变：截止习语默认 17:00（旧版 18:00）
+el viernes al final del día	positive:批准的改变：截止习语默认 17:00（旧版 18:00）
+ce soir à 20h à Montréal	positive:批准的改变：今晚带上今天的日期
+demain en fin de journée	positive:批准的改变：截止习语默认 17:00（旧版 18:00）
+ce soir avant minuit	positive:批准的改变：今晚带上今天的日期
+в пятницу до конца дня	positive:批准的改变：截止习语默认 17:00（旧版 18:00）
+金曜日の終業までに	positive:批准的改变：截止习语默认 17:00（旧版 18:00）
+금요일 퇴근 전까지	positive:批准的改变：截止习语默认 17:00（旧版 18:00）
+今日中に15時	negative:批准的改变：截止与更早的明确钟点同现时按钟点读（旧版报矛盾；钟点晚于截止才报）
+明天の午後3時	negative:批准的扩展：混写语言照读
+明日の午後3時 서울	negative:批准的扩展：混写语言照读
+오후 세 시	negative:批准的扩展：数词与口语钟点照读
+오늘 중으로 15시	negative:批准的改变：截止与更早的明确钟点同现时按钟点读（旧版报矛盾；钟点晚于截止才报）
+내일 午後 3시	negative:批准的扩展：混写语言照读
+明天 오후 3시	negative:批准的扩展：混写语言照读
+내일の오후 3시	negative:批准的扩展：混写语言照读
+morgen a las 3	negative:批准的扩展：混写语言照读
+mañana 15 Uhr en Berlín	negative:批准的扩展：混写语言照读
+hoje às 15 Uhr	negative:批准的扩展：混写语言照读
+половина третьего	negative:批准的扩展：数词与口语钟点照读
+завтра 15 Uhr в Берлине	negative:批准的扩展：混写语言照读
+下班前三点	negative:批准的改变：截止与更早的明确钟点同现时按钟点读（旧版报矛盾；钟点晚于截止才报）
+夜里五点	negative:批准的扩展：数词与口语钟点照读
+今天之内 15:00	negative:批准的改变：截止与更早的明确钟点同现时按钟点读（旧版报矛盾；钟点晚于截止才报）
+eod at 15:00	negative:批准的改变：截止与更早的明确钟点同现时按钟点读（旧版报矛盾；钟点晚于截止才报）

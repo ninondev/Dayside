@@ -1,0 +1,8 @@
+{
+  "_comment": "发布门预算：历史实测基线为空闲 footprint 15 MB、RSS 约 75 MB（SwiftUI/Metal 地板）、空闲 CPU 0.00%、包体约 32 MB；这些是既有测量记录，不代表当前构建的测量结果。超出任一预算时 release_gate.sh 非零退出。修改预算时同时复核测量方法与资源需求。",
+  "idle_cpu_seconds_per_60s_max": 0.1,
+  "footprint_mb_max": 20,
+  "rss_mb_max": 95,
+  "bundle_mb_max": 40,
+  "index_mappings_while_idle_max": 0
+}

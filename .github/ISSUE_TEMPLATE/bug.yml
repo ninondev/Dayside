@@ -1,0 +1,59 @@
+name: Bug report
+description: Report a problem with Dayside.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issues are public. For security or privacy reports, open this repository's Security tab and choose Report a vulnerability. See SECURITY.md for details.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Describe what you saw and what you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: List the steps that lead to the problem.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Dayside version
+      description: Find the version in Settings > Help.
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      description: Find it in the Apple menu > About This Mac.
+    validations:
+      required: true
+  - type: dropdown
+    id: chip
+    attributes:
+      label: Mac chip
+      description: Find it in the Apple menu > About This Mac.
+      options:
+        - Apple silicon
+        - Intel
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: package
+    attributes:
+      label: Installer file name or build source
+      description: Give the installer file name. For a source build, give the commit and build command.
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics or screenshots (optional)
+      description: Settings > Help > Copy Diagnostics Summary can help. Review anything you attach and remove private details before posting.

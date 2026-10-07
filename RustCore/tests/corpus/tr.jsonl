@@ -1,0 +1,220 @@
+{"lang":"tr","kind":"positive","tags":["clock","clock-preposition"],"text":"Toplantı saat 10:30'da başlıyor.","expect":["- 10:30 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","clock-preposition"],"text":"Kargo saat 14:00'te kapıda olacak.","expect":["- 14:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","clock-preposition"],"text":"Uçağımız saat 06:45'te havalanıyor.","expect":["- 06:45 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock"],"text":"Final maçı saat 20:45'te başlıyor.","expect":["- 20:45 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock"],"text":"Hemşire nöbeti saat 21:30'da başlıyor.","expect":["- 21:30 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock"],"text":"Okul servisi saat 07:05'te köşede bekliyor.","expect":["- 07:05 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock"],"text":"Fuar kapıları saat 09:00'da açılıyor.","expect":["- 09:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock"],"text":"Son otobüs saat 22:30'da kalkıyor.","expect":["- 22:30 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","place-preposition"],"text":"Toplantı saat 15:00'te İstanbul'da.","expect":["- 15:00 Europe/Istanbul > -"]}
+{"lang":"tr","kind":"positive","tags":["clock"],"text":"Konser saat 19:10'da başlayacak.","expect":["- 19:10 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock"],"text":"Tren saat 23:40'ta Kahire'ye varıyor.","expect":["- 23:40 Africa/Cairo > -"]}
+{"lang":"tr","kind":"positive","tags":["clock"],"text":"Kuaför randevusu saat 12:30'da.","expect":["- 12:30 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock"],"text":"Kazananın derecesi 1:59:40.","expect":["- 01:59:40 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","dot-clock"],"text":"Yönetim kurulu saat 15.30'da toplanıyor.","expect":["- 15:30 - > -"],"note":"Turkish commonly writes clock times with a dot (15.30 = 15:30), as the dot-clock coverage row for tr expects; tests.rs shows the same habit for de/id."}
+{"lang":"tr","kind":"positive","tags":["clock","dot-clock"],"text":"Vardiya saat 09.00'da başlar.","expect":["- 09:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","dot-clock"],"text":"Piyasa saat 18.00'de kapanıyor.","expect":["- 18:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["dot-clock","range"],"text":"Sergi salonu 09.30-17.00 arasında açık.","expect":["- 09:30–17:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","period"],"text":"Sabah 07:30'da yola çıkıyoruz.","expect":["- 07:30 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","period"],"text":"Akşam 9'da aile görüşmesi var.","expect":["- 21:00 - > -"],"note":"akşam (evening) and öğleden sonra (afternoon) shift a 12-hour clock, mirroring the es examples like '9 de la noche'."}
+{"lang":"tr","kind":"positive","tags":["clock","period"],"text":"Öğleden sonra 3'te dişçi randevusu var.","expect":["- 15:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","period"],"text":"Gece 23:00'te nöbet değişimi olacak.","expect":["- 23:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","period"],"text":"Sabah 9'da market açılıyor.","expect":["- 09:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","half","number-words"],"text":"Buluşma üç buçukta, meydan çeşmesinin yanında.","expect":["- 03:30 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","half","number-words"],"text":"Otobüs dokuz buçukta kalkıyor.","expect":["- 09:30 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","half","number-words"],"text":"Pastane yedi buçukta açılıyor.","expect":["- 07:30 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","half","number-words"],"text":"Yemek on iki buçukta servis ediliyor.","expect":["- 12:30 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","quarter","minutes-before-after"],"text":"Sınav 9'u çeyrek geçe başlıyor.","expect":["- 09:15 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","quarter","minutes-before-after"],"text":"Tren 6'ya çeyrek kala peronda olacak.","expect":["- 05:45 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","minutes-before-after"],"text":"Saat 7'yi 10 geçe evde olurum.","expect":["- 07:10 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","minutes-before-after"],"text":"Dükkân 8'e 20 kala kapanıyor.","expect":["- 07:40 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","quarter","minutes-before-after"],"text":"Derse 5'i çeyrek geçe başlıyoruz.","expect":["- 05:15 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","quarter","minutes-before-after"],"text":"Konuk konuşmacı 4'e çeyrek kala bağlanacak.","expect":["- 03:45 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","minutes-before-after"],"text":"Fırından ekmek 6'yı on geçe çıkıyor.","expect":["- 06:10 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","number-words","clock-preposition"],"text":"Dernek toplantısı saat üçte başlıyor.","expect":["- 03:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","number-words"],"text":"Saat sekizde köşedeki kafede buluşalım.","expect":["- 08:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","number-words"],"text":"Market saat on ikide kapanıyor.","expect":["- 12:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","number-words"],"text":"Yemek saat dörtte servis ediliyor.","expect":["- 04:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["clock","number-words"],"text":"Çay saat beşte ikram ediliyor.","expect":["- 05:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["noon-midnight","clock"],"text":"Öğlen meydanda buluşalım.","expect":["- 12:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["noon-midnight","clock"],"text":"Gece yarısı kalkan trene yetişeceğiz.","expect":["- 00:00+1 - > -"]}
+{"lang":"tr","kind":"positive","tags":["noon-midnight","clock"],"text":"Basın toplantısı öğlen 12'de.","expect":["- 12:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["noon-midnight","clock","weekday"],"text":"Pazar öğlen aile yemeğine geliyorlar.","expect":["w7 12:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["noon-midnight","clock"],"text":"Havai fişekler gece yarısı başlayacak.","expect":["- 00:00+1 - > -"]}
+{"lang":"tr","kind":"positive","tags":["relative-day","clock"],"text":"Bugün saat 21:00'de aileyle görüntülü konuşacağız.","expect":["+0d 21:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["relative-day","clock"],"text":"Yarın 08:00'de işe çıkıyorum.","expect":["+1d 08:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["relative-day","clock"],"text":"Dün 19:00'da maçı birlikte izledik.","expect":["-1d 19:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["relative-day","clock"],"text":"Öbür gün 11:00'de teknik servis gelecek.","expect":["+2d 11:00 - > -"],"note":"öbür gün is the everyday Turkish for the day after tomorrow, mirroring 'pasado mañana'."}
+{"lang":"tr","kind":"positive","tags":["relative-day","clock"],"text":"Bu akşam 22:00'de göktaşı yağmuru var.","expect":["+0d 22:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["relative-day","clock"],"text":"Evvelsi gün 07:00'de yola çıktık.","expect":["-2d 07:00 - > -"],"note":"evvelsi gün is the everyday Turkish for the day before yesterday, mirroring 'anteayer'."}
+{"lang":"tr","kind":"positive","tags":["weekday","clock"],"text":"Pazartesi 09:00'da koordinasyon toplantısı var.","expect":["w1 09:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["weekday","clock"],"text":"Salı 12:15'te doktor randevum var.","expect":["w2 12:15 - > -"]}
+{"lang":"tr","kind":"positive","tags":["weekday","clock"],"text":"Perşembe 16:00'te ekip görüşmesi yapılacak.","expect":["w4 16:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["weekday","clock","place-preposition"],"text":"Cuma 18:30'da Londra'da buluşalım.","expect":["w5 18:30 Europe/London > -"]}
+{"lang":"tr","kind":"positive","tags":["weekday","clock","place-preposition"],"text":"Cumartesi 13:00'te Brüksel'de maç var.","expect":["w6 13:00 Europe/Brussels > -"]}
+{"lang":"tr","kind":"positive","tags":["weekday","clock"],"text":"Pazar 14:00'te büyükannemi arıyorum.","expect":["w7 14:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["weekday","clock"],"text":"Gelecek çarşamba 19:00'da webinar var.","expect":["w3:next 19:00 - > -"],"note":"gelecek is the ordinary Turkish word for next in next-weekday phrases, mirroring 'el próximo'."}
+{"lang":"tr","kind":"positive","tags":["weekday","clock"],"text":"Çarşamba 10:00'da anne-çocuk etkinliği.","expect":["w3 10:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["weekday","clock","clock-preposition"],"text":"Salı günü saat 9'da kısa bir brifing var.","expect":["w2 09:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["month-name","clock"],"text":"Film galası 3 Ekim saat 20:00'de.","expect":["10-03 20:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["month-name","clock"],"text":"Yeni dönem 1 Eylül'de 09:00'da başlıyor.","expect":["09-01 09:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["month-name","clock"],"text":"Şenlik 24 Ağustos'ta 21:00'de başlıyor.","expect":["08-24 21:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["month-name","clock"],"text":"Kitap fuarı 14 Kasım 2025'te, saat 10:00'da açılıyor.","expect":["2025-11-14 10:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["month-name","range"],"text":"Sempozyum: 14 Mart 2026, saat 09:30 – 12:30.","expect":["2026-03-14 09:30–12:30 - > -"]}
+{"lang":"tr","kind":"positive","tags":["month-name","clock"],"text":"Turnuva 8 Mayıs'ta 15:00'te başlıyor.","expect":["05-08 15:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["month-name","clock"],"text":"Aile fotoğrafı 30 Temmuz'da 17:00'de çekilecek.","expect":["07-30 17:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["numeric-date","clock"],"region":"TR","text":"Kargo 15.10.2026 tarihinde saat 09:00'da gelecek.","expect":["2026-10-15 09:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["numeric-date","clock"],"region":"TR","text":"Son gün 20/10, saat 18:00.","expect":["10-20 18:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["numeric-date","clock"],"region":"TR","text":"Komşu toplantısı 03/10/2026 saat 10:00'da.","expect":["2026-10-03 10:00 - > - ?1"]}
+{"lang":"tr","kind":"positive","tags":["numeric-date","date-only"],"region":"TR","text":"Yeni dönemin başlangıcı: 05.02.2026","expect":["2026-02-05 - - > -"]}
+{"lang":"tr","kind":"positive","tags":["numeric-date","clock"],"region":"TR","text":"Depo sevkiyatı 15/10 saat 09:00'da.","expect":["10-15 09:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["numeric-date","clock","period"],"region":"TR","text":"Planlı kesinti 22.11.2026 gece 23:00'te başlayacak.","expect":["2026-11-22 23:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["relative-time"],"text":"3 saat sonra görüntülü konuşalım.","expect":["- +180m - > -"]}
+{"lang":"tr","kind":"positive","tags":["relative-time"],"text":"Yarım saat içinde sonuçlar açıklanacak.","expect":["- +30m - > -"]}
+{"lang":"tr","kind":"positive","tags":["relative-time"],"text":"Teknisyen 2 saat 30 dakika sonra gelecek.","expect":["- +150m - > -"]}
+{"lang":"tr","kind":"positive","tags":["relative-time"],"text":"10 dakika önce postacı geldi.","expect":["- -10m - > -"]}
+{"lang":"tr","kind":"positive","tags":["relative-time"],"text":"30 dakika sonra sınav başlıyor.","expect":["- +30m - > -"]}
+{"lang":"tr","kind":"positive","tags":["relative-time"],"text":"15 dakika içinde evdeyim.","expect":["- +15m - > -"]}
+{"lang":"tr","kind":"positive","tags":["range","clock"],"text":"Mağaza 09:00-18:00 arasında açık.","expect":["- 09:00–18:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["range","clock"],"text":"Vardiya 14:00–22:00 arası.","expect":["- 14:00–22:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["range","clock"],"text":"Yayın 20:00-21:30 arasında.","expect":["- 20:00–21:30 - > -"]}
+{"lang":"tr","kind":"positive","tags":["range","clock"],"text":"Kütüphane 08:30–19:00 arası hizmet veriyor.","expect":["- 08:30–19:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["range"],"text":"Gece nöbeti 23:00-05:00 arasında.","expect":["- 23:00–05:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["range","clock"],"text":"Kahvaltı 07:00-10:00 arasında servis ediliyor.","expect":["- 07:00–10:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["duration","clock"],"text":"Toplantı 15:00'te başlayacak, 2 saat sürecek.","expect":["- 15:00 d120 - > -"]}
+{"lang":"tr","kind":"positive","tags":["duration","clock"],"text":"Atölye 10:00'da başlıyor, 90 dakika sürecek.","expect":["- 10:00 d90 - > -"]}
+{"lang":"tr","kind":"positive","tags":["duration","clock"],"text":"Yoga dersi 17:00'de başlıyor, 45 dakika boyunca.","expect":["- 17:00 d45 - > -"]}
+{"lang":"tr","kind":"positive","tags":["duration","clock"],"text":"Webinar 19:00'da, 1 saat sürecek.","expect":["- 19:00 d60 - > -"]}
+{"lang":"tr","kind":"positive","tags":["duration","clock"],"text":"Kulüp toplantısı 11:30'da, 2 saat sürüyor.","expect":["- 11:30 d120 - > -"]}
+{"lang":"tr","kind":"positive","tags":["zone-word","clock"],"text":"Toplantı 15:00 İstanbul saatiyle.","expect":["- 15:00 Europe/Istanbul > -"]}
+{"lang":"tr","kind":"positive","tags":["zone-word","clock"],"text":"Canlı yayın 21:00 Tokyo saatiyle başlıyor.","expect":["- 21:00 Asia/Tokyo > -"]}
+{"lang":"tr","kind":"positive","tags":["zone-word","clock"],"text":"Piyasa açılışı 08:00 Singapur saatiyle.","expect":["- 08:00 Asia/Singapore > -"]}
+{"lang":"tr","kind":"positive","tags":["zone-word","clock"],"text":"Kapanış duyurusu 18:00 TSİ.","expect":["- 18:00 Europe/Istanbul > -"],"note":"TSİ (Türkiye Saati) is the tr anchor zone word named in coverage.md and denotes Europe/Istanbul, +03 all year."}
+{"lang":"tr","kind":"positive","tags":["range","abbreviation"],"text":"Bakım penceresi 02:00–04:00 UTC.","expect":["- 02:00–04:00 +0 > -"]}
+{"lang":"tr","kind":"positive","tags":["abbreviation","clock"],"text":"Satış görüşmesi 09:30 CET.","expect":["- 09:30 +60 > -"]}
+{"lang":"tr","kind":"positive","tags":["abbreviation","clock"],"text":"Konferans açılışı 10:30 CEST.","expect":["- 10:30 +120 > -"]}
+{"lang":"tr","kind":"positive","tags":["abbreviation","clock"],"text":"Derbi maçı 21:00 GMT.","expect":["- 21:00 +0 > -"]}
+{"lang":"tr","kind":"positive","tags":["abbreviation","clock"],"text":"Ürün ekibiyle görüşme 17:00 EST.","expect":["- 17:00 -300 > -"]}
+{"lang":"tr","kind":"positive","tags":["abbreviation","clock"],"text":"Küresel durum toplantısı 09:00 PT.","expect":["- 09:00 America/Los_Angeles > -"]}
+{"lang":"tr","kind":"positive","tags":["target-question","clock","place-preposition"],"text":"Londra'da 09:00 iken Tokyo'da saat kaç?","expect":["- 09:00 Europe/London > Asia/Tokyo"]}
+{"lang":"tr","kind":"positive","tags":["target-question","clock","place-preposition"],"text":"Paris'te 09:30 açılış; New York'ta saat kaç?","expect":["- 09:30 Europe/Paris > America/New_York"]}
+{"lang":"tr","kind":"positive","tags":["target-question","relative-day","clock"],"text":"Seminer yarın 17:00'de. Los Angeles'ta saat kaç?","expect":["+1d 17:00 - > America/Los_Angeles"]}
+{"lang":"tr","kind":"positive","tags":["target-question","clock","place-preposition"],"text":"Tokyo'da saat kaç, Madrid'de 15:00 iken?","expect":["- 15:00 Europe/Madrid > Asia/Tokyo"]}
+{"lang":"tr","kind":"positive","tags":["target-question","weekday","clock","place-preposition"],"text":"Salı 14:00 Şikago'da görüşüyoruz; Berlin'de saat kaç?","expect":["w2 14:00 America/Chicago > Europe/Berlin"]}
+{"lang":"tr","kind":"positive","tags":["target-question","clock","place-preposition"],"text":"Moskova'da yayın 10:00'da; Sidney'de saat kaç?","expect":["- 10:00 ~Europe/Moscow > Australia/Sydney"]}
+{"lang":"tr","kind":"positive","tags":["arrow-or-local","clock"],"text":"Görüşme 16:00 İstanbul → Tokyo.","expect":["- 16:00 Europe/Istanbul > Asia/Tokyo"]}
+{"lang":"tr","kind":"positive","tags":["arrow-or-local","clock"],"text":"Bülten 10:00 Moskova -> Varşova.","expect":["- 10:00 Europe/Moscow > Europe/Warsaw"]}
+{"lang":"tr","kind":"positive","tags":["arrow-or-local","abbreviation"],"text":"Vardiya: 15:00 CET → Sidney.","expect":["- 15:00 +60 > Australia/Sydney"]}
+{"lang":"tr","kind":"positive","tags":["arrow-or-local","clock"],"text":"Toplantı 15:00 benim saatimde.","expect":["- 15:00 local > -"],"note":"benim saatimde is the Turkish equivalent of 'my time' → local."}
+{"lang":"tr","kind":"positive","tags":["arrow-or-local","clock"],"text":"Yayın Tokyo'da 10:00'da, benim saatimde.","expect":["- 10:00 Asia/Tokyo > local"]}
+{"lang":"tr","kind":"positive","tags":["place-preposition","clock"],"text":"İstanbul'da buluşma saat 15:00'te.","expect":["- 15:00 ~Europe/Istanbul > -"]}
+{"lang":"tr","kind":"positive","tags":["place-preposition","clock"],"text":"Berlin'deki ofiste saat 18:00'de video köprüsü kurulacak.","expect":["- 18:00 ~Europe/Berlin > -"]}
+{"lang":"tr","kind":"positive","tags":["place-preposition","clock"],"text":"Paris'te yılbaşı alışverişi 10:00'da başlıyor.","expect":["- 10:00 ~Europe/Paris > -"]}
+{"lang":"tr","kind":"positive","tags":["place-preposition","clock"],"text":"Ankara'da mülakat saat 13:15'te.","expect":["- 13:15 ~Europe/Istanbul > -"]}
+{"lang":"tr","kind":"positive","tags":["place-preposition","clock"],"text":"Seul'deki fabrika 08:00'de açılıyor.","expect":["- 08:00 ~Asia/Seoul > -"]}
+{"lang":"tr","kind":"positive","tags":["deadline-idiom"],"text":"Formu gün sonuna kadar gönder.","expect":["- ~17:00 - > -"],"note":"gün sonuna kadar (by end of day) is the Turkish EOD idiom, so ~17:00 like EOD in tests.rs."}
+{"lang":"tr","kind":"positive","tags":["deadline-idiom","relative-day"],"text":"Raporu yarın gün sonuna kadar teslim edin.","expect":["+1d ~17:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["deadline-idiom"],"text":"Gece yarısına kadar başvurular açık.","expect":["- ~23:59 - > -"]}
+{"lang":"tr","kind":"positive","tags":["deadline-idiom","weekday"],"text":"Ödevi cuma gün sonuna kadar yükleyin.","expect":["w5 ~17:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["approximately","clock"],"text":"Tren yaklaşık 07:40'ta perona girecek.","expect":["- 07:40 - > -"]}
+{"lang":"tr","kind":"positive","tags":["approximately","clock"],"text":"Konser yaklaşık 20:00'de başlar.","expect":["- 20:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["approximately","clock"],"text":"Saat 21:00 civarında yemek yiyoruz.","expect":["- 21:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["approximately","relative-day","clock"],"text":"Paketi yarın 11:00 civarında getirirler.","expect":["+1d 11:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["country","clock"],"text":"Japonya'daki mağazada satış 09:00'da başlıyor.","expect":["- 09:00 ~Asia/Tokyo > -"]}
+{"lang":"tr","kind":"positive","tags":["country","clock"],"text":"Çin'deki tedarikçiyle görüşme 08:00'de.","expect":["- 08:00 - > -"]}
+{"lang":"tr","kind":"positive","tags":["country","clock"],"text":"Filipinler'de canlı destek 20:00'de açılıyor.","expect":["- 20:00 ~Asia/Manila > -"]}
+{"lang":"tr","kind":"positive","tags":["country","clock"],"text":"Amerika Birleşik Devletleri'ndeki ofis 09:00'da başlıyor.","expect":["- 09:00 ~?country29 > -"]}
+{"lang":"tr","kind":"positive","tags":["country","clock"],"text":"Brezilya'daki maç 21:00'de başlayacak.","expect":["- 21:00 ~?country16 > -"]}
+{"lang":"tr","kind":"positive","tags":["unix-iso"],"region":"TR","text":"Otomatik dağıtım: 2026-10-01T17:00:00Z.","expect":["- @1790874000 - > -"]}
+{"lang":"tr","kind":"positive","tags":["unix-iso"],"region":"TR","text":"Günlük kaydı 2026-09-15T09:00:00+02:00 anında alındı.","expect":["- @1789455600 - > -"]}
+{"lang":"tr","kind":"positive","tags":["unix-iso"],"text":"Olay unix 1789041600 olarak kaydedildi.","expect":["- @1789041600 - > -"]}
+{"lang":"tr","kind":"positive","tags":["unix-iso"],"text":"Olay 1727179200000 ms olarak saklandı.","expect":["- @1727179200 - > -"]}
+{"lang":"tr","kind":"positive","tags":["unix-iso"],"region":"TR","text":"Yedekleme 2026-11-03T03:00:00Z tamamlanmış.","expect":["- @1793674800 - > -"]}
+{"lang":"tr","kind":"positive","tags":["unix-iso"],"region":"TR","text":"Sunucu saati 2026-10-01T17:00:00+03:00 gösteriyor.","expect":["- @1790863200 - > -"]}
+{"lang":"tr","kind":"positive","tags":["date-only","month-name"],"text":"Kütüphane açılışı 3 Mart.","expect":["03-03 - - > -"]}
+{"lang":"tr","kind":"positive","tags":["date-only","month-name"],"text":"Başvurular 30 Eylül'de kapanıyor.","expect":["09-30 - - > -"]}
+{"lang":"tr","kind":"positive","tags":["date-only","month-name"],"text":"Fuar 20 Eylül 2026'da başlıyor.","expect":["2026-09-20 - - > -"]}
+{"lang":"tr","kind":"positive","tags":["date-inherited","month-name","clock","place-preposition"],"text":"3 Ekim programı: 09:00 İstanbul'da açılış, 14:00 Tokyo'da kapanış.","expect":["10-03 09:00 Europe/Istanbul > -","10-03^ 14:00 Asia/Tokyo > -"]}
+{"lang":"tr","kind":"positive","tags":["date-inherited","month-name","abbreviation"],"text":"15 Kasım gündemi:\n09:30 CET açılış\n11:00 CET ara.","expect":["11-15 09:30 +60 > -","11-15^ 11:00 +60 > -"]}
+{"lang":"tr","kind":"positive","tags":["date-inherited","month-name","abbreviation"],"text":"12 Mart 2026 planı: 10:00 GMT açılış, 16:00 GMT kapanış.","expect":["2026-03-12 10:00 +0 > -","2026-03-12^ 16:00 +0 > -"]}
+{"lang":"tr","kind":"positive","tags":["date-inherited","numeric-date","clock"],"region":"TR","text":"20/10 akışı: 09:00 kısa brifing, 09:15 sahne provası.","expect":["10-20 09:00 - > -","10-20^ 09:15 - > -"]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Rezervasyon için 0532 123 45 67 numarasını arayın.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Bankanın çağrı merkezi numarası 0850 222 00 00.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Yeni numaram +90 532 456 78 90.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Bilet 49,90 TL tuttu.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Abonelik ücreti ayda 120 TL.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Sınav ücreti 850 TL olarak güncellendi.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["dot-clock"],"text":"Sürüm 2.10 dün yayına alındı.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["dot-clock"],"text":"Uygulamayı 4.2.1 sürümüne güncelleyin.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Maç 3-1 sonuçlandı.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"İlk yarı 2-0 bitti.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Seride durum 2-2'ye geldi.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["numeric-date"],"text":"1/2 su bardağı süt ekleyin.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["half"],"text":"Tarifte yarım su bardağı şeker var.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["range"],"text":"Kurs 9-12 yaş grubuna uygun.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["range"],"text":"Bilet fiyatları 10-15 TL arasında değişiyor.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["unix-iso"],"text":"Sipariş 45012389 kargoya verildi.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["unix-iso"],"text":"Kargo takip numarası: 8834 1205 5590 2103 77.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["numeric-date"],"text":"24 numaralı evin üçüncü katında oturuyoruz.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Kapı 7, koltuk 14C.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Otobüs 12 son durakta bekliyor.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Oda 1205 üçüncü katta.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Bilgiler sayfa 120'de.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Beden 42 kalmış.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Yüzde 20 indirim yarın bitiyor.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["relative-time"],"text":"Uçuş 30 dakika rötarla indi.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["duration"],"text":"Film 2 saat 15 dakika sürdü.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["half"],"text":"Yarım saat bekledik, kimse gelmedi.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["half"],"text":"Her yarım saatte bir vapur kalkıyor.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["relative-day"],"text":"Yarın sabah erken kalkacağım.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["relative-day"],"text":"Dün akşam çok yorulduk.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["relative-day"],"text":"Önümüzdeki hafta tatile çıkıyoruz.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["relative-day"],"text":"Görüşmek üzere, iyi akşamlar!","expect":[]}
+{"lang":"tr","kind":"negative","tags":["month-name"],"text":"Ay başında kira ödemesi var.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["period"],"text":"Teneffüste bahçeye çıkıyoruz.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["period"],"text":"Geceleri erken uyumaya çalışıyorum.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["period"],"text":"Her sabah 5 kilometre koşuyorum.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["weekday"],"text":"Hafta içi her gün açığız.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["weekday"],"text":"Pazartesileri spor salonu kapalı.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["weekday"],"text":"Hafta sonu aile ziyareti var.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["target-question"],"text":"Saat kaç? Telefondan bakar mısın?","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Posta kodu 06420.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["clock"],"text":"Termometre 3 derece gösteriyor.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["numeric-date"],"text":"Kira her ayın 3'ünde çekilir.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["numeric-date"],"text":"2026 model bir araba satın aldı.","expect":[]}
+{"lang":"tr","kind":"negative","tags":["relative-day"],"text":"Yeni vardiya çizelgesi yarın panoya asılacak.","expect":[]}
+{"lang":"tr","kind":"hostile","tags":["clock","abbreviation"],"text":"Fiyat listesi 25:61 UTC gibi garip bir saat gösteriyor.","expect":["- - +0 > - #invalidTime:25:61"]}
+{"lang":"tr","kind":"hostile","tags":["clock"],"text":"Zamanlayıcı 12:60'a kurulu.","expect":["- - - > - #invalidTime:12:60"]}
+{"lang":"tr","kind":"hostile","tags":["clock"],"text":"Kayıtta 23:59:60 görünüyordu.","expect":["- - - > - #invalidTime:23:59:60"]}
+{"lang":"tr","kind":"hostile","tags":["clock"],"text":"Sunucu 24:00'te yeniden başlayacak.","expect":["- 00:00+1 - > -"],"note":"24:00 reads as next-day 00:00, per the approved relaxation listed in migration-converter-known-gaps.txt."}
+{"lang":"tr","kind":"hostile","tags":["clock"],"text":"Panelde 25:00 yazıyordu, açıkça hata.","expect":["- - - > - #invalidTime:25:00"]}
+{"lang":"tr","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"TR","text":"Etkinlik 2026-02-30 tarihliydi, 09:00 UTC.","expect":["- 09:00 +0 > - #invalidDate:2026-02-30"]}
+{"lang":"tr","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"TR","text":"Raporda 2026-13-40 09:00 UTC yazıyor.","expect":["- 09:00 +0 > - #invalidDate:2026-13-40"]}
+{"lang":"tr","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"TR","text":"Son ödeme 2026-04-31, 12:00 UTC.","expect":["- 12:00 +0 > - #invalidDate:2026-04-31"]}
+{"lang":"tr","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"TR","text":"ALARM: SUNUCU 2026-06-31, 02:00 UTC.","expect":["- 02:00 +0 > - #invalidDate:2026-06-31"]}
+{"lang":"tr","kind":"hostile","tags":["clock","abbreviation"],"text":"Davet 09:00 UTC+99 için geldi.","expect":["- 09:00 - > - #invalidOffset:UTC+99"]}
+{"lang":"tr","kind":"hostile","tags":["clock"],"text":"Buluşma １５:３０.","expect":["- 15:30 - > -"]}
+{"lang":"tr","kind":"hostile","tags":["clock"],"text":"Rezervasyon ０９：００, Osaka.","expect":["- 09:00 Asia/Tokyo > -"]}
+{"lang":"tr","kind":"hostile","tags":["clock","abbreviation"],"text":"Buluşma 9 UTC 🦀.","expect":["- 09:00 +0 > -"]}
+{"lang":"tr","kind":"hostile","tags":["clock"],"text":"🎉 Geçit töreni saat 12:00'de başlayacak.","expect":["- 12:00 - > -"]}
+{"lang":"tr","kind":"hostile","tags":["numeric-date","clock","place-preposition"],"region":"TR","text":"Ekip atölyesi 15/10 saat 10:00 Münih'te.","expect":["10-15 10:00 Europe/Berlin > -"]}
+{"lang":"tr","kind":"hostile","tags":["relative-day","clock","place-preposition"],"text":"Let's meet yarın 10:00 Berlin'de, tamam mı?","expect":["+1d 10:00 Europe/Berlin > -"]}
+{"lang":"tr","kind":"hostile","tags":["relative-day","clock","place-preposition"],"text":"The call is yarın 15:00 İstanbul'da.","expect":["+1d 15:00 Europe/Istanbul > -"]}
+{"lang":"tr","kind":"hostile","tags":["clock"],"text":"Madrit görüşmesi saat 15:00'te.","expect":["- 15:00 - > -"]}
+{"lang":"tr","kind":"hostile","tags":["clock"],"text":"Şangay uçuşu 09:00'da kalkıyor.","expect":["- 09:00 - > -"]}
+{"lang":"tr","kind":"hostile","tags":["relative-day","clock"],"text":"YARIN SAAT 15:00 TOKYO.","expect":["+1d 15:00 Asia/Tokyo > -"]}
+{"lang":"tr","kind":"hostile","tags":["weekday","clock"],"text":"PERŞEMBE 14:00 LONDRA.","expect":["w4 14:00 Europe/London > -"]}
+{"lang":"tr","kind":"hostile","tags":["clock"],"text":"Toplantı 15:00 pt.","expect":["- 15:00 - > -"],"note":"lowercase two-letter abbreviations are not zones, mirroring the es corpus entry for '15:00 pt'."}
+{"lang":"tr","kind":"hostile","tags":["unix-iso"],"region":"TR","text":"Eski kayıt: 1969-12-31T23:59:59+00:00.","expect":["- @-1 - > -"],"note":"negative Unix instant, mirroring the es corpus treatment of 1969-12-31T23:59:59+00:00."}
+{"lang":"tr","kind":"hostile","tags":["clock"],"text":"   15:00   Tokyo   ","expect":["- 15:00 Asia/Tokyo > -"]}
+{"lang":"tr","kind":"hostile","tags":["relative-day","clock"],"text":"Randevu\tyarın\t09:30\tAnkara.","expect":["+1d 09:30 Europe/Istanbul > -"]}
+{"lang":"tr","kind":"hostile","tags":["clock","place-preposition"],"text":"Saat\u200b 15:00'te\u200b Ankara'da görüşelim.","expect":["- 15:00 Europe/Istanbul > -"]}
+{"lang":"tr","kind":"hostile","tags":["clock"],"text":"Bu satır kasıtlı olarak çok uzun tutuldu; amaç yalnızca dayanıklılığı ölçmek. Uygulama kayıtlarında böyle uzun satırlar nadiren görünür ama yine de doğru çalışması gerekir. Burada hiçbir ipucu bulunmuyor; yalnızca dolgu metni var. Bu satır kasıtlı olarak çok uzun tutuldu; amaç yalnızca dayanıklılığı ölçmek. Uygulama kayıtlarında böyle uzun satırlar nadiren görünür ama yine de doğru çalışması gerekir. Burada hiçbir ipucu bulunmuyor; yalnızca dolgu metni var. Bu satır kasıtlı olarak çok uzun tutuldu; amaç yalnızca dayanıklılığı ölçmek. Uygulama kayıtlarında böyle uzun satırlar nadiren görünür ama yine de doğru çalışması gerekir. Burada hiçbir ipucu bulunmuyor; yalnızca dolgu metni var. Bu satır kasıtlı olarak çok uzun tutuldu; amaç yalnızca dayanıklılığı ölçmek. Uygulama kayıtlarında böyle uzun satırlar nadiren görünür ama yine de doğru çalışması gerekir. Burada hiçbir ipucu bulunmuyor; yalnızca dolgu metni var. Sonunda kısa bir hatırlatma: saat 19:00'da.","expect":["- 19:00 - > -"]}
+{"lang":"tr","kind":"hostile","tags":["range"],"text":"Gece vardiyası 22:00-06:00 arasında.","expect":["- 22:00–06:00 - > -"]}
+{"lang":"tr","kind":"hostile","tags":["range"],"text":"Böyle bir sefer yok: 15:00–10:00.","expect":["- 15:00–10:00 - > -"]}
+{"lang":"tr","kind":"hostile","tags":["clock"],"text":"Berlin 9:00 - Tokyo 16:00.","expect":["- 09:00 Europe/Berlin > -","- 16:00 Asia/Tokyo > -"]}
+{"lang":"tr","kind":"hostile","tags":["clock","abbreviation"],"text":"Oturum 18:00 CET ya da 12:00 EDT.","expect":["- 18:00 +60 > -","- 12:00 -240 > -"]}
+{"lang":"tr","kind":"hostile","tags":["clock","period"],"text":"SAATLER: 9AM, 3PM VE 21:00.","expect":["- 09:00 - > -","- 15:00 - > -","- 21:00 - > -"]}
+{"lang":"tr","kind":"hostile","tags":["month-name","clock","abbreviation"],"text":"Son gün: 3 Haziran 2026, 23:59 AoE.","expect":["2026-06-03 23:59 Etc/GMT+12 > -"]}
+{"lang":"tr","kind":"hostile","tags":["clock","zone-word"],"text":"Sunucu yeniden başlıyor: 9:00 beijing time.","expect":["- 09:00 Asia/Shanghai > -"]}
+{"lang":"tr","kind":"hostile","tags":["clock"],"text":"Tablodaki kod 1547, yani saat 15:47 demek.","expect":["- 15:47 - > -"]}

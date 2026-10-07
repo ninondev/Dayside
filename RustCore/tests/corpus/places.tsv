@@ -1,0 +1,54 @@
+city	iana	en	zh-Hans	zh-Hant	ja	ko	de	fr	es	pt-BR	it	nl	pl	ru	tr	vi	id
+Tokyo	Asia/Tokyo	Tokyo	东京	東京	東京	도쿄	Tokio	Tokyo	Tokio	Tóquio	Tokyo	Tokio	Tokio	Токио	Tokyo	Tokyo	Tokyo
+Osaka	Asia/Tokyo	Osaka	大阪	大阪	大阪	오사카	Ōsaka	Osaka	Osaka	Osaka	Osaka	Osaka	Osaka	Осака	Osaka	Ōsaka	Osaka
+Seoul	Asia/Seoul	Seoul	首尔	首爾	ソウル	서울	Seoul	Séoul	Seúl	Seul	Seul	Seoel	Seul	Сеул	Seul	Seoul	Seoul
+Busan	Asia/Seoul	Busan	釜山	釜山	釜山	부산	Busan	Pusan	Busán	Busan	Busan	Busan	Pusan	Пусан	Busan	Busan	Busan
+Beijing	Asia/Shanghai	Beijing	北京	北京	北京	베이징	Peking	Pékin	Pekín	Pequim	Pechino	Peking	Pekin	Пекин	Pekin	Bắc Kinh	Beijing
+Shanghai	Asia/Shanghai	Shanghai	上海	上海	上海	상하이	Schanghai	Shanghaï	Shanghái	Xangai	Shanghai	Shanghai	Szanghaj	Шанхай	Şanghay	Thượng Hải	Shanghai
+Singapore	Asia/Singapore	Singapore	新加坡	新加坡	シンガポール	싱가포르	Singapur	Singapour	Singapur	Singapura	Singapore	Singapore	Singapore	Сингапур	Singapore	Singapore	Singapore
+Bangkok	Asia/Bangkok	Bangkok	曼谷	曼谷	バンコク	방콕	Bangkok	Bangkok	Bangkok	Bancoque	Bangkok	Bangkok	Bangkok	Бангкок	Bangkok	Băng Cốc	Bangkok
+Jakarta	Asia/Jakarta	Jakarta	雅加达	雅加達	ジャカルタ	자카르타	Jakarta	Jakarta	Yakarta	Jacarta	Giacarta	Jakarta	Dżakarta	Джакарта	Cakarta	Jakarta	Jakarta
+Manila	Asia/Manila	Manila	马尼拉	馬尼拉	マニラ	마닐라	Manila	Manille	Manila	Manila	Manila	Manilla	Manila	Манила	Manila	Manila	Manila
+Hanoi	Asia/Bangkok	Hanoi	河内	河內	ハノイ	하노이	Hanoi	Hanoï	Hanói	Hanói	Hanoi	Hanoi	Hanoi	Ханой	Hanoi	Hà Nội	Hanoi
+Ho Chi Minh City	Asia/Ho_Chi_Minh	Ho Chi Minh City	胡志明市	胡志明市	ホーチミン	호찌민	Ho-Chi-Minh-Stadt	Hô Chi Minh-Ville	Ciudad Ho Chi Minh	Cidade de Ho Chi Minh	Ho Chi Minh	Ho Chi Minhstad	Ho Chi Minh	Хошимин	Ho Chi Minh Kenti	Thành phố Hồ Chí Minh	Kota Hồ Chí Minh
+Kuala Lumpur	Asia/Kuala_Lumpur	Kuala Lumpur	吉隆坡	吉隆坡	クアラルンプール	쿠알라룸푸르	Kuala Lumpur	Kuala Lumpur	Kuala Lumpur	Kuala Lumpur	Kuala Lumpur	Kuala Lumpur	Kuala Lumpur	Куала-Лумпур	Kuala Lumpur	Kuala Lumpur	Kuala Lumpur
+Mumbai	Asia/Kolkata	Mumbai	孟买	孟買	ムンバイ	뭄바이	Mumbai	Bombay	Bombay	Bombaim	Mumbai	Mumbai	Mumbaj	Мумбаи	Mumbai	Mumbai	Mumbai
+New Delhi	Asia/Kolkata	New Delhi	新德里	新德里	ニューデリー	뉴델리	Neu-Delhi	New Delhi	Nueva Delhi	Nova Deli	Nuova Delhi	New Delhi	Nowe Delhi	Нью-Дели	Yeni Delhi	New Delhi	New Delhi
+Dubai	Asia/Dubai	Dubai	迪拜	杜拜	ドバイ	두바이	Dubai	Dubaï	Dubái	Dubai	Dubai	Dubai	Dubaj	Дубай	Dubai	Dubai	Dubai
+Istanbul	Europe/Istanbul	Istanbul	伊斯坦布尔	伊斯坦堡	イスタンブール	이스탄불	Istanbul	Istanbul	Estambul	Istambul	Istanbul	Istanbul	Stambuł	Стамбул	İstanbul	Istanbul	Istanbul
+Ankara	Europe/Istanbul	Ankara	安卡拉	安卡拉	アンカラ	앙카라	Ankara	Ankara	Angora	Ancara	Ankara	Ankara	Ankara	Анкара	Ankara	Ankara	Ankara
+Moscow	Europe/Moscow	Moscow	莫斯科	莫斯科	モスクワ	모스크바	Moskau	Moscou	Moscú	Moscou	Mosca	Moskou	Moskwa	Москва	Moskova	Moskva	Moskow
+Saint Petersburg	Europe/Moscow	Saint Petersburg	圣彼得堡	聖彼得堡	サンクトペテルブルク	상트페테르부르크	Sankt Petersburg	Saint-Pétersbourg	San Petersburgo	São Petersburgo	San Pietroburgo	Sint-Petersburg	Petersburg	Санкт-Петербург	Sankt-Peterburg	Sankt-Peterburg	Sankt-Peterburg
+Warsaw	Europe/Warsaw	Warsaw	华沙	華沙	ワルシャワ	바르샤바	Warschau	Varsovie	Varsovia	Varsóvia	Varsavia	Warschau	Warszawa	Варшава	Varşova	Warszawa	Warsawa
+Kraków	Europe/Warsaw	Kraków	克拉科夫	克拉科夫	クラクフ	크라쿠프	Krakau	Cracovie	Cracovia	Cracóvia	Cracovia	Krakau	Kraków	Краков	Kraków	Kraków	Kraków
+Berlin	Europe/Berlin	Berlin	柏林	柏林	ベルリン	베를린	Berlin	Berlin	Berlín	Berlim	Berlino	Berlijn	Berlin	Берлин	Berlin	Berlin	Berlin
+Munich	Europe/Berlin	Munich	慕尼黑	Munich	ミュンヘン	뮌헨	München	Munich	Múnich	Munique	Monaco di Baviera	München	Monachium	Мюнхен	Münih	München	München
+Vienna	Europe/Vienna	Vienna	维也纳	維也納	ウィーン	빈	Wien	Vienne	Viena	Viena	Vienna	Wenen	Wiedeń	Вена	Viyana	Viên	Wina
+Zürich	Europe/Zurich	Zürich	苏黎世	Zürich	チューリッヒ	취리히	Zuerich	Zurich	Zúrich	Zurique	Zurigo	Zürich	Zurych	Цюрих	Zürih	Zürich	Zürich
+Paris	Europe/Paris	Paris	巴黎	巴黎	パリ	파리	Paris	Paris	París	Paris	Parigi	Parijs	Paryż	Париж	Paris	Paris	Paris
+Lyon	Europe/Paris	Lyon	里昂	里昂	リヨン	리옹	Lyon	Lyon	Lyon	Lyon	Lione	Lyon	Lyon	Лион	Lyon	Lyon	Lyon
+Madrid	Europe/Madrid	Madrid	马德里	馬德里	マドリード	마드리드	Madrid	Madrid	Madrid	Madrid	Madrid	Madrid	Madryt	Мадрид	Madrid	Madrid	Madrid
+Barcelona	Europe/Madrid	Barcelona	巴塞罗那	巴塞隆納	バルセロナ	바르셀로나	Barcelona	Barcelone	Barcelona	Barcelona	Barcellona	Barcelona	Barcelona	Барселона	Barselona	Barcelona	Barcelona
+Rome	Europe/Rome	Rome	罗马	羅馬	ローマ	로마	Rom	Rome	Roma	Roma	Roma	Rome	Rzym	Рим	Roma	Roma	Roma
+Milan	Europe/Rome	Milan	米兰	米蘭	ミラノ	밀라노	Mailand	Milan	Milán	Milão	Milano	Milaan	Mediolan	Милан	Milano	Milano	Milan
+Amsterdam	Europe/Amsterdam	Amsterdam	阿姆斯特丹	阿姆斯特丹	アムステルダム	암스테르담	Amsterdam	Amsterdam	Ámsterdam	Amsterdã	Amsterdam	Amsterdam	Amsterdam	Амстердам	Amsterdam	Amsterdam	Amsterdam
+Brussels	Europe/Brussels	Brussels	布鲁塞尔	布魯塞爾	ブリュッセル	브뤼셀	Brüssel	Bruxelles	Bruselas	Bruxelas	Bruxelles	Brussel	Bruksela	Брюссель	Brüksel	Bruxelles	Brussel
+London	Europe/London	London	伦敦	倫敦	ロンドン	런던	London	Londres	Londres	Londres	Londra	Londen	Londyn	Лондон	Londra	Luân Đôn	London
+Dublin	Europe/Dublin	Dublin	都柏林	都柏林	ダブリン	더블린	Dublin	Dublin	Dublín	Dublin	Dublino	Dublin	Dublin	Дублин	Dublin	Dublin	Dublin
+Lisbon	Europe/Lisbon	Lisbon	里斯本	里斯本	リスボン	리스본	Lissabon	Lisbonne	Lisboa	Lisboa	Lisbona	Lissabon	Lizbona	Лиссабон	Lizbon	Lisboa	Lisboa
+São Paulo	America/Sao_Paulo	São Paulo	圣保罗	聖保羅	サンパウロ	상파울루	São Paulo	São Paulo	São Paulo	São Paulo capital	San Paolo	São Paulo	São Paulo	Сан-Паулу	Sao Paulo	São Paulo	São Paulo
+Rio de Janeiro	America/Sao_Paulo	Rio de Janeiro	里约热内卢	里約熱內盧	リオデジャネイロ	리우데자네이루	Rio de Janeiro	Rio de Janeiro	Río de Janeiro	Rio de Janeiro	Rio de Janeiro	Rio de Janeiro	Rio de Janeiro	Рио-де-Жанейро	Rio de Janeiro	Rio de Janeiro	Rio de Janeiro
+Buenos Aires	America/Argentina/Buenos_Aires	Buenos Aires	布宜诺斯艾利斯	布宜諾斯艾利斯	ブエノスアイレス	부에노스아이레스	Buenos Aires	Buenos Aires	Ciudad Autónoma de Buenos Aires	Buenos Aires	Buenos Aires	Buenos Aires	Buenos Aires	Буэнос-Айрес	Buenos Aires	Buenos Aires	Buenos Aires
+Mexico City	America/Mexico_City	Mexico City	墨西哥城	墨西哥城	メキシコシティ	멕시코시티	Mexiko-Stadt	Mexico	México	Cidade do México	Città del Messico	Mexico-Stad	Meksyk	Мехико	Meksiko	Thành phố México	Kota Meksiko
+New York City	America/New_York	New York City	纽约	紐約	ニューヨーク	뉴욕	New York City	New York	Nueva York	Nova Iorque	New York	New York	Nowy Jork	Нью-Йорк	New York	Thành phố New York	Kota New York
+Los Angeles	America/Los_Angeles	Los Angeles	洛杉矶	洛杉磯	ロサンゼルス	로스앤젤레스	Los Angeles	Los Angeles	Los Ángeles	Los Angeles	Los Angeles	Los Angeles	Los Angeles	Лос-Анджелес	Los Angeles	Los Angeles	Los Angeles
+Chicago	America/Chicago	Chicago	芝加哥	芝加哥	シカゴ	시카고	Chicago	Chicago	Chicago	Chicago	Chicago	Chicago	Chicago	Чикаго	Şikago	Chicago	Chicago
+Toronto	America/Toronto	Toronto	多伦多	多倫多	トロント	토론토	Toronto	Toronto	Toronto	Toronto	Toronto	Toronto	Toronto	Торонто	Toronto	Toronto	Toronto
+Vancouver	America/Vancouver	Vancouver	温哥华	溫哥華	バンクーバー	밴쿠버	Vancouver	Vancouver	Vancouver	Vancôver	Vancouver	Vancouver	Vancouver	Ванкувер	Vancouver	Vancouver	Vancouver
+Sydney	Australia/Sydney	Sydney	悉尼	雪梨	シドニー	시드니	Sydney	Sydney	Sídney	Sydney	Sydney	Sydney	Sydney	Сидней	Sidney	Sydney	Sydney
+Melbourne	Australia/Melbourne	Melbourne	墨尔本	墨爾本	メルボルン	멜버른	Melbourne	Melbourne	Melbourne	Melbourne	Melbourne	Melbourne	Melbourne	Мельбурн	Melbourne	Melbourne	Melbourne
+Auckland	Pacific/Auckland	Auckland	奥克兰都会区	奧克蘭	オークランド	오클랜드	Auckland	Auckland	Auckland	Auckland	Auckland	Auckland	Auckland	Окленд	Auckland	Auckland	Auckland
+Cairo	Africa/Cairo	Cairo	开罗	開羅	カイロ	카이로	Kairo	Le Caire	El Cairo	Cairo	Il Cairo	Caïro	Kair	Каир	Kahire	Cairo	Kairo
+Lagos	Africa/Lagos	Lagos	拉各斯	拉哥斯	ラゴス	라고스	Lagos	Lagos	Lagos	Lagos	Lagos	Lagos	Lagos	Лагос	Lagos	Lagos	Lagos
+Nairobi	Africa/Nairobi	Nairobi	内罗毕	奈洛比	ナイロビ	나이로비	Nairobi	Nairobi	Nairobi	Nairóbi	Nairobi	Nairobi	Nairobi	Найроби	Nairobi	Nairobi	Nairobi
+Johannesburg	Africa/Johannesburg	Johannesburg	约翰内斯堡	約翰尼斯堡	ヨハネスブルグ	요하네스버그	Johannesburg	Johannesbourg	Johannesburgo	Joanesburgo	Johannesburg	Johannesburg	Johannesburg	Йоханнесбург	Johannesburg	Johannesburg	Johannesburg

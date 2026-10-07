@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>__MEANTIME_TITLE__</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff; --surface: #f5f5f7; --text: #1d1d1f; --text-2: #515154; --line: rgba(0,0,0,.12);
+    --stroke: rgba(0,0,0,.45); --track: rgba(120,120,128,.18); --blue: #007aff; --dim: transparent;
+    --action: #0071e3; --focus: #0071e3; --selection: rgba(0,113,227,.2);
+    --serif: "New York", ui-serif, "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", Georgia, serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1c1c1e; --surface: #2c2c2e; --text: #f5f5f7; --text-2: #a1a1a6; --line: rgba(255,255,255,.14);
+      --stroke: rgba(255,255,255,.5); --track: rgba(120,120,128,.32); --blue: #0a84ff; --dim: rgba(0,0,0,.22);
+      --focus: #2997ff; --selection: rgba(41,151,255,.3); }
+  }
+  @media (prefers-contrast: more) { :root { --stroke: var(--text); --dim: transparent; } }
+  :lang(zh-Hant) { --serif: "New York", ui-serif, "Songti TC", "Noto Serif CJK TC", "Source Han Serif TC", Georgia, serif; }
+  html { background: var(--bg); }
+  body { margin: 0 auto; max-width: 34rem; padding: 1.25rem 1rem 3rem; color: var(--text); font: 1.0625rem/1.5 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", sans-serif; -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--selection); }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+  p { margin: .375rem 0; text-wrap: pretty; }
+  .muted { color: var(--text-2); font-size: .9375rem; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .mark svg { width: 1em; height: 1em; vertical-align: -.15em; margin-right: .35em; }
+  .masthead { margin: 0 0 1.25rem; font-size: .9375rem; font-weight: 600; }
+  .card-shown .masthead { display: none; }
+  /* 明信片：上面一块是那边此刻的天（与 App 面板行同一种颜色与字），下面是那边今天的天与可约时段。 */
+  .card { margin: 0 0 1.75rem; border: .75px solid var(--stroke); border-radius: 14px; overflow: hidden; }
+  /* 上半像一行面板：左边名字与地名（衬线），右边大钟点与日期；底是那边此刻的天。 */
+  .sky { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; column-gap: 1rem; row-gap: .2rem;
+    min-height: 5.25rem; padding: 1.125rem 1.125rem 1rem; background: #f4f2ee; color: #111620; align-content: end; }
+  .sky h1 { grid-column: 1; grid-row: 1; margin: 0; font: 500 1.625rem/1.15 var(--serif); letter-spacing: -.01em; overflow-wrap: anywhere; text-wrap: balance; }
+  .sky .where { grid-column: 1; grid-row: 2; margin: 0; font: 400 1rem/1.3 var(--serif); overflow-wrap: anywhere; }
+  .sky time { grid-column: 2; grid-row: 1; justify-self: end; font: 300 2.75rem/1 system-ui, -apple-system, sans-serif; font-variant-numeric: tabular-nums; letter-spacing: -.01em; white-space: nowrap; }
+  .sky .date { grid-column: 2; grid-row: 2; justify-self: end; margin: 0; font-size: .9375rem; white-space: nowrap; }
+  .day { padding: .75rem 1.125rem 1rem; }
+  .ruler { position: relative; height: 1.05rem; font-size: .6875rem; line-height: 1; color: var(--text-2); font-variant-numeric: tabular-nums; }
+  .ruler span { position: absolute; top: 0; transform: translateX(-50%); }
+  .ruler span:first-child { transform: none; }
+  .track { position: relative; }
+  .lane { position: relative; height: 12px; border-radius: 3px; background: var(--surface); }
+  .lane::before { content: ""; position: absolute; inset: 0; border-radius: 3px; background: var(--dim); }
+  .lane::after { content: ""; position: absolute; inset: 0; border-radius: 3px; border: .75px solid var(--stroke); }
+  .rail { position: relative; height: 4px; margin-top: 2px; border-radius: 2px; background: var(--track); }
+  .rail span { position: absolute; top: 0; bottom: 0; border-radius: 2px; background: var(--blue); }
+  .now { position: absolute; top: -2px; bottom: -2px; width: 1.5px; margin-left: -.75px; background: var(--text); box-shadow: 0 0 0 1px var(--bg); }
+  .day .foot { display: flex; align-items: flex-end; gap: .75rem; margin-top: .625rem; }
+  .free { flex: 1; margin: 0; font-size: .875rem; color: var(--text-2); }
+  .card .mark { margin: 0 0 0 auto; font-size: .75rem; color: var(--text-2); white-space: nowrap; }
+  /* 你这边：此刻的钟点、日期、那边比你快慢多少。 */
+  .yours { margin: 0 0 1.75rem; }
+  .yours .label { margin: 0; font-size: .875rem; color: var(--text-2); }
+  .yours .now-here { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .75rem; margin: .125rem 0 0; }
+  .yours time { font: 300 1.75rem/1.2 system-ui, -apple-system, sans-serif; font-variant-numeric: tabular-nums; }
+  .yours .zone { margin: .25rem 0 0; font-size: .8125rem; overflow-wrap: anywhere; }
+  h2 { margin: 0 0 .5rem; font-size: 1.0625rem; line-height: 1.3; font-weight: 600; text-wrap: balance; }
+  #snapshot, #window-status { font-variant-numeric: tabular-nums; }
+  #window-status { font-weight: 500; }
+  #window-status:empty { display: none; }
+  ul { margin: .5rem 0 0; padding: 0; list-style: none; }
+  /* 每个时段一行：左边你这边的时间与对方那边的时间，右边「选这个时段」。 */
+  li { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 1rem; align-items: center; padding: .7rem 0; border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+  li p { grid-column: 1; margin: 0; }
+  li .pick { grid-column: 2; grid-row: 1 / span 2; }
+  button, select, input, textarea { font: inherit; color: inherit; }
+  button { padding: .35rem .85rem; border: 1px solid var(--line); border-radius: .5rem; background: var(--surface); cursor: pointer; }
+  button.pick { font-size: .9375rem; }
+  a.primary { display: inline-block; padding: .35rem .85rem; border-radius: .5rem; background: var(--action); color: #fff; text-decoration: none; }
+  #booking { margin-top: 1.25rem; padding: 1rem 1.125rem 1.125rem; border: .75px solid var(--stroke); border-radius: 14px; }
+  #booking h2 { margin-top: 0; }
+  #booking label { display: block; margin: .625rem 0 .25rem; font-size: .9375rem; color: var(--text-2); }
+  #booking select, #booking input, #booking textarea { width: 100%; box-sizing: border-box; padding: .4rem .5rem; border: 1px solid var(--line); border-radius: .5rem; background: var(--bg); }
+  #booking textarea { min-height: 3.5rem; resize: vertical; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+  #booking-preview { white-space: pre-wrap; font-variant-numeric: tabular-nums; margin-top: .75rem; }
+  [hidden] { display: none !important; }
+  @media (max-width: 24rem) { .sky time { font-size: 2.375rem; } .sky h1 { font-size: 1.5rem; } }
+  @media (max-width: 360px) {
+    li { grid-template-columns: minmax(0, 1fr); row-gap: .375rem; }
+    li .pick { grid-column: 1; grid-row: auto; justify-self: start; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="dsmark" viewBox="0 0 64 64"><defs><linearGradient id="dsbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#020309"/><stop offset=".6" stop-color="#0F0B22"/><stop offset="1" stop-color="#040411"/></linearGradient><radialGradient id="dsglow" cx="45.69" cy="35.30" r="26.88" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFFCED" stop-opacity=".95"/><stop offset=".12" stop-color="#FFECC1" stop-opacity=".8"/><stop offset=".45" stop-color="#F3AD66" stop-opacity=".35"/><stop offset="1" stop-color="#412963" stop-opacity="0"/></radialGradient><radialGradient id="dsplanet" cx="32.00" cy="39.58" r="62.72" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#101828"/><stop offset="1" stop-color="#010206"/></radialGradient><linearGradient id="dsrim" x1="0" y1="0" x2="64" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0.00" stop-color="#FFC579" stop-opacity="0.09"/><stop offset="0.12" stop-color="#FFD69C" stop-opacity="0.37"/><stop offset="0.25" stop-color="#FFE5BB" stop-opacity="0.64"/><stop offset="0.38" stop-color="#FFF3D8" stop-opacity="0.90"/><stop offset="0.50" stop-color="#FFF8E2" stop-opacity="1.00"/><stop offset="0.62" stop-color="#FFF8E2" stop-opacity="1.00"/><stop offset="0.75" stop-color="#FFF8E2" stop-opacity="1.00"/><stop offset="0.88" stop-color="#FFF8E2" stop-opacity="1.00"/><stop offset="1.00" stop-color="#FFF6DF" stop-opacity="0.97"/></linearGradient><clipPath id="dsm"><rect width="64" height="64" rx="14"/></clipPath></defs><g clip-path="url(#dsm)"><rect width="64" height="64" fill="url(#dsbg)"/><g transform="rotate(-8 32 32)"><ellipse cx="45.69" cy="35.30" rx="26.88" ry="12.80" fill="url(#dsglow)"/><circle cx="32.00" cy="97.28" r="62.72" fill="url(#dsplanet)"/><circle cx="32.00" cy="97.28" r="61.52" fill="none" stroke="url(#dsrim)" stroke-width="2.4"/><circle cx="45.69" cy="35.30" r="4.48" fill="url(#dsglow)"/></g></g></symbol></svg>
+<header class="masthead"><p class="mark"><svg aria-hidden="true"><use href="#dsmark"/></svg>Dayside</p></header>
+<p id="status" role="status">Open a link or web page shared from Dayside.</p>
+<main id="content" hidden>
+  <article class="card" id="card" aria-labelledby="heading">
+    <div class="sky" id="sky">
+      <h1 id="heading">Shared Time</h1>
+      <p class="sr" id="their-label"></p><time id="their-time"></time>
+      <p class="where" id="their-zone"></p>
+      <p class="date" id="their-date"></p>
+    </div>
+    <div class="day">
+      <div class="ruler" id="ruler" aria-hidden="true"></div>
+      <div class="track" id="track" role="img">
+        <div class="lane" id="lane"></div>
+        <div class="rail" id="rail"></div>
+        <div class="now" id="now-line"></div>
+      </div>
+      <div class="foot"><p class="free" id="free"></p><p class="mark"><svg aria-hidden="true"><use href="#dsmark"/></svg>Dayside</p></div>
+    </div>
+  </article>
+  <section class="yours" aria-labelledby="your-label">
+    <p class="label" id="your-label"></p>
+    <p class="now-here"><time id="your-time"></time><span id="your-date"></span></p>
+    <p class="muted" id="offset"></p>
+    <p class="muted zone" id="your-zone"></p>
+  </section>
+  <section id="availability" hidden>
+    <h2 id="converted-title"></h2><p id="window-status" role="status"></p><ul id="windows"></ul>
+    <p class="muted" id="snapshot"></p>
+    <section id="booking" hidden aria-live="polite">
+      <h2 id="booking-title"></h2>
+      <label for="booking-start" id="booking-start-label"></label><select id="booking-start"></select>
+      <label for="booking-length" id="booking-length-label"></label><select id="booking-length"></select>
+      <label for="booking-name" id="booking-name-label"></label><input id="booking-name" maxlength="80" autocomplete="name">
+      <label for="booking-note" id="booking-note-label"></label><textarea id="booking-note" maxlength="500"></textarea>
+      <p id="booking-preview" class="muted"></p>
+      <p id="booking-no-email" class="muted" hidden></p>
+      <div class="actions">
+        <a id="booking-mail" class="primary" role="button" hidden></a>
+        <button id="booking-ics" type="button"></button>
+        <button id="booking-copy" type="button"></button>
+        <button id="booking-close" type="button"></button>
+      </div>
+    </section>
+  </section>
+  <p id="no-availability" class="muted"></p>
+</main>
+<p id="privacy" class="muted"></p>
+<script>
+"use strict";
+(() => {
+  const strings = {
+    en: { privacy:"This page runs in your browser and sends nothing anywhere.", title:"Shared Time", theirs:"Their local time", yours:"Your time", converted:"Available Times in Your Time Zone", noSchedule:"No availability shared", until:"Availability through", free:"Available: ", zoneTime:"{p} time", everyDay:"Every day", nextDay:"{a}–{b} next day", allDay:"All day", ahead:"{d} ahead", behind:"{d} behind", expired:"This availability has expired. Ask them for a new card.", empty:"No available times are left.", invalid:"This link can’t be read. It may be incomplete, or this browser doesn’t support its time zone.", missing:"Open a link or web page shared from Dayside.", original:"Their time" },
+    zh: { privacy:"此页面只在你的浏览器中运行，不会向任何地方发送数据。", title:"分享时间", theirs:"对方当地时间", yours:"你的时间", converted:"你这边的可约时段", noSchedule:"对方没有分享可约时段", until:"可约时段截至", free:"可约：", zoneTime:"{p}时间", everyDay:"每天", nextDay:"{a}–次日 {b}", allDay:"全天", ahead:"快 {d}", behind:"慢 {d}", expired:"可约时段已过期，请对方重新发一张名片。", empty:"没有剩下的可约时段。", invalid:"读不出这条链接：可能没复制完整，或这个浏览器不支持其中的时区。", missing:"请打开Dayside分享的链接或网页文件。", original:"对方时间" },
+    "zh-Hant": { privacy:"此頁面只在你的瀏覽器中執行，不會向任何地方傳送資料。", title:"分享時間", theirs:"對方當地時間", yours:"你的時間", converted:"你所在時區的可約時段", noSchedule:"對方沒有分享可約時段", until:"可約時段截至", free:"可約：", zoneTime:"{p}時間", everyDay:"每天", nextDay:"{a}–次日 {b}", allDay:"整日", ahead:"快{d}", behind:"慢{d}", expired:"可約時段已過期，請對方重新分享一張名片。", empty:"沒有剩餘的可約時段。", invalid:"無法讀取這條連結：可能未拷貝完整，或目前瀏覽器不支援其中的時區。", missing:"請打開Dayside分享的連結或網頁檔案。", original:"對方時間" },
+    ja: { privacy:"ブラウザ内でのみ動作し、データをどこにも送信しません。", title:"時刻の共有", theirs:"相手の現地時刻", yours:"こちらの時刻", converted:"こちらの時間での予約可能な時間帯", noSchedule:"相手は予約可能な時間帯を共有していません", until:"予約可能な時間帯の期限:", free:"予約可能: ", zoneTime:"現地時間（{p}）", everyDay:"毎日", nextDay:"{a}〜翌日 {b}", allDay:"終日", ahead:"{d}進んでいる", behind:"{d}遅れている", expired:"予約可能な時間帯は期限切れです。新しい名刺を相手に依頼してください。", empty:"残りの予約可能な時間帯はありません。", invalid:"このリンクを読み取れません。不完全であるか、このブラウザが対応していない時間帯が含まれている可能性があります。", missing:"Daysideで共有されたリンクまたはWebページを開いてください。", original:"相手の時刻" },
+    ko: { privacy:"이 페이지는 브라우저 안에서 실행되며 데이터를 어디에도 보내지 않습니다.", title:"시간 공유", theirs:"상대방의 현지 시간", yours:"사용자의 시간", converted:"사용자의 시간대에 맞춘 예약 가능 시간", noSchedule:"상대방이 예약 가능 시간을 공유하지 않았습니다.", until:"예약 가능 기한", free:"예약 가능: ", zoneTime:"{p} 시간", everyDay:"매일", nextDay:"{a}–다음 날 {b}", allDay:"하루 종일", ahead:"{d} 빠름", behind:"{d} 느림", expired:"예약 가능 시간이 만료되었습니다. 상대방에게 새 시간 카드를 요청하세요.", empty:"남은 예약 가능 시간이 없습니다.", invalid:"이 링크를 읽을 수 없습니다. 불완전하거나 이 브라우저에서 지원하지 않는 시간대가 포함되어 있을 수 있습니다.", missing:"Dayside에서 공유한 링크 또는 웹 페이지를 여세요.", original:"상대방 시간" },
+    de: { privacy:"Diese Seite läuft in deinem Browser und sendet keine Daten.", title:"Geteilte Zeit", theirs:"Ortszeit der anderen Person", yours:"Deine Zeit", converted:"Verfügbare Zeiten in deiner Zeitzone", noSchedule:"Keine Verfügbarkeit geteilt", until:"Verfügbarkeit bis", free:"Verfügbar: ", zoneTime:"Ortszeit ({p})", everyDay:"Jeden Tag", nextDay:"{a}–{b} am Folgetag", allDay:"Ganztägig", ahead:"{d} voraus", behind:"{d} zurück", expired:"Diese Verfügbarkeit ist abgelaufen. Bitte die andere Person um eine neue Karte.", empty:"Keine verfügbaren Zeiten mehr.", invalid:"Dieser Link kann nicht gelesen werden. Möglicherweise ist er unvollständig oder enthält eine Zeitzone, die dieser Browser nicht unterstützt.", missing:"Öffne einen Link oder eine Webseitendatei, die mit Dayside geteilt wurde.", original:"Zeit der anderen Person" },
+    fr: { privacy:"Cette page fonctionne dans votre navigateur et n’envoie aucune donnée.", title:"Heure partagée", theirs:"Heure locale de cette personne", yours:"Votre heure", converted:"Disponibilités dans votre fuseau horaire", noSchedule:"Aucune disponibilité partagée", until:"Disponibilités jusqu’au", free:"Disponible : ", zoneTime:"Heure locale ({p})", everyDay:"Tous les jours", nextDay:"{a}–{b} le lendemain", allDay:"Toute la journée", ahead:"{d} d’avance", behind:"{d} de retard", expired:"Ces disponibilités ont expiré. Demandez une nouvelle carte.", empty:"Il ne reste aucun créneau disponible.", invalid:"Ce lien ne peut pas être lu. Il est peut-être incomplet, ou le fuseau horaire n’est pas pris en charge par ce navigateur.", missing:"Ouvrez un lien ou une page web partagée depuis Dayside.", original:"Son heure" },
+    es: { privacy:"Esta página funciona solo en el navegador y no envía ningún dato.", title:"Hora compartida", theirs:"Hora local de esa persona", yours:"Tu hora", converted:"Horas disponibles en tu zona horaria", noSchedule:"No se ha compartido disponibilidad", until:"Disponibilidad válida hasta", free:"Disponible: ", zoneTime:"Hora de {p}", everyDay:"Todos los días", nextDay:"{a}–{b} del día siguiente", allDay:"Todo el día", ahead:"{d} por delante", behind:"{d} por detrás", expired:"Esta disponibilidad ha caducado. Pide a esa persona una nueva tarjeta.", empty:"No quedan horas disponibles.", invalid:"No se puede leer este enlace. Puede estar incompleto o usar una zona horaria que este navegador no admite.", missing:"Abre un enlace o un archivo de página web compartido desde Dayside.", original:"Su hora" },
+    pt: { privacy:"Esta página funciona apenas no seu navegador e não envia dados para nenhum local.", title:"Horário compartilhado", theirs:"Horário local da outra pessoa", yours:"Seu horário local", converted:"Horários disponíveis no seu fuso", noSchedule:"A outra pessoa não compartilhou horários disponíveis", until:"Disponibilidade válida até", free:"Disponível: ", zoneTime:"horário local ({p})", everyDay:"Todos os dias", nextDay:"{a}–{b} do dia seguinte", allDay:"Dia inteiro", ahead:"{d} à frente", behind:"{d} atrás", expired:"Esta disponibilidade expirou. Peça um novo cartão.", empty:"Não há mais horários disponíveis.", invalid:"Não foi possível ler este link. Pode estar incompleto ou usar um fuso horário sem suporte neste navegador.", missing:"Abra um link ou arquivo de página web compartilhado pelo Dayside.", original:"Horário da outra pessoa" },
+    ru: { privacy:"Эта страница работает только в Вашем браузере и никуда не отправляет данные.", title:"Время, которым поделились", theirs:"Местное время собеседника", yours:"Ваше время", converted:"Время для встреч в Вашем часовом поясе", noSchedule:"Отправитель не поделился временем для встреч", until:"Время для встреч указано до", free:"Время для встреч: ", zoneTime:"Местное время ({p})", everyDay:"Каждый день", nextDay:"{a}—{b} следующего дня", allDay:"Весь день", ahead:"Опережает на {d}", behind:"Отстаёт на {d}", expired:"Срок действия времени для встреч истёк. Попросите отправителя прислать новую карточку.", empty:"Времени для встреч больше нет.", invalid:"Не удалось прочитать ссылку. Возможно, она неполная или браузер не поддерживает указанный часовой пояс.", missing:"Откройте ссылку или веб-страницу, полученную из Dayside.", original:"Время собеседника" },
+    it: { privacy:"Questa pagina funziona nel tuo browser e non invia alcun dato.", title:"Orario condiviso", theirs:"Ora locale dell’altra persona", yours:"La tua ora", converted:"Orari disponibili nel tuo fuso orario", noSchedule:"Nessuna disponibilità condivisa.", until:"Disponibilità fino al", free:"Disponibilità: ", zoneTime:"Ora di {p}", everyDay:"Ogni giorno", nextDay:"{a}–{b} del giorno dopo", allDay:"Tutto il giorno", ahead:"{d} avanti", behind:"{d} indietro", expired:"Questa disponibilità è scaduta. Chiedi all’altra persona una nuova scheda oraria.", empty:"Non restano orari disponibili.", invalid:"Impossibile leggere questo link. Potrebbe essere incompleto o usare un fuso orario non supportato dal browser.", missing:"Apri un link o una pagina web condivisa da Dayside.", original:"Ora dell’altra persona" },
+    nl: { privacy:"Deze pagina werkt in je browser en verstuurt geen gegevens.", title:"Gedeelde tijd", theirs:"Lokale tijd van de ander", yours:"Jouw tijd", converted:"Beschikbare tijden in jouw tijdzone", noSchedule:"Er is geen beschikbaarheid gedeeld", until:"Beschikbaarheid tot en met", free:"Beschikbaar: ", zoneTime:"Tijd in {p}", everyDay:"Elke dag", nextDay:"{a}–{b} (volgende dag)", allDay:"Hele dag", ahead:"{d} voor", behind:"{d} achter", expired:"Deze beschikbaarheid is verlopen. Vraag de ander om een nieuwe tijdkaart.", empty:"Geen beschikbare tijden meer over.", invalid:"Deze link kan niet worden gelezen. Mogelijk is de link onvolledig, of ondersteunt deze browser de tijdzone niet.", missing:"Open een link of webpagina die vanuit Dayside is gedeeld.", original:"Tijd van de ander" },
+    pl: { privacy:"Ta strona działa w Twojej przeglądarce i nie wysyła żadnych danych.", title:"Udostępniony czas", theirs:"Czas lokalny drugiej osoby", yours:"Twój czas", converted:"Dostępne godziny w Twojej strefie czasowej", noSchedule:"Nie udostępniono godzin dostępności", until:"Godziny dostępności ważne do", free:"Dostępność: ", zoneTime:"czas lokalny ({p})", everyDay:"Codziennie", nextDay:"{a}–{b} następnego dnia", allDay:"Cały dzień", ahead:"{d} do przodu", behind:"{d} do tyłu", expired:"Te godziny dostępności wygasły. Poproś o nową wizytówkę.", empty:"Nie ma już dostępnych godzin.", invalid:"Nie można odczytać tego łącza. Może być niepełne albo zawierać strefę czasową nieobsługiwaną przez tę przeglądarkę.", missing:"Otwórz łącze lub plik strony internetowej udostępniony z aplikacji Dayside.", original:"Czas drugiej osoby" },
+    tr: { privacy:"Bu sayfa yalnızca tarayıcınızda çalışır ve hiçbir yere veri göndermez.", title:"Paylaşılan Saat", theirs:"Karşı tarafın yerel saati", yours:"Sizin saatiniz", converted:"Saat diliminizdeki uygun saatler", noSchedule:"Uygun saat paylaşılmadı", until:"Uygun saatler şu tarihe kadar geçerli:", free:"Uygun saatler: ", zoneTime:"{p} saati", everyDay:"Her gün", nextDay:"{a}–ertesi gün {b}", allDay:"Tam gün", ahead:"{d} ileri", behind:"{d} geri", expired:"Bu uygun saatlerin süresi doldu. Karşı taraftan yeni bir kart isteyin.", empty:"Kalan uygun saat yok.", invalid:"Bu bağlantı okunamıyor. Eksik olabilir ya da tarayıcının desteklemediği bir saat dilimi içerebilir.", missing:"Dayside’dan paylaşılan bir bağlantı veya web sayfası dosyası açın.", original:"Karşı tarafın saati" },
+    vi: { privacy:"Trang này chỉ chạy trong trình duyệt của bạn và không gửi dữ liệu đi đâu.", title:"Giờ được chia sẻ", theirs:"Giờ địa phương của người chia sẻ", yours:"Giờ của bạn", converted:"Giờ có thể hẹn theo múi giờ của bạn", noSchedule:"Người này chưa chia sẻ giờ có thể hẹn", until:"Giờ có thể hẹn đến", free:"Có thể hẹn: ", zoneTime:"giờ {p}", everyDay:"Hằng ngày", nextDay:"{a}–{b} hôm sau", allDay:"Cả ngày", ahead:"nhanh hơn {d}", behind:"chậm hơn {d}", expired:"Các khung giờ có thể hẹn đã hết hạn. Hãy đề nghị người chia sẻ gửi danh thiếp mới.", empty:"Không còn giờ có thể hẹn.", invalid:"Không đọc được liên kết này. Có thể chưa sao chép đầy đủ, hoặc trình duyệt không hỗ trợ múi giờ trong đó.", missing:"Hãy mở liên kết hoặc tệp trang web được chia sẻ từ Dayside.", original:"Giờ của người chia sẻ" },
+    id: { privacy:"Halaman ini berjalan di browser Anda dan tidak mengirim data ke mana pun.", title:"Waktu yang Dibagikan", theirs:"Waktu setempat pengirim", yours:"Waktu Anda", converted:"Waktu Tersedia di Zona Waktu Anda", noSchedule:"Tidak ada ketersediaan yang dibagikan", until:"Ketersediaan hingga", free:"Tersedia: ", zoneTime:"Waktu {p}", everyDay:"Setiap hari", nextDay:"{a}–{b} hari berikutnya", allDay:"Seharian", ahead:"{d} lebih cepat", behind:"{d} lebih lambat", expired:"Ketersediaan ini sudah kedaluwarsa. Minta pengirim mengirim Kartu Waktu baru.", empty:"Tidak ada lagi waktu yang tersedia.", invalid:"Tautan ini tidak dapat dibaca. Tautan mungkin tidak lengkap, atau menggunakan zona waktu yang tidak didukung browser ini.", missing:"Buka tautan atau halaman web yang dibagikan dari Dayside.", original:"Waktu pengirim" }
+  };
+  // 无服务器预约：对方选时段后，页面替他起邮件 / 日历文件 / 可复制文本，不经任何服务器。
+  const booking = {
+    en: { copyFailed:"Couldn’t copy the request text. Select it and copy it manually.", pick:"Choose This Time", title:"Request a Time", start:"Start", length:"Length", min:"min", name:"Your name (optional)", note:"Note (optional)", mail:"Send Request by Email", ics:"Add to My Calendar", copy:"Copy Request Text", copied:"Copied", close:"Close", noEmail:"They didn’t leave an email address. Copy the text or save the calendar file and send it yourself.", subject:"Meeting request", intro:"I’d like to meet at:", mine:"My time", theirs:"Your time", footer:"Generated by a Dayside sharing page. Nothing is written to anyone’s calendar automatically.", long:"The note was too long for the email. Click “Copy Request Text,” then paste it into the email.", slotTooShort:"This time is too short for that length. Choose a shorter length or another time." },
+    zh: { copyFailed:"无法复制预约文本，请手动选中复制。", pick:"选这个时段", title:"预约", start:"开始", length:"时长", min:"分钟", name:"你的名字（可选）", note:"备注（可选）", mail:"用邮件发预约", ics:"添加到我的日历", copy:"复制预约文本", copied:"已复制", close:"关闭", noEmail:"对方没留邮箱：请复制文本或保存日历文件，自己发给对方。", subject:"预约请求", intro:"我想和你约在：", mine:"我这边", theirs:"你那边", footer:"由Dayside分享页生成，不会自动写进任何人的日历。", long:"备注太长，没放进邮件。请点“复制预约文本”，再粘贴进邮件。", slotTooShort:"这段可约时间不够长，请缩短时长或换一个时段。" },
+    "zh-Hant": { copyFailed:"無法拷貝預約文字，請手動選取並拷貝。", pick:"選這個時段", title:"預約時段", start:"開始", length:"時間長度", min:"分鐘", name:"你的名字（選填）", note:"備註（選填）", mail:"用郵件傳送預約", ics:"加入我的行事曆", copy:"拷貝預約文字", copied:"已拷貝", close:"關閉", noEmail:"對方沒留電子郵件地址：請拷貝文字或儲存行事曆檔案，自行寄給對方。", subject:"預約請求", intro:"我想和你約在：", mine:"我這邊", theirs:"你那邊", footer:"由Dayside分享頁產生，不會自動寫進任何人的行事曆。", long:"備註太長，沒放進郵件。請按一下「拷貝預約文字」，再貼上至郵件。", slotTooShort:"這段可約時間不夠長，請縮短時間長度或換一個時段。" },
+    ja: { copyFailed:"予約依頼文をコピーできませんでした。手動で選択してコピーしてください。", pick:"この時間帯を選ぶ", title:"予約を依頼", start:"開始", length:"所要時間", min:"分", name:"名前（任意）", note:"メモ（任意）", mail:"メールで予約を依頼", ics:"自分のカレンダーに追加", copy:"予約依頼文をコピー", copied:"コピーしました", close:"閉じる", noEmail:"相手のメールアドレスがありません。テキストをコピーするかカレンダーファイルを保存して、自分で送ってください。", subject:"予約の依頼", intro:"次の日時でお会いしたいです:", mine:"こちらの時刻", theirs:"そちらの時刻", footer:"Daysideの共有ページで作成。誰のカレンダーにも自動では書き込まれません。", long:"メモが長すぎてメールに入りませんでした。“予約依頼文をコピー”をクリックして、メールにペーストしてください。", slotTooShort:"この時間帯は指定した所要時間より短いため、所要時間を短くするか、別の時間帯を選んでください。" },
+    ko: { copyFailed:"요청 텍스트를 복사할 수 없습니다. 직접 선택해 복사하세요.", pick:"이 시간 선택", title:"예약 요청", start:"시작", length:"소요 시간", min:"분", name:"이름(선택 사항)", note:"메모(선택 사항)", mail:"이메일로 요청 보내기", ics:"내 캘린더에 추가", copy:"요청 텍스트 복사", copied:"복사됨", close:"닫기", noEmail:"상대방이 이메일 주소를 남기지 않았습니다. 텍스트를 복사하거나 캘린더 파일을 저장해 직접 보내세요.", subject:"예약 요청", intro:"다음 시간에 만나고 싶습니다.", mine:"내 시간", theirs:"상대방 시간", footer:"Dayside 공유 페이지에서 생성되었습니다. 누구의 캘린더에도 자동으로 기록되지 않습니다.", long:"메모가 너무 길어 이메일에 포함되지 않았습니다. ‘요청 텍스트 복사’를 클릭한 뒤 이메일에 붙여넣으세요.", slotTooShort:"이 예약 가능 시간은 너무 짧습니다. 소요 시간을 줄이거나 다른 시간대를 선택하세요." },
+    de: { copyFailed:"Der Anfragetext konnte nicht kopiert werden. Wähle ihn aus und kopiere ihn manuell.", pick:"Diesen Zeitraum wählen", title:"Termin anfragen", start:"Beginn", length:"Dauer", min:"Min.", name:"Dein Name (optional)", note:"Notiz (optional)", mail:"Anfrage per E-Mail senden", ics:"In meinen Kalender eintragen", copy:"Anfragetext kopieren", copied:"Kopiert", close:"Schließen", noEmail:"Die andere Person hat keine E-Mail-Adresse angegeben. Kopiere den Text oder sichere die Kalenderdatei. Sende den Text oder die Datei selbst an die andere Person.", subject:"Terminanfrage", intro:"Ich möchte mich mit dir treffen, und zwar:", mine:"Meine Zeit", theirs:"Deine Zeit", footer:"Auf einer geteilten Dayside-Webseite erstellt. Es wird nichts automatisch in einen Kalender eingetragen.", long:"Die Notiz war zu lang und wurde nicht in die E-Mail übernommen. Klicke auf „Anfragetext kopieren“ und füge den Text in die E-Mail ein.", slotTooShort:"Dieser Zeitraum ist zu kurz für die gewählte Dauer. Wähle eine kürzere Dauer oder einen anderen Zeitraum." },
+    fr: { copyFailed:"Impossible de copier le texte de la demande. Sélectionnez-le et copiez-le manuellement.", pick:"Choisir ce créneau", title:"Demander un créneau", start:"Début", length:"Durée", min:"min", name:"Votre nom (facultatif)", note:"Note (facultative)", mail:"Envoyer la demande par e-mail", ics:"Ajouter à mon calendrier", copy:"Copier le texte de la demande", copied:"Copié", close:"Fermer", noEmail:"Aucune adresse e-mail n’a été fournie. Copiez le texte ou enregistrez le fichier de calendrier et envoyez-le vous-même.", subject:"Demande de rendez-vous", intro:"Je souhaiterais vous rencontrer à ce moment :", mine:"Mon heure", theirs:"Votre heure", footer:"Généré par une page de partage Dayside. Rien n’est écrit automatiquement dans un calendrier.", long:"La note était trop longue pour être incluse dans l’e-mail. Cliquez sur « Copier le texte de la demande », puis collez ce texte dans l’e-mail.", slotTooShort:"Ce créneau est trop court. Choisissez une durée plus courte ou un autre créneau." },
+    es: { copyFailed:"No se ha podido copiar el texto de la solicitud. Selecciónalo y cópialo manualmente.", pick:"Elegir esta franja", title:"Solicitar una hora", start:"Inicio", length:"Duración", min:"min", name:"Tu nombre (opcional)", note:"Nota (opcional)", mail:"Enviar solicitud por correo", ics:"Añadir a mi calendario", copy:"Copiar texto de la solicitud", copied:"Copiado", close:"Cerrar", noEmail:"No se ha indicado ninguna dirección de correo electrónico. Copia el texto o guarda el archivo de calendario y envíaselo tú.", subject:"Solicitud de reunión", intro:"Me gustaría reunirme a esta hora:", mine:"Mi hora", theirs:"Tu hora", footer:"Generado por una página compartida de Dayside. No se escribe nada automáticamente en ningún calendario.", long:"La nota era demasiado larga y no se ha incluido en el correo. Haz clic en “Copiar texto de la solicitud” y pega el texto en el correo.", slotTooShort:"Esta franja es demasiado corta. Elige una duración menor u otra franja." },
+    pt: { copyFailed:"Não foi possível copiar o texto do pedido. Selecione e copie manualmente.", pick:"Escolher Este Horário", title:"Pedir um Horário", start:"Início", length:"Duração", min:"min", name:"Seu nome (opcional)", note:"Observação (opcional)", mail:"Enviar Pedido por E-mail", ics:"Adicionar ao Meu Calendário", copy:"Copiar Texto do Pedido", copied:"Copiado", close:"Fechar", noEmail:"A outra pessoa não informou um e-mail. Copie o texto ou salve o arquivo de calendário e envie para ela.", subject:"Pedido de reunião", intro:"Gostaria de agendar neste horário:", mine:"Meu horário", theirs:"Seu horário", footer:"Gerado por uma página de compartilhamento do Dayside. Nada é gravado automaticamente em nenhum calendário.", long:"A observação ficou longa demais para o e-mail e não foi incluída. Clique em “Copiar Texto do Pedido” e cole o texto no e-mail.", slotTooShort:"Este horário é curto demais para a duração escolhida. Reduza a duração ou escolha outro horário." },
+    ru: { copyFailed:"Не удалось скопировать текст запроса. Выделите его и скопируйте вручную.", pick:"Выбрать это время", title:"Запрос встречи", start:"Начало", length:"Длительность", min:"мин", name:"Ваше имя (необязательно)", note:"Заметка (необязательно)", mail:"Отправить запрос по почте", ics:"Добавить в мой календарь", copy:"Скопировать текст запроса", copied:"Скопировано", close:"Закрыть", noEmail:"Адрес почты не указан. Скопируйте текст или сохраните файл календаря и отправьте сами.", subject:"Запрос встречи", intro:"Предлагаю встретиться:", mine:"Моё время", theirs:"Ваше время", footer:"Создано страницей обмена Dayside. Ничего не записывается автоматически ни в чей календарь.", long:"Заметка не вошла в письмо, потому что слишком длинная. Нажмите «Скопировать текст запроса» и вставьте текст в письмо.", slotTooShort:"Этот интервал слишком короткий. Выберите меньшую длительность или другое время." },
+    it: { copyFailed:"Impossibile copiare il testo della richiesta. Selezionalo e copialo manualmente.", pick:"Scegli questa fascia", title:"Richiedi un incontro", start:"Inizio", length:"Durata", min:"min", name:"Il tuo nome (facoltativo)", note:"Nota (facoltativa)", mail:"Invia la richiesta via e-mail", ics:"Aggiungi al mio calendario", copy:"Copia testo della richiesta", copied:"Copiato", close:"Chiudi", noEmail:"Non è stato indicato un indirizzo e-mail. Copia il testo o salva il file del calendario e invialo tu all’altra persona.", subject:"Richiesta di incontro", intro:"Vorrei incontrarti in questo orario:", mine:"La mia ora", theirs:"La tua ora", footer:"Generato da una pagina di condivisione di Dayside. Nulla viene aggiunto automaticamente ad alcun calendario.", long:"La nota è troppo lunga per l’e-mail ed è stata omessa. Fai clic su “Copia testo della richiesta” e incolla il testo nell’e-mail.", slotTooShort:"La fascia oraria è troppo breve per questa durata. Scegli una durata più corta o un’altra fascia." },
+    nl: { copyFailed:"De verzoektekst kon niet worden gekopieerd. Selecteer de tekst en kopieer handmatig.", pick:"Kies dit tijdvak", title:"Vraag een tijdstip aan", start:"Begin", length:"Duur", min:"min.", name:"Je naam (optioneel)", note:"Notitie (optioneel)", mail:"Stuur verzoek per e-mail", ics:"Zet in mijn agenda", copy:"Kopieer verzoektekst", copied:"Gekopieerd", close:"Sluit", noEmail:"De ander heeft geen e-mailadres opgegeven. Kopieer de tekst of bewaar het agendabestand en stuur het zelf naar de ander.", subject:"Afspraakverzoek", intro:"Ik wil graag afspreken om:", mine:"Mijn tijd", theirs:"Jouw tijd", footer:"Gemaakt met een deelpagina van Dayside. Er wordt niets automatisch in een agenda gezet.", long:"De notitie was te lang voor de e-mail. Klik op 'Kopieer verzoektekst' en plak de tekst in de e-mail.", slotTooShort:"Dit tijdvak is te kort. Kies een kortere duur of een ander tijdvak." },
+    pl: { copyFailed:"Nie udało się skopiować tekstu prośby. Zaznacz go i skopiuj ręcznie.", pick:"Wybierz ten termin", title:"Prośba o termin", start:"Początek", length:"Czas trwania", min:"min", name:"Twoje imię i nazwisko (opcjonalnie)", note:"Notatka (opcjonalnie)", mail:"Wyślij prośbę e-mailem", ics:"Dodaj do mojego kalendarza", copy:"Kopiuj tekst prośby", copied:"Skopiowano", close:"Zamknij", noEmail:"Nie podano adresu e-mail. Skopiuj tekst lub zachowaj plik kalendarza i wyślij go samodzielnie.", subject:"Prośba o spotkanie", intro:"Chcę umówić się z Tobą na:", mine:"Mój czas", theirs:"Twój czas", footer:"Utworzono na stronie udostępniania aplikacji Dayside. Nic nie jest automatycznie zapisywane w żadnym kalendarzu.", long:"Notatka jest za długa, więc nie dodano jej do wiadomości e-mail. Kliknij Kopiuj tekst prośby i wklej tekst do wiadomości.", slotTooShort:"Ten termin jest zbyt krótki. Wybierz krótszy czas trwania lub inny termin." },
+    tr: { copyFailed:"İstek metni kopyalanamadı. Metni seçip elle kopyalayın.", pick:"Bu Saati Seç", title:"Randevu İste", start:"Başlangıç", length:"Süre", min:"dk.", name:"Adınız (isteğe bağlı)", note:"Not (isteğe bağlı)", mail:"İsteği E-postayla Gönder", ics:"Takvimime Ekle", copy:"İstek Metnini Kopyala", copied:"Kopyalandı", close:"Kapat", noEmail:"Karşı taraf e-posta adresi bırakmamış. Metni kopyalayın veya takvim dosyasını kaydedin ve karşı tarafa kendiniz gönderin.", subject:"Toplantı isteği", intro:"Sizinle şu saatte görüşmek istiyorum:", mine:"Benim saatimle", theirs:"Sizin saatinizle", footer:"Bir Dayside paylaşım sayfasında oluşturuldu. Hiçbir takvime otomatik yazılmaz.", long:"Not çok uzun olduğu için e-postaya eklenmedi. “İstek Metnini Kopyala” düğmesine tıklayın ve metni e-postaya yapıştırın.", slotTooShort:"Bu zaman aralığı seçilen süre için yeterli değil. Süreyi kısaltın veya başka bir aralık seçin." },
+    vi: { copyFailed:"Không thể sao chép văn bản yêu cầu. Hãy chọn văn bản rồi sao chép thủ công.", pick:"Chọn khung giờ này", title:"Yêu cầu hẹn gặp", start:"Bắt đầu", length:"Thời lượng", min:"phút", name:"Tên của bạn (tùy chọn)", note:"Ghi chú (tùy chọn)", mail:"Gửi yêu cầu qua email", ics:"Thêm vào lịch của tôi", copy:"Sao chép văn bản yêu cầu", copied:"Đã sao chép", close:"Đóng", noEmail:"Người chia sẻ không để lại địa chỉ email. Hãy sao chép văn bản hoặc lưu tệp lịch rồi tự gửi cho họ.", subject:"Yêu cầu hẹn gặp", intro:"Tôi muốn hẹn với bạn vào:", mine:"Giờ của tôi", theirs:"Giờ của bạn", footer:"Được tạo từ trang chia sẻ của Dayside, không tự động ghi vào lịch của bất kỳ ai.", long:"Ghi chú quá dài nên không được đưa vào email. Hãy bấm “Sao chép văn bản yêu cầu” rồi dán vào email.", slotTooShort:"Khung giờ này ngắn hơn thời lượng đã chọn. Hãy chọn thời lượng ngắn hơn hoặc khung giờ khác." },
+    id: { copyFailed:"Teks permintaan tidak dapat disalin. Pilih teksnya dan salin secara manual.", pick:"Pilih Waktu Ini", title:"Minta Janji Temu", start:"Mulai", length:"Durasi", min:"menit", name:"Nama Anda (opsional)", note:"Catatan (opsional)", mail:"Kirim Permintaan melalui Email", ics:"Tambahkan ke Kalender Saya", copy:"Salin Teks Permintaan", copied:"Disalin", close:"Tutup", noEmail:"Pengirim tidak mencantumkan alamat email. Salin teks atau simpan file kalender, lalu kirimkan sendiri kepada pengirim.", subject:"Permintaan janji temu", intro:"Saya ingin bertemu pada:", mine:"Waktu saya", theirs:"Waktu Anda", footer:"Dibuat oleh halaman berbagi Dayside. Tidak ada yang ditulis ke kalender siapa pun secara otomatis.", long:"Catatan terlalu panjang dan tidak disertakan dalam email. Klik “Salin Teks Permintaan”, lalu tempelkan ke email.", slotTooShort:"Waktu ini terlalu singkat untuk durasi tersebut. Pilih durasi yang lebih pendek atau waktu lain." }
+  };
+  const language = navigator.language || "en";
+  const key = /^zh-(TW|HK|MO|Hant)/i.test(language) ? "zh-Hant" : language.split("-")[0];
+  const s = strings[key] || strings.en;
+  const b = booking[key] || booking.en;
+  const colon = /^(zh|ja)/.test(key) ? "：" : ": ";
+  document.documentElement.lang = strings[key] ? key : "en";
+  const byID = id => document.getElementById(id);
+  const text = (id, value) => { byID(id).textContent = value; };
+  const fill = (template, values) => template.replace(/\{(\w)\}/g, (_, k) => values[k] ?? "");
+  text("heading", s.title); text("status", s.missing); text("privacy", s.privacy);
+  text("their-label",s.theirs); text("your-label",s.yours); text("converted-title",s.converted); text("no-availability",s.noSchedule);
+  const copyError = document.createElement("p");
+  copyError.id = "booking-error"; copyError.className = "muted"; copyError.setAttribute("role", "status");
+  const manualCopy = document.createElement("textarea");
+  manualCopy.id = "booking-manual-copy"; manualCopy.readOnly = true; manualCopy.setAttribute("aria-label", b.copy);
+  const mailNote = document.createElement("p");
+  mailNote.id = "booking-mail-note"; mailNote.className = "muted"; mailNote.setAttribute("role", "status"); mailNote.hidden = true;
+  let copyAttempt = 0;
+  const clearCopyError = () => { copyAttempt += 1; copyError.hidden = true; copyError.textContent = ""; manualCopy.hidden = true; manualCopy.value = ""; text("booking-copy", b.copy); };
+  clearCopyError(); byID("booking").append(mailNote, copyError, manualCopy);
+  if (document.title.startsWith("__MEANTIME_")) document.title = "Dayside";
+  const embedded = "__MEANTIME_PAYLOAD__";
+  let timer = null;
+  const stop = () => { if (timer !== null) clearTimeout(timer); timer = null; };
+  // 切走再切回来只续跑时钟，不重画：重画会把访客填了一半的预约表单清掉。
+  let renderedFragment = null, resumeTick = null;
+  // 预约表单的监听器只装一次；每次 render 把当前名片的上下文换进 bookingCtx，不再往同一批元素上叠监听器。
+  const bookingCtx = { picked: null, refresh: () => {}, request: () => "", ics: () => {} };
+  let bookingWired = false;
+  const format = (zone, options) => new Intl.DateTimeFormat(language, { timeZone: zone, ...options });
+  const line = (parent, value, className) => { const p = document.createElement("p"); p.textContent = value; if (className) p.className = className; parent.append(p); };
+  const listOf = items => { try { return new Intl.ListFormat(language, { style: "long", type: "conjunction" }).format(items); } catch { return items.join(", "); } };
+  // The separator the viewer's locale uses between the two ends of a time range, so composed ranges match formatted ones.
+  const rangeSeparator = fmt => {
+    try {
+      const parts = fmt.formatRangeToParts(new Date(0), new Date(3600000));
+      const end = parts.findIndex(part => part.source === "endRange");
+      for (let i = end - 1; i >= 0; i--) {
+        if (parts[i].source === "shared" && parts[i].type === "literal") return parts[i].value;
+        if (parts[i].source === "startRange") break;
+      }
+    } catch {}
+    return " - ";
+  };
+  const minuteRange = (fmt, start, end) => {
+    const a = new Date(start * 60000), b = new Date(end * 60000);
+    if (end > start && end < 1440) { try { return fmt.formatRange(a, b); } catch {} }
+    return fmt.format(a) + rangeSeparator(fmt) + fmt.format(b);
+  };
+  const offsetLabel = zone => {
+    try {
+      const part = format(zone, { timeZoneName: "shortOffset" }).formatToParts(new Date()).find(item => item.type === "timeZoneName");
+      if (part) return part.value;
+    } catch {}
+    return "";
+  };
+  const zoneLabel = (id, zone) => { const offset = offsetLabel(zone); return offset ? id + " (" + offset + ")" : id; };
+  const cleanName = value => typeof value === "string" ? [...value.replace(/[\u0000-\u001F\u007F-\u009F]/gu, "")].slice(0, 80).join("").trim() : "";
+
+  // —— 天色：与 App 同一套（RustCore/src/sky.rs 与 astronomy.rs 的移植；Tools/site_tests/sky_fixture.json 钉住两边一致）——
+  // 夜是墨，白天近乎白纸，颜色只在晨昏线附近；插值在 OKLab 里做。字只有墨与纸两种，按对比度实算。
+  const RAD = Math.PI / 180, DEG = 180 / Math.PI;
+  const sinD = x => Math.sin(x * RAD), cosD = x => Math.cos(x * RAD);
+  const remE = (a, m) => { const r = a % m; return r < 0 ? r + Math.abs(m) : r; };
+  function sunAt(unix) {
+    const t = (unix / 86400 + 2440587.5 - 2451545) / 36525;
+    const l0 = remE(280.46646 + t * (36000.76983 + t * 0.0003032), 360);
+    const m = 357.52911 + t * (35999.05029 - t * 0.0001537);
+    const e = 0.016708634 - t * (0.000042037 + t * 0.0000001267);
+    const center = sinD(m) * (1.914602 - t * (0.004817 + t * 0.000014)) + sinD(2 * m) * (0.019993 - t * 0.000101) + sinD(3 * m) * 0.000289;
+    const omega = 125.04 - 1934.136 * t;
+    const longitude = l0 + center - 0.00569 - 0.00478 * sinD(omega);
+    const eps = 23 + (26 + (21.448 - t * (46.815 + t * (0.00059 - t * 0.001813))) / 60) / 60 + 0.00256 * cosD(omega);
+    const declination = Math.asin(sinD(eps) * sinD(longitude));
+    const tangent = Math.tan((eps / 2) * RAD), y = tangent * tangent;
+    const equation = 4 * ((y * sinD(2 * l0) - 2 * e * sinD(m) + 4 * e * y * sinD(m) * cosD(2 * l0) - 0.5 * y * y * sinD(4 * l0) - 1.25 * e * e * sinD(2 * m)) * DEG);
+    return { declination, equation };
+  }
+  function sunPosition(unix, lat, lon) {
+    const sun = sunAt(unix);
+    const hourAngle = ((remE(unix, 86400) / 60 + sun.equation + 4 * lon) / 4 - 180) * RAD;
+    const cosine = sinD(lat) * Math.sin(sun.declination) + cosD(lat) * Math.cos(sun.declination) * Math.cos(hourAngle);
+    const altitude = Math.asin(Math.min(1, Math.max(-1, cosine))) * DEG;
+    const sunLongitude = remE(180 - (remE(unix, 86400) / 60 + sun.equation) / 4 + 180, 360) - 180;
+    return { altitude, rising: remE(lon - sunLongitude + 180, 360) - 180 < 0 };
+  }
+  const lch = (l, c, h) => ({ l, c, h });
+  const toLab = k => [k.l, k.c * Math.cos(k.h * RAD), k.c * Math.sin(k.h * RAD)];
+  const fromLab = (l, a, b) => ({ l, c: Math.hypot(a, b), h: remE(Math.atan2(b, a) * DEG, 360) });
+  const mix = (x, y, t) => { const [l1, a1, b1] = toLab(x), [l2, a2, b2] = toLab(y); return fromLab(l1 + (l2 - l1) * t, a1 + (a2 - a1) * t, b1 + (b2 - b1) * t); };
+  const cube = v => v * v * v;
+  const encode = x => { const v = Math.min(1, Math.max(0, x)); return v <= 0.0031308 ? 12.92 * v : 1.055 * Math.pow(v, 1 / 2.4) - 0.055; };
+  function srgb8(k) {
+    const [l, a, b] = toLab(k);
+    const l_ = cube(l + 0.3963377774 * a + 0.2158037573 * b), m_ = cube(l - 0.1055613458 * a - 0.0638541728 * b), s_ = cube(l - 0.0894841775 * a - 1.2914855480 * b);
+    return [4.0767416621 * l_ - 3.3077115913 * m_ + 0.2309699292 * s_, -1.2684380046 * l_ + 2.6097574011 * m_ - 0.3413193965 * s_,
+      -0.0041960863 * l_ - 0.7034186147 * m_ + 1.7076147010 * s_].map(v => Math.round(encode(v) * 255));
+  }
+  const hex = k => "#" + srgb8(k).map(v => v.toString(16).padStart(2, "0")).join("");
+  const luminance = k => { const [r, g, b] = srgb8(k).map(v => { const c = v / 255; return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+  const contrast = (a, b) => { const x = luminance(a), y = luminance(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+  function apca(textColor, background) {
+    const y = k => { const [r, g, b] = srgb8(k).map(v => Math.pow(v / 255, 2.4)); const v = 0.2126729 * r + 0.7151522 * g + 0.0721750 * b; return v < 0.022 ? v + Math.pow(0.022 - v, 1.414) : v; };
+    const t = y(textColor), bg = y(background);
+    if (Math.abs(bg - t) < 0.0005) return 0;
+    if (bg > t) { const s = (Math.pow(bg, 0.56) - Math.pow(t, 0.57)) * 1.14; return s < 0.1 ? 0 : (s - 0.027) * 100; }
+    const s = (Math.pow(bg, 0.65) - Math.pow(t, 0.62)) * 1.14; return s > -0.1 ? 0 : (s + 0.027) * 100;
+  }
+  const INK = lch(0.20, 0.022, 265), PAPER = lch(0.962, 0.006, 90);
+  const RISE = [[-90, lch(0.140, 0.018, 268), lch(0.152, 0.022, 266)], [-24, lch(0.150, 0.022, 268), lch(0.172, 0.028, 267)],
+    [-15, lch(0.168, 0.032, 268), lch(0.215, 0.046, 272)], [-9, lch(0.200, 0.048, 268), lch(0.300, 0.070, 286)],
+    [-4.5, lch(0.270, 0.058, 276), lch(0.500, 0.090, 345)], [-1, lch(0.380, 0.058, 272), lch(0.660, 0.100, 30)],
+    [2, lch(0.600, 0.045, 255), lch(0.815, 0.085, 62)], [7, lch(0.800, 0.030, 245), lch(0.895, 0.060, 78)],
+    [18, lch(0.930, 0.010, 240), lch(0.950, 0.020, 84)], [40, lch(0.962, 0.004, 245), lch(0.967, 0.008, 90)],
+    [90, lch(0.972, 0.003, 245), lch(0.975, 0.006, 95)]];
+  const SET = [RISE[0], RISE[1], RISE[2], [-9, lch(0.200, 0.052, 272), lch(0.305, 0.078, 300)], [-4.5, lch(0.265, 0.062, 285), lch(0.505, 0.110, 18)],
+    [-1, lch(0.370, 0.062, 290), lch(0.650, 0.128, 42)], [2, lch(0.580, 0.055, 265), lch(0.795, 0.118, 60)], [7, lch(0.780, 0.038, 250), lch(0.880, 0.080, 72)],
+    [18, lch(0.915, 0.016, 242), lch(0.942, 0.034, 80)], RISE[9], RISE[10]];
+  function skyColors(altitude, isRising) {
+    const table = isRising ? RISE : SET;
+    const h = Number.isFinite(altitude) ? Math.min(90, Math.max(-90, altitude)) : -90;
+    let i = 0;
+    while (i < table.length - 2 && h > table[i + 1][0]) i++;
+    const [a, b] = [table[i], table[i + 1]];
+    const t = Math.min(1, Math.max(0, (h - a[0]) / (b[0] - a[0])));
+    const top = mix(a[1], b[1], t), horizon = mix(a[2], b[2], t);
+    return { top, horizon, mid: mix(top, horizon, 0.6) };
+  }
+  // 底色给字让路：字用墨还是纸按 WCAG 与 APCA 选，不够 `need` 就把底往深或往浅推（色相与彩度不动）。
+  function readable(sky, need) {
+    const worst = (fg, top, horizon) => Math.min(contrast(fg, top), contrast(fg, horizon));
+    const perceptual = (fg, top, horizon) => Math.min(Math.abs(apca(fg, top)), Math.abs(apca(fg, horizon)));
+    const ink = worst(INK, sky.top, sky.horizon) > worst(PAPER, sky.top, sky.horizon);
+    const apcaInk = perceptual(INK, sky.top, sky.horizon) > perceptual(PAPER, sky.top, sky.horizon);
+    const nudge = (k, step) => lch(Math.min(0.99, Math.max(0.04, k.l + step)), k.c, k.h);
+    if (ink !== apcaInk) {
+      const candidate = useInk => {
+        const fg = useInk ? INK : PAPER, step = useInk ? 0.012 : -0.012;
+        let top = sky.top, horizon = sky.horizon;
+        for (let steps = 0; steps <= 60; steps++) {
+          const ratio = worst(fg, top, horizon);
+          const wcagInk = worst(INK, top, horizon) > worst(PAPER, top, horizon);
+          const percInk = perceptual(INK, top, horizon) > perceptual(PAPER, top, horizon);
+          if (ratio >= need && wcagInk === useInk && percInk === useInk) return [steps, { top, horizon, mid: mix(top, horizon, 0.5), ink: useInk }];
+          if (steps < 60) { top = nudge(top, step); horizon = nudge(horizon, step); }
+        }
+        return null;
+      };
+      const [first, second] = [candidate(ink), candidate(!ink)];
+      const chosen = first && second ? (first[0] <= second[0] ? first : second) : first || second;
+      if (chosen) return chosen[1];
+    }
+    const fg = ink ? INK : PAPER, step = ink ? 0.012 : -0.012;
+    let top = sky.top, horizon = sky.horizon;
+    for (let i = 0; i < 60; i++) {
+      if (worst(fg, top, horizon) >= need) break;
+      top = nudge(top, step); horizon = nudge(horizon, step);
+    }
+    return { top, horizon, mid: mix(top, horizon, 0.5), ink };
+  }
+  // 那个地方此刻的天（面板行同一种）：太阳贴着地平线（−10° … 8°）时天顶到地平线一道渐变，其余一种颜色。
+  function skyNow(unix, lat, lon, increased = false) {
+    const { altitude, rising } = sunPosition(unix, lat, lon);
+    const colors = readable(skyColors(altitude, rising), increased ? 7 : 5.5);
+    return { top: hex(colors.top), horizon: hex(colors.horizon), mid: hex(colors.mid), ink: colors.ink, gradient: altitude > -10 && altitude < 8 };
+  }
+  // 一段时间里的天：每 10 分钟一个色标（与 App 的昼夜条同一批）。
+  function laneStops(start, end, lat, lon) {
+    const span = end - start, count = Math.min(2000, Math.max(1, Math.ceil(span / 600)));
+    const out = [];
+    for (let k = 0; k <= count; k++) { const t = start + span * k / count; const { altitude, rising } = sunPosition(t, lat, lon); out.push(hex(skyColors(altitude, rising).mid)); }
+    return out;
+  }
+  const increasedContrast = () => typeof matchMedia === "function" && matchMedia("(prefers-contrast: more)").matches;
+  if (typeof __DAYSIDE_TEST__ === "object" && __DAYSIDE_TEST__) Object.assign(__DAYSIDE_TEST__, { decode, skyNow, laneStops, sunPosition, inkHex: hex(INK), paperHex: hex(PAPER) });
+
+  // 某一刻在某个时区的偏移（毫秒）：那一刻的当地年月日时分秒按 UTC 读出来，减去真实的那一刻。固定偏移的名片直接给。
+  function offsetAt(zone, ms, fixed) {
+    if (fixed !== undefined) return fixed * 1000;
+    const parts = {};
+    for (const part of format(zone, { hourCycle: "h23", year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric", second: "numeric" }).formatToParts(new Date(ms))) parts[part.type] = part.value;
+    return Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour % 24, +parts.minute, +parts.second) - Math.floor(ms / 1000) * 1000;
+  }
+  // 当地墙钟的某一刻（按 UTC 记的毫秒）是哪一个真实时刻：换钟那天也对（按那一刻的偏移再核一遍）。
+  function instantOf(zone, wall, fixed) {
+    let guess = wall - offsetAt(zone, wall, fixed);
+    guess = wall - offsetAt(zone, guess, fixed);
+    return guess;
+  }
+  // 那个地方包含 ms 的那一天：起止（真实时刻，毫秒）与当地零点的墙钟。
+  function localDay(zone, ms, fixed) {
+    const wall = ms + offsetAt(zone, ms, fixed);
+    const midnight = Math.floor(wall / 86400000) * 86400000;
+    return { start: instantOf(zone, midnight, fixed), end: instantOf(zone, midnight + 86400000, fixed), midnight };
+  }
+  // 星期：连着三天以上写一段（「周一至周五」「Mon–Fri」「月〜金」），其余列出来；一周七天写「每天」。一周按圈算（周日至周四也是一段）。
+  function weekdaysText(list) {
+    const days = new Set(list);
+    if (days.size >= 7) return s.everyDay;
+    const name = d => format("UTC", { weekday: "short" }).format(new Date(Date.UTC(2024, 0, 6 + d)));
+    let first = 1;
+    for (let d = 1; d <= 7; d++) if (!days.has(d)) { first = d % 7 + 1; break; }
+    const runs = []; let run = [];
+    for (let i = 0; i < 7; i++) {
+      const d = (first - 1 + i) % 7 + 1;
+      if (days.has(d)) run.push(d); else if (run.length) { runs.push(run); run = []; }
+    }
+    if (run.length) runs.push(run);
+    const through = /^zh/.test(key) ? "至" : key === "ja" ? "〜" : key === "ko" ? "~" : "–";
+    return listOf(runs.flatMap(r => r.length >= 3 ? [name(r[0]) + through + name(r[r.length - 1])] : r.map(name)));
+  }
+  // 时长：「16小时」「4小时45分钟」「16 hours」（各语言自己的单位与单复数）。
+  function duration(minutes) {
+    const unit = (n, u) => { try { return new Intl.NumberFormat(language, { style: "unit", unit: u, unitDisplay: "long" }).format(n); } catch { return n + (u === "hour" ? " h" : " min"); } };
+    const parts = [];
+    if (minutes >= 60) parts.push(unit(Math.floor(minutes / 60), "hour"));
+    if (minutes % 60) parts.push(unit(minutes % 60, "minute"));
+    return parts.join(/^(zh|ja)/.test(key) ? "" : " ");
+  }
+
+  function decode(fragment) {
+    if (!fragment.startsWith("mt1.") || fragment.length > 32768) throw new Error("format");
+    const encoded = fragment.slice(4);
+    if (!/^[A-Za-z0-9_-]+$/.test(encoded)) throw new Error("encoding");
+    const raw = atob(encoded.replace(/-/g,"+").replace(/_/g,"/"));
+    const p = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(Uint8Array.from(raw,c=>c.charCodeAt(0))));
+    if (!p || p.version !== 1 || typeof p.timeZoneID !== "string" || p.timeZoneID.length > 128
+      || (p.fixedOffsetSeconds !== undefined && (!Number.isInteger(p.fixedOffsetSeconds) || Math.abs(p.fixedOffsetSeconds)>64800))
+      || (p.displayName !== undefined && (typeof p.displayName !== "string" || [...p.displayName].length > 80 || /[\u0000-\u001F\u007F-\u009F]/u.test(p.displayName)))
+      || !Number.isFinite(p.generatedAt) || Math.abs(p.generatedAt)>=253402214400 || !Number.isFinite(p.validUntil)
+      || p.validUntil <= p.generatedAt || p.validUntil-p.generatedAt>15*86400
+      || !Array.isArray(p.windows) || p.windows.length > 128
+      || p.windows.some(w=>!w || !Number.isFinite(w.start) || !Number.isFinite(w.end) || w.end <= w.start || w.start<p.generatedAt || w.end>p.validUntil)
+      || (!p.schedule && p.windows.length)) throw new Error("payload");
+    if (p.schedule && (!Number.isInteger(p.schedule.startMinute) || p.schedule.startMinute < 0 || p.schedule.startMinute > 1439
+      || !Number.isInteger(p.schedule.endMinute) || p.schedule.endMinute < 0 || p.schedule.endMinute > 1440
+      || typeof p.schedule.isWholeDay !== "boolean" || ![0,1].includes(p.schedule.endDayOffset)
+      || !Array.isArray(p.schedule.workingWeekdays) || p.schedule.workingWeekdays.length < 1 || p.schedule.workingWeekdays.length > 7
+      || p.schedule.workingWeekdays.some(d=>!Number.isInteger(d) || d<1 || d>7))) throw new Error("schedule");
+    // 预约回执邮箱是可选的；不合形就当没有，不因此拒收整张名片。
+    if (typeof p.contactEmail !== "string" || p.contactEmail.length > 254 || !/^[!-?A-~]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+$/.test(p.contactEmail) || /[<>"\\,;()\[\]#\/]/.test(p.contactEmail)) delete p.contactEmail;
+    // 坏的可选地名与坐标不影响名片其余内容。
+    p.place = cleanName(p.place) || undefined;
+    p.city = p.place ? cleanName(p.city) || undefined : undefined;
+    if (p.city === p.place) delete p.city;
+    if (!(Number.isFinite(p.latitude) && Number.isFinite(p.longitude) && Math.abs(p.latitude) <= 90 && Math.abs(p.longitude) <= 180)) { delete p.latitude; delete p.longitude; }
+    else {
+      // 半格向远离零的方向舍入，与发方一致。
+      const round = v => Math.sign(v) * Math.round(Math.abs(v) * 10) / 10;
+      p.latitude = round(p.latitude); p.longitude = round(p.longitude);
+    }
+    format(p.fixedOffsetSeconds === undefined ? p.timeZoneID : "UTC", { timeStyle:"short" }).format(new Date());
+    return p;
+  }
+  function render() {
+    const current = location.hash.slice(1) || (embedded.startsWith("mt1.") ? embedded : "");
+    if (current && current === renderedFragment && resumeTick && !byID("content").hidden) { stop(); if (bookingCtx.picked && bookingCtx.relist) { bookingCtx.relist(); bookingCtx.refresh(); } resumeTick(); return; }
+    renderedFragment = null; resumeTick = null;
+    stop(); document.title = "Dayside"; byID("content").hidden = true; byID("status").hidden = false; document.body.className = "";
+    text("heading",s.title); text("status",s.missing); byID("windows").replaceChildren(); byID("booking").hidden = true; bookingCtx.picked = null; clearCopyError();
+    const fragment = location.hash.slice(1) || (embedded.startsWith("mt1.") ? embedded : "");
+    if (!fragment) return;
+    try {
+      const p = decode(fragment);
+      const yourZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const sourceZone = p.fixedOffsetSeconds === undefined ? p.timeZoneID : "UTC";
+      const sourceDate = date => new Date(date.getTime() + (p.fixedOffsetSeconds ?? 0)*1000);
+      const theirs = format(sourceZone,{timeStyle:"short"});
+      const yours = format(yourZone,{timeStyle:"short"});
+      const theirDate = format(sourceZone,{weekday:"short",month:"short",day:"numeric"});
+      const yourDate = format(yourZone,{weekday:"short",month:"short",day:"numeric"});
+      const yourRange = format(yourZone,{dateStyle:"medium",timeStyle:"short"});
+      const theirRange = format(sourceZone,{dateStyle:"medium",timeStyle:"short"});
+      // 名片上：名字（没有就写地名）是标题，下面一行是地名与它的拉丁写法；旧名片没有地名，写时区与偏移。
+      const placeLabel = p.place || (p.fixedOffsetSeconds === undefined ? (p.timeZoneID.split("/").pop() || p.timeZoneID).replace(/_/g, " ") : p.timeZoneID);
+      text("heading", p.displayName || p.place || s.title);
+      document.title = [p.displayName, p.place].filter(Boolean).join(" · ") || "Dayside";
+      const where = p.place ? (p.displayName ? [p.place, p.city].filter(Boolean).join(" · ") : p.city || "")
+        : (p.fixedOffsetSeconds === undefined ? zoneLabel(p.timeZoneID, p.timeZoneID) : p.timeZoneID);
+      text("their-zone", where); byID("their-zone").hidden = !where;
+      text("your-zone", zoneLabel(yourZone, yourZone));
+      byID("availability").hidden = !p.schedule; byID("no-availability").hidden = !!p.schedule;
+      let freeLine = "";
+      if (p.schedule) {
+        const wallTime = format("UTC",{timeStyle:"short"});
+        const hours = p.schedule.isWholeDay ? s.allDay : p.schedule.endDayOffset === 1
+          ? fill(s.nextDay, { a: wallTime.format(new Date(p.schedule.startMinute * 60000)), b: wallTime.format(new Date((p.schedule.endMinute % 1440) * 60000)) })
+          : minuteRange(wallTime, p.schedule.startMinute, p.schedule.endMinute);
+        freeLine = s.free + [weekdaysText(p.schedule.workingWeekdays), hours, fill(s.zoneTime, { p: placeLabel })].join(" · ");
+        text("snapshot",s.until+" "+yourRange.format(new Date(p.validUntil*1000)));
+      }
+      text("free", freeLine); byID("free").hidden = !freeLine;
+      // 明信片下半：那个地方今天的天（每 10 分钟一个色标）、可约时段那道细轨、此刻那根竖线；每到那边的新一天重画。
+      const hasSky = p.latitude !== undefined;
+      let day = null;
+      const drawDay = nowMs => {
+        day = localDay(p.timeZoneID, nowMs, p.fixedOffsetSeconds);
+        const span = day.end - day.start;
+        const at = ms => Math.min(1, Math.max(0, (ms - day.start) / span));
+        const percent = f => (f * 100).toFixed(3) + "%";
+        const stops = hasSky ? laneStops(day.start / 1000, day.end / 1000, p.latitude, p.longitude) : [];
+        byID("lane").style.background = stops.length ? "linear-gradient(to right, " + stops.map((c, i) => c + " " + percent(i / (stops.length - 1))).join(", ") + ")" : "";
+        const ruler = byID("ruler"); ruler.replaceChildren();
+        const number = n => { try { return new Intl.NumberFormat(language).format(n); } catch { return String(n); } };
+        for (const hour of [0, 6, 12, 18]) {
+          const mark = document.createElement("span"); mark.textContent = number(hour);
+          mark.style.left = percent(at(instantOf(p.timeZoneID, day.midnight + hour * 3600000, p.fixedOffsetSeconds)));
+          ruler.append(mark);
+        }
+        const rail = byID("rail"); rail.replaceChildren(); rail.hidden = !p.schedule;
+        for (const w of p.windows) {
+          const from = at(w.start * 1000), to = at(w.end * 1000);
+          if (to <= from) continue;
+          const segment = document.createElement("span"); segment.style.left = percent(from); segment.style.width = percent(to - from);
+          rail.append(segment);
+        }
+        byID("track").setAttribute("aria-label", [theirDate.format(sourceDate(new Date(nowMs))), freeLine].filter(Boolean).join(colon));
+      };
+      // 名片上半：那边此刻的天与写在上面的字（墨或纸）；不知道在哪（旧名片没有坐标）就是纸色。
+      const paintSky = nowMs => {
+        const sky = byID("sky");
+        if (!hasSky) { sky.style.background = ""; sky.style.color = ""; return; }
+        const increased = increasedContrast();
+        const now = skyNow(nowMs / 1000, p.latitude, p.longitude, increased);
+        sky.style.background = now.gradient && !increased ? "linear-gradient(to bottom, " + now.top + ", " + now.horizon + ")" : now.mid;
+        sky.style.color = now.ink ? hex(INK) : hex(PAPER);
+      };
+      // —— 无服务器预约 ——
+      const bookingBox = byID("booking");
+      text("booking-title", b.title); text("booking-start-label", b.start); text("booking-length-label", b.length);
+      text("booking-name-label", b.name); text("booking-note-label", b.note); text("booking-ics", b.ics);
+      text("booking-copy", b.copy); text("booking-close", b.close); text("booking-mail", b.mail);
+      text("booking-no-email", b.noEmail);
+      const startSelect = byID("booking-start"), lengthSelect = byID("booking-length");
+      lengthSelect.replaceChildren(...[30, 45, 60, 90, 120].map(n => { const o = document.createElement("option"); o.value = n; o.textContent = n + " " + b.min; if (n === 60) o.selected = true; return o; }));
+      const pad = n => String(n).padStart(2, "0");
+      const stamp = d => d.getUTCFullYear() + pad(d.getUTCMonth()+1) + pad(d.getUTCDate()) + "T" + pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + "00Z";
+      // 固定偏移名片的 timeZoneID 本身就是「GMT+0545」这样的标签；换算用 UTC 算，标签照印它，别写成 UTC。
+      const theirLabel = p.timeZoneID;
+      // 起点只在「现在」与窗口终点之间取，且要装得下所选时长；时长一变就重列。
+      const listStarts = () => {
+        const w = bookingCtx.picked; if (!w) return [];
+        const step = 30 * 60, length = Number(lengthSelect.value) * 60;
+        const now = Math.floor(Date.now() / 1000);
+        // 窗口自己的起点（按分钟取整）也算一个候选：09:17–09:52 这样的短窗口不该因为半点网格而一个起点都没有。
+        const earliest = Math.ceil(Math.max(w.start, now) / 60) * 60;
+        const options = [];
+        if (earliest + length <= w.end) options.push(earliest);
+        const first = Math.ceil(earliest / step) * step;
+        for (let t = first; t + length <= w.end && options.length < 96; t += step) if (t !== earliest) options.push(t);
+        return options;
+      };
+      const chosen = () => {
+        const w = bookingCtx.picked; if (!w) return null;
+        const start = new Date(Number(startSelect.value) * 1000);
+        const end = new Date(start.getTime() + Number(lengthSelect.value) * 60000);
+        if (!(start.getTime() / 1000 >= w.start && end.getTime() / 1000 <= w.end && start.getTime() >= Date.now() - 60000)) return null;
+        return { start, end };
+      };
+      const requestText = (withoutNote = false, includeFooter = true) => {
+        const c = chosen(); if (!c) return "";
+        const who = byID("booking-name").value.trim(), note = withoutNote ? "" : byID("booking-note").value.trim();
+        const lines = [(who ? who + colon : "") + b.intro,
+          b.mine + colon + yourRange.formatRange(c.start, c.end) + " (" + yourZone + ")",
+          b.theirs + colon + theirRange.formatRange(sourceDate(c.start), sourceDate(c.end)) + " (" + theirLabel + ")",
+          "UTC" + colon + c.start.toISOString().slice(0, 16).replace("T", " ") + " – " + c.end.toISOString().slice(0, 16).replace("T", " ")];
+        if (note) lines.push("", note);
+        if (includeFooter) lines.push("", b.footer);
+        return lines.join("\n");
+      };
+      const previewText = c => {
+        const lines = [s.yours + colon + yourRange.formatRange(c.start, c.end) + " (" + yourZone + ")",
+          s.original + colon + theirRange.formatRange(sourceDate(c.start), sourceDate(c.end)) + " (" + theirLabel + ")"];
+        const note = byID("booking-note").value.trim();
+        if (note) lines.push("", note);
+        return lines.join("\n");
+      };
+      const relistStarts = () => {
+        const keep = startSelect.value;
+        const options = listStarts();
+        startSelect.replaceChildren(...options.map(t => { const o = document.createElement("option"); o.value = t; o.textContent = yourRange.format(new Date(t * 1000)); return o; }));
+        if (options.some(t => String(t) === keep)) startSelect.value = keep;
+        return options.length;
+      };
+      const refreshBooking = () => {
+        const c = chosen();
+        const buttons = ["booking-ics", "booking-copy"];
+        mailNote.hidden = true; mailNote.textContent = "";
+        if (!c) {
+          clearCopyError();
+          const now = Date.now() / 1000;
+          text("booking-preview", now >= p.validUntil ? s.expired : bookingCtx.picked && bookingCtx.picked.end > now ? b.slotTooShort : s.empty);
+          byID("booking-mail").hidden = true; byID("booking-no-email").hidden = true;
+          for (const id of buttons) byID(id).disabled = true;
+          return;
+        }
+        for (const id of buttons) byID(id).disabled = false;
+        text("booking-preview", previewText(c));
+        if (!manualCopy.hidden) manualCopy.value = requestText();
+        const mail = byID("booking-mail");
+        if (p.contactEmail) {
+          const who = byID("booking-name").value.trim();
+          const subject = b.subject + (p.displayName ? " · " + p.displayName : "") + (who ? " · " + who : "");
+          // mailto 整条按 2,000 字节以内设计（Outlook 桌面版约 2,083 上限）：超了就把备注拿掉、提示用复制。
+          let href = "mailto:" + encodeURIComponent(p.contactEmail) + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(requestText());
+          if (href.length > 2000) {
+            href = "mailto:" + encodeURIComponent(p.contactEmail) + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(requestText(true) + "\n\n" + b.long);
+            mailNote.textContent = b.long; mailNote.hidden = false;
+          }
+          mail.href = href;
+          mail.hidden = false; byID("booking-no-email").hidden = true;
+        } else { mail.hidden = true; byID("booking-no-email").hidden = false; }
+      };
+      const utf8 = new TextEncoder();
+      const foldLine = line => {
+        const out = []; let current = "", budget = 75;
+        for (const ch of line) {
+          const size = utf8.encode(ch).length;
+          if (utf8.encode(current).length + size > budget) { out.push(current); current = " "; budget = 75; }
+          current += ch;
+        }
+        out.push(current);
+        return out;
+      };
+      const makeICS = () => {
+        const c = chosen(); if (!c) return;
+        const esc = v => String(v).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
+        const summary = b.subject + (p.displayName ? " · " + p.displayName : "");
+        // 没有 METHOD：RFC 5546 要求 METHOD:PUBLISH 的 VEVENT 带 ORGANIZER，这里没有组织者；纯 VCALENDAR 各家日历都收。
+        // 每行按 RFC 5545 §3.1 折到 75 字节以内（按 UTF-8 字节数，不拆开多字节字符），续行以一个空格开头。
+        const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Dayside//Share//EN", "BEGIN:VEVENT",
+          "UID:" + stamp(c.start) + "-" + Math.random().toString(36).slice(2, 10) + "@dayside", "DTSTAMP:" + stamp(new Date()),
+          "DTSTART:" + stamp(c.start), "DTEND:" + stamp(c.end), "SUMMARY:" + esc(summary), "DESCRIPTION:" + esc(requestText()),
+          "END:VEVENT", "END:VCALENDAR"].flatMap(foldLine).concat([""]).join("\r\n");
+        const url = URL.createObjectURL(new Blob([ics], { type: "text/calendar;charset=utf-8" }));
+        const a = document.createElement("a"); a.href = url; a.download = "dayside-" + stamp(c.start).slice(0, 13) + ".ics"; document.body.append(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 10000);
+      };
+      function openBooking(w) {
+        // 装不下当前时长也照样打开：起点为空时提示缩短时长，改短后恢复。
+        bookingCtx.picked = w;
+        clearCopyError();
+        relistStarts();
+        bookingBox.hidden = false; refreshBooking(); bookingBox.scrollIntoView({ block: "nearest" }); (startSelect.options.length ? startSelect : lengthSelect).focus();
+      }
+      bookingCtx.picked = null; bookingCtx.refresh = refreshBooking; bookingCtx.request = requestText; bookingCtx.ics = makeICS; bookingCtx.relist = relistStarts;
+      if (!bookingWired) {
+        bookingWired = true;
+        for (const id of ["booking-start", "booking-name", "booking-note"]) byID(id).addEventListener("input", () => { clearCopyError(); bookingCtx.refresh(); });
+        lengthSelect.addEventListener("input", () => { clearCopyError(); bookingCtx.relist(); bookingCtx.refresh(); });
+        byID("booking-close").addEventListener("click", () => { bookingBox.hidden = true; bookingCtx.picked = null; clearCopyError(); });
+        byID("booking-copy").addEventListener("click", async () => {
+          clearCopyError();
+          const attempt = copyAttempt;
+          const body = bookingCtx.request(); if (!body) { bookingCtx.refresh(); return; }
+          try {
+            await navigator.clipboard.writeText(body);
+            if (attempt !== copyAttempt) return;
+            text("booking-copy", b.copied); setTimeout(() => { if (attempt === copyAttempt) text("booking-copy", b.copy); }, 1500);
+          } catch {
+            if (attempt === copyAttempt) {
+              copyError.textContent = b.copyFailed; copyError.hidden = false;
+              manualCopy.value = body; manualCopy.hidden = false; manualCopy.focus();
+              if (typeof manualCopy.select === "function") manualCopy.select();
+            }
+          }
+        });
+        byID("booking-mail").addEventListener("click", event => { if (!bookingCtx.request()) { event.preventDefault(); bookingCtx.refresh(); } });
+        byID("booking-ics").addEventListener("click", () => bookingCtx.ics());
+      }
+      let lastMinute = -1, lastListed = -1;
+      // 每分钟走一格（钟点只写到分钟）：两边的钟点与日期、名片上的天与竖线、那边比你快慢多少、列表里过去的时段。
+      function tick() {
+        const now = new Date(); const instant = now.getTime();
+        text("their-time",theirs.format(sourceDate(now))); text("your-time",yours.format(now));
+        byID("their-time").dateTime = now.toISOString(); byID("your-time").dateTime = now.toISOString();
+        text("their-date",theirDate.format(sourceDate(now))); text("your-date",yourDate.format(now));
+        const minute = Math.floor(instant/60000);
+        if (minute !== lastMinute) {
+          lastMinute = minute;
+          if (!day || instant >= day.end || instant < day.start) drawDay(instant);
+          byID("now-line").style.left = (Math.min(1, Math.max(0, (instant - day.start) / (day.end - day.start))) * 100).toFixed(3) + "%";
+          paintSky(instant);
+          const difference = Math.round((offsetAt(p.timeZoneID, instant, p.fixedOffsetSeconds) - offsetAt(yourZone, instant)) / 60000);
+          text("offset", difference ? placeLabel + " " + fill(difference > 0 ? s.ahead : s.behind, { d: duration(Math.abs(difference)) }) : "");
+          byID("offset").hidden = !difference;
+        }
+        if (p.schedule && minute !== lastListed) {
+          lastListed = minute;
+          // 时间在走：已打开的预约表单每分钟重列起点（过去的起点掉出去）并重核，切回标签续跑时也走这里。
+          if (bookingCtx.picked && !bookingBox.hidden) { relistStarts(); refreshBooking(); }
+          byID("windows").replaceChildren();
+          const visible = p.windows.filter(w=>w.end*1000>instant);
+          text("window-status",instant>=p.validUntil*1000 ? s.expired : visible.length ? "" : s.empty);
+          for (const w of visible) {
+            const item = document.createElement("li");
+            const start = new Date(w.start*1000), end = new Date(w.end*1000);
+            line(item, yourRange.formatRange(start,end));
+            line(item, s.original+colon+theirRange.formatRange(sourceDate(start),sourceDate(end)), "muted");
+            const pick = document.createElement("button"); pick.type = "button"; pick.className = "pick"; pick.textContent = b.pick;
+            pick.addEventListener("click", () => openBooking(w));
+            item.append(pick);
+            byID("windows").append(item);
+          }
+        }
+        if (!document.hidden) timer = setTimeout(tick,60000-(Date.now()%60000));
+      }
+      byID("status").hidden = true; byID("content").hidden = false; document.body.className = "card-shown"; renderedFragment = fragment; resumeTick = () => { lastMinute = -1; tick(); }; tick();
+    } catch { text("status",s.invalid); byID("content").hidden = true; document.body.className = ""; }
+  }
+  addEventListener("hashchange",render);
+  addEventListener("pagehide",stop);
+  document.addEventListener("visibilitychange",()=>document.hidden ? stop() : render());
+  render();
+})();
+</script>
+</body>
+</html>

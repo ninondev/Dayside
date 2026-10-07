@@ -1,0 +1,20 @@
+1	Chengxian Chengguanzhen	Chengxian Chengguanzhen	成县,成县城关镇,cheng xian,cheng xian,Chengxian	30.5	110.25	P	PPL	CN		62				1000000			Asia/Shanghai	2026-09-08
+2	Qingshanhu	Qingshanhu	青山,青山湖,青山湖街道,qing shan hu,qing shan hu	30.5	110.25	P	PPL	CN		62				900000			Asia/Shanghai	2026-09-08
+3	Munich	Munich	Munchen,München,mu ni hei,مونيخ,мюнхен	30.5	110.25	P	PPL	DE		02				10000			Europe/Berlin	2026-09-08
+4	Rostov-na-Donu	Rostov-na-Donu	Ростов,Ростов-на-Дону,Rostov	30.5	110.25	P	PPL	RU		61				100000			Europe/Moscow	2026-09-08
+5	Kattak	Kattak	Каттаке,Каттак	30.5	110.25	P	PPL	RU		61				100000			Europe/Moscow	2026-09-08
+6	Mangaluru	Mangaluru	Мангалуру,Мангалур	30.5	110.25	P	PPL	IN		19				100000			Asia/Kolkata	2026-09-08
+7	Southern District	Southern District	香港南区,南區	30.5	110.25	P	PPL	HK		HSO				100000			Asia/Hong_Kong	2026-09-08
+1673820	Kaohsiung	Kaohsiung	高雄,高雄巿	30.5	110.25	P	PPL	TW		04				100000			Asia/Taipei	2026-09-08
+709930	Dnipro	Dnipro	Dnipropetrovsk,ドニプロペトロウシク,드니프로페트로우시크	30.5	110.25	P	PPL	UA		04				100000			Europe/Kyiv	2026-09-08
+2633866	Wimbledon	Wimbledon	温布尔登,温布尔登网球锦标赛	30.5	110.25	P	PPL	GB		ENG				100000			Europe/London	2026-09-08
+2392308	Ouidah	Ouidah	Fortaleza de São João Baptista de Ajudá	30.5	110.25	P	PPL	BJ		09				100000			Africa/Porto-Novo	2026-09-08
+12	St. Pétersburg	St. Petersburg	Saint Petersburg,Sankt Petersburg,stpetersburg,Pétersburg,New York City	30.5	110.25	P	PPL	US		FL				600000			America/New_York	2026-09-08
+13	长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长	Chang	长长,長長	30.5	110.25	P	PPL	CN		62				500			Asia/Shanghai	2026-09-08
+14	Paris	Paris	París,巴黎,パリ,파리,Париж,Paris,Paris_France	30.5	110.25	P	PPL	FR		11				100000			Europe/Paris	2026-09-08
+15	ΟΣ	OS	ΟΣ,Ος	30.5	110.25	P	PPL	GR		ESYE11				100000			Europe/Athens	2026-09-08
+16	Shengao	Shengao	丁家舍,沈高,沈高镇	30.5	110.25	P	PPL	CN		62				20000			Asia/Shanghai	2026-09-08
+17	Old settlement	Old settlement	Old	30.5	110.25	P	PPLH	CN		62				100000			Asia/Shanghai	2026-09-08
+18	No timezone	No timezone		30.5	110.25	P	PPL	CN		62				100000				2026-09-08
+19	Bad coordinate	Bad coordinate		bad	110.25	P	PPL	CN		62				100000			Asia/Shanghai	2026-09-08
+malformed	row

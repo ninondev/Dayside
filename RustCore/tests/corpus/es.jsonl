@@ -1,0 +1,250 @@
+{"lang":"es","kind":"positive","tags":["clock","clock-preposition"],"text":"La reunión de proyecto empieza a las 10:30 en Madrid.","expect":["- 10:30 Europe/Madrid > -"]}
+{"lang":"es","kind":"positive","tags":["clock","zone-word"],"text":"¿Te viene bien la llamada a las 16:00, hora de Madrid?","expect":["- 16:00 Europe/Madrid > -"]}
+{"lang":"es","kind":"positive","tags":["clock","place-preposition"],"text":"El concierto en Lisboa empieza a las 21:00.","expect":["- 21:00 ~Europe/Lisbon > -"]}
+{"lang":"es","kind":"positive","tags":["clock"],"text":"El vuelo de regreso aterriza a las 23:40, El Cairo.","expect":["- 23:40 Africa/Cairo > -"]}
+{"lang":"es","kind":"positive","tags":["clock"],"text":"El partido empieza a las 20:45.","expect":["- 20:45 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","period"],"text":"Mi turno de la mañana empieza a las 7:05.","expect":["- 07:05 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock"],"text":"La tienda de barrio cierra a las 20:30.","expect":["- 20:30 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock"],"text":"El bus escolar pasa a las 8:25.","expect":["- 08:25 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","place-preposition"],"text":"Cenamos a las 21:15 en Bangkok.","expect":["- 21:15 Asia/Bangkok > -"]}
+{"lang":"es","kind":"positive","tags":["clock"],"text":"La consulta del médico es a las 16:20.","expect":["- 16:20 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock"],"text":"La clase de pintura va a las 17:35.","expect":["- 17:35 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock"],"text":"Mi hermana vuelve del trabajo a las 18:10.","expect":["- 18:10 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","place-preposition"],"text":"El mercado central abre a las 8:00 en Cracovia.","expect":["- 08:00 Europe/Warsaw > -"]}
+{"lang":"es","kind":"positive","tags":["clock"],"text":"Los fuegos artificiales empiezan a las 22:30, Viena.","expect":["- 22:30 Europe/Vienna > -"]}
+{"lang":"es","kind":"positive","tags":["clock"],"text":"El desayuno del hotel se sirve hasta las 10:30.","expect":["- 10:30 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","place-preposition"],"text":"El tren nocturno llega a las 14:05 a Estambul.","expect":["- 14:05 Europe/Istanbul > -"]}
+{"lang":"es","kind":"positive","tags":["clock"],"text":"La cita en la peluquería es a las 11:40.","expect":["- 11:40 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","period"],"text":"El ferry zarpa a las 9:50 de la mañana.","expect":["- 09:50 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock"],"text":"La fiesta sorpresa es a las 19:10.","expect":["- 19:10 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","place-preposition"],"text":"Cortan el agua a las 8:15 en Shanghái.","expect":["- 08:15 Asia/Shanghai > -"]}
+{"lang":"es","kind":"positive","tags":["clock","zone-word"],"text":"La charla online va a las 19:00 hora de Tokio.","expect":["- 19:00 Asia/Tokyo > -"]}
+{"lang":"es","kind":"positive","tags":["clock","zone-word"],"text":"El mercado de divisas abre a las 8:00, hora de Singapur.","expect":["- 08:00 Asia/Singapore > -"]}
+{"lang":"es","kind":"positive","tags":["clock","zone-word"],"text":"La clase de ruso empieza a las 18:00, hora de Moscú.","expect":["- 18:00 Europe/Moscow > -"]}
+{"lang":"es","kind":"positive","tags":["clock","zone-word"],"text":"El soporte remoto entra a las 9:30 hora de Bombay.","expect":["- 09:30 Asia/Kolkata > -"]}
+{"lang":"es","kind":"positive","tags":["clock","clock-suffix"],"text":"La asamblea del barrio empieza a las 18 horas.","expect":["- 18:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","clock-suffix"],"text":"El sorteo cierra a las 12:00 h.","expect":["- 12:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","clock-suffix"],"text":"El último pase del cine es a las 22 horas.","expect":["- 22:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","place-preposition"],"text":"El museo cierra a las 20:00 en Múnich.","expect":["- 20:00 Europe/Berlin > -"]}
+{"lang":"es","kind":"positive","tags":["clock"],"text":"La entrega del mueble llega a las 12:30, Pekín.","expect":["- 12:30 Asia/Shanghai > -"]}
+{"lang":"es","kind":"positive","tags":["clock","period"],"text":"El podcast sale a las 7:00 de la mañana.","expect":["- 07:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","place-preposition"],"text":"La visita guiada del casco antiguo es a las 11:00 en Dublín.","expect":["- 11:00 Europe/Dublin > -"]}
+{"lang":"es","kind":"positive","tags":["clock"],"text":"El almuerzo de trabajo es a las 14:00, Londres.","expect":["- 14:00 Europe/London > -"]}
+{"lang":"es","kind":"positive","tags":["clock"],"text":"La guardia del farmacéutico empieza a las 21:30.","expect":["- 21:30 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","period"],"text":"El primer tren sale a las 6:45 de la mañana.","expect":["- 06:45 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","period","number-words"],"text":"La cena familiar es a las 9 de la noche.","expect":["- 21:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","period","number-words"],"text":"Vuelvo del gimnasio a las 5 de la tarde.","expect":["- 17:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","period"],"text":"La oficina abre a las 8:30 de la mañana.","expect":["- 08:30 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","period"],"text":"El enfermero pasa a las 10:00 de la noche.","expect":["- 22:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","period"],"text":"Salimos de excursión a las 7:30 de la mañana.","expect":["- 07:30 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","period","number-words"],"text":"La primera proyección es a las 4 de la tarde.","expect":["- 16:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","period","number-words"],"text":"Los vecinos se reúnen a las 8 de la noche.","expect":["- 20:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","period"],"text":"El turno de noche acaba a las 6:00 de la mañana.","expect":["- 06:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","period"],"text":"La merienda es a las 5:30 de la tarde.","expect":["- 17:30 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","glued-hour"],"text":"El acto del colegio comienza a las 13hs.","expect":["- 13:00 - > -"],"note":"Spanish glued hour with hs/h per coverage.md row 3; tests.rs has no Spanish example."}
+{"lang":"es","kind":"positive","tags":["clock","glued-hour"],"text":"Quedamos a las 15h30 en la puerta del cine.","expect":["- 15:30 - > -"]}
+{"lang":"es","kind":"positive","tags":["glued-hour","range"],"text":"Atendemos por las mañanas de 9hs a 13hs.","expect":["- 09:00–13:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","half","number-words"],"text":"La película empieza a las nueve y media.","expect":["- 09:30 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","half","number-words","period"],"text":"Son las cuatro y media de la mañana; salimos ya.","expect":["- 04:30 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","half","number-words","period"],"text":"El mercado cierra a las dos y media de la tarde.","expect":["- 14:30 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","half","number-words"],"text":"La charla de la biblioteca es a las siete y media.","expect":["- 07:30 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","quarter","number-words"],"text":"Las clases empiezan a las nueve y cuarto.","expect":["- 09:15 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","quarter","minutes-before-after","number-words"],"text":"Corremos a las siete menos cuarto por el parque.","expect":["- 06:45 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","quarter","number-words"],"text":"El recital va a las diez y cuarto.","expect":["- 10:15 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","quarter","number-words"],"text":"La sesión de fotos es a las doce y cuarto.","expect":["- 12:15 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","minutes-before-after","number-words"],"text":"El tren de las cuatro menos diez va lleno.","expect":["- 03:50 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","minutes-before-after","number-words"],"text":"Llegó a las seis menos veinte al aeropuerto.","expect":["- 05:40 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","minutes-before-after","number-words"],"text":"La charla empieza a las nueve menos cinco.","expect":["- 08:55 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","number-words","period"],"text":"El mercadillo monta a las diez de la mañana.","expect":["- 10:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","number-words"],"text":"Quedamos a las cinco en la fuente.","expect":["- 05:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["clock","number-words","period"],"text":"Nos vemos a las ocho de la noche en la plaza.","expect":["- 20:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["noon-midnight","clock"],"text":"La rueda de prensa es al mediodía.","expect":["- 12:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["noon-midnight","clock"],"text":"El espectáculo de luces es a medianoche.","expect":["- 00:00+1 - > -"]}
+{"lang":"es","kind":"positive","tags":["noon-midnight","clock","weekday"],"text":"El domingo nos vemos al mediodía.","expect":["w7 12:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["noon-midnight","clock","period"],"text":"La comida de equipo es a las 12 del mediodía.","expect":["- 12:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["noon-midnight","clock","weekday"],"text":"El club cierra el sábado a medianoche.","expect":["w6 00:00+1 - > -"]}
+{"lang":"es","kind":"positive","tags":["relative-day","clock"],"text":"Hoy ceno con mis padres a las 21:00.","expect":["+0d 21:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["relative-day","clock","period"],"text":"Mañana a las 8 de la mañana salgo a correr.","expect":["+1d 08:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["relative-day","clock"],"text":"Pasado mañana a las 11:00 toca la revisión del coche.","expect":["+2d 11:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["relative-day","clock"],"text":"Ayer a las 19:00 vi el partido por la tele.","expect":["-1d 19:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["relative-day","clock","period"],"text":"Anteayer quedé a las 7 de la mañana con mi vecina.","expect":["-2d 07:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["relative-day","clock","period"],"text":"Esta noche vemos la lluvia de estrellas a las 22:00.","expect":["+0d 22:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["relative-day","clock"],"text":"El fontanero viene mañana a las 12:00.","expect":["+1d 12:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["relative-day","clock"],"text":"La nieta llega hoy a las 20:30.","expect":["+0d 20:30 - > -"]}
+{"lang":"es","kind":"positive","tags":["weekday","clock","clock-preposition"],"text":"¿Te va bien el jueves a las 16:00?","expect":["w4 16:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["weekday","clock"],"text":"Quedemos el viernes a las 10:00, que tengo hueco.","expect":["w5 10:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["weekday","clock","place-preposition"],"text":"El sábado jugamos a las 13:00 en Bruselas.","expect":["w6 13:00 Europe/Brussels > -"]}
+{"lang":"es","kind":"positive","tags":["weekday","clock"],"text":"El próximo miércoles hay charla a las 19:00.","expect":["w3:next 19:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["weekday","clock","place-preposition"],"text":"Vie 18:30, quedamos en Londres.","expect":["w5 18:30 Europe/London > -"]}
+{"lang":"es","kind":"positive","tags":["weekday","clock"],"text":"El domingo almorzamos a las 14:00 con los abuelos.","expect":["w7 14:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["weekday","clock"],"text":"Lunes a las 9:00 hay reunión de coordinación.","expect":["w1 09:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["weekday","clock"],"text":"El martes tengo médico a las 12:15.","expect":["w2 12:15 - > -"]}
+{"lang":"es","kind":"positive","tags":["month-name","clock"],"text":"La obra se estrena el 3 de octubre a las 20:00.","expect":["10-03 20:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["month-name","date-only"],"text":"Me voy de vacaciones el 15 de marzo.","expect":["03-15 - - > -"]}
+{"lang":"es","kind":"positive","tags":["month-name","noon-midnight","place-preposition"],"text":"Nos vemos el 12 de junio a mediodía en París.","expect":["06-12 12:00 Europe/Paris > -"]}
+{"lang":"es","kind":"positive","tags":["month-name","date-only"],"text":"La boda de mi prima es el 12 de junio de 2027.","expect":["2027-06-12 - - > -"]}
+{"lang":"es","kind":"positive","tags":["month-name","clock"],"text":"El ciclo de cine empieza el 1 de septiembre a las 18:30.","expect":["09-01 18:30 - > -"]}
+{"lang":"es","kind":"positive","tags":["month-name","clock"],"text":"La fiesta mayor del pueblo es el 24 de agosto a las 21:00.","expect":["08-24 21:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["month-name","date-only"],"text":"El boletín sale el 5 de mayo.","expect":["05-05 - - > -"]}
+{"lang":"es","kind":"positive","tags":["numeric-date","clock"],"region":"ES","text":"La entrega del sofá llega el 15/10/2026 a las 9:00.","expect":["2026-10-15 09:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["numeric-date","clock"],"region":"ES","text":"El plazo termina el 20/10 a las 18:00.","expect":["10-20 18:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["numeric-date","clock"],"region":"ES","text":"La reunión de vecinos es el 3/10/2026 a las 10:00.","expect":["2026-10-03 10:00 - > - ?1"]}
+{"lang":"es","kind":"positive","tags":["numeric-date","date-only"],"region":"ES","text":"La feria del sello será el 05/11.","expect":["11-05 - - > - ?1"]}
+{"lang":"es","kind":"positive","tags":["numeric-date","date-only"],"region":"ES","text":"El 27/11 cierra la piscina municipal.","expect":["11-27 - - > -"]}
+{"lang":"es","kind":"positive","tags":["numeric-date","date-only","period"],"region":"ES","text":"La mudanza queda el 08/12/2026 por la mañana.","expect":["2026-12-08 - - > - ?1"]}
+{"lang":"es","kind":"positive","tags":["relative-time"],"text":"En 2 horas tengo la videollamada.","expect":["- +120m - > -"]}
+{"lang":"es","kind":"positive","tags":["relative-time","place-preposition"],"text":"Dentro de 45 minutos, Madrid.","expect":["- +45m Europe/Madrid > -"]}
+{"lang":"es","kind":"positive","tags":["relative-time"],"text":"En media hora salen los resultados del sorteo.","expect":["- +30m - > -"]}
+{"lang":"es","kind":"positive","tags":["relative-time"],"text":"En una hora empieza el recital en el parque.","expect":["- +60m - > -"]}
+{"lang":"es","kind":"positive","tags":["relative-time"],"text":"Hace 10 minutos pasó el cartero.","expect":["- -10m - > -"]}
+{"lang":"es","kind":"positive","tags":["relative-time"],"text":"En 2 horas y 30 minutos cerramos el gimnasio.","expect":["- +150m - > -"]}
+{"lang":"es","kind":"positive","tags":["relative-time"],"text":"El técnico llegará en 3 horas.","expect":["- +180m - > -"]}
+{"lang":"es","kind":"positive","tags":["range","clock"],"text":"La tienda abre de 10:00 a 14:00.","expect":["- 10:00–14:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["range","glued-hour"],"text":"Atiendo consultas de 9h a 14h.","expect":["- 09:00–14:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["range","clock"],"text":"El descanso es de 13:00 a 13:15.","expect":["- 13:00–13:15 - > -"]}
+{"lang":"es","kind":"positive","tags":["range","zone-word","clock"],"text":"La transmisión va de 18:00 a 20:00, hora de Moscú.","expect":["- 18:00–20:00 Europe/Moscow > -"]}
+{"lang":"es","kind":"positive","tags":["range","clock","place-preposition"],"text":"Proyección al aire libre de 17:00 a 19:00 en Milán.","expect":["- 17:00–19:00 Europe/Rome > -"]}
+{"lang":"es","kind":"positive","tags":["range","clock"],"text":"Servimos cenas de 20:30 a 23:00.","expect":["- 20:30–23:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["duration","clock"],"text":"La reunión es a las 15:00 y durará 2 horas.","expect":["- 15:00 d120 - > -"]}
+{"lang":"es","kind":"positive","tags":["duration","clock","weekday"],"text":"El taller del sábado es a las 10:00, duración 90 minutos.","expect":["w6 10:00 d90 - > -"]}
+{"lang":"es","kind":"positive","tags":["duration","clock"],"text":"La clase de yoga va a las 17:00 durante 45 minutos.","expect":["- 17:00 d45 - > -"]}
+{"lang":"es","kind":"positive","tags":["duration","clock"],"text":"Webinario a las 19:00, 1 hora, con preguntas al final.","expect":["- 19:00 d60 - > -"]}
+{"lang":"es","kind":"positive","tags":["duration","clock"],"text":"La sesión de fotos es a las 11:30 y durará 2 horas.","expect":["- 11:30 d120 - > -"]}
+{"lang":"es","kind":"positive","tags":["range","abbreviation"],"text":"Taller de 15:00 a 17:00 CET, 2 horas.","expect":["- 15:00–17:00 d120 +60 > -"]}
+{"lang":"es","kind":"positive","tags":["zone-word","clock"],"text":"Seguimos el directo a las 20:00 hora de Canarias.","expect":["- 20:00 Atlantic/Canary > -"]}
+{"lang":"es","kind":"positive","tags":["zone-word","clock"],"text":"La beta se publica a las 9:00, hora del este.","expect":["- 09:00 America/New_York > -"]}
+{"lang":"es","kind":"positive","tags":["zone-word","clock"],"text":"La gala benéfica empieza a las 22:00, hora de España.","expect":["- 22:00 Europe/Madrid > -"]}
+{"lang":"es","kind":"positive","tags":["abbreviation","clock"],"text":"Quedamos a las 15:00 CET.","expect":["- 15:00 +60 > -"]}
+{"lang":"es","kind":"positive","tags":["abbreviation","clock"],"text":"El vuelo despega a las 10:30 CEST.","expect":["- 10:30 +120 > -"]}
+{"lang":"es","kind":"positive","tags":["abbreviation","clock"],"text":"El standup con el equipo es a las 9:00 PT.","expect":["- 09:00 America/Los_Angeles > -"]}
+{"lang":"es","kind":"positive","tags":["abbreviation","clock"],"text":"El cierre de caja es a las 21:00 GMT.","expect":["- 21:00 +0 > -"]}
+{"lang":"es","kind":"positive","tags":["abbreviation","clock"],"text":"La clase online empieza a las 18:00 ET.","expect":["- 18:00 America/New_York > -"]}
+{"lang":"es","kind":"positive","tags":["abbreviation","clock"],"text":"La junta vecinal cita a las 17:00 PST.","expect":["- 17:00 -480 > -"]}
+{"lang":"es","kind":"positive","tags":["target-question","clock","place-preposition"],"text":"¿Qué hora es en Tokio a las 15:00 de Madrid?","expect":["- 15:00 Europe/Madrid > Asia/Tokyo"]}
+{"lang":"es","kind":"positive","tags":["target-question","weekday","zone-word"],"text":"Charla el jueves a las 15:00, hora de Madrid. ¿Qué hora será en Tokio?","expect":["w4 15:00 Europe/Madrid > Asia/Tokyo"]}
+{"lang":"es","kind":"positive","tags":["target-question","clock","period","place-preposition"],"text":"A las 9 de la mañana de Sídney, ¿qué hora será en Nueva York?","expect":["- 09:00 Australia/Sydney > America/New_York"]}
+{"lang":"es","kind":"positive","tags":["target-question","relative-day","clock"],"text":"El seminario es mañana a las 17:00. ¿Qué hora será en Los Ángeles?","expect":["+1d 17:00 - > America/Los_Angeles"]}
+{"lang":"es","kind":"positive","tags":["target-question","clock","place-preposition"],"text":"La apertura de mercados es a las 9:30 de París; ¿qué hora es en Chicago?","expect":["- 09:30 Europe/Paris > America/Chicago"]}
+{"lang":"es","kind":"positive","tags":["arrow-or-local","clock"],"text":"Nos vemos a las 16:00 de Madrid → Tokio.","expect":["- 16:00 Europe/Madrid > Asia/Tokyo"]}
+{"lang":"es","kind":"positive","tags":["arrow-or-local","clock"],"text":"La apertura: 10:00 de Moscú -> Madrid.","expect":["- 10:00 Europe/Moscow > Europe/Madrid"]}
+{"lang":"es","kind":"positive","tags":["arrow-or-local","abbreviation"],"text":"Turno: 15:00 CET → Sídney.","expect":["- 15:00 +60 > Australia/Sydney"]}
+{"lang":"es","kind":"positive","tags":["arrow-or-local","clock"],"text":"Subo el informe a las 15:00, mi hora.","expect":["- 15:00 local > -"]}
+{"lang":"es","kind":"positive","tags":["arrow-or-local","clock"],"text":"El directo es a las 10:00 de Tokio, en mi hora.","expect":["- 10:00 Asia/Tokyo > local"]}
+{"lang":"es","kind":"positive","tags":["arrow-or-local","clock"],"text":"La reunión es a las 15:00 aquí.","expect":["- 15:00 local > -"]}
+{"lang":"es","kind":"positive","tags":["place-preposition","clock"],"text":"Quedamos en Barcelona a las 12:00.","expect":["- 12:00 Europe/Madrid > -"]}
+{"lang":"es","kind":"positive","tags":["place-preposition","clock"],"text":"Vivo en Varsovia; hablamos a las 18:00.","expect":["- 18:00 ~Europe/Warsaw > -"]}
+{"lang":"es","kind":"positive","tags":["place-preposition","clock"],"text":"El vuelo sale desde Roma a las 15:00.","expect":["- 15:00 Europe/Rome > -"]}
+{"lang":"es","kind":"positive","tags":["deadline-idiom"],"text":"Envía el formulario antes de medianoche.","expect":["- ~23:59 - > -"]}
+{"lang":"es","kind":"positive","tags":["deadline-idiom","weekday"],"text":"Para el viernes quiero el informe al final del día.","expect":["w5 ~17:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["deadline-idiom","relative-day"],"text":"Hoy antes de medianoche cierran las inscripciones.","expect":["+0d ~23:59 - > -"]}
+{"lang":"es","kind":"positive","tags":["deadline-idiom"],"text":"Mándame las fotos al final del día, porfa.","expect":["- ~17:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["deadline-idiom"],"text":"El plazo de sugerencias acaba al final del día.","expect":["- ~17:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["approximately","clock"],"text":"Llego sobre las 15:30 al estudio.","expect":["- 15:30 - > -"]}
+{"lang":"es","kind":"positive","tags":["approximately","clock"],"text":"La charla empieza alrededor de las 18:00.","expect":["- 18:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["approximately","clock","period"],"text":"Quedamos alrededor de las 9 de la noche en el bar.","expect":["- 21:00 - > -"]}
+{"lang":"es","kind":"positive","tags":["approximately","clock","period"],"text":"El autobús pasa alrededor de las 7:40 de la mañana.","expect":["- 07:40 - > -"]}
+{"lang":"es","kind":"positive","tags":["country","clock"],"text":"El soporte técnico atiende a las 9 en los Estados Unidos.","expect":["- 09:00 ?country29 > -"]}
+{"lang":"es","kind":"positive","tags":["country","clock"],"text":"Hablo con la fábrica a las 9 en Japón.","expect":["- 09:00 Asia/Tokyo > -"]}
+{"lang":"es","kind":"positive","tags":["country","clock"],"text":"El chat de ayuda abre a las 20:00 en Filipinas.","expect":["- 20:00 Asia/Manila > -"]}
+{"lang":"es","kind":"positive","tags":["country","clock"],"text":"El proveedor cierra a las 18:00 en China.","expect":["- 18:00 Asia/Shanghai > -"]}
+{"lang":"es","kind":"positive","tags":["unix-iso"],"region":"ES","text":"El despliegue automático va el 2026-10-01T17:00:00Z.","expect":["- @1790874000 - > -"]}
+{"lang":"es","kind":"positive","tags":["unix-iso"],"region":"ES","text":"El registro marca el arranque: 2026-09-15T09:00:00+02:00.","expect":["- @1789455600 - > -"]}
+{"lang":"es","kind":"positive","tags":["unix-iso"],"text":"El evento se guardó con unix 1789041600.","expect":["- @1789041600 - > -"]}
+{"lang":"es","kind":"positive","tags":["unix-iso"],"text":"Evento registrado en 1727179200000 ms.","expect":["- @1727179200 - > -"]}
+{"lang":"es","kind":"positive","tags":["unix-iso"],"region":"ES","text":"La copia se hizo el 2026-11-03T03:00:00Z.","expect":["- @1793674800 - > -"]}
+{"lang":"es","kind":"positive","tags":["date-only","month-name"],"text":"La Feria del Libro abre el 3 de octubre.","expect":["10-03 - - > -"]}
+{"lang":"es","kind":"positive","tags":["date-only","month-name"],"text":"Las inscripciones cierran el 30 de septiembre.","expect":["09-30 - - > -"]}
+{"lang":"es","kind":"positive","tags":["date-only","month-name"],"text":"El cambio de hora es el 25 de octubre de 2026.","expect":["2026-10-25 - - > -"]}
+{"lang":"es","kind":"positive","tags":["date-inherited","month-name","clock","place-preposition"],"text":"1 de octubre: 9:00 en Madrid, 14:00 en Tokio.","expect":["10-01 09:00 Europe/Madrid > -","10-01^ 14:00 Asia/Tokyo > -"]}
+{"lang":"es","kind":"positive","tags":["date-inherited","month-name","clock","abbreviation"],"text":"Agenda del 15 de noviembre:\n09:30 CET apertura\n11:00 CET pausa.","expect":["11-15 09:30 +60 > -","11-15^ 11:00 +60 > -"]}
+{"lang":"es","kind":"positive","tags":["date-inherited","month-name","clock","abbreviation"],"text":"Jornada del 3 de marzo: 10:00 GMT bienvenida, 16:00 GMT cierre.","expect":["03-03 10:00 +0 > -","03-03^ 16:00 +0 > -"]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"Llama al 600 123 456 para reservar mesa.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"El teléfono del colegio es el 915 550 012.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"Mi número nuevo es +34 611 222 333.","expect":[]}
+{"lang":"es","kind":"negative","tags":["dot-clock"],"text":"La entrada cuesta 12.50 euros.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"La camiseta cuesta 20 euros.","expect":[]}
+{"lang":"es","kind":"negative","tags":["dot-clock"],"text":"El menú del día vale 15,95.","expect":[]}
+{"lang":"es","kind":"negative","tags":["dot-clock"],"text":"La versión 2.10 ya está disponible.","expect":[]}
+{"lang":"es","kind":"negative","tags":["dot-clock"],"text":"Actualiza a la versión 4.2.1.","expect":[]}
+{"lang":"es","kind":"negative","tags":["weekday"],"text":"Nos vemos el próximo martes.","expect":[]}
+{"lang":"es","kind":"negative","tags":["relative-day"],"text":"Mañana es fiesta.","expect":[]}
+{"lang":"es","kind":"negative","tags":["numeric-date"],"text":"Añade 1/2 taza de leche.","expect":[]}
+{"lang":"es","kind":"negative","tags":["half"],"text":"La receta lleva media taza de arroz.","expect":[]}
+{"lang":"es","kind":"negative","tags":["range"],"text":"El curso es para niños de 9 a 12 años.","expect":[]}
+{"lang":"es","kind":"negative","tags":["range"],"text":"El abono cuesta de 10 a 15 euros según la edad.","expect":[]}
+{"lang":"es","kind":"negative","tags":["unix-iso"],"text":"Pedido 4501238 enviado esta mañana.","expect":[]}
+{"lang":"es","kind":"negative","tags":["unix-iso"],"text":"El seguimiento del paquete es 8834 1205 5590 2103 77.","expect":[]}
+{"lang":"es","kind":"negative","tags":["numeric-date"],"text":"Vivo en la calle de los Álamos 24, tercero.","expect":[]}
+{"lang":"es","kind":"negative","tags":["numeric-date"],"text":"Mándalo a la Avenida de los Rosales 7.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock","period"],"text":"El autobús 27 va lleno por la mañana.","expect":[]}
+{"lang":"es","kind":"negative","tags":["weekday"],"text":"Horario de oficina: de lunes a viernes.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"El clásico acabó 3-1.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"Marcador final: 2-0.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"Capítulo 9 de la serie.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"Aula 3 en la primera planta.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"Página 120 del manual.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"Talla 42 del vestido.","expect":[]}
+{"lang":"es","kind":"negative","tags":["relative-time"],"text":"El vuelo lleva 30 minutos de retraso.","expect":[]}
+{"lang":"es","kind":"negative","tags":["duration"],"text":"La obra dura 3 horas.","expect":[]}
+{"lang":"es","kind":"negative","tags":["relative-time"],"text":"Tengo 40 minutos libres.","expect":[]}
+{"lang":"es","kind":"negative","tags":["period"],"text":"Siempre llega tarde.","expect":[]}
+{"lang":"es","kind":"negative","tags":["period"],"text":"La tarde está lluviosa.","expect":[]}
+{"lang":"es","kind":"negative","tags":["relative-day"],"text":"Buenas noches, hasta mañana.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"El periódico de última hora.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"Abre a primera hora.","expect":[]}
+{"lang":"es","kind":"negative","tags":["relative-day"],"text":"El examen es la semana que viene.","expect":[]}
+{"lang":"es","kind":"negative","tags":["month-name"],"text":"Nos vemos a fin de mes.","expect":[]}
+{"lang":"es","kind":"negative","tags":["half"],"text":"Cada media hora pasa un barco.","expect":[]}
+{"lang":"es","kind":"negative","tags":["relative-time"],"text":"La peli empieza dentro de un rato.","expect":[]}
+{"lang":"es","kind":"negative","tags":["period"],"text":"Pásate por la tarde.","expect":[]}
+{"lang":"es","kind":"negative","tags":["period"],"text":"Trabajo por las noches.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"El modelo XL-500 está agotado.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"El descuento del 20 % acaba pronto.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"La ruta 15 está cortada por obras.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"Andén 3, línea 6.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"El código postal es 28004.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"El termómetro marca 3 grados bajo cero.","expect":[]}
+{"lang":"es","kind":"negative","tags":["half"],"text":"Medio litro de leche, porfa.","expect":[]}
+{"lang":"es","kind":"negative","tags":["clock"],"text":"El timbre suena a la misma hora.","expect":[]}
+{"lang":"es","kind":"negative","tags":["relative-day"],"text":"Quedamos para la próxima semana.","expect":[]}
+{"lang":"es","kind":"negative","tags":["relative-time"],"text":"Te llamo enseguida.","expect":[]}
+{"lang":"es","kind":"hostile","tags":["clock","abbreviation"],"text":"Quedamos a las 25:61 UTC.","expect":["- - +0 > - #invalidTime:25:61"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"El temporizador salta a las 12:60.","expect":["- - - > - #invalidTime:12:60"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"La cuenta atrás acaba a las 23:59:60.","expect":["- - - > - #invalidTime:23:59:60"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"El servidor se reinicia a las 24:00.","expect":["- 00:00+1 - > -"],"note":"24:00 reads as next-day 00:00, per the approved relaxation in migration-converter-known-gaps.txt."}
+{"lang":"es","kind":"hostile","tags":["clock","abbreviation"],"text":"El reinicio del sistema es a las 00:00 UTC.","expect":["- 00:00 +0 > -"]}
+{"lang":"es","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"ES","text":"El evento era el 2026-02-30 a las 09:00 UTC.","expect":["- 09:00 +0 > - #invalidDate:2026-02-30"]}
+{"lang":"es","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"ES","text":"El informe dice 2026-13-40 09:00 UTC.","expect":["- 09:00 +0 > - #invalidDate:2026-13-40"]}
+{"lang":"es","kind":"hostile","tags":["clock","period"],"text":"El enlace caduca a las 9 de la mañana UTC+99.","expect":["- 09:00 - > - #invalidOffset:UTC+99"]}
+{"lang":"es","kind":"hostile","tags":["range"],"text":"Obras de 22:00 a 01:00 en la carretera.","expect":["- 22:00–01:00 - > -"]}
+{"lang":"es","kind":"hostile","tags":["range"],"text":"El turno nocturno va de 23:30 a 04:00.","expect":["- 23:30–04:00 - > -"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"Quedamos a las １４:００.","expect":["- 14:00 - > -"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"La reserva es a las ０９:００, Osaka.","expect":["- 09:00 Asia/Tokyo > -"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"El cierre es a las １５：３０.","expect":["- 15:30 - > -"]}
+{"lang":"es","kind":"hostile","tags":["clock","abbreviation"],"text":"Quedamos a las 9 UTC 🦀.","expect":["- 09:00 +0 > -"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"🎉 El desfile empieza a las 12:00.","expect":["- 12:00 - > -"]}
+{"lang":"es","kind":"hostile","tags":["numeric-date","clock"],"region":"ES","text":"Ok team, el workshop queda el 15/10 a las 10:00 en Munich.","expect":["10-15 10:00 Europe/Berlin > -"]}
+{"lang":"es","kind":"hostile","tags":["relative-day","clock","place-preposition"],"text":"Let's do la llamada mañana a las 10:00 en Berlín, ok?","expect":["+1d 10:00 Europe/Berlin > -"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"Nos vemos a las 15:00 en Madird.","expect":["- 15:00 - > - !Madird"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"La conexión con Ámsterdan es a las 11:00.","expect":["- 11:00 - > -"]}
+{"lang":"es","kind":"hostile","tags":["relative-day","clock"],"text":"REUNIÓN MAÑANA 15:00 TOKIO.","expect":["+1d 15:00 Asia/Tokyo > -"]}
+{"lang":"es","kind":"hostile","tags":["weekday","clock","place-preposition"],"text":"TALLER EL SÁBADO A LAS 10:30 EN BARCELONA.","expect":["w6 10:30 Europe/Madrid > -"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"Llamada a las 15:00 pt.","expect":["- 15:00 - > -"],"note":"lowercase two-letter abbreviations are not zones, per the approved change for '9am et'."}
+{"lang":"es","kind":"hostile","tags":["unix-iso"],"region":"ES","text":"El log arranca en 1969-12-31T23:59:59+00:00.","expect":["- @-1 - > -"],"note":"negative Unix instant, per the approved in-text ISO reading of 1969-12-31T23:59:59+00:00."}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"   15:00   Tokio   ","expect":["- 15:00 Asia/Tokyo > -"]}
+{"lang":"es","kind":"hostile","tags":["relative-day","clock"],"text":"Cita\tmédica\tmañana\t9:30\tMadrid.","expect":["+1d 09:30 Europe/Madrid > -"]}
+{"lang":"es","kind":"hostile","tags":["clock","place-preposition"],"text":"Nos vemos a las\u200b 15:00 en\u200b Madrid.","expect":["- 15:00 Europe/Madrid > -"]}
+{"lang":"es","kind":"hostile","tags":["range"],"text":"El tren de 15:00–10:00 no existe.","expect":["- 15:00–10:00 - > -"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"El horario dice 25:00, claramente un error.","expect":["- - - > - #invalidTime:25:00"]}
+{"lang":"es","kind":"hostile","tags":["clock","abbreviation"],"text":"Sesión de 18:00 CET o de 12:00 EDT, apúntate.","expect":["- 18:00 +60 > -","- 12:00 -240 > -"]}
+{"lang":"es","kind":"hostile","tags":["clock","period"],"text":"MIX DE HORAS: 9AM, 3PM Y 21:00.","expect":["- 09:00 - > -","- 15:00 - > -","- 21:00 - > -"]}
+{"lang":"es","kind":"hostile","tags":["month-name","clock","abbreviation"],"region":"ES","text":"El plazo es el 3 de junio de 2026 a las 23:59 AoE.","expect":["2026-06-03 23:59 Etc/GMT+12 > -"]}
+{"lang":"es","kind":"hostile","tags":["clock","zone-word"],"text":"El servidor del cliente arranca a las 9:00 beijing time.","expect":["- 09:00 Asia/Shanghai > -"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"Cita médica: 09:15, consultorio 4, piso 7.","expect":["- 09:15 - > -"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"El código 1547 significa 15:47 en la tabla.","expect":["- 15:47 - > -"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"Londres 9:00 - Osaka 17:00.","expect":["- 09:00 Europe/London > -","- 17:00 Asia/Tokyo > -"]}
+{"lang":"es","kind":"hostile","tags":["clock","place-preposition"],"text":"A las 9:00 de Madrid, o sea a las 16:00 de Tokio.","expect":["- 09:00 Europe/Madrid > -","- 16:00 Asia/Tokyo > -"]}
+{"lang":"es","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"ES","text":"Vence el 2026-04-31 a las 12:00 UTC.","expect":["- 12:00 +0 > - #invalidDate:2026-04-31"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"Nos vemos 15:00 ¡¡¡???.","expect":["- 15:00 - > -"]}
+{"lang":"es","kind":"hostile","tags":["clock"],"text":"Quedamos a las 15:00 en Shangái.","expect":["- 15:00 Asia/Shanghai > -"]}
+{"lang":"es","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"ES","text":"EL SERVIDOR CAE EL 2026-06-31 A LAS 02:00 UTC.","expect":["- 02:00 +0 > - #invalidDate:2026-06-31"]}

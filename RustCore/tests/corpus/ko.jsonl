@@ -1,0 +1,220 @@
+{"lang":"ko","kind":"positive","tags":["clock","period","clock-suffix"],"text":"스탠드업 미팅은 오전 9시 30분입니다.","expect":["- 09:30 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock"],"text":"영화 상영은 20:45에 시작해요.","expect":["- 20:45 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock"],"text":"도서관은 08:00에 문을 열어요.","expect":["- 08:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock"],"text":"버스 막차는 23:40입니다.","expect":["- 23:40 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","period","clock-suffix"],"text":"치과 예약은 오후 4시 15분이에요.","expect":["- 16:15 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","period","clock-suffix"],"text":"동창 모임은 오후 7시 20분에 시작합니다.","expect":["- 19:20 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","period","clock-suffix"],"text":"학교 등교 시간은 아침 8시 40분입니다.","expect":["- 08:40 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","period","clock-suffix"],"text":"페리는 오후 2시 50분에 떠나요.","expect":["- 14:50 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","period","clock-suffix"],"text":"드라마 방송은 밤 10시 10분이에요.","expect":["- 22:10 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","period"],"text":"라디오 방송은 새벽 5:30에 시작해요.","expect":["- 05:30 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","period"],"text":"기차가 오후 11:05에 도착해요.","expect":["- 23:05 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","period","clock-suffix"],"text":"약 복용 알람은 밤 9시입니다.","expect":["- 21:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","half","clock-suffix"],"text":"회의는 3시 반에 시작해요.","expect":["- 03:30 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","half","period","clock-suffix"],"text":"점심 약속은 오후 12시 반이에요.","expect":["- 12:30 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","half","period","clock-suffix"],"text":"저녁 8시 반에 먹어요.","expect":["- 20:30 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","half","period","clock-suffix"],"text":"미팅은 오전 10시 반입니다.","expect":["- 10:30 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","number-words","clock-suffix"],"text":"세 시에 회의 잡아 주세요.","expect":["- 03:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","number-words","clock-suffix"],"text":"다섯 시에 퇴근해요.","expect":["- 05:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","number-words","period","clock-suffix"],"text":"오후 두 시에 면접이 있어요.","expect":["- 14:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","number-words","clock-suffix"],"text":"여섯 시 십오 분에 전화드릴게요.","expect":["- 06:15 - > -"]}
+{"lang":"ko","kind":"positive","tags":["clock","number-words","period","clock-suffix"],"text":"저녁 여덟 시에 드라마를 봐요.","expect":["- 20:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["noon-midnight","clock"],"text":"회의는 정오에 시작합니다.","expect":["- 12:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["noon-midnight","clock"],"text":"자정에 새 앨범이 나와요.","expect":["- 00:00+1 - > -"]}
+{"lang":"ko","kind":"positive","tags":["noon-midnight","clock","weekday"],"text":"일요일 정오에 가족 점심이에요.","expect":["w7 12:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["noon-midnight","clock","period"],"text":"낮 12시에 약을 드세요.","expect":["- 12:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["noon-midnight","clock","period"],"text":"밤 12시에 광고가 바뀝니다.","expect":["- 00:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["relative-day","clock","period"],"text":"오늘 오후 4시에 미팅이 있어요.","expect":["+0d 16:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["relative-day","clock","period"],"text":"내일 아침 7시 30분에 출발해요.","expect":["+1d 07:30 - > -"]}
+{"lang":"ko","kind":"positive","tags":["relative-day","clock"],"text":"모레 오전 10:00에 이사합니다.","expect":["+2d 10:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["relative-day","clock","period"],"text":"어제 저녁 8시에 집들이가 있었어요.","expect":["-1d 20:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["relative-day","clock","period"],"text":"그저께 밤 11시에 도착했어요.","expect":["-2d 23:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["relative-day","clock","period"],"text":"오늘밤 11시에 유성우를 봐요.","expect":["+0d 23:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["relative-day","clock"],"text":"3일 후 오전 10시에 검진 예정이에요.","expect":["+3d 10:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["weekday","clock","period"],"text":"월요일 오전 10시에 팀 미팅이에요.","expect":["w1 10:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["weekday","clock","period"],"text":"화요일 오후 3:00에 병원 예약입니다.","expect":["w2 15:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["weekday","clock"],"text":"수요일 19:00에 독서 모임이 있어요.","expect":["w3 19:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["weekday","clock"],"text":"목요일 15:30에 제품 데모를 합니다.","expect":["w4 15:30 - > -"]}
+{"lang":"ko","kind":"positive","tags":["weekday","clock","period","clock-suffix"],"text":"금요일 밤 8시에 영화 보러 갈까요?","expect":["w5 20:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["weekday","clock","period","clock-suffix"],"text":"토요일 아침 9시에 축구 경기가 있어요.","expect":["w6 09:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["weekday","clock","period","clock-suffix"],"text":"일요일 오후 2시에 조카 생일파티예요.","expect":["w7 14:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["weekday","clock"],"text":"다음주 월요일 09:00에 킥오프입니다.","expect":["w1:next 09:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["weekday","clock","period","clock-suffix"],"text":"다음 목요일 오후 4시에 통화해요.","expect":["w4:next 16:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["month-name","clock"],"text":"개업식은 5월 3일 오전 11:00입니다.","expect":["05-03 11:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["month-name","clock","period"],"text":"10월 3일 밤 8시에 불꽃놀이가 있어요.","expect":["10-03 20:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["month-name","clock","period"],"text":"크리스마스 파티는 12월 24일 밤 10:00입니다.","expect":["12-24 22:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["month-name","date-only"],"text":"서류 제출 기한은 3월 15일입니다.","expect":["03-15 - - > -"]}
+{"lang":"ko","kind":"positive","tags":["month-name","date-only"],"region":"KR","text":"2026년 1월 1일부터 새 규칙이 적용돼요.","expect":["2026-01-01 - - > -"]}
+{"lang":"ko","kind":"positive","tags":["month-name","date-only"],"text":"어버이날 선물은 5월 8일까지 준비할게요.","expect":["05-08 - - > -"]}
+{"lang":"ko","kind":"positive","tags":["month-name","noon-midnight","clock"],"text":"9월 30일 정오에 조기 마감합니다.","expect":["09-30 12:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["month-name","clock","period"],"text":"2월 14일 저녁 7시에 데이트하기로 했어요.","expect":["02-14 19:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["month-name","clock"],"text":"6월 6일 오전 9:30에 학예회가 있습니다.","expect":["06-06 09:30 - > -"]}
+{"lang":"ko","kind":"positive","tags":["numeric-date","weekday-in-brackets","clock"],"region":"KR","text":"정기 총회는 2026. 3. 12.(목) 10:00에 시작합니다.","expect":["2026-03-12 10:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["numeric-date","weekday-in-brackets","range"],"region":"KR","text":"2025. 9. 12.(금) 14:00 ~ 16:30 세미나","expect":["2025-09-12 14:00–16:30 - > -"]}
+{"lang":"ko","kind":"positive","tags":["numeric-date","weekday-in-brackets","range"],"region":"KR","text":"일시: 2025. 11. 8.(토) 10:00 ∼ 11:30 (90분)","expect":["2025-11-08 10:00–11:30 d90 - > -"]}
+{"lang":"ko","kind":"positive","tags":["numeric-date","clock"],"region":"KR","text":"서버 점검은 2026-08-20 02:00에 진행됩니다.","expect":["2026-08-20 02:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["numeric-date","clock","period"],"region":"KR","text":"배포일은 2026-04-01 오후 2:00입니다.","expect":["2026-04-01 14:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["numeric-date","weekday-in-brackets","date-inherited"],"region":"KR","text":"접수 마감은 2026. 4. 27.(월) 09:00, 발표는 5. 15.(금) 12:00입니다.","expect":["2026-04-27 09:00 - > -","2026-05-15 12:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["numeric-date","clock","abbreviation"],"region":"KR","text":"캠페인은 2026-10-02 09:00 KST에 시작해요.","expect":["2026-10-02 09:00 +540 > -"]}
+{"lang":"ko","kind":"positive","tags":["numeric-date","month-name","clock"],"region":"KR","text":"2026년 5월 4일 09:00에 스터디 모임이 있습니다.","expect":["2026-05-04 09:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["weekday-in-brackets","month-name","clock","period"],"text":"10월 2일 (목) 오후 2:00에 설명회가 있어요.","expect":["10-02 14:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["weekday-in-brackets","month-name","clock","period"],"text":"12월 31일(목) 밤 11:30부터 카운트다운 준비.","expect":["12-31 23:30 - > -"]}
+{"lang":"ko","kind":"positive","tags":["relative-time"],"text":"3시간 후에 고객 미팅이 있어요.","expect":["- +180m - > -"]}
+{"lang":"ko","kind":"positive","tags":["relative-time"],"text":"30분 뒤에 다시 전화할게요.","expect":["- +30m - > -"]}
+{"lang":"ko","kind":"positive","tags":["relative-time"],"text":"2시간 30분 후에 결과가 나와요.","expect":["- +150m - > -"]}
+{"lang":"ko","kind":"positive","tags":["relative-time"],"text":"1시간 후에 점심 먹으러 가요.","expect":["- +60m - > -"]}
+{"lang":"ko","kind":"positive","tags":["relative-time"],"text":"1시간 반 후에 비행기예요.","expect":["- +90m - > -"]}
+{"lang":"ko","kind":"positive","tags":["relative-time","place-preposition"],"text":"한 시간 후 서울에서 지원 회의가 시작돼요.","expect":["- +60m Asia/Seoul > -"]}
+{"lang":"ko","kind":"positive","tags":["range","clock"],"text":"영업 시간은 09:00~18:00입니다.","expect":["- 09:00–18:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["range","clock","period","clock-suffix"],"text":"점심시간은 오후 12시부터 오후 1시 30분까지예요.","expect":["- 12:00–13:30 - > -"]}
+{"lang":"ko","kind":"positive","tags":["range","clock","period","clock-suffix"],"text":"야간 개장은 밤 10시~새벽 2시입니다.","expect":["- 22:00–02:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["range","clock","period","clock-suffix"],"text":"상담 전화는 오전 9시부터 낮 12시까지 받아요.","expect":["- 09:00–12:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["range","clock"],"text":"웨비나는 20:00 ~ 21:30에 열려요.","expect":["- 20:00–21:30 - > -"]}
+{"lang":"ko","kind":"positive","tags":["range","clock"],"text":"설치 작업은 13:00~13:20으로 짧게 끝나요.","expect":["- 13:00–13:20 - > -"]}
+{"lang":"ko","kind":"positive","tags":["range","numeric-date","weekday-in-brackets"],"region":"KR","text":"2026년 1월 24일(토) 22:00 ~ 1월 25일(일) 05:00 서버 정기 점검","expect":["2026-01-24 22:00 - > -","2026-01-25 05:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["duration","clock","period"],"text":"오후 3시에 회의를 시작해서 2시간 동안 진행해요.","expect":["- 15:00 d120 - > -"]}
+{"lang":"ko","kind":"positive","tags":["duration","clock","clock-suffix"],"text":"13시부터 1시간 30분 동안 작업합니다.","expect":["- 13:00 d90 - > -"]}
+{"lang":"ko","kind":"positive","tags":["duration","clock"],"text":"스탠드업 9:30, 15분만 진행해요.","expect":["- 09:30 d15 - > -"]}
+{"lang":"ko","kind":"positive","tags":["duration","clock","period"],"text":"재활 치료는 오후 5시에 시작해 45분 동안 받아요.","expect":["- 17:00 d45 - > -"]}
+{"lang":"ko","kind":"positive","tags":["duration","clock","relative-day"],"text":"오늘 14:00에 컨설팅 콜, 3시간 동안.","expect":["+0d 14:00 d180 - > -"]}
+{"lang":"ko","kind":"positive","tags":["zone-word","clock"],"text":"21:55 시드니 시간에 출발하는 비행기예요.","expect":["- 21:55 Australia/Sydney > -"]}
+{"lang":"ko","kind":"positive","tags":["zone-word","clock","period","clock-suffix"],"text":"저녁 8시 서울 시간에 통화할까요?","expect":["- 20:00 Asia/Seoul > -"]}
+{"lang":"ko","kind":"positive","tags":["zone-word","clock","period"],"text":"런던 시간 오전 9시에 매장이 열려요.","expect":["- 09:00 Europe/London > -"]}
+{"lang":"ko","kind":"positive","tags":["zone-word","clock","period"],"text":"오후 2시 베를린 시간으로 데모합니다.","expect":["- 14:00 Europe/Berlin > -"]}
+{"lang":"ko","kind":"positive","tags":["zone-word","clock","period"],"text":"오전 8시 뭄바이 시간에 지원팀 회의가 있어요.","expect":["- 08:00 Asia/Kolkata > -"]}
+{"lang":"ko","kind":"positive","tags":["zone-word","clock","period"],"text":"밤 11:00 두바이 시간 발표입니다.","expect":["- 23:00 Asia/Dubai > -"]}
+{"lang":"ko","kind":"positive","tags":["abbreviation","clock","period","clock-suffix"],"text":"일본 본사 회의는 오후 2시 JST입니다.","expect":["- 14:00 +540 > -"]}
+{"lang":"ko","kind":"positive","tags":["abbreviation","clock"],"text":"백업은 02:00 UTC에 돌아가요.","expect":["- 02:00 +0 > -"]}
+{"lang":"ko","kind":"positive","tags":["abbreviation","clock","period"],"text":"저녁 8시 PST에 미국 팀과 회의해요.","expect":["- 20:00 -480 > -"]}
+{"lang":"ko","kind":"positive","tags":["abbreviation","clock"],"text":"유럽 딜러와 10:30 CET에 통화합니다.","expect":["- 10:30 +60 > -"]}
+{"lang":"ko","kind":"positive","tags":["abbreviation","clock","period"],"text":"오전 9시 ET에 뉴욕 사무실과 회의가 있어요.","expect":["- 09:00 America/New_York > -"]}
+{"lang":"ko","kind":"positive","tags":["abbreviation","clock"],"text":"17:00 GMT에 시장이 닫혀요.","expect":["- 17:00 +0 > -"]}
+{"lang":"ko","kind":"positive","tags":["abbreviation","clock","period"],"text":"오전 8시 EST에 동부 고객 상담을 시작해요.","expect":["- 08:00 -300 > -"]}
+{"lang":"ko","kind":"positive","tags":["target-question","clock","period"],"text":"런던 오전 9시는 서울 몇 시예요?","expect":["- 09:00 Europe/London > Asia/Seoul"]}
+{"lang":"ko","kind":"positive","tags":["target-question","range","abbreviation","numeric-date"],"region":"KR","text":"웨비나는 2026. 10. 2.(금) 18:00~19:30 CEST입니다. 도쿄에서는 몇 시인가요?","expect":["2026-10-02 18:00–19:30 +120 > Asia/Tokyo"]}
+{"lang":"ko","kind":"positive","tags":["target-question","relative-day","clock","period"],"text":"시드니 기준 모레 오후 1시는 뉴욕에서 몇 시?","expect":["+2d 13:00 Australia/Sydney > America/New_York"]}
+{"lang":"ko","kind":"positive","tags":["target-question","clock","period"],"text":"뉴욕 오후 3시는 로스앤젤레스 몇 시야?","expect":["- 15:00 America/New_York > America/Los_Angeles"]}
+{"lang":"ko","kind":"positive","tags":["target-question","clock","period"],"text":"부산 저녁 7시는 방콕 몇 시죠?","expect":["- 19:00 Asia/Seoul > Asia/Bangkok"]}
+{"lang":"ko","kind":"positive","tags":["target-question","weekday","clock"],"text":"다음주 화요일 10:00 파리는 베를린에서 몇 시인가요?","expect":["w2:next 10:00 Europe/Paris > Europe/Berlin"]}
+{"lang":"ko","kind":"positive","tags":["arrow-or-local","clock"],"text":"오전 9:00 서울 → 런던 기준으로 정리해 주세요.","expect":["- 09:00 Asia/Seoul > Europe/London"]}
+{"lang":"ko","kind":"positive","tags":["arrow-or-local","abbreviation"],"text":"발표는 15:00 KST → 시드니.","expect":["- 15:00 +540 > Australia/Sydney"]}
+{"lang":"ko","kind":"positive","tags":["arrow-or-local","noon-midnight"],"text":"정오 도쿄 -> 파리 일정.","expect":["- 12:00 Asia/Tokyo > Europe/Paris"]}
+{"lang":"ko","kind":"positive","tags":["arrow-or-local","clock","period","clock-suffix"],"text":"오후 3시 제 시간에 전화해 주세요.","expect":["- 15:00 local > -"]}
+{"lang":"ko","kind":"positive","tags":["arrow-or-local","clock"],"text":"도쿄 오전 10:00, 제 시간으로는 몇 시지?","expect":["- 10:00 Asia/Tokyo > local"]}
+{"lang":"ko","kind":"positive","tags":["arrow-or-local","clock","period"],"text":"서울에 있어요. 저녁 7시 제 시간에 전화 주세요.","expect":["- 19:00 local > -"]}
+{"lang":"ko","kind":"positive","tags":["arrow-or-local","clock","period"],"text":"밤 10:00 두바이, 제 시간으로는 몇 시지?","expect":["- 22:00 Asia/Dubai > local"]}
+{"lang":"ko","kind":"positive","tags":["place-preposition","clock","period"],"text":"도쿄에서 오후 3:00에 고객사 미팅이 있어요.","expect":["- 15:00 Asia/Tokyo > -"]}
+{"lang":"ko","kind":"positive","tags":["place-preposition","clock"],"text":"베를린에서 9:00에 회의를 시작해요.","expect":["- 09:00 Europe/Berlin > -"]}
+{"lang":"ko","kind":"positive","tags":["place-preposition","clock","period"],"text":"상파울루에 사는 동생과 밤 9시에 통화해요.","expect":["- 21:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["place-preposition","clock","period"],"text":"뉴욕의 대학 동기가 오전 8시에 공항으로 출발해요.","expect":["- 08:00 ~America/New_York > -"]}
+{"lang":"ko","kind":"positive","tags":["place-preposition","clock","period"],"text":"로스앤젤레스에서 열리는 콘서트는 저녁 7:30에 시작해요.","expect":["- 19:30 ~America/Los_Angeles > -"]}
+{"lang":"ko","kind":"positive","tags":["place-preposition","clock"],"text":"파리에서 15:00에 패션쇼가 열립니다.","expect":["- 15:00 Europe/Paris > -"]}
+{"lang":"ko","kind":"positive","tags":["deadline-idiom","relative-day"],"text":"수정본은 오늘 퇴근 전까지 보내드릴게요.","expect":["+0d ~17:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["deadline-idiom","weekday"],"text":"금요일 퇴근 전에 비품 목록을 정리해 주세요.","expect":["w5 ~17:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["deadline-idiom"],"text":"설문은 자정까지 받아요.","expect":["- ~23:59 - > -"]}
+{"lang":"ko","kind":"positive","tags":["deadline-idiom","relative-day"],"text":"주문은 오늘 자정 전에 넣어 주세요.","expect":["+0d ~23:59 - > -"]}
+{"lang":"ko","kind":"positive","tags":["deadline-idiom","weekday"],"text":"월요일 퇴근 전까지 회의록을 정리해 주세요.","expect":["w1 ~17:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["approximately","clock","period","clock-suffix"],"text":"오후 3시쯤 커피 마시러 갈까요?","expect":["- 15:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["approximately","clock","half","clock-suffix"],"text":"9시 반쯤 전화드릴게요.","expect":["- 09:30 - > -"]}
+{"lang":"ko","kind":"positive","tags":["approximately","clock","period"],"text":"약 20:00에 저녁을 먹어요.","expect":["- 20:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["approximately","clock"],"text":"버스는 8:15쯤 도착해요.","expect":["- 08:15 - > -"]}
+{"lang":"ko","kind":"positive","tags":["country","clock","period"],"text":"미국 지사와 오전 9시에 화상 회의를 해요.","expect":["- 09:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["country","clock","period"],"text":"일본 공장은 오전 8시에 가동을 시작해요.","expect":["- 08:00 ~Asia/Tokyo > -"]}
+{"lang":"ko","kind":"positive","tags":["country","clock","period"],"text":"중국 물류팀과 저녁 6시에 통화합니다.","expect":["- 18:00 - > -"]}
+{"lang":"ko","kind":"positive","tags":["country","clock","period"],"text":"필리핀 고객센터는 밤 9시에 문을 닫아요.","expect":["- 21:00 ~Asia/Manila > -"]}
+{"lang":"ko","kind":"positive","tags":["country","clock"],"text":"브라질 개발팀 스탠드업은 10:00입니다.","expect":["- 10:00 ~?country16 > -"]}
+{"lang":"ko","kind":"positive","tags":["country","clock"],"text":"인도네시아 협력사 미팅이 09:00에 있어요.","expect":["- 09:00 ~?country4 > -"]}
+{"lang":"ko","kind":"positive","tags":["unix-iso"],"region":"KR","text":"배포는 2026-10-01T17:00:00Z에 자동으로 진행돼요.","expect":["- @1790874000 - > -"]}
+{"lang":"ko","kind":"positive","tags":["unix-iso"],"region":"KR","text":"기록 시각: 2026-03-20T09:00:00+09:00.","expect":["- @1773964800 - > -"]}
+{"lang":"ko","kind":"positive","tags":["unix-iso"],"text":"이 항목은 unix 1767225600에 저장됐어요.","expect":["- @1767225600 - > -"]}
+{"lang":"ko","kind":"positive","tags":["unix-iso"],"text":"마지막 백업: 1790812800000 ms.","expect":["- @1790812800 - > -"]}
+{"lang":"ko","kind":"positive","tags":["unix-iso"],"text":"로그에 ts=1727179200 항목이 찍혔어요.","expect":["- @1727179200 - > -"]}
+{"lang":"ko","kind":"positive","tags":["date-only","month-name"],"region":"KR","text":"설립 기념일은 2026년 5월 16일입니다.","expect":["2026-05-16 - - > -"]}
+{"lang":"ko","kind":"positive","tags":["date-only","month-name"],"text":"완료 마감은 10월 31일이에요.","expect":["10-31 - - > -"]}
+{"lang":"ko","kind":"positive","tags":["date-only","month-name"],"text":"정기 검진은 12월 5일입니다.","expect":["12-05 - - > -"]}
+{"lang":"ko","kind":"positive","tags":["date-only","numeric-date"],"region":"KR","text":"입사일은 2026-07-01입니다.","expect":["2026-07-01 - - > -"]}
+{"lang":"ko","kind":"positive","tags":["date-inherited","month-name","clock","period"],"text":"10월 3일: 오전 9:00 베를린, 오후 2:00 도쿄.","expect":["10-03 09:00 Europe/Berlin > -","10-03^ 14:00 Asia/Tokyo > -"]}
+{"lang": "ko", "kind": "positive", "tags": ["date-inherited", "month-name", "date-only", "abbreviation", "clock"], "text": "11월 15일 안내입니다:\n09:30 KST 워크숍\n13:00 KST 점심", "expect": ["11-15 09:30 +540 > -", "11-15^ 13:00 +540 > -"]}
+{"lang":"ko","kind":"positive","tags":["date-inherited","numeric-date","clock"],"region":"KR","text":"2026. 8. 9.(일) 10:00 런던\n15:00 오사카","expect":["2026-08-09 10:00 Europe/London > -","2026-08-09^ 15:00 Asia/Tokyo > -"]}
+{"lang": "ko", "kind": "positive", "tags": ["date-inherited", "month-name", "clock"], "text": "7월 20일 회의:\n09:00 파리\n11:30 로마", "expect": ["07-20 09:00 Europe/Paris > -", "07-20^ 11:30 Europe/Rome > -"]}
+{"lang":"ko","kind":"positive","tags":["date-inherited","date-only","clock","period"],"text":"12월 1일 일정:\n\n09:00에 병원 예약이 있어요.","expect":["12-01 09:00 - > -"],"note":"Rule 8: the standalone date heading merges into the first clock after it, including across the blank line."}
+{"lang":"ko","kind":"negative","tags":["clock"],"text":"제 번호는 010-1234-5678이에요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["clock"],"text":"학교 사무실 전화는 02-1234-5678입니다.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["clock"],"text":"070-4321-9876으로 전화 주세요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["clock"],"text":"이 책은 12,000원이에요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["clock"],"text":"커피 두 잔에 9,000원을 냈어요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["dot-clock"],"text":"앱이 버전 2.10으로 업데이트됐어요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["dot-clock"],"text":"펌웨어 4.2.1을 설치하세요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["dot-clock"],"text":"이 티켓은 12.50달러였어요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["clock"],"text":"어제 경기는 3-2로 끝났어요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["clock"],"text":"세트 스코어 25-23으로 이겼어요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["unix-iso"],"text":"주문번호 1727179200으로 조회해 주세요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["unix-iso"],"text":"택배 송장 번호는 8834 1205 5590 2103 77입니다.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["numeric-date"],"text":"사무실은 이 건물 5층 503호예요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["duration"],"text":"이 책상 조립에 3일 걸렸어요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["range"],"text":"참가자는 9~12명 정도입니다.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["range"],"text":"요금은 2만원~4만원이에요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["weekday"],"text":"다음 주에 시험이 있어요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["weekday"],"text":"영업 시간은 월~금입니다.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["relative-day"],"text":"내일은 비가 올 거예요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["relative-day"],"text":"오늘 따라 날씨가 좋네요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["weekday","relative-day"],"text":"그럼 다음주 화요일에 만나요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["month-name"],"text":"다음 달에 이사해요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["month-name"],"text":"3월 한 달 내내 프로젝트가 몰려 있어요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["half"],"text":"밀가루 반 컵만 남았어요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["half"],"text":"우유 반 리터만 사 와요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["half"],"text":"버스가 30분 간격으로 다녀요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["period"],"text":"저녁에 뭐 먹을까요?","expect":[]}
+{"lang":"ko","kind":"negative","tags":["period"],"text":"오전 수업이 끝나면 도서관에 갈 거예요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["period"],"text":"밤에 공부하기로 했어요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["relative-time"],"text":"기차가 30분 지연됐어요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["relative-time"],"text":"조금 이따 전화할게요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["duration"],"text":"회의가 3시간 걸려요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["duration"],"text":"영화 상영 시간은 2시간 30분이에요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["clock"],"text":"고객센터는 1588-1234로 전화하세요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["quarter"],"text":"3분기 실적 보고를 보내드릴게요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["quarter"],"text":"4분기 마케팅 계획을 세웁니다.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["clock"],"text":"성적표: 국어 92, 수학 88.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["clock"],"text":"건물 3층 302호로 오세요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["clock"],"text":"1학년 6반입니다.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["clock"],"text":"영하 5도까지 내려갈 거예요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["clock"],"text":"책 120쪽을 펴세요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["clock"],"text":"신발 사이즈는 260이에요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["relative-day"],"text":"오늘 스케줄이 비어 있어요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["month-name"],"text":"내년에 결혼해요.","expect":[]}
+{"lang":"ko","kind":"negative","tags":["clock"],"text":"지하철 2호선을 타세요.","expect":[]}
+{"lang":"ko","kind":"hostile","tags":["clock","abbreviation"],"text":"회의 공지에 25:61 UTC라고 적혀 있어요.","expect":["- - +0 > - #invalidTime:25:61"]}
+{"lang":"ko","kind":"hostile","tags":["clock"],"text":"타이머가 12:60에 울리도록 설정했어요.","expect":["- - - > - #invalidTime:12:60"]}
+{"lang":"ko","kind":"hostile","tags":["clock"],"text":"카운트다운은 23:59:60에 끝납니다.","expect":["- - - > - #invalidTime:23:59:60"]}
+{"lang":"ko","kind":"hostile","tags":["clock"],"text":"퇴근 기록이 24:00으로 찍혔어요.","expect":["- 00:00+1 - > -"],"note":"24:00 reads as next-day 00:00, per the approved relaxation in migration-converter-known-gaps.txt."}
+{"lang":"ko","kind":"hostile","tags":["clock","abbreviation"],"text":"서버 재시작은 00:00 UTC입니다.","expect":["- 00:00 +0 > -"]}
+{"lang":"ko","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"KR","text":"행사는 원래 2026-02-30 09:00 UTC였습니다.","expect":["- 09:00 +0 > - #invalidDate:2026-02-30"]}
+{"lang":"ko","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"KR","text":"보고서에 2026-13-40 09:00 UTC로 기록됐어요.","expect":["- 09:00 +0 > - #invalidDate:2026-13-40"]}
+{"lang":"ko","kind":"hostile","tags":["clock","period","abbreviation"],"text":"링크는 오전 9시 UTC+99에 만료돼요.","expect":["- 09:00 - > - #invalidOffset:UTC+99"]}
+{"lang":"ko","kind":"hostile","tags":["range","clock"],"text":"야간 근무는 22:00~01:00입니다.","expect":["- 22:00–01:00 - > -"]}
+{"lang":"ko","kind":"hostile","tags":["range","clock"],"text":"15:00~10:00짜리 회의는 있을 수 없죠.","expect":["- 15:00–10:00 - > -"]}
+{"lang":"ko","kind":"hostile","tags":["clock"],"text":"내일 １４:００에 미팅 부탁드려요.","expect":["+1d 14:00 - > -"]}
+{"lang":"ko","kind":"hostile","tags":["clock","place-preposition"],"text":"오사카 가는 ０９:００ 첫 비행기를 예약했어요.","expect":["- 09:00 - > -"]}
+{"lang":"ko","kind":"hostile","tags":["clock"],"text":"리허설은 １５：３０에 시작해요.","expect":["- 15:30 - > -"]}
+{"lang":"ko","kind":"hostile","tags":["clock","abbreviation"],"text":"업로드는 9 UTC 🐢에 끝나요.","expect":["- 09:00 +0 > -"]}
+{"lang":"ko","kind":"hostile","tags":["clock"],"text":"🎉 벚꽃 축제는 12:00에 시작해요.","expect":["- 12:00 - > -"]}
+{"lang":"ko","kind":"hostile","tags":["numeric-date","weekday-in-brackets","clock","place-preposition"],"region":"KR","text":"Ok team, 킥오프는 2025. 10. 15.(수) 10:00, 뮌헨에서 봐요.","expect":["2025-10-15 10:00 Europe/Berlin > -"]}
+{"lang":"ko","kind":"hostile","tags":["relative-day","clock","place-preposition"],"text":"Let's do the call 내일 오전 10:00 베를린에서, ok?","expect":["+1d 10:00 Europe/Berlin > -"]}
+{"lang":"ko","kind":"hostile","tags":["clock"],"text":"오후 3:00에 시울 발표가 시작돼요.","expect":["- 15:00 - > -"]}
+{"lang":"ko","kind":"hostile","tags":["clock"],"text":"모스코바 지사와 11:00에 화상 회의해요.","expect":["- 11:00 - > -"]}
+{"lang":"ko","kind":"hostile","tags":["clock","period"],"text":"저녁 7:00 샹하이 통화 잡아 주세요.","expect":["- 19:00 - > -"]}
+{"lang":"ko","kind":"hostile","tags":["clock"],"text":"업데이트: TOWN HALL 미팅 내일 10:00 서울.","expect":["+1d 10:00 Asia/Seoul > -"]}
+{"lang":"ko","kind":"hostile","tags":["weekday","clock","abbreviation"],"text":"웨비나 링크는 금요일 18:00 et에 열려요.","expect":["w5 18:00 - > -"],"note":"lowercase two-letter abbreviations are not zones, per the approved change for '9am et'."}
+{"lang":"ko","kind":"hostile","tags":["unix-iso"],"region":"KR","text":"로그 시작: 1969-12-31T23:59:59+00:00.","expect":["- @-1 - > -"],"note":"negative Unix instant, per the approved in-text ISO reading of 1969-12-31T23:59:59+00:00."}
+{"lang":"ko","kind":"hostile","tags":["clock"],"text":"   15:00   도쿄   ","expect":["- 15:00 Asia/Tokyo > -"]}
+{"lang":"ko","kind":"hostile","tags":["relative-day","clock"],"text":"내일\t09:30\t치과 예약","expect":["+1d 09:30 - > -"]}
+{"lang":"ko","kind":"hostile","tags":["clock","place-preposition"],"text":"오후\u200b 3:00 런던\u200b 회의","expect":["- 15:00 Europe/London > -"]}
+{"lang":"ko","kind":"hostile","tags":["clock"],"text":"안내문에는 25:00이라고 적혀 있는데 오류 같아요.","expect":["- - - > - #invalidTime:25:00"]}
+{"lang":"ko","kind":"hostile","tags":["clock","abbreviation"],"text":"오전 10:00 CET 또는 오후 2:00 EDT 중 편한 때로 참석하세요.","expect":["- 10:00 +60 > -","- 14:00 -240 > -"]}
+{"lang":"ko","kind":"hostile","tags":["clock","period"],"text":"일정 정리: 9am, 3pm, 그리고 21:00.","expect":["- 09:00 - > -","- 15:00 - > -","- 21:00 - > -"]}
+{"lang":"ko","kind":"hostile","tags":["month-name","clock","abbreviation"],"region":"KR","text":"제출 마감: 2026년 6월 3일 23:59 AoE.","expect":["2026-06-03 23:59 Etc/GMT+12 > -"]}
+{"lang":"ko","kind":"hostile","tags":["deadline-idiom","numeric-date","abbreviation"],"region":"KR","text":"제출 마감: 2025-09-01 AoE.","expect":["2025-09-01 ~23:59 Etc/GMT+12 > -"]}
+{"lang":"ko","kind":"hostile","tags":["clock"],"text":"병원 예약: 09:15, 진료실 4번, 7층.","expect":["- 09:15 - > -"]}
+{"lang":"ko","kind":"hostile","tags":["clock"],"text":"이 표에서 코드 1547은 15:47을 뜻해요.","expect":["- 15:47 - > -"]}
+{"lang":"ko","kind":"hostile","tags":["clock"],"text":"런던 9:00 - 오사카 17:00 비교표를 보세요.","expect":["- 09:00 Europe/London > -","- 17:00 Asia/Tokyo > -"]}
+{"lang":"ko","kind":"hostile","tags":["relative-day","clock"],"text":"점심을 먹고 나서 산책을 하고, 커피를 마시면서 어제 쓴 회의록을 다시 읽고, 문득 벽시계를 보고 오전 일정을 정리했다. 점심을 먹고 나서 산책을 하고, 커피를 마시면서 어제 쓴 회의록을 다시 읽고, 문득 벽시계를 보고 오전 일정을 정리했다. 내일 09:00 스탠드업 미팅입니다.","expect":["+1d 09:00 - > -"]}

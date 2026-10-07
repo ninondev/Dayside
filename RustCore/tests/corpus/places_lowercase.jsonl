@@ -1,0 +1,4 @@
+{"text": "W celu rejestracji prosimy o kontakt do godziny 15:00.", "lang": "pl", "expect": ["- 15:00 - > -"]}
+{"text": "В целях безопасности вход закрыт до 18:00.", "lang": "ru", "expect": ["- 18:00 - > -"]}
+{"text": "Spotkanie w Krakowie o 10:00.", "lang": "pl", "expect": ["- 10:00 Europe/Warsaw > -"]}
+{"text": "spotkanie w krakowie o 10:00", "lang": "pl", "expect": ["- 10:00 Europe/Warsaw > -"]}

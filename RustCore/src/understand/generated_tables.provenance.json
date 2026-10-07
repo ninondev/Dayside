@@ -1,0 +1,26 @@
+{
+  "generated": true,
+  "generated_files": {
+    "generated_tables.rs": "bcb32c363564d27208855875abd42176d77f2bc6aaae299ff324a7216381af37"
+  },
+  "inputs_relative_to": "RustCore",
+  "normalization": {
+    "language": "units(fold(phrase))",
+    "matcher": "phrase_units(fold_str(phrase))"
+  },
+  "rustc_version_verbose": "rustc 1.97.1 (8bab26f4f 2026-07-14)\nbinary: rustc\ncommit-hash: 8bab26f4f68e0e26f0bb7960be334d5b520ea452\ncommit-date: 2026-07-14\nhost: aarch64-apple-darwin\nrelease: 1.97.1\nLLVM version: 22.1.6\n",
+  "schema": 1,
+  "source_sha256": {
+    "Cargo.lock": "fc8e6310b1116a627fcb312daa662447b5a8c444d87dfca2d14fe940195d942a",
+    "Cargo.toml": "9f980f93982757d68ddeabacd28454935045dbb063a6bd50315596b7eb9b6b31",
+    "src/understand/generated_tables_bootstrap.rs": "fb01abf505d4b0be4b8c50296fd20b39a096be64ac023333f8e5398f54dfb281",
+    "src/understand/language.rs": "eff478ee62d20af52e719ba0eebce76a9ff396883cc37b6dcd0f7dc7d9c50ac2",
+    "src/understand/lexicon.rs": "3557f37c3f68afdf056efa1d9d757eb7706ec92f22208d8d7b2a44325d244c82",
+    "src/understand/mod.rs": "d440ed08215d9ee746a2aae76291f78bbfe6ad23a8297da563b36b73b257896f",
+    "src/understand/table_generation.rs": "afce9518ad06fef6afdf387292114fef458b05f642762ae791e8c82d37c15d5a",
+    "src/understand/table_storage.rs": "d365aa69ec42b9171366e32c7ede95c75e8e216b89737378f938f0d2764b61c3",
+    "src/understand/text.rs": "770df7c6086005c8b672de8b668c06a9c661982f96ce9b127c07320e8a9db5e6",
+    "src/understand/units.rs": "8191e810df7d95ba1ea8888d094739d595ab9a06f2558476c872e0f4d2d494fa"
+  },
+  "spdx_license": "GPL-3.0-only"
+}

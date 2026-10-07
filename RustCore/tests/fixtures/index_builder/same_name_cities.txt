@@ -1,0 +1,20 @@
+910001	London	London	Londra,런던,Лондон	51.51	-0.13	P	PPL	GB		ENG				8961989			Europe/London	2026-10-01
+910002	London	London	Londra,런던,Лондон	42.98	-81.25	P	PPL	CA		08				422324			America/Toronto	2026-10-01
+910003	Paris	Paris	París,파리,Париж	48.86	2.35	P	PPL	FR		11				2138551			Europe/Paris	2026-10-01
+910004	Paris	Paris	París,파리,Париж	33.66	-95.56	P	PPL	US		TX				24171			America/Chicago	2026-10-01
+910005	Portland	Portland		45.52	-122.68	P	PPL	US		OR				652503			America/Los_Angeles	2026-10-01
+910006	Portland	Portland		43.66	-70.26	P	PPL	US		ME				68408			America/New_York	2026-10-01
+910007	Valencia	Valencia		10.16	-68.0	P	PPL	VE		07				1385083			America/Caracas	2026-10-01
+910008	Valencia	Valencia		39.47	-0.38	P	PPL	ES		60				814208			Europe/Madrid	2026-10-01
+910009	Springfield	Springfield		39.8	-89.65	P	PPL	US		IL				116250			America/Chicago	2026-10-01
+910010	Springfield	Springfield		37.21	-93.29	P	PPL	US		MO				167882			America/Chicago	2026-10-01
+910011	Riverton	Riverton		40.0	-108.0	P	PPL	US		WY				20000			America/Denver	2026-10-01
+910012	Riverton	Riverton		40.1	-108.1	P	PPL	US		WY				19000			America/Denver	2026-10-01
+910013	Riverton	Riverton		40.2	-108.2	P	PPL	US		WY				18000			America/Denver	2026-10-01
+910014	Riverton	Riverton		40.3	-108.3	P	PPL	US		WY				17000			America/Denver	2026-10-01
+910015	Riverton	Riverton		40.4	-108.4	P	PPL	US		WY				16000			America/Denver	2026-10-01
+910016	Riverton	Riverton		40.5	-108.5	P	PPL	US		WY				15000			America/Denver	2026-10-01
+910017	Riverton	Riverton		40.6	-108.6	P	PPL	US		WY				14000			America/Denver	2026-10-01
+910018	Riverton	Riverton		40.7	-108.7	P	PPL	US		WY				13000			America/Denver	2026-10-01
+910019	Riverton	Riverton		40.8	-108.8	P	PPL	US		WY				12000			America/Denver	2026-10-01
+910020	Riverton	Riverton		40.01	-75.01	P	PPL	US		NJ				1000			America/New_York	2026-10-01

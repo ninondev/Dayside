@@ -1,0 +1,400 @@
+{"lang":"en","kind":"positive","tags":["clock"],"text":"The night market opens at 20:15, Bangkok.","expect":["- 20:15 Asia/Bangkok > -"]}
+{"lang":"en","kind":"positive","tags":["clock"],"text":"The school bus arrives at 8:15.","expect":["- 08:15 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock"],"text":"Interview with the coach at 16:45, Madrid.","expect":["- 16:45 Europe/Madrid > -"]}
+{"lang":"en","kind":"positive","tags":["clock"],"text":"The bakery closes at 18:30.","expect":["- 18:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock"],"text":"Fireworks over the river start at 22:00, Moscow.","expect":["- 22:00 Europe/Moscow > -"]}
+{"lang":"en","kind":"positive","tags":["clock"],"text":"Library story time is at 10:15.","expect":["- 10:15 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock"],"text":"The pharmacy reopens at 14:20, Vienna.","expect":["- 14:20 Europe/Vienna > -"]}
+{"lang":"en","kind":"positive","tags":["clock"],"text":"Karaoke starts at 21:20, Osaka.","expect":["- 21:20 Asia/Tokyo > -"]}
+{"lang":"en","kind":"positive","tags":["clock"],"text":"Yoga in the park begins at 8:45.","expect":["- 08:45 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock"],"text":"My alarm goes off at 5:50.","expect":["- 05:50 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock"],"text":"The ferry to the island leaves at 9:40.","expect":["- 09:40 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","place-preposition"],"text":"Water shutoff at 13:10 in Warsaw.","expect":["- 13:10 Europe/Warsaw > -"]}
+{"lang":"en","kind":"positive","tags":["clock"],"text":"The webinar room opens at 18:55, Nairobi.","expect":["- 18:55 Africa/Nairobi > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period"],"text":"The train to the coast leaves at 6:45am.","expect":["- 06:45 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period","clock-preposition"],"text":"Doctor appointment at 3:20pm.","expect":["- 15:20 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period"],"text":"The movie screening is at 11:30pm.","expect":["- 23:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period"],"text":"Breakfast service ends at 10:30am, Dublin.","expect":["- 10:30 Europe/Dublin > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period"],"text":"My shift ends at 11pm.","expect":["- 23:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period"],"text":"The early bird talk starts at 8am sharp.","expect":["- 08:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period"],"text":"The pool opens at 7am and closes at 9pm.","expect":["- 07:00 - > -","- 21:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period"],"text":"The night shift in Lagos starts at 10:30pm.","expect":["- 22:30 ~Africa/Lagos > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period"],"text":"Doors open at 7:30pm for the concert.","expect":["- 19:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period"],"text":"The milk truck comes at 5:30 in the morning.","expect":["- 05:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period"],"text":"The market gets crowded at 11 in the morning.","expect":["- 11:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period","approximately"],"text":"The nap ends around 4 in the afternoon.","expect":["- 16:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period"],"text":"Dinner is served at 7:30 in the evening, Paris.","expect":["- 19:30 Europe/Paris > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period"],"text":"The security guard does rounds at 11:40 at night.","expect":["- 23:40 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period"],"text":"The vet appointment is at 4:15pm.","expect":["- 16:15 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","dot-clock"],"text":"The build finishes at 14.00.","expect":["- 14:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","dot-clock","clock-preposition","relative-day"],"text":"Standup is at 9.30 tomorrow.","expect":["+1d 09:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","dot-clock","period"],"text":"Doors open at 7.00pm.","expect":["- 19:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","dot-clock","zone-word"],"text":"The match kicks off at 20.00 London time.","expect":["- 20:00 Europe/London > -"]}
+{"lang":"en","kind":"positive","tags":["clock","clock-suffix","number-words"],"text":"The meeting is at three o'clock.","expect":["- 03:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","clock-suffix","number-words"],"text":"Lunch is at twelve o'clock.","expect":["- 12:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","clock-suffix","number-words"],"text":"The shops shut at five o'clock.","expect":["- 05:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","clock-suffix","number-words","period"],"text":"We sail at six o'clock in the morning.","expect":["- 06:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","clock-suffix","number-words","period"],"text":"Dinner is at eight o'clock in the evening.","expect":["- 20:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","number-words"],"text":"The race starts at seven thirty.","expect":["- 07:30 - > -"],"note":"Spelled hour and minute without o'clock; tests.rs has number-word clocks like 'three o'clock' but no English minute example."}
+{"lang":"en","kind":"positive","tags":["clock","half","number-words"],"text":"The bus comes at half past eight.","expect":["- 08:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","half","number-words"],"text":"Lunch is at half past twelve.","expect":["- 12:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","half","number-words","period"],"text":"The show starts at half past nine in the evening.","expect":["- 21:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","quarter","number-words"],"text":"The tour leaves at quarter past nine.","expect":["- 09:15 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","quarter","number-words"],"text":"We board at quarter to eleven.","expect":["- 10:45 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","quarter","number-words"],"text":"The class ends at quarter past two.","expect":["- 02:15 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","quarter","number-words","period"],"text":"Dessert is at quarter past eight in the evening.","expect":["- 20:15 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","minutes-before-after","number-words"],"text":"The recital starts at ten to four.","expect":["- 03:50 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","minutes-before-after","number-words"],"text":"We break for coffee at twenty past ten.","expect":["- 10:20 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","minutes-before-after","number-words"],"text":"The pharmacy closes at five to six.","expect":["- 05:55 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","minutes-before-after","number-words"],"text":"The cake comes out of the oven at twenty to five.","expect":["- 04:40 - > -"]}
+{"lang":"en","kind":"positive","tags":["noon-midnight","clock"],"text":"The lunch break starts at noon.","expect":["- 12:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["noon-midnight","clock"],"text":"The library closes at midnight.","expect":["- 00:00+1 - > -"]}
+{"lang":"en","kind":"positive","tags":["noon-midnight","clock","weekday"],"text":"The fireworks start at midnight on Saturday.","expect":["w6 00:00+1 - > -"]}
+{"lang":"en","kind":"positive","tags":["noon-midnight","clock","weekday"],"text":"Brunch is at noon on Sunday.","expect":["w7 12:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["noon-midnight","clock","relative-day"],"text":"Submit your votes by noon tomorrow.","expect":["+1d 12:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["noon-midnight","clock"],"text":"The New Year countdown happens at midnight, Sydney.","expect":["- 00:00+1 Australia/Sydney > -"]}
+{"lang":"en","kind":"positive","tags":["relative-day","clock"],"text":"The movers should arrive today at 16:40.","expect":["+0d 16:40 - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-day","clock"],"text":"Our flight lands tomorrow at 06:20, Munich.","expect":["+1d 06:20 Europe/Berlin > -"]}
+{"lang":"en","kind":"positive","tags":["relative-day","clock"],"text":"The dentist sees me the day after tomorrow at 10:40.","expect":["+2d 10:40 - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-day","clock"],"text":"The backup ran yesterday at 02:00.","expect":["-1d 02:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-day","clock","period"],"text":"The plumber comes tomorrow at 9 in the morning.","expect":["+1d 09:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-day","clock"],"text":"Tonight we watch the rerun at 21:30.","expect":["+0d 21:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-day","clock"],"text":"The package arrives today before 18:00.","expect":["+0d 18:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-day","clock"],"text":"School photos are tomorrow at 8:50.","expect":["+1d 08:50 - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-day","clock"],"text":"The fire drill happened yesterday at 14:35.","expect":["-1d 14:35 - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-day","clock"],"text":"We leave the day after tomorrow at 07:10, Chicago.","expect":["+2d 07:10 America/Chicago > -"]}
+{"lang":"en","kind":"positive","tags":["relative-day","clock"],"text":"We meet today at 8:45 for standup.","expect":["+0d 08:45 - > -"]}
+{"lang":"en","kind":"positive","tags":["weekday","clock","clock-preposition"],"text":"Let's do the kickoff on Tuesday at 14:00.","expect":["w2 14:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["weekday","clock","period"],"text":"The trash pickup moved to Friday at 6:30am.","expect":["w5 06:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["weekday","clock"],"text":"Saturday soccer practice is at 10:00, Amsterdam.","expect":["w6 10:00 Europe/Amsterdam > -"]}
+{"lang":"en","kind":"positive","tags":["weekday","clock","abbreviation"],"text":"The all-hands is on Monday at 16:30 CET.","expect":["w1 16:30 +60 > -"]}
+{"lang":"en","kind":"positive","tags":["weekday","clock","period"],"text":"Next Wednesday the pool opens at 7am.","expect":["w3:next 07:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["weekday","clock"],"text":"Thursday next week the inspector comes at 11:20.","expect":["w4:next 11:20 - > -"]}
+{"lang":"en","kind":"positive","tags":["weekday","clock"],"text":"Sunday lunch is at 13:30 at Grandma's.","expect":["w7 13:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["weekday","clock","abbreviation"],"text":"Fri 16:30 UTC works for me.","expect":["w5 16:30 +0 > -"]}
+{"lang":"en","kind":"positive","tags":["weekday","clock"],"text":"The deadline discussion is on Wednesday at 9:45.","expect":["w3 09:45 - > -"]}
+{"lang":"en","kind":"positive","tags":["weekday","clock","period"],"text":"Monday: gym at 7:00am. Wednesday: swim at 8:00am.","expect":["w1 07:00 - > -","w3 08:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["weekday","clock"],"text":"The band plays Friday at 22:15, Berlin.","expect":["w5 22:15 Europe/Berlin > -"]}
+{"lang":"en","kind":"positive","tags":["weekday","clock"],"text":"On Saturday the market runs until 14:00.","expect":["w6 14:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["weekday","clock"],"text":"Thursday choir practice is at 19:15.","expect":["w4 19:15 - > -"]}
+{"lang":"en","kind":"positive","tags":["weekday","clock"],"text":"See you next Friday at 14:00.","expect":["w5:next 14:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","date-only"],"text":"The festival is on October 3rd.","expect":["10-03 - - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","clock"],"text":"The workshop is on March 2nd at 10:00.","expect":["03-02 10:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","date-only"],"text":"Semester break starts on June 29.","expect":["06-29 - - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","date-only"],"text":"The exhibit closes on Nov 15, 2026.","expect":["2026-11-15 - - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","clock"],"text":"Registration opens on August 1 at 9:00.","expect":["08-01 09:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","clock"],"text":"The recital is on 2 October 2026 at 18:00.","expect":["2026-10-02 18:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","clock","period"],"text":"Final exams begin on May 12 at 8:30am.","expect":["05-12 08:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","date-only"],"text":"The road reopens on Dec 20.","expect":["12-20 - - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","clock"],"text":"The spring concert is on April 9 at 19:00.","expect":["04-09 19:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","clock"],"text":"Open house is on Sep 20, 2026, at 15:00.","expect":["2026-09-20 15:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","date-only"],"text":"The subscription renews on January 5, 2027.","expect":["2027-01-05 - - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","clock"],"text":"Harvest day is on July 19 at 17:45, Lyon.","expect":["07-19 17:45 Europe/Paris > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","clock"],"text":"The lantern festival is on February 14 at 19:30.","expect":["02-14 19:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["numeric-date","date-only"],"region":"US","text":"The invoice is due 10/15/2026.","expect":["2026-10-15 - - > -"]}
+{"lang":"en","kind":"positive","tags":["numeric-date","date-only"],"region":"US","text":"We ship on 10/3.","expect":["10-03 - - > - ?1"]}
+{"lang":"en","kind":"positive","tags":["numeric-date","range","clock"],"region":"US","text":"The outage window is 12/1 02:00–04:00.","expect":["12-01 02:00–04:00 - > - ?1"]}
+{"lang":"en","kind":"positive","tags":["numeric-date","clock"],"region":"US","text":"Backup on 2026-08-09 at 23:00.","expect":["2026-08-09 23:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["numeric-date","date-only"],"region":"US","text":"The permit expires 07/31/2027.","expect":["2027-07-31 - - > -"]}
+{"lang":"en","kind":"positive","tags":["numeric-date","clock"],"region":"US","text":"Book club meets 11/5 at 18:30.","expect":["11-05 18:30 - > - ?1"]}
+{"lang":"en","kind":"positive","tags":["numeric-date","clock"],"region":"US","text":"The race is on 13/4 at 09:00.","expect":["04-13 09:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["numeric-date","clock"],"region":"US","text":"Server patch on 2026-12-24 at 01:00.","expect":["2026-12-24 01:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["numeric-date","date-only"],"region":"US","text":"The coupon dies on 9/30.","expect":["09-30 - - > -"]}
+{"lang":"en","kind":"positive","tags":["numeric-date","clock"],"region":"US","text":"Quarter review on 10/1/2026 at 14:00.","expect":["2026-10-01 14:00 - > - ?1"]}
+{"lang":"en","kind":"positive","tags":["numeric-date","date-only"],"region":"US","text":"The sneaker drop is on 11/27.","expect":["11-27 - - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-time"],"text":"The bread comes out of the oven in 40 minutes.","expect":["- +40m - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-time"],"text":"The webinar starts in 2 hours.","expect":["- +120m - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-time"],"text":"Dinner is ready in half an hour.","expect":["- +30m - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-time"],"text":"The store closes in 1 hour and 15 minutes.","expect":["- +75m - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-time"],"text":"The bus left 10 minutes ago.","expect":["- -10m - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-time"],"text":"She texted 5 minutes ago.","expect":["- -5m - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-time"],"text":"The results post in 3 hours and 30 minutes.","expect":["- +210m - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-time"],"text":"In 15 minutes the library closes.","expect":["- +15m - > -"]}
+{"lang":"en","kind":"positive","tags":["relative-time"],"text":"The next train is in 90 minutes.","expect":["- +90m - > -"]}
+{"lang":"en","kind":"positive","tags":["range"],"text":"The shop is open from 9:00 to 18:00.","expect":["- 09:00–18:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["range","clock"],"text":"The office is open 9 to 5 on weekdays.","expect":["- 09:00–05:00 - > -"],"note":"Bare '9 to 5' range; the closest analogues in tests.rs are '1–3pm' (en) and 'von 9 bis 12 Uhr' (de)."}
+{"lang":"en","kind":"positive","tags":["range"],"text":"Office hours are 10:00–16:00.","expect":["- 10:00–16:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["range","clock","period"],"text":"The pool is open 7am-9pm on weekends.","expect":["- 07:00–21:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["range","clock"],"text":"Visiting hours are 14:00 to 17:00, Kraków.","expect":["- 14:00–17:00 Europe/Warsaw > -"]}
+{"lang":"en","kind":"positive","tags":["range","clock"],"text":"The night shift runs 22:00–06:00.","expect":["- 22:00–06:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["range","clock"],"text":"Lunch service goes from 12:00 to 14:30.","expect":["- 12:00–14:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["range","clock"],"text":"The gate is closed 23:00 to 05:00.","expect":["- 23:00–05:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["range","clock","abbreviation"],"text":"The stream runs 19:00-21:00 UTC.","expect":["- 19:00–21:00 +0 > -"]}
+{"lang":"en","kind":"positive","tags":["range","clock","period"],"text":"The bake sale runs 9am–1pm.","expect":["- 09:00–13:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["range","clock"],"text":"Call center hours: 8:00–20:00, Manila.","expect":["- 08:00–20:00 Asia/Manila > -"]}
+{"lang":"en","kind":"positive","tags":["range","clock","period"],"text":"The lecture runs 4pm to 5:30pm.","expect":["- 16:00–17:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["range","clock"],"text":"The shuttle runs hourly from 7:15 to 19:45.","expect":["- 07:15–19:45 - > -"]}
+{"lang":"en","kind":"positive","tags":["range","clock"],"text":"Breakfast is 6:30–10:30, Vienna.","expect":["- 06:30–10:30 Europe/Vienna > -"]}
+{"lang":"en","kind":"positive","tags":["duration","clock"],"text":"The workshop runs at 15:00 for 2 hours.","expect":["- 15:00 d120 - > -"]}
+{"lang":"en","kind":"positive","tags":["duration","clock"],"text":"Tutorial at 11:00, 45 minutes.","expect":["- 11:00 d45 - > -"]}
+{"lang":"en","kind":"positive","tags":["duration","clock"],"text":"The concert starts at 20:00 and lasts 2 hours.","expect":["- 20:00 d120 - > -"]}
+{"lang":"en","kind":"positive","tags":["duration","clock"],"text":"Standup is at 9:15, 15 minutes max.","expect":["- 09:15 d15 - > -"]}
+{"lang":"en","kind":"positive","tags":["duration","clock"],"text":"The tour at 13:30 lasts 90 minutes.","expect":["- 13:30 d90 - > -"]}
+{"lang":"en","kind":"positive","tags":["duration","clock"],"text":"We review the draft at 16:00 for 30 minutes.","expect":["- 16:00 d30 - > -"]}
+{"lang":"en","kind":"positive","tags":["duration","clock"],"text":"The webinar at 19:00, 1 hour, then Q&A.","expect":["- 19:00 d60 - > -"]}
+{"lang":"en","kind":"positive","tags":["duration","clock"],"text":"Rehearsal at 18:00, 2 hours and 30 minutes.","expect":["- 18:00 d150 - > -"]}
+{"lang":"en","kind":"positive","tags":["duration","range","abbreviation","clock"],"text":"The scope review is at 14:00–16:00 CET, 2 hours.","expect":["- 14:00–16:00 d120 +60 > -"]}
+{"lang":"en","kind":"positive","tags":["duration","clock"],"text":"The walking tour at 10:00 lasts 2 hours.","expect":["- 10:00 d120 - > -"]}
+{"lang":"en","kind":"positive","tags":["zone-word","noon-midnight","clock"],"text":"The vendor call is at noon Berlin time.","expect":["- 12:00 Europe/Berlin > -"]}
+{"lang":"en","kind":"positive","tags":["zone-word","clock"],"text":"The pilot light goes on at 18:00 Tokyo time.","expect":["- 18:00 Asia/Tokyo > -"]}
+{"lang":"en","kind":"positive","tags":["zone-word","clock"],"text":"The retrospective is at 10:00 Sydney time.","expect":["- 10:00 Australia/Sydney > -"]}
+{"lang":"en","kind":"positive","tags":["zone-word","clock"],"text":"Market opens at 9:00 Moscow time.","expect":["- 09:00 Europe/Moscow > -"]}
+{"lang":"en","kind":"positive","tags":["zone-word","clock"],"text":"The drop happens at 20:00 Dubai time.","expect":["- 20:00 Asia/Dubai > -"]}
+{"lang":"en","kind":"positive","tags":["zone-word","clock"],"text":"Support answers at 8:00 Mumbai time.","expect":["- 08:00 Asia/Kolkata > -"]}
+{"lang":"en","kind":"positive","tags":["zone-word","clock"],"text":"The replay airs at 21:00 Chicago time.","expect":["- 21:00 America/Chicago > -"]}
+{"lang":"en","kind":"positive","tags":["zone-word","clock"],"text":"The podcast drops at 6:00 New York City time.","expect":["- 06:00 America/New_York > -"]}
+{"lang":"en","kind":"positive","tags":["zone-word","clock"],"text":"The servers reboot at 03:00 Seoul time.","expect":["- 03:00 Asia/Seoul > -"]}
+{"lang":"en","kind":"positive","tags":["zone-word","clock"],"text":"The bazaar opens at 10:30 Istanbul time.","expect":["- 10:30 Europe/Istanbul > -"]}
+{"lang":"en","kind":"positive","tags":["zone-word","clock"],"text":"The quiz night is at 20:00 Auckland time.","expect":["- 20:00 Pacific/Auckland > -"]}
+{"lang":"en","kind":"positive","tags":["zone-word","clock"],"text":"The meditation stream is at 07:00 Bangkok time.","expect":["- 07:00 Asia/Bangkok > -"]}
+{"lang":"en","kind":"positive","tags":["abbreviation","clock"],"text":"The invite says 15:00 GMT.","expect":["- 15:00 +0 > -"]}
+{"lang":"en","kind":"positive","tags":["abbreviation","clock"],"text":"Boarding starts at 14:20 CET.","expect":["- 14:20 +60 > -"]}
+{"lang":"en","kind":"positive","tags":["abbreviation","clock"],"text":"The gate change is at 13:05 CEST.","expect":["- 13:05 +120 > -"]}
+{"lang":"en","kind":"positive","tags":["abbreviation","clock"],"text":"Rollout begins at 02:00 EST.","expect":["- 02:00 -300 > -"]}
+{"lang":"en","kind":"positive","tags":["abbreviation","clock"],"text":"The bell rings at 08:55 JST.","expect":["- 08:55 +540 > -"]}
+{"lang":"en","kind":"positive","tags":["abbreviation","clock"],"text":"News recap at 21:00 MSK.","expect":["- 21:00 +180 > -"]}
+{"lang":"en","kind":"positive","tags":["abbreviation","clock"],"text":"The feed goes live at 07:00 WIB.","expect":["- 07:00 +420 > -"]}
+{"lang":"en","kind":"positive","tags":["abbreviation","clock"],"text":"The sunset hike leaves at 17:40 IDT.","expect":["- 17:40 +180 > -"]}
+{"lang":"en","kind":"positive","tags":["abbreviation","clock","deadline-idiom"],"text":"The numbers freeze at 23:59 AoE.","expect":["- 23:59 Etc/GMT+12 > -"]}
+{"lang":"en","kind":"positive","tags":["abbreviation","clock"],"text":"Daily scrum at 9:00 ET.","expect":["- 09:00 America/New_York > -"]}
+{"lang":"en","kind":"positive","tags":["abbreviation","clock"],"text":"The beta opens at 10:00 PT.","expect":["- 10:00 America/Los_Angeles > -"]}
+{"lang":"en","kind":"positive","tags":["abbreviation","clock"],"text":"Carts roll at 11:30 CT.","expect":["- 11:30 America/Chicago > -"]}
+{"lang":"en","kind":"positive","tags":["abbreviation","clock","numeric-date"],"region":"US","text":"The deploy starts at 17:00 UTC on 2026-11-05.","expect":["2026-11-05 17:00 +0 > -"]}
+{"lang":"en","kind":"positive","tags":["abbreviation","clock"],"text":"The keynote is 9:00 ET, that's 15:00 CET.","expect":["- 09:00 America/New_York > -","- 15:00 +60 > -"]}
+{"lang":"en","kind":"positive","tags":["target-question","clock","clock-preposition"],"text":"The keynote is at 18:00, Paris. What time in Tokyo?","expect":["- 18:00 Europe/Paris > Asia/Tokyo"]}
+{"lang":"en","kind":"positive","tags":["target-question","clock"],"text":"when is 8am Singapore in Chicago","expect":["- 08:00 Asia/Singapore > America/Chicago"]}
+{"lang":"en","kind":"positive","tags":["target-question","clock","country"],"text":"What time is 4pm Rome in the UK?","expect":["- 16:00 Europe/Rome > Europe/London"]}
+{"lang":"en","kind":"positive","tags":["target-question","relative-day","clock"],"text":"Our demo is tomorrow at 15:00. What time will it be in Los Angeles?","expect":["+1d 15:00 - > America/Los_Angeles"]}
+{"lang":"en","kind":"positive","tags":["target-question","abbreviation","clock"],"text":"Standup is at 9:00 ET. What time in Seoul?","expect":["- 09:00 America/New_York > Asia/Seoul"]}
+{"lang":"en","kind":"positive","tags":["target-question","clock"],"text":"The boat leaves at 10:30. What time is that in Auckland?","expect":["- 10:30 - > Pacific/Auckland"]}
+{"lang":"en","kind":"positive","tags":["target-question","zone-word","clock"],"text":"Checkout is at 11:00 Dubai time. What time in Toronto?","expect":["- 11:00 Asia/Dubai > America/Toronto"]}
+{"lang":"en","kind":"positive","tags":["target-question","zone-word","clock"],"text":"The race starts at 14:00 Zürich time; what time in Melbourne?","expect":["- 14:00 Europe/Zurich > Australia/Melbourne"]}
+{"lang":"en","kind":"positive","tags":["target-question","clock"],"text":"The webinar starts at 20:00. What time is that in Mumbai?","expect":["- 20:00 - > Asia/Kolkata"]}
+{"lang":"en","kind":"positive","tags":["target-question","clock"],"text":"Practice is at 17:30. What time in Vancouver?","expect":["- 17:30 - > America/Vancouver"]}
+{"lang":"en","kind":"positive","tags":["arrow-or-local","abbreviation","clock"],"text":"8:30 PT → London","expect":["- 08:30 America/Los_Angeles > Europe/London"]}
+{"lang":"en","kind":"positive","tags":["arrow-or-local","clock"],"text":"9pm São Paulo in my time","expect":["- 21:00 America/Sao_Paulo > local"]}
+{"lang":"en","kind":"positive","tags":["arrow-or-local","clock","period"],"text":"Let's talk at 4pm my time.","expect":["- 16:00 local > -"]}
+{"lang":"en","kind":"positive","tags":["arrow-or-local","clock"],"text":"The recap posts at 17:00 Madrid -> Lisbon.","expect":["- 17:00 Europe/Madrid > Europe/Lisbon"]}
+{"lang":"en","kind":"positive","tags":["arrow-or-local","clock","period"],"text":"I'm in Vienna. Can we talk at 2pm my time?","expect":["- 14:00 local > -"]}
+{"lang":"en","kind":"positive","tags":["arrow-or-local","abbreviation","clock"],"text":"Movie night 19:00 UTC → Milan.","expect":["- 19:00 +0 > Europe/Rome"]}
+{"lang":"en","kind":"positive","tags":["arrow-or-local","clock","period"],"text":"The kitchen closes at 9pm here.","expect":["- 21:00 local > -"]}
+{"lang":"en","kind":"positive","tags":["arrow-or-local","clock"],"text":"Drop me the file by 15:00, my time.","expect":["- 15:00 local > -"]}
+{"lang":"en","kind":"positive","tags":["arrow-or-local","zone-word","clock"],"text":"13:00 Buenos Aires time → Madrid.","expect":["- 13:00 America/Argentina/Buenos_Aires > Europe/Madrid"]}
+{"lang":"en","kind":"positive","tags":["arrow-or-local","zone-word","clock"],"text":"Handoff at 16:00 Cairo time -> Nairobi.","expect":["- 16:00 Africa/Cairo > Africa/Nairobi"]}
+{"lang":"en","kind":"positive","tags":["place-preposition","clock"],"text":"The gig in Brussels starts at 20:00.","expect":["- 20:00 ~Europe/Brussels > -"]}
+{"lang":"en","kind":"positive","tags":["place-preposition","clock"],"text":"Our clients in Munich expect the call at 09:15.","expect":["- 09:15 ~Europe/Berlin > -"]}
+{"lang":"en","kind":"positive","tags":["place-preposition","clock"],"text":"The ferry arrives in Hanoi at 12:40.","expect":["- 12:40 Asia/Bangkok > -"]}
+{"lang":"en","kind":"positive","tags":["place-preposition","clock"],"text":"The hotel in Buenos Aires confirms check-in at 14:00.","expect":["- 14:00 ~America/Argentina/Buenos_Aires > -"]}
+{"lang":"en","kind":"positive","tags":["place-preposition","clock"],"text":"The consulate in Ankara opens at 09:00.","expect":["- 09:00 ~Europe/Istanbul > -"]}
+{"lang":"en","kind":"positive","tags":["place-preposition","clock"],"text":"The conference in Singapore wraps at 17:00.","expect":["- 17:00 ~Asia/Singapore > -"]}
+{"lang":"en","kind":"positive","tags":["place-preposition","clock"],"text":"The marathon in Rio de Janeiro starts at 16:00.","expect":["- 16:00 ~America/Sao_Paulo > -"]}
+{"lang":"en","kind":"positive","tags":["place-preposition","clock"],"text":"The aquarium in Barcelona opens at 9:30.","expect":["- 09:30 ~Europe/Madrid > -"]}
+{"lang":"en","kind":"positive","tags":["place-preposition","clock"],"text":"My cousins in Vancouver host dinner at 18:00.","expect":["- 18:00 ~America/Vancouver > -"]}
+{"lang":"en","kind":"positive","tags":["place-preposition","clock"],"text":"The workshop in Kraków starts at 10:40.","expect":["- 10:40 ~Europe/Warsaw > -"]}
+{"lang":"en","kind":"positive","tags":["place-preposition","clock"],"text":"The expo in Dubai ends at 16:40.","expect":["- 16:40 ~Asia/Dubai > -"]}
+{"lang":"en","kind":"positive","tags":["place-preposition","clock","period"],"text":"I'm in Milan, ping me at 9am.","expect":["- 09:00 ~Europe/Rome > -"]}
+{"lang":"en","kind":"positive","tags":["deadline-idiom"],"text":"Please file the report by EOD.","expect":["- ~17:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["deadline-idiom"],"text":"The form is due end of day.","expect":["- ~17:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["deadline-idiom","relative-day"],"text":"Turn in your keys by EOD today.","expect":["+0d ~17:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["deadline-idiom","noon-midnight"],"text":"Entries close at midnight.","expect":["- 00:00+1 - > -"]}
+{"lang":"en","kind":"positive","tags":["deadline-idiom","weekday"],"text":"The survey closes by EOD Friday.","expect":["w5 ~17:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["deadline-idiom","relative-day"],"text":"Homework is due by EOD tomorrow.","expect":["+1d ~17:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["deadline-idiom","noon-midnight"],"text":"Applications must arrive before midnight.","expect":["- ~23:59 - > -"]}
+{"lang":"en","kind":"positive","tags":["deadline-idiom","month-name","abbreviation"],"text":"Proposal due 1 Oct 2026, End of Day, AoE.","expect":["2026-10-01 ~23:59 Etc/GMT+12 > -"]}
+{"lang":"en","kind":"positive","tags":["deadline-idiom","relative-day","noon-midnight"],"text":"Rent payment is due before midnight tonight.","expect":["+0d ~23:59 - > -"]}
+{"lang":"en","kind":"positive","tags":["deadline-idiom","weekday"],"text":"The gym passes expire by EOD Monday.","expect":["w1 ~17:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["approximately","clock"],"text":"The bus gets in around 18:00.","expect":["- 18:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["approximately","clock","period"],"text":"Dinner is ready about 7:15pm.","expect":["- 19:15 - > -"]}
+{"lang":"en","kind":"positive","tags":["approximately","clock"],"text":"The power comes back at approximately 16:40.","expect":["- 16:40 - > -"]}
+{"lang":"en","kind":"positive","tags":["approximately","clock"],"text":"We land at around 22:10, Dublin.","expect":["- 22:10 Europe/Dublin > -"]}
+{"lang":"en","kind":"positive","tags":["approximately","clock","clock-suffix","number-words"],"text":"The meeting wraps up around 5 o'clock.","expect":["- 05:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["approximately","clock","period"],"text":"Kids arrive at school about 8:25 in the morning.","expect":["- 08:25 - > -"]}
+{"lang":"en","kind":"positive","tags":["approximately","clock"],"text":"The shuttle leaves around 9:10.","expect":["- 09:10 - > -"]}
+{"lang":"en","kind":"positive","tags":["approximately","clock"],"text":"The procession passes about 15:50.","expect":["- 15:50 - > -"]}
+{"lang":"en","kind":"positive","tags":["country","clock","period"],"text":"The webinar for the whole team starts at 9am in the United States.","expect":["- 09:00 ?country29 > -"]}
+{"lang":"en","kind":"positive","tags":["country","clock"],"text":"The call with the factory is at 9 in Japan.","expect":["- 09:00 Asia/Tokyo > -"]}
+{"lang":"en","kind":"positive","tags":["country","clock"],"text":"The stream starts at 20:00 in China.","expect":["- 20:00 Asia/Shanghai > -"]}
+{"lang":"en","kind":"positive","tags":["country","clock"],"text":"Helpline opens at 18:00 in the Philippines.","expect":["- 18:00 Asia/Manila > -"]}
+{"lang":"en","kind":"positive","tags":["country","clock"],"text":"Carnival rehearsals start at 21:00 in Brazil.","expect":["- 21:00 ?country16 > -"]}
+{"lang":"en","kind":"positive","tags":["country","clock"],"text":"The update rolls out at 10:00 in Indonesia.","expect":["- 10:00 ?country4 > -"]}
+{"lang":"en","kind":"positive","tags":["country","clock"],"text":"Shipments leave at 07:00 in the US.","expect":["- 07:00 ?country29 > -"]}
+{"lang":"en","kind":"positive","tags":["country","clock"],"text":"The partner demo is at 15:00 in the U.S.","expect":["- 15:00 ?country29 > -"]}
+{"lang":"en","kind":"positive","tags":["country","clock"],"text":"Deploy happens at 02:00 in Iran.","expect":["- 02:00 Asia/Tehran > -"]}
+{"lang":"en","kind":"positive","tags":["country","target-question","zone-word","clock"],"text":"The kickoff is at 15:00 Berlin time. What time is that in the UK?","expect":["- 15:00 Europe/Berlin > Europe/London"]}
+{"lang":"en","kind":"negative","tags":["unix-iso"],"text":"The snapshot was taken at 1727179200.","expect":[]}
+{"lang":"en","kind":"positive","tags":["unix-iso"],"text":"Log entry: ts=1767225600","expect":["- @1767225600 - > -"]}
+{"lang":"en","kind":"positive","tags":["unix-iso"],"text":"The event fired at 1790258400000 ms.","expect":["- @1790258400 - > -"]}
+{"lang":"en","kind":"positive","tags":["unix-iso"],"region":"US","text":"Backup ran at 2026-10-01T17:00:00Z.","expect":["- @1790874000 - > -"]}
+{"lang":"en","kind":"positive","tags":["unix-iso"],"region":"US","text":"The token expires 2026-12-01T09:00:00+01:00.","expect":["- @1796112000 - > -"]}
+{"lang":"en","kind":"positive","tags":["unix-iso"],"region":"US","text":"Deploy window: 2026-11-05T21:30:00-03:00.","expect":["- @1793925000 - > -"]}
+{"lang":"en","kind":"positive","tags":["unix-iso"],"text":"Since unix 1800000000 the API v2 is live.","expect":["- @1800000000 - > -"]}
+{"lang":"en","kind":"negative","tags":["unix-iso"],"text":"The cron log shows 1789041600.","expect":[]}
+{"lang":"en","kind":"positive","tags":["unix-iso"],"region":"US","text":"Sensor ping at 2027-02-14T06:15:00Z.","expect":["- @1802585700 - > -"]}
+{"lang":"en","kind":"positive","tags":["unix-iso"],"text":"The export finished at 1790967600000 ms.","expect":["- @1790967600 - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","date-only"],"text":"The book fair runs October 3 through 7.","expect":["10-03 - - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","date-only"],"text":"Received: Mar 1, 2027.","expect":["2027-03-01 - - > -"]}
+{"lang":"en","kind":"positive","tags":["numeric-date","date-only"],"region":"US","text":"The office is closed on 2026-12-25.","expect":["2026-12-25 - - > -"]}
+{"lang":"en","kind":"positive","tags":["numeric-date","date-only"],"region":"US","text":"Pool maintenance on 8/22.","expect":["08-22 - - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","date-only","abbreviation","deadline-idiom"],"text":"Deadline: Nov 2 AoE.","expect":["11-02 ~23:59 Etc/GMT+12 > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","date-only"],"text":"The festival poster says 15 August 2026.","expect":["2026-08-15 - - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","date-only"],"text":"Tax forms are due April 15.","expect":["04-15 - - > -"]}
+{"lang":"en","kind":"positive","tags":["numeric-date","date-only"],"region":"US","text":"Her thesis defense is on 6/11.","expect":["06-11 - - > - ?1"]}
+{"lang":"en","kind":"positive","tags":["month-name","date-only"],"text":"The winter market opens on November 22.","expect":["11-22 - - > -"]}
+{"lang":"en","kind":"positive","tags":["month-name","date-only"],"text":"The audit starts on September 1, 2026.","expect":["2026-09-01 - - > -"]}
+{"lang":"en","kind":"positive","tags":["date-inherited","month-name","clock"],"text":"June 5: 09:00 Lisbon, 17:00 Seoul.","expect":["06-05 09:00 Europe/Lisbon > -","06-05^ 17:00 Asia/Seoul > -"]}
+{"lang":"en","kind":"positive","tags":["date-inherited","month-name","abbreviation","clock"],"text":"Agenda for Nov 15:\n09:30 CET opening\n11:00 CET break.","expect":["11-15 09:30 +60 > -","11-15^ 11:00 +60 > -"]}
+{"lang": "en", "kind": "positive", "tags": ["date-inherited", "month-name", "clock", "period"], "text": "May 4 is the deadline. Demo at 10am.", "expect": ["05-04 10:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["date-inherited","month-name","clock"],"text":"Mar 2 plan:\n08:00 standup\n13:30 review","expect":["03-02 08:00 - > -","03-02^ 13:30 - > -"]}
+{"lang":"en","kind":"positive","tags":["date-inherited","month-name","abbreviation","clock"],"text":"Roadmap day is July 9:\n14:00 GMT keynote\n16:00 GMT AMA.","expect":["07-09 14:00 +0 > -","07-09^ 16:00 +0 > -"]}
+{"lang":"en","kind":"positive","tags":["date-inherited","relative-day","month-name","clock"],"text":"Call tomorrow 9am, lunch 13:00 Milan, notes due Oct 3.","expect":["+1d 09:00 - > -","+1d^ 13:00 Europe/Rome > -","10-03 - - > -"]}
+{"lang": "en", "kind": "positive", "tags": ["date-inherited", "month-name", "clock"], "text": "Party on Sep 12. Cake at 20:00.", "expect": ["09-12 20:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["date-inherited","month-name","clock"],"text":"Aug 30: 08:00 yoga, 19:00 concert.","expect":["08-30 08:00 - > -","08-30^ 19:00 - > -"]}
+{"lang": "en", "kind": "positive", "tags": ["date-inherited", "month-name", "clock"], "text": "Jan 15 is the deadline. Payments post at 12:00.", "expect": ["01-15 12:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","period"],"text":"Team hours: 9am New York City, 2pm London, 11pm Singapore.","expect":["- 09:00 America/New_York > -","- 14:00 Europe/London > -","- 23:00 Asia/Singapore > -"]}
+{"lang":"en","kind":"positive","tags":["clock"],"text":"Sunrise yoga at 6:30, then brunch at 10:00.","expect":["- 06:30 - > -","- 10:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","deadline-idiom","noon-midnight"],"text":"Ring at 8 and file by midnight.","expect":["- 08:00 - > -","- ~23:59 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock"],"text":"Buses run at 6:10, 9:25, and 13:40.","expect":["- 06:10 - > -","- 09:25 - > -","- 13:40 - > -"]}
+{"lang":"en","kind":"positive","tags":["weekday","clock"],"text":"On Monday we meet at 9:00 and on Thursday at 15:00.","expect":["w1 09:00 - > -","w4 15:00 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock"],"text":"The flight lands at 23:50 and the shuttle leaves at 00:20.","expect":["- 23:50 - > -","- 00:20 - > -"]}
+{"lang":"en","kind":"positive","tags":["clock","place-preposition"],"text":"We open at 8:00 in Madrid and at 8:00 in Mexico City.","expect":["- 08:00 Europe/Madrid > -","- 08:00 America/Mexico_City > -"]}
+{"lang":"en","kind":"positive","tags":["clock"],"text":"The doctor sees patients at 09:00, 11:30, and 15:00.","expect":["- 09:00 - > -","- 11:30 - > -","- 15:00 - > -"]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"Call the box office at +1 415 555 0123.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"The school office number is 555-0142.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"Ring 020 7946 0958 for bookings.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"Dial 911 in an emergency.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"My new cell is +44 7700 900123.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"The helpline is 1800 555 0199.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"Front desk extension: 0142.","expect":[]}
+{"lang":"en","kind":"negative","tags":["dot-clock"],"text":"The tote bag is 12.50 dollars.","expect":[]}
+{"lang":"en","kind":"negative","tags":["dot-clock"],"text":"Admission costs 9.75 USD.","expect":[]}
+{"lang":"en","kind":"negative","tags":["dot-clock"],"text":"Shipping adds 4.99 USD.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"The repair quote came to 240 dollars.","expect":[]}
+{"lang":"en","kind":"negative","tags":["dot-clock"],"text":"Lunch special is 8.50 USD with soup.","expect":[]}
+{"lang":"en","kind":"negative","tags":["dot-clock"],"text":"They raised the fare to 3.20 pounds.","expect":[]}
+{"lang":"en","kind":"negative","tags":["range","dot-clock"],"text":"Tickets run 10.00 - 12.00 USD.","expect":[]}
+{"lang":"en","kind":"negative","tags":["dot-clock"],"text":"It costs 14.00 USD.","expect":[]}
+{"lang":"en","kind":"negative","tags":["dot-clock"],"text":"Version 2.10 is out now.","expect":[]}
+{"lang":"en","kind":"negative","tags":["dot-clock"],"text":"Update to firmware 4.2.1 tonight.","expect":[]}
+{"lang":"en","kind":"negative","tags":["dot-clock"],"text":"The docs cover API version 3.14.","expect":[]}
+{"lang":"en","kind":"negative","tags":["dot-clock"],"text":"The app store build is 9.2.1.","expect":[]}
+{"lang":"en","kind":"negative","tags":["dot-clock"],"text":"Kernel 6.4.2 boots fine.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"The chess match finished 3-1.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"The derby ended 2-0.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"A 1-1 draw at the cup tie.","expect":[]}
+{"lang":"en","kind":"negative","tags":["numeric-date"],"text":"We moved to 42 Kew Road.","expect":[]}
+{"lang":"en","kind":"negative","tags":["numeric-date"],"text":"Send the parcel to 221B Baker Street.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"The studio is at 48 Griffin Lane.","expect":[]}
+{"lang":"en","kind":"negative","tags":["numeric-date"],"text":"Her zip code is 94110.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"The new office is at 350 Mission Street.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"Boarding is at gate 24.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"We're in room 305 for the seminar.","expect":[]}
+{"lang":"en","kind":"negative","tags":["unix-iso"],"text":"Order 4501238 shipped this morning.","expect":[]}
+{"lang":"en","kind":"negative","tags":["unix-iso"],"text":"Tracking says 8834 1205 5590 2103 77.","expect":[]}
+{"lang":"en","kind":"negative","tags":["unix-iso"],"text":"Invoice 5550841 is settled.","expect":[]}
+{"lang":"en","kind":"negative","tags":["unix-iso"],"text":"Booking reference 7Q4Z99.","expect":[]}
+{"lang":"en","kind":"negative","tags":["unix-iso"],"text":"Case number 0041592 stays open.","expect":[]}
+{"lang":"en","kind":"negative","tags":["unix-iso"],"text":"Ticket 1205 got merged.","expect":[]}
+{"lang":"en","kind":"negative","tags":["numeric-date"],"text":"Add 1/2 cup of flour.","expect":[]}
+{"lang":"en","kind":"negative","tags":["half"],"text":"The recipe needs half a liter of milk.","expect":[]}
+{"lang":"en","kind":"negative","tags":["quarter"],"text":"Add a quarter teaspoon of vanilla.","expect":[]}
+{"lang":"en","kind":"negative","tags":["half"],"text":"The tank is half full.","expect":[]}
+{"lang":"en","kind":"negative","tags":["relative-day"],"text":"Tomorrow is a holiday.","expect":[]}
+{"lang":"en","kind":"negative","tags":["weekday"],"text":"The meeting moved to Friday.","expect":[]}
+{"lang":"en","kind":"negative","tags":["weekday"],"text":"Happy Friday, everyone!","expect":[]}
+{"lang":"en","kind":"negative","tags":["weekday"],"text":"Let's catch up next week.","expect":[]}
+{"lang":"en","kind":"negative","tags":["relative-time"],"text":"I'll be there in a bit.","expect":[]}
+{"lang":"en","kind":"negative","tags":["period"],"text":"Swing by this afternoon.","expect":[]}
+{"lang":"en","kind":"negative","tags":["period"],"text":"I work nights.","expect":[]}
+{"lang":"en","kind":"negative","tags":["period"],"text":"The morning was hectic.","expect":[]}
+{"lang":"en","kind":"negative","tags":["relative-day"],"text":"See you tonight.","expect":[]}
+{"lang":"en","kind":"negative","tags":["month-name"],"text":"The festival is in October.","expect":[]}
+{"lang":"en","kind":"negative","tags":["weekday"],"text":"Call me this weekend.","expect":[]}
+{"lang":"en","kind":"negative","tags":["month-name"],"text":"It happens once a month.","expect":[]}
+{"lang":"en","kind":"negative","tags":["relative-time"],"text":"The train is running 20 minutes late.","expect":[]}
+{"lang":"en","kind":"negative","tags":["relative-time"],"text":"I have 40 minutes free.","expect":[]}
+{"lang":"en","kind":"negative","tags":["duration"],"text":"The movie lasts 2 hours.","expect":[]}
+{"lang":"en","kind":"negative","tags":["duration"],"text":"The flight was delayed by 30 minutes.","expect":[]}
+{"lang":"en","kind":"negative","tags":["half"],"text":"Half the team is out sick.","expect":[]}
+{"lang":"en","kind":"negative","tags":["quarter"],"text":"The report is due next quarter.","expect":[]}
+{"lang":"en","kind":"negative","tags":["number-words"],"text":"Chapter nine is my favorite.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"Bus 27 is full.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"Route 66 is closed for repairs.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"The class size limit is 12.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"Platform 9 is where we wait.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"Use 2 liters of water.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"The oven heats to 200 degrees.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"Capacity is 250 people.","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock"],"text":"Aisle 7 has the pasta.","expect":[]}
+{"lang":"en","kind":"negative","tags":["duration"],"text":"The microwave needs 90 seconds.","expect":[]}
+{"lang":"en","kind":"negative","tags":["number-words"],"text":"Interest rose by two percent.","expect":[]}
+{"lang":"en","kind":"negative","tags":["relative-day"],"text":"We ship same day.","expect":[]}
+{"lang":"en","kind":"negative","tags":["glued-hour"],"text":"The build took 15h30 in CI.","expect":[]}
+{"lang":"en","kind":"negative","tags":["glued-hour"],"text":"We waited 36h for a reply.","expect":[]}
+{"lang":"en","kind":"negative","tags":["date-only"],"text":"See you on the 21st.","expect":[]}
+{"lang":"en","kind":"negative","tags":["numeric-date"],"text":"Week 42 starts Monday.","expect":[]}
+{"lang":"en","kind":"negative","tags":["range"],"text":"The plan covers weeks 43-44.","expect":[]}
+{"lang":"en","kind":"negative","tags":["unix-iso"],"text":"The file stamp reads 20261001T140000Z.","expect":[]}
+{"lang":"en","kind":"negative","tags":["target-question"],"text":"What time is it?","expect":[]}
+{"lang":"en","kind":"negative","tags":["clock-preposition"],"text":"Save it at once.","expect":[]}
+{"lang":"en","kind":"negative","tags":["weekday","range"],"text":"Office hours are Monday to Friday.","expect":[]}
+{"lang":"en","kind":"negative","tags":["month-name"],"text":"The gallery tour is at some point in April.","expect":[]}
+{"lang":"en","kind":"hostile","tags":["clock","abbreviation"],"text":"The test job fires at 25:61 UTC.","expect":["- - +0 > - #invalidTime:25:61"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"The microwave says 12:60.","expect":["- - - > - #invalidTime:12:60"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"The stopwatch froze at 23:59:60.","expect":["- - - > - #invalidTime:23:59:60"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"The sign says 25:00, clearly broken.","expect":["- - - > - #invalidTime:25:00"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"The timer shows 19:75, which can't be right.","expect":["- - - > - #invalidTime:19:75"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"The kiosk prints 24:00 for closing.","expect":["- 00:00+1 - > -"],"note":"24:00 reads as next-day 00:00, per the approved relaxation in migration-converter-known-gaps.txt."}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"The system clock read 10:20:99 during the glitch.","expect":["- - - > - #invalidTime:10:20:99"]}
+{"lang":"en","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"US","text":"The export dated 2026-02-30 failed at 09:00 UTC.","expect":["- 09:00 +0 > - #invalidDate:2026-02-30"]}
+{"lang":"en","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"US","text":"The ledger shows 2026-13-40 09:00 UTC.","expect":["- 09:00 +0 > - #invalidDate:2026-13-40"]}
+{"lang":"en","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"US","text":"Renewal was set for 2026-04-31 at 12:00 GMT.","expect":["- 12:00 +0 > - #invalidDate:2026-04-31"]}
+{"lang":"en","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"US","text":"The pass expires 2026-06-31 02:00 UTC.","expect":["- 02:00 +0 > - #invalidDate:2026-06-31"]}
+{"lang":"en","kind":"hostile","tags":["numeric-date","clock"],"region":"US","text":"The invite said 2026-02-29 10:00, which doesn't exist.","expect":["- 10:00 - > - #invalidDate:2026-02-29"]}
+{"lang":"en","kind":"hostile","tags":["clock","abbreviation"],"text":"The feed syncs at 9am UTC+99.","expect":["- 09:00 - > - #invalidOffset:UTC+99"]}
+{"lang":"en","kind":"hostile","tags":["clock","abbreviation"],"text":"The cron runs 03:00 UTC+99 daily.","expect":["- 03:00 - > - #invalidOffset:UTC+99"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"Doors open at １４:００.","expect":["- 14:00 - > -"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"The rehearsal is at ０９:００, Osaka.","expect":["- 09:00 Asia/Tokyo > -"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"The shop closes ２０：３０.","expect":["- 20:30 - > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","abbreviation"],"text":"🦀 The release crawls out at 16:00 UTC.","expect":["- 16:00 +0 > -"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"Game night 🎲 starts at 19:00.","expect":["- 19:00 - > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","period"],"text":"Coffee ☕ at 8:30am, as always.","expect":["- 08:30 - > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","place-preposition"],"text":"Meet at​ 15:00 in​ Madrid.","expect":["- 15:00 Europe/Madrid > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","zone-word"],"text":"The​ webinar starts at​ 10:00 Singapore time.","expect":["- 10:00 Asia/Singapore > -"]}
+{"lang":"en","kind":"hostile","tags":["weekday","clock"],"text":"Wir treffen uns Thursday um 16:00 in Berlin.","expect":["w4 16:00 Europe/Berlin > -"]}
+{"lang":"en","kind":"hostile","tags":["relative-day","clock"],"text":"The 予約 is confirmed for tomorrow 9:00, Osaka.","expect":["+1d 09:00 Asia/Tokyo > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","relative-day"],"text":"Let's do the réunion at 14h Paris tomorrow, ok?","expect":["+1d 14:00 Europe/Paris > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","zone-word"],"text":"The sync is fixed: 10:00 Moscow time — спасибо!","expect":["- 10:00 Europe/Moscow > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","zone-word"],"text":"Hi everyone, a few notes before the offsite next month: badges will be handed out in the lobby, breakfast is served in the glass hall, buses leave from the south entrance, and if you miss them you can take the tram; the photographer will be near the fountain, afternoon sessions start promptly, so please check your room assignments on the board before you wander off; the evening is yours, dinner reservations are on your own, and the informal question session with the hosts happens later; one last reminder that the call with the remote team is at 15:00 Tokyo time, thanks for reading this far.","expect":["- 15:00 Asia/Tokyo > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","dot-clock","zone-word"],"text":"Team, here is the full rundown for release week so nobody is surprised: code freeze happens late in the week, the docs get a final pass, the localization review slides by a whole day, marketing drafts the announcement, support prepares the macros, and the status page gets a fresh banner; please label your pull requests properly, keep the changelog tidy, and tag the owners on anything blocked; the release retro stays short, snacks are provided, and the demo lineup is first come, first served; finally, the kickoff with the platform folks is at 9.30 Berlin time, so set an alarm and bring questions.","expect":["- 09:30 Europe/Berlin > -"]}
+{"lang":"en","kind":"hostile","tags":["range"],"text":"The timer shows 15:00–10:00, clearly reversed.","expect":["- 15:00–10:00 - > -"]}
+{"lang":"en","kind":"hostile","tags":["range"],"text":"Quiet hours are 21:00 to 07:00, as posted.","expect":["- 21:00–07:00 - > -"]}
+{"lang":"en","kind":"hostile","tags":["range","numeric-date"],"region":"US","text":"Launch window: 2026-10-02 22:00 → 2026-10-03 02:00.","expect":["2026-10-02 22:00–02:00+1 - > -"]}
+{"lang":"en","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"US","text":"The gala is on 2028-02-29 at 19:00 UTC.","expect":["2028-02-29 19:00 +0 > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","place-preposition"],"text":"The vendor sync is at 15:00 in Berlinn.","expect":["- 15:00 - > - !Berlinn"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"Call at 10:00 in Londno, ok?","expect":["- 10:00 - > - !Londno"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"The safari briefing is at 06:30 in Nairobe.","expect":["- 06:30 - > - !Nairobe"]}
+{"lang":"en","kind":"hostile","tags":["relative-day","clock"],"text":"MEETING TOMORROW 15:00 TOKYO.","expect":["+1d 15:00 Asia/Tokyo > -"]}
+{"lang":"en","kind":"hostile","tags":["weekday","clock"],"text":"WORKSHOP ON SATURDAY AT 10:30 IN BARCELONA.","expect":["w6 10:30 Europe/Madrid > -"]}
+{"lang":"en","kind":"hostile","tags":["weekday","clock","abbreviation"],"text":"ALL-HANDS FRIDAY 16:00 UTC.","expect":["w5 16:00 +0 > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","period"],"text":"HOURS MIX: 9AM, 3PM AND 21:00.","expect":["- 09:00 - > -","- 15:00 - > -","- 21:00 - > -"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"The sync is at 15:00 pt.","expect":["- 15:00 - > -"],"note":"lowercase two-letter abbreviations are not zones, per the approved change for '9am et'."}
+{"lang":"en","kind":"hostile","tags":["unix-iso"],"region":"US","text":"The audit trail starts at 1969-12-31T23:59:59+00:00.","expect":["- @-1 - > -"],"note":"negative Unix instant, per the approved in-text ISO reading of 1969-12-31T23:59:59+00:00."}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"   15:00   Tokyo   ","expect":["- 15:00 Asia/Tokyo > -"]}
+{"lang":"en","kind":"hostile","tags":["relative-day","clock"],"text":"Dentist\ttomorrow\t9:30\tMadrid.","expect":["+1d 09:30 Europe/Madrid > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","place-preposition"],"text":"Ship it at  18:00  Berlin.","expect":["- 18:00 Europe/Berlin > -"]}
+{"lang":"en","kind":"hostile","tags":["unix-iso"],"text":"log line: level=warn ts=1727179200 user=42","expect":["- @1727179200 - > -"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"The schedule table shows code 1547 as 15:47.","expect":["- 15:47 - > -"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"Clinic slot: 09:15, room 4, floor 7.","expect":["- 09:15 - > -"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"London 9:00 - Osaka 17:00.","expect":["- 09:00 Europe/London > -","- 17:00 Asia/Tokyo > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","place-preposition"],"text":"At 9:00 in Madrid, which is 16:00 in Tokyo.","expect":["- 09:00 Europe/Madrid > -","- 16:00 Asia/Tokyo > -"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"See you 15:00!!!!","expect":["- 15:00 - > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","period"],"text":"so.... 9am works???","expect":["- 09:00 - > -"]}
+{"lang":"en","kind":"hostile","tags":["abbreviation","clock"],"text":"Either 18:00 CET or 12:00 EDT, pick one.","expect":["- 18:00 +60 > -","- 12:00 -240 > -"]}
+{"lang":"en","kind":"hostile","tags":["numeric-date","abbreviation","deadline-idiom"],"region":"US","text":"Proposals close 2026-06-03 23:59 AoE.","expect":["2026-06-03 23:59 Etc/GMT+12 > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","zone-word"],"text":"The backup runs at 9:00 beijing time.","expect":["- 09:00 Asia/Shanghai > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","abbreviation"],"text":"The drop goes live at 9am Z.","expect":["- 09:00 +0 > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","clock-preposition"],"text":"I'm in the office at 9am.","expect":["- 09:00 - > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","place-preposition"],"text":"The workshop starts 9am in the main hall.","expect":["- 09:00 - > -"]}
+{"lang":"en","kind":"hostile","tags":["clock","clock-preposition","period"],"text":"Coffee at 10am in the lobby, bring notes.","expect":["- 10:00 - > -"]}
+{"lang":"en","kind":"hostile","tags":["range"],"text":"Duty roster 1500 - 17:00, new hires.","expect":["- 15:00–17:00 - > -"]}
+{"lang":"en","kind":"hostile","tags":["clock"],"text":"Flight UA841 lands 18:20, Chicago.","expect":["- 18:20 America/Chicago > -"]}
