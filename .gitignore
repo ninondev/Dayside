@@ -1,0 +1,40 @@
+# macOS
+.DS_Store
+
+# Xcode 构建产物（全部可再生）。
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# 分发产物与现场备份:留在磁盘上有用,但不该进版本库
+*.dmg
+backup/
+
+# 审计 / 验证用的临时脚本产物
+*.log
+
+# Python 构建脚本的字节码缓存
+__pycache__/
+*.pyc
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
+
+# Rust build outputs; source and Cargo.lock remain versioned.
+RustCore/target/
+
+# Local preview checksum sidecars
+*.dmg.sha256
+*.dmg.validation.json
+
+# 本机工具权限配置，不进版本库
+.claude/settings.local.json
+
+# 十语文案两份真源合并出来的构建用目录（Tools/l10n_partition.py --merge 生成）
+TahoeTime/Generated/

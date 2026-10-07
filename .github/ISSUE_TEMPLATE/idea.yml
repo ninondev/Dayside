@@ -1,0 +1,22 @@
+name: Idea
+description: Suggest a feature or improvement for Dayside.
+labels: [idea]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issues are public. For security or privacy reports, open this repository's Security tab and choose Report a vulnerability. See SECURITY.md for details.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What would this help you do?
+      description: Describe the situation or problem.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: Describe the change you would like.
+    validations:
+      required: true

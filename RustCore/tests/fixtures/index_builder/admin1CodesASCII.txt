@@ -1,0 +1,9 @@
+CN.62	Gansu Sheng	Gansu Sheng	1001
+DE.02	Bavaria	Bavaria	1002
+RU.61	Rostov Oblast	Rostov Oblast	1003
+HK.HSO	Southern District	Southern District	1004
+TW.04	Taiwan	Taiwan	1005
+UA.04	Dnipropetrovsk	Dnipropetrovsk	1006
+GB.ENG	England	England	1007
+US.FL	Florida	Florida	1008
+FR.11	Île-de-France	Île-de-France	1009

@@ -1,0 +1,172 @@
+{"ok":true,"parsed":{"dayOffset":0,"hour":0,"minute":0,"second":0},"text":"00:00"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":23,"minute":59,"second":59},"text":"23:59:59"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0},"text":"9am"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0},"text":"9 am"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":15,"minute":30,"second":0},"text":"3:30 PM"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":0,"minute":0,"second":0},"text":"12am"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":12,"minute":15,"second":42},"text":"12:15:42 pM"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":7,"minute":5,"second":0},"text":"  7:05  "}
+{"error":"invalidTime","ok":false,"text":"24:00"}
+{"error":"invalidTime","ok":false,"text":"12:60"}
+{"error":"invalidTime","ok":false,"text":"12:30:60"}
+{"error":"invalidTime","ok":false,"text":"0am"}
+{"error":"invalidTime","ok":false,"text":"13pm"}
+{"error":"invalidTime","ok":false,"text":"9"}
+{"error":"invalidTime","ok":false,"text":"9:5"}
+{"error":"invalidTime","ok":false,"text":"9:00:0"}
+{"error":"invalidTime","ok":false,"text":"009:00"}
+{"error":"invalidTime","ok":false,"text":"9am pm"}
+{"error":"invalidTime","ok":false,"text":"9:00:00:00"}
+{"error":"invalidTime","ok":false,"text":"-1:00"}
+{"error":"invalidTime","ok":false,"text":"9.30"}
+{"error":"invalidFormat","ok":false,"text":"9am CET junk"}
+{"error":"invalidFormat","ok":false,"text":"9am !"}
+{"ok":true,"parsed":{"day":1,"dayOffset":0,"hour":0,"minute":0,"month":1,"second":0,"year":1900},"text":"1900-01-01 00:00"}
+{"ok":true,"parsed":{"day":29,"dayOffset":0,"hour":12,"minute":0,"month":2,"second":0,"year":2000},"text":"2000-02-29 12pm"}
+{"ok":true,"parsed":{"day":29,"dayOffset":0,"hour":9,"minute":0,"month":2,"second":0,"year":2024},"text":"2024-02-29 9am"}
+{"ok":true,"parsed":{"day":31,"dayOffset":0,"hour":23,"minute":59,"month":12,"second":0,"year":2100},"text":"2100-12-31 23:59"}
+{"error":"invalidDate","ok":false,"text":"1900-02-29 9am"}
+{"error":"invalidDate","ok":false,"text":"2100-02-29 9am"}
+{"error":"invalidDate","ok":false,"text":"2024-04-31 9am"}
+{"error":"invalidDate","ok":false,"text":"1899-12-31 9am"}
+{"error":"invalidDate","ok":false,"text":"2101-01-01 9am"}
+{"error":"invalidDate","ok":false,"text":"2024-00-01 9am"}
+{"error":"invalidDate","ok":false,"text":"2024-01-00 9am"}
+{"error":"invalidDate","ok":false,"text":"2024-1-01 9am"}
+{"error":"invalidDate","ok":false,"text":"2024-01-1 9am"}
+{"error":"invalidDate","ok":false,"text":"2024-01-01 9am tomorrow"}
+{"ok":true,"parsed":{"day":29,"dayOffset":0,"hour":9,"minute":0,"month":2,"second":0,"year":2024,"zone":"Asia/Tokyo"},"text":"2024-02-29 9am Asia/Tokyo"}
+{"ok":true,"parsed":{"dayOffset":1,"hour":9,"minute":0,"offsetSeconds":-28800,"second":0},"text":"9am tomorrow PST"}
+{"ok":true,"parsed":{"dayOffset":1,"hour":9,"minute":0,"offsetSeconds":-28800,"second":0},"text":"9am PST tomorrow"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0},"text":"9am Today"}
+{"ok":true,"parsed":{"dayOffset":-1,"hour":9,"minute":0,"second":0},"text":"9am yesterday"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0},"text":"9am今天"}
+{"ok":true,"parsed":{"dayOffset":1,"hour":9,"minute":0,"second":0,"zone":"America/Chicago"},"text":"9am 明天 Central"}
+{"ok":true,"parsed":{"dayOffset":-1,"hour":9,"minute":0,"second":0,"zone":"America/Chicago"},"text":"9am Central昨天"}
+{"error":"invalidDate","ok":false,"text":"9am today tomorrow"}
+{"error":"invalidDate","ok":false,"text":"9am 今天 今天"}
+{"error":"invalidTime","ok":false,"text":"tomorrow 9am"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Asia/Shanghai"},"text":"9am 北京时间"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/New_York"},"text":"9am美东"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":30,"second":0,"zone":"America/New_York"},"text":"9:30 美东时间"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Asia/Shanghai"},"text":"9:00 东八区"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/Los_Angeles"},"text":"9am 美西"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/Los_Angeles"},"text":"9am 太平洋时间"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/Chicago"},"text":"9am 美中"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Asia/Hong_Kong"},"text":"9am 香港时间"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Asia/Taipei"},"text":"9am 台北時間"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Asia/Shanghai"},"text":"9am 東八區"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/New_York"},"text":"9am Eastern Time"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Asia/Shanghai"},"text":"9am beijing time"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Asia/Seoul"},"text":"9am Korea Time"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Asia/Manila"},"text":"9am Philippine time"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/New_York"},"text":"9am ET"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/Los_Angeles"},"text":"9am PT"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Etc/GMT+12"},"text":"9am AoE"}
+{"error":"invalidTime","ok":false,"text":"Etc/GMT+12"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Etc/GMT+12"},"text":"9am anywhere on earth"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Asia/Tokyo"},"text":"9:00 日本時間"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/New_York"},"text":"9:00 東部時間"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/New_York"},"text":"9:00 米東部時間"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Asia/Seoul"},"text":"9:00 한국시간"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/New_York"},"text":"9:00 미국 동부시간"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/New_York"},"text":"9:00 동부시간"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/New_York"},"text":"9:00 Ostküste"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Europe/Berlin"},"text":"9:00 deutsche Zeit"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/New_York"},"text":"9:00 heure de l'est"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Europe/Paris"},"text":"9:00 heure de Paris"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/Los_Angeles"},"text":"9:00 heure du Pacifique"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/New_York"},"text":"9:00 hora del este"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Europe/Madrid"},"text":"9:00 hora de Madrid"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/Bogota"},"text":"9:00 hora de Bogotá"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/Sao_Paulo"},"text":"9:00 horário de Brasília"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/Sao_Paulo"},"text":"9:00 horario de brasilia"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Europe/Lisbon"},"text":"9:00 horário de Lisboa"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Europe/Moscow"},"text":"9:00 по москве"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"offsetSeconds":10800},"text":"9:00 МСК"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"America/New_York"},"text":"9:00 восточное время США"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"Asia/Vladivostok"},"text":"9:00 по Владивостоку"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":30,"second":0},"text":"9:30"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"offsetSeconds":0,"second":0},"text":"9am 格林尼治时间"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"offsetSeconds":0,"second":0},"text":"9am 世界时"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"offsetSeconds":0,"second":0},"text":"9am zulu"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"offsetSeconds":0,"second":0},"text":"9:00 協定世界時"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"offsetSeconds":0,"second":0},"text":"9:00 temps universel"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"offsetSeconds":0,"second":0},"text":"9:00 всемирное время"}
+{"ok":true,"parsed":{"dayOffset":1,"hour":9,"minute":0,"second":0,"zone":"America/New_York"},"text":"9am 明天 美东"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"成都"},"text":"9am 成都时间"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"osaka"},"text":"9am osaka time"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"san jose"},"text":"9am san jose time"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"quito"},"text":"9:00 hora de Quito"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"lyon"},"text":"9:00 heure de Lyon"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"salvador"},"text":"9:00 horário de Salvador"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"大阪"},"text":"9:00 大阪時間"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"부산"},"text":"9:00 부산시간"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"новосибирску"},"text":"9:00 по Новосибирску"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":9,"minute":0,"second":0,"zone":"et"},"text":"9am et"}
+{"error":"invalidFormat","ok":false,"text":"9am 美东 北京时间"}
+{"error":"invalidFormat","ok":false,"text":"9am hora de"}
+{"error":"invalidFormat","ok":false,"text":"9am eastern standard"}
+{"ok":true,"parsed":{"dayOffset":0,"endDayOffset":0,"endHour":15,"endMinute":0,"endSecond":0,"hour":13,"minute":0,"second":0},"text":"1pm–3pm"}
+{"ok":true,"parsed":{"dayOffset":0,"endDayOffset":0,"endHour":15,"endMinute":0,"endSecond":0,"hour":13,"minute":0,"second":0},"text":"13:00-15:00"}
+{"ok":true,"parsed":{"dayOffset":0,"endDayOffset":0,"endHour":15,"endMinute":0,"endSecond":0,"hour":13,"minute":0,"second":0},"text":"13:00~15:00"}
+{"ok":true,"parsed":{"dayOffset":0,"endDayOffset":0,"endHour":15,"endMinute":0,"endSecond":0,"hour":13,"minute":0,"second":0},"text":"1pm to 3pm"}
+{"ok":true,"parsed":{"dayOffset":0,"endDayOffset":0,"endHour":15,"endMinute":0,"endSecond":0,"hour":13,"minute":0,"second":0},"text":"13:00 - 15:00"}
+{"ok":true,"parsed":{"dayOffset":0,"endDayOffset":0,"endHour":15,"endMinute":0,"endSecond":0,"hour":13,"minute":0,"second":0},"text":"13:00 至 15:00"}
+{"ok":true,"parsed":{"dayOffset":0,"endDayOffset":0,"endHour":15,"endMinute":0,"endSecond":0,"hour":13,"minute":0,"second":0},"text":"1pm-3"}
+{"ok":true,"parsed":{"dayOffset":0,"endDayOffset":0,"endHour":15,"endMinute":0,"endSecond":0,"hour":13,"minute":0,"second":0},"text":"1–3pm"}
+{"ok":true,"parsed":{"dayOffset":0,"endDayOffset":0,"endHour":11,"endMinute":0,"endSecond":0,"hour":9,"minute":0,"second":0},"text":"9am–11"}
+{"ok":true,"parsed":{"dayOffset":0,"endDayOffset":1,"endHour":1,"endMinute":0,"endSecond":0,"hour":22,"minute":0,"second":0},"text":"22:00-01:00"}
+{"ok":true,"parsed":{"dayOffset":0,"endDayOffset":1,"endHour":1,"endMinute":0,"endSecond":0,"hour":23,"minute":0,"second":0},"text":"11pm to 1am"}
+{"ok":true,"parsed":{"dayOffset":0,"endDayOffset":1,"endHour":9,"endMinute":0,"endSecond":0,"hour":9,"minute":0,"second":0},"text":"9:00-9:00"}
+{"ok":true,"parsed":{"dayOffset":0,"endDayOffset":0,"endHour":10,"endMinute":15,"endSecond":0,"hour":9,"minute":30,"second":0,"zone":"Asia/Tokyo"},"text":"9:30-10:15 东京时间"}
+{"ok":true,"parsed":{"day":16,"dayOffset":0,"endDayOffset":0,"endHour":15,"endMinute":0,"endSecond":0,"hour":13,"minute":0,"month":9,"second":0,"year":2026,"zone":"Asia/Tokyo"},"text":"2026-09-16 13:00-15:00 Asia/Tokyo"}
+{"ok":true,"parsed":{"day":16,"dayOffset":0,"hour":13,"minute":0,"month":9,"second":0,"year":2026},"text":"2026-09-16 13:00"}
+{"ok":true,"parsed":{"dayOffset":0,"hour":13,"minute":0,"second":0},"text":"13:00"}
+{"error":"invalidTime","ok":false,"text":"13:00-"}
+{"error":"invalidTime","ok":false,"text":"-15:00"}
+{"error":"invalidTime","ok":false,"text":"13:00 to"}
+{"error":"invalidTime","ok":false,"text":"13:00 to 25:00"}
+{"error":"invalidTime","ok":false,"text":"13:00-15:00-17:00"}
+{"error":"invalidTime","ok":false,"text":"iso8601"}
+{"error":"invalidDate","ok":false,"text":"2026-09-10T21:00:00+09:00"}
+{"error":"invalidTime","ok":false,"text":"1789041600"}
+{"error":"invalidTime","ok":false,"text":"<t:1789041600:F>"}
+{"error":"invalidTime","ok":false,"text":"<t:1789041600:R>"}
+{"error":"invalidTime","ok":false,"text":"UTC+14:00"}
+{"error":"invalidTime","ok":false,"text":"GMT-14:00"}
+{"error":"invalidTime","ok":false,"text":"UTC+5:45"}
+{"error":"invalidTime","ok":false,"text":"GMT-3:30"}
+{"error":"invalidTime","ok":false,"text":"UTC+00"}
+{"error":"invalidTime","ok":false,"text":"UTC-0:00"}
+{"error":"invalidTime","ok":false,"text":"GMT+18:00"}
+{"error":"invalidTime","ok":false,"text":"GMT--1"}
+{"error":"invalidTime","ok":false,"text":"UTC+18:01"}
+{"error":"invalidTime","ok":false,"text":"GMT+19"}
+{"error":"invalidTime","ok":false,"text":"UTC+5:60"}
+{"error":"invalidTime","ok":false,"text":"UTC+5:5"}
+{"error":"invalidTime","ok":false,"text":"UTC+05:00:00"}
+{"error":"invalidTime","ok":false,"text":"GMT+0530"}
+{"error":"invalidTime","ok":false,"text":"１４:００"}
+{"error":"invalidOffset","ok":false,"text":"9am UTC🦀"}
+{"error":"invalidDate","ok":false,"text":"2024-🦀-01 9am"}
+{"error":"invalidTime","ok":false,"text":"42"}
+{"error":"invalidTime","ok":false,"text":"0"}
+{"error":"invalidTime","ok":false,"text":"3600"}
+{"error":"invalidTime","ok":false,"text":"1e400"}
+{"error":"invalidTime","ok":false,"text":"-1e400"}
+{"error":"invalidTime","ok":false,"text":":[0]}}"}
+{"error":"invalidDate","ok":false,"text":"1970-01-01T00:00:00+00:00"}
+{"error":"invalidDate","ok":false,"text":"1969-12-31T23:59:59+00:00"}
+{"error":"invalidTime","ok":false,"text":"-1"}
+{"error":"invalidDate","ok":false,"text":"1970-01-01T14:00:00+14:00"}
+{"error":"invalidTime","ok":false,"text":"1969-12-31T10:00:00-14:00"}
+{"error":"invalidDate","ok":false,"text":"1970-01-01T05:45:00+05:45"}
+{"error":"invalidTime","ok":false,"text":"1969-12-31T20:30:00-03:30"}
+{"error":"invalidDate","ok":false,"text":"1970-01-01T00:09:00+00:09"}
+{"error":"invalidTime","ok":false,"text":"1969-12-31T23:51:00-00:09"}
+{"error":"invalidDate","ok":false,"text":"1940-01-01T03:07:00+03:07"}
+{"error":"invalidTime","ok":false,"text":"-946771200"}
+{"error":"invalidDate","ok":false,"text":"1970-01-01T03:06:00+03:06"}
+{"error":"invalidDate","ok":false,"text":"1970-01-01T00:01:00+00:01"}
+{"error":"ambiguousZone","ok":false,"text":"9am CST"}

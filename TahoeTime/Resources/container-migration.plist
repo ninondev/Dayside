@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- 沙盒容器首次创建时,系统按这份清单把用户主目录里的旧文件搬进容器(Apple:
+	     Migrating your app's files to its App Sandbox container)。只搬一样:旧版 TahoeTime
+	     (1.1.0 dmg,未沙盒,bundle id com.tahoetime.TahoeTime)写在 ~/Library/Preferences 的偏好。
+	     搬进来后它落在本容器的 Library/Preferences 下,Store.legacySources 里的
+	     UserDefaults(suiteName: "com.tahoetime.TahoeTime") 就能读到,再由 migrateIfNeeded
+	     一次性迁进 App Group 域。只在容器首次创建时生效;已装过本 app 的机器不会重跑。 -->
+	<key>Move</key>
+	<array>
+		<string>${Library}/Preferences/com.tahoetime.TahoeTime.plist</string>
+	</array>
+</dict>
+</plist>

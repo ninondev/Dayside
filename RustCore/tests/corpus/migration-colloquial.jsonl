@@ -1,0 +1,324 @@
+{"kind": "positive", "text": "下周二东京下午三点", "day": {"weekday": 2, "next": true}, "hour": 15, "minute": 0, "place": "东京"}
+{"kind": "positive", "text": "明天上午十点北京", "day": {"offset": 1}, "hour": 10, "minute": 0, "place": "北京"}
+{"kind": "positive", "text": "后天晚上八点半", "day": {"offset": 2}, "hour": 20, "minute": 30, "place": null}
+{"kind": "positive", "text": "周五凌晨一点纽约", "day": {"weekday": 5, "next": false}, "hour": 1, "minute": 0, "place": "纽约"}
+{"kind": "positive", "text": "今天中午12点", "day": {"offset": 0}, "hour": 12, "minute": 0, "place": null}
+{"kind": "positive", "text": "中午一点伦敦", "day": null, "hour": 13, "minute": 0, "place": "伦敦"}
+{"kind": "positive", "text": "下午3:30 悉尼", "day": null, "hour": 15, "minute": 30, "place": "悉尼"}
+{"kind": "positive", "text": "晚上十一点四十五分", "day": null, "hour": 23, "minute": 45, "place": null}
+{"kind": "positive", "text": "上午9点一刻 巴黎时间", "day": null, "hour": 9, "minute": 15, "place": "巴黎"}
+{"kind": "positive", "text": "三天后早上七点", "day": {"offset": 3}, "hour": 7, "minute": 0, "place": null}
+{"kind": "positive", "text": "这周日下午两点 洛杉矶", "day": {"weekday": 7, "next": false}, "hour": 14, "minute": 0, "place": "洛杉矶"}
+{"kind": "positive", "text": "星期三 14点 新加坡", "day": {"weekday": 3, "next": false}, "hour": 14, "minute": 0, "place": "新加坡"}
+{"kind": "positive", "text": "下星期一 09:00 首尔", "day": {"weekday": 1, "next": true}, "hour": 9, "minute": 0, "place": "首尔"}
+{"kind": "positive", "text": "半夜十二点", "day": null, "hour": 0, "minute": 0, "place": null}
+{"kind": "positive", "text": "凌晨两点半", "day": null, "hour": 2, "minute": 30, "place": null}
+{"kind": "positive", "text": "深夜两点", "day": null, "hour": 2, "minute": 0, "place": null}
+{"kind": "positive", "text": "夜里两点半", "day": null, "hour": 2, "minute": 30, "place": null}
+{"kind": "positive", "text": "深夜十一点", "day": null, "hour": 23, "minute": 0, "place": null}
+{"kind": "positive", "text": "夜里十点", "day": null, "hour": 22, "minute": 0, "place": null}
+{"kind": "positive", "text": "晚上12点", "day": null, "hour": 0, "minute": 0, "place": null}
+{"kind": "positive", "text": "下週二東京下午三點", "day": {"weekday": 2, "next": true}, "hour": 15, "minute": 0, "place": "東京"}
+{"kind": "positive", "text": "禮拜六早上6點 溫哥華", "day": {"weekday": 6, "next": false}, "hour": 6, "minute": 0, "place": "溫哥華"}
+{"kind": "positive", "text": "後天晚上八點半", "day": {"offset": 2}, "hour": 20, "minute": 30, "place": null}
+{"kind": "positive", "text": "凌晨兩點半", "day": null, "hour": 2, "minute": 30, "place": null}
+{"kind": "positive", "text": "三天後早上七點", "day": {"offset": 3}, "hour": 7, "minute": 0, "place": null}
+{"kind": "positive", "text": "今天之內 台北", "day": {"offset": 0}, "hour": 23, "minute": 59, "place": "台北"}
+{"kind": "positive", "text": "這週日下午兩點 洛杉磯", "day": {"weekday": 7, "next": false}, "hour": 14, "minute": 0, "place": "洛杉磯"}
+{"kind": "positive", "text": "明晚8点 东京", "day": {"offset": 1}, "hour": 20, "minute": 0, "place": "东京"}
+{"kind": "positive", "text": "在东京的明天下午三点", "day": {"offset": 1}, "hour": 15, "minute": 0, "place": "东京"}
+{"kind": "positive", "text": "东京时间明天下午三点钟", "day": {"offset": 1}, "hour": 15, "minute": 0, "place": "东京"}
+{"kind": "positive", "text": "礼拜六早上6点 温哥华", "day": {"weekday": 6, "next": false}, "hour": 6, "minute": 0, "place": "温哥华"}
+{"kind": "positive", "text": "下午四点三刻", "day": null, "hour": 16, "minute": 45, "place": null}
+{"kind": "positive", "text": "明天下班前 东京", "day": {"offset": 1}, "hour": 18, "minute": 0, "place": "东京"}
+{"kind": "positive", "text": "周五中午前 伦敦", "day": {"weekday": 5, "next": false}, "hour": 12, "minute": 0, "place": "伦敦"}
+{"kind": "positive", "text": "今天之内 上海", "day": {"offset": 0}, "hour": 23, "minute": 59, "place": "上海"}
+{"kind": "positive", "text": "下周三午夜前", "day": {"weekday": 3, "next": true}, "hour": 23, "minute": 59, "place": null}
+{"kind": "positive", "text": "tomorrow 9am london", "day": {"offset": 1}, "hour": 9, "minute": 0, "place": "london"}
+{"kind": "positive", "text": "3 in the afternoon", "day": null, "hour": 15, "minute": 0, "place": null}
+{"kind": "positive", "text": "half past 3 tomorrow", "day": {"offset": 1}, "hour": 3, "minute": 30, "place": null}
+{"kind": "positive", "text": "quarter to 5 pm", "day": null, "hour": 16, "minute": 45, "place": null}
+{"kind": "positive", "text": "midnight tonight", "day": {"offset": 0}, "hour": 0, "minute": 0, "place": null}
+{"kind": "positive", "text": "in 2 days at 10:15", "day": {"offset": 2}, "hour": 10, "minute": 15, "place": null}
+{"kind": "positive", "text": "tomorrow at 7 in the morning", "day": {"offset": 1}, "hour": 7, "minute": 0, "place": null}
+{"kind": "positive", "text": "Tomorrow 12pm", "day": {"offset": 1}, "hour": 12, "minute": 0, "place": null}
+{"kind": "positive", "text": "12am tomorrow", "day": {"offset": 1}, "hour": 0, "minute": 0, "place": null}
+{"kind": "positive", "text": "EOD Friday in Tokyo", "day": {"weekday": 5, "next": false}, "hour": 18, "minute": 0, "place": "tokyo"}
+{"kind": "positive", "text": "cob today New York", "day": {"offset": 0}, "hour": 18, "minute": 0, "place": "new york"}
+{"kind": "positive", "text": "by midnight tonight", "day": {"offset": 0}, "hour": 23, "minute": 59, "place": null}
+{"kind": "positive", "text": "morgen 15 Uhr in Berlin", "day": {"offset": 1}, "hour": 15, "minute": 0, "place": "berlin"}
+{"kind": "positive", "text": "heute 9:30 Wien", "day": {"offset": 0}, "hour": 9, "minute": 30, "place": "wien"}
+{"kind": "positive", "text": "übermorgen um 9 Uhr 30", "day": {"offset": 2}, "hour": 9, "minute": 30, "place": null}
+{"kind": "positive", "text": "gestern 23 Uhr", "day": {"offset": -1}, "hour": 23, "minute": 0, "place": null}
+{"kind": "positive", "text": "Di 15 Uhr", "day": {"weekday": 2, "next": false}, "hour": 15, "minute": 0, "place": null}
+{"kind": "positive", "text": "Montag 8 Uhr morgens", "day": {"weekday": 1, "next": false}, "hour": 8, "minute": 0, "place": null}
+{"kind": "positive", "text": "morgen nachmittags um 3 Uhr", "day": {"offset": 1}, "hour": 15, "minute": 0, "place": null}
+{"kind": "positive", "text": "heute abend um 8 Uhr", "day": {"offset": 0}, "hour": 20, "minute": 0, "place": null}
+{"kind": "positive", "text": "morgen früh 7 Uhr München", "day": {"offset": 1}, "hour": 7, "minute": 0, "place": "münchen"}
+{"kind": "positive", "text": "Sonntag mittags", "day": {"weekday": 7, "next": false}, "hour": 12, "minute": 0, "place": null}
+{"kind": "positive", "text": "übermorgen Mitternacht", "day": {"offset": 2}, "hour": 0, "minute": 0, "place": null}
+{"kind": "positive", "text": "Donnerstag nachts um 23 Uhr", "day": {"weekday": 4, "next": false}, "hour": 23, "minute": 0, "place": null}
+{"kind": "positive", "text": "heute Morgen 9 Uhr", "day": {"offset": 0}, "hour": 9, "minute": 0, "place": null}
+{"kind": "positive", "text": "15.30 Uhr Berlin", "day": null, "hour": 15, "minute": 30, "place": "berlin"}
+{"kind": "positive", "text": "Freitag bis Feierabend", "day": {"weekday": 5, "next": false}, "hour": 18, "minute": 0, "place": null}
+{"kind": "positive", "text": "hoy a las 9:30", "day": {"offset": 0}, "hour": 9, "minute": 30, "place": null}
+{"kind": "positive", "text": "pasado mañana a las 10 de la mañana", "day": {"offset": 2}, "hour": 10, "minute": 0, "place": null}
+{"kind": "positive", "text": "ayer a las 23:00", "day": {"offset": -1}, "hour": 23, "minute": 0, "place": null}
+{"kind": "positive", "text": "este viernes a las 18 horas", "day": {"weekday": 5, "next": false}, "hour": 18, "minute": 0, "place": null}
+{"kind": "positive", "text": "miercoles 14:00", "day": {"weekday": 3, "next": false}, "hour": 14, "minute": 0, "place": null}
+{"kind": "positive", "text": "sáb 11 de la mañana Lima", "day": {"weekday": 6, "next": false}, "hour": 11, "minute": 0, "place": "lima"}
+{"kind": "positive", "text": "a las 3 de la madrugada", "day": null, "hour": 3, "minute": 0, "place": null}
+{"kind": "positive", "text": "domingo al mediodía", "day": {"weekday": 7, "next": false}, "hour": 12, "minute": 0, "place": null}
+{"kind": "positive", "text": "mañana por la noche a las 8", "day": {"offset": 1}, "hour": 20, "minute": 0, "place": null}
+{"kind": "positive", "text": "la próxima semana el jueves a las 9", "day": {"weekday": 4, "next": true}, "hour": 9, "minute": 0, "place": null}
+{"kind": "positive", "text": "anteayer a las 7 de la mañana", "day": {"offset": -2}, "hour": 7, "minute": 0, "place": null}
+{"kind": "positive", "text": "el viernes al final del día", "day": {"weekday": 5, "next": false}, "hour": 18, "minute": 0, "place": null}
+{"kind": "positive", "text": "hoy antes de medianoche", "day": {"offset": 0}, "hour": 23, "minute": 59, "place": null}
+{"kind": "positive", "text": "demain 15h à Paris", "day": {"offset": 1}, "hour": 15, "minute": 0, "place": "paris"}
+{"kind": "positive", "text": "aujourd'hui à 9 h 30", "day": {"offset": 0}, "hour": 9, "minute": 30, "place": null}
+{"kind": "positive", "text": "après-demain à 10 heures", "day": {"offset": 2}, "hour": 10, "minute": 0, "place": null}
+{"kind": "positive", "text": "hier à 23:00", "day": {"offset": -1}, "hour": 23, "minute": 0, "place": null}
+{"kind": "positive", "text": "ce jeudi à 18h30 Lyon", "day": {"weekday": 4, "next": false}, "hour": 18, "minute": 30, "place": "lyon"}
+{"kind": "positive", "text": "vendredi 14:00 Genève", "day": {"weekday": 5, "next": false}, "hour": 14, "minute": 0, "place": "genève"}
+{"kind": "positive", "text": "mer 9h", "day": {"weekday": 3, "next": false}, "hour": 9, "minute": 0, "place": null}
+{"kind": "positive", "text": "3 heures de l'après-midi", "day": null, "hour": 15, "minute": 0, "place": null}
+{"kind": "positive", "text": "demain matin à 7h", "day": {"offset": 1}, "hour": 7, "minute": 0, "place": null}
+{"kind": "positive", "text": "samedi à midi", "day": {"weekday": 6, "next": false}, "hour": 12, "minute": 0, "place": null}
+{"kind": "positive", "text": "dimanche à minuit", "day": {"weekday": 7, "next": false}, "hour": 0, "minute": 0, "place": null}
+{"kind": "positive", "text": "ce soir à 20h à Montréal", "day": null, "hour": 20, "minute": 0, "place": "montréal"}
+{"kind": "positive", "text": "demain en fin de journée", "day": {"offset": 1}, "hour": 18, "minute": 0, "place": null}
+{"kind": "positive", "text": "ce soir avant minuit", "day": null, "hour": 23, "minute": 59, "place": null}
+{"kind": "positive", "text": "hoje às 9:30", "day": {"offset": 0}, "hour": 9, "minute": 30, "place": null}
+{"kind": "positive", "text": "amanhã às 15h", "day": {"offset": 1}, "hour": 15, "minute": 0, "place": null}
+{"kind": "positive", "text": "depois de amanhã às 10 horas", "day": {"offset": 2}, "hour": 10, "minute": 0, "place": null}
+{"kind": "positive", "text": "ontem às 23:00", "day": {"offset": -1}, "hour": 23, "minute": 0, "place": null}
+{"kind": "positive", "text": "quarta-feira 14:00", "day": {"weekday": 3, "next": false}, "hour": 14, "minute": 0, "place": null}
+{"kind": "positive", "text": "3 da madrugada", "day": null, "hour": 3, "minute": 0, "place": null}
+{"kind": "positive", "text": "domingo ao meio-dia", "day": {"weekday": 7, "next": false}, "hour": 12, "minute": 0, "place": null}
+{"kind": "positive", "text": "amanhã de manhã às 8", "day": {"offset": 1}, "hour": 8, "minute": 0, "place": null}
+{"kind": "positive", "text": "hoje à noite às 20h", "day": {"offset": 0}, "hour": 20, "minute": 0, "place": null}
+{"kind": "positive", "text": "terca que vem às 15h", "day": {"weekday": 2, "next": true}, "hour": 15, "minute": 0, "place": null}
+{"kind": "positive", "text": "anteontem às 7 da manhã", "day": {"offset": -2}, "hour": 7, "minute": 0, "place": null}
+{"kind": "positive", "text": "amanhã antes do meio-dia", "day": {"offset": 1}, "hour": 12, "minute": 0, "place": null}
+{"kind": "positive", "text": "hoje antes da meia-noite", "day": {"offset": 0}, "hour": 23, "minute": 59, "place": null}
+{"kind": "positive", "text": "сегодня в 9:30", "day": {"offset": 0}, "hour": 9, "minute": 30, "place": null}
+{"kind": "positive", "text": "послезавтра в 10 часов", "day": {"offset": 2}, "hour": 10, "minute": 0, "place": null}
+{"kind": "positive", "text": "вчера в 23:00", "day": {"offset": -1}, "hour": 23, "minute": 0, "place": null}
+{"kind": "positive", "text": "позавчера в 7 утра", "day": {"offset": -2}, "hour": 7, "minute": 0, "place": null}
+{"kind": "positive", "text": "вт 15:00", "day": {"weekday": 2, "next": false}, "hour": 15, "minute": 0, "place": null}
+{"kind": "positive", "text": "в понедельник в 8 утра", "day": {"weekday": 1, "next": false}, "hour": 8, "minute": 0, "place": null}
+{"kind": "positive", "text": "завтра в 3 часа дня", "day": {"offset": 1}, "hour": 15, "minute": 0, "place": null}
+{"kind": "positive", "text": "в 2 часа ночи", "day": null, "hour": 2, "minute": 0, "place": null}
+{"kind": "positive", "text": "в субботу в полдень", "day": {"weekday": 6, "next": false}, "hour": 12, "minute": 0, "place": null}
+{"kind": "positive", "text": "в воскресенье в полночь", "day": {"weekday": 7, "next": false}, "hour": 0, "minute": 0, "place": null}
+{"kind": "positive", "text": "завтра вечером в 20:00", "day": {"offset": 1}, "hour": 20, "minute": 0, "place": null}
+{"kind": "positive", "text": "в 15 часов по Москве", "day": null, "hour": 15, "minute": 0, "place": "москве"}
+{"kind": "positive", "text": "в пятницу до конца дня", "day": {"weekday": 5, "next": false}, "hour": 18, "minute": 0, "place": null}
+{"kind": "positive", "text": "сегодня до полуночи", "day": {"offset": 0}, "hour": 23, "minute": 59, "place": null}
+{"kind": "positive", "text": "午後3時", "day": null, "hour": 15, "minute": 0, "place": null}
+{"kind": "positive", "text": "15時半", "day": null, "hour": 15, "minute": 30, "place": null}
+{"kind": "positive", "text": "来週日曜日の午前10時", "day": {"weekday": 7, "next": true}, "hour": 10, "minute": 0, "place": null}
+{"kind": "positive", "text": "来週火曜10時", "day": {"weekday": 2, "next": true}, "hour": 10, "minute": 0, "place": null}
+{"kind": "positive", "text": "明後日の朝7時", "day": {"offset": 2}, "hour": 7, "minute": 0, "place": null}
+{"kind": "positive", "text": "一昨日の夜11時", "day": {"offset": -2}, "hour": 23, "minute": 0, "place": null}
+{"kind": "positive", "text": "今晩8時に大阪で", "day": {"offset": 0}, "hour": 20, "minute": 0, "place": "大阪"}
+{"kind": "positive", "text": "明朝9時", "day": {"offset": 1}, "hour": 9, "minute": 0, "place": null}
+{"kind": "positive", "text": "３時半", "day": null, "hour": 3, "minute": 30, "place": null}
+{"kind": "positive", "text": "三時半", "day": null, "hour": 3, "minute": 30, "place": null}
+{"kind": "positive", "text": "午後３時30分", "day": null, "hour": 15, "minute": 30, "place": null}
+{"kind": "positive", "text": "明日の正午にパリで", "day": {"offset": 1}, "hour": 12, "minute": 0, "place": "パリ"}
+{"kind": "positive", "text": "昨日の深夜2時", "day": {"offset": -1}, "hour": 2, "minute": 0, "place": null}
+{"kind": "positive", "text": "3日後の午前10時", "day": {"offset": 3}, "hour": 10, "minute": 0, "place": null}
+{"kind": "positive", "text": "東京は午後3時ちょうど", "day": null, "hour": 15, "minute": 0, "place": "東京"}
+{"kind": "positive", "text": "夜の8時にソウルで", "day": null, "hour": 20, "minute": 0, "place": "ソウル"}
+{"kind": "positive", "text": "午後0時 東京", "day": null, "hour": 12, "minute": 0, "place": "東京"}
+{"kind": "positive", "text": "明日15時 台北", "day": {"offset": 1}, "hour": 15, "minute": 0, "place": "台北"}
+{"kind": "positive", "text": "今日中に東京", "day": {"offset": 0}, "hour": 23, "minute": 59, "place": "東京"}
+{"kind": "positive", "text": "金曜日の終業までに", "day": {"weekday": 5, "next": false}, "hour": 18, "minute": 0, "place": null}
+{"kind": "positive", "text": "明日中に", "day": {"offset": 1}, "hour": 23, "minute": 59, "place": null}
+{"kind": "positive", "text": "日付が変わるまでに", "day": null, "hour": 23, "minute": 59, "place": null}
+{"kind": "positive", "text": "오후 3시", "day": null, "hour": 15, "minute": 0, "place": null}
+{"kind": "positive", "text": "3시 반", "day": null, "hour": 3, "minute": 30, "place": null}
+{"kind": "positive", "text": "다음주 화요일 10시", "day": {"weekday": 2, "next": true}, "hour": 10, "minute": 0, "place": null}
+{"kind": "positive", "text": "모레 아침 7시", "day": {"offset": 2}, "hour": 7, "minute": 0, "place": null}
+{"kind": "positive", "text": "그저께 밤 11시", "day": {"offset": -2}, "hour": 23, "minute": 0, "place": null}
+{"kind": "positive", "text": "어제 밤 2시", "day": {"offset": -1}, "hour": 2, "minute": 0, "place": null}
+{"kind": "positive", "text": "오늘 저녁 8시에 부산에서", "day": {"offset": 0}, "hour": 20, "minute": 0, "place": "부산"}
+{"kind": "positive", "text": "내일 새벽 2시 반", "day": {"offset": 1}, "hour": 2, "minute": 30, "place": null}
+{"kind": "positive", "text": "３시 반", "day": null, "hour": 3, "minute": 30, "place": null}
+{"kind": "positive", "text": "오전 ９시 １５분 뉴욕", "day": null, "hour": 9, "minute": 15, "place": "뉴욕"}
+{"kind": "positive", "text": "오후3시30분", "day": null, "hour": 15, "minute": 30, "place": null}
+{"kind": "positive", "text": "내일 정오에 파리에서", "day": {"offset": 1}, "hour": 12, "minute": 0, "place": "파리"}
+{"kind": "positive", "text": "3일 후 오전 10시", "day": {"offset": 3}, "hour": 10, "minute": 0, "place": null}
+{"kind": "positive", "text": "도쿄는 오후 3시 정각", "day": null, "hour": 15, "minute": 0, "place": "도쿄"}
+{"kind": "positive", "text": "밤 8시에 서울에서", "day": null, "hour": 20, "minute": 0, "place": "서울"}
+{"kind": "positive", "text": "오늘밤 11시", "day": {"offset": 0}, "hour": 23, "minute": 0, "place": null}
+{"kind": "positive", "text": "15:30 부산", "day": null, "hour": 15, "minute": 30, "place": "부산"}
+{"kind": "positive", "text": "낮 12시 베이징", "day": null, "hour": 12, "minute": 0, "place": "베이징"}
+{"kind": "positive", "text": "오늘 중으로 도쿄", "day": {"offset": 0}, "hour": 23, "minute": 59, "place": "도쿄"}
+{"kind": "positive", "text": "금요일 퇴근 전까지", "day": {"weekday": 5, "next": false}, "hour": 18, "minute": 0, "place": null}
+{"kind": "positive", "text": "내일 중으로", "day": {"offset": 1}, "hour": 23, "minute": 59, "place": null}
+{"kind": "positive", "text": "자정까지 서울", "day": null, "hour": 23, "minute": 59, "place": "서울"}
+{"kind": "relative", "text": "3小时后", "minutes": 180, "place": null, "lang": "zh"}
+{"kind": "relative", "text": "三个小时后东京", "minutes": 180, "place": "东京", "lang": "zh"}
+{"kind": "relative", "text": "两小时后 纽约", "minutes": 120, "place": "纽约", "lang": "zh"}
+{"kind": "relative", "text": "半小时后", "minutes": 30, "place": null, "lang": "zh"}
+{"kind": "relative", "text": "一个半小时后伦敦", "minutes": 90, "place": "伦敦", "lang": "zh"}
+{"kind": "relative", "text": "3小时半后", "minutes": 210, "place": null, "lang": "zh"}
+{"kind": "relative", "text": "2小时30分钟后", "minutes": 150, "place": null, "lang": "zh"}
+{"kind": "relative", "text": "45分钟之后 巴黎", "minutes": 45, "place": "巴黎", "lang": "zh"}
+{"kind": "relative", "text": "十分钟前", "minutes": -10, "place": null, "lang": "zh"}
+{"kind": "relative", "text": "二十分钟以后", "minutes": 20, "place": null, "lang": "zh"}
+{"kind": "relative", "text": "兩個小時後 台北", "minutes": 120, "place": "台北", "lang": "zh"}
+{"kind": "relative", "text": "90分钟后", "minutes": 90, "place": null, "lang": "zh"}
+{"kind": "relative", "text": "3時間後", "minutes": 180, "place": null, "lang": "ja"}
+{"kind": "relative", "text": "1時間半後 東京", "minutes": 90, "place": "東京", "lang": "ja"}
+{"kind": "relative", "text": "30分後", "minutes": 30, "place": null, "lang": "ja"}
+{"kind": "relative", "text": "2時間15分後", "minutes": 135, "place": null, "lang": "ja"}
+{"kind": "relative", "text": "40分前", "minutes": -40, "place": null, "lang": "ja"}
+{"kind": "relative", "text": "3시간 후", "minutes": 180, "place": null, "lang": "ko"}
+{"kind": "relative", "text": "한 시간 후 서울", "minutes": 60, "place": "서울", "lang": "ko"}
+{"kind": "relative", "text": "30분 뒤", "minutes": 30, "place": null, "lang": "ko"}
+{"kind": "relative", "text": "2시간 30분 후", "minutes": 150, "place": null, "lang": "ko"}
+{"kind": "relative", "text": "1시간 반 후", "minutes": 90, "place": null, "lang": "ko"}
+{"kind": "relative", "text": "20분 전", "minutes": -20, "place": null, "lang": "ko"}
+{"kind": "relative", "text": "in 2 hours", "minutes": 120, "place": null, "lang": "en"}
+{"kind": "relative", "text": "in 45 minutes tokyo", "minutes": 45, "place": "tokyo", "lang": "en"}
+{"kind": "relative", "text": "tokyo in 2 hours", "minutes": 120, "place": "tokyo", "lang": "en"}
+{"kind": "relative", "text": "in 2 hours in tokyo", "minutes": 120, "place": "tokyo", "lang": "en"}
+{"kind": "relative", "text": "2 hours from now", "minutes": 120, "place": null, "lang": "en"}
+{"kind": "relative", "text": "three hours later london", "minutes": 180, "place": "london", "lang": "en"}
+{"kind": "relative", "text": "in half an hour", "minutes": 30, "place": null, "lang": "en"}
+{"kind": "relative", "text": "in an hour", "minutes": 60, "place": null, "lang": "en"}
+{"kind": "relative", "text": "in 2 hours 30 minutes", "minutes": 150, "place": null, "lang": "en"}
+{"kind": "relative", "text": "in 2h30", "minutes": 150, "place": null, "lang": "en"}
+{"kind": "relative", "text": "in 90 min", "minutes": 90, "place": null, "lang": "en"}
+{"kind": "relative", "text": "20 minutes ago", "minutes": -20, "place": null, "lang": "en"}
+{"kind": "relative", "text": "in 2 hrs new york", "minutes": 120, "place": "new york", "lang": "en"}
+{"kind": "relative", "text": "in 2 stunden", "minutes": 120, "place": null, "lang": "de"}
+{"kind": "relative", "text": "in 45 minuten berlin", "minutes": 45, "place": "berlin", "lang": "de"}
+{"kind": "relative", "text": "in einer halben stunde", "minutes": 30, "place": null, "lang": "de"}
+{"kind": "relative", "text": "in einer stunde", "minutes": 60, "place": null, "lang": "de"}
+{"kind": "relative", "text": "vor 20 minuten", "minutes": -20, "place": null, "lang": "de"}
+{"kind": "relative", "text": "in 2 stunden 30 minuten wien", "minutes": 150, "place": "wien", "lang": "de"}
+{"kind": "relative", "text": "en 2 horas", "minutes": 120, "place": null, "lang": "es"}
+{"kind": "relative", "text": "dentro de 45 minutos madrid", "minutes": 45, "place": "madrid", "lang": "es"}
+{"kind": "relative", "text": "en media hora", "minutes": 30, "place": null, "lang": "es"}
+{"kind": "relative", "text": "en una hora", "minutes": 60, "place": null, "lang": "es"}
+{"kind": "relative", "text": "hace 10 minutos", "minutes": -10, "place": null, "lang": "es"}
+{"kind": "relative", "text": "en 2 horas y 30 minutos", "minutes": 150, "place": null, "lang": "es"}
+{"kind": "relative", "text": "dans 2 heures", "minutes": 120, "place": null, "lang": "fr"}
+{"kind": "relative", "text": "dans 45 minutes paris", "minutes": 45, "place": "paris", "lang": "fr"}
+{"kind": "relative", "text": "dans une demi-heure", "minutes": 30, "place": null, "lang": "fr"}
+{"kind": "relative", "text": "dans une heure", "minutes": 60, "place": null, "lang": "fr"}
+{"kind": "relative", "text": "il y a 10 minutes", "minutes": -10, "place": null, "lang": "fr"}
+{"kind": "relative", "text": "dans 2h30 lyon", "minutes": 150, "place": "lyon", "lang": "fr"}
+{"kind": "relative", "text": "em 2 horas", "minutes": 120, "place": null, "lang": "pt"}
+{"kind": "relative", "text": "daqui a 45 minutos lisboa", "minutes": 45, "place": "lisboa", "lang": "pt"}
+{"kind": "relative", "text": "em meia hora", "minutes": 30, "place": null, "lang": "pt"}
+{"kind": "relative", "text": "em uma hora", "minutes": 60, "place": null, "lang": "pt"}
+{"kind": "relative", "text": "há 10 minutos", "minutes": -10, "place": null, "lang": "pt"}
+{"kind": "relative", "text": "em 2 horas e 30 minutos", "minutes": 150, "place": null, "lang": "pt"}
+{"kind": "relative", "text": "2 hours and 20 minutes ago", "minutes": -140, "place": null, "lang": "en"}
+{"kind": "relative", "text": "через 2 часа", "minutes": 120, "place": null, "lang": "ru"}
+{"kind": "relative", "text": "через 45 минут москва", "minutes": 45, "place": "москва", "lang": "ru"}
+{"kind": "relative", "text": "через полчаса", "minutes": 30, "place": null, "lang": "ru"}
+{"kind": "relative", "text": "через час", "minutes": 60, "place": null, "lang": "ru"}
+{"kind": "relative", "text": "через минуту", "minutes": 1, "place": null, "lang": "ru"}
+{"kind": "relative", "text": "20 минут назад", "minutes": -20, "place": null, "lang": "ru"}
+{"kind": "relative", "text": "через 2 часа 30 минут", "minutes": 150, "place": null, "lang": "ru"}
+{"kind": "negative", "text": "明日東京で", "code": "noTime"}
+{"kind": "negative", "text": "来週の火曜日", "code": "noTime"}
+{"kind": "negative", "text": "午後", "code": "noTime"}
+{"kind": "negative", "text": "今週中", "code": "noTime"}
+{"kind": "negative", "text": "後で", "code": "noTime"}
+{"kind": "negative", "text": "午前15時", "code": "invalidTime"}
+{"kind": "negative", "text": "午後3時の午前", "code": "invalidTime"}
+{"kind": "negative", "text": "今晩午前3時", "code": "invalidTime"}
+{"kind": "negative", "text": "25時", "code": "invalidTime"}
+{"kind": "negative", "text": "3時70分", "code": "invalidTime"}
+{"kind": "negative", "text": "今日中に15時", "code": "invalidTime"}
+{"kind": "negative", "text": "明天の午後3時", "code": "unrecognized"}
+{"kind": "negative", "text": "明日の午後3時 서울", "code": "unrecognized"}
+{"kind": "negative", "text": "내일 도쿄에서", "code": "noTime"}
+{"kind": "negative", "text": "다음 주 화요일", "code": "noTime"}
+{"kind": "negative", "text": "오후", "code": "noTime"}
+{"kind": "negative", "text": "이번 주 중", "code": "noTime"}
+{"kind": "negative", "text": "나중에", "code": "noTime"}
+{"kind": "negative", "text": "오후 세 시", "code": "noTime"}
+{"kind": "negative", "text": "오전 15시", "code": "invalidTime"}
+{"kind": "negative", "text": "오후 3시 새벽", "code": "invalidTime"}
+{"kind": "negative", "text": "25시", "code": "invalidTime"}
+{"kind": "negative", "text": "3시 70분", "code": "invalidTime"}
+{"kind": "negative", "text": "오늘 중으로 15시", "code": "invalidTime"}
+{"kind": "negative", "text": "내일 午後 3시", "code": "unrecognized"}
+{"kind": "negative", "text": "明天 오후 3시", "code": "unrecognized"}
+{"kind": "negative", "text": "내일の오후 3시", "code": "unrecognized"}
+{"kind": "negative", "text": "morgen in Berlin", "code": "noTime"}
+{"kind": "negative", "text": "nächsten Dienstag", "code": "noTime"}
+{"kind": "negative", "text": "nachmittags", "code": "noTime"}
+{"kind": "negative", "text": "25 Uhr", "code": "invalidTime"}
+{"kind": "negative", "text": "15 Uhr morgens", "code": "invalidTime"}
+{"kind": "negative", "text": "heute 9:70 Uhr", "code": "invalidTime"}
+{"kind": "negative", "text": "morgen a las 3", "code": "unrecognized"}
+{"kind": "negative", "text": "morgen vor Mittag um 15 Uhr", "code": "invalidTime"}
+{"kind": "negative", "text": "bis Ende der Woche", "code": "noTime"}
+{"kind": "negative", "text": "mañana en Madrid", "code": "noTime"}
+{"kind": "negative", "text": "el próximo martes", "code": "noTime"}
+{"kind": "negative", "text": "de la tarde", "code": "noTime"}
+{"kind": "negative", "text": "3 de la mañana de la tarde", "code": "invalidTime"}
+{"kind": "negative", "text": "a las 25:00", "code": "invalidTime"}
+{"kind": "negative", "text": "a las 15:00 de la mañana", "code": "invalidTime"}
+{"kind": "negative", "text": "mañana 15 Uhr en Berlín", "code": "unrecognized"}
+{"kind": "negative", "text": "mañana antes del mediodía a las 15:00", "code": "invalidTime"}
+{"kind": "negative", "text": "al final de la semana", "code": "noTime"}
+{"kind": "negative", "text": "demain à Paris", "code": "noTime"}
+{"kind": "negative", "text": "mardi prochain", "code": "noTime"}
+{"kind": "negative", "text": "de l'après-midi", "code": "noTime"}
+{"kind": "negative", "text": "3 heures du matin de l'après-midi", "code": "invalidTime"}
+{"kind": "negative", "text": "à 15 h du matin", "code": "invalidTime"}
+{"kind": "negative", "text": "à 99 heures", "code": "invalidTime"}
+{"kind": "negative", "text": "mardi próximo à 15 h", "code": "unrecognized"}
+{"kind": "negative", "text": "demain avant midi à 15h", "code": "invalidTime"}
+{"kind": "negative", "text": "en fin de semaine", "code": "noTime"}
+{"kind": "negative", "text": "amanhã em São Paulo", "code": "noTime"}
+{"kind": "negative", "text": "terça que vem", "code": "noTime"}
+{"kind": "negative", "text": "da tarde", "code": "noTime"}
+{"kind": "negative", "text": "3 da manhã da tarde", "code": "invalidTime"}
+{"kind": "negative", "text": "às 15h da manhã", "code": "invalidTime"}
+{"kind": "negative", "text": "às 15:99", "code": "invalidTime"}
+{"kind": "negative", "text": "hoje às 15 Uhr", "code": "unrecognized"}
+{"kind": "negative", "text": "amanhã antes do meio-dia às 15h", "code": "invalidTime"}
+{"kind": "negative", "text": "no fim da semana", "code": "noTime"}
+{"kind": "negative", "text": "завтра в Москве", "code": "noTime"}
+{"kind": "negative", "text": "вечером", "code": "noTime"}
+{"kind": "negative", "text": "половина третьего", "code": "noTime"}
+{"kind": "negative", "text": "утром в 20:00", "code": "invalidTime"}
+{"kind": "negative", "text": "в 25:00", "code": "invalidTime"}
+{"kind": "negative", "text": "в 15:99", "code": "invalidTime"}
+{"kind": "negative", "text": "завтра 15 Uhr в Берлине", "code": "unrecognized"}
+{"kind": "negative", "text": "завтра до полудня в 15:00", "code": "invalidTime"}
+{"kind": "negative", "text": "до конца недели", "code": "noTime"}
+{"kind": "negative", "text": "下班前三点", "code": "invalidTime"}
+{"kind": "negative", "text": "夜里五点", "code": "invalidTime"}
+{"kind": "negative", "text": "今天之内 15:00", "code": "invalidTime"}
+{"kind": "negative", "text": "上午下班前", "code": "invalidTime"}
+{"kind": "negative", "text": "本周内", "code": "noTime"}
+{"kind": "negative", "text": "eod at 15:00", "code": "invalidTime"}
+{"kind": "negative", "text": "by noon at 3pm", "code": "invalidTime"}
+{"kind": "negative", "text": "end of week", "code": "noTime"}
+{"kind": "negative", "text": "by end of week", "code": "noTime"}
+{"kind": "negative", "text": "", "code": "noTime"}
+{"kind": "negative", "text": "   ", "code": "noTime"}
+{"kind": "negative", "text": "东京", "code": "noTime"}
+{"kind": "negative", "text": "tokyo", "code": "noTime"}
+{"kind": "negative", "text": "明天", "code": "noTime"}
+{"kind": "negative", "text": "next tuesday", "code": "noTime"}
+{"kind": "negative", "text": "下午", "code": "noTime"}
+{"kind": "negative", "text": "in the afternoon", "code": "noTime"}
+{"kind": "negative", "text": "25点", "code": "noTime"}
+{"kind": "negative", "text": "13pm", "code": "noTime"}
+{"kind": "negative", "text": "7:60", "code": "noTime"}
+{"kind": "negative", "text": "晚上", "code": "noTime"}
+{"kind": "negative", "text": "hello world", "code": "noTime"}
+{"kind": "negative", "text": "三天后", "code": "noTime"}

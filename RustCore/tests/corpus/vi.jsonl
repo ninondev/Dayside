@@ -1,0 +1,220 @@
+{"lang":"vi","kind":"positive","tags":["clock","clock-preposition","place-preposition"],"text":"Cuộc họp dự án bắt đầu lúc 10:30 ở Tokyo.","expect":["- 10:30 Asia/Tokyo > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","clock-preposition"],"text":"Mình rảnh lúc 16:00, gọi cho nhau nhé?","expect":["- 16:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock"],"text":"Buổi hòa nhạc bắt đầu 20:45.","expect":["- 20:45 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","period"],"text":"Ca sáng của tôi bắt đầu 7:05.","expect":["- 07:05 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","clock-preposition"],"text":"Tiệm bánh đóng cửa lúc 20:30.","expect":["- 20:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","clock-preposition"],"text":"Xe đưa đón học sinh khởi hành lúc 8:25.","expect":["- 08:25 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","clock-preposition","place-preposition"],"text":"Chúng ta ăn tối lúc 21:15 ở Băng Cốc.","expect":["- 21:15 Asia/Bangkok > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","clock-preposition"],"text":"Lịch khám bác sĩ là lúc 16:20.","expect":["- 16:20 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock"],"text":"Lớp vẽ bắt đầu 17:35.","expect":["- 17:35 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","clock-preposition"],"text":"Chị tôi tan làm lúc 18:10.","expect":["- 18:10 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","clock-preposition","place-preposition"],"text":"Đài phun nước bật lúc 22:30 ở Viên.","expect":["- 22:30 Europe/Vienna > -"]}
+{"lang":"vi","kind":"positive","tags":["clock"],"text":"Khách sạn phục vụ bữa sáng tới 10:30.","expect":["- 10:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","place-preposition"],"text":"Phà cập cảng Seoul lúc 14:05.","expect":["- 14:05 Asia/Seoul > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","clock-preposition"],"text":"Mình có hẹn tiệm cắt tóc lúc 11:40.","expect":["- 11:40 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","period"],"text":"Bản tin chiều phát 19:10.","expect":["- 19:10 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock"],"text":"Máy chấm công ghi ca bắt đầu 06:00:15.","expect":["- 06:00:15 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","period"],"text":"Chuyến tàu đêm rời ga 5:50 sáng.","expect":["- 05:50 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","clock-preposition"],"text":"Chợ mở cửa lúc 6:00.","expect":["- 06:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","period","clock-preposition"],"text":"Phòng khám trực đêm mở lúc 18:00.","expect":["- 18:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","clock-preposition","place-preposition"],"text":"Máy bay hạ cánh lúc 23:40 ở Dubai.","expect":["- 23:40 Asia/Dubai > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","clock-preposition"],"text":"Xe khách khởi hành lúc 13:20.","expect":["- 13:20 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","glued-hour"],"text":"Buổi ra mắt bắt đầu 14h.","expect":["- 14:00 - > -"],"note":"Vietnamese glued hour 14h / 9h30 follows coverage.md row 2; tests.rs only has the French and Spanish equivalents."}
+{"lang":"vi","kind":"positive","tags":["clock","glued-hour"],"text":"Hẹn 9h30 ở sảnh khách sạn.","expect":["- 09:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","glued-hour"],"text":"Tiệm sách đóng 21h.","expect":["- 21:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["range","glued-hour"],"text":"Bán đồ ăn từ 8h đến 17h.","expect":["- 08:00–17:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","glued-hour","period"],"text":"Tàu rời cảng 6h sáng.","expect":["- 06:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","half","period","clock-preposition","clock-suffix"],"text":"Phim chiếu lúc 8 giờ rưỡi tối.","expect":["- 20:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","half","period"],"text":"Con gái thức dậy 5 giờ rưỡi sáng.","expect":["- 05:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","half","clock-suffix"],"text":"Lớp phụ đạo bắt đầu 9 giờ rưỡi.","expect":["- 09:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","half","number-words","clock-preposition","clock-suffix"],"text":"Họp tổ lúc bảy giờ rưỡi.","expect":["- 07:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","half","period"],"text":"Xe trung chuyển đến 4 giờ rưỡi chiều.","expect":["- 16:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","minutes-before-after"],"text":"Tàu rời ga 9 giờ kém 10.","expect":["- 08:50 - > -"],"note":"«9 giờ kém 10» = ten to nine (08:50); tests.rs has no Vietnamese minutes-word-order example."}
+{"lang":"vi","kind":"positive","tags":["clock","minutes-before-after","place-preposition"],"text":"Mình có mặt ở sân bay 6 giờ kém 15.","expect":["- 05:45 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","minutes-before-after"],"text":"Suất chiếu cuối bắt đầu 8 giờ kém 5.","expect":["- 07:55 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","number-words","period","clock-suffix"],"text":"Bữa tối gia đình là bảy giờ tối.","expect":["- 19:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","number-words","period","clock-preposition","clock-suffix"],"text":"Xe buýt đầu tiên chạy lúc sáu giờ sáng.","expect":["- 06:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","number-words","period"],"text":"Con tôi đi ngủ lúc chín giờ tối.","expect":["- 21:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","number-words","period","clock-preposition","clock-suffix"],"text":"Mình tập thể dục lúc năm giờ chiều.","expect":["- 17:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["clock","number-words","period"],"text":"Nghỉ giải lao ba giờ chiều.","expect":["- 15:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["noon-midnight","clock"],"text":"Xe đưa đón đến lúc trưa.","expect":["- 12:00 - > -"],"note":"«lúc trưa» is the ordinary Vietnamese noon idiom (compare 'al mediodía')."}
+{"lang":"vi","kind":"positive","tags":["noon-midnight","clock"],"text":"Tàu rời bến lúc nửa đêm.","expect":["- 00:00+1 - > -"]}
+{"lang":"vi","kind":"positive","tags":["noon-midnight","clock","weekday"],"text":"Chủ nhật chúng ta gặp nhau lúc trưa.","expect":["w7 12:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["noon-midnight","clock","weekday"],"text":"Câu lạc bộ đóng cửa thứ bảy lúc nửa đêm.","expect":["w6 00:00+1 - > -"]}
+{"lang":"vi","kind":"positive","tags":["noon-midnight","clock","clock-suffix"],"text":"Bếp mở lại lúc 12 giờ trưa.","expect":["- 12:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["relative-day","clock","clock-preposition"],"text":"Hôm nay cả nhà ăn tối lúc 19:30.","expect":["+0d 19:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["relative-day","clock","period"],"text":"Mai thợ sửa ống nước đến lúc 8:00 sáng.","expect":["+1d 08:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["relative-day","clock"],"text":"Ngày mốt tôi có buổi khám lúc 11:00.","expect":["+2d 11:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["relative-day","clock"],"text":"Hôm qua tôi xem bóng đá lúc 20:00.","expect":["-1d 20:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["relative-day","clock","period"],"text":"Tối nay cả nhà xem pháo hoa lúc 20:30.","expect":["+0d 20:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["relative-day","clock"],"text":"Ngày mai họp phụ huynh lúc 16:00.","expect":["+1d 16:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["relative-day","clock"],"text":"Chị gái về nhà hôm nay lúc 20:30.","expect":["+0d 20:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["relative-day","clock","period"],"text":"Mai kiểm tra sức khỏe lúc 7:45 sáng.","expect":["+1d 07:45 - > -"]}
+{"lang":"vi","kind":"positive","tags":["weekday","clock"],"text":"Thứ tư tuần này có họp phòng lúc 14:00.","expect":["w3 14:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["weekday","clock","period"],"text":"Thứ bảy đá bóng lúc 6:30 chiều.","expect":["w6 18:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["weekday","clock"],"text":"Thứ hai tuần sau khai giảng lúc 8:00.","expect":["w1:next 08:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["weekday","clock","place-preposition"],"text":"Thứ sáu 18:30 mình ra đón bạn ở Bruxelles.","expect":["w5 18:30 Europe/Brussels > -"]}
+{"lang":"vi","kind":"positive","tags":["weekday","clock","period"],"text":"Chủ nhật cả nhà đi ăn cưới lúc 11:30 trưa.","expect":["w7 11:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["weekday","clock","clock-preposition"],"text":"Thứ năm có lịch khám răng lúc 9:00.","expect":["w4 09:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["weekday","clock","clock-preposition"],"text":"Thứ ba lúc 10:00 họp với khách hàng được không?","expect":["w2 10:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["weekday","clock"],"text":"Lớp nhạc diễn ra chủ nhật lúc 15:00.","expect":["w7 15:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["month-name","clock","period"],"text":"Lễ khai giảng năm học là ngày 5 tháng 9 lúc 7:30 sáng.","expect":["09-05 07:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["month-name","clock"],"text":"Lễ hội mở cổng ngày 15 tháng 8 lúc 21:00.","expect":["08-15 21:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["month-name","date-only"],"text":"Chuyến du lịch cả họ khởi hành ngày 12 tháng 6 năm 2027.","expect":["2027-06-12 - - > -"]}
+{"lang":"vi","kind":"positive","tags":["month-name","date-only"],"text":"25 tháng 12 2026 cửa hàng nghỉ cả ngày.","expect":["2026-12-25 - - > -"]}
+{"lang":"vi","kind":"positive","tags":["month-name","clock","period"],"text":"Chuyến bay về nước cất cánh ngày 20 tháng 11 lúc 6:00 sáng.","expect":["11-20 06:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["numeric-date","clock"],"region":"VN","text":"Giao sofa vào 15/10/2026 lúc 9:00.","expect":["2026-10-15 09:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["numeric-date","clock"],"region":"VN","text":"Hạn trả bài là 20/10 lúc 18:00.","expect":["10-20 18:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["numeric-date","clock"],"region":"VN","text":"Họp dân phố 3/10/2026 lúc 10:00.","expect":["2026-10-03 10:00 - > - ?1"]}
+{"lang":"vi","kind":"positive","tags":["numeric-date","date-only"],"region":"VN","text":"Hội sách mở 05/11.","expect":["11-05 - - > - ?1"]}
+{"lang":"vi","kind":"positive","tags":["numeric-date","date-only"],"region":"VN","text":"27/11 hồ bơi đóng cửa.","expect":["11-27 - - > -"]}
+{"lang":"vi","kind":"positive","tags":["numeric-date","date-only","period"],"region":"VN","text":"Chuyển nhà 08/12/2026 buổi sáng.","expect":["2026-12-08 - - > - ?1"]}
+{"lang":"vi","kind":"positive","tags":["relative-time"],"text":"Trong 2 giờ nữa tôi có cuộc gọi video.","expect":["- +120m - > -"]}
+{"lang":"vi","kind":"positive","tags":["relative-time"],"text":"Kết quả thi ra sau 30 phút nữa.","expect":["- +30m - > -"],"note":"«30 phút nữa» is the ordinary Vietnamese 'in 30 minutes'; tests.rs has no Vietnamese relative-time example."}
+{"lang":"vi","kind":"positive","tags":["relative-time"],"text":"Thợ sửa khóa đến trong 3 giờ.","expect":["- +180m - > -"]}
+{"lang":"vi","kind":"positive","tags":["relative-time"],"text":"Bưu tá ghé 10 phút trước.","expect":["- -10m - > -"]}
+{"lang":"vi","kind":"positive","tags":["relative-time"],"text":"Trong 2 giờ 30 phút nữa cửa hàng đóng.","expect":["- +150m - > -"]}
+{"lang":"vi","kind":"positive","tags":["relative-time"],"text":"Trong 1 giờ rưỡi nhà hàng mở cửa.","expect":["- +90m - > -"],"note":"«1 giờ rưỡi» after «trong» is a 90-minute duration, not the clock 01:30."}
+{"lang":"vi","kind":"positive","tags":["relative-time"],"text":"Máy giặt xong sau 45 phút nữa.","expect":["- +45m - > -"]}
+{"lang":"vi","kind":"positive","tags":["range","clock"],"text":"Cửa hàng mở từ 8:00 đến 21:30.","expect":["- 08:00–21:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["range","clock"],"text":"Giờ nghỉ trưa từ 13:00 đến 14:00.","expect":["- 13:00–14:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["range","clock","zone-word"],"text":"Phát trực tiếp từ 18:00 đến 20:00 giờ Băng Cốc.","expect":["- 18:00–20:00 Asia/Bangkok > -"]}
+{"lang":"vi","kind":"positive","tags":["range","clock","place-preposition"],"text":"Buổi chiếu ngoài trời từ 17:00 đến 19:00 ở Milano.","expect":["- 17:00–19:00 Europe/Rome > -"]}
+{"lang":"vi","kind":"positive","tags":["range","clock","period"],"text":"Phục vụ bữa tối từ 20:30 đến 23:00.","expect":["- 20:30–23:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["range","clock"],"text":"Trực ca đêm từ 22:00 đến 6:00.","expect":["- 22:00–06:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["range","clock","abbreviation"],"text":"Lớp học thêm từ 15:00 đến 17:00 CET.","expect":["- 15:00–17:00 +60 > -"]}
+{"lang":"vi","kind":"positive","tags":["duration","clock"],"text":"Cuộc họp lúc 15:00, kéo dài 2 giờ.","expect":["- 15:00 d120 - > -"],"note":"«kéo dài» / «thời lượng» is the ordinary Vietnamese duration cue (compare 'durée')."}
+{"lang":"vi","kind":"positive","tags":["duration","clock","weekday"],"text":"Lớp của thứ bảy là lúc 10:00, thời lượng 90 phút.","expect":["w6 10:00 d90 - > -"]}
+{"lang":"vi","kind":"positive","tags":["duration","clock"],"text":"Webinar lúc 19:00, kéo dài 1 giờ, hỏi đáp ở cuối.","expect":["- 19:00 d60 - > -"]}
+{"lang":"vi","kind":"positive","tags":["duration","clock"],"text":"Buổi chụp hình lúc 11:30, kéo dài 2 giờ.","expect":["- 11:30 d120 - > -"]}
+{"lang":"vi","kind":"positive","tags":["zone-word","clock"],"text":"Lớp học trực tuyến bắt đầu 19:00 giờ Tokyo.","expect":["- 19:00 Asia/Tokyo > -"],"note":"«giờ X» / «theo giờ X» is the Vietnamese zone-word pattern (compare 'hora de Madrid')."}
+{"lang":"vi","kind":"positive","tags":["zone-word","clock"],"text":"Hẹn 9:00 theo giờ Hà Nội nhé.","expect":["- 09:00 Asia/Bangkok > -"]}
+{"lang":"vi","kind":"positive","tags":["zone-word","clock"],"text":"Sàn giao dịch mở 8:00 giờ Singapore.","expect":["- 08:00 Asia/Singapore > -"]}
+{"lang":"vi","kind":"positive","tags":["zone-word","clock"],"text":"Nhóm hỗ trợ trực lúc 9:30 giờ Mumbai.","expect":["- 09:30 Asia/Kolkata > -"]}
+{"lang":"vi","kind":"positive","tags":["abbreviation","clock"],"text":"Hẹn lúc 15:00 CET.","expect":["- 15:00 +60 > -"]}
+{"lang":"vi","kind":"positive","tags":["abbreviation","clock"],"text":"Chuyến bay cất cánh 10:30 CEST.","expect":["- 10:30 +120 > -"]}
+{"lang":"vi","kind":"positive","tags":["abbreviation","clock"],"text":"Họp standup lúc 9:00 PT.","expect":["- 09:00 America/Los_Angeles > -"]}
+{"lang":"vi","kind":"positive","tags":["abbreviation","clock"],"text":"Chốt ca lúc 21:00 GMT.","expect":["- 21:00 +0 > -"]}
+{"lang":"vi","kind":"positive","tags":["abbreviation","clock"],"text":"Lớp trực tuyến bắt đầu 18:00 ET.","expect":["- 18:00 America/New_York > -"]}
+{"lang":"vi","kind":"positive","tags":["abbreviation","clock"],"text":"Họp hội đồng quản trị 17:00 PST.","expect":["- 17:00 -480 > -"]}
+{"lang":"vi","kind":"positive","tags":["abbreviation","clock"],"text":"Pháo hoa năm mới bắn lúc 12:00 JST.","expect":["- 12:00 +540 > -"]}
+{"lang":"vi","kind":"positive","tags":["target-question","clock"],"text":"Hà Nội 9:00, Tokyo mấy giờ?","expect":["- 09:00 Asia/Bangkok > Asia/Tokyo"],"note":"«X mấy giờ?» is the Vietnamese target question (compare 东京几点 / what time in X)."}
+{"lang":"vi","kind":"positive","tags":["target-question","relative-day","clock"],"text":"Buổi hội thảo là mai lúc 17:00. Ở Los Angeles mấy giờ?","expect":["+1d 17:00 - > America/Los_Angeles"]}
+{"lang":"vi","kind":"positive","tags":["target-question","clock","period"],"text":"Sydney 9:00 sáng thì Thành phố New York mấy giờ?","expect":["- 09:00 Australia/Sydney > America/New_York"]}
+{"lang":"vi","kind":"positive","tags":["target-question","clock","zone-word"],"text":"Phiên mở 9:30 giờ Paris; Chicago mấy giờ?","expect":["- 09:30 Europe/Paris > America/Chicago"]}
+{"lang":"vi","kind":"positive","tags":["target-question","weekday","zone-word"],"text":"Buổi nói chuyện thứ năm 15:00 giờ Hà Nội. Tokyo mấy giờ?","expect":["w4 15:00 Asia/Bangkok > Asia/Tokyo"]}
+{"lang":"vi","kind":"positive","tags":["arrow-or-local","clock"],"text":"9:00 Hà Nội → Tokyo.","expect":["- 09:00 Asia/Bangkok > Asia/Tokyo"]}
+{"lang":"vi","kind":"positive","tags":["arrow-or-local","clock"],"text":"Mở cửa: 10:00 giờ Moskva -> Hà Nội.","expect":["- 10:00 Europe/Moscow > Asia/Bangkok"]}
+{"lang":"vi","kind":"positive","tags":["arrow-or-local","abbreviation"],"text":"Phiên: 15:00 CET → Băng Cốc.","expect":["- 15:00 +60 > Asia/Bangkok"]}
+{"lang":"vi","kind":"positive","tags":["arrow-or-local","clock"],"text":"Tôi gửi báo cáo lúc 15:00 giờ của tôi.","expect":["- 15:00 local > -"],"note":"«giờ của tôi» = my time → local."}
+{"lang":"vi","kind":"positive","tags":["arrow-or-local","clock"],"text":"Trực tiếp 10:00 giờ Tokyo — tính theo giờ của tôi.","expect":["- 10:00 Asia/Tokyo > local"]}
+{"lang":"vi","kind":"positive","tags":["arrow-or-local","clock"],"text":"Cuộc họp lúc 15:00 ở đây.","expect":["- 15:00 local > -"]}
+{"lang":"vi","kind":"positive","tags":["place-preposition","clock","clock-preposition"],"text":"Gặp ở Hà Nội lúc 12:00.","expect":["- 12:00 Asia/Bangkok > -"]}
+{"lang":"vi","kind":"positive","tags":["place-preposition","clock"],"text":"Văn phòng đối tác ở Warszawa làm việc tới 18:00.","expect":["- 18:00 ~Europe/Warsaw > -"]}
+{"lang":"vi","kind":"positive","tags":["place-preposition","clock","clock-preposition"],"text":"Chuyến bay xuất phát từ Roma lúc 15:00.","expect":["- 15:00 Europe/Rome > -"]}
+{"lang":"vi","kind":"positive","tags":["place-preposition","clock"],"text":"Đêm nhạc tại Ōsaka mở cửa 18:00.","expect":["- 18:00 ~Asia/Tokyo > -"]}
+{"lang":"vi","kind":"positive","tags":["place-preposition","clock"],"text":"Hội chợ xuân ở Thượng Hải khai mạc 10:00.","expect":["- 10:00 ~Asia/Shanghai > -"]}
+{"lang":"vi","kind":"positive","tags":["place-preposition","clock","clock-preposition"],"text":"Lớp nấu ăn ở München bắt đầu lúc 16:00.","expect":["- 16:00 ~Europe/Berlin > -"]}
+{"lang":"vi","kind":"positive","tags":["deadline-idiom"],"text":"Gửi bản thảo trước cuối ngày nhé.","expect":["- ~17:00 - > -"],"note":"«trước cuối ngày» / «trước giờ tan làm» is the Vietnamese EOD idiom → ~17:00."}
+{"lang":"vi","kind":"positive","tags":["deadline-idiom","weekday"],"text":"Mình muốn báo cáo vào thứ sáu trước giờ tan làm.","expect":["w5 ~17:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["deadline-idiom","relative-day"],"text":"Hạn đăng ký hôm nay đóng trước nửa đêm.","expect":["+0d ~23:59 - > -"]}
+{"lang":"vi","kind":"positive","tags":["deadline-idiom"],"text":"Gửi ảnh cho mình trước nửa đêm nha.","expect":["- ~23:59 - > -"]}
+{"lang":"vi","kind":"positive","tags":["approximately","clock"],"text":"Tôi đến phòng thu khoảng 15:30.","expect":["- 15:30 - > -"]}
+{"lang":"vi","kind":"positive","tags":["approximately","clock"],"text":"Buổi nói chuyện bắt đầu khoảng 18:00.","expect":["- 18:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["approximately","clock","period","number-words"],"text":"Gặp nhau chừng 9 giờ tối ở quán.","expect":["- 21:00 - > -"]}
+{"lang":"vi","kind":"positive","tags":["approximately","clock","period"],"text":"Xe buýt chạy khoảng 7:40 sáng.","expect":["- 07:40 - > -"]}
+{"lang":"vi","kind":"positive","tags":["country","clock","clock-preposition","clock-suffix"],"text":"Bộ phận hỗ trợ mở lúc 9 giờ ở Nhật Bản.","expect":["- 09:00 Asia/Tokyo > -"]}
+{"lang":"vi","kind":"positive","tags":["country","clock"],"text":"Nhà máy trả lời lúc 9:00 ở Trung Quốc.","expect":["- 09:00 Asia/Shanghai > -"]}
+{"lang":"vi","kind":"positive","tags":["country","clock"],"text":"Phòng chat mở 20:00 ở Philippines.","expect":["- 20:00 Asia/Manila > -"]}
+{"lang":"vi","kind":"positive","tags":["country","clock"],"text":"Nhà cung cấp chốt đơn 18:00 ở Hoa Kỳ.","expect":["- 18:00 ?country29 > -"]}
+{"lang":"vi","kind":"positive","tags":["unix-iso"],"region":"VN","text":"Việc triển khai tự động chạy 2026-10-01T17:00:00Z.","expect":["- @1790874000 - > -"]}
+{"lang":"vi","kind":"positive","tags":["unix-iso"],"region":"VN","text":"Nhật ký ghi thời điểm khởi động: 2026-09-15T09:00:00+02:00.","expect":["- @1789455600 - > -"]}
+{"lang":"vi","kind":"positive","tags":["unix-iso"],"text":"Sự kiện được lưu với unix 1700000000.","expect":["- @1700000000 - > -"]}
+{"lang":"vi","kind":"positive","tags":["unix-iso"],"text":"Sự kiện ghi theo dạng 1727179200000 ms.","expect":["- @1727179200 - > -"]}
+{"lang":"vi","kind":"positive","tags":["unix-iso"],"region":"VN","text":"Bản sao lưu tạo lúc 2026-11-03T03:00:00Z.","expect":["- @1793674800 - > -"]}
+{"lang":"vi","kind":"positive","tags":["date-only","month-name"],"text":"Hội nghị diễn ra ngày 3 tháng 10.","expect":["10-03 - - > -"]}
+{"lang":"vi","kind":"positive","tags":["date-only","month-name"],"text":"Hạn nộp hồ sơ là ngày 30 tháng 9.","expect":["09-30 - - > -"]}
+{"lang":"vi","kind":"positive","tags":["date-only","month-name"],"text":"Ngày thay đổi giờ là 25 tháng 10 năm 2026.","expect":["2026-10-25 - - > -"]}
+{"lang":"vi","kind":"positive","tags":["date-inherited","month-name","clock","place-preposition"],"text":"3 tháng 10: 9:00 ở Hà Nội, 14:00 ở Tokyo.","expect":["10-03 09:00 Asia/Bangkok > -","10-03^ 14:00 Asia/Tokyo > -"]}
+{"lang":"vi","kind":"positive","tags":["date-inherited","month-name","clock","abbreviation"],"text":"Chương trình ngày 15 tháng 11:\n9:30 CET khai mạc\n11:00 CET giải lao.","expect":["11-15 09:30 +60 > -","11-15^ 11:00 +60 > -"]}
+{"lang":"vi","kind":"positive","tags":["date-inherited","month-name","clock","abbreviation"],"text":"Ngày làm việc 3 tháng 3: 10:00 GMT chào đón, 16:00 GMT bế mạc.","expect":["03-03 10:00 +0 > -","03-03^ 16:00 +0 > -"]}
+{"lang":"vi","kind":"negative","tags":["clock"],"text":"Gọi hotline 1900 1234 để giữ chỗ.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["clock"],"text":"Số mới của tôi là 0912 345 678.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["dot-clock"],"text":"Vé xem phim 95.000 đồng.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["dot-clock"],"text":"Combo hai người 250.000 đồng.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["dot-clock"],"text":"Ứng dụng nâng cấp lên phiên bản 2.10.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["dot-clock"],"text":"Bản cập nhật 4.2.1 đã ra mắt.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["weekday"],"text":"Hẹn gặp thứ ba tuần sau.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["relative-day"],"text":"Mai là ngày nghỉ.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["numeric-date"],"region":"VN","text":"Thêm 1/2 thìa muối.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["half"],"text":"Công thức cần nửa chén gạo.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["range"],"text":"Lớp học dành cho trẻ từ 6 đến 12 tuổi.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["range"],"text":"Vé từ 50 đến 100 nghìn một người.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["unix-iso"],"text":"Đơn hàng 4501238 đã đi sáng nay.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["unix-iso"],"text":"Mã bưu chính là 8834 1205 5590 2103 77.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["numeric-date"],"text":"Văn phòng của tôi ở tầng 3, số 24.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["clock","period"],"text":"Tuyến 27 sáng nay chở kín khách.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["weekday"],"text":"Mở cửa từ thứ hai đến thứ sáu.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["clock"],"text":"Đội nhà thắng 3-1.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["clock"],"text":"Tỉ số chung cuộc 2-0.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["clock"],"text":"Tập 9 của bộ phim.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["clock"],"text":"Phòng học số 3 ở tầng một.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["clock"],"text":"Giày cỡ 42.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["relative-time"],"text":"Chuyến bay bị hoãn 30 phút.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["duration"],"text":"Vở kịch dài 3 giờ.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["relative-time"],"text":"Tôi có 40 phút rảnh.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["period"],"text":"Ông ấy luôn đến trễ.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["period"],"text":"Buổi chiều hôm đó mưa.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["relative-day"],"text":"Chúc ngủ ngon, mai gặp lại.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["period"],"text":"Hẹn buổi tối nhé.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["period"],"text":"Tôi làm theo ca đêm.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["half"],"text":"Mỗi nửa giờ lại có một chuyến phà.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["relative-day"],"text":"Tuần sau tôi đi công tác.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["month-name"],"text":"Gặp nhau vào cuối tháng.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["relative-time"],"text":"Tôi gọi lại ngay sau đây.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["clock"],"text":"Mẫu XL-500 đã hết hàng.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["clock"],"text":"Giảm 20 % chỉ hôm nay.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["clock"],"text":"Tuyến 15 đang sửa đường.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["clock"],"text":"Sân ga số 3, tuyến số 6.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["half"],"text":"Mua nửa lít sữa giúp mình.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["clock"],"text":"Chuông reo đúng giờ.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["quarter"],"text":"Một phần tư người tham dự là sinh viên.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["weekday-in-brackets","weekday"],"text":"Buổi giới thiệu (thứ bảy) đã bị hoãn.","expect":[]}
+{"lang":"vi","kind":"negative","tags":["number-words"],"text":"Một năm có mười hai tháng.","expect":[]}
+{"lang":"vi","kind":"positive","tags":["noon-word","clock"],"text":"Giữa trưa oi ả.","expect":["- 12:00 - > -"]}
+{"lang":"vi","kind":"negative","tags":["clock"],"text":"Nhiệt độ xuống 3 độ dưới không.","expect":[]}
+{"lang":"vi","kind":"hostile","tags":["clock","abbreviation"],"text":"Họp lúc 25:61 UTC.","expect":["- - +0 > - #invalidTime:25:61"]}
+{"lang":"vi","kind":"hostile","tags":["clock"],"text":"Bộ đếm nhảy số 12:60.","expect":["- - - > - #invalidTime:12:60"]}
+{"lang":"vi","kind":"hostile","tags":["clock"],"text":"Đếm ngược kết thúc 23:59:60.","expect":["- - - > - #invalidTime:23:59:60"]}
+{"lang":"vi","kind":"hostile","tags":["clock"],"text":"Máy chủ khởi động lại lúc 24:00.","expect":["- 00:00+1 - > -"],"note":"24:00 reads as next-day 00:00, per the approved relaxation in migration-converter-known-gaps.txt."}
+{"lang":"vi","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"VN","text":"Sự kiện định sẵn ngày 2026-02-30 lúc 09:00 UTC.","expect":["- 09:00 +0 > - #invalidDate:2026-02-30"]}
+{"lang":"vi","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"VN","text":"Báo cáo ghi ngày 2026-13-40 09:00 UTC.","expect":["- 09:00 +0 > - #invalidDate:2026-13-40"]}
+{"lang":"vi","kind":"hostile","tags":["clock","period","abbreviation"],"text":"Liên kết hết hạn 9 giờ sáng UTC+99.","expect":["- 09:00 - > - #invalidOffset:UTC+99"]}
+{"lang":"vi","kind":"hostile","tags":["range","clock"],"text":"Đường cao tốc làm việc từ 22:00 đến 01:00.","expect":["- 22:00–01:00 - > -"]}
+{"lang":"vi","kind":"hostile","tags":["range","clock"],"text":"Ca đêm kéo từ 23:30 đến 4:00.","expect":["- 23:30–04:00 - > -"]}
+{"lang":"vi","kind":"hostile","tags":["range","clock"],"text":"Chuyến tàu 15:00–10:00 không tồn tại.","expect":["- 15:00–10:00 - > -"]}
+{"lang":"vi","kind":"hostile","tags":["clock"],"text":"Gặp １４:００ nhé.","expect":["- 14:00 - > -"]}
+{"lang":"vi","kind":"hostile","tags":["clock","place-preposition"],"text":"Đặt bàn ０９:００, Ōsaka.","expect":["- 09:00 Asia/Tokyo > -"]}
+{"lang":"vi","kind":"hostile","tags":["clock"],"text":"Giờ đóng cửa １５：３０.","expect":["- 15:30 - > -"]}
+{"lang":"vi","kind":"hostile","tags":["clock","abbreviation"],"text":"Gặp lúc 9 UTC 🦀 nhé.","expect":["- 09:00 +0 > -"]}
+{"lang":"vi","kind":"hostile","tags":["clock"],"text":"🎉 Diễu hành bắt đầu 12:00.","expect":["- 12:00 - > -"]}
+{"lang":"vi","kind":"hostile","tags":["numeric-date","clock","place-preposition"],"region":"VN","text":"Ok team, workshop vào 15/10 lúc 10:00 ở Munich.","expect":["10-15 10:00 Europe/Berlin > -"]}
+{"lang":"vi","kind":"hostile","tags":["relative-day","clock","place-preposition"],"text":"Let's do the call mai lúc 10:00 in Berlin, ok?","expect":["+1d 10:00 Europe/Berlin > -"]}
+{"lang":"vi","kind":"hostile","tags":["clock"],"text":"Gặp nhau 15:00 ở Pari.","expect":["- 15:00 Europe/Paris > -"]}
+{"lang":"vi","kind":"hostile","tags":["clock"],"text":"Kết nối với Luân Đơm lúc 11:00.","expect":["- 11:00 - > -"]}
+{"lang":"vi","kind":"hostile","tags":["relative-day","clock"],"text":"HỌP MAI 15:00 TOKYO.","expect":["+1d 15:00 Asia/Tokyo > -"]}
+{"lang":"vi","kind":"hostile","tags":["weekday","clock","place-preposition"],"text":"LỚP HỌC THỨ BẢY LÚC 10:30 Ở BARCELONA.","expect":["w6 10:30 Europe/Madrid > -"]}
+{"lang":"vi","kind":"hostile","tags":["clock"],"text":"Gọi lúc 15:00 et nhé.","expect":["- 15:00 - > -"],"note":"lowercase two-letter abbreviations are not zones, per the approved change for '9am et'."}
+{"lang":"vi","kind":"hostile","tags":["unix-iso"],"region":"VN","text":"Nhật ký bắt đầu từ 1969-12-31T23:59:59+00:00.","expect":["- @-1 - > -"],"note":"negative Unix instant, per the approved in-text ISO reading of 1969-12-31T23:59:59+00:00."}
+{"lang":"vi","kind":"hostile","tags":["clock"],"text":"   15:00   Tokyo   ","expect":["- 15:00 Asia/Tokyo > -"]}
+{"lang":"vi","kind":"hostile","tags":["relative-day","clock"],"text":"Cuộc hẹn\tthợ\tmai\t9:30\tHà Nội.","expect":["+1d 09:30 Asia/Bangkok > -"]}
+{"lang":"vi","kind":"hostile","tags":["clock","place-preposition"],"text":"Gặp lúc\u200b 15:00 ở\u200b Luân Đôn.","expect":["- 15:00 Europe/London > -"]}
+{"lang":"vi","kind":"hostile","tags":["relative-day","clock"],"text":"Tóm tắt buổi họp: Chúng ta đã thống nhất phương án kết nối hai văn phòng, chia sẻ báo cáo hằng tuần và tổng hợp ý kiến khách hàng trước khi chốt lộ trình triển khai. Chúng ta đã thống nhất phương án kết nối hai văn phòng, chia sẻ báo cáo hằng tuần và tổng hợp ý kiến khách hàng trước khi chốt lộ trình triển khai. Chúng ta đã thống nhất phương án kết nối hai văn phòng, chia sẻ báo cáo hằng tuần và tổng hợp ý kiến khách hàng trước khi chốt lộ trình triển khai. Chúng ta đã thống nhất phương án kết nối hai văn phòng, chia sẻ báo cáo hằng tuần và tổng hợp ý kiến khách hàng trước khi chốt lộ trình triển khai. Chúng ta đã thống nhất phương án kết nối hai văn phòng, chia sẻ báo cáo hằng tuần và tổng hợp ý kiến khách hàng trước khi chốt lộ trình triển khai. Chúng ta đã thống nhất phương án kết nối hai văn phòng, chia sẻ báo cáo hằng tuần và tổng hợp ý kiến khách hàng trước khi chốt lộ trình triển khai. Chúng ta đã thống nhất phương án kết nối hai văn phòng, chia sẻ báo cáo hằng tuần và tổng hợp ý kiến khách hàng trước khi chốt lộ trình triển khai. Chúng ta đã thống nhất phương án kết nối hai văn phòng, chia sẻ báo cáo hằng tuần và tổng hợp ý kiến khách hàng trước khi chốt lộ trình triển khai. Họp tiếp mai 9:00 Tokyo.","expect":["+1d 09:00 Asia/Tokyo > -"]}
+{"lang":"vi","kind":"hostile","tags":["clock","period"],"text":"MIX GIỜ: 9AM, 3PM VÀ 21:00.","expect":["- 09:00 - > -","- 15:00 - > -","- 21:00 - > -"]}
+{"lang":"vi","kind":"hostile","tags":["clock"],"text":"Lịch: Luân Đôn 9:00 - Ōsaka 17:00.","expect":["- 09:00 Europe/London > -","- 17:00 Asia/Tokyo > -"]}
+{"lang":"vi","kind":"hostile","tags":["clock","zone-word"],"text":"9:00 giờ Hà Nội, tức 16:00 giờ Tokyo.","expect":["- 09:00 Asia/Bangkok > -","- 16:00 Asia/Tokyo > -"]}
+{"lang":"vi","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"VN","text":"Hóa đơn hết hạn 2026-04-31 lúc 12:00 UTC.","expect":["- 12:00 +0 > - #invalidDate:2026-04-31"]}
+{"lang":"vi","kind":"hostile","tags":["clock","abbreviation"],"text":"Phiên 18:00 CET hoặc 12:00 EDT, chọn đi.","expect":["- 18:00 +60 > -","- 12:00 -240 > -"]}
+{"lang":"vi","kind":"hostile","tags":["clock"],"text":"Bảng ghi 25:00, rõ là lỗi nhập.","expect":["- - - > - #invalidTime:25:00"]}
+{"lang":"vi","kind":"hostile","tags":["clock"],"text":"Số 1547 trong bảng nghĩa là 15:47.","expect":["- 15:47 - > -"]}
+{"lang":"vi","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"VN","text":"MÁY CHỦ SỤP NGÀY 2026-06-31 LÚC 02:00 UTC.","expect":["- 02:00 +0 > - #invalidDate:2026-06-31"]}

@@ -1,0 +1,309 @@
+{
+  "sourceLanguage": "zh-Hans",
+  "strings": {
+    "NSCalendarsWriteOnlyAccessUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside将你规划好的会议加入日历。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside adds the meetings you plan to your calendar."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside將你規劃好的會議加入行事曆。"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daysideは計画した会議をカレンダーに追加します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside는 계획한 회의를 캘린더에 추가합니다."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside trägt die von dir geplanten Besprechungen in deinen Kalender ein."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside añade al calendario las reuniones que planificas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside ajoute à votre calendrier les réunions que vous planifiez."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside добавляет запланированные Вами встречи в календарь."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Dayside adiciona ao calendário as reuniões que você planeja."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikacja Dayside dodaje zaplanowane przez Ciebie spotkania do kalendarza."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside zet de vergaderingen die je plant in je agenda."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside aggiunge al calendario le riunioni che pianifichi."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside thêm các cuộc họp bạn lên kế hoạch vào lịch của bạn."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside planladığınız toplantıları takviminize ekler."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside menambahkan rapat yang Anda rencanakan ke kalender Anda."
+          }
+        }
+      }
+    },
+    "NSCalendarsFullAccessUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开启日历功能后，Dayside读取你选择的日历，用于显示议程和下一场会议。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When you enable Calendar, Dayside reads the calendars you select to show your agenda and next meeting."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開啟行事曆功能後，Dayside會讀取你選擇的行事曆，以顯示議程和下一場會議。"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カレンダー機能を有効にすると、Daysideは選択したカレンダーを読み取り、予定と次の会議を表示します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "캘린더 기능을 켜면 Dayside가 선택한 캘린더를 읽어 일정과 다음 회의를 표시합니다."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn du die Kalenderfunktion aktivierst, liest Dayside die von dir ausgewählten Kalender, um deine Agenda und die nächste Besprechung anzuzeigen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Al activar Calendario, Dayside lee los calendarios que selecciones para mostrar la agenda y la próxima reunión."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lorsque vous activez la fonction calendrier, Dayside lit les calendriers que vous sélectionnez pour afficher votre agenda et la prochaine réunion."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "После включения функции «Календарь» Dayside читает выбранные календари, чтобы показывать расписание событий и следующую встречу."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ao ativar o Calendário, o Dayside lê os calendários que você selecionar para mostrar sua agenda e a próxima reunião."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gdy włączysz funkcję Kalendarz, aplikacja Dayside odczytuje wybrane przez Ciebie kalendarze, aby pokazywać wydarzenia i następne spotkanie."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Als je de agendafunctie aanzet, leest Dayside de agenda's die je kiest om je overzicht en je volgende vergadering te tonen."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando attivi la funzione Calendario, Dayside legge i calendari che selezioni per mostrare l’agenda e la prossima riunione."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Khi bạn bật tính năng Lịch, Dayside đọc các lịch bạn chọn để hiển thị lịch trình và cuộc họp tiếp theo."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Takvim özelliğini açtığınızda Dayside, ajandanızı ve sonraki toplantınızı göstermek için seçtiğiniz takvimleri okur."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setelah fitur Kalender dinyalakan, Dayside membaca kalender yang Anda pilih untuk menampilkan agenda dan rapat berikutnya."
+          }
+        }
+      }
+    },
+    "NSContactsUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅在你选择从通讯录导入时，Dayside读取姓名以建立人物时钟，不会修改通讯录。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside reads names only when you import people from Contacts. It doesn’t change your contacts."
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "僅在你選擇從聯絡人輸入時，Dayside才會讀取姓名來建立人物時鐘，不會修改聯絡人。"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "連絡先から読み込む場合にのみ、Daysideで名前を読み取り、人ごとの時計を作成します。連絡先は変更しません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "연락처에서 가져오기를 선택할 때만 Dayside가 이름을 읽어 사람별 시계를 만듭니다. 연락처는 변경하지 않습니다."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nur wenn du Kontakte importierst, liest Dayside die Namen, um Uhren für Personen anzulegen. Deine Kontakte werden nicht verändert."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Solo cuando eliges importar personas desde Contactos, Dayside lee los nombres para crear relojes de personas. No modifica los contactos."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uniquement lorsque vous choisissez d’importer des contacts, Dayside lit leurs noms pour créer des horloges par personne. Vos contacts ne sont pas modifiés."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside читает имена для создания часов людей только при импорте из «Контактов». Приложение не изменяет контакты."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Somente quando você escolhe importar contatos, o Dayside lê os nomes para criar relógios de pessoas. Seus contatos não são alterados."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikacja Dayside odczytuje imiona i nazwiska tylko wtedy, gdy importujesz osoby z Kontaktów. Kontakty nie są zmieniane."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alleen als je ervoor kiest om uit Contacten te importeren, leest Dayside namen om klokken voor personen aan te maken. Je contacten worden niet gewijzigd."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside legge i nomi solo quando scegli di importare da Contatti, per creare gli orologi delle persone. I contatti non vengono modificati."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside chỉ đọc tên khi bạn chọn nhập từ Danh bạ, để tạo đồng hồ cho từng người. Dayside không thay đổi danh bạ của bạn."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside yalnızca Kişiler’den içe aktarmayı seçtiğinizde adları okuyarak kişi saatleri oluşturur. Kişilerinizi değiştirmez."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayside hanya membaca nama saat Anda memilih untuk mengimpor dari Kontak, guna menambahkan orang ke halaman Orang. Kontak Anda tidak diubah."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

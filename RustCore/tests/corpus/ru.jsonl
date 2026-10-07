@@ -1,0 +1,250 @@
+{"lang":"ru","kind":"positive","tags":["clock","clock-preposition"],"text":"Созвон по проекту в 10:30, не опаздывайте.","expect":["- 10:30 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","clock-preposition","place-preposition"],"text":"Встреча в 15:00 в Берлине, переговорная на третьем этаже.","expect":["- 15:00 Europe/Berlin > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","dot-clock"],"text":"Автобус в аэропорт отходит в 6.40.","expect":["- 06:40 - > -"],"note":"Dot clock per coverage.md row 2 (＋ for ru); cf. 'Treffen 15.30' / 'spotkanie jutro 15.30 Warszawa' in tests.rs."}
+{"lang":"ru","kind":"positive","tags":["clock","place-preposition"],"text":"В Лондоне у нас обед в 13:00.","expect":["- 13:00 ~Europe/London > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","place-preposition"],"text":"Экскурсия в Токио начинается в 9:00.","expect":["- 09:00 ~Asia/Tokyo > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","glued-hour","clock-suffix"],"text":"Лекция начнётся в 18ч, аудитория 201.","expect":["- 18:00 - > -"],"note":"Glued hour with ч per coverage.md row 3 (ru is ●); tests.rs has no Russian example."}
+{"lang":"ru","kind":"positive","tags":["clock","clock-suffix","period"],"text":"В 9 часов утра у меня стоматолог.","expect":["- 09:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","clock-suffix","number-words"],"text":"Зарядка в семь часов каждое утро.","expect":["- 07:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","period"],"text":"Перекличка в 8 утра во дворе школы.","expect":["- 08:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","period"],"text":"В 3 дня у меня приём у врача.","expect":["- 15:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","clock-preposition","period"],"text":"В 9 вечера позвоню бабушке.","expect":["- 21:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","period"],"text":"В 2 ночи прилетаем, встретьте в аэропорту.","expect":["- 02:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","period"],"text":"Вечером в 19:30 у нас йога.","expect":["- 19:30 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","period"],"text":"Утром в 7:45 школьный автобус.","expect":["- 07:45 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","place-preposition"],"text":"В Стамбуле стыковка в 11:20.","expect":["- 11:20 ~Europe/Istanbul > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","place-preposition"],"text":"В Варшаве пересадка в 14:05.","expect":["- 14:05 ~Europe/Warsaw > -"]}
+{"lang":"ru","kind":"positive","tags":["clock"],"text":"Смена на почте начинается в 9:15.","expect":["- 09:15 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","dot-clock"],"text":"Фонтан включают в 20.00.","expect":["- 20:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock"],"text":"Самолёт садится в 23:40, Каир.","expect":["- 23:40 Africa/Cairo > -"]}
+{"lang":"ru","kind":"positive","tags":["clock"],"text":"Курьер приедет к 18:00.","expect":["- 18:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","dot-clock"],"text":"Начало спектакля в 18.45, не задерживайтесь.","expect":["- 18:45 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","place-preposition"],"text":"В Вене оперу дают в 19:00.","expect":["- 19:00 ~Europe/Vienna > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","place-preposition","glued-hour"],"text":"В Риме ужинаем в 20ч.","expect":["- 20:00 ~Europe/Rome > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","place-preposition"],"text":"В Милане встреча в 12:00.","expect":["- 12:00 ~Europe/Rome > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","number-words","period"],"text":"Сбор в пять утра у главного входа.","expect":["- 05:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","number-words","period"],"text":"В восемь вечера начинается любимый сериал.","expect":["- 20:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","number-words","period"],"text":"В шесть вечера закрываем лагерь.","expect":["- 18:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","number-words"],"text":"Книжный клуб собирается в одиннадцать.","expect":["- 11:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","number-words"],"text":"Автобус в семь, не прозевай.","expect":["- 07:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","number-words","period"],"text":"Репетиция в четыре дня.","expect":["- 16:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","half","number-words"],"text":"Тренировка в полшестого, не забудь бутсы.","expect":["- 05:30 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","half","number-words"],"text":"Встреча в полдевятого у кофемашины.","expect":["- 08:30 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","half","number-words","period"],"text":"Ужин в половине восьмого вечера.","expect":["- 19:30 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","half","number-words"],"text":"Дети возвращаются в полседьмого.","expect":["- 06:30 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","quarter","number-words"],"text":"Уже четверть девятого!","expect":["- 08:15 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","quarter","minutes-before-after","number-words"],"text":"Без четверти семь выходим из дома.","expect":["- 06:45 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","quarter","minutes-before-after","number-words"],"text":"Приходи без четверти двенадцать.","expect":["- 11:45 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","quarter","number-words"],"text":"Четверть шестого, а тебя всё нет.","expect":["- 05:15 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","minutes-before-after","number-words"],"text":"Без десяти шесть у меня тренировка.","expect":["- 05:50 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","minutes-before-after","number-words"],"text":"Поезд без двадцати семь.","expect":["- 06:40 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","minutes-before-after","number-words"],"text":"Выходить без пяти девять, чтобы успеть.","expect":["- 08:55 - > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","minutes-before-after","number-words"],"text":"Без двадцати двенадцать спать.","expect":["- 11:40 - > -"]}
+{"lang":"ru","kind":"positive","tags":["noon-midnight","clock"],"text":"Обедаем в полдень всей семьёй.","expect":["- 12:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["noon-midnight","clock"],"text":"В полночь запускаем фейерверк.","expect":["- 00:00+1 - > -"]}
+{"lang":"ru","kind":"positive","tags":["noon-midnight","clock","weekday"],"text":"В субботу каток закрывается в полночь.","expect":["w6 00:00+1 - > -"]}
+{"lang":"ru","kind":"positive","tags":["noon-midnight","clock"],"text":"Ровно в полдень встречаемся на площади.","expect":["- 12:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["noon-midnight","clock","approximately"],"text":"Около полуночи вернусь домой.","expect":["- 00:00+1 - > -"]}
+{"lang":"ru","kind":"positive","tags":["relative-day","clock","clock-preposition"],"text":"Сегодня созвон в 17:00.","expect":["+0d 17:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["relative-day","clock","period"],"text":"Завтра в 7 утра на рыбалку.","expect":["+1d 07:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["relative-day","clock"],"text":"Послезавтра в 10:00 приедет сантехник.","expect":["+2d 10:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["relative-day","clock"],"text":"Вчера в 19:00 смотрели матч.","expect":["-1d 19:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["relative-day","clock"],"text":"Позавчера в 8:30 был приём у врача.","expect":["-2d 08:30 - > -"]}
+{"lang":"ru","kind":"positive","tags":["relative-day","clock","period"],"text":"Сегодня вечером в 21:00 длинный фильм.","expect":["+0d 21:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["relative-day","clock","place-preposition"],"text":"Завтра в 12:00 встреча в Москве.","expect":["+1d 12:00 ~Europe/Moscow > -"]}
+{"lang":"ru","kind":"positive","tags":["relative-day","clock","period"],"text":"Завтра вечером в 20:00 семейный ужин.","expect":["+1d 20:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["weekday","clock"],"text":"В среду в 11:00 плановый созвон.","expect":["w3 11:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["weekday","clock"],"text":"В пятницу отпускаем всех рано, в 16:00.","expect":["w5 16:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["weekday","clock","place-preposition"],"text":"В субботу в 13:00 матч в Лондоне.","expect":["w6 13:00 ~Europe/London > -"]}
+{"lang":"ru","kind":"positive","tags":["weekday","clock"],"text":"В воскресенье в 10:00 семейный завтрак.","expect":["w7 10:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["weekday","clock"],"text":"Во вторник в 9:30 планёрка.","expect":["w2 09:30 - > -"]}
+{"lang":"ru","kind":"positive","tags":["weekday","clock"],"text":"В четверг в 18:30 концерт.","expect":["w4 18:30 - > -"]}
+{"lang":"ru","kind":"positive","tags":["weekday","clock"],"text":"В понедельник в 8:00 первая пара.","expect":["w1 08:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["weekday","clock"],"text":"В следующий четверг в 15:00 вебинар.","expect":["w4:next 15:00 - > -"],"note":"следующий + weekday marks next week's weekday, per coverage.md row 13; cf. 'next Monday' / '다음 목요일' in tests.rs."}
+{"lang":"ru","kind":"positive","tags":["weekday","clock"],"text":"В следующий понедельник в 9:00 выезд.","expect":["w1:next 09:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["month-name","clock"],"text":"Выпускной бал 24 июня в 18:00.","expect":["06-24 18:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["month-name","clock"],"text":"1 сентября линейка в 9:00.","expect":["09-01 09:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["month-name","date-only"],"text":"Отпуск с 3 августа.","expect":["08-03 - - > -"]}
+{"lang":"ru","kind":"positive","tags":["month-name","date-only"],"text":"Дедлайн по отчёту — 15 октября.","expect":["10-15 - - > -"]}
+{"lang":"ru","kind":"positive","tags":["month-name","date-only"],"text":"Свадьба сестры 12 июля 2027.","expect":["2027-07-12 - - > -"]}
+{"lang":"ru","kind":"positive","tags":["month-name","clock","place-preposition"],"text":"7 сентября в 20:00 гала в Вене.","expect":["09-07 20:00 ~Europe/Vienna > -"]}
+{"lang":"ru","kind":"positive","tags":["month-name","noon-midnight"],"text":"4 июля салют в полночь.","expect":["07-04 00:00+1 - > -"]}
+{"lang":"ru","kind":"positive","tags":["month-name","clock"],"text":"15 мая в 17:00 последнее занятие.","expect":["05-15 17:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["month-name","date-only"],"text":"Магазин закрывается на учёт 28 февраля.","expect":["02-28 - - > -"]}
+{"lang":"ru","kind":"positive","tags":["month-name","date-only"],"text":"Дедлайн по курсу — 15 окт., присылайте работы.","expect":["10-15 - - > -"]}
+{"lang":"ru","kind":"positive","tags":["month-name","clock"],"text":"Встреча 3-го октября в 18:00.","expect":["10-03 18:00 - > -"],"note":"Ordinal '3-го' is covered by coverage.md row 14 (abbreviations, case forms, ordinals); tests.rs has no Russian example."}
+{"lang":"ru","kind":"positive","tags":["numeric-date","clock"],"region":"RU","text":"Собрание жильцов 15.10.2026 в 19:00.","expect":["2026-10-15 19:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["numeric-date","clock"],"region":"RU","text":"Ревизия 22.11 в 8:00.","expect":["11-22 08:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["numeric-date","clock","place-preposition"],"region":"RU","text":"Собрание 03.10 в 15:00 в Москве.","expect":["10-03 15:00 Europe/Moscow > -"]}
+{"lang":"ru","kind":"positive","tags":["numeric-date","date-only"],"region":"RU","text":"Последний день скидок — 21.11.","expect":["11-21 - - > -"]}
+{"lang":"ru","kind":"positive","tags":["numeric-date","date-only"],"region":"RU","text":"Ярмарка пройдёт 05.11.","expect":["11-05 - - > -"]}
+{"lang":"ru","kind":"positive","tags":["numeric-date","range"],"region":"RU","text":"Техобслуживание 28.02.2027 с 9:00 до 12:00.","expect":["2027-02-28 09:00–12:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["numeric-date","date-only"],"region":"RU","text":"Отчёт за квартал сдать до 30.04.","expect":["04-30 - - > -"]}
+{"lang":"ru","kind":"positive","tags":["relative-time","place-preposition"],"text":"Через 3 часа вылет в Нью-Йорк.","expect":["- +180m - > -"]}
+{"lang":"ru","kind":"positive","tags":["relative-time"],"text":"Через 20 минут выходим.","expect":["- +20m - > -"]}
+{"lang":"ru","kind":"positive","tags":["relative-time"],"text":"Через полчаса подадут десерт.","expect":["- +30m - > -"]}
+{"lang":"ru","kind":"positive","tags":["relative-time"],"text":"Через час открываются двери.","expect":["- +60m - > -"]}
+{"lang":"ru","kind":"positive","tags":["relative-time"],"text":"Через 2 часа 30 минут покажут итоги.","expect":["- +150m - > -"]}
+{"lang":"ru","kind":"positive","tags":["relative-time"],"text":"Почтальон был 10 минут назад.","expect":["- -10m - > -"],"note":"Ago-form, read like 'Hace 10 minutos' → -10m in es.jsonl; tests.rs has no Russian example."}
+{"lang":"ru","kind":"positive","tags":["relative-time","place-preposition"],"text":"Через 45 минут встреча в Париже.","expect":["- +45m Europe/Paris > -"]}
+{"lang":"ru","kind":"positive","tags":["relative-time"],"text":"Через полтора часа обед.","expect":["- +90m - > -"],"note":"'полтора часа' = 90 minutes, like 'durée 1h30' → d90 in tests.rs."}
+{"lang":"ru","kind":"positive","tags":["range","clock"],"text":"Магазин работает с 9:00 до 21:00.","expect":["- 09:00–21:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["range","clock"],"text":"Обеденный перерыв с 13:00 до 14:00.","expect":["- 13:00–14:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["range","clock","place-preposition"],"text":"В Берлине ярмарка с 10:00 до 18:00.","expect":["- 10:00–18:00 ~Europe/Berlin > -"]}
+{"lang":"ru","kind":"positive","tags":["range","zone-word","clock"],"text":"Прямой эфир с 18:00 до 20:00 по московскому времени.","expect":["- 18:00–20:00 Europe/Moscow > -"]}
+{"lang":"ru","kind":"positive","tags":["range","clock-suffix"],"text":"Приём врача с 14 до 16 часов.","expect":["- 14:00–16:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["range","glued-hour"],"text":"Каток открыт с 10ч до 21ч.","expect":["- 10:00–21:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["range","clock","period"],"text":"Завтракаем с 8 до 10 утра.","expect":["- 08:00–10:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["range","zone-word","clock"],"text":"Курс идёт с 9:00 до 12:00, время в Токио.","expect":["- 09:00–12:00 Asia/Tokyo > -"]}
+{"lang":"ru","kind":"positive","tags":["duration","clock"],"text":"Созвон в 15:00, продлится 2 часа.","expect":["- 15:00 d120 - > -"]}
+{"lang":"ru","kind":"positive","tags":["duration","clock"],"text":"Тренировка в 18:00, длительность 45 минут.","expect":["- 18:00 d45 - > -"]}
+{"lang":"ru","kind":"positive","tags":["duration","clock"],"text":"Лекция в 17:00, 1 час, потом вопросы.","expect":["- 17:00 d60 - > -"]}
+{"lang":"ru","kind":"positive","tags":["duration","clock","weekday"],"text":"В субботу занятие в 10:00, 90 минут.","expect":["w6 10:00 d90 - > -"]}
+{"lang":"ru","kind":"positive","tags":["duration","clock"],"text":"Экскурсия в 11:30, длится полтора часа.","expect":["- 11:30 d90 - > -"],"note":"'полтора часа' = 90 minutes, like 'durée 1h30' → d90 in tests.rs."}
+{"lang":"ru","kind":"positive","tags":["duration","clock"],"text":"Разбор писем в 9:00, 20 минут.","expect":["- 09:00 d20 - > -"]}
+{"lang":"ru","kind":"positive","tags":["zone-word","clock"],"text":"Созвон в 16:00 по московскому времени.","expect":["- 16:00 Europe/Moscow > -"]}
+{"lang":"ru","kind":"positive","tags":["zone-word","clock"],"text":"Открытие выставки в 12:00, время в Токио.","expect":["- 12:00 Asia/Tokyo > -"]}
+{"lang":"ru","kind":"positive","tags":["zone-word","clock"],"text":"Премьера в 21:00, время в Лондоне.","expect":["- 21:00 Europe/London > -"]}
+{"lang":"ru","kind":"positive","tags":["zone-word","clock"],"text":"Рынок закрывается в 17:00, время в Сиднее.","expect":["- 17:00 Australia/Sydney > -"]}
+{"lang":"ru","kind":"positive","tags":["weekday","clock"],"text":"В пятницу отчёт в 15:00, Берлин.","expect":["w5 15:00 Europe/Berlin > -"]}
+{"lang":"ru","kind":"positive","tags":["abbreviation","clock"],"text":"Сервер перезапустится в 02:00 UTC.","expect":["- 02:00 +0 > -"]}
+{"lang":"ru","kind":"positive","tags":["abbreviation","clock"],"text":"Созвон в 15:00 CET.","expect":["- 15:00 +60 > -"]}
+{"lang":"ru","kind":"positive","tags":["abbreviation","clock"],"text":"Публикация сайта в 10:30 CEST.","expect":["- 10:30 +120 > -"]}
+{"lang":"ru","kind":"positive","tags":["abbreviation","clock"],"text":"Отчёт принимается до 18:00 МСК.","expect":["- 18:00 +180 > -"],"note":"МСК (MSK) is listed in coverage.md's abbreviation row; expected as the fixed offset +180 like CET → +60 in tests.rs."}
+{"lang":"ru","kind":"positive","tags":["abbreviation","clock"],"text":"Трансляция матча в 21:00 EDT.","expect":["- 21:00 -240 > -"]}
+{"lang":"ru","kind":"positive","tags":["abbreviation","range"],"text":"Дежурство с 22:00 до 06:00 UTC.","expect":["- 22:00–06:00 +0 > -"]}
+{"lang":"ru","kind":"positive","tags":["abbreviation","clock"],"text":"Вебинар в 9:00 PT.","expect":["- 09:00 America/Los_Angeles > -"]}
+{"lang":"ru","kind":"positive","tags":["target-question","clock","place-preposition"],"text":"Сколько времени в Токио, когда в Москве 15:00?","expect":["- 15:00 Europe/Moscow > Asia/Tokyo"]}
+{"lang":"ru","kind":"positive","tags":["target-question","clock","zone-word"],"text":"Сколько будет в Лондоне в 15:00 по московскому времени?","expect":["- 15:00 Europe/Moscow > Europe/London"]}
+{"lang":"ru","kind":"positive","tags":["target-question","clock"],"text":"У нас встреча в 18:00. Во сколько это будет в Нью-Йорке?","expect":["- 18:00 - > America/New_York"]}
+{"lang":"ru","kind":"positive","tags":["target-question","clock","period","place-preposition"],"text":"Когда в Сиднее 9 утра, сколько в Чикаго?","expect":["- 09:00 Australia/Sydney > America/Chicago"]}
+{"lang":"ru","kind":"positive","tags":["target-question","weekday","clock"],"text":"Курс стартует в четверг в 17:00. Сколько это в Осаке?","expect":["w4 17:00 - > Asia/Tokyo"]}
+{"lang":"ru","kind":"positive","tags":["arrow-or-local","clock","place-preposition"],"text":"Созвон в 9:00 в Нью-Йорке → Лондон.","expect":["- 09:00 America/New_York > Europe/London"]}
+{"lang":"ru","kind":"positive","tags":["arrow-or-local","clock","place-preposition"],"text":"Трансляция в 20:00 в Москве -> Токио.","expect":["- 20:00 Europe/Moscow > Asia/Tokyo"]}
+{"lang":"ru","kind":"positive","tags":["arrow-or-local","abbreviation"],"text":"Дедлайн: 17:00 CET → Москва.","expect":["- 17:00 +60 > Europe/Moscow"]}
+{"lang":"ru","kind":"positive","tags":["arrow-or-local","clock"],"text":"Созвон в 15:00 по моему времени.","expect":["- 15:00 local > -"]}
+{"lang":"ru","kind":"positive","tags":["arrow-or-local","clock"],"text":"Отправлю отчёт к 15:00, моё время.","expect":["- 15:00 local > -"]}
+{"lang":"ru","kind":"positive","tags":["arrow-or-local","clock","zone-word"],"text":"Эфир в 10:00, время в Токио — это по моему времени.","expect":["- 10:00 Asia/Tokyo > local"]}
+{"lang":"ru","kind":"positive","tags":["clock","place-preposition","clock-suffix","number-words","period"],"text":"В Париже ужинаем в 8 часов вечера.","expect":["- 20:00 ~Europe/Paris > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","place-preposition"],"text":"В Сиднее стыковка в 7:15.","expect":["- 07:15 ~Australia/Sydney > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","place-preposition"],"text":"В Нью-Йорке биржа открывается в 9:30.","expect":["- 09:30 ~America/New_York > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","place-preposition"],"text":"Живу в Осаке, созвон в 20:00.","expect":["- 20:00 ~Asia/Tokyo > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","place-preposition"],"text":"В Пекине выставка открывается в 10:00.","expect":["- 10:00 ~Asia/Shanghai > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","place-preposition"],"text":"В Сеуле встречаемся в 18:00.","expect":["- 18:00 ~Asia/Seoul > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","place-preposition"],"text":"Останавливаемся в Ванкувере, прогулка в 16:00.","expect":["- 16:00 ~America/Vancouver > -"]}
+{"lang":"ru","kind":"positive","tags":["clock","period","place-preposition"],"text":"Прилетаем в Дубай ночью, в 01:30.","expect":["- 01:30 Asia/Dubai > -"]}
+{"lang":"ru","kind":"positive","tags":["deadline-idiom"],"text":"Пришли правки до конца дня.","expect":["- ~17:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["deadline-idiom","weekday"],"text":"Отчёт нужен к концу рабочего дня в пятницу.","expect":["w5 ~17:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["deadline-idiom"],"text":"Заявки принимаются до полуночи.","expect":["- ~23:59 - > -"]}
+{"lang":"ru","kind":"positive","tags":["deadline-idiom","relative-day"],"text":"Сегодня до конца дня сдайте табель.","expect":["+0d ~17:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["approximately","clock"],"text":"Приду около 19:00.","expect":["- 19:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["approximately","clock"],"text":"Начнём примерно в 8:30.","expect":["- 08:30 - > -"]}
+{"lang":"ru","kind":"positive","tags":["approximately","clock","place-preposition"],"text":"Встречаемся приблизительно в 14:00 в Лионе.","expect":["- 14:00 Europe/Paris > -"]}
+{"lang":"ru","kind":"positive","tags":["approximately","clock","period"],"text":"Гости придут примерно в 7 вечера.","expect":["- 19:00 - > -"]}
+{"lang":"ru","kind":"positive","tags":["country","clock","period"],"text":"Поддержка в Японии отвечает с 9 утра.","expect":["- 09:00 ~Asia/Tokyo > -"],"note":"Country names take the prepositional case after в/на; expected to inflect like city names do in places.rs."}
+{"lang":"ru","kind":"positive","tags":["country","clock"],"text":"Фабрика в Китае запускает смену в 8:30.","expect":["- 08:30 ~Asia/Shanghai > -"]}
+{"lang":"ru","kind":"positive","tags":["country","clock"],"text":"Коллеги на Филиппинах выходят в 10:00.","expect":["- 10:00 ~Asia/Manila > -"]}
+{"lang":"ru","kind":"positive","tags":["country","clock"],"text":"Офис в Сингапуре открывается в 9:00.","expect":["- 09:00 ~Asia/Singapore > -"]}
+{"lang":"ru","kind":"positive","tags":["unix-iso"],"region":"RU","text":"Автоматический деплой пройдёт 2026-10-01T17:00:00Z.","expect":["- @1790874000 - > -"]}
+{"lang":"ru","kind":"positive","tags":["unix-iso"],"region":"RU","text":"В логах: старт 2026-09-15T09:00:00+02:00.","expect":["- @1789455600 - > -"]}
+{"lang":"ru","kind":"positive","tags":["unix-iso"],"text":"Событие сохранено: unix 1727179200.","expect":["- @1727179200 - > -"]}
+{"lang":"ru","kind":"positive","tags":["unix-iso"],"text":"Метка записи: 1727179200000 ms.","expect":["- @1727179200 - > -"]}
+{"lang":"ru","kind":"positive","tags":["unix-iso"],"region":"RU","text":"Бэкап завершился 2026-11-03T03:00:00Z.","expect":["- @1793674800 - > -"]}
+{"lang":"ru","kind":"positive","tags":["date-only","month-name"],"text":"Конференция пройдёт 3 октября.","expect":["10-03 - - > -"]}
+{"lang":"ru","kind":"positive","tags":["date-only","month-name"],"text":"Новоселье 15 ноября 2026.","expect":["2026-11-15 - - > -"]}
+{"lang":"ru","kind":"positive","tags":["date-only","numeric-date"],"region":"RU","text":"Собрание акционеров — 26.03.2027.","expect":["2027-03-26 - - > -"]}
+{"lang":"ru","kind":"positive","tags":["date-only","month-name"],"text":"Последний день выставки — 30 сентября.","expect":["09-30 - - > -"]}
+{"lang":"ru","kind":"positive","tags":["date-inherited","month-name","clock","place-preposition"],"text":"3 октября: 9:00 в Берлине, 14:00 в Токио.","expect":["10-03 09:00 Europe/Berlin > -","10-03^ 14:00 Asia/Tokyo > -"]}
+{"lang":"ru","kind":"positive","tags":["date-inherited","month-name","clock","abbreviation"],"text":"Повестка на 15 ноября:\n09:30 UTC открытие\n11:00 UTC перерыв.","expect":["11-15 09:30 +0 > -","11-15^ 11:00 +0 > -"]}
+{"lang":"ru","kind":"positive","tags":["date-inherited","numeric-date","clock","place-preposition"],"region":"RU","text":"15.10.2026: 10:00 в Берлине, 16:00 в Сиднее.","expect":["2026-10-15 10:00 Europe/Berlin > -","2026-10-15^ 16:00 Australia/Sydney > -"]}
+{"lang":"ru","kind":"positive","tags":["date-inherited","month-name","clock","abbreviation"],"text":"День открытых дверей 3 марта: 10:00 GMT встреча, 16:00 GMT экскурсия.","expect":["03-03 10:00 +0 > -","03-03^ 16:00 +0 > -"]}
+{"lang":"ru","kind":"negative","tags":["clock"],"text":"Позвони по номеру +7 916 123-45-67.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["clock"],"text":"Телефон библиотеки: 8 (499) 555-01-23.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["clock"],"text":"Мой новый номер: +7 903 111 22 33.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["dot-clock"],"text":"Кружка стоит 12,50 евро.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["clock"],"text":"Билет в музей стоит 350 рублей.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["dot-clock"],"text":"Подписка стоит 19,99 евро в месяц.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["dot-clock"],"text":"Версия 2.10 уже доступна.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["dot-clock"],"text":"Обнови приложение до версии 4.2.1.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["weekday"],"text":"Встреча переносится на следующий вторник.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["relative-day"],"text":"До завтра!","expect":[]}
+{"lang":"ru","kind":"negative","tags":["numeric-date"],"text":"Добавь в тесто 1/2 чайной ложки соли.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["numeric-date"],"text":"Смешай 3/4 стакана муки.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["range"],"text":"Кружок для детей от 9 до 12 лет.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["range"],"text":"Билеты стоят от 10 до 15 евро.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["unix-iso"],"text":"Заказ 4501238 отправлен сегодня.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["unix-iso"],"text":"Номер отправления 8834 1205 5590 2103 77.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["numeric-date"],"text":"Живу на Полевой улице, дом 12.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["numeric-date"],"text":"Отправь на Садовую, 15, квартира 3.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["clock"],"text":"Автобус 27 идёт до вокзала.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["weekday"],"text":"Офис открыт с понедельника по пятницу.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["clock"],"text":"Матч закончился со счётом 3:2.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["clock"],"text":"Итог встречи: 2:0 в нашу пользу.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["weekday"],"text":"Девятая серия выйдет в пятницу.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["clock"],"text":"Аудитория 305 на третьем этаже.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["clock"],"text":"Открой страницу 120 в учебнике.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["clock"],"text":"Размер обуви — 42.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["relative-time"],"text":"Рейс задерживается на 40 минут.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["duration"],"text":"Урок длится 45 минут.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["relative-time"],"text":"У меня 40 минут свободных.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["period"],"text":"Вечером я занят.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["period"],"text":"Работаю по ночам.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["period"],"text":"Всем доброе утро!","expect":[]}
+{"lang":"ru","kind":"negative","tags":["period"],"text":"Утро сегодня солнечное.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["clock-suffix"],"text":"Час пик — худшее время для поездки.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["deadline-idiom"],"text":"Дедлайн — конец недели.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["relative-time"],"text":"Вернусь через некоторое время.","expect":[]}
+{"lang":"ru","kind":"positive","tags":["relative-time"],"text":"Через минуту буду.","expect":["- +1m - > -"]}
+{"lang":"ru","kind":"negative","tags":["month-name"],"text":"Увидимся в конце месяца.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["half"],"text":"Каждые полчаса подходит трамвай.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["half"],"text":"Я выпил полстакана сока.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["relative-time"],"text":"Каникулы через две недели.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["target-question"],"text":"Подскажи, который час?","expect":[]}
+{"lang":"ru","kind":"negative","tags":["target-question"],"text":"Во сколько сегодня тренировка?","expect":[]}
+{"lang":"ru","kind":"negative","tags":["unix-iso"],"text":"Код записи: 20261001T140000Z.","expect":[],"note":"ISO 8601 basic format is explicitly not read, per the known-gaps note in coverage.md."}
+{"lang":"ru","kind":"negative","tags":["numeric-date"],"text":"Откроемся только в 2027 году.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["clock"],"text":"Почтовый индекс — 101000.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["duration"],"text":"Дорога занимает полтора часа.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["clock"],"text":"Температура днём 25 градусов.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["clock"],"text":"Скидка 50 процентов на всё.","expect":[]}
+{"lang":"ru","kind":"negative","tags":["clock"],"text":"Вагон 7, место 21.","expect":[]}
+{"lang":"ru","kind":"hostile","tags":["clock","abbreviation"],"text":"Сервер ляжет на обновление в 25:61 UTC.","expect":["- - +0 > - #invalidTime:25:61"]}
+{"lang":"ru","kind":"hostile","tags":["clock"],"text":"Таймер остановился на 12:60.","expect":["- - - > - #invalidTime:12:60"]}
+{"lang":"ru","kind":"hostile","tags":["clock"],"text":"Обратный отсчёт замер на 23:59:60.","expect":["- - - > - #invalidTime:23:59:60"]}
+{"lang":"ru","kind":"hostile","tags":["clock"],"text":"На табло расписания горит 24:00.","expect":["- 00:00+1 - > -"],"note":"24:00 reads as next-day 00:00, per the approved relaxation in migration-converter-known-gaps.txt noted on the es corpus line for 24:00."}
+{"lang":"ru","kind":"hostile","tags":["clock","abbreviation"],"text":"Ночной билд выкатывается в 00:00 UTC.","expect":["- 00:00 +0 > -"]}
+{"lang":"ru","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"RU","text":"Отчёт за 2026-02-30 в 09:00 UTC.","expect":["- 09:00 +0 > - #invalidDate:2026-02-30"]}
+{"lang":"ru","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"RU","text":"В шапке письма: 2026-13-40 09:00 UTC.","expect":["- 09:00 +0 > - #invalidDate:2026-13-40"]}
+{"lang":"ru","kind":"hostile","tags":["clock","abbreviation"],"text":"Скидка работает до 9:00 UTC+99.","expect":["- 09:00 - > - #invalidOffset:UTC+99"]}
+{"lang":"ru","kind":"hostile","tags":["range"],"text":"Дорожные работы с 22:00 до 01:00.","expect":["- 22:00–01:00 - > -"]}
+{"lang":"ru","kind":"hostile","tags":["range"],"text":"Ночная смена с 23:30 до 04:00.","expect":["- 23:30–04:00 - > -"]}
+{"lang":"ru","kind":"hostile","tags":["clock"],"text":"Встреча в １９:３０, не забудь.","expect":["- 19:30 - > -"]}
+{"lang":"ru","kind":"hostile","tags":["clock"],"text":"Бронь на ０９:００, Осака.","expect":["- 09:00 Asia/Tokyo > -"]}
+{"lang":"ru","kind":"hostile","tags":["clock"],"text":"Закрытие в １５：３０.","expect":["- 15:30 - > -"]}
+{"lang":"ru","kind":"hostile","tags":["clock","abbreviation"],"text":"Созвон в 9 UTC 🎈.","expect":["- 09:00 +0 > -"]}
+{"lang":"ru","kind":"hostile","tags":["clock"],"text":"🎉 Парад начинается в 12:00.","expect":["- 12:00 - > -"]}
+{"lang":"ru","kind":"hostile","tags":["numeric-date","clock","place-preposition"],"region":"RU","text":"Ok team, воркшоп 15.10 в 10:00 в Мюнхене.","expect":["10-15 10:00 Europe/Berlin > -"]}
+{"lang":"ru","kind":"hostile","tags":["relative-day","clock","place-preposition"],"text":"Let's do созвон завтра в 10:00 в Берлине, ок?","expect":["+1d 10:00 Europe/Berlin > -"]}
+{"lang":"ru","kind":"hostile","tags":["clock"],"text":"Встреча в 15:00 в Мадрите.","expect":["- 15:00 - > - !Мадрите"]}
+{"lang":"ru","kind":"hostile","tags":["clock"],"text":"Стыковка в 14:20 в Станбуле.","expect":["- 14:20 - > - !Станбуле"]}
+{"lang":"ru","kind":"hostile","tags":["relative-day","clock","zone-word"],"text":"ВСТРЕЧА ЗАВТРА 15:00 ТОКИО.","expect":["+1d 15:00 Asia/Tokyo > -"]}
+{"lang":"ru","kind":"hostile","tags":["weekday","clock","place-preposition"],"text":"СОБРАНИЕ В СУББОТУ В 10:30 В ЛОНДОНЕ.","expect":["w6 10:30 Europe/London > -"]}
+{"lang":"ru","kind":"hostile","tags":["clock"],"text":"Напомни: созвон в 15:00 pt.","expect":["- 15:00 - > -"],"note":"Lowercase two-letter abbreviations are not zones, per the approved change noted on the es corpus line 'Llamada a las 15:00 pt'."}
+{"lang":"ru","kind":"hostile","tags":["unix-iso"],"region":"RU","text":"Лог начинается с 1969-12-31T23:59:59+00:00.","expect":["- @-1 - > -"],"note":"Negative Unix instant, per the approved in-text ISO reading noted on the es corpus line for 1969-12-31T23:59:59+00:00."}
+{"lang":"ru","kind":"hostile","tags":["clock"],"text":"   15:00   Токио   ","expect":["- 15:00 Asia/Tokyo > -"]}
+{"lang":"ru","kind":"hostile","tags":["relative-day","clock","place-preposition"],"text":"Приём\tу врача\tзавтра\t9:30\tв Москве.","expect":["+1d 09:30 Europe/Moscow > -"]}
+{"lang":"ru","kind":"hostile","tags":["clock","place-preposition"],"text":"Встреча в\u200b 15:00 в\u200b Берлине.","expect":["- 15:00 Europe/Berlin > -"]}
+{"lang":"ru","kind":"hostile","tags":["range"],"text":"Рейс 15:00–10:00 не существует.","expect":["- 15:00–10:00 - > -"]}
+{"lang":"ru","kind":"hostile","tags":["clock"],"text":"На табло горит 25:00, явно сбой.","expect":["- - - > - #invalidTime:25:00"]}
+{"lang":"ru","kind":"hostile","tags":["clock","abbreviation"],"text":"Сессия в 18:00 CET или в 12:00 EDT, выбирай.","expect":["- 18:00 +60 > -","- 12:00 -240 > -"]}
+{"lang":"ru","kind":"hostile","tags":["clock","period"],"text":"ГРАФИК: 9AM, 2PM и 21:00.","expect":["- 09:00 - > -","- 14:00 - > -","- 21:00 - > -"]}
+{"lang":"ru","kind":"hostile","tags":["month-name","clock","abbreviation"],"text":"Дедлайн — 3 июня 2026, 23:59 AoE.","expect":["2026-06-03 23:59 Etc/GMT+12 > -"]}
+{"lang":"ru","kind":"hostile","tags":["clock","zone-word"],"text":"Сервер клиента встанет в 9:00 tokyo time.","expect":["- 09:00 Asia/Tokyo > -"],"note":"Lowercase English zone word inside Russian text, per the es corpus line '9:00 beijing time'."}
+{"lang":"ru","kind":"hostile","tags":["clock"],"text":"Приём у врача: 09:15, кабинет 4, этаж 7.","expect":["- 09:15 - > -"]}
+{"lang":"ru","kind":"hostile","tags":["clock"],"text":"Рейсы: 14:20 Вена - 21:55 Токио.","expect":["- 14:20 Europe/Vienna > -","- 21:55 Asia/Tokyo > -"]}
+{"lang":"ru","kind":"hostile","tags":["clock","place-preposition"],"text":"В 9:00 в Москве, то есть в 16:00 в Сиднее.","expect":["- 09:00 Europe/Moscow > -","- 16:00 Australia/Sydney > -"]}
+{"lang":"ru","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"RU","text":"Платёж спишется 2026-04-31 в 12:00 UTC.","expect":["- 12:00 +0 > - #invalidDate:2026-04-31"]}
+{"lang":"ru","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"RU","text":"СЕРВЕР УПАДЁТ 2026-06-31 В 02:00 UTC.","expect":["- 02:00 +0 > - #invalidDate:2026-06-31"]}
+{"lang":"ru","kind":"hostile","tags":["clock"],"text":"Ну всё, встреча в 15:00 ?!?, кто готов.","expect":["- 15:00 - > -"]}
+{"lang":"ru","kind":"hostile","tags":["clock","zone-word"],"text":"Это очень длинное сообщение о том, что наша команда наконец-то договорилась о дате общего вебинара для всех желающих, и теперь мы хотим подтвердить: эфир начнётся в 19:00, время в Москве, ждём всех.","expect":["- 19:00 Europe/Moscow > -"]}
+{"lang":"ru","kind":"hostile","tags":["date-inherited","clock","place-preposition"],"text":"3 октября: 9:00 в Берлине.\n\n14:00 в Токио.","expect":["10-03 09:00 Europe/Berlin > -","- 14:00 Asia/Tokyo > -"]}

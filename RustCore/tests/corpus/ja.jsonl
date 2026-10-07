@@ -1,0 +1,250 @@
+{"lang":"ja","kind":"positive","tags":["clock","clock-suffix"],"text":"配達は15時に来ます。","expect":["- 15:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock"],"text":"ウェビナーは9:45に始まります。","expect":["- 09:45 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock","period"],"text":"ゴミ収集は朝7:30です。","expect":["- 07:30 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock"],"text":"ドラマの再放送は13:05から。","expect":["- 13:05 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock"],"text":"スクールバスは8:15に校門を出ます。","expect":["- 08:15 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock","period"],"text":"夜のニュースは22:10からです。","expect":["- 22:10 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock","period"],"text":"午後の診察は15:20です。","expect":["- 15:20 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock","period"],"text":"朝のスタンドアップは8:40です。","expect":["- 08:40 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock","period"],"text":"夕方17:55に発車します。","expect":["- 17:55 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock","period"],"text":"晩ごはんは19:30から。","expect":["- 19:30 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock","period"],"text":"深夜便は23:55発です。","expect":["- 23:55 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock"],"text":"マラソンの中継は9:25、大阪。","expect":["- 09:25 Asia/Tokyo > -"]}
+{"lang":"ja","kind":"positive","tags":["clock","place-preposition"],"text":"18:10にローマで夕食の予約。","expect":["- 18:10 Europe/Rome > -"]}
+{"lang":"ja","kind":"positive","tags":["clock","clock-suffix"],"text":"点検は14時35分に終わる見込みです。","expect":["- 14:35 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock","half","clock-suffix"],"text":"授業は9時半に始まります。","expect":["- 09:30 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock","half"],"text":"待ち合わせは14時半、駅の改札で。","expect":["- 14:30 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock","half","period"],"text":"夜は21時半に家を出ます。","expect":["- 21:30 - > -"]}
+{"lang":"ja","kind":"positive","tags":["noon-midnight","clock"],"text":"正午に記者発表があります。","expect":["- 12:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["noon-midnight","clock"],"text":"配信は正午スタートです。","expect":["- 12:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["noon-midnight","clock","clock-suffix"],"text":"深夜0時に日付が変わります。","expect":["- 00:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["noon-midnight","clock"],"text":"カウントダウンは深夜0時の花火です。","expect":["- 00:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["noon-midnight","clock","relative-day"],"text":"今日の深夜0時にメンテナンス開始。","expect":["+0d 00:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock","minutes-before-after","clock-suffix"],"text":"電車は3時10分前に発車します。","expect":["- 02:50 - > -"],"note":"「N時M分前」(M minutes to N) follows the minutes-before pattern of tests.rs (ten to four → 03:50); ja writes it rarely per coverage.md."}
+{"lang":"ja","kind":"positive","tags":["clock","minutes-before-after","clock-suffix"],"text":"定時ニュースは7時5分前に流れます。","expect":["- 06:55 - > -"]}
+{"lang":"ja","kind":"positive","tags":["clock","minutes-before-after","clock-suffix"],"text":"ミーティングは9時15分前に集合です。","expect":["- 08:45 - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-day","clock"],"text":"今日の16:30に歯医者です。","expect":["+0d 16:30 - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-day","clock","period"],"text":"明日の朝9時には出勤しています。","expect":["+1d 09:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-day","clock"],"text":"明後日の14:00から健康診断です。","expect":["+2d 14:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-day","clock"],"text":"昨日の20:15に夕食を作りました。","expect":["-1d 20:15 - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-day","clock","clock-suffix"],"text":"一昨日の11時05分に郵便が来ました。","expect":["-2d 11:05 - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-day","clock","period"],"text":"今夜21:00に祖母と電話します。","expect":["+0d 21:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-day","clock","clock-suffix","period"],"text":"今朝は6時40分に目が覚めました。","expect":["+0d 06:40 - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-day","clock","period"],"text":"昨夜の23時10分に資料を送りました。","expect":["-1d 23:10 - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-day","clock","place-preposition"],"text":"明日の10:30にシカゴで出迎えます。","expect":["+1d 10:30 America/Chicago > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-day","clock","zone-word"],"text":"明日の13:00（日本時間）に結果が出ます。","expect":["+1d 13:00 Asia/Tokyo > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-day","clock","period"],"text":"明日の夜22:05に最終便で戻ります。","expect":["+1d 22:05 - > -"]}
+{"lang":"ja","kind":"positive","tags":["weekday","clock"],"text":"水曜日の16:00にチームの顔合わせ。","expect":["w3 16:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["weekday","clock","place-preposition"],"text":"金曜日の18:30にバンコクで懇親会。","expect":["w5 18:30 Asia/Bangkok > -"]}
+{"lang":"ja","kind":"positive","tags":["weekday","clock","period"],"text":"土曜の朝10:15にテニスの練習。","expect":["w6 10:15 - > -"]}
+{"lang":"ja","kind":"positive","tags":["weekday","clock"],"text":"月曜9:00から営業再開です。","expect":["w1 09:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["weekday","clock","zone-word"],"text":"火曜日の20:00シドニー時間の定例会。","expect":["w2 20:00 Australia/Sydney > -"]}
+{"lang":"ja","kind":"positive","tags":["weekday","noon-midnight"],"text":"日曜の正午に家族で集まります。","expect":["w7 12:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["weekday","range","clock-suffix"],"text":"木曜日は11時から13時まで外出します。","expect":["w4 11:00–13:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["weekday","clock"],"text":"次の月曜日の9:30に振替の連絡をします。","expect":["w1:next 09:30 - > -"]}
+{"lang":"ja","kind":"positive","tags":["weekday","clock","period","place-preposition"],"text":"来週の水曜日 午後2時 ロンドンで面談。","expect":["w3:next 14:00 Europe/London > -"]}
+{"lang":"ja","kind":"positive","tags":["weekday","clock"],"text":"次の金曜日の17:45に最終便を予約しました。","expect":["w5:next 17:45 - > -"]}
+{"lang":"ja","kind":"positive","tags":["weekday","clock","clock-suffix"],"text":"来週の火曜日19時にオンライン講習。","expect":["w2:next 19:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["month-name","clock"],"region":"JP","text":"花見は4月3日の18:00からです。","expect":["04-03 18:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["month-name","clock","clock-suffix"],"region":"JP","text":"発表会は5月5日 13時開演です。","expect":["05-05 13:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["month-name","date-only"],"region":"JP","text":"引っ越しは6月7日です。","expect":["06-07 - - > -"]}
+{"lang":"ja","kind":"positive","tags":["month-name","date-only"],"region":"JP","text":"申し込み締め切りは7月15日です。","expect":["07-15 - - > -"]}
+{"lang":"ja","kind":"positive","tags":["month-name","weekday-in-brackets","clock"],"region":"JP","text":"9月21日（月）の19:20に新作発表。","expect":["09-21 19:20 - > -"]}
+{"lang":"ja","kind":"positive","tags":["month-name","clock"],"region":"JP","text":"文化祭は10月25日の11:10開始です。","expect":["10-25 11:10 - > -"]}
+{"lang":"ja","kind":"positive","tags":["month-name","clock","clock-suffix"],"region":"JP","text":"修理は8月11日 9時の枠で来ます。","expect":["08-11 09:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["month-name","clock","place-preposition"],"region":"JP","text":"12月9日の20:40にパリで年次総会。","expect":["12-09 20:40 Europe/Paris > -"]}
+{"lang":"ja","kind":"positive","tags":["month-name","clock","period"],"region":"JP","text":"11月3日の朝7:50に集合写真。","expect":["11-03 07:50 - > -"]}
+{"lang":"ja","kind":"positive","tags":["numeric-date","clock"],"region":"JP","text":"発表は2026/10/15の10:00です。","expect":["2026-10-15 10:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["numeric-date","clock"],"region":"JP","text":"締め切りは2026/11/02 17:00です。","expect":["2026-11-02 17:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["numeric-date","date-only"],"region":"JP","text":"データ移行は2026/12/01に行います。","expect":["2026-12-01 - - > -"]}
+{"lang":"ja","kind":"positive","tags":["numeric-date","clock"],"region":"JP","text":"3/14の15:30に地域の集まり。","expect":["03-14 15:30 - > -"]}
+{"lang":"ja","kind":"positive","tags":["numeric-date","clock"],"region":"JP","text":"10/13 9:15発のバスで向かいます。","expect":["10-13 09:15 - > -"]}
+{"lang":"ja","kind":"positive","tags":["numeric-date","date-only"],"region":"JP","text":"請求書は2026/9/30発行予定です。","expect":["2026-09-30 - - > -"]}
+{"lang":"ja","kind":"positive","tags":["numeric-date","clock","zone-word"],"region":"JP","text":"2026/8/20 の 02:00 協定世界時に切替。","expect":["2026-08-20 02:00 +0 > -"]}
+{"lang":"ja","kind":"positive","tags":["weekday-in-brackets","clock","month-name"],"region":"JP","text":"11月6日(金) の 15:00 に定例報告。","expect":["11-06 15:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["weekday-in-brackets","clock","month-name"],"region":"JP","text":"6月18日（木）の9:40に健康相談。","expect":["06-18 09:40 - > -"]}
+{"lang":"ja","kind":"positive","tags":["weekday-in-brackets","clock","clock-suffix","month-name"],"region":"JP","text":"2月11日（水）14時に配管の点検。","expect":["02-11 14:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["weekday-in-brackets","clock","period","month-name"],"region":"JP","text":"7月19日（日）の夜20:30に盆踊り。","expect":["07-19 20:30 - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-time"],"text":"3時間後に再送します。","expect":["- +180m - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-time"],"text":"30分後に集合の呼び出しがあります。","expect":["- +30m - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-time"],"text":"1時間半後にムンバイのチームと接続します。","expect":["- +90m - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-time"],"text":"2時間15分後にチェックイン開始です。","expect":["- +135m - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-time"],"text":"40分前に駅に着きました。","expect":["- -40m - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-time"],"text":"5時間後に結果の発表があります。","expect":["- +300m - > -"]}
+{"lang":"ja","kind":"positive","tags":["relative-time"],"text":"15分後に次のバスが来ます。","expect":["- +15m - > -"]}
+{"lang":"ja","kind":"positive","tags":["range","clock-suffix"],"text":"受付は9時から17時までです。","expect":["- 09:00–17:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["range"],"text":"ランチタイムは11:30～14:00です。","expect":["- 11:30–14:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["range","period","clock-suffix"],"text":"午前9時～午後5時が診療時間です。","expect":["- 09:00–17:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["range","clock-suffix"],"text":"テスト稼働は22時から翌4時まで。","expect":["- 22:00–04:00+1 - > -"]}
+{"lang":"ja","kind":"positive","tags":["range"],"text":"ゲレンデは8:30～16:30の運行です。","expect":["- 08:30–16:30 - > -"]}
+{"lang":"ja","kind":"positive","tags":["range","zone-word"],"text":"同窓会の配信は19:00～21:00ロンドン時間です。","expect":["- 19:00–21:00 Europe/London > -"]}
+{"lang":"ja","kind":"positive","tags":["range"],"text":"ネオン祭りの点灯は17:40～22:10です。","expect":["- 17:40–22:10 - > -"]}
+{"lang":"ja","kind":"positive","tags":["range","period"],"text":"朝市は6:15から9:15までの限定です。","expect":["- 06:15–09:15 - > -"]}
+{"lang":"ja","kind":"positive","tags":["range","place-preposition"],"text":"ブリュッセルの展示は10:20～18:20に開催。","expect":["- 10:20–18:20 ~Europe/Brussels > -"]}
+{"lang":"ja","kind":"positive","tags":["duration","clock-suffix"],"text":"15時から2時間の営業相談会です。","expect":["- 15:00 d120 - > -"]}
+{"lang":"ja","kind":"positive","tags":["duration","clock-suffix"],"text":"10時から1時間半のピアノレッスン。","expect":["- 10:00 d90 - > -"]}
+{"lang":"ja","kind":"positive","tags":["duration","clock-suffix"],"text":"17時から45分の掃除当番。","expect":["- 17:00 d45 - > -"]}
+{"lang":"ja","kind":"positive","tags":["duration","clock-suffix","weekday"],"text":"土曜の13時から3時間の映像教室。","expect":["w6 13:00 d180 - > -"]}
+{"lang":"ja","kind":"positive","tags":["duration","clock-suffix","period"],"text":"9時から30分の朝礼があります。","expect":["- 09:00 d30 - > -"]}
+{"lang":"ja","kind":"positive","tags":["duration","clock-suffix","period"],"text":"午後1時から2時間45分の実技試験。","expect":["- 13:00 d165 - > -"]}
+{"lang":"ja","kind":"positive","tags":["zone-word","clock"],"text":"9:00 日本時間でデータ連携を開始。","expect":["- 09:00 Asia/Tokyo > -"]}
+{"lang":"ja","kind":"positive","tags":["zone-word","clock"],"text":"17:30 大阪時間で仕入れの打ち合わせ。","expect":["- 17:30 Asia/Tokyo > -"]}
+{"lang":"ja","kind":"positive","tags":["zone-word","clock"],"text":"8:00 ロンドン時間に朝市が開きます。","expect":["- 08:00 Europe/London > -"]}
+{"lang":"ja","kind":"positive","tags":["zone-word","clock"],"text":"20:00 シドニー時間の番組に出演します。","expect":["- 20:00 Australia/Sydney > -"]}
+{"lang":"ja","kind":"positive","tags":["zone-word","clock"],"text":"22:00 東部時間の試合中継を見ます。","expect":["- 22:00 America/New_York > -"]}
+{"lang":"ja","kind":"positive","tags":["zone-word","clock"],"text":"14:00 協定世界時にバックアップ。","expect":["- 14:00 +0 > -"]}
+{"lang":"ja","kind":"positive","tags":["zone-word","clock","clock-suffix","period"],"text":"朝9時バンコク時間に出発ロビー集合。","expect":["- 09:00 Asia/Bangkok > -"]}
+{"lang":"ja","kind":"positive","tags":["zone-word","clock","clock-suffix"],"text":"19時ドバイ時間にディナーの予約。","expect":["- 19:00 Asia/Dubai > -"]}
+{"lang":"ja","kind":"positive","tags":["zone-word","range"],"text":"10:00～12:00 ソウル時間で接続テスト。","expect":["- 10:00–12:00 Asia/Seoul > -"]}
+{"lang":"ja","kind":"positive","tags":["abbreviation","clock"],"text":"15:00 JST に保守作業が入ります。","expect":["- 15:00 +540 > -"]}
+{"lang":"ja","kind":"positive","tags":["abbreviation","clock"],"text":"9:00 UTC に全ノードを再起動。","expect":["- 09:00 +0 > -"]}
+{"lang":"ja","kind":"positive","tags":["abbreviation","clock","period"],"text":"7:00 GMT の朝の番組を録画。","expect":["- 07:00 +0 > -"]}
+{"lang":"ja","kind":"positive","tags":["abbreviation","clock"],"text":"13:00 PST に西海岸の担当と電話。","expect":["- 13:00 -480 > -"]}
+{"lang":"ja","kind":"positive","tags":["abbreviation","clock"],"text":"17:00 EST の締め切りに間に合わせます。","expect":["- 17:00 -300 > -"]}
+{"lang":"ja","kind":"positive","tags":["abbreviation","clock"],"text":"8:30 CET に欧州の仕入先と調整。","expect":["- 08:30 +60 > -"]}
+{"lang":"ja","kind":"positive","tags":["abbreviation","clock"],"text":"14:45 CEST のウェブ講習に参加。","expect":["- 14:45 +120 > -"]}
+{"lang":"ja","kind":"positive","tags":["abbreviation","clock"],"text":"16:10 EDT の野球中継を見逃しません。","expect":["- 16:10 -240 > -"]}
+{"lang":"ja","kind":"positive","tags":["abbreviation","clock","period","clock-suffix"],"text":"午後4時 JST に小包が届く予定。","expect":["- 16:00 +540 > -"]}
+{"lang":"ja","kind":"positive","tags":["abbreviation","clock"],"text":"23:30 UTC に流星群のライブ配信。","expect":["- 23:30 +0 > -"]}
+{"lang":"ja","kind":"positive","tags":["target-question","clock","period"],"text":"東京の朝9時はロンドンで何時？","expect":["- 09:00 Asia/Tokyo > Europe/London"]}
+{"lang":"ja","kind":"positive","tags":["target-question","clock","period"],"text":"ニューヨークの午後3時はシカゴで何時ですか？","expect":["- 15:00 America/New_York > America/Chicago"]}
+{"lang":"ja","kind":"positive","tags":["target-question","clock","period","clock-suffix"],"text":"シドニーの夜8時はトロントで何時？","expect":["- 20:00 Australia/Sydney > America/Toronto"]}
+{"lang":"ja","kind":"positive","tags":["target-question","relative-day","clock"],"text":"ウェビナーは明日の17:00です。ソウルでは何時ですか？","expect":["+1d 17:00 - > Asia/Seoul"]}
+{"lang":"ja","kind":"positive","tags":["target-question","clock","abbreviation","month-name"],"region":"JP","text":"10月2日 18:00 JST の開始ですが、シンガポールでは何時？","expect":["10-02 18:00 +540 > Asia/Singapore"]}
+{"lang":"ja","kind":"positive","tags":["target-question","clock","place-preposition"],"text":"パリの9:30はブリュッセルで何時になりますか？","expect":["- 09:30 Europe/Paris > Europe/Brussels"]}
+{"lang":"ja","kind":"positive","tags":["target-question","clock","clock-suffix"],"text":"ムンバイの11時はドバイで何時？","expect":["- 11:00 Asia/Kolkata > Asia/Dubai"]}
+{"lang":"ja","kind":"positive","tags":["target-question","relative-day","clock"],"text":"出荷は今夜23:30です。ハノイでは何時ですか？","expect":["+0d 23:30 - > Asia/Bangkok"]}
+{"lang":"ja","kind":"positive","tags":["arrow-or-local","clock"],"text":"9:00 東京 → ベルリンで通話しましょう。","expect":["- 09:00 Asia/Tokyo > Europe/Berlin"]}
+{"lang":"ja","kind":"positive","tags":["arrow-or-local","abbreviation"],"text":"15:00 JST → ロサンゼルス。","expect":["- 15:00 +540 > America/Los_Angeles"]}
+{"lang":"ja","kind":"positive","tags":["arrow-or-local","clock"],"text":"10:00 ロンドン -> ソウルの接続確認。","expect":["- 10:00 Europe/London > Asia/Seoul"]}
+{"lang":"ja","kind":"positive","tags":["arrow-or-local","clock"],"text":"18:40 ニューヨーク → チューリッヒの電話会議。","expect":["- 18:40 America/New_York > Europe/Zurich"]}
+{"lang":"ja","kind":"positive","tags":["arrow-or-local","clock","period"],"text":"午後3時こちらの時間で構いません。","expect":["- 15:00 local > -"]}
+{"lang":"ja","kind":"positive","tags":["arrow-or-local","clock","clock-suffix"],"text":"10時こちらの時間でお願いします。","expect":["- 10:00 local > -"]}
+{"lang":"ja","kind":"positive","tags":["arrow-or-local","clock","place-preposition"],"text":"東京にいます。午前9時こちらの時間で始めます。","expect":["- 09:00 local > -"]}
+{"lang":"ja","kind":"positive","tags":["place-preposition","clock"],"text":"14:00 に東京で本社見学。","expect":["- 14:00 Asia/Tokyo > -"]}
+{"lang":"ja","kind":"positive","tags":["place-preposition","clock"],"text":"ベルリンにて 18:30 から交流会。","expect":["- 18:30 Europe/Berlin > -"]}
+{"lang":"ja","kind":"positive","tags":["place-preposition","clock"],"text":"10:15 にシカゴで技術セミナー。","expect":["- 10:15 America/Chicago > -"]}
+{"lang":"ja","kind":"positive","tags":["place-preposition","clock","period"],"text":"朝8:05 にアムステルダムで朝食会。","expect":["- 08:05 Europe/Amsterdam > -"]}
+{"lang":"ja","kind":"positive","tags":["place-preposition","clock"],"text":"リスボンにて 22:30 から音楽の公演。","expect":["- 22:30 Europe/Lisbon > -"]}
+{"lang":"ja","kind":"positive","tags":["place-preposition","clock","period"],"text":"サンパウロで朝9:40に市場の下見。","expect":["- 09:40 America/Sao_Paulo > -"]}
+{"lang":"ja","kind":"positive","tags":["place-preposition","clock"],"text":"20:05 にサンクトペテルブルクでバレエ鑑賞。","expect":["- 20:05 Europe/Moscow > -"]}
+{"lang":"ja","kind":"positive","tags":["deadline-idiom","weekday"],"text":"金曜日の終業までに提出してください。","expect":["w5 ~17:00 - > -"],"note":"終業までに is a deadline idiom defaulting to 17:00, per the approved change recorded in migration-known-gaps.txt."}
+{"lang":"ja","kind":"positive","tags":["deadline-idiom","relative-day"],"text":"レポートは明日の終業までにお願いします。","expect":["+1d ~17:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["deadline-idiom","relative-day"],"text":"本日の終業までに返信を待っています。","expect":["+0d ~17:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["approximately","clock","clock-suffix"],"text":"19時ごろに到着の見込みです。","expect":["- 19:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["approximately","clock","clock-suffix"],"text":"10時頃に玄関でお待ちしています。","expect":["- 10:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["approximately","clock","clock-suffix"],"text":"15時くらいに締め切ります。","expect":["- 15:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["approximately","clock","clock-suffix","period"],"text":"夜8時ごろにヨガのレッスン。","expect":["- 20:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["approximately","clock","place-preposition"],"text":"21:10ごろにドバイで乗り継ぎ。","expect":["- 21:10 Asia/Dubai > -"]}
+{"lang":"ja","kind":"positive","tags":["country","clock","period","clock-suffix"],"text":"アメリカのサポートは朝9時開始です。","expect":["- 09:00 ~?country29 > -"],"note":"Japanese country words resolve via the host country table, mirroring the English examples in tests.rs (US multi-zone, China/Philippines/Japan single zone)."}
+{"lang":"ja","kind":"positive","tags":["country","clock","clock-suffix"],"text":"中国の工場と17時に通話します。","expect":["- 17:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["country","clock","clock-suffix"],"text":"フィリピンのチームと10時に打ち合わせ。","expect":["- 10:00 - > -"]}
+{"lang":"ja","kind":"positive","tags":["country","clock","clock-suffix","period"],"text":"日本の夕方6時からテレビ放送です。","expect":["- 18:00 Asia/Tokyo > -"]}
+{"lang":"ja","kind":"positive","tags":["unix-iso"],"region":"JP","text":"リリースは 2026-10-01T17:00:00Z です。","expect":["- @1790874000 - > -"]}
+{"lang":"ja","kind":"positive","tags":["unix-iso"],"region":"JP","text":"ログには 2026-09-15T09:00:00+02:00 と記録されています。","expect":["- @1789455600 - > -"]}
+{"lang":"ja","kind":"positive","tags":["unix-iso"],"region":"JP","text":"切替時刻は 2026-10-15T09:00:00+09:00 です。","expect":["- @1792022400 - > -"]}
+{"lang":"ja","kind":"positive","tags":["unix-iso"],"text":"unix タイムスタンプ 1727179200 の通知。","expect":["- @1727179200 - > -"]}
+{"lang":"ja","kind":"positive","tags":["unix-iso"],"text":"1727179200000 ミリ秒のイベント記録。","expect":["- @1727179200 - > -"]}
+{"lang":"ja","kind":"positive","tags":["unix-iso"],"region":"JP","text":"集計は 2026-02-18T09:30:00Z に実行。","expect":["- @1771407000 - > -"]}
+{"lang":"ja","kind":"positive","tags":["unix-iso"],"region":"JP","text":"2026-08-20T02:00:00Z にセンサーが止まりました。","expect":["- @1787191200 - > -"]}
+{"lang":"ja","kind":"positive","tags":["date-only","month-name"],"region":"JP","text":"開所式は3月2日です。","expect":["03-02 - - > -"]}
+{"lang":"ja","kind":"positive","tags":["date-only","month-name"],"region":"JP","text":"支払期限は4月28日です。","expect":["04-28 - - > -"]}
+{"lang":"ja","kind":"positive","tags":["date-only","numeric-date"],"region":"JP","text":"テスト公開は 2026/7/22 です。","expect":["2026-07-22 - - > -"]}
+{"lang":"ja","kind":"positive","tags":["date-only","month-name","weekday-in-brackets"],"region":"JP","text":"配布は9月14日（月）です。","expect":["09-14 - - > -"]}
+{"lang":"ja","kind":"positive","tags":["date-only","numeric-date"],"region":"JP","text":"本体の出荷は 2026/6/30 を予定しています。","expect":["2026-06-30 - - > -"]}
+{"lang":"ja","kind":"positive","tags":["date-inherited","month-name","clock"],"region":"JP","text":"10月8日の流れ：10:00 ベルリン、15:00 東京。","expect":["10-08 10:00 Europe/Berlin > -","10-08^ 15:00 Asia/Tokyo > -"]}
+{"lang":"ja","kind":"positive","tags":["date-inherited","month-name","clock","abbreviation"],"region":"JP","text":"11月5日のプラン\n09:30 JST 開会\n11:00 JST 休憩。","expect":["11-05 09:30 +540 > -","11-05^ 11:00 +540 > -"]}
+{"lang":"ja","kind":"positive","tags":["date-inherited","month-name","clock","period","place-preposition"],"region":"JP","text":"4月2日の視察：午前10時 ウィーン、午後2時 ソウル。","expect":["04-02 10:00 Europe/Vienna > -","04-02^ 14:00 Asia/Seoul > -"]}
+{"lang":"ja","kind":"positive","tags":["date-inherited","numeric-date","clock"],"region":"JP","text":"2026/9/8 の予定：12:15 ローマ、17:20 ワルシャワ。","expect":["2026-09-08 12:15 Europe/Rome > -","2026-09-08^ 17:20 Europe/Warsaw > -"]}
+{"lang":"ja","kind":"positive","tags":["date-inherited","month-name","clock"],"region":"JP","text":"6月12日の概要：9:05 集合、13:05 昼食。","expect":["06-12 09:05 - > -","06-12^ 13:05 - > -"]}
+{"lang":"ja","kind":"positive","tags":["date-inherited","month-name","clock","zone-word"],"region":"JP","text":"3月20日の接続試験：9:00 日本時間、17:00 東部時間。","expect":["03-20 09:00 Asia/Tokyo > -","03-20^ 17:00 America/New_York > -"]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"携帯は 090-1234-5678 まで。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"市外局番は 03 1234 5678 です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"連絡先は 0120-987-654 です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["dot-clock"],"text":"アップデートはバージョン 2.10 で安定しました。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"本の定価は 1,540 円です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"入場料は 800 円です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"宿題の点数は 98 点でした。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"サッカーは 3-2 で勝ちました。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"テニスは 6-4 のセットスコアでした。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["numeric-date"],"text":"部屋は 502 号室です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["numeric-date"],"text":"郵便番号は 154-0023 です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["numeric-date"],"text":"住所は3丁目12番5号です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["numeric-date"],"text":"小麦粉 1/2 カップをふるいます。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"砂糖は大さじ 2 杯です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["duration"],"text":"会議は2時間です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["duration"],"text":"映画は3時間の大作です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["relative-time"],"text":"電車は30分遅れています。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["relative-time"],"text":"駅から徒歩5分の距離です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["half"],"text":"30分おきに無料シャトルが出ます。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["half"],"text":"半分ずつ分けましょう。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["period"],"text":"午後は外出しないでください。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["period"],"text":"夜更かしは体に良くないです。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["relative-day"],"text":"明日は祝日です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["weekday"],"text":"来週の火曜は休みです。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["weekday"],"text":"来週、顔合わせをしましょう。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["weekday"],"text":"日曜大工に挑戦しました。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["month-name"],"text":"12月はイベントが多いです。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["month-name"],"text":"3月までに貯金をします。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"何時にしましょうか。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"ラッシュの時間帯は道路が混みます。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"いつもの時間に帰ります。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"お急ぎ便は明日の朝に届きます。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"バスは15系統が便利です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"会場は5階の大ホールです。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"ホームは7番です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"18歳未満は保護者同伴です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"気温は35度まで上がりました。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"チャンネル12で再放送があります。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["dot-clock"],"text":"靴のサイズは 25.5 を履いています。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"2番のレジへどうぞ。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"全3回の講座です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"40歳の誕生日をお祝いしました。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"席は12番テーブルです。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["unix-iso"],"text":"注文 1727179200 は発送済みです。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["unix-iso"],"text":"追跡番号は 8834 1205 5590 2103 77 です。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["range"],"text":"対象は6歳から12歳までです。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["range"],"text":"3個で1,000円からです。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["deadline-idiom"],"text":"定時で帰ります。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["clock"],"text":"レポートの提出は余裕を持ってお願いします。","expect":[]}
+{"lang":"ja","kind":"negative","tags":["arrow-or-local"],"text":"自分の時間帯で選んでください。","expect":[]}
+{"lang":"ja","kind":"hostile","tags":["clock"],"text":"１５：３０に集合です。","expect":["- 15:30 - > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock"],"text":"０９：００、大阪で待ち合わせ。","expect":["- 09:00 Asia/Tokyo > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock","abbreviation"],"text":"19：00 JST のニュースを見ます。","expect":["- 19:00 +540 > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock"],"text":"🎆 花火は 20:15 から上がります。","expect":["- 20:15 - > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock"],"text":"できれば 11:40 に終えたいです🙏","expect":["- 11:40 - > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock"],"text":"14:00\u200b 東京で始まります。","expect":["- 14:00 Asia/Tokyo > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock","place-preposition"],"text":"18:00 に\u200bベルリンで映像調整。","expect":["- 18:00 Europe/Berlin > -"]}
+{"lang":"ja","kind":"hostile","tags":["relative-day","clock"],"text":"明日の午前10時 서울と通話します。","expect":["+1d 10:00 - > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock","relative-day"],"text":"Let's meet 明日 10:00 シドニー。","expect":["+1d 10:00 Australia/Sydney > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock"],"text":"OK です。15:30 パリで調整します。","expect":["- 15:30 Europe/Paris > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock"],"text":"集合は 25:61 です。","expect":["- - - > - #invalidTime:25:61"]}
+{"lang":"ja","kind":"hostile","tags":["clock","abbreviation"],"text":"再起動は 23:59:60 UTC。","expect":["- - +0 > - #invalidTime:23:59:60"]}
+{"lang":"ja","kind":"hostile","tags":["clock"],"text":"タイマーは 12:60 に鳴ります。","expect":["- - - > - #invalidTime:12:60"]}
+{"lang":"ja","kind":"hostile","tags":["clock"],"text":"営業は 26:00 まで延長中。","expect":["- - - > - #invalidTime:26:00"]}
+{"lang":"ja","kind":"hostile","tags":["clock"],"text":"シフトは 24:00 までの表記です。","expect":["- 00:00+1 - > -"],"note":"24:00 reads as next-day 00:00, per the approved relaxation in migration-converter-known-gaps.txt."}
+{"lang":"ja","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"JP","text":"イベントは 2026-02-30 09:00 UTC。","expect":["- 09:00 +0 > - #invalidDate:2026-02-30"]}
+{"lang":"ja","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"JP","text":"ログには 2026-13-40 09:00 UTC と残っています。","expect":["- 09:00 +0 > - #invalidDate:2026-13-40"]}
+{"lang":"ja","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"JP","text":"有効期限は 2026-04-31 12:00 UTC。","expect":["- 12:00 +0 > - #invalidDate:2026-04-31"]}
+{"lang":"ja","kind":"hostile","tags":["numeric-date","clock"],"region":"JP","text":"会議は 2026年2月30日 の 10:00。","expect":["- 10:00 - > - #invalidDate:2026年2月30日"],"note":"the issue mark quotes the span as written; the reading follows the ISO invalid-date precedent in tests.rs."}
+{"lang":"ja","kind":"hostile","tags":["clock","abbreviation"],"text":"9時 UTC+99 という設定はできません。","expect":["- 09:00 - > - #invalidOffset:UTC+99"]}
+{"lang":"ja","kind":"hostile","tags":["range"],"text":"夜勤は 22:00～02:00 のシフト。","expect":["- 22:00–02:00 - > -"]}
+{"lang":"ja","kind":"hostile","tags":["range"],"text":"15:00～10:00 という表記は誤記です。","expect":["- 15:00–10:00 - > -"]}
+{"lang":"ja","kind":"hostile","tags":["range","clock-suffix"],"text":"20時～翌0時のテスト稼働。","expect":["- 20:00–00:00+1 - > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock"],"text":"19:00 ロソドンの天気を調べます。","expect":["- 19:00 - > -"],"note":"katakana typo of a listed city is place-looking and gets the unresolved mark, following the !Москвzz precedent in tests.rs."}
+{"lang":"ja","kind":"hostile","tags":["clock"],"text":"10:30 にゅうヨークの話をします。","expect":["- 10:30 - > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock","relative-day"],"text":"TEAM MEETING 明日 10:00 ミラノ。","expect":["+1d 10:00 Europe/Rome > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock"],"text":"〆切は 17:00!! 以降は受け付けません!!!","expect":["- 17:00 - > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock","relative-day"],"text":"会議\t明日\t9:30\t大阪\t重要。","expect":["+1d 09:30 Asia/Tokyo > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock"],"text":"15:00   ロンドン   に接続します。","expect":["- 15:00 Europe/London > -"]}
+{"lang":"ja","kind":"hostile","tags":["unix-iso"],"region":"JP","text":"1969-12-31T23:59:59+00:00 の記録が最古です。","expect":["- @-1 - > -"],"note":"negative Unix instant, mirroring the approved 1969 ISO reading in es.jsonl."}
+{"lang":"ja","kind":"hostile","tags":["unix-iso"],"region":"JP","text":"年末締め切りは 2026-12-31T23:59:59Z。","expect":["- @1798761599 - > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock","period"],"text":"候補は 9AM、3PM、21:00 の3案です。","expect":["- 09:00 - > -","- 15:00 - > -","- 21:00 - > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock","abbreviation"],"text":"18:00 CET か 12:00 EDT のどちらかで。","expect":["- 18:00 +60 > -","- 12:00 -240 > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock","noon-midnight"],"text":"0時ちょうどに日付が変わります。","expect":["- 00:00 - > -"]}
+{"lang":"ja","kind":"hostile","tags":["numeric-date"],"region":"JP","text":"2026-02-29 は平年にはありません。","expect":["- - - > - #invalidDate:2026-02-29"]}
+{"lang":"ja","kind":"hostile","tags":["clock","zone-word"],"text":"サーバー移行は 3:00 beijing time。","expect":["- 03:00 Asia/Shanghai > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock","relative-day"],"text":"お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。お世話になっております。打ち合わせは明日 11:20 ローマです。","expect":["+1d 11:20 Europe/Rome > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock","clock-suffix","month-name"],"region":"JP","text":"令和8年3月3日の9時9分に式典。","expect":["2026-03-03 09:09 - > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock"],"text":"大阪 9:00 - 東京 16:00 の二本立て。","expect":["- 09:00 Asia/Tokyo > -","- 16:00 Asia/Tokyo > -"]}
+{"lang":"ja","kind":"hostile","tags":["clock","period"],"text":"AM4:00 の早朝便で向かいます。","expect":["- 04:00 - > -"]}

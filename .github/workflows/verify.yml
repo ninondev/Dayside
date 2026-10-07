@@ -1,0 +1,54 @@
+# Manual verification on GitHub-hosted macOS runners: Tools/verify_all.sh and, optionally, the
+# release gate, once on an Intel runner (macos-26-intel) and once on Apple silicon (macos-26).
+# The project needs Xcode 27 (SDK 27) and the aarch64/x86_64 Apple Rust targets.
+# This workflow has not been run on GitHub yet.
+name: verify
+on:
+  workflow_dispatch:
+    inputs:
+      gate:
+        description: "Run the release gate (Release build + 60 s sampling)"
+        type: boolean
+        default: true
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-26-intel
+            arch: x86_64
+          - runner: macos-26
+            arch: arm64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select the newest Xcode
+        run: |
+          ls /Applications | grep -i xcode
+          sudo xcode-select -s "$(ls -d /Applications/Xcode*.app | sort -V | tail -1)"
+          xcodebuild -version
+      - name: Rust toolchain and targets
+        run: |
+          rustup default stable
+          rustup target add aarch64-apple-darwin x86_64-apple-darwin
+          cargo --version
+      - name: verify_all (Rust tests, clippy, app tests, catalog and license checks)
+        run: MEANTIME_VERIFY_LOGDIR="$RUNNER_TEMP/verify" Tools/verify_all.sh
+      - name: Release gate (Release ${{ matrix.arch }}, isolated preview)
+        if: ${{ inputs.gate }}
+        run: |
+          xcodebuild -project TahoeTime.xcodeproj -scheme TahoeTime -configuration Release \
+            -derivedDataPath "$RUNNER_TEMP/dd" build ARCHS=${{ matrix.arch }} ONLY_ACTIVE_ARCH=NO | tail -5
+          Tools/make_local_preview.sh "$RUNNER_TEMP/dd/Build/Products/Release/Dayside.app" "$RUNNER_TEMP/preview/Dayside Local Preview.app"
+          Tools/release_gate.sh --app "$RUNNER_TEMP/preview/Dayside Local Preview.app" | tee "$RUNNER_TEMP/gate-${{ matrix.arch }}.md"
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs-${{ matrix.arch }}
+          path: |
+            ${{ runner.temp }}/verify
+            ${{ runner.temp }}/gate-*.md
+          if-no-files-found: ignore

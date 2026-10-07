@@ -1,0 +1,8 @@
+{"lang": "id", "text": "Kita bertemu pukul 16.00 di Bandunqq.", "expect": ["- 16:00 - > - !Bandunqq"]}
+{"lang": "id", "text": "Kita bertemu pukul 16.00 di Bandung.", "expect": ["- 16:00 Asia/Jakarta > -"]}
+{"lang": "id", "text": "Kalau di Tokyo jam 9.00, di Pariss jam berapa?", "expect": ["- 09:00 Asia/Tokyo > - !Pariss"]}
+{"lang": "id", "text": "Rapat jam 14.00 WIB, jam berapa waktunya di Londnqq?", "expect": ["- 14:00 +420 > - !Londnqq"]}
+{"lang": "id", "text": "Kalau di Tokyo jam 9.00, jam berapa sekarang?", "expect": ["- 09:00 Asia/Tokyo > -"]}
+{"lang": "id", "text": "Hotel di Tokyo buka jam 9.00, di Paris jam berapa?", "expect": ["- 09:00 ~Asia/Tokyo > Europe/Paris"]}
+{"lang": "ru", "text": "В районе Москвы начало в 12:00.", "expect": ["- 12:00 - > -"]}
+{"lang": "ru", "text": "Встреча в Районе в 11:00.", "expect": ["- 11:00 America/Mexico_City > -"]}

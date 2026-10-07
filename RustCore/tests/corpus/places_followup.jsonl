@@ -1,0 +1,8 @@
+{"lang": "pl", "text": "Zgłoszenia przyjmujemy do 14 kwietnia 2026 r. (wtorek) do godziny 15:00.", "expect": ["2026-04-14 15:00 - > -"]}
+{"lang": "ru", "text": "Послезавтра с 23 часов и до 4 часов 12 июня будут работы на переезде в районе Сосновки.", "expect": ["+2d 23:00 - > -", "06-12 04:00 - > -"]}
+{"lang": "ru", "text": "Начало в 11:00 по Мск.", "expect": ["- 11:00 +180 > -"]}
+{"lang": "ru", "text": "Эфир в 20:00 (по мск).", "expect": ["- 20:00 +180 > -"]}
+{"lang": "id", "text": "Kita bertemu pukul 16.00 di Bandunq.", "expect": ["- 16:00 Asia/Jakarta > -"]}
+{"lang": "id", "text": "\"Rapat pukul​16.30 di​Surabaya.\"", "expect": ["- 16:30 Asia/Jakarta > -"]}
+{"lang": "id", "text": "Kalau di Tokyo jam 9.00, di Paris jam berapa?", "expect": ["- 09:00 Asia/Tokyo > Europe/Paris"]}
+{"lang": "id", "text": "Rapat Jumat jam 14.00 WIB, jam berapa waktunya di London?", "expect": ["w5 14:00 +420 > Europe/London"]}

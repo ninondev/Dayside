@@ -1,0 +1,220 @@
+{"lang":"nl","kind":"positive","tags":["clock","clock-preposition","place-preposition"],"text":"De vergadering van de projectgroep begint om 10:30 in Berlijn.","expect":["- 10:30 Europe/Berlin > -"]}
+{"lang":"nl","kind":"positive","tags":["clock","clock-preposition","place-preposition"],"text":"De taalles voor nieuwkomers start om 18:15 in Amsterdam.","expect":["- 18:15 Europe/Amsterdam > -"]}
+{"lang":"nl","kind":"positive","tags":["clock","place-preposition"],"text":"De trein uit Parijs komt om 11:20 aan.","expect":["- 11:20 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock","clock-preposition"],"text":"Het avondeten staat om 18:00 op tafel.","expect":["- 18:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock"],"text":"De huisartsenpost sluit om 22:00.","expect":["- 22:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock"],"text":"De kooktimer liep om 12:10:30 af.","expect":["- 12:10:30 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock"],"text":"De film begint om 20:45.","expect":["- 20:45 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock","clock-preposition"],"text":"Ik heb om 14:20 een afspraak bij de tandarts.","expect":["- 14:20 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock"],"text":"De vuilniswagen komt om 7:15 langs.","expect":["- 07:15 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock"],"text":"Het feest van de buren duurt tot 23:00.","expect":["- 23:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock","clock-preposition"],"text":"De winkel gaat om 10:00 open.","expect":["- 10:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock","place-preposition"],"text":"De avondmarkt in Barcelona begint om 18:00.","expect":["- 18:00 ~Europe/Madrid > -"]}
+{"lang":"nl","kind":"positive","tags":["dot-clock","clock-suffix"],"text":"Het journaal begint om 20.00 uur.","expect":["- 20:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["dot-clock","clock-suffix"],"text":"De bus vertrekt om 9.30 uur vanaf het stationsplein.","expect":["- 09:30 - > -"]}
+{"lang":"nl","kind":"positive","tags":["dot-clock","clock-suffix"],"text":"De cursusavond begint om 19.45 uur.","expect":["- 19:45 - > -"]}
+{"lang":"nl","kind":"positive","tags":["dot-clock","clock-suffix"],"text":"Wij openen om 8.00 uur en sluiten om 17.30 uur.","expect":["- 08:00 - > -","- 17:30 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock-suffix","clock-preposition"],"text":"De veiling sluit om 21 uur.","expect":["- 21:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock-suffix","period","clock-preposition"],"text":"Om 6 uur 's ochtends komt de krantenbezorger.","expect":["- 06:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock","clock-preposition","period"],"text":"De dienst begint om 10:00 's ochtends.","expect":["- 10:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock","clock-preposition","period"],"text":"De monteur komt om 14:00 's middags.","expect":["- 14:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock","clock-preposition","period"],"text":"De nachtdienst begint om 11:00 's nachts.","expect":["- 23:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock-suffix","period","clock-preposition"],"text":"Om 5 uur 's middags sluit de kantine.","expect":["- 17:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["clock","half","clock-preposition"],"text":"Ik ben om half vijf bij de kapper.","expect":["- 04:30 - > -"]}
+{"lang":"nl","kind":"positive","tags":["half","approximately"],"text":"Rond half acht drinken we koffie.","expect":["- 07:30 - > -"]}
+{"lang":"nl","kind":"positive","tags":["half","period","clock-preposition"],"text":"De avondvergadering begint om half negen 's avonds.","expect":["- 20:30 - > -"]}
+{"lang":"nl","kind":"positive","tags":["half","period","weekday"],"text":"Op zaterdag is de markt tot half vijf 's middags.","expect":["w6 16:30 - > -"]}
+{"lang":"nl","kind":"positive","tags":["quarter","clock-preposition"],"text":"Om kwart over drie start de oefenles.","expect":["- 03:15 - > -"]}
+{"lang":"nl","kind":"positive","tags":["quarter"],"text":"Ik sta kwart voor zeven op.","expect":["- 06:45 - > -"]}
+{"lang":"nl","kind":"positive","tags":["quarter","clock-preposition"],"text":"De bus naar werk rijdt om kwart voor acht.","expect":["- 07:45 - > -"]}
+{"lang":"nl","kind":"positive","tags":["minutes-before-after"],"text":"Om tien voor vier begint de meditatie.","expect":["- 03:50 - > -"]}
+{"lang":"nl","kind":"positive","tags":["minutes-before-after","clock-preposition"],"text":"De kraam gaat om vijf over negen open.","expect":["- 09:05 - > -"]}
+{"lang":"nl","kind":"positive","tags":["minutes-before-after","clock-preposition"],"text":"Het ziekenhuisbezoek is om twintig voor twee.","expect":["- 01:40 - > -"]}
+{"lang":"nl","kind":"positive","tags":["number-words","clock-suffix","clock-preposition"],"text":"Om drie uur bel ik mijn moeder.","expect":["- 03:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["number-words","clock-suffix"],"text":"We eten om zeven uur samen.","expect":["- 07:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["number-words","clock-suffix","period"],"text":"De kleinkinderen komen om vier uur 's middags langs.","expect":["- 16:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["noon-midnight","approximately"],"text":"We verzamelen rond het middaguur.","expect":["- 12:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["noon-midnight"],"text":"Het vuurwerk gaat om middernacht af.","expect":["- 00:00+1 - > -"]}
+{"lang":"nl","kind":"positive","tags":["noon-midnight","weekday"],"text":"Op vrijdag eindigt de dienst om middernacht.","expect":["w5 00:00+1 - > -"]}
+{"lang":"nl","kind":"positive","tags":["noon-midnight","period","clock-suffix"],"text":"Om 12 uur 's middags is de lunchpauze.","expect":["- 12:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["relative-day","clock"],"text":"Vandaag bel ik de klantenservice om 14:00.","expect":["+0d 14:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["relative-day","clock"],"text":"Morgen om 8:00 heb ik een afspraak bij de huisarts.","expect":["+1d 08:00 - > -"],"note":"Dutch 'morgen' means morning or tomorrow; with a clock time it reads as tomorrow, per the context rule in coverage.md row 18."}
+{"lang":"nl","kind":"positive","tags":["relative-day","clock"],"text":"Overmorgen om 11:00 wordt de wasmachine geleverd.","expect":["+2d 11:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["relative-day","clock"],"text":"Gisteren om 19:00 keek ik de wedstrijd op de bank.","expect":["-1d 19:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["relative-day","clock"],"text":"Eergisteren om 7:00 nam ik de vroege bus.","expect":["-2d 07:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["relative-day","clock","period"],"text":"Vanavond om 21:00 begint de documentaire.","expect":["+0d 21:00 - > -"],"note":"vanavond = tonight, read as today."}
+{"lang":"nl","kind":"positive","tags":["weekday","clock"],"text":"De teamcall is donderdag om 15:00.","expect":["w4 15:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["weekday","clock"],"text":"Op zaterdag spelen de jeugdteams om 9:00.","expect":["w6 09:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["weekday","clock"],"text":"Zondag bezoeken we oma om 13:30.","expect":["w7 13:30 - > -"]}
+{"lang":"nl","kind":"positive","tags":["weekday","clock"],"text":"Volgende week maandag opent de inschrijving om 20:00.","expect":["w1:next 20:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["weekday","clock"],"text":"Volgende week donderdag is de algemene vergadering om 19:30.","expect":["w4:next 19:30 - > -"]}
+{"lang":"nl","kind":"positive","tags":["weekday","clock"],"text":"Op vrijdag wordt de groene bak opgehaald, om 7:00.","expect":["w5 07:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["month-name","clock"],"text":"Het zomerfeest is op 4 juli om 16:00.","expect":["07-04 16:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["month-name","clock"],"text":"Op 1 september begint het schooljaar om 8:45.","expect":["09-01 08:45 - > -"]}
+{"lang":"nl","kind":"positive","tags":["month-name","clock"],"text":"De verhuizing is op 15 maart 2027 om 9:00.","expect":["2027-03-15 09:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["month-name","clock"],"text":"Op 21 december is het kerstconcert om 19:00.","expect":["12-21 19:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["month-name","weekday","clock"],"text":"Vrijdag 6 maart is de quizavond om 20:00.","expect":["03-06 20:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["numeric-date","clock"],"region":"NL","text":"De oplevering is op 15/10/2026 om 9:00.","expect":["2026-10-15 09:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["numeric-date","clock"],"region":"NL","text":"Op 3/10 komt de monteur om 10:00.","expect":["10-03 10:00 - > - ?1"]}
+{"lang":"nl","kind":"positive","tags":["numeric-date","clock"],"region":"NL","text":"Het indienen kan tot 13/11 om 17:00.","expect":["11-13 17:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["numeric-date","clock"],"region":"NL","text":"De inventaris stopt op 03.10.2026 om 02:00.","expect":["2026-10-03 02:00 - > -"],"note":"Belgian Dutch dot date, day-first like the German examples in tests.rs."}
+{"lang":"nl","kind":"positive","tags":["numeric-date","date-only"],"region":"NL","text":"Voor 5/6 moet de aanmelding binnen zijn.","expect":["06-05 - - > - ?1"]}
+{"lang":"nl","kind":"positive","tags":["numeric-date","clock"],"region":"NL","text":"Het jubileum is op 24/12/2026 om 20:00.","expect":["2026-12-24 20:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["relative-time"],"text":"Over 3 uur begint de livestream.","expect":["- +180m - > -"]}
+{"lang":"nl","kind":"positive","tags":["relative-time"],"text":"De uitslag komt over een half uur binnen.","expect":["- +30m - > -"]}
+{"lang":"nl","kind":"positive","tags":["relative-time"],"text":"De shuttle vertrekt over 45 minuten.","expect":["- +45m - > -"]}
+{"lang":"nl","kind":"positive","tags":["relative-time"],"text":"Tien minuten geleden ging de telefoon.","expect":["- -10m - > -"]}
+{"lang":"nl","kind":"positive","tags":["relative-time"],"text":"Over 2 uur en 30 minuten sluit het zwembad.","expect":["- +150m - > -"]}
+{"lang":"nl","kind":"positive","tags":["relative-time"],"text":"Over een uur is de pauze.","expect":["- +60m - > -"]}
+{"lang":"nl","kind":"positive","tags":["range","clock-suffix"],"text":"De winkel is open van 9 tot 12 uur.","expect":["- 09:00–12:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["range"],"text":"De verkoop gaat van 14:00 tot 16:00.","expect":["- 14:00–16:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["range"],"text":"De pauze is van 13:00 tot 13:15.","expect":["- 13:00–13:15 - > -"]}
+{"lang":"nl","kind":"positive","tags":["range","zone-word"],"text":"De uitzending loopt van 18:00 tot 20:00 Midden-Europese Tijd.","expect":["- 18:00–20:00 +60 > -"],"note":"Midden-Europese Tijd is the Dutch name of CET (coverage.md row 26)."}
+{"lang":"nl","kind":"positive","tags":["range","place-preposition"],"text":"De openluchtvoorstelling is van 17:00 tot 19:00 in Milaan.","expect":["- 17:00–19:00 Europe/Rome > -"]}
+{"lang":"nl","kind":"positive","tags":["range"],"text":"We serveren warme maaltijden van 20:30 tot 23:00.","expect":["- 20:30–23:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["duration","dot-clock"],"text":"De workshop is om 13.00 uur, 2 uur lang.","expect":["- 13:00 d120 - > -"]}
+{"lang":"nl","kind":"positive","tags":["duration","clock"],"text":"De les om 17:00 duurt 45 minuten.","expect":["- 17:00 d45 - > -"]}
+{"lang":"nl","kind":"positive","tags":["duration","clock"],"text":"Bijeenkomst om 10:00, duur 90 minuten.","expect":["- 10:00 d90 - > -"]}
+{"lang":"nl","kind":"positive","tags":["duration","clock"],"text":"De ontruimingsoefening om 11:00 duurt 2 uur.","expect":["- 11:00 d120 - > -"]}
+{"lang":"nl","kind":"positive","tags":["duration","clock"],"text":"Webinar om 19:00, 1 uur, daarna vragen.","expect":["- 19:00 d60 - > -"]}
+{"lang":"nl","kind":"positive","tags":["zone-word","clock"],"text":"De veiling begint om 15:00 Midden-Europese Tijd.","expect":["- 15:00 +60 > -"],"note":"Midden-Europese Tijd is the Dutch name of CET (coverage.md row 26)."}
+{"lang":"nl","kind":"positive","tags":["zone-word","clock"],"text":"De uitzending is om 20:00 Nederlandse tijd.","expect":["- 20:00 Europe/Amsterdam > -"],"note":"Zone word parallel to 'hora de España' in es.jsonl and 'Berliner Zeit' in tests.rs."}
+{"lang":"nl","kind":"positive","tags":["zone-word","clock"],"text":"De bugfix gaat om 7:00 Amsterdamse tijd live.","expect":["- 07:00 Europe/Amsterdam > -"]}
+{"lang":"nl","kind":"positive","tags":["zone-word","clock"],"text":"De trainingsessie is om 9:00 Midden-Europese Zomertijd.","expect":["- 09:00 +120 > -"],"note":"Midden-Europese Zomertijd is the Dutch name of CEST."}
+{"lang":"nl","kind":"positive","tags":["abbreviation","clock"],"text":"We spreken af om 15:00 UTC.","expect":["- 15:00 +0 > -"]}
+{"lang":"nl","kind":"positive","tags":["abbreviation","clock"],"text":"De marktupdate is om 9:00 CET.","expect":["- 09:00 +60 > -"]}
+{"lang":"nl","kind":"positive","tags":["abbreviation","clock"],"text":"Het vliegtuig vertrekt om 10:30 CEST.","expect":["- 10:30 +120 > -"]}
+{"lang":"nl","kind":"positive","tags":["abbreviation","clock"],"text":"De standup met het Amerikaanse team is om 9:00 ET.","expect":["- 09:00 America/New_York > -"]}
+{"lang":"nl","kind":"positive","tags":["abbreviation","clock"],"text":"De nightly build start om 2:00 PT.","expect":["- 02:00 America/Los_Angeles > -"]}
+{"lang":"nl","kind":"positive","tags":["abbreviation","clock"],"text":"De supportdesk sluit om 21:00 GMT.","expect":["- 21:00 +0 > -"]}
+{"lang":"nl","kind":"positive","tags":["abbreviation","clock"],"text":"De releasecall is om 16:00 JST.","expect":["- 16:00 +540 > -"]}
+{"lang":"nl","kind":"positive","tags":["abbreviation","clock"],"text":"De avondstandup is om 10:00 MSK.","expect":["- 10:00 +180 > -"]}
+{"lang":"nl","kind":"positive","tags":["abbreviation","clock"],"text":"Het dagrapport komt om 8:00 WIB binnen.","expect":["- 08:00 +420 > -"]}
+{"lang":"nl","kind":"positive","tags":["abbreviation","clock"],"text":"De wissel van de dienst is om 17:00 PST.","expect":["- 17:00 -480 > -"]}
+{"lang":"nl","kind":"positive","tags":["target-question","zone-word"],"text":"Het webinar begint om 18:00 Nederlandse tijd. Hoe laat is dat in Tokio?","expect":["- 18:00 Europe/Amsterdam > Asia/Tokyo"]}
+{"lang":"nl","kind":"positive","tags":["target-question","place-preposition"],"text":"Hoe laat is het in Seoel om 15:00 in Amsterdam?","expect":["- 15:00 Europe/Amsterdam > Asia/Seoul"]}
+{"lang":"nl","kind":"positive","tags":["target-question","period","place-preposition"],"text":"Als het om 9:00 's ochtends is in Sydney, hoe laat is het dan in New York?","expect":["- 09:00 Australia/Sydney > America/New_York"]}
+{"lang":"nl","kind":"positive","tags":["target-question","relative-day"],"text":"De training is morgen om 17:00. Hoe laat is dat in Los Angeles?","expect":["+1d 17:00 - > America/Los_Angeles"]}
+{"lang":"nl","kind":"positive","tags":["target-question","place-preposition"],"text":"De beurs opent om 9:30 in Parijs; hoe laat is dat in Chicago?","expect":["- 09:30 Europe/Paris > America/Chicago"]}
+{"lang":"nl","kind":"positive","tags":["arrow-or-local","clock"],"text":"We bellen om 16:00 in Parijs → Tokio.","expect":["- 16:00 Europe/Paris > Asia/Tokyo"]}
+{"lang":"nl","kind":"positive","tags":["arrow-or-local"],"text":"De opening: 10:00 in Moskou -> Madrid.","expect":["- 10:00 Europe/Moscow > Europe/Madrid"]}
+{"lang":"nl","kind":"positive","tags":["arrow-or-local","abbreviation"],"text":"Mijn dienst: 15:00 CET → Sydney.","expect":["- 15:00 +60 > Australia/Sydney"]}
+{"lang":"nl","kind":"positive","tags":["arrow-or-local","clock"],"text":"Ik kan om 15:00 mijn tijd.","expect":["- 15:00 local > -"]}
+{"lang":"nl","kind":"positive","tags":["arrow-or-local","place-preposition"],"text":"De stream is om 10:00 in Tokio; wat is dat in mijn tijd?","expect":["- 10:00 Asia/Tokyo > local"]}
+{"lang":"nl","kind":"positive","tags":["arrow-or-local","relative-day"],"text":"De afspraak is morgen om 10:00, gewoon bij mij.","expect":["+1d 10:00 - > -"],"note":"'bij mij' parallels German 'bei mir' → local."}
+{"lang":"nl","kind":"positive","tags":["arrow-or-local","clock"],"text":"De les is om 18:00 hier.","expect":["- 18:00 local > -"]}
+{"lang":"nl","kind":"positive","tags":["place-preposition","clock"],"text":"De wekelijkse call is om 18:00 in Warschau.","expect":["- 18:00 Europe/Warsaw > -"]}
+{"lang":"nl","kind":"positive","tags":["place-preposition","clock"],"text":"De call met de klant is om 12:00 in Lissabon.","expect":["- 12:00 Europe/Lisbon > -"]}
+{"lang":"nl","kind":"positive","tags":["place-preposition","clock"],"text":"De keynote is in Wenen om 19:00.","expect":["- 19:00 Europe/Vienna > -"]}
+{"lang":"nl","kind":"positive","tags":["place-preposition","clock"],"text":"De stadsrondleiding begint om 10:00 in Caïro.","expect":["- 10:00 Africa/Cairo > -"]}
+{"lang":"nl","kind":"positive","tags":["place-preposition","clock"],"text":"De nachtvlucht landt om 6:05 in Dubai.","expect":["- 06:05 Asia/Dubai > -"]}
+{"lang":"nl","kind":"positive","tags":["deadline-idiom"],"text":"Lever het rapport in vóór het einde van de dag.","expect":["- ~17:00 - > -"],"note":"Dutch EOD idiom, mirrors 'bis Feierabend' → 17:00."}
+{"lang":"nl","kind":"positive","tags":["deadline-idiom"],"text":"De peiling sluit voor middernacht.","expect":["- ~23:59 - > -"]}
+{"lang":"nl","kind":"positive","tags":["deadline-idiom","weekday"],"text":"Stuur je reactie uiterlijk vrijdag einde van de dag.","expect":["w5 ~17:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["deadline-idiom","relative-day"],"text":"Vul de enquête vandaag nog in, vóór het einde van de dag.","expect":["+0d ~17:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["deadline-idiom"],"text":"De aanmelding loopt tot einde van de dag.","expect":["- ~17:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["approximately","clock"],"text":"Ik ben er rond 15:30.","expect":["- 15:30 - > -"]}
+{"lang":"nl","kind":"positive","tags":["approximately","clock","clock-preposition"],"text":"De bijeenkomst begint ongeveer om 18:00.","expect":["- 18:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["approximately","clock"],"text":"De bus stopt zo rond 7:40 bij ons.","expect":["- 07:40 - > -"]}
+{"lang":"nl","kind":"positive","tags":["approximately","half"],"text":"Rond half negen komen de gasten aan.","expect":["- 08:30 - > -"]}
+{"lang":"nl","kind":"positive","tags":["approximately","clock-suffix"],"text":"De markt doet rond 17 uur dicht.","expect":["- 17:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["country","clock"],"text":"De support in Japan is bereikbaar om 9:00.","expect":["- 09:00 ~Asia/Tokyo > -"]}
+{"lang":"nl","kind":"positive","tags":["country","clock"],"text":"De fabriek in China start om 20:00.","expect":["- 20:00 ~Asia/Shanghai > -"]}
+{"lang":"nl","kind":"positive","tags":["country","clock"],"text":"De helpdesk in de Verenigde Staten opent om 9:00.","expect":["- 09:00 ~?country29 > -"]}
+{"lang":"nl","kind":"positive","tags":["country","clock"],"text":"Onze winkel in Duitsland gaat om 9:00 open.","expect":["- 09:00 ~?country2 > -"]}
+{"lang":"nl","kind":"positive","tags":["country","clock"],"text":"Het team in Indonesië stuurt om 8:00 het dagrapport.","expect":["- 08:00 ~?country4 > -"],"note":"Country name from the host, multi-zone like '9am in Indonesia' in tests.rs."}
+{"lang":"nl","kind":"positive","tags":["country","clock"],"text":"De levering uit Frankrijk komt om 14:00 aan.","expect":["- 14:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["unix-iso"],"region":"NL","text":"De automatische back-up start op 2026-10-14T02:30:00Z.","expect":["- @1791945000 - > -"]}
+{"lang":"nl","kind":"positive","tags":["unix-iso"],"region":"NL","text":"In de log staat de foutmelding van 2026-05-20T14:45:00+02:00.","expect":["- @1779281100 - > -"]}
+{"lang":"nl","kind":"positive","tags":["unix-iso"],"region":"NL","text":"De export was klaar op 2026-12-24T21:00:00Z.","expect":["- @1798146000 - > -"]}
+{"lang":"nl","kind":"positive","tags":["unix-iso"],"text":"Het dossier is aangemaakt op unix 1727179200.","expect":["- @1727179200 - > -"]}
+{"lang":"nl","kind":"positive","tags":["unix-iso"],"text":"Het pakket is gescand op 1727179200000 ms.","expect":["- @1727179200 - > -"]}
+{"lang":"nl","kind":"positive","tags":["unix-iso"],"region":"NL","text":"De serverklok is teruggezet naar 1970-01-01T00:00:00Z.","expect":["- @0 - > -"]}
+{"lang":"nl","kind":"positive","tags":["date-only","month-name"],"text":"De kerstmarkt gaat open op 3 december.","expect":["12-03 - - > -"]}
+{"lang":"nl","kind":"positive","tags":["date-only","month-name"],"text":"De beurs is op 15 maart 2027.","expect":["2027-03-15 - - > -"]}
+{"lang":"nl","kind":"positive","tags":["date-only","month-name"],"text":"Inzendingen voor de fotowedstrijd sluiten op 30 september.","expect":["09-30 - - > -"]}
+{"lang":"nl","kind":"positive","tags":["date-only","numeric-date"],"region":"NL","text":"Op 20/11 is het depot gesloten.","expect":["11-20 - - > -"]}
+{"lang":"nl","kind":"positive","tags":["date-inherited","month-name","clock","place-preposition"],"text":"1 oktober: 9:00 in Amsterdam, 14:00 in Tokio.","expect":["10-01 09:00 Europe/Amsterdam > -","10-01^ 14:00 Asia/Tokyo > -"]}
+{"lang":"nl","kind":"positive","tags":["date-inherited","month-name","clock","abbreviation"],"text":"Programma 15 november:\n09:30 CET opening\n11:00 CET pauze.","expect":["11-15 09:30 +60 > -","11-15^ 11:00 +60 > -"]}
+{"lang":"nl","kind":"positive","tags":["date-inherited","month-name","weekday","clock"],"text":"Dagprogramma donderdag 2 oktober: 10:00 opening, 16:00 afsluiting.","expect":["10-02 10:00 - > -","10-02^ 16:00 - > -"]}
+{"lang":"nl","kind":"positive","tags":["date-inherited","month-name","abbreviation"],"text":"Dag van 3 maart: 10:00 GMT welkom, 16:00 GMT slot.","expect":["03-03 10:00 +0 > -","03-03^ 16:00 +0 > -"]}
+{"lang":"nl","kind":"negative","tags":["clock"],"text":"Bel me op 06 2155 4018 voor de afspraak.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["clock"],"text":"Het nummer van de praktijk is 010 211 7550.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["clock"],"text":"Mijn nieuwe nummer is +31 20 555 0123.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["dot-clock"],"text":"Versie 2.10 is net uitgebracht.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["dot-clock"],"text":"De update naar versie 4.2.1 is gelukt.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["dot-clock"],"text":"Het uurtarief is 10.00 euro.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["clock"],"text":"De entree kost 12,50 euro per persoon.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["clock"],"text":"Het abonnement kost 10 euro per maand.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["clock"],"text":"De wedstrijd eindigde in 3-1.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["clock"],"text":"Tussenstand na de rust: 2-2.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["clock"],"text":"Kamer 305 is al bezet.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["clock"],"text":"Bladzijde 120 van de handleiding.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["clock"],"text":"Hoofdstuk 9 begint op blad 55.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["clock"],"text":"Maat 42 is tijdelijk uitverkocht.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["clock"],"text":"Lijn 21 rijdt vanavond niet.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["numeric-date"],"text":"Het pakket gaat naar Leeuwerikenlaan 24.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["numeric-date"],"text":"Ons kantoor zit op Industrieweg 12, unit B.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["numeric-date"],"text":"Bus 12 rijdt niet door de binnenstad.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["unix-iso"],"text":"Bestelling 4501882 is verzonden.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["unix-iso"],"text":"Je volgnummer is 8834 1205 5590 2103 77.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["unix-iso"],"text":"Je klantnummer is 700415.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["numeric-date"],"text":"Doe 1/2 kopje havermout in de pan.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["half"],"text":"Voeg een halve liter melk toe.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["half"],"text":"Elk half uur vertrekt een veerpont.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["weekday"],"text":"Tot dinsdag!","expect":[]}
+{"lang":"nl","kind":"negative","tags":["weekday"],"text":"We zien elkaar volgende week vrijdag.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["weekday"],"text":"Onze winkel is op zondag gesloten.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["weekday-in-brackets"],"text":"Op dinsdag (wandelen) is de groep vol.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["relative-day"],"text":"Morgen is het markt in het dorp.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["relative-day"],"text":"Vanaf vandaag geldt het nieuwe rooster.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["period"],"text":"'s Ochtends is het hier heerlijk rustig.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["period"],"text":"Kom gerust 's middags langs.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["range"],"text":"De cursus is voor kinderen van 9 tot 12 jaar.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["range"],"text":"Reken op een groep van 10 tot 15 personen.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["range"],"text":"De korting geldt bij een besteding van 20 tot 50 euro.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["duration"],"text":"De voorstelling duurt 3 uur.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["duration"],"text":"Ik heb nog 40 minuten de tijd.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["relative-time"],"text":"Ik bel je zo dadelijk.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["relative-time"],"text":"Het vliegtuig heeft een half uur vertraging.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["month-name"],"text":"De nieuwe cursus start volgende maand.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["deadline-idiom"],"text":"Lever de folder aan voor het einde van de week.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["target-question"],"text":"Hoe laat is het nu eigenlijk?","expect":[]}
+{"lang":"nl","kind":"negative","tags":["clock"],"text":"Trein 1147 vertrekt van spoor 7.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["clock"],"text":"De thermometer geeft vannacht 3 graden onder nul aan.","expect":[]}
+{"lang":"nl","kind":"negative","tags":["clock"],"text":"Korting van 15 % deze week alleen.","expect":[]}
+{"lang":"nl","kind":"hostile","tags":["clock","abbreviation"],"text":"We bellen af om 26:61 UTC.","expect":["- - +0 > - #invalidTime:26:61"]}
+{"lang":"nl","kind":"hostile","tags":["clock"],"text":"De afronding om 23:59:60 lukt nooit.","expect":["- - - > - #invalidTime:23:59:60"]}
+{"lang":"nl","kind":"hostile","tags":["clock"],"text":"De server start om 24:00 opnieuw.","expect":["- 00:00+1 - > -"],"note":"24:00 reads as next-day 00:00, per the approved relaxation in migration-converter-known-gaps.txt."}
+{"lang":"nl","kind":"hostile","tags":["clock","abbreviation"],"text":"De nachtelijke reset is om 00:00 UTC.","expect":["- 00:00 +0 > -"]}
+{"lang":"nl","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"NL","text":"Het kickoff-moment van 2026-02-30 om 09:00 UTC gaat niet door.","expect":["- 09:00 +0 > - #invalidDate:2026-02-30"]}
+{"lang":"nl","kind":"hostile","tags":["numeric-date","clock","abbreviation"],"region":"NL","text":"Het rapport noemt 2026-13-40 09:00 UTC.","expect":["- 09:00 +0 > - #invalidDate:2026-13-40"]}
+{"lang":"nl","kind":"hostile","tags":["clock","abbreviation"],"text":"De link vervalt om 11:00 UTC+99.","expect":["- 11:00 - > - #invalidOffset:UTC+99"]}
+{"lang":"nl","kind":"hostile","tags":["range"],"text":"Wegwerkzaamheden lopen van 21:00 tot 02:00.","expect":["- 21:00–02:00 - > -"]}
+{"lang":"nl","kind":"hostile","tags":["range"],"text":"De tijdbalk van 18:00–14:00 klopt voor geen meter.","expect":["- 18:00–14:00 - > -"]}
+{"lang":"nl","kind":"hostile","tags":["clock"],"text":"De livestream begint om １９:３０.","expect":["- 19:30 - > -"]}
+{"lang":"nl","kind":"hostile","tags":["clock","place-preposition"],"text":"Afspraak om ０８:１５ in Osaka.","expect":["- 08:15 Asia/Tokyo > -"]}
+{"lang":"nl","kind":"hostile","tags":["clock"],"text":"Om ２１：００ start de quiz.","expect":["- 21:00 - > -"]}
+{"lang":"nl","kind":"hostile","tags":["clock","abbreviation"],"text":"We testen om 10 UTC 🦀.","expect":["- 10:00 +0 > -"]}
+{"lang":"nl","kind":"hostile","tags":["clock"],"text":"🎉 De optocht begint om 13:30.","expect":["- 13:30 - > -"]}
+{"lang":"nl","kind":"hostile","tags":["weekday","clock","place-preposition"],"text":"Let's meet donderdag om 15:00 in Berlin, oké?","expect":["w4 15:00 Europe/Berlin > -"]}
+{"lang":"nl","kind":"hostile","tags":["numeric-date","clock","place-preposition"],"region":"NL","text":"Oké team, de workshop is op 22/10 om 14:00 in Munich.","expect":["10-22 14:00 Europe/Berlin > -"]}
+{"lang":"nl","kind":"hostile","tags":["clock","zone-word"],"text":"De omgeving van de klant start om 7:00 beijing time op.","expect":["- 07:00 Asia/Shanghai > -"]}
+{"lang":"nl","kind":"hostile","tags":["clock"],"text":"We spreken af om 15:00 in Amsterdaam.","expect":["- 15:00 - > - !Amsterdaam"]}
+{"lang":"nl","kind":"hostile","tags":["clock"],"text":"De verbinding met Berlijnn is om 12:00.","expect":["- 12:00 - > -"]}
+{"lang":"nl","kind":"hostile","tags":["relative-day","clock"],"text":"VERGADERING MORGEN 14:00 BERLIJN.","expect":["+1d 14:00 Europe/Berlin > -"]}
+{"lang":"nl","kind":"hostile","tags":["weekday","clock"],"text":"WEKKER ZONDAG 7:30.","expect":["w7 07:30 - > -"]}
+{"lang":"nl","kind":"hostile","tags":["clock"],"text":"De call is om 16:00 et.","expect":["- 16:00 - > -"],"note":"lowercase two-letter abbreviations are not zones, per the approved change for '9am et'."}
+{"lang":"nl","kind":"hostile","tags":["unix-iso"],"region":"NL","text":"De log begint op 1969-12-31T23:59:59+00:00.","expect":["- @-1 - > -"],"note":"negative Unix instant, per the approved in-text ISO reading of 1969-12-31T23:59:59+00:00."}
+{"lang":"nl","kind":"hostile","tags":["clock"],"text":"  14:00  Berlijn  ","expect":["- 14:00 Europe/Berlin > -"]}
+{"lang":"nl","kind":"hostile","tags":["relative-day","clock"],"text":"Afspraak\tkraamzorg\tmorgen\t10:15\tAmsterdam.","expect":["+1d 10:15 Europe/Amsterdam > -"]}
+{"lang":"nl","kind":"hostile","tags":["clock","place-preposition"],"text":"We praten om​ 15:00 in​ Berlijn.","expect":["- 15:00 Europe/Berlin > -"]}
+{"lang":"nl","kind":"hostile","tags":["clock"],"text":"Beste collega, hierbij alvast de notulen van onze afgelopen drie bijeenkomsten met alle actiepunten, genomen besluiten en opvolgdata, plus de opmerkingen die finance en de afdeling inkoop nog hebben toegevoegd, zodat niemand iets hoeft na te zoeken; onthoud goed dat de volgende afstemming doorgaat om 15:00.","expect":["- 15:00 - > -"]}
+{"lang":"nl","kind":"hostile","tags":["range","weekday","month-name"],"text":"vrijdag 6 maart 2026 | 1500 - 18:30 uur","expect":["2026-03-06 15:00–18:30 - > -"]}
+{"lang":"nl","kind":"hostile","tags":["clock","abbreviation"],"text":"Om 9:00 CET of om 12:00 EDT, kies maar.","expect":["- 09:00 +60 > -","- 12:00 -240 > -"]}
+{"lang":"nl","kind":"hostile","tags":["clock","period"],"text":"MIX VAN UREN: 8AM, 4PM EN 22:00.","expect":["- 08:00 - > -","- 16:00 - > -","- 22:00 - > -"]}
+{"lang":"nl","kind":"hostile","tags":["clock"],"text":"Londen 9:00 - Osaka 17:00.","expect":["- 09:00 Europe/London > -","- 17:00 Asia/Tokyo > -"]}
+{"lang":"nl","kind":"hostile","tags":["date-inherited","clock"],"text":"14 oktober: om 9:00 standup.\n\nOm 15:00 review.","expect":["10-14 09:00 - > -","- 15:00 - > -"]}
+{"lang":"nl","kind":"hostile","tags":["deadline-idiom","month-name","abbreviation"],"region":"NL","text":"Deadline: 5 augustus 2026, 23:59 AoE.","expect":["2026-08-05 23:59 Etc/GMT+12 > -"]}
+{"lang":"nl","kind":"hostile","tags":["clock"],"text":"Het rooster zegt 25:00, duidelijk een typefout.","expect":["- - - > - #invalidTime:25:00"]}
+{"lang":"nl","kind":"hostile","tags":["clock"],"text":"Tot 15:00 dan maar!!!???","expect":["- 15:00 - > -"]}

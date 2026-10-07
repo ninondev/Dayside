@@ -1,0 +1,1531 @@
+# admin1 code	zh-Hans	zh-Hant（空 = 显示时由简体转换）	source	GeoNames English name
+# 缺失的中文一级行政区名补充表；来源按每行 source 标注。
+# wikidata = Wikidata 按 GeoNames ID（P1566）取的 zh-hans / zh-cn / zh 标签（zh-Hant 取 zh-hant / zh-tw / zh-hk）；llm = Claude 按通用译名规范翻译，未经母语者核；llm+wikidata-label = 翻译后按英文名在 Wikidata 找到同国同名项、改用其 zh 标签（30 条）。
+# 只填 GeoNames 没给的行政区名；ADMIN1_ZH 与 GeoNames 自带的名字优先，本表从不覆盖。
+# LLM 译名经中文维基跨语言标签复核；同国同名且匹配的条目记 llm+zhwiki，撞上普通名词的条目不采纳。保留已有通用译名。
+AD.07	安道尔城		llm	Andorra la Vella
+AE.02	阿治曼酋长国	阿治曼酋長國	wikidata	Ajman
+AE.03	迪拜酋长国	杜拜酋長國	wikidata	Dubai
+AE.04	富查伊拉酋长国		wikidata	Fujairah
+AE.05	哈伊马角酋长国	拉斯海瑪酋長國	wikidata	Ras Al Khaimah
+AE.06	沙迦酋长国	沙迦酋長國	wikidata	Sharjah
+AE.07	乌姆盖万酋长国	烏姆蓋萬酋長國	wikidata	Umm Al Quwain
+AF.19	尼姆鲁兹省	尼姆魯茲省	wikidata	Nimroz
+AF.27	瓦尔达克省	瓦爾達克省	wikidata	Maidan Wardak Province
+AF.40	帕尔旺省	帕爾旺省	wikidata	Parwan
+AI.11205389	布洛因角		llm	Blowing Point
+AI.11205392	桑迪格朗德		llm	Sandy Ground
+AI.11205393	桑迪希尔		llm	Sandy Hill
+AI.11205396	瓦利		llm	The Valley
+AI.11205433	东端		llm	East End
+AI.11205436	北山		llm	North Hill
+AI.11205437	西端		llm	West End
+AI.11205438	南山		llm	South Hill
+AI.11205439	夸特		llm	The Quarter
+AI.11205440	北区		llm	North Side
+AI.11205441	艾兰港		llm	Island Harbour
+AI.11205442	乔治山		llm	George Hill
+AI.11205443	斯托尼格朗德		llm	Stoney Ground
+AI.11205444	法灵顿		llm	The Farrington
+AL.40	培拉特州	培拉特州	wikidata	Berat County
+AL.41	迪勃拉州	第巴爾州	wikidata	Dibër County
+AL.42	都拉斯州	杜勒斯州	wikidata	Durrës County
+AL.43	爱尔巴桑州	愛爾巴桑州	wikidata	Elbasan County
+AL.44	费里州	費里州	wikidata	Fier County
+AL.45	吉诺卡斯特州	吉諾卡斯特州	wikidata	Gjirokastër County
+AL.46	科尔察州	科爾察州	wikidata	Korçë County
+AL.47	库克斯州	庫克斯州	wikidata	Kukës County
+AL.48	莱什州	萊什州	wikidata	Lezhë County
+AL.49	斯库台州	斯庫臺州	wikidata	Shkodër County
+AL.50	地拉那州	地拉那州	wikidata	Tirana
+AL.51	发罗拉州	發羅拉州	wikidata	Vlorë County
+AM.06	洛里州	洛里州	wikidata	Lori
+AM.10	瓦约茨佐尔州	瓦約茨佐爾州	wikidata	Vayots Dzor
+AO.02	比耶省	比耶省	wikidata	Bíe
+AO.CBG	库邦戈省		llm	Cubango
+AO.CUB	宽多省		llm	Cuando Province
+AO.ICB	伊科洛-本戈省		llm	Icolo e Bengo Province
+AO.MLE	东莫希科省		llm	Moxico Leste Province
+AS.010	东区	東區	wikidata	Eastern District
+AS.020	馬努阿區	馬努阿區	wikidata	Manu'a
+AS.030	罗斯环礁	羅斯環礁	wikidata	Rose Island
+AS.040	斯温斯岛	斯溫斯島	wikidata	Swains Island
+AS.050	西区 (美属萨摩亚)		wikidata	Western District
+AT.09	维也纳		llm	Vienna
+AU.04	昆士兰州	昆士蘭州	wikidata	Queensland
+AU.05	南澳大利亚州	南澳州	wikidata	South Australia
+AX.211	瑪麗港市		wikidata	Mariehamn
+AX.212	奧蘭鄉村 (次區)		wikidata	Ålands landsbygd
+AX.213	奧蘭群島 (次區)		wikidata	Ålands skärgård
+AZ.01	阿布歇隆区		wikidata	Abşeron
+AZ.02	阿格贾贝迪区	阿格賈貝迪區	wikidata	Ağcabǝdi
+AZ.03	阿格达姆区		wikidata	Ağdam
+AZ.04	阿格达什区	阿格達什區	wikidata	Ağdaş
+AZ.05	阿克斯塔法区	阿克斯塔法區	wikidata	Ağstafa
+AZ.07	希尔凡		llm+zhwiki	Shirvan
+AZ.09	巴库	巴庫	wikidata	Baki
+AZ.12	贝拉甘区	貝拉甘區	wikidata	Beyləqan
+AZ.16	达什卡桑区	達什卡桑區	wikidata	Daşkǝsǝn
+AZ.20	占贾	占賈	wikidata	Gǝncǝ
+AZ.22	盖奥克恰伊区	蓋奧克恰伊區	wikidata	Göyçay
+AZ.23	卡齐穆罕默德区	卡齊穆罕默德區	wikidata	Hacıqabul
+AZ.24	伊米什利区		wikidata	İmişli
+AZ.28	拉欽區		wikidata	Lachin Rayon
+AZ.29	连科兰区	連科蘭區	wikidata	Lənkəran
+AZ.30	连科兰市		llm	Lankaran Sahari
+AZ.33	明盖恰乌尔	明蓋恰烏爾	wikidata	Mingacevir City
+AZ.34	纳夫塔兰		llm	Naftalan
+AZ.36	涅夫捷恰拉区	涅夫捷恰拉區	wikidata	Neftçala
+AZ.37	奥古兹区	奧古茲區	wikidata	Oğuz
+AZ.39	卡希区	卡希區	wikidata	Qax
+AZ.40	哈萨克区	哈薩克區	wikidata	Qazax
+AZ.41	戈布斯坦区	戈布斯坦區	wikidata	Qobustan
+AZ.42	库巴区	庫巴區	wikidata	Quba
+AZ.43	库巴特雷区	庫巴特雷區	wikidata	Qubadlı
+AZ.45	萨特雷区		wikidata	Saatlı
+AZ.47	舍基区	舍基區	wikidata	Shaki
+AZ.48	舍基	舍基	wikidata	Shaki City
+AZ.50	沙马基区	沙馬基區	wikidata	Şamaxı
+AZ.51	沙姆基尔区	沙姆基爾區	wikidata	Şǝmkir
+AZ.52	萨穆赫区	薩穆赫區	wikidata	Samux
+AZ.53	锡阿赞区	錫阿贊區	wikidata	Siyǝzǝn
+AZ.54	苏姆盖特	蘇姆蓋特	wikidata	Sumqayit
+AZ.55	舒沙区	舒沙區	wikidata	Shusha
+AZ.56	舒沙区	舒沙區	wikidata	Shusha City
+AZ.59	乌贾雷区	烏賈雷區	wikidata	Ucar
+AZ.60	哈奇马斯区	哈奇馬斯區	wikidata	Xaçmaz
+AZ.61	汉肯德		llm	Xankǝndi
+AZ.62	汉拉尔区	漢拉爾區	wikidata	Goygol Rayon
+AZ.63	基兹区	基茲區	wikidata	Xızı
+AZ.64	霍贾雷区	霍賈雷區	wikidata	Khojaly
+AZ.67	叶夫拉赫区	葉夫拉赫區	wikidata	Yevlax
+AZ.68	葉夫拉赫		wikidata	Yevlax City
+AZ.71	扎尔多布区		wikidata	Zardab
+BA.01	波斯尼亚和黑塞哥维那联邦	波士尼亞與赫塞哥維納聯邦	wikidata	Federation of B&H
+BA.02	塞族共和国	塞族共和國	wikidata	Srpska
+BD.H	迈门辛专区		llm	Mymensingh Division
+BG.38	布拉戈耶夫格勒州		wikidata	Blagoevgrad
+BG.39	布尔加斯州	布爾加斯州	wikidata	Burgas
+BG.40	多布里奇州	多布里奇州	wikidata	Dobrich
+BG.42	索菲亞市州	索菲亞市州	wikidata	Sofia-Capital
+BG.43	哈斯科沃州	哈斯科沃州	wikidata	Haskovo
+BG.44	克尔贾利州		llm	Kardzhali
+BG.45	丘斯滕迪尔州		wikidata	Kyustendil
+BG.46	洛维奇州		wikidata	Lovech
+BG.47	蒙塔納州		wikidata	Montana
+BG.48	帕扎尔吉克州		wikidata	Pazardzhik
+BG.49	佩尔尼克州		wikidata	Pernik
+BG.50	普列文州		wikidata	Pleven
+BG.51	普罗夫迪夫州	普羅夫迪夫州	wikidata	Plovdiv
+BG.52	拉兹格勒州		wikidata	Razgrad
+BG.53	鲁塞州		wikidata	Ruse
+BG.54	舒门州	舒門州	wikidata	Shumen
+BG.55	锡利斯特拉州		wikidata	Silistra
+BG.56	斯利文州		wikidata	Sliven
+BG.57	斯莫梁州		wikidata	Smolyan
+BG.59	旧扎戈拉州		wikidata	Stara Zagora
+BG.60	特尔戈维什特州		wikidata	Targovishte
+BG.61	瓦尔纳州	瓦爾納州	wikidata	Varna
+BG.62	大特尔诺沃州		wikidata	Veliko Tarnovo
+BG.63	维丁州		wikidata	Vidin
+BG.64	弗拉察州		wikidata	Vratsa
+BG.65	扬博尔州		wikidata	Yambol
+BM.01	德文郡堂区		wikidata	Devonshire
+BM.02	哈密尔顿堂区		wikidata	Hamilton
+BM.03	哈密尔顿	漢密爾頓	wikidata	Hamilton city
+BM.04	帕吉特堂区		wikidata	Paget
+BM.05	彭布罗克堂区		wikidata	Pembroke
+BM.06	圣乔治教区		llm	Saint George
+BM.07	圣乔治堂区 (百慕达)		wikidata	Saint Georgeʼs
+BM.08	桑兹堂区	桑茲堂區	wikidata	Sandys
+BM.09	史密斯教区		llm	Smithʼs
+BM.10	南安普敦堂区	南安普敦堂區	wikidata	Southampton
+BM.11	沃里克堂区		wikidata	Warwick
+BN.01	马来奕区		wikidata	Belait
+BN.03	淡布隆县		wikidata	Temburong
+BN.04	都东区	都東縣	wikidata	Tutong
+BO.02	科恰班巴省	科恰班巴省	wikidata	Cochabamba
+BO.06	潘多省	潘多省	wikidata	Pando
+BQ.BO	博奈尔	波奈	wikidata	Bonaire
+BQ.SB	萨巴	薩巴	wikidata	Saba
+BR.01	阿克里州	阿克里州	wikidata	Acre
+BR.03	阿马帕州	阿馬帕州	wikidata	Amapá
+BR.05	巴伊亚州	巴伊亞州	wikidata	Bahia
+BR.06	塞阿拉州	塞阿拉州	wikidata	Ceará
+BR.17	帕拉伊巴州	帕拉伊巴州	wikidata	Paraíba
+BR.23	南里奥格兰德州	南大河州	wikidata	Rio Grande do Sul
+BS.15	长岛	長島	wikidata	Long Island
+BS.16	马亚瓜纳		llm	Mayaguana
+BS.23	新普罗维登斯		llm	New Providence
+BS.24	阿克林岛		llm+zhwiki	Acklins
+BS.35	圣萨尔瓦多岛	聖薩爾瓦多島	wikidata	San Salvador
+BS.36	布莱克波因特		llm	Black Point
+BS.38	中安德罗斯		llm	Central Andros
+BS.39	中伊柳塞拉		llm	Central Eleuthera
+BS.40	克鲁克德岛 (巴哈马)	克魯克德島	wikidata	Crooked Island and Long Cay
+BS.42	大凯岛		llm	Grand Cay
+BS.44	曼格罗夫凯		llm	Mangrove Cay
+BS.45	穆尔岛		llm	Moore’s Island
+BS.49	拉姆岛		llm+zhwiki	Rum Cay
+BT.05	布姆唐宗	布姆唐宗	wikidata	Bumthang District
+BT.06	楚卡宗	楚卡宗	wikidata	Chukha
+BT.07	奇朗宗	奇朗宗	wikidata	Tsirang District
+BT.08	达加纳宗	達加納宗	wikidata	Dagana
+BT.09	盖莱普宗	蓋萊普宗	wikidata	Sarpang District
+BT.10	哈阿宗	哈阿宗	wikidata	Haa
+BT.11	伦奇宗		wikidata	Lhuntse
+BT.12	蒙加尔宗		wikidata	Mongar
+BT.13	帕罗宗	帕羅宗	wikidata	Paro
+BT.14	佩马加策尔宗		wikidata	Pemagatshel
+BT.15	普那卡宗		wikidata	Punakha
+BT.16	萨姆奇宗	薩姆奇宗	wikidata	Samtse District
+BT.17	萨姆德鲁琼卡尔宗	薩姆德魯瓊卡爾宗	wikidata	Samdrup Jongkhar
+BT.18	谢姆冈宗		wikidata	Zhemgang District
+BT.19	塔希冈宗	塔希岡宗	wikidata	Trashigang District
+BT.20	廷布宗		wikidata	Thimphu District
+BT.21	通萨宗	通薩宗	wikidata	Tongsa
+BT.22	旺杜波德朗宗	旺杜波德朗宗	wikidata	Wangdi Phodrang
+BT.23	加萨宗		wikidata	Gasa
+BT.24	塔希央奇宗		wikidata	Trashi Yangste
+BW.08	东北区		wikidata	North-East
+BW.09	东南区		wikidata	South-East
+BW.12	乔贝		llm	Chobe
+BW.13	弗朗西斯敦市		llm	City of Francistown
+BW.14	哈博罗内		llm	Gaborone
+BW.15	朱瓦能		llm+wikidata-label	Jwaneng
+BW.16	洛巴策		llm	Lobatse
+BW.17	塞莱比-皮奎		llm	Selibe Phikwe
+BW.18	索瓦镇		llm	Sowa Town
+BY.01	布列斯特州		wikidata	Brest
+BY.02	戈梅利州	戈梅利州	wikidata	Homyel’ Voblasc’
+BY.03	格罗德诺州	格羅德諾州	wikidata	Grodnenskaya
+BY.06	莫吉廖夫州	莫吉廖夫州	wikidata	Mogilev
+CA.05	纽芬兰-拉布拉多省	紐芬蘭-拉布拉多省	wikidata	Newfoundland and Labrador
+CA.10	魁北克省	魁北克省	wikidata	Quebec
+CA.13	西北地区	西北地區	wikidata	Northwest Territories
+CD.06	金沙萨市区	金沙薩市區	wikidata	Kinshasa
+CD.08	中刚果省	中剛果省	wikidata	Bas-Congo
+CD.15	上洛马米省		llm	Haut-Lomami
+CD.18	开赛省		llm	Kasai
+CD.19	宽果省	寬果省	wikidata	Kwango
+CD.21	洛马米省		llm	Lomami
+CD.22	卢阿拉巴省		wikidata	Lualaba
+CD.26	北乌班吉省	北烏班吉省	wikidata	Nord-Ubangi
+CD.28	南乌班吉省		llm	Sud-Ubangi
+CF.15	纳纳-格雷比济省	納納-格雷比濟省	wikidata	Nana-Grébizi
+CF.18	班吉		llm	Bangui
+CF.19	曼贝雷省		llm	Mambéré
+CF.20	瓦姆-法法省		llm	Ouham-Fafa
+CF.21	利姆-彭代省		llm	Lim-Pendé
+CG.12	布拉柴维尔		llm	Brazzaville
+CG.15	黑角		llm	Pointe-Noire
+CH.SG	圣加仑州		wikidata	Saint Gallen
+CI.78	山地區		wikidata	Montagnes
+CI.93	阿比让自治区		llm	Abidjan Autonomous District
+CI.94	科莫埃區		wikidata	Comoé District
+CI.95	戈吉布阿區		wikidata	Goh-Djiboua
+CI.96	薩桑德拉-馬拉韋區	薩桑德拉-馬拉韋區	wikidata	Sassandra-Marahoue
+CI.97	沃羅巴區	沃羅巴區	wikidata	Woroba
+CI.98	亚穆苏克罗		llm	Yamoussoukro
+CK.11695124	阿伊图塔基		llm+zhwiki	Aitutaki
+CK.11695126	阿蒂乌		llm	Atiu
+CK.11695127	曼加伊亚		llm+zhwiki	Mangaia
+CK.11695384	马尼希基		llm	Manihiki
+CK.11695385	毛凯		llm+wikidata-label	Ma'uke
+CK.11695386	米蒂亚罗		llm	Mitiaro
+CK.11695387	帕默斯顿		llm	Palmerston
+CK.11695388	彭林		llm	Penrhyn
+CK.11695389	普卡普卡		llm	Pukapuka
+CK.11695390	拉卡杭阿		llm	Rakahanga
+CK.11695425	拉罗汤加		llm	Rarotonga
+CL.01	瓦尔帕莱索大区	瓦爾帕萊索大區	wikidata	Valparaiso
+CL.02	伊瓦涅斯将军艾森大区		wikidata	Aysén
+CL.03	安托法加斯塔大区	安托法加斯塔大區	wikidata	Antofagasta
+CL.04	阿劳卡尼亚大区		wikidata	Araucania
+CL.05	阿塔卡马大区		wikidata	Atacama
+CL.06	比奥比奥大区		wikidata	Biobio
+CL.10	麦哲伦-智利南极大区		wikidata	Region of Magallanes
+CL.11	马乌莱大区		wikidata	Maule Region
+CM.07	西北区	西北區	wikidata	North-West
+CM.09	西南区		wikidata	South-West
+CO.04	大西洋省	大西洋省	wikidata	Atlántico
+CO.08	卡克塔省		wikidata	Caquetá
+CO.11	乔科省	喬科省	wikidata	Chocó
+CO.12	科尔多瓦	哥多華	wikidata	Córdoba
+CO.20	纳里尼奥省	納里尼奧省	wikidata	Nariño
+CO.25	聖安德烈斯-普羅維登西亞和聖卡塔利娜群島省		wikidata	San Andres y Providencia
+CO.30	沃佩斯省	沃佩斯省	wikidata	Vaupés
+CO.34	波哥大首都区	波哥大首都區	wikidata	Bogota D.C.
+CO.35	玻利瓦尔省	玻利瓦省	wikidata	Bolívar
+CO.36	博亚卡省	博亞卡省	wikidata	Boyacá
+CR.08	圣何塞省	聖何塞省	wikidata	San José
+CU.01	比那尔德里奥省	比那爾德里奧省	wikidata	Pinar del Río
+CU.02	哈瓦那省	哈瓦那省	wikidata	Havana
+CU.04	青年島特別市		wikidata	Isla de la Juventud
+CU.05	卡马圭省	卡馬圭省	wikidata	Camagüey
+CV.01	博阿维斯塔	博阿維斯塔	wikidata	Boa Vista
+CV.02	布拉瓦	布拉瓦	wikidata	Brava
+CV.04	马尤	馬尤	wikidata	Maio
+CV.05	保罗	保羅	wikidata	Paul
+CV.07	大里贝拉	大里貝拉	wikidata	Ribeira Grande
+CV.08	萨尔	薩爾	wikidata	Sal
+CV.11	圣维森特		wikidata	São Vicente
+CV.13	莫什泰鲁什		wikidata	Mosteiros
+CV.14	普拉亚	普拉亞	wikidata	Praia
+CV.15	圣卡塔琳娜	聖卡塔琳娜	wikidata	Santa Catarina
+CV.16	圣克鲁什	聖克魯什	wikidata	Santa Cruz
+CV.17	圣多明戈斯	聖多明戈斯	wikidata	São Domingos
+CV.18	圣菲利佩		wikidata	São Filipe
+CV.19	圣米格尔	聖米格爾	wikidata	São Miguel
+CV.20	塔拉法尔	塔拉法爾	wikidata	Tarrafal
+CV.21	波多诺伏		llm	Porto Novo
+CV.22	里贝拉布拉瓦		wikidata	Ribeira Brava
+CV.23	圣地亚哥岛大里贝拉	聖地亞哥島大里貝拉	wikidata	Ribeira Grande de Santiago
+CV.24	福古岛圣卡塔琳娜	福古島聖卡塔琳娜	wikidata	Santa Catarina do Fogo
+CV.25	圣洛伦索-杜什奥尔冈什	聖洛倫索-杜什奧爾岡什	wikidata	São Lourenço dos Órgãos
+CV.26	圣萨尔瓦多-杜蒙杜	聖薩爾瓦多-杜蒙杜	wikidata	São Salvador do Mundo
+CV.27	圣尼古劳岛塔拉法尔	聖尼古勞島塔拉法爾	wikidata	Tarrafal de São Nicolau
+CZ.52	布拉格		llm	Prague
+CZ.80	维索奇纳州	維索奇納州	wikidata	Vysocina
+CZ.81	卡罗维发利州	卡羅維發利州	wikidata	Carlsbad Region
+CZ.82	赫拉德茨-克拉洛韦州	赫拉德茨-克拉洛韋州	wikidata	Hradec Králové Region
+CZ.83	利贝雷茨州	利貝雷茨州	wikidata	Liberec Region
+CZ.84	奥洛穆茨州	奧洛穆茨州	wikidata	Olomouc Region
+CZ.85	摩拉维亚-西里西亚州	摩拉維亞-西里西亞州	wikidata	Moravian-Silesian Region
+CZ.86	帕尔杜比采州	帕爾杜比采州	wikidata	Pardubice Region
+CZ.87	比尔森州		wikidata	Plzeň Region
+CZ.89	乌斯季州	烏斯季州	wikidata	Ústí nad Labem Region
+CZ.90	兹林州	茲林州	wikidata	Zlín
+DE.15	图林根州	圖林根州	wikidata	Thuringia
+DJ.07	吉布提		llm	Djibouti
+DK.17	首都大區	首都大區	wikidata	Capital Region
+DO.04	达哈翁省	達哈翁省	wikidata	Dajabón
+DO.11	艾利斯皮亚省	艾利斯皮亞省	wikidata	Elías Piña
+DO.14	玛丽亚·特立尼达·桑切斯省	瑪麗亞·特立尼达·桑切斯省	wikidata	María Trinidad Sánchez
+DO.19	米拉瓦尔姐妹省		wikidata	Hermanas Mirabal
+DO.21	桑切斯·拉米雷斯省		wikidata	Sánchez Ramírez
+DO.26	圣地亚哥·罗德里格斯省	聖地亞哥·羅德里格斯省	wikidata	Santiago Rodríguez
+DO.28	赛堡省	賽堡省	wikidata	El Seíbo
+DO.30	拉维加省	拉維加省	wikidata	La Vega
+DO.31	诺埃尔主教省		wikidata	Monseñor Nouel
+DO.33	圣克里斯多堡省	聖克里斯多堡省	wikidata	San Cristóbal
+DO.35	佩拉维亚省	佩拉維亞省	wikidata	Peravia
+DO.36	圣何塞德奥科阿省	聖荷西德奧科阿省	wikidata	San José de Ocoa
+DZ.06	麦迪亚省	麥迪亞省	wikidata	Medea
+DZ.10	赛伊达省	賽伊達省	wikidata	Saida
+DZ.18	贝贾亚省	貝賈亞省	wikidata	Béjaïa
+DZ.40	布米尔达斯省	布米爾達斯省	wikidata	Boumerdes
+DZ.45	盖尔达耶省		wikidata	Ghardaia
+DZ.55	提帕萨省	提帕薩省	wikidata	Tipaza
+DZ.BB	巴吉穆赫塔尔堡省		wikidata	Bordj Badji Mokhtar
+DZ.DJ	贾奈特省		llm+wikidata-label	Djanet
+DZ.EM	迈尼耶省		llm+wikidata-label	El Menia
+DZ.IG	因盖扎姆省		llm	In Guezzam
+DZ.IS	因萨拉赫省		llm	In Salah
+DZ.MG	迈盖耶尔省		llm+wikidata-label	El Mghair
+DZ.OD	奥拉德杰拉勒省		llm+wikidata-label	Ouled Djellal
+DZ.TG	图古尔特省		llm	Touggourt
+DZ.TM	提米蒙省	提米蒙省	wikidata	Timimoun
+EC.01	加拉帕戈斯省	加拉巴哥省	wikidata	Galápagos
+EC.03	玻利瓦尔省		wikidata	Bolívar
+EC.04	卡尼亚尔省	卡尼亞爾省	wikidata	Canar
+EC.07	科托帕希省	科托帕希省	wikidata	Cotopaxi
+EC.13	洛斯里奥斯省	洛斯里奧斯省	wikidata	Los Ríos
+EC.14	马纳比省	馬納比省	wikidata	Manabí
+EC.22	苏昆比奥斯省	蘇崑比奧斯省	wikidata	Sucumbíos
+EG.14	东部省	東部省	wikidata	Sharqia
+EG.18	贝尼苏韦夫省		wikidata	Beni Suweif
+ES.07	巴利阿里群岛		llm	Balearic Islands
+ES.52	阿拉贡	亞拉岡	wikidata	Aragon
+ES.56	加泰罗尼亚自治区	加泰羅尼亞自治區	wikidata	Catalonia
+ES.59	巴斯克地区自治区	巴斯克地區自治區	wikidata	Basque Country
+ES.ML	梅利利亚	麥里亞	wikidata	Melilla
+ET.44	亚的斯亚贝巴	阿迪斯阿貝巴	wikidata	Addis Ababa
+ET.55	中埃塞俄比亚州		llm	Central Ethiopia Regional State
+ET.56	南埃塞俄比亚州		llm	South Ethiopia Regional State
+ET.SI	锡达马地区	錫達馬地區	wikidata	Sidama Region
+ET.SW	西南埃塞俄比亚人民州		llm	South West Ethiopia Peoples' Region
+FI.07	派耶特海梅区	派耶特海梅區	wikidata	Paijat-Hame
+FI.09	南卡累利阿区		wikidata	South Karelia
+FI.13	中芬蘭區	中芬蘭區	wikidata	Central Finland
+FM.01	科斯雷州		llm	Kosrae
+FO.NO	北部群岛		wikidata	Norðoyar
+FO.OS	东岛		llm	Eysturoy
+FO.SA	桑岛	桑島	wikidata	Sandoy
+FO.ST	斯特勒姆岛	斯特勒姆島	wikidata	Streymoy
+FO.SU	苏德岛	蘇德島	wikidata	Suðuroy
+FO.VG	沃格岛	沃格島	wikidata	Vágar
+FR.75	新阿基坦大区	新亞奎丹大區	wikidata	New Aquitaine
+FR.76	奥克西塔尼大区	奧克西塔尼大區	wikidata	Occitanie
+FR.94	科西嘉		llm	Corsica
+GA.04	恩古涅省	恩古涅省	wikidata	Ngouni
+GA.07	奥果韦-洛洛省	奧果韋-洛洛省	wikidata	Ogooué-Lolo
+GD.10	卡里亚库和小马提尼克		llm	Carriacou and Petite Martinique
+GE.70	拉恰-列其呼米和下斯瓦内蒂		wikidata	Racha-Lechkhumi and Kvemo Svaneti
+GF.GF	法属圭亚那		llm	Guyane
+GG.6417213	圣彼得教区		wikidata	St Pierre du Bois
+GG.6417214	托特瓦爾		wikidata	Torteval
+GG.6417215	聖救主		wikidata	Saint Saviour
+GG.6417223	福爾斯特 (根西島)		wikidata	Forest
+GG.6417224	聖馬丁		wikidata	St Martin
+GG.6417226	聖安德魯		wikidata	Saint Andrew
+GG.6417228	圣彼得港	聖彼得港	wikidata	St Peter Port
+GG.6417229	卡斯特爾		wikidata	Castel
+GG.6417230	韦尔	韋爾	wikidata	Vale
+GG.6417233	聖桑普森		wikidata	St Sampson
+GG.8989934	奥尔德尼		llm	Alderney
+GH.01	大阿克拉地区	大阿克拉地區	wikidata	Greater Accra
+GH.02	阿散蒂地区	阿散蒂地區	wikidata	Ashanti
+GH.04	中部地区	中部地區	wikidata	Central
+GH.05	东部地区	東部地區	wikidata	Eastern
+GH.06	北部地区	北部地區	wikidata	Northern
+GH.08	沃尔特地区	沃爾特地區	wikidata	Volta
+GH.09	西部地区	西部地區	wikidata	Western
+GH.10	东北地区	東北地區	wikidata	Upper East
+GH.11	西北地区	西北地區	wikidata	Upper West
+GH.12	阿哈福區		wikidata	Ahafo
+GH.13	博諾區		wikidata	Bono
+GH.14	博諾東區		wikidata	Bono East
+GH.15	東北區 (加納)		wikidata	North East
+GH.16	奧蒂大區		wikidata	Oti
+GH.17	薩凡納大區	薩凡納大區	wikidata	Savannah
+GH.18	西北區 (加納)		wikidata	Western North
+GL.07	塞梅索克	塞梅索克	wikidata	Sermersooq
+GL.11839534	奎克塔利克		wikidata	Qeqertalik
+GL.11839537	阿万纳塔		wikidata	Avannaata
+GM.01	班珠尔		llm	Banjul
+GM.05	西部区	西部區	wikidata	Western
+GN.04	科纳克里		llm	Conakry
+GP.GP	瓜德罗普		llm	Guadeloupe
+GQ.03	安诺本省		wikidata	Annobon
+GQ.04	北比奥科省	北比奧科省	wikidata	Bioko Norte
+GQ.05	南比奥科省	南比奧科省	wikidata	Bioko Sur
+GQ.06	中南省	中南省	wikidata	Centro Sur
+GQ.07	基埃恩特姆省	基埃恩特姆省	wikidata	Kié-Ntem
+GQ.08	海岸省	海岸省	wikidata	Litoral
+GQ.09	韦莱恩萨斯省	韋萊恩薩斯省	wikidata	Wele-Nzas
+GQ.10	吉布劳省		llm+wikidata-label	Djibloho
+GR.736572	聖山		wikidata	Mount Athos
+GR.ESYE14	色萨利	色薩利	wikidata	Thessaly
+GR.ESYE21	伊庇鲁斯大区	伊庇魯斯大區	wikidata	Epirus
+GR.ESYE22	伊奥尼亚群岛大区		wikidata	Ionian Islands
+GR.ESYE23	西希腊大区	西希臘大區	wikidata	West Greece
+GR.ESYE24	中希腊大区	中希臘大區	wikidata	Central Greece
+GR.ESYE25	伯罗奔尼撒大区	伯羅奔尼撒大區	wikidata	Peloponnese
+GR.ESYE31	阿提卡大区		wikidata	Attica
+GR.ESYE41	北爱琴大区	北愛琴大區	wikidata	North Aegean
+GR.ESYE42	南爱琴大区	南愛琴大區	wikidata	South Aegean
+GR.ESYE43	克里特大区	克里特大區	wikidata	Crete
+GT.06	埃斯昆特拉省	埃斯昆特拉省	wikidata	Escuintla
+GT.08	韦韦特南戈省	韋韋特南戈省	wikidata	Huehuetenango
+GT.10	哈拉帕省	哈拉帕省	wikidata	Jalapa
+GT.11	胡蒂亚帕省	胡蒂亞帕省	wikidata	Jutiapa
+GT.15	雷塔卢莱乌省	雷塔盧萊烏省	wikidata	Retalhuleu
+GT.20	苏奇特佩克斯省	蘇奇特佩克斯省	wikidata	Suchitepeque
+GT.21	托托尼卡潘省	托托尼卡潘省	wikidata	Totonicapán
+GU.AH	阿加納高地	阿迦納高地	wikidata	Agana Heights
+GU.AN	阿加尼亚		llm	Hagatna
+GU.AS	阿桑麥納		wikidata	Asan
+GU.AT	亞加特		wikidata	Agat
+GU.BA	巴里加达		llm	Barrigada
+GU.CP	洽蘭帕果渥多特		wikidata	Chalan Pago-Ordot
+GU.DD	德德多		wikidata	Dededo
+GU.IN	伊纳拉詹		llm+zhwiki	Inarajan
+GU.MA	曼吉劳	曼吉勞	wikidata	Mangilao
+GU.ME	马利索		wikidata	Merizo
+GU.MT	芒芒-圖圖-麥伊特		wikidata	Mongmong-Toto-Maite
+GU.PI	皮蒂		wikidata	Piti
+GU.SJ	西纳哈尼亚		llm	Sinajana
+GU.SR	圣丽塔		llm	Santa Rita
+GU.TF	塔洛福福		llm	Talofofo
+GU.TM	塔穆宁		wikidata	Tamuning
+GU.UM	乌马塔克		llm	Umatac
+GU.YG	伊戈		llm	Yigo
+GU.YN	臾那		llm+zhwiki	Yona
+GW.01	巴法塔区		wikidata	Bafatá
+GW.04	奥约区	奧約區	wikidata	Oio
+GW.06	卡谢乌区		wikidata	Cacheu
+GW.10	加布区	加布區	wikidata	Gabú
+GW.11	比绍	比索	wikidata	Bissau
+GY.13	东伯比斯-科兰太因		wikidata	East Berbice-Corentyne
+HK.HSO	南区	南區	wikidata	Southern District
+HK.KSS	深水埗区	深水埗區	wikidata	Sham Shui Po District
+HK.KWT	黄大仙区	黃大仙區	wikidata	Wong Tai Sin District
+HK.NSK	西贡区	西貢區	wikidata	Sai Kung District
+HK.NTP	大埔区	大埔區	wikidata	Tai Po
+HK.NTW	荃湾区	荃灣區	wikidata	Tsuen Wan
+HN.11	海湾群岛省	海灣群島省	wikidata	Bay Islands
+HN.16	圣巴巴拉省		wikidata	Santa Bárbara Department
+HR.01	别洛瓦尔-比洛戈拉县		wikidata	Bjelovar-Bilogora
+HR.02	布罗德-波萨维纳县		wikidata	Brod-Posavina
+HR.03	杜布罗夫尼克-内雷特瓦县	杜布羅夫尼克-內雷特瓦縣	wikidata	Dubrovnik-Neretva
+HR.04	伊斯特拉县		wikidata	Istria
+HR.05	卡尔洛瓦茨县	卡爾洛瓦茨縣	wikidata	Karlovac
+HR.06	科普里夫尼察-克里热夫齐县		wikidata	Koprivnica-Križevci
+HR.07	克拉皮纳-扎戈列县		wikidata	Krapina-Zagorje
+HR.08	利卡-塞尼县		wikidata	Lika-Senj
+HR.09	梅吉穆列县		wikidata	Međimurje
+HR.10	奥西耶克-巴拉尼亚县		wikidata	County of Osijek-Baranja
+HR.11	波热加-斯拉沃尼亚县		wikidata	Požega-Slavonia
+HR.12	滨海-山区县		wikidata	Primorje-Gorski Kotar
+HR.13	希贝尼克-克宁县		wikidata	Šibenik-Knin
+HR.14	锡萨克-莫斯拉维纳县		wikidata	Sisak-Moslavina
+HR.15	斯普利特-达尔马提亚县	斯普利特-達爾馬提亞縣	wikidata	Split-Dalmatia
+HR.16	瓦拉日丁县		wikidata	Varaždin
+HR.17	维罗维蒂察-波德拉维纳县		wikidata	Virovitica-Podravina
+HR.18	武科瓦尔-斯里耶姆县		wikidata	Vukovar-Srijem
+HR.19	扎达尔县		wikidata	Zadar
+HR.20	萨格勒布县		wikidata	Zagreb County
+HR.21	萨格勒布		llm	Zagreb
+HU.02	巴兰尼亚州	巴蘭尼亞州	wikidata	Baranya
+HU.03	贝凯什州	貝凱什州	wikidata	Bekes County
+HU.05	布达佩斯		llm	Budapest
+HU.06	琼格拉德-乔纳德州	瓊格拉德-喬納德州	wikidata	Csongrád
+HU.14	诺格拉德州	諾格拉德州	wikidata	Nógrád
+HU.23	维斯普雷姆州	維斯普雷姆州	wikidata	Veszprém
+ID.01	亚齐	亞齊特區	wikidata	Aceh
+ID.03	明古鲁省	明古魯省	wikidata	Bengkulu
+ID.04	雅加达	雅加達	wikidata	Jakarta
+ID.05	占碑省	占碑省	wikidata	Jambi
+ID.10	日惹特区		wikidata	Yogyakarta
+ID.13	中加里曼丹省	中加里曼丹	wikidata	Central Kalimantan
+ID.15	楠榜省	楠榜省	wikidata	Lampung
+ID.17	西努沙登加拉省		wikidata	West Nusa Tenggara
+ID.18	东努沙登加拉省	東努沙登加拉省	wikidata	East Nusa Tenggara
+ID.22	东南苏拉威西省	東南蘇拉威西省	wikidata	Southeast Sulawesi
+ID.24	西苏门答腊省	西蘇門答臘省	wikidata	West Sumatra
+ID.28	马鲁古省	馬魯古省	wikidata	Maluku
+ID.29	北马鲁古省	北馬魯古省	wikidata	North Maluku
+ID.34	哥伦打洛省	哥倫打洛	wikidata	Gorontalo
+ID.36	巴布亚省	巴布亚省	wikidata	Papua
+ID.37	廖内省		wikidata	Riau
+ID.38	南苏拉威西省		wikidata	South Sulawesi
+ID.39	西巴布亞省	西巴布亞省	wikidata	West Papua
+ID.40	廖内群岛省	廖內羣島省	wikidata	Riau Islands
+ID.41	西苏拉威西省		wikidata	West Sulawesi
+ID.42	北加里曼丹省		wikidata	North Kalimantan
+ID.PD	西南巴布亚省		llm	Southwest Papua
+ID.PE	高地巴布亚省		llm	Highland Papua
+ID.PS	南巴布亚省		llm	South Papua
+ID.PT	中巴布亚省		llm	Central Papua
+IE.C	康诺特省	康諾特省	wikidata	Connacht
+IL.WE	犹地亚-撒马利亚区		llm+wikidata-label	Judea and Samaria Area
+IM.9782164	安德烈亚斯		llm	Andreas
+IM.9782165	阿爾伯里教區		wikidata	Arbory
+IM.9782166	巴洛		llm	Ballaugh
+IM.9782167	布拉丹		llm	Braddan
+IM.9782168	布赖德		llm	Bride
+IM.9782169	卡斯尔敦		llm	Castletown
+IM.9782170	道格拉斯		llm	Douglas
+IM.9782171	杰曼		llm	German
+IM.9782172	朱比		wikidata	Jurby
+IM.9782173	拉克西		llm	Laxey
+IM.9782176	莱泽尔		llm	Lezayre
+IM.9782180	洛南		llm	Lonan
+IM.9782182	马卢		llm	Malew
+IM.9782183	马朗		llm	Marown
+IM.9782184	莫霍爾德		wikidata	Maughold
+IM.9782185	米迦勒教堂		wikidata	Michael
+IM.9782186	昂肯		llm	Onchan
+IM.9782187	帕特里克		llm	Patrick
+IM.9782188	皮尔		llm	Peel
+IM.9782189	爱琳港		llm+zhwiki	Port Erin
+IM.9782190	圣玛丽港		llm	Port St Mary
+IM.9782191	拉姆西		llm	Ramsey
+IM.9782192	鲁申		llm+wikidata-label	Rushen
+IM.9782193	桑顿		llm	Santon
+IN.07	德里		llm	Delhi
+IN.12	查谟-克什米尔邦	查謨-克什米爾邦	wikidata	Jammu and Kashmir
+IN.14	拉克沙群岛	拉克沙群島	wikidata	Lakshadweep
+IN.21	奥迪沙邦	奥迪沙邦	wikidata	Odisha
+IN.39	北阿坎德邦	北阿坎德邦	wikidata	Uttarakhand
+IN.52	达德拉-纳加尔哈维利-达曼-第乌		llm+zhwiki	Dadra and Nagar Haveli and Daman and Diu
+IQ.05	苏莱曼尼亚省	蘇萊曼尼亞省	wikidata	Sulaymaniyah
+IQ.12	卡尔巴拉省	卡爾巴拉省	wikidata	Karbala
+IQ.13	基尔库克省	基爾庫克省	wikidata	Kirkuk
+IQ.16	瓦西特省	瓦西特省	wikidata	Wasit
+IQ.17	纳杰夫省	納傑夫省	wikidata	Najaf
+IQ.19	哈拉卜贾省		llm+wikidata-label	Halabja
+IR.15	胡齐斯坦省	胡齊斯坦省	wikidata	Khuzestan
+IS.38	东部区	東部區	wikidata	East
+IS.40	东北区	東北區	wikidata	Northeast
+IS.41	西北区	西北區	wikidata	Northwest
+IS.42	南部区	南部區	wikidata	South
+IS.43	南半岛区	南半島區	wikidata	Southern Peninsula
+IS.45	西部区	西部區	wikidata	West
+IT.05	艾米利亚-罗马涅		llm	Emilia-Romagna
+IT.06	弗留利-威尼斯朱利亚	弗留利-威尼斯朱利亚	wikidata	Friuli Venezia Giulia
+IT.09	伦巴第	倫巴底	wikidata	Lombardy
+IT.14	撒丁	薩丁尼亞島	wikidata	Sardinia
+IT.17	特伦蒂诺-上阿迪杰	特伦蒂诺-上阿迪杰	wikidata	Trentino-Alto Adige
+IT.19	瓦莱达奥斯塔	奧斯塔谷	wikidata	Aosta Valley
+JE.3237072	聖克萊門特		wikidata	St Clement
+JE.3237073	圣救主	聖救主	wikidata	St Saviour
+JE.3237200	圣布雷拉德		wikidata	St. Brelade
+JE.3237203	格鲁维尔	格魯維爾	wikidata	Grouville
+JE.3237212	圣玛丽		llm	St Mary
+JE.3237214	圣劳伦斯		llm	St Lawrence
+JE.3237221	聖彼得 (澤西)		wikidata	St Peter
+JE.3237229	圣旺		wikidata	St Ouen
+JE.3237497	圣约翰		llm	St John
+JE.3237530	特里尼蒂		wikidata	Trinity
+JE.3237716	圣马丁		llm	St Martîn
+JE.3237864	圣赫利尔		llm	St Helier
+JO.09	卡拉克省		llm	Karak
+JO.17	扎尔卡省	扎爾卡省	wikidata	Zarqa
+JO.21	亚喀巴省		wikidata	Aqaba
+KE.14	埃爾格約-馬拉奎特郡	埃爾格約-馬拉奎特郡	wikidata	Elegeyo-Marakwet
+KE.30	拉穆镇	拉穆鎮	wikidata	Lamu
+KE.38	穆蘭卡郡		wikidata	Murang'A
+KE.40	南迪郡		llm	Nandi
+KE.47	泰塔塔維塔郡	泰塔塔維塔郡	wikidata	Taita Taveta
+KE.49	薩拉卡尼蒂郡		wikidata	Tharaka - Nithi
+KE.50	特兰斯-恩佐亚郡		wikidata	Trans Nzoia
+KG.01	比什凯克	比什凱克	wikidata	Bishkek
+KG.10	奥什市		llm	Osh City
+KH.09	桔井省	桔井省	wikidata	Kratie
+KH.10	蒙多基里省	蒙多基里省	wikidata	Mondolkiri
+KH.19	茶胶省	茶膠省	wikidata	Takeo
+KH.22	金边	金邊	wikidata	Phnom Penh
+KH.24	暹粒省	暹粒省	wikidata	Siem Reap
+KH.27	奥多棉吉省		wikidata	Ŏtâr Méanchey
+KH.31	特本克蒙省	特本克蒙省	wikidata	Tboung Khmum
+KI.01	吉尔伯特群岛	吉爾伯特群島	wikidata	Gilbert Islands
+KI.02	莱恩群岛		llm	Line Islands
+KM.01	昂儒昂岛	昂儒昂島	wikidata	Anjouan
+KN.01	基督教会尼古拉镇区		wikidata	Christ Church Nichola Town
+KN.02	圣安娜沙角区	聖安娜沙角區	wikidata	Saint Anne Sandy Point
+KN.03	圣乔治巴塞特莱区	聖喬治巴塞特萊區	wikidata	Saint George Basseterre
+KN.04	圣乔治金哲兰区	聖喬治金哲蘭區	wikidata	Saint George Gingerland
+KN.05	圣詹姆斯温沃德区		wikidata	Saint James Windwa
+KN.06	圣约翰卡皮斯特莱区		wikidata	Saint John Capesterre
+KN.07	圣约翰费格特里区		wikidata	Saint John Figtree
+KN.08	圣玛丽卡永区	聖瑪麗卡永區	wikidata	Saint Mary Cayon
+KN.09	圣保罗卡皮斯特莱区		wikidata	Saint Paul Capesterre
+KN.10	圣保罗查尔斯敦区	聖保羅查爾斯敦區	wikidata	Saint Paul Charlestown
+KN.11	圣彼得巴塞特莱区		wikidata	Saint Peter Basseterre
+KN.12	圣托马斯低地区	聖托馬斯低地區	wikidata	Saint Thomas Lowland
+KN.13	圣托马斯米德艾兰区	聖托馬斯米德艾蘭區	wikidata	Middle Island
+KN.15	特立尼提帕美托角区		wikidata	Trinity Palmetto Point
+KP.01	慈江道	慈江道	wikidata	Chagang
+KP.03	咸镜南道	咸鏡南道	wikidata	South Hamgyong
+KP.06	黄海南道	黃海南道	wikidata	South Hwanghae
+KP.07	黄海北道	黃海北道	wikidata	North Hwanghae
+KP.09	江原道	江原道	wikidata	Kangwŏn-do
+KP.11	平安北道	平安北道	wikidata	P'yŏngan-bukto
+KP.12	平壤	平壤	wikidata	Pyongyang
+KP.13	两江道	兩江道	wikidata	Yanggang-do
+KP.14	南浦特别市		llm+wikidata-label	Nampo
+KP.15	平安南道	平安南道	wikidata	South Pyongan
+KP.17	咸镜北道	咸鏡北道	wikidata	North Hamgyong
+KP.19	开城特级市		llm+wikidata-label	Kaesong
+KR.01	济州特别自治道	濟州特別自治道	wikidata	Jeju-do
+KR.03	全北特別自治道	全北特別自治道	wikidata	Jeollabuk-do
+KR.05	忠清北道	忠清北道	wikidata	North Chungcheong
+KR.06	江原道	江原道	wikidata	Gangwon-do
+KR.12	仁川	仁川	wikidata	Incheon
+KR.14	庆尚北道	慶尚北道	wikidata	Gyeongsangbuk-do
+KR.15	大邱	大邱廣域市	wikidata	Daegu
+KR.16	全罗南道	全羅南道	wikidata	Jeollanam-do
+KR.17	忠清南道	忠清南道	wikidata	Chungcheongnam-do
+KR.19	大田广域市	大田廣域市	wikidata	Daejeon
+KR.20	庆尚南道	慶尚南道	wikidata	Gyeongsangnam-do
+KR.21	蔚山广域市	蔚山廣域市	wikidata	Ulsan
+KR.22	世宗特別自治市	世宗特別自治市	wikidata	Sejong-si
+KW.02	科威特省	科威特省	wikidata	Al Asimah
+KW.08	哈瓦利省	哈瓦利省	wikidata	Hawalli
+KW.09	大穆巴拉克省	大穆巴拉克省	wikidata	Mubārak al Kabīr
+KY.10346796	乔治敦		llm	George Town
+KY.10375968	西湾		llm	West Bay
+KY.10375969	博登镇		llm	Bodden Town
+KY.10375970	北区		llm	North Side
+KY.10375971	东端		llm	East End
+KY.10375972	姊妹岛		llm	Sister Island
+KZ.01	阿拉木图州	阿拉木圖州	wikidata	Almaty Region
+KZ.02	阿拉木图		llm	Almaty
+KZ.03	阿克莫拉州	阿克莫拉州	wikidata	Aqmola
+KZ.04	阿克托别州	阿克托別州	wikidata	Aktobe
+KZ.05	阿斯塔纳		llm	Astana
+KZ.06	阿特劳州	阿特勞州	wikidata	Atyrau Oblisi
+KZ.07	西哈萨克斯坦州	西哈薩克斯坦州	wikidata	West Kazakhstan
+KZ.08	拜科努尔	拜科努爾	wikidata	Baikonur
+KZ.09	曼吉斯套州	曼吉斯套州	wikidata	Mangystau
+KZ.10	图尔克斯坦州	突厥斯坦州	wikidata	Turkistan
+KZ.12510143	阿拜州		wikidata	Abai Region
+KZ.12510144	杰特苏州		wikidata	Zhetysu Region
+KZ.12510145	乌勒套州		wikidata	Ulytau Region
+KZ.13	库斯塔奈州	庫斯塔奈州	wikidata	Kostanay
+KZ.14	克孜勒奥尔达州	克孜勒奧爾達州	wikidata	Kyzylorda
+KZ.15	东哈萨克斯坦州	東哈薩克斯坦	wikidata	East Kazakhstan
+KZ.1537272	奇姆肯特		llm	Shymkent
+KZ.16	北哈萨克斯坦州	北哈薩克斯坦州	wikidata	North Kazakhstan
+KZ.17	江布尔州	江布爾州	wikidata	Zhambyl
+LA.01	阿速坡省	阿速坡省	wikidata	Attapu
+LA.03	华潘省	華潘省	wikidata	Houaphan
+LA.07	乌多姆塞省	烏多姆塞省	wikidata	Oudômxai
+LA.13	沙耶武里省	沙耶武里省	wikidata	Xiagnabouli
+LA.14	川圹省	川壙省	wikidata	Xiangkhoang
+LA.16	琅南塔省		wikidata	Loungnamtha
+LA.18	丰沙里省	豐沙里省	wikidata	Phôngsali
+LA.26	塞公省		wikidata	Xékong
+LA.28	赛宋本省		wikidata	Xaisomboun
+LB.04	贝鲁特省	貝魯特省	wikidata	Beirut
+LB.05	黎巴嫩山省	黎巴嫩山省	wikidata	Mount Lebanon
+LB.07	奈拜提耶省		llm	Nabatieh
+LB.08	贝卡省	貝卡省	wikidata	Bekaa
+LB.09	北部省	北部省	wikidata	North Lebanon
+LB.10	阿卡尔省		wikidata	Akkar
+LC.01	昂斯拉雷区		wikidata	Anse-la-Raye
+LC.06	格罗斯伊斯勒区		wikidata	Gros-Islet
+LC.09	苏弗里耶尔区	蘇弗里耶爾區	wikidata	Soufrière
+LC.10	伯堡区	伯堡區	wikidata	Vieux-Fort
+LC.12	卡纳里斯		llm	Canaries
+LI.01	巴尔策斯		wikidata	Balzers
+LI.05	普兰肯		wikidata	Planken
+LI.08	施伦贝格		wikidata	Schellenberg
+LI.11	瓦杜兹	華杜茲	wikidata	Vaduz
+LU.CA	卡佩伦县		wikidata	Capellen
+LU.CL	克莱沃县		wikidata	Clervaux
+LU.DI	迪基希县		wikidata	Diekirch
+LU.EC	埃希特纳赫县		wikidata	Echternach
+LU.ES	阿尔泽特河畔埃施县		wikidata	Esch-sur-Alzette
+LU.GR	格雷文马赫县		wikidata	Grevenmacher
+LU.LU	卢森堡	盧森堡	llm	Luxembourg（整国即一级行政区；与国家名相同，副标题会去重）
+LU.ME	梅尔施县		wikidata	Mersch
+LU.RD	雷当日县		wikidata	Redange
+LU.RM	雷米希县		wikidata	Remich
+LU.VD	菲安登县		wikidata	Vianden
+LU.WI	维尔茨县		wikidata	Wiltz
+LV.01	艾兹克劳克莱市镇		llm	Aizkraukle Municipality
+LV.03	巴尔维市镇		llm	Balvi Municipality
+LV.04	包斯卡市镇		llm	Bauska Municipality
+LV.08	多贝莱市镇		llm	Dobele Municipality
+LV.10	葉卡布皮爾斯市鎮	葉卡布皮爾斯市鎮	wikidata	Jēkabpils Municipality
+LV.12	叶尔加瓦市镇		llm	Jelgava Municipality
+LV.13	尤尔马拉		llm	Jūrmala
+LV.14	克拉斯拉瓦市镇		llm	Krāslava Municipality
+LV.15	库尔迪加市镇		llm	Kuldīga Municipality
+LV.18	林巴日市镇		llm+wikidata-label	Limbaži Municipality
+LV.19	卢扎市镇		llm	Ludza Municipality
+LV.20	马多纳市镇		wikidata	Madonas novads
+LV.22	普雷利市鎮		wikidata	Preiļu novads
+LV.23	雷泽克内区	雷澤克內區	wikidata	Rēzekne
+LV.24	雷澤克內市鎮		wikidata	Rēzekne Municipality
+LV.25	里加区	里加區	wikidata	Riga
+LV.27	薩爾杜斯市鎮	薩爾杜斯市鎮	wikidata	Saldus Rajons
+LV.28	塔尔西市镇		wikidata	Talsu novads
+LV.31	瓦尔米耶拉市镇		wikidata	Valmiera
+LV.34	阿达日市镇		wikidata	Ādaži
+LV.95	馬魯佩市鎮		wikidata	Mārupe
+LV.C5	紹爾克拉斯蒂市鎮		wikidata	Saulkrasti Municipality
+LV.C7	錫古爾達市鎮		wikidata	Sigulda Municipality
+LV.D1	斯米尔泰内市镇		wikidata	Smiltene Municipality
+LY.63	绿山省		wikidata	Al Jabal al Akhdar
+LY.66	迈尔季省		wikidata	Al Marj
+LY.67	努加特海姆斯省		wikidata	An Nuqat al Khams
+LY.68	扎维耶省		wikidata	Az Zawiyah
+LY.69	班加西		llm	Banghazi
+LY.70	德爾納省	德爾納省	wikidata	Darnah
+LY.71	加特省		wikidata	Ghat
+LY.72	米苏拉塔省		wikidata	Misratah
+LY.74	納盧特省	納盧特省	wikidata	Nalut
+LY.76	蘇爾特省		wikidata	Surt
+LY.77	的黎波里省		wikidata	Tripoli
+LY.78	沙提省		wikidata	Wadi ash Shati'
+LY.79	布特南省		wikidata	Al Butnan
+LY.81	吉法拉省	吉法拉省	wikidata	Al Jafarah
+LY.82	迈尔盖卜省	邁爾蓋卜省	wikidata	Al Marqab
+LY.83	绿洲省		wikidata	Al Wahat
+LY.84	瓦迪哈耶特省		wikidata	Wadi al Hayat
+MA.01	丹吉尔-得土安-胡塞马大区		llm	Tanger-Tetouan-Al Hoceima
+MA.03	非斯-梅克内斯大区		llm	Fes-Meknes
+MA.04	拉巴特-塞拉-盖尼特拉大区		llm+wikidata-label	Rabat-Salé-Kénitra
+MA.05	贝尼迈拉勒-海尼夫拉大区		llm	Beni Mellal-Khenifra
+MA.06	卡萨布兰卡-塞塔特大区		llm	Casablanca-Settat
+MA.07	马拉喀什-萨菲大区		llm	Marrakesh-Safi
+MA.08	德拉-塔菲拉勒特大区		llm	Drâa-Tafilalet
+MA.09	苏斯-马塞大区		llm	Souss-Massa
+MA.10	盖勒敏-农河大区		llm+wikidata-label	Guelmim-Oued Noun
+MA.11	阿尤恩-萨基亚-阿姆拉大区		llm+wikidata-label	Laayoune-Sakia El Hamra
+MA.12	达赫拉-黄金谷地大区		llm+zhwiki	Dakhla-Oued Ed-Dahab
+MC.00	摩纳哥		llm	Municipality of Monaco
+MD.57	基希讷乌市镇		wikidata	Chișinău Municipality
+MD.60	伯尔齐	伯爾齊	wikidata	Bălţi
+MD.62	本德尔市		llm	Bender Municipality
+MD.66	卡拉拉什区		wikidata	Călăraşi
+MD.67	克乌谢尼区		wikidata	Căuşeni
+MD.71	德罗基亚区	德羅基亞區	wikidata	Drochia
+MD.73	埃迪内茨区	埃迪內茨區	wikidata	Raionul Edineţ
+MD.81	奥克尼察区		wikidata	Raionul Ocniţa
+MD.88	斯特凡大公区		wikidata	Stefan-Voda
+ME.01	安德里耶維察市鎮	安德里耶維察市鎮	wikidata	Andrijevica
+ME.02	巴爾市鎮		wikidata	Bar
+ME.03	貝拉內市鎮		wikidata	Berane
+ME.05	布德瓦市鎮		wikidata	Budva
+ME.06	采蒂涅王家旧都		wikidata	Cetinje
+ME.07	達尼洛夫格勒市鎮	達尼洛夫格勒市鎮	wikidata	Danilovgrad
+ME.09	科拉欣市鎮		wikidata	Opština Kolašin
+ME.12	尼克希奇市鎮		wikidata	Opština Nikšić
+ME.13	普拉夫市鎮		wikidata	Opština Plav
+ME.14	普列夫利亞市鎮		wikidata	Pljevlja
+ME.15	普盧日內市鎮		wikidata	Opština Plužine
+ME.16	波德戈里察首都市		wikidata	Podgorica
+ME.18	沙夫尼克市鎮		wikidata	Opština Šavnik
+ME.19	蒂瓦特市鎮		wikidata	Tivat
+ME.20	乌尔齐尼市镇		wikidata	Ulcinj
+ME.21	扎布利亞克市鎮		wikidata	Opština Žabljak
+ME.25	泽塔		llm	Zeta
+MG.11	阿那拉芒加区		wikidata	Analamanga
+MG.12	瓦基南卡拉特拉大区		wikidata	Vakinankaratra
+MG.13	伊塔西大区		wikidata	Itasy
+MG.14	邦古拉瓦大区		wikidata	Bongolava
+MG.21	上马齐亚特拉大区		wikidata	Upper Matsiatra
+MG.22	阿穆鲁尼-马尼亚大区		wikidata	Amoron'i Mania
+MG.24	伊胡龙贝大区	伊胡龍貝大區	wikidata	Ihorombe
+MG.25	阿齐穆-阿齐纳纳纳大区		wikidata	Atsimo-Atsinanana
+MG.26	菲图维纳尼大区		llm	Fitovinany Region
+MG.27	瓦图瓦维大区		llm	Vatovavy Region
+MG.31	阿齐纳纳纳大区		wikidata	Atsinanana
+MG.32	阿纳兰吉鲁富大区		wikidata	Analanjirofo
+MG.33	阿劳特拉-曼古鲁大区	阿勞特拉-曼古魯大區	wikidata	Alaotra Mangoro
+MG.41	布埃尼大区		wikidata	Boeny
+MG.42	苏菲亚大区	蘇菲亞大區	wikidata	Sofia
+MG.43	贝齐布卡大区		wikidata	Betsiboka
+MG.44	梅拉基大区	梅拉基大區	wikidata	Melaky
+MG.51	阿齐穆-安德雷法纳大区		wikidata	Atsimo-Andrefana
+MG.52	安德鲁伊大区	安德魯伊大區	wikidata	Androy
+MG.53	阿诺西区		wikidata	Anosy
+MG.54	梅纳贝	梅納貝	wikidata	Menabe
+MG.71	迪亚纳大区	迪亞納大區	wikidata	Diana
+MG.72	萨瓦大区	薩瓦大區	wikidata	Sava
+MH.007	艾林吉納埃環礁	艾林吉納埃環礁	wikidata	Ailinginae Atoll
+MH.010	艾林拉帕拉普环礁		wikidata	Ailinglaplap Atoll
+MH.030	艾盧克環礁		wikidata	Ailuk Atoll
+MH.040	阿爾諾環礁		wikidata	Arno Atoll
+MH.050	奥尔环礁		llm	Aur Atoll
+MH.060	比卡尔环礁		llm	Bikar Atoll
+MH.070	比基尼环礁		llm	Bikini Atoll
+MH.073	塔翁吉环礁		llm+zhwiki	Bokak Atoll
+MH.080	埃邦环礁		llm	Ebon Atoll
+MH.090	埃内韦塔克环礁	埃內韋塔克環礁	wikidata	Enewetak Atoll
+MH.100	埃里库布环礁		llm	Erikub Atoll
+MH.110	贾布沃特岛	賈布沃特島	wikidata	Jabat Island
+MH.120	贾卢伊特环礁	賈盧伊特環礁	wikidata	Jaluit Atoll
+MH.130	杰莫岛		llm	Jemo Island
+MH.140	基利島		wikidata	Kili Island
+MH.150	夸贾林环礁	瓜加林環礁	wikidata	Kwajalein Atoll
+MH.160	萊環礁		wikidata	Lae Atoll
+MH.170	利布島		wikidata	Lib Island
+MH.180	利基普环礁		llm+wikidata-label	Likiep Atoll
+MH.190	马朱罗环礁		llm	Majuro Atoll
+MH.300	馬洛埃拉普環礁	馬洛埃拉普環礁	wikidata	Maloelap Atoll
+MH.310	梅吉特岛		llm	Mejit Island
+MH.320	米利环礁		llm	Mili Atoll
+MH.330	纳莫里克环礁		llm	Namdrik Atoll
+MH.340	納穆環礁	納穆環礁	wikidata	Namu Atoll
+MH.350	朗格拉普环礁		llm	Rongelap Atoll
+MH.360	朗格里克环礁		llm	Rongrik Atoll
+MH.385	塔卡环礁		llm	Taka Atoll
+MH.390	乌贾环礁	烏賈環礁	wikidata	Ujae Atoll
+MH.400	乌杰朗环礁		llm	Ujelang
+MH.410	乌蒂里克环礁		llm	Utrik Atoll
+MH.420	沃托环礁		llm	Wotho Atoll
+MH.430	沃杰环礁		llm+zhwiki	Wotje Atoll
+MK.01	阿拉契诺沃市镇		wikidata	Arachinovo
+MK.04	贝罗沃市镇		wikidata	Berovo
+MK.06	比托拉市镇	比托拉市鎮	wikidata	Bitola
+MK.18	中茹帕市镇	中茹帕市鎮	wikidata	Centar Zhupa
+MK.20	丘切尔桑代沃市镇		wikidata	Chucher Sandevo
+MK.22	代尔切沃市镇	代爾切沃市鎮	wikidata	Delchevo
+MK.25	代米尔卡皮亚市镇	代米爾卡皮亞市鎮	wikidata	Demir Kapija
+MK.33	盖夫盖利亚市镇	蓋夫蓋利亞市鎮	wikidata	Gevgelija
+MK.43	基切沃市镇	基切沃市鎮	wikidata	Kichevo
+MK.46	科查尼市镇		wikidata	Kochani
+MK.47	孔切市镇	孔切市鎮	wikidata	Konche
+MK.51	克拉托沃市镇	克拉托沃市鎮	wikidata	Kratovo
+MK.52	克里瓦帕兰卡市镇	克里瓦帕蘭卡市鎮	wikidata	Kriva Palanka
+MK.53	克里沃加什塔尼市镇	克里沃加什塔尼市鎮	wikidata	Krivogashtani
+MK.54	克鲁舍沃市镇	克魯舍沃市鎮	wikidata	Krushevo
+MK.59	利普科沃市镇	利普科沃市鎮	wikidata	Lipkovo
+MK.69	内戈蒂诺市镇		wikidata	Negotino
+MK.72	诺沃塞洛市镇	諾沃塞洛市鎮	wikidata	Novo Selo
+MK.78	佩赫切沃市镇		wikidata	Pehchevo
+MK.79	彼得罗韦茨		llm+wikidata-label	Petrovec
+MK.83	普罗比什蒂普市镇	普罗比什蒂普市镇	wikidata	Probishtip
+MK.84	拉多维什市镇	拉多維什市鎮	wikidata	Radovish
+MK.85	兰科夫采市镇	蘭科夫采市鎮	wikidata	Rankovce
+MK.92	索皮什泰市镇	索皮什泰市鎮	wikidata	Sopište
+MK.97	旧纳戈里查内市镇		wikidata	Staro Nagorichane
+MK.98	什蒂普市镇	什蒂普市鎮	wikidata	Shtip
+MK.A2	斯图代尼查尼市镇	斯圖代尼查尼市鎮	wikidata	Studenichani
+MK.A9	瓦西莱沃市镇	瓦西萊沃市鎮	wikidata	Vasilevo
+MK.B3	韦夫查尼市镇		wikidata	Vevchani
+MK.B4	维尼察市镇	維尼察市鎮	wikidata	Vinica
+MK.B7	弗拉普契什泰市鎮	弗拉普契什泰市鎮	wikidata	Vrapchishte
+MK.C2	泽莱尼科沃市镇		wikidata	Zelenikovo
+MK.C3	热利诺市镇	熱利諾市鎮	wikidata	Zhelino
+MK.C7	博戈维涅市镇		wikidata	Bogovinje
+MK.D2	德巴尔市镇	德巴爾市鎮	wikidata	Debar
+MK.D3	代米尔希萨尔市镇	代米爾希薩爾市鎮	wikidata	Demir Hisar
+MK.D6	卡瓦达尔齐市镇	卡瓦達爾齊市鎮	wikidata	Kavadarci
+MK.D7	库马诺沃市镇	庫馬諾沃市鎮	wikidata	Kumanovo
+MK.D8	马其顿布罗德市镇	馬其頓布羅德市鎮	wikidata	Makedonski Brod
+MK.D9	莫吉拉市镇		wikidata	Mogila
+MK.E1	诺瓦齐市镇	諾瓦齊市鎮	wikidata	Novaci
+MK.E2	奥赫里德市镇		wikidata	Ohrid
+MK.E3	普里莱普市镇		wikidata	Prilep
+MK.E5	多伊兰市镇	多伊蘭市鎮	wikidata	Dojran
+MK.E6	斯特鲁加市镇		wikidata	Struga
+MK.E7	斯特鲁米察市镇	斯特魯米察市鎮	wikidata	Strumica
+MK.E8	泰托沃市镇	泰托沃市鎮	wikidata	Tetovo
+MK.F1	韦莱斯		llm	Veles
+MK.F6	斯科普里市		llm	Grad Skopje
+ML.08	通布图区	通布圖區	wikidata	Tombouctou
+ML.12070575	陶代尼大区		llm	Taoudénit
+ML.12070577	梅纳卡大区		llm	Ménaka
+MM.01	若开邦	若開邦	wikidata	Rakhine
+MM.03	伊洛瓦底省		wikidata	Ayeyarwady
+MM.13	孟邦	孟邦	wikidata	Mon
+MM.15	马圭省	馬圭省	wikidata	Magway
+MM.18	内比都联邦区	內比都聯邦區	wikidata	Nay Pyi Taw
+MN.02	巴彦洪戈尔省	巴彥洪戈爾省	wikidata	Bayankhongor
+MN.03	巴彦乌列盖省	巴彥烏列蓋省	wikidata	Bayan-Ölgii Province
+MN.08	中戈壁省	中戈壁省	wikidata	Middle Govĭ
+MN.09	扎布汗省		wikidata	Dzabkhan
+MN.11	肯特省	肯特省	wikidata	Hentiy
+MN.12	科布多省	科布多省	wikidata	Hovd
+MN.13	库苏古尔省	庫蘇古爾省	wikidata	Khövsgöl Province
+MN.15	前杭爱省	前杭愛省	wikidata	Övörhangay
+MN.17	苏赫巴托尔省	蘇赫巴托爾省	wikidata	Sühbaatar
+MN.18	中央省	中央省	wikidata	Central Aimak
+MN.20	乌兰巴托		llm	Ulaanbaatar
+MN.23	达尔汗乌勒省		wikidata	Darhan Uul
+MN.24	戈壁苏木贝尔省	戈壁蘇木貝爾省	wikidata	Govĭ-Sumber
+MN.25	鄂尔浑省	鄂爾渾省	wikidata	Orhon
+MO.11875154	花地玛堂区	花地瑪堂區	wikidata	Nossa Senhora de Fátima
+MP.085	北方群岛市		wikidata	Northern Islands
+MP.100	罗塔岛		llm	Rota
+MP.110	塞班岛		llm	Saipan
+MP.120	天寧島市鎮		wikidata	Tinian
+MQ.MQ	马提尼克		llm	Martinique
+MR.13	西努瓦克肖特大区		llm+wikidata-label	Nouakchott West
+MR.14	北努瓦克肖特大区		llm+wikidata-label	Nouakchott North
+MR.15	南努瓦克肖特大区		wikidata	Nouakchott South
+MS.01	圣安东尼教区		llm	Saint Anthony
+MS.02	圣乔治教区		llm	Saint Georges
+MS.03	圣彼得教区		llm	Saint Peter
+MT.01	阿塔尔德		wikidata	Attard
+MT.02	巴尔灿		wikidata	Balzan
+MT.03	比尔古	比爾古	wikidata	Il-Birgu
+MT.04	比尔基卡拉		wikidata	Birkirkara
+MT.05	比尔泽布贾		wikidata	Birżebbuġa
+MT.06	科斯皮夸	科斯皮夸	wikidata	Bormla
+MT.07	丁利		wikidata	Dingli
+MT.08	弗古拉		wikidata	Il-Fgura
+MT.09	弗洛里亚纳	弗洛里亞納	wikidata	Floriana
+MT.10	丰塔纳		wikidata	Il-Fontana
+MT.11	艾因西莱姆		wikidata	Ghajnsielem
+MT.12	阿尔卜	阿爾卜	wikidata	L-Għarb
+MT.13	加尔古尔		wikidata	Ħal Għargħur
+MT.14	阿斯里		wikidata	L-Għasri
+MT.15	阿沙格		wikidata	Ħal Għaxaq
+MT.16	古迪亚		wikidata	Il-Gudja
+MT.17	格济拉		wikidata	Il-Gżira
+MT.18	哈姆伦		wikidata	Il-Ħamrun
+MT.19	伊克林		wikidata	L-Iklin
+MT.20	姆迪纳	姆迪納	wikidata	L-Imdina
+MT.21	姆贾尔		wikidata	L-Imġarr
+MT.22	姆加巴		wikidata	L-Imqabba
+MT.23	姆西达		wikidata	L-Imsida
+MT.24	姆塔尔法		wikidata	Mtarfa
+MT.25	森格莱阿	森格萊阿	wikidata	Senglea
+MT.26	卡尔卡拉		wikidata	Il-Kalkara
+MT.27	凯尔切姆	凱爾切姆	wikidata	Ta’ Kerċem
+MT.28	基尔科普		wikidata	Kirkop
+MT.29	利亚		wikidata	Lija
+MT.30	卢加		wikidata	Luqa
+MT.31	马尔萨		wikidata	Il-Marsa
+MT.32	马尔萨斯卡拉	馬爾薩斯卡拉	wikidata	Marsaskala
+MT.33	马尔萨什洛克		wikidata	Marsaxlokk
+MT.34	梅利哈	梅利哈	wikidata	Il-Mellieħa
+MT.35	莫斯塔	莫斯塔	wikidata	Il-Mosta
+MT.36	蒙沙尔	蒙沙爾	wikidata	Il-Munxar
+MT.37	纳杜尔	納杜爾	wikidata	In-Nadur
+MT.38	纳沙尔		wikidata	In-Naxxar
+MT.39	保拉	保拉	wikidata	Paola
+MT.40	彭布罗克		wikidata	Pembroke
+MT.41	皮塔		wikidata	Tal-Pietà
+MT.42	加拉		wikidata	Il-Qala
+MT.43	戈尔米	戈爾米	wikidata	Qormi
+MT.44	格伦迪		wikidata	Il-Qrendi
+MT.45	拉巴特		wikidata	Ir-Rabat
+MT.46	维多利亚	維多利亞	wikidata	Victoria
+MT.47	萨菲	薩菲	wikidata	Safi
+MT.48	圣季万		wikidata	Saint John
+MT.49	圣朱利安斯		wikidata	Saint Julian
+MT.50	圣劳伦斯	聖勞倫斯	wikidata	Saint Lawrence
+MT.51	圣卢西亚	聖露西亞	wikidata	Saint Lucia
+MT.52	圣保罗湾城		wikidata	Saint Paul’s Bay
+MT.53	圣韦内拉		wikidata	Saint Venera
+MT.54	桑纳特	桑納特	wikidata	Sannat
+MT.55	锡杰维	錫傑維	wikidata	Is-Siġġiewi
+MT.56	斯利马		wikidata	Tas-Sliema
+MT.57	斯维吉		wikidata	Is-Swieqi
+MT.58	塔尔欣	塔爾欣	wikidata	Tarxien
+MT.59	塔什比什		wikidata	Ta’ Xbiex
+MT.60	瓦莱塔	瓦萊塔	wikidata	Valletta
+MT.61	沙拉		wikidata	Ix-Xagħra
+MT.62	绍基亚	紹基亞	wikidata	Ix-Xewkija
+MT.63	沙伊拉		wikidata	Ix-Xgħajra
+MT.64	扎巴尔		wikidata	Ħaż-Żabbar
+MT.65	泽布季	澤布季	wikidata	Ħaż-Żebbuġ
+MT.66	泽布季	澤布季	wikidata	Iż-Żebbuġ
+MT.67	榟橔		wikidata	Iż-Żejtun
+MT.68	祖里格		wikidata	Iż-Żurrieq
+MU.12	黑河区	黑河區	wikidata	Black River
+MU.13	弗拉克区	弗拉克區	wikidata	Flacq
+MU.14	大港区	大港區	wikidata	Grand Port
+MU.15	莫卡区	莫卡區	wikidata	Moka
+MU.16	庞普勒穆斯区		wikidata	Pamplemousses
+MU.17	威廉平原区	威廉平原區	wikidata	Plaines Wilhems
+MU.18	路易港區		wikidata	Port Louis
+MU.19	朗帕河区	朗帕河區	wikidata	Rivière du Rempart
+MU.20	萨凡纳区	薩凡納區	wikidata	Savanne
+MU.21	阿加莱加群岛	阿加萊加群島	wikidata	Agalega Islands
+MU.22	卡加多斯-卡拉若斯群岛		llm	Cargados Carajos
+MV.01	阿杜环礁		llm	Seenu
+MV.05	拉穆环礁	拉穆環礁	wikidata	Laamu
+MV.10346475	南阿里环礁		llm	Southern Ari Atoll
+MV.30	阿利夫阿利夫环礁		wikidata	Northern Ari Atoll
+MV.31	巴环礁	巴環礁	wikidata	Baa Atholhu
+MV.32	达卢环礁	達盧環礁	wikidata	Dhaalu Atholhu
+MV.33	法富环礁		wikidata	Faafu Atholhu
+MV.34	加富阿利富环礁		llm+zhwiki	Gaafu Alif Atoll
+MV.35	加富达卢环礁	加富達盧環礁	wikidata	Gaafu Dhaalu Atoll
+MV.36	哈阿利夫环礁		wikidata	Haa Alifu Atholhu
+MV.37	哈达卢环礁	哈達盧環礁	wikidata	Haa Dhaalu Atholhu
+MV.38	卡富环礁		wikidata	Kaafu Atoll
+MV.39	拉维亚尼环礁		wikidata	Faadhippolhu Atoll
+MV.40	马累		llm	Male
+MV.41	梅穆環礁		wikidata	Meemu Atholhu
+MV.42	尼亚维亚尼环礁	尼亞維亞尼環礁	wikidata	Gnyaviyani Atoll
+MV.43	诺努环礁		wikidata	Noonu Atoll
+MV.44	拉环礁		wikidata	Raa Atoll
+MV.45	沙维亚尼环礁		wikidata	Shaviyani Atholhu
+MV.46	塔环礁		llm	Thaa Atholhu
+MV.47	瓦武环礁		wikidata	Vaavu Atholhu
+MY.04	马六甲	麻六甲	wikidata	Melaka
+MY.14	吉隆坡		llm	Kuala Lumpur
+MY.15	纳闽	納閩	wikidata	Labuan
+MZ.10	马尼卡省	馬尼卡省	wikidata	Manica
+MZ.11	马普托市		llm	Maputo City
+NC.01	北部省		wikidata	North Province
+NC.02	南部省		wikidata	South Province
+NC.03	洛亚蒂群岛省	洛亞蒂群島省	wikidata	Loyalty Islands
+NE.08	尼亚美		llm	Niamey
+NG.51	索科托州	索科托州	wikidata	Sokoto
+NI.10	马那瓜省	馬那瓜省	wikidata	Managua Department
+NO.04	布斯克吕郡	布斯克魯郡	wikidata	Buskerud
+NO.08	默勒-鲁姆斯达尔郡	默勒-魯姆斯達爾郡	wikidata	Møre og Romsdal
+NO.12	奥斯陆		llm	Oslo
+NP.1	戈西省		llm	Koshi
+NP.2	马德西省		llm	Madhesh
+NP.3	巴格马蒂省		llm	Bagmati Province
+NP.4	甘达基省		llm	Gandaki Pradesh
+NP.5	蓝毗尼省		llm	Lumbini Province
+NP.6	格尔纳利省		llm+wikidata-label	Karnali Pradesh
+NP.7	远西省		llm	Sudurpashchim Pradesh
+NZ.10	查塔姆群岛		llm	Chatham Islands
+NZ.F3	马纳瓦图-旺阿努伊	馬納瓦圖-旺阿努伊	wikidata	Manawatu-Wanganui
+NZ.F5	尼尔逊大区		llm+zhwiki	Nelson Region
+OM.02	南巴提奈省		llm	Al Batinah South
+OM.04	东南省		llm	Southeastern Governorate
+OM.11	北巴提奈省		wikidata	Al Batinah North
+PA.03	科克莱省	科克萊省	wikidata	Coclé
+PA.04	科隆省	科隆省	wikidata	Colón
+PA.05	达连省	達連省	wikidata	Darién
+PA.08	巴拿马省	巴拿馬省	wikidata	Panamá
+PA.13	西巴拿馬省		wikidata	Panamá Oeste Province
+PA.NT	纳索特尔迪原住民区		llm+wikidata-label	Naso Tjër Di
+PE.07	卡亚俄大区		wikidata	Callao
+PF.01	向风群岛	向風群島	wikidata	Îles du Vent
+PF.02	背风群岛		wikidata	Leeward Islands
+PF.03	土阿莫土-甘比尔群岛	土阿莫土-甘比爾群島	wikidata	Tuamotu-Gambier Islands
+PF.04	马克萨斯群岛		llm	Marquesas Islands
+PF.05	南方群岛		llm	Austral Islands
+PG.07	布干维尔自治区		wikidata	Bougainville
+PG.20	国家首都区	國家首都區	wikidata	National Capital
+PH.NCR	马尼拉大都会		llm+wikidata-label	National Capital Region
+PL.73	库亚维滨海省	庫亞維濱海省	wikidata	Kujawsko-Pomorskie
+PL.78	马佐夫舍省	馬佐夫舍省	wikidata	Mazovia
+PL.79	奥波莱省		wikidata	Opole Voivodeship
+PL.81	波德拉谢省		wikidata	Podlasie
+PL.84	圣十字省		wikidata	Świętokrzyskie
+PM.97501	密克隆-朗格拉德		wikidata	Miquelon-Langlade
+PM.97502	圣皮埃尔		llm	Saint-Pierre
+PR.001	阿德洪塔斯		wikidata	Adjuntas
+PR.003	阿瓜达		llm	Aguada
+PR.005	阿瓜迪亚		wikidata	Aguadilla
+PR.007	阿瓜斯布埃納斯	阿瓜斯布埃納斯	wikidata	Aguas Buenas
+PR.009	艾沃尼托		wikidata	Aibonito
+PR.011	阿尼亚斯科		llm	Añasco
+PR.015	阿罗约		llm	Arroyo
+PR.017	巴塞洛内塔		llm	Barceloneta
+PR.019	巴兰基塔斯		llm	Barranquitas
+PR.021	巴亚蒙	巴亞蒙	wikidata	Bayamón
+PR.023	卡沃羅霍	卡沃羅霍	wikidata	Cabo Rojo
+PR.025	卡瓜斯	卡瓜斯	wikidata	Caguas
+PR.027	卡穆伊		wikidata	Camuy
+PR.029	卡諾瓦諾斯		wikidata	Canóvanas
+PR.031	卡罗利纳	卡羅利納	wikidata	Carolina
+PR.033	卡塔尼奧		wikidata	Cataño
+PR.035	卡耶伊	卡耶伊	wikidata	Cayey
+PR.037	塞瓦		llm	Ceiba
+PR.039	锡亚莱斯		llm+zhwiki	Ciales
+PR.041	錫德拉		wikidata	Cidra
+PR.043	科阿莫		wikidata	Coamo
+PR.045	科梅里奥		llm	Comerío
+PR.047	科羅薩爾 (波多黎各)	科羅薩爾 (波多黎各)	wikidata	Corozal
+PR.049	库莱布拉		llm	Culebra
+PR.051	多拉多		llm	Dorado
+PR.053	法哈多	法哈多	wikidata	Fajardo
+PR.054	弗洛里達		wikidata	Florida
+PR.055	瓜尼卡		llm	Guánica
+PR.057	瓜亚马		llm	Guayama
+PR.059	瓜亞尼亞	瓜亞尼亞	wikidata	Guayanilla
+PR.061	瓜伊纳沃	瓜伊納沃	wikidata	Guaynabo
+PR.063	古拉沃		llm	Gurabo
+PR.065	阿蒂略		llm	Hatillo
+PR.067	奥尔米格罗斯		llm	Hormigueros
+PR.069	乌马考	烏馬考	wikidata	Humacao
+PR.071	伊莎贝拉	伊莎貝拉	wikidata	Isabela
+PR.073	哈尤亞	哈尤亞	wikidata	Jayuya
+PR.075	胡安娜迪亞斯		wikidata	Juana Díaz
+PR.077	洪科斯		wikidata	Juncos
+PR.079	拉哈斯		wikidata	Lajas
+PR.081	拉雷斯		llm	Lares
+PR.083	拉斯玛丽亚斯		llm+zhwiki	Las Marías
+PR.085	拉斯彼德拉斯		llm	Las Piedras
+PR.087	洛伊薩	洛伊薩	wikidata	Loíza
+PR.089	卢基约		llm	Luquillo
+PR.091	马纳蒂		wikidata	Manatí
+PR.093	馬里考	馬里考	wikidata	Maricao
+PR.095	毛纳沃		llm	Maunabo
+PR.097	马亚圭斯	馬亞圭斯	wikidata	Mayagüez
+PR.099	莫卡 (波多黎各)		wikidata	Moca
+PR.101	莫羅維斯	莫羅維斯	wikidata	Morovis
+PR.103	纳瓜沃	納瓜沃	wikidata	Naguabo
+PR.105	纳兰希托		llm	Naranjito
+PR.107	奧羅科維斯	奧羅科維斯	wikidata	Orocovis
+PR.109	帕蒂亚斯		llm+zhwiki	Patillas
+PR.111	佩紐埃拉斯		wikidata	Peñuelas
+PR.113	庞塞	龐塞	wikidata	Ponce
+PR.115	克布拉迪亞斯		wikidata	Quebradillas
+PR.117	林孔		llm	Rincón
+PR.119	里奥格兰德	里奧格蘭德	wikidata	Río Grande
+PR.121	萨瓦纳格兰德		llm	Sabana Grande
+PR.123	薩利納斯 (波多黎各)	薩利納斯 (波多黎各)	wikidata	Salinas
+PR.125	圣赫尔曼	聖赫爾曼	wikidata	San Germán
+PR.127	圣胡安老城		wikidata	San Juan
+PR.129	聖洛倫索		wikidata	San Lorenzo
+PR.131	聖塞瓦斯蒂安 (波多黎各)		wikidata	San Sebastián
+PR.133	聖伊薩貝爾 (波多黎各)	聖伊薩貝爾 (波多黎各)	wikidata	Santa Isabel
+PR.135	上托阿		wikidata	Toa Alta
+PR.137	下托阿		wikidata	Toa Baja
+PR.139	上特鲁希略	上特魯希略	wikidata	Trujillo Alto
+PR.141	烏圖阿多		wikidata	Utuado
+PR.143	上维加		llm+zhwiki	Vega Alta
+PR.145	下維加	下維加	wikidata	Vega Baja
+PR.147	别克斯岛	別克斯島	wikidata	Vieques
+PR.149	維拉爾巴 (波多黎各)	維拉爾巴 (波多黎各)	wikidata	Villalba
+PR.151	亚武科阿		llm+zhwiki	Yabucoa
+PR.153	堯科		wikidata	Yauco
+PT.02	阿威罗区	阿威羅區	wikidata	Aveiro
+PT.23	亚速尔群岛	亞速爾群島	wikidata	Azores
+PY.01	上巴拉那省	上巴拉那省	wikidata	Alto Paraná Department
+PY.04	卡瓜苏省	卡瓜蘇省	wikidata	Caaguazú Department
+PY.07	康塞普西翁省	康塞普西翁省	wikidata	Concepción
+PY.10	瓜伊拉省	瓜伊拉省	wikidata	Guairá
+PY.13	涅恩布库省	涅恩布庫省	wikidata	Ñeembucú Department
+PY.15	巴拉瓜里省		wikidata	Paraguarí
+PY.22	亚松森		llm	Asuncion
+PY.24	博克龙省	博克龍省	wikidata	Boquerón Department
+QA.01	杜哈自治市		wikidata	Baladiyat ad Dawhah
+QA.06	赖扬市		llm	Baladiyat ar Rayyan
+QA.08	北部区		llm+wikidata-label	Madinat ash Shamal
+QA.10	沃克拉		wikidata	Al Wakrah
+QA.14	艾尔沙哈尼亚市		llm+zhwiki	Al-Shahaniya
+RE.RE	留尼汪		llm	Reunion
+RO.10	布加勒斯特		llm	Bucharest
+RO.20	哈尔吉塔县	哈爾吉塔縣	wikidata	Harghita County
+RO.38	瓦斯卢伊县		wikidata	Vaslui County
+RS.SE	中塞爾維亞		wikidata	Central Serbia
+RU.11	布里亚特共和国		wikidata	Buryatiya Republic
+RU.19	印古什共和国		llm	Ingushetiya Republic
+RU.20	伊爾庫茨克州	伊爾庫茨克州	wikidata	Irkutsk Oblast
+RU.29	克麦罗沃州	克麥羅沃州	wikidata	Kuzbass
+RU.32	汉特-曼西自治区		wikidata	Khanty-Mansia
+RU.48	莫斯科	莫斯科	wikidata	Moscow
+RU.55	奥伦堡州	奧倫堡	wikidata	Orenburg Oblast
+RU.63	萨哈共和国	薩哈（雅庫特）共和國	wikidata	Sakha
+RU.66	圣彼得堡	聖彼得堡	wikidata	St.-Petersburg
+RU.73	鞑靼斯坦共和国	韃靼斯坦共和國	wikidata	Tatarstan Republic
+RU.75	托木斯克州		wikidata	Tomsk Oblast
+RU.80	乌德穆尔特共和国		wikidata	Udmurtiya Republic
+RU.91	克拉斯诺亚尔斯克边疆区		wikidata	Krasnoyarsk Krai
+RU.92	堪察加邊疆區	堪察加邊疆區	wikidata	Kamchatka
+RU.93	外贝加尔边疆区	外貝加爾邊疆區	wikidata	Zabaykalskiy (Transbaikal) Kray
+RW.12	基加利		wikidata	Kigali
+SA.02	巴哈省	巴哈省	wikidata	Al Bahah Region
+SA.05	麦地那省	麥地那省	wikidata	Medina Region
+SA.08	盖西姆省		wikidata	Al-Qassim Region
+SA.13	哈伊勒省	哈伊勒省	wikidata	Ha'il Region
+SA.14	麦加省	麥加省	wikidata	Mecca Region
+SA.15	北部边疆省		wikidata	Northern Borders Region
+SA.17	吉赞省	吉贊省	wikidata	Jazan Region
+SA.20	焦夫省 (沙地阿拉伯)		wikidata	Al Jawf Region
+SB.14	霍尼亚拉		llm	Honiara
+SC.02	安塞布瓦洛区		wikidata	Anse Boileau
+SC.05	安塞罗亚莱区	安塞羅亞萊區	wikidata	Anse Royale
+SC.08	博瓦隆		llm	Beau Vallon
+SC.11876017	外岛		llm	Outer Islands
+SC.12200079	毅力岛一区		llm	Ile Perseverance I
+SC.12200080	毅力岛二区		llm	Ile Perseverance II
+SC.14	普拉兰大安塞区		wikidata	Grand Anse Praslin
+SC.24	马埃大安塞区	馬埃大安塞區	wikidata	Grand Anse Mahe
+SE.26	斯德哥尔摩省	斯德哥爾摩省	wikidata	Stockholm
+SH.01	阿森松岛		llm	Ascension
+SH.02	圣赫勒拿		llm	Saint Helena
+SH.03	特里斯坦-达库尼亚		llm	Tristan da Cunha
+SI.02	贝尔廷齐市镇		wikidata	Municipality of Beltinci
+SI.03	布莱德市镇		wikidata	Municipality of Bled
+SI.05	博罗夫尼察市镇		wikidata	Municipality of Borovnica
+SI.06	博韦茨市镇		wikidata	Municipality of Bovec
+SI.07	布尔达		wikidata	Municipality of Brda
+SI.08	布雷日采市镇		wikidata	Municipality of Brežice
+SI.09	布雷佐维察市镇		wikidata	Municipality of Brezovica
+SI.11	采列城市市镇		wikidata	Urban Municipality of Celje
+SI.12	戈雷尼斯卡地区采尔克列市镇		wikidata	Municipality of Cerklje na Gorenjskem
+SI.13	采爾克尼察市鎮	采爾克尼察市鎮	wikidata	Municipality of Cerknica
+SI.15	奇伦绍夫齐		wikidata	Municipality of Črenšovci
+SI.19	迪瓦查市镇		wikidata	Municipality of Divača
+SI.20	多布雷波列市镇		wikidata	Municipality of Dobrepolje
+SI.25	德拉沃格勒市镇		wikidata	Municipality of Dravograd
+SI.26	杜普莱克市镇		wikidata	Municipality of Duplek
+SI.28	戈里什尼察市镇		wikidata	Municipality of Gorišnica
+SI.29	上拉德戈纳市镇		wikidata	Municipality of Gornja Radgona
+SI.30	戈尔尼格勒市镇		wikidata	Municipality of Gornji Grad
+SI.31	上彼得罗夫齐市镇		wikidata	Municipality of Gornji Petrovci
+SI.32	格罗苏普列市镇		wikidata	Municipality of Grosuplje
+SI.35	赫尔佩列-科济纳市镇		wikidata	Municipality of Hrpelje–Kozina
+SI.39	伊万奇纳戈里察市镇		wikidata	Municipality of Ivančna Gorica
+SI.42	尤尔欣齐市镇		wikidata	Municipality of Juršinci
+SI.45	基德里切沃市镇		wikidata	Municipality of Kidričevo
+SI.47	科比列市镇		wikidata	Municipality of Kobilje
+SI.49	科门市镇		wikidata	Municipality of Komen
+SI.51	科兹耶	科茲耶	wikidata	Municipality of Kozje
+SI.52	克拉尼城市市镇		wikidata	Urban Municipality of Kranj
+SI.53	克拉尼斯卡戈拉	克拉尼斯卡戈拉	wikidata	Municipality of Kranjska Gora
+SI.54	克尔什科城市市镇		wikidata	Urban Municipality of Krško
+SI.55	昆戈塔市镇		wikidata	Municipality of Kungota
+SI.62	柳布诺市镇		wikidata	Municipality of Ljubno
+SI.66	洛什基波托克市镇		wikidata	Municipality of Loški Potok
+SI.71	梅德沃代市镇		wikidata	Municipality of Medvode
+SI.72	门盖什		wikidata	Municipality of Mengeš
+SI.73	梅特利卡市镇		wikidata	Municipality of Metlika
+SI.74	梅日察市镇		wikidata	Municipality of Mežica
+SI.76	米斯利尼亚市镇		wikidata	Municipality of Mislinja
+SI.77	摩拉夫切	摩拉夫切	wikidata	Municipality of Moravče
+SI.79	莫济列		wikidata	Municipality of Mozirje
+SI.80	穆尔斯卡索博塔城市市镇		wikidata	Urban Municipality of Murska Sobota
+SI.81	穆塔市镇		wikidata	Municipality of Muta
+SI.82	纳克洛市镇		wikidata	Municipality of Naklo
+SI.83	纳扎列市镇		llm	Municipality of Nazarje
+SI.84	新戈里察城市市镇		wikidata	Urban Municipality of Nova Gorica
+SI.86	奥德兰齐市镇		wikidata	Municipality of Odranci
+SI.87	奥尔莫日市镇		wikidata	Municipality of Ormož
+SI.88	奥西尔尼察市镇		wikidata	Municipality of Osilnica
+SI.92	波德切特泰克	波德切特泰克	wikidata	Municipality of Podčetrtek
+SI.97	普聪齐市镇		wikidata	Municipality of Puconci
+SI.98	拉切-弗拉姆市镇		wikidata	Municipality of Rače–Fram
+SI.A1	拉登齐市镇		wikidata	Municipality of Radenci
+SI.A2	德拉瓦河畔拉德列市镇		llm	Municipality of Radlje ob Dravi
+SI.A6	罗加绍夫齐市镇		wikidata	Municipality of Rogašovci
+SI.A7	罗加什卡-斯拉蒂纳市镇		wikidata	Municipality of Rogaška Slatina
+SI.A8	罗加泰茨市镇		wikidata	Municipality of Rogatec
+SI.B1	塞米奇市镇		wikidata	Municipality of Semič
+SI.B2	申丘尔市镇		llm	Municipality of Šenčur
+SI.B3	申蒂利市镇		wikidata	Municipality of Šentilj
+SI.B4	申特耶尔内伊市镇		wikidata	Municipality of Šentjernej
+SI.B7	塞扎纳市镇		wikidata	Municipality of Sežana
+SI.B8	什科茨扬市镇		llm	Municipality of Škocjan
+SI.C1	什科夫利察市镇		wikidata	Municipality of Škofljica
+SI.C2	斯洛文尼格拉代茨城市市镇		wikidata	Urban Municipality of Slovenj Gradec
+SI.C5	耶尔沙赫附近什马列市镇		wikidata	Municipality of Šmarje pri Jelšah
+SI.C6	帕卡河畔什马尔特诺市镇		wikidata	Municipality of Šmartno ob Paki
+SI.C7	绍什塔尼		wikidata	Municipality of Šoštanj
+SI.C8	斯塔尔舍市镇		wikidata	Municipality of Starše
+SI.C9	什托雷市镇		wikidata	Municipality of Štore
+SI.D1	什查夫尼察河畔圣尤里市镇		wikidata	Municipality of Sveti Jurij ob Ščavnici
+SI.D2	托尔明		wikidata	Municipality of Tolmin
+SI.D3	特尔博夫列市镇		wikidata	Municipality of Trbovlje
+SI.D5	特尔日奇		wikidata	Municipality of Tržič
+SI.D6	图尔尼什切市镇		wikidata	Municipality of Turnišče
+SI.D7	韦莱涅城市市镇		llm	Urban Municipality of Velenje
+SI.D8	大拉什切市镇		wikidata	Municipality of Velike Lašče
+SI.E1	维帕瓦市镇		wikidata	Municipality of Vipava
+SI.E2	维塔涅市镇		wikidata	Municipality of Vitanje
+SI.E3	沃迪采市镇		wikidata	Municipality of Vodice
+SI.E5	弗尔赫尼卡市镇		llm	Municipality of Vrhnika
+SI.E6	武泽尼察市镇		wikidata	Municipality of Vuzenica
+SI.E9	扎夫尔奇市镇		wikidata	Municipality of Zavrč
+SI.F2	日里市镇	日里市鎮	wikidata	Municipality of Žiri
+SI.F4	贝内迪克特市镇		wikidata	Municipality of Benedikt
+SI.F5	索特拉河畔比斯特里察市镇		wikidata	Municipality of Bistrica ob Sotli
+SI.F6	布洛凯市镇		wikidata	Municipality of Bloke
+SI.F7	布拉斯洛夫采市镇		llm	Municipality of Braslovče
+SI.F8	灿科瓦市镇		wikidata	Municipality of Cankova
+SI.F9	采尔克韦尼亚克市镇		llm	Municipality of Cerkvenjak
+SI.G2	多别市镇		wikidata	Municipality of Dobje
+SI.G3	多布尔纳市镇		wikidata	Dobrna
+SI.G4	多布罗瓦-波尔霍夫格拉代茨市镇		wikidata	Municipality of Dobrova–Polhov Gradec
+SI.G5	多布罗夫尼克市镇		wikidata	Municipality of Dobrovnik
+SI.G7	多姆扎莱市镇		wikidata	Municipality of Domžale
+SI.H1	霍切-斯利夫尼察市镇		wikidata	Municipality of Hoče–Slivnica
+SI.H2	霍多什市镇		wikidata	Municipality of Hodoš
+SI.H3	霍尔尤尔市镇		wikidata	Municipality of Horjul
+SI.H4	耶塞尼采市镇		wikidata	Municipality of Jesenice
+SI.H5	耶泽尔斯科市镇		wikidata	Municipality of Jezersko
+SI.H6	卡姆尼克市镇		wikidata	Municipality of Kamnik
+SI.H7	科切维		wikidata	Municipality of Kočevje
+SI.H9	科斯泰尔市镇		wikidata	Municipality of Kostel
+SI.I1	克里热夫齐市镇		wikidata	Municipality of Križevci
+SI.I2	库兹马市镇		wikidata	Municipality of Kuzma
+SI.I3	莱纳尔特市镇		wikidata	Municipality of Lenart
+SI.I5	利蒂亚		wikidata	Municipality of Litija
+SI.I8	波霍列山区洛夫伦茨市镇	波霍列山區洛夫倫茨	wikidata	Municipality of Lovrenc na Pohorju
+SI.I9	卢切市镇		wikidata	Municipality of Luče
+SI.J1	马伊什佩克	馬伊什佩克	wikidata	Municipality of Majšperk
+SI.J3	马尔科夫齐市镇		wikidata	Municipality of Markovci
+SI.J4	德拉夫什卡波卢地区米克拉夫兹市镇		wikidata	Municipality of Miklavž na Dravskem Polju
+SI.J5	米伦-科斯塔涅维察市镇		wikidata	Municipality of Miren–Kostanjevica
+SI.J7	新梅斯托城市市镇		wikidata	Urban Municipality of Novo Mesto
+SI.J9	皮兰市镇		llm	Municipality of Piran
+SI.K1	波德莱赫尼克市镇		wikidata	Municipality of Podlehnik
+SI.K2	波德韦尔卡市镇		wikidata	Municipality of Podvelka
+SI.K3	波尔泽拉市镇		wikidata	Municipality of Polzela
+SI.K5	普雷德沃尔市镇		wikidata	Municipality of Preddvor
+SI.K8	拉夫内纳科罗什凯姆市镇		wikidata	Municipality of Ravne na Koroškem
+SI.K9	拉兹克里日耶市镇		wikidata	Municipality of Razkrižje
+SI.L1	里布尼察市镇		wikidata	Municipality of Ribnica
+SI.L2	波霍列山区里布尼察市镇		wikidata	Municipality of Ribnica na Pohorju
+SI.L4	沙洛夫齐市镇		wikidata	Municipality of Šalovci
+SI.L5	德拉瓦河畔塞尔尼察市镇		wikidata	Municipality of Selnica ob Dravi
+SI.L6	圣彼得-弗尔托伊巴市镇		wikidata	Municipality of Šempeter–Vrtojba
+SI.L9	利蒂亚附近什马尔特诺市镇		wikidata	Municipality of Šmartno pri Litiji
+SI.M1	索德拉日察市镇		llm	Municipality of Sodražica
+SI.M4	斯洛文尼亚丘陵内圣安德拉日市镇		wikidata	Municipality of Sveti Andraž v Slovenskih Goricah
+SI.M5	塔博尔市镇		wikidata	Municipality of Tabor
+SI.M6	蒂希纳市镇		wikidata	Municipality of Tišina
+SI.M7	特尔诺沃村市镇		wikidata	Municipality of Trnovska Vas
+SI.M8	特尔津市镇		wikidata	Municipality of Trzin
+SI.M9	大波拉纳市镇		wikidata	Municipality of Velika Polana
+SI.N1	韦尔热伊市镇		wikidata	Municipality of Veržej
+SI.N2	维代姆市镇		wikidata	Municipality of Videm
+SI.N3	沃伊尼克市镇		llm	Municipality of Vojnik
+SI.N4	弗兰斯科市镇		wikidata	Municipality of Vransko
+SI.N5	扎莱茨		wikidata	Municipality of Žalec
+SI.N6	热塔莱市镇		wikidata	Municipality of Žetale
+SI.N7	日罗夫尼察市镇		wikidata	Municipality of Žirovnica
+SI.N8	茹任贝克市镇		llm	Municipality of Žužemberk
+SI.N9	阿帕切市镇		wikidata	Municipality of Apače
+SI.O1	齊爾庫拉內市鎮		wikidata	Municipality of Cirkulane
+SI.O3	克尔卡地区科斯塔涅维察市镇		wikidata	Municipality of Kostanjevica na Krki
+SI.O4	洛格-德拉戈梅尔市镇		wikidata	Log–Dragomer
+SI.O5	马科莱市镇		wikidata	Municipality of Makole
+SI.O6	米尔纳市镇		wikidata	Municipality of Mirna
+SI.O8	波利察内市镇		llm	Municipality of Poljčane
+SI.O9	萨维尼亚河畔雷契察市镇		wikidata	Municipality of Rečica ob Savinji
+SI.P1	伦切-沃格尔斯科市镇		wikidata	Municipality of Renče–Vogrsko
+SI.P2	申特鲁佩尔特市镇		wikidata	Municipality of Šentrupert
+SI.P3	什马列什凯托普利采市镇		wikidata	Municipality of Šmarješke Toplice
+SI.P4	德拉瓦河畔斯雷迪什切市镇		wikidata	Municipality of Središče ob Dravi
+SI.P5	斯特拉扎市镇		wikidata	Municipality of Straža
+SI.P6	斯洛文尼亚丘陵内圣三一市镇		wikidata	Municipality of Sveta Trojica v Slovenskih Goricah
+SI.P7	斯洛文尼亚丘陵内圣尤里市镇		wikidata	Municipality of Sveti Jurij v Slovenskih Goricah
+SI.P8	圣托马日市镇		wikidata	Municipality of Sveti Tomaž
+SJ.22	扬马延岛		llm	Jan Mayen
+SK.06	特伦钦州	特倫欽省	wikidata	Trenčín Region
+SM.03	多马尼亚诺	多馬尼亞諾	wikidata	Domagnano
+SM.07	圣马力诺	聖馬力諾	wikidata	San Marino
+SM.09	塞拉瓦莱		llm	Serravalle
+SN.07	捷斯区	捷斯區	wikidata	Thies
+SN.17	凯杜古区	凱杜古區	wikidata	Kedougou
+SO.01	巴科勒州		wikidata	Bakool
+SO.02	巴纳迪尔州		wikidata	Banaadir
+SO.03	巴里州	巴里州	wikidata	Bari
+SO.04	拜州		wikidata	Bay
+SO.05	加勒古杜德州	加勒古杜德州	wikidata	Galguduud
+SO.06	盖多州	蓋多州	wikidata	Gedo
+SO.07	希兰州		wikidata	Hiiraan
+SO.08	中朱巴州	中朱巴州	wikidata	Middle Juba
+SO.09	下朱巴州	下朱巴州	wikidata	Lower Juba
+SO.10	穆杜格州	穆杜格州	wikidata	Mudug
+SO.12	萨纳格州	薩那格州	wikidata	Sanaag
+SO.13	中谢贝利州		wikidata	Middle Shabele
+SO.14	下谢贝利州	下謝貝利州	wikidata	Lower Shabeelle
+SO.18	努加尔州	努加爾州	wikidata	Nugaal
+SO.19	托格代尔州	托格代爾州	wikidata	Togdheer
+SO.20	马罗迪杰赫州	馬羅迪傑赫州	wikidata	Woqooyi Galbeed
+SO.21	奥达勒州	奧達勒州	wikidata	Awdal
+SO.22	苏尔州	蘇爾州	wikidata	Sool
+SV.01	阿瓦查潘省		wikidata	Ahuachapan
+SV.02	卡瓦尼亚斯省	卡瓦尼亞斯省	wikidata	Cabanas
+SV.04	库斯卡特兰省	庫斯卡特蘭省	wikidata	Cuscatlan
+SV.07	拉乌尼翁省	拉烏尼翁省	wikidata	La Union
+SV.08	莫拉桑省	莫拉桑省	wikidata	Morazan
+SV.14	乌苏卢坦省	烏蘇盧坦省	wikidata	Usulutan
+SY.04	拉卡省	拉卡省	wikidata	Raqqa
+SZ.04	希塞卢韦尼	希塞盧韋尼	wikidata	Shiselweni
+TD.21	恩贾梅纳		llm	N’Djaména
+TD.22	加扎勒河区	加扎勒河區	wikidata	Barh el Gazel
+TF.01	圣保罗和阿姆斯特丹群岛	聖保羅與阿姆斯特丹群島	wikidata	Saint-Paul-et-Amsterdam
+TF.02	克罗泽群岛	克羅澤群島	wikidata	Crozet
+TF.03	凯尔盖朗群岛		wikidata	Kerguelen
+TF.04	阿黛利地	阿黛利地	wikidata	Terre-Adélie
+TF.05	法属印度洋诸岛	法屬印度洋諸島	wikidata	Îles Éparses
+TH.04	难府	難府	wikidata	Nan
+TH.15	乌泰他尼府	烏泰他尼府	wikidata	Uthai Thani
+TH.35	红统府	紅統府	wikidata	Ang Thong
+TH.38	暖武里府	暖武里府	wikidata	Nonthaburi
+TH.49	达叻府	達叻府	wikidata	Trat
+TH.65	董里府	董里府	wikidata	Trang
+TJ.01	山地巴达赫尚自治州	山地巴達赫尚自治州	wikidata	Gorno-Badakhshan
+TJ.03	粟特州	粟特州	wikidata	Sughd
+TJ.04	杜尚别		llm	Dushanbe
+TJ.RR	国家直辖区	國家直轄區	wikidata	Republican Subordination
+TK.A	阿塔富環礁		wikidata	Atafu
+TK.F	法考福環礁		wikidata	Fakaofo
+TK.N	努库诺努环礁	努庫諾努環礁	wikidata	Nukunonu
+TL.OE	欧库西-安贝诺县	歐庫西-安貝諾縣	wikidata	Oecusse
+TM.03	达沙古兹州	達沙古茲州	wikidata	Dasoguz
+TM.S	阿什哈巴德	阿什哈巴特	wikidata	Ashgabat
+TN.17	巴杰省	巴傑省	wikidata	Béja Governorate
+TO.01	哈阿派群岛		llm+zhwiki	Haapai
+TO.02	汤加塔布		llm	Tongatapu
+TO.03	瓦瓦乌群岛		llm+wikidata-label	Vavau
+TR.93	迪兹杰省		wikidata	Düzce
+TT.03	马亚罗-里奥克拉罗区		wikidata	Mayaro
+TT.05	西班牙港		llm	Port of Spain
+TT.10	圣费尔南多		llm	San Fernando
+TT.11	多巴哥岛	多巴哥島	wikidata	Tobago
+TT.CHA	查瓜纳斯		wikidata	Chaguanas
+TT.PED	皮纳尔-德贝郡		wikidata	Penal/Debe
+TT.PTF	波因特福廷		llm	Point Fortin
+TT.SJL	圣胡安-拉文蒂尔区		wikidata	San Juan/Laventille
+TT.TUP	麦高耶		wikidata	Tunapuna/Piarco
+TV.FUN	富纳富提		llm	Funafuti
+TV.NIT	纽陶		llm	Niutao
+TZ.13	北奔巴区	北奔巴區	wikidata	Pemba North
+TZ.20	南奔巴区	南奔巴區	wikidata	Pemba South
+TZ.21	尚西巴南區		wikidata	Zanzibar Central/South
+TZ.22	尚西巴北区	尚西巴北區	wikidata	Zanzibar North
+TZ.25	尚西巴西区		wikidata	Zanzibar Urban/West
+TZ.32	森圭區		wikidata	Songwe
+UA.03	切尔尼夫齐州	切爾尼夫齊州	wikidata	Chernivtsi
+UA.04	第聂伯罗彼得罗夫斯克州	第聶伯羅彼得羅夫斯克州	wikidata	Dnipropetrovsk
+UA.12	基辅市		llm	Kyiv City
+UA.19	罗夫诺州	羅夫諾州	wikidata	Rivne Oblast
+UA.27	日托米尔州		wikidata	Zhytomyr Oblast
+UM.100	豪兰岛	豪蘭島	wikidata	Howland Island
+UM.150	贾维斯岛		llm	Jarvis Island
+UM.200	约翰斯顿环礁		llm	Johnston Atoll
+UM.250	金曼礁		llm	Kingman Reef
+UM.300	中途岛	中途島	wikidata	Midway Islands
+UM.400	巴尔米拉环礁	巴美拉環礁	wikidata	Palmyra Atoll
+UY.06	弗洛雷斯省		wikidata	Flores Department
+UZ.13	塔什干	塔什干	wikidata	Tashkent
+VE.01	亚马孙州	亞馬孫州	wikidata	Amazonas
+VE.02	安索阿特吉州	安索阿特吉州	wikidata	Anzoátegui
+VE.03	阿普雷州		wikidata	Apure
+VE.04	阿拉瓜州	阿拉瓜州	wikidata	Aragua
+VE.05	巴里纳斯州		wikidata	Barinas
+VE.06	玻利瓦尔州	玻利瓦爾州	wikidata	Bolívar
+VE.07	卡拉沃沃州	卡拉沃沃州	wikidata	Carabobo
+VE.08	科赫德斯州	科赫德斯州	wikidata	Cojedes
+VE.11	法尔孔州	法爾孔州	wikidata	Falcón
+VE.12	瓜里科州	瓜里科州	wikidata	Guárico
+VE.13	拉腊州	拉臘州	wikidata	Lara
+VE.14	梅里达州		wikidata	Mérida
+VE.15	米兰达州	米蘭達州	wikidata	Miranda
+VE.16	莫纳加斯州	莫納加斯州	wikidata	Monagas
+VE.17	新埃斯帕塔州	新埃斯帕塔州	wikidata	Nueva Esparta
+VE.18	波图格萨州	波圖格薩州	wikidata	Portuguesa
+VE.19	苏克雷州	蘇克雷州	wikidata	Sucre
+VE.20	塔奇拉州		wikidata	Táchira
+VE.21	特鲁希略州	特魯希略州	wikidata	Trujillo
+VE.22	亚拉奎州	亞拉奎州	wikidata	Yaracuy
+VE.23	苏利亚州	蘇利亞	wikidata	Zulia
+VE.24	联邦属地	聯邦屬地	wikidata	Dependencias Federales
+VE.26	巴尔加斯州	巴爾加斯州	wikidata	Vargas
+VI.010	圣克罗伊岛		llm	Saint Croix Island
+VI.020	圣约翰岛		llm	Saint John Island
+VI.030	圣托马斯岛		llm	Saint Thomas Island
+VN.01	河内		llm	Hanoi
+VN.08	宣光省		llm	Tuyen Quang
+VN.11	奠边省		llm	Điện Biên Province
+VN.15	老街省		llm	Lao Cai
+VN.19	太原省		llm	Thai Nguyen
+VN.24	北宁省		llm	Bac Ninh
+VN.25	富寿省		llm	Phu Tho
+VN.31	海防		llm	Hai Phong
+VN.33	兴安省		llm	Hưng Yên Province
+VN.37	宁平省		llm	Ninh Binh
+VN.40	乂安省		wikidata	Nghệ An Province
+VN.44	广治省		llm	Quang Tri
+VN.46	顺化市	順化市	wikidata	Thừa Thiên Huế Province
+VN.48	岘港		llm	Da Nang City
+VN.51	广义省		llm	Quang Ngai
+VN.52	嘉莱省		llm	Gia Lai
+VN.56	庆和省		llm	Khanh Hoa
+VN.66	多乐省		llm+wikidata-label	Dak Lak
+VN.68	林同省		llm	Lam Dong
+VN.75	同奈省		llm	Dong Nai
+VN.79	胡志明市		llm	Ho Chi Minh City (HCMC)
+VN.80	西宁省		llm	Tay Ninh
+VN.82	同塔省		llm	Dong Thap
+VN.86	永隆省		llm	Vinh Long
+VN.91	安江省		llm	An Giang
+VN.92	芹苴		llm	Can Tho City
+VN.96	金瓯省		llm	Ca Mau
+VU.18	谢法省	謝法省	wikidata	Shefa
+WF.98611	阿洛		wikidata	Alo
+WF.98612	锡加韦		wikidata	Sigave
+WF.98613	乌韦阿		wikidata	Uvea
+XK.10096138	乌罗舍瓦茨区	烏羅舍瓦茨區	wikidata	Ferizaj
+XK.10096859	贾科维察区		wikidata	Gjakova
+XK.10097357	格尼拉内区		wikidata	Gjilan
+XK.10097358	米特罗维察区	米特羅維察區	wikidata	Mitrovica
+XK.10097359	佩奇区		wikidata	Pec
+XK.10097360	普里什蒂纳区	普里斯提納區	wikidata	Pristina
+XK.10097361	普里兹伦区		wikidata	Prizren
+YE.02	亚丁省	亞丁省	wikidata	Aden
+YE.26	萨那市		llm	Amanat Alasimah
+YT.97601	阿库阿		llm	Acoua
+YT.97602	邦德拉布阿		wikidata	Bandraboua
+YT.97603	邦德雷莱		wikidata	Bandrele
+YT.97604	布埃尼		wikidata	Bouéni
+YT.97605	希科尼		llm	Chiconi
+YT.97606	希龙吉		llm+zhwiki	Chirongui
+YT.97607	登贝尼		wikidata	Dembeni
+YT.97608	藻德济		llm	Dzaoudzi
+YT.97609	卡尼凯利		wikidata	Kani-Kéli
+YT.97610	昆古		wikidata	Koungou
+YT.97611	马穆楚		llm	Mamoudzou
+YT.97612	姆仓博罗		llm+zhwiki	Mtsamboro
+YT.97613	姆仓加穆日		llm+zhwiki	M'Tsangamouji
+YT.97614	旺加尼		wikidata	Ouangani
+YT.97615	帕芒济		llm	Pamandzi
+YT.97617	钦戈尼		wikidata	Tsingoni
+ZM.06	西北省	西北省	wikidata	North-Western
+ZW.09	布拉瓦约省		wikidata	Bulawayo
