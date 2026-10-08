@@ -332,7 +332,7 @@ fn reference_phrase_table() -> Lookup<Phrase> {
         for (phrase, sem, language) in ENTRIES.iter().copied()
             .chain(EXTRA_VOTERS.iter().map(|&(phrase, language)| (phrase, Sem::Filler, language))) {
             let u = units(&fold(phrase));
-            let text: Vec<String> = u.iter().map(|t| t.text.clone()).collect();
+            let text: Vec<String> = u.iter().map(|t| t.text.as_str().to_owned()).collect();
             if text.is_empty() { continue; }
             grouped.entry(text).or_default().push(Entry {
                 sem,
@@ -879,7 +879,7 @@ mod tests {
         for (phrase, sem, language) in ENTRIES.iter().copied()
             .chain(EXTRA_VOTERS.iter().map(|&(text, language)| (text, Sem::Filler, language))) {
             let phrase_units = units(&fold(phrase));
-            let text: Vec<_> = phrase_units.iter().map(|u| u.text.clone()).collect();
+            let text: Vec<_> = phrase_units.iter().map(|u| u.text.as_str().to_owned()).collect();
             if !text.is_empty() {
                 result.entry(text).or_default().push(Entry {
                     sem, language, raw: phrase_units.iter().map(|u| u.raw.to_lowercase()).collect(),
@@ -1017,7 +1017,7 @@ mod tests {
         assert_eq!(evidence(&u, 0, 1, None), expected);
         let mut cloned = u.clone();
         assert!(cloned.iter().all(|unit| unit.evidence_memo.0.borrow().is_none()));
-        cloned[1].raw = "ET".to_owned();
+        cloned[1].raw = "ET".into();
         let changed = evidence_uncached(&cloned, 0, 1, None);
         assert_ne!(changed, expected);
         assert_eq!(changed, Evidence::Unknown);
@@ -1030,7 +1030,7 @@ mod tests {
         let original_address = u.as_ptr();
         u[0] = u[0].clone();
         assert!(u[0].evidence_memo.0.borrow().is_none());
-        u[1].raw = "ET".to_owned();
+        u[1].raw = "ET".into();
         assert_eq!(u.as_ptr(), original_address);
         enable_memos(&u);
         assert_eq!(evidence(&u, 0, 1, None), Evidence::Unknown);
