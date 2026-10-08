@@ -62,6 +62,7 @@ fn snapshot(mentions: &[Mention]) -> Vec<String> {
             let clock = m
                 .time
                 .map(|c| format!("{:02}:{:02}", c.hour, c.minute))
+                .or_else(|| (m.relative_minutes == Some(0)).then(|| "now".into()))
                 .unwrap_or_else(|| "-".into());
             let unknown = m
                 .unresolved
@@ -159,20 +160,61 @@ fn sixteen_languages_question_targets_previous_clock_and_not_later_clock() {
     );
 }
 
+// QUESTIONS 里写成「此刻几点」的那些语言（其余语言的例句回指前文或用将来时：what time is that in、wie spät ist das、
+// qué hora será、quelle heure est-ce、hoe laat is dat、во сколько это будет）。
+const PRESENT_QUESTION_LANGUAGES: &[&str] = &["it", "ja", "ko", "pl", "tr", "vi", "id", "pt-BR", "zh-Hans", "zh-Hant"];
+
 #[test]
 fn sixteen_languages_blank_line_stops_previous_question_scope() {
+    // 空行后的问句不再回指前一段的钟点；问的是此刻时答「现在」，回指前文的问法照旧不答。
     check(
         QUESTIONS
             .iter()
-            .map(|&(lang, question, _, _)| {
-                (
-                    format!("09:00 UTC.\n\n{question}\n12:00 UTC."),
-                    lang,
-                    vec!["09:00 +0 > -".into(), "12:00 +0 > -".into()],
-                )
+            .map(|&(lang, question, _, iana)| {
+                let mut want = vec!["09:00 +0 > -".to_owned()];
+                if PRESENT_QUESTION_LANGUAGES.contains(&lang) {
+                    want.push(format!("now - > {iana}"));
+                }
+                want.push("12:00 +0 > -".into());
+                (format!("09:00 UTC.\n\n{question}\n12:00 UTC."), lang, want)
             })
             .collect(),
     );
+}
+
+#[test]
+fn present_tense_questions_without_a_clock_ask_for_the_time_now() {
+    check(vec![
+        ("What time is it in Tokyo?".into(), "en", vec!["now - > Asia/Tokyo".into()]),
+        ("what time in tokyo".into(), "en", vec!["now - > Asia/Tokyo".into()]),
+        ("Wie spät ist es in Berlin?".into(), "de", vec!["now - > Europe/Berlin".into()]),
+        ("Quelle heure est-il à Paris ?".into(), "fr", vec!["now - > Europe/Paris".into()]),
+        ("在东京是几点？".into(), "zh-Hans", vec!["now - > Asia/Tokyo".into()]),
+        ("東京 では何時ですか？".into(), "ja", vec!["now - > Asia/Tokyo".into()]),
+        ("İstanbul'da saat kaç?".into(), "tr", vec!["now - > Europe/Istanbul".into()]),
+        // 表示此刻的词写在地名前，不算进地名。
+        ("现在东京几点？".into(), "zh-Hans", vec!["now - > Asia/Tokyo".into()]),
+        ("目前東京幾點？".into(), "zh-Hant", vec!["now - > Asia/Tokyo".into()]),
+        ("いま東京は何時ですか".into(), "ja", vec!["now - > Asia/Tokyo".into()]),
+        // 「今」开头的地名整个保留（测试查表里没有今治，原样留作未解析的目标）。
+        ("今治は何時ですか".into(), "ja", vec!["now - > - !target:今治".into()]),
+        // 后面另一句的钟点不是这一问的对象：问句照样答此刻，钟点照样是独立的一处。
+        ("What time is it in Tokyo? 15:00 UTC.".into(), "en", vec!["now - > Asia/Tokyo".into(), "15:00 +0 > -".into()]),
+        // 范围里有钟点时仍是换算那个钟点，不另答此刻。
+        ("09:00 UTC. What time is it in Tokyo?".into(), "en", vec!["09:00 +0 > Asia/Tokyo".into()]),
+    ]);
+}
+
+#[test]
+fn questions_about_an_earlier_or_future_time_need_that_time() {
+    check(vec![
+        ("What time is that in Tokyo?".into(), "en", vec![]),
+        ("What time will it be in Tokyo?".into(), "en", vec![]),
+        ("Wie spät ist das in Berlin?".into(), "de", vec![]),
+        ("¿Qué hora será en Madrid?".into(), "es", vec![]),
+        ("Paris'te saat kaç olur?".into(), "tr", vec![]),
+        ("What time is it?".into(), "en", vec![]),
+    ]);
 }
 
 #[test]

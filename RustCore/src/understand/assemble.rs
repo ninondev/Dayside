@@ -1167,10 +1167,11 @@ impl Context<'_> {
         self.finish(built, languages.into_iter().map(|(l, _)| l).collect(), writer, &written_dates)
     }
 
-    fn assign_destinations(&self, built: &mut [Built], destinations: &[super::targets::Phrase]) {
+    fn assign_destinations(&self, built: &mut Vec<Built>, destinations: &[super::targets::Phrase]) {
         use super::targets::Kind;
         let u = self.units;
         let mut previous_question = 0;
+        let mut now_questions: Vec<Built> = Vec::new();
         for p in destinations {
             let paragraph_start = u[..p.from].iter().rposition(|t| t.text == "\n\n").map_or(0, |i| i + 1);
             let sentence_start = self.atoms.iter().filter(|a| a.to <= p.from && matches!(a.atom, Atom::Boundary(_)) && !matches!(u[a.from].text.as_str(), ";" | "|" | "/"))
@@ -1239,6 +1240,28 @@ impl Context<'_> {
             let name_to = resolved.as_ref().map_or(p.name_to, |(_, end)| *end);
             let mut span = self.span_of(p.name_from, name_to);
             if let Some((_, suffix)) = case_suffix { span[1] -= 1 + suffix.encode_utf16().count(); }
+            // 只问地点、范围里没有可换算的钟点（「What time is it in Tokyo?」「东京现在几点？」）：答的是此刻那里几点。
+            if p.asks_now && owners.is_empty() && (resolved.is_some() || p.bare.is_none()) {
+                let (unit_from, unit_to) = (p.from.min(p.name_from), p.to.max(name_to));
+                let mut mention = Mention::empty(self.span_of(unit_from, unit_to));
+                mention.relative_minutes = Some(0);
+                let asked = if p.from < p.name_from { Some((p.from, p.name_from)) } else { (name_to < p.to).then_some((name_to, p.to)) };
+                if let Some((from, to)) = asked {
+                    mention.parts.push(Part { kind: "time", span: self.span_of(from, to) });
+                }
+                match &resolved {
+                    Some((zone, _)) => {
+                        mention.target = Some(zone.clone());
+                        mention.parts.push(Part { kind: "target", span });
+                    }
+                    None => mention.unresolved.push(Unresolved { text: name.to_owned(), span, role: "target" }),
+                }
+                mention.parts.sort_by_key(|part| part.span[0]);
+                let paragraph = self.atoms.iter().filter(|a| a.to <= p.from && matches!(a.atom, Atom::Boundary(Break::Paragraph))).count();
+                now_questions.push(Built { mention, unit_from, unit_to, series_span: None, paragraph, segment: usize::MAX, day_after_previous: false, bare_hour: false });
+                previous_question = p.to;
+                continue;
+            }
             for i in owners {
                 let b = &mut built[i];
                 if p.local && (b.mention.source.is_none() || matches!(b.mention.source, Some(ZoneRef::Options { reason: "sentence", .. }))) {
@@ -1264,6 +1287,10 @@ impl Context<'_> {
                 }
             }
             if p.kind == Kind::Question { previous_question = p.to; }
+        }
+        for question in now_questions {
+            let at = built.partition_point(|b| b.unit_from <= question.unit_from);
+            built.insert(at, question);
         }
     }
 
