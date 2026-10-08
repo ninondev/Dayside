@@ -10,6 +10,7 @@ use crate::city_index::rules as index_builder_rules;
 #[path = "../index_builder.rs"]
 mod index_builder;
 
+use super::table_storage::FastMap;
 use super::types::ZoneRef;
 use std::cell::Cell;
 use std::collections::HashMap;
@@ -138,8 +139,8 @@ pub(super) fn place_modifier_stem(text: &str) -> &str {
 }
 
 /// 折叠后的国家名 → 国家码；一个名字对上几个国家的不收（不猜）。
-fn country_names() -> &'static HashMap<String, &'static str> {
-    static NAMES: OnceLock<HashMap<String, &'static str>> = OnceLock::new();
+fn country_names() -> &'static FastMap<String, &'static str> {
+    static NAMES: OnceLock<FastMap<String, &'static str>> = OnceLock::new();
     NAMES.get_or_init(|| {
         let mut seen: HashMap<String, Option<&'static str>> = HashMap::new();
         let mut add = |name: &str, code: &'static str| {
