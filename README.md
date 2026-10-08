@@ -119,7 +119,7 @@ xcodebuild -project TahoeTime.xcodeproj -scheme TahoeTime -configuration Debug \
 ```
 
 `DaysideCore` runs `Tools/build_rust_core.sh` to create the Rust static library before compiling
-Swift. `Tools/sign_bundle.sh` signs local builds ad hoc, so you do not need a developer account.
+Swift. `Tools/sign_bundle.sh` signs local builds ad hoc, so you do not need a developer account. Published releases are re-signed with a Developer ID and notarized by `Tools/release_sign_notarize.sh`.
 `Tools/verify_all.sh` also runs the Swift tests, which launch the app as their host. A build that
 succeeds does not show that the Swift tests or the app's interactions pass.
 

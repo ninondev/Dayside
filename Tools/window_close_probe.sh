@@ -19,7 +19,7 @@ app="$products/Dayside.app"
 [[ -d "$app" ]] || { echo "没有 Debug 产物：$app" >&2; exit 1; }
 copy="$out/Dayside.app"; "$root/Tools/trash.sh" "$copy"; ditto "$app" "$copy"
 "$root/Tools/trash.sh" "$copy/Contents/PlugIns/"*.xctest
-ent="$out/debug-no-group.entitlements"; cp "$root/TahoeTime/TahoeTime-signing-Debug.entitlements" "$ent"
+ent="$out/debug.entitlements"; cp "$root/TahoeTime/TahoeTime-signing-Debug.entitlements" "$ent"
 sign() { /usr/bin/codesign --force --sign - --timestamp=none "$@" 2>/dev/null; }
 for dylib in "$copy"/Contents/MacOS/*.dylib; do [[ -e "$dylib" ]] && sign "$dylib"; done
 for framework in "$copy"/Contents/Frameworks/*.framework; do [[ -e "$framework" ]] && sign "$framework"; done

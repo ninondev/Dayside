@@ -16,7 +16,7 @@ products="$(xcodebuild -project TahoeTime.xcodeproj -scheme TahoeTime -configura
 app="$products/Dayside.app"
 copy="$out/Dayside.app"; "$root/Tools/trash.sh" "$copy"; ditto "$app" "$copy"
 "$root/Tools/trash.sh" "$copy/Contents/PlugIns/"*.xctest
-ent="$out/debug-no-group.entitlements"; cp "$root/TahoeTime/TahoeTime-signing-Debug.entitlements" "$ent"
+ent="$out/debug.entitlements"; cp "$root/TahoeTime/TahoeTime-signing-Debug.entitlements" "$ent"
 sign() { /usr/bin/codesign --force --sign - --timestamp=none "$@"; }
 for dylib in "$copy"/Contents/MacOS/*.dylib; do [[ -e "$dylib" ]] && sign "$dylib"; done
 for framework in "$copy"/Contents/Frameworks/*.framework; do [[ -e "$framework" ]] && sign "$framework"; done
