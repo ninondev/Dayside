@@ -27,6 +27,9 @@ pub(super) struct Phrase {
     pub kind: Kind,
     pub local: bool,
     pub zone: Option<ZoneRef>,
+    /// 问句写的是此刻（what time is it in X、东京几点）：范围里没有钟点时答「现在」。
+    /// 回指前文（what time is that in X）与将来、假设的说法不算。
+    pub asks_now: bool,
 }
 
 // Closed tables, keyed by interface language. Accents, case and punctuation
@@ -211,6 +214,29 @@ const SUFFIX: &[(&str, &[&str])] = &[
     ("zh-Hans", &["那边是几点", "那边几点", "是几点", "的几点", "几点"]),
     ("zh-Hant", &["那邊是幾點", "那邊幾點", "是幾點", "的幾點", "幾點"]),
 ];
+// 问此刻几点的写法（PREFIX / SUFFIX 的子集）。回指前文的（that、das、dat、est-ce、это、itu）和将来、假设的
+// （will、será、sera、saranno、będzie、olur、になりますか）不在这里：它们问的是前面那个钟点，孤立时不答。
+const PRESENT: &[&str] = &[
+    "what time is it in", "what time in",
+    "wie spät ist es in", "wie spät in", "wieviel uhr in",
+    "qué hora es en", "qué hora en",
+    "quelle heure est-il à", "quelle heure à",
+    "che ore sono a", "che ora è a", "che ore a",
+    "hoe laat is het in", "hoe laat in",
+    "która godzina jest w", "która godzina w",
+    "который час в", "сколько времени в",
+    "jam berapa di", "pukul berapa di", "jam berapa waktunya di", "pukul berapa waktunya di", "jam berapa", "pukul berapa",
+    "que horas são em", "que horas em", "que hora é em",
+    "では今何時ですか", "は今何時ですか", "で今何時ですか", "は今何時", "では何時ですか", "で何時ですか", "は何時ですか",
+    "では何時", "で何時", "は何時", "何時ですか", "何時",
+    "에서는 몇 시인가요", "에서는 몇 시예요", "에서는 몇 시야", "에서는 몇 시죠", "에서 몇 시인가요", "에서 몇 시예요",
+    "는 몇 시인가요", "는 몇 시예요", "은 몇 시예요", "은 몇 시인가요", "은 몇 시야", "은 몇 시죠", "은 몇 시지",
+    "몇 시인가요", "몇 시예요", "몇 시지", "몇 시야", "몇 시죠", "몇 시",
+    "saat kaç", "saat kaçtır",
+    "là mấy giờ", "mấy giờ",
+    "那边是几点", "那边几点", "是几点", "几点",
+    "那邊是幾點", "那邊幾點", "是幾點", "幾點",
+];
 const LOCAL: &[(&str, &[&str])] = &[
     (
         "en",
@@ -299,6 +325,7 @@ pub(super) fn local_clock_start(u: &[Unit], phrase: &Phrase) -> usize {
 struct Form {
     units: Vec<String>,
     lang: &'static str,
+    present: bool,
 }
 type Table = FastMap<String, Vec<Form>>;
 fn table(entries: &[(&'static str, &[&str])]) -> Table {
@@ -306,9 +333,10 @@ fn table(entries: &[(&'static str, &[&str])]) -> Table {
     for &(lang, forms) in entries {
         for &form in forms {
             let units = phrase_units(&fold_str(form));
+            let present = PRESENT.contains(&form);
             out.entry(units[0].clone())
                 .or_default()
-                .push(Form { units, lang });
+                .push(Form { units, lang, present });
         }
     }
     for forms in out.values_mut() {
@@ -529,6 +557,7 @@ pub(super) fn scan(u: &[Unit], atoms: &[Located]) -> Vec<Phrase> {
                     kind: Kind::Question,
                     local: local_form.is_some(),
                     zone: zone.map(|(zone, _)| zone),
+                    asks_now: form.present && local_form.is_none(),
                 });
                 i = name_to;
                 continue;
@@ -561,6 +590,7 @@ pub(super) fn scan(u: &[Unit], atoms: &[Located]) -> Vec<Phrase> {
                     kind: Kind::Arrow,
                     local: local_form.is_some(),
                     zone: zone.map(|(zone, _)| zone),
+                    asks_now: false,
                 });
                 i = name_to;
                 continue;
@@ -593,6 +623,7 @@ pub(super) fn scan(u: &[Unit], atoms: &[Located]) -> Vec<Phrase> {
                 },
                 local: true,
                 zone: None,
+                asks_now: false,
             });
             i = to;
             continue;
@@ -613,6 +644,17 @@ pub(super) fn scan(u: &[Unit], atoms: &[Located]) -> Vec<Phrase> {
                 while from < name_to && ["是", "は", "는", "은"].contains(&u[from].text.as_str())
                 {
                     from += 1;
+                }
+                // 「现在东京几点」「いま東京は何時」：表示此刻的词在地名前，不属于城市名字。
+                // 单字「今」也是地名的头一个字（今治、今市），不在这里去掉。
+                if matches!(form.lang, "zh-Hans" | "zh-Hant" | "ja") {
+                    for now in ["现在", "現在", "此刻", "目前", "いま"] {
+                        let words = phrase_units(now);
+                        if from + words.len() < name_to && u[from..from + words.len()].iter().zip(&words).all(|(unit, word)| &unit.text == word) {
+                            from += words.len();
+                            break;
+                        }
+                    }
                 }
                 // 对应与相当于是目标问句的引词，不属于城市名字。
                 if matches!(form.lang, "zh-Hans" | "zh-Hant") {
@@ -641,6 +683,7 @@ pub(super) fn scan(u: &[Unit], atoms: &[Located]) -> Vec<Phrase> {
                         kind: Kind::Question,
                         local: false,
                         zone: None,
+                        asks_now: form.present,
                     });
                     i = to;
                     continue;
@@ -650,4 +693,17 @@ pub(super) fn scan(u: &[Unit], atoms: &[Located]) -> Vec<Phrase> {
         i += 1;
     }
     out
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn present_question_forms_are_listed_question_forms() {
+        let forms: Vec<&str> = PREFIX.iter().chain(SUFFIX).flat_map(|(_, forms)| forms.iter().copied()).collect();
+        for form in PRESENT {
+            assert!(forms.contains(form), "{form} is not a PREFIX or SUFFIX form");
+        }
+    }
 }
