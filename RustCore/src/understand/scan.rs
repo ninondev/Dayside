@@ -5,7 +5,7 @@
 use super::dates::{days_from_civil, valid_date, valid_month_day};
 use super::lexicon::{Period, Sem, ABBREVIATIONS};
 use super::types::{Clock, DateSpec, ZoneRef};
-use super::units::{find, glued, is, is_punct, matcher, number, UKind, Unit};
+use super::units::{abbreviation, find, glued, is, is_punct, matcher, number, zone_words, UKind, Unit};
 
 /// 句段边界：句号一类切开两次提到；空行还切开日期沿用。单个换行不是边界（邮件会折行），装配层按单元里的「\n」算行号。
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -1873,7 +1873,7 @@ impl<'a> Scanner<'a> {
         }
         // 数字后的钟点词：o'clock / Uhr / uur / 点 / 時 / 시 / giờ / h / hs / ч。
         // 钟点词正好是时区整词的开头（「9:00 heure de l'est」「9:00 heure du Pacifique」）时留给时区词。
-        let starts_zone_word = matcher().zone_words.get(u.get(end).map_or("", |t| t.text.as_str())).is_some_and(|list| {
+        let starts_zone_word = zone_words(u.get(end).map_or("", |t| t.text.as_str())).is_some_and(|list| {
             list.iter().any(|(phrase, _)| end + phrase.len() <= u.len() && phrase.len() > 1 && (0..phrase.len()).all(|k| u[end + k].text == phrase[k]))
         });
         // 钟点词正好是更长的时长词的开头（韩「5시간」、日「2時間」：시 / 時 后面紧跟 간 / 間）：那是几个小时，不是几点
@@ -2386,7 +2386,6 @@ impl<'a> Scanner<'a> {
     /// 「北京时间 / Pacific time / hora del este / по москве」这类整词。
     pub(super) fn zone(&mut self, i: usize) -> Option<usize> {
         let u = self.u;
-        let m = matcher();
         // Standard/daylight words explicitly name a fixed offset.
         for (name, minutes, region) in [
             ("Midden-Europese Tijd", 60, "Europe/Berlin"),
@@ -2400,7 +2399,7 @@ impl<'a> Scanner<'a> {
             }
         }
         // 整词（最长的先）。
-        if let Some(list) = m.zone_words.get(&u[i].text) {
+        if let Some(list) = zone_words(&u[i].text) {
             for (phrase, iana) in list {
                 let n = phrase.len();
                 if n == 1 && u[i].text == "central" && !u[i].capital && !u[i].upper && !self.out.last().is_some_and(|l| matches!(l.atom, Atom::Clock { .. }) && l.to == i) { continue; }
@@ -2445,7 +2444,7 @@ impl<'a> Scanner<'a> {
         }
         if cur.kind == UKind::Word {
             // 西里尔缩写与拉丁 MSK 指向同一个固定偏移。
-            if let Some(&index) = m.abbreviations.get(&cur.text).or_else(|| (cur.text == "мск").then(|| m.abbreviations.get("msk")).flatten()) {
+            if let Some(&index) = abbreviation(&cur.text).or_else(|| (cur.text == "мск").then(|| abbreviation("msk")).flatten()) {
                 let after_clock = self.out.last().is_some_and(|l| matches!(l.atom, Atom::Clock { .. } | Atom::Instant(_)) && l.to + 1 >= i);
                 let accept = cur.upper && (cur.text.len() >= 2)
                     || matches!(cur.text.as_str(), "aoe" | "мск")
@@ -2812,7 +2811,7 @@ fn starts_abbreviation(u: &[Unit], k: usize) -> bool {
 fn dotted_clock_context(u: &[Unit], i: usize) -> bool {
     let end = i + 3;
     let zone = u.get(end).is_some_and(|t| {
-        zone_word_at(u, end) || t.upper && matcher().abbreviations.contains_key(&t.text)
+        zone_word_at(u, end) || t.upper && abbreviation(&t.text).is_some()
             || t.kind == UKind::Word && is(u, end + 1, |s| s == Sem::ZoneAfter).is_some()
     });
     if zone { return true; }
@@ -2826,7 +2825,7 @@ fn zone_word_at(u: &[Unit], j: usize) -> bool {
     let Some(first) = u.get(j) else { return false };
     // Cyrillic Moscow time is unambiguous in every casing. Keep the cue from
     // swallowing it as a place before zone() can return the fixed offset.
-    first.text == "мск" || matcher().zone_words.get(&first.text).is_some_and(|list| {
+    first.text == "мск" || zone_words(&first.text).is_some_and(|list| {
         list.iter().any(|(phrase, _)| j + phrase.len() <= u.len() && (0..phrase.len()).all(|k| u[j + k].text == phrase[k]))
     })
 }

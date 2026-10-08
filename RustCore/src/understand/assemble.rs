@@ -6,6 +6,7 @@ use super::dates::{apply_period, date_order, days_from_civil, dot_reading, half_
 use super::lexicon::{Period, Sem};
 use super::scan::{is_han_place_char, words_after, Atom, Break, Located};
 use super::text;
+use super::table_storage::FastMap;
 use super::types::{Alternative, Clock, DateSpec, Issue, Mention, Output, Part, Unresolved, Writer, ZoneRef};
 use super::units::{find, matcher, UKind, Unit};
 use std::collections::HashMap;
@@ -27,6 +28,8 @@ pub(super) struct Context<'a> {
     pub(super) destinations: Vec<super::targets::Phrase>,
     /// 原子按起点排好，且每个都是 from ≤ to：可以按位置二分取一段。
     pub(super) atoms_ordered: bool,
+    /// 本次解析里查过的国家名（`places::country_lookup` 只看文字）。
+    pub(super) countries: std::cell::RefCell<FastMap<String, Option<ZoneRef>>>,
 }
 
 /// 一处提到在装配期间的内部记录（单元区间与行号只在这里用）。
@@ -317,12 +320,19 @@ impl Context<'_> {
     /// 调用处不记「没认出」（in the office、en la plaza、au bureau 不是地名）。小写的不查城市：「la plaza」的别名能对上
     /// 阿根廷的 Presidencia de la Plaza，「Brasil」能对上巴伊亚的 Pau Brasil。
     /// 有明确线索（w X、в X、czas w X、время в X）而原样查不到时，按线索语言试变格还原后的原形（w Nowym Jorku → Nowy Jork）。
+    fn country(&self, text: &str) -> Option<ZoneRef> {
+        if let Some(zone) = self.countries.borrow().get(text) { return zone.clone(); }
+        let zone = super::places::country_lookup(text);
+        self.countries.borrow_mut().insert(text.to_owned(), zone.clone());
+        zone
+    }
+
     fn find_place(&self, text: &str, strong: bool, bare: Option<&str>, lang: Option<&str>) -> Option<ZoneRef> {
         let direct = match bare {
-            None => (self.lookup)(text, strong).or_else(|| strong.then(|| super::places::country_lookup(text)).flatten()),
+            None => (self.lookup)(text, strong).or_else(|| strong.then(|| self.country(text)).flatten()),
             // 「X 时间 / X time」：照有线索查（成都时间、osaka time），查不到当没有线索。
             Some("") => (self.lookup)(text, strong),
-            Some(bare) => super::places::country_lookup(bare)
+            Some(bare) => self.country(bare)
                 .or_else(|| (lang != Some("de") && bare.chars().next().is_some_and(char::is_uppercase)).then(|| (self.lookup)(text, false)).flatten()),
         };
         if direct.is_some() || !strong || bare.is_some() {
@@ -351,8 +361,11 @@ impl Context<'_> {
         if case_marker && !place_cue && self.units[s].capital || bare.unwrap_or(text).chars().next().is_none_or(|c| !c.is_lowercase()) { return false; }
         // Shared cues such as "in" may carry English even in a German clause.
         // Use the same segment vote as the existing German loose-place rule.
-        let start = self.atoms.iter().rposition(|a| a.to <= s && matches!(a.atom, Atom::Boundary(_))).map_or(0, |k| k + 1);
-        let end = self.atoms.iter().position(|a| a.from > s && matches!(a.atom, Atom::Boundary(_))).unwrap_or(self.atoms.len());
+        // 原子有序时 to ≤ s 的都在起点 ≤ s 的那一截里，起点 > s 的都在它后面。
+        let split = if self.atoms_ordered { self.atoms.partition_point(|a| a.from <= s) } else { self.atoms.len() };
+        let start = self.atoms[..split].iter().rposition(|a| a.to <= s && matches!(a.atom, Atom::Boundary(_))).map_or(0, |k| k + 1);
+        let tail = if self.atoms_ordered { split } else { 0 };
+        let end = self.atoms[tail..].iter().position(|a| a.from > s && matches!(a.atom, Atom::Boundary(_))).map_or(self.atoms.len(), |k| tail + k);
         Self::vote(&self.atoms[start..end]) != Some("de")
     }
 
@@ -2195,8 +2208,8 @@ impl Context<'_> {
                     .any(|ending| w.ends_with(ending) && w.chars().count() >= ending.chars().count() + 2);
                 let japanese_location = u.get(*e).is_some_and(|t| matches!(t.text.as_str(), "で" | "に")) && find(u, *e, |sem| matches!(sem, Sem::Stop)).is_none_or(|(n, _, _)| n == 1)
                     && self.find_place(w, true, None, Some("ja")).is_some();
-                let genitive = (super::places::country_lookup(w).is_some() || self.find_place(w, false, None, Some("ja")).is_some_and(|zone| matches!(zone, ZoneRef::City { city_index, .. } if city_index < 2_000))) && u.get(*e).is_some_and(|t| t.text == "の");
-                let country_modifier = super::places::country_lookup(w).is_some() && u.get(*e).is_some_and(|t| {
+                let genitive = (self.country(w).is_some() || self.find_place(w, false, None, Some("ja")).is_some_and(|zone| matches!(zone, ZoneRef::City { city_index, .. } if city_index < 2_000))) && u.get(*e).is_some_and(|t| t.text == "の");
+                let country_modifier = self.country(w).is_some() && u.get(*e).is_some_and(|t| {
                     let tail: String = u[*e..].iter().take(5).map(|t| t.text.as_str()).collect();
                     t.space_before && ["지사", "공장", "고객센터", "물류팀", "개발팀", "협력사", "지원"].iter().any(|word| tail.starts_with(word))
                 });

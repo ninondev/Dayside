@@ -113,6 +113,7 @@ impl<V: ?Sized + 'static> StrMap<V> {
             .ok().map(|index| self.entries[index].1)
     }
 
+    #[cfg(test)]
     pub(super) fn contains_key(&self, key: &str) -> bool { self.get(key).is_some() }
 }
 
