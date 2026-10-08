@@ -216,13 +216,22 @@ fn raw_lowercase(raw: &str) -> Cow<'_, str> {
     } else { Cow::Owned(raw.to_lowercase()) }
 }
 
+/// `word == raw_lowercase(raw)`；ASCII 原文逐字节比较，不必先分配小写副本。
+fn equals_raw_lowercase(word: &str, raw: &str) -> bool {
+    if raw.is_ascii() {
+        word.len() == raw.len() && word.bytes().zip(raw.bytes()).all(|(w, r)| w == r.to_ascii_lowercase())
+    } else {
+        word == raw.to_lowercase()
+    }
+}
+
 impl Phrase {
     fn raw_entries(&self, u: &[Unit], at: usize) -> Option<&EntryGroup> {
         let span = &u[at..at + self.len];
         match &self.raw {
             RawGroups::Single(key) => {
                 (key.len() == span.len() && key.iter().zip(span)
-                    .all(|(word, unit)| word.as_ref() == &*raw_lowercase(&unit.raw)))
+                    .all(|(word, unit)| equals_raw_lowercase(word.as_ref(), &unit.raw)))
                     .then_some(&self.entries)
             }
             RawGroups::Multiple(raw) => raw.get(span.iter().map(|t| raw_lowercase(&t.raw))),

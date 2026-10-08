@@ -159,15 +159,15 @@ fn sentence_lowercase(u: &[Unit]) -> Vec<bool> {
 
 #[cfg(not(feature = "intents-only"))]
 fn memoized_lookup(lookup: impl Fn(&str, bool) -> Option<ZoneRef>) -> impl Fn(&str, bool) -> Option<ZoneRef> {
-    // 原文与线索强度都参与键；未命中也保留，缓存只活过本次解析。
-    let cache = std::cell::RefCell::new(std::collections::HashMap::<(String, bool), Option<ZoneRef>>::new());
+    // 原文与线索强度都参与键；未命中也保留，缓存只活过本次解析。按原文查，命中时不必再分配键。
+    let cache = std::cell::RefCell::new(table_storage::FastMap::<String, [Option<Option<ZoneRef>>; 2]>::default());
     move |text: &str, strong: bool| {
-        let key = (text.to_owned(), strong);
-        if let Some(zone) = cache.borrow().get(&key) {
+        let slot = usize::from(strong);
+        if let Some(zone) = cache.borrow().get(text).and_then(|entry| entry[slot].as_ref()) {
             return zone.clone();
         }
         let zone = lookup(text, strong);
-        cache.borrow_mut().insert(key, zone.clone());
+        cache.borrow_mut().entry(text.to_owned()).or_default()[slot] = Some(zone.clone());
         zone
     }
 }
