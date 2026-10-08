@@ -92,7 +92,7 @@ TEST_BUNDLES
 # 原生窗口自动保存写标准域，副本使用独立标识以隔离安装版。
 audit_id="com.dayside.Dayside.audit.$(/usr/bin/uuidgen | /usr/bin/tr '[:upper:]' '[:lower:]')"
 /usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier $audit_id" "$copy/Contents/Info.plist"
-ent="$out/debug-no-group.entitlements"; cp "$root/TahoeTime/TahoeTime-signing-Debug.entitlements" "$ent"
+ent="$out/debug.entitlements"; cp "$root/TahoeTime/TahoeTime-signing-Debug.entitlements" "$ent"
 sign() { /usr/bin/codesign --force --sign - --timestamp=none "$@"; }
 for dylib in "$copy"/Contents/MacOS/*.dylib; do [[ -e "$dylib" ]] && sign "$dylib"; done
 for framework in "$copy"/Contents/Frameworks/*.framework; do [[ -e "$framework" ]] && sign "$framework"; done

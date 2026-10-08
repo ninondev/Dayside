@@ -11,13 +11,23 @@ app_policy="$root/TahoeTime/TahoeTime-signing-$configuration.entitlements"
 runtime=()
 [[ "$configuration" == Release ]] && runtime=(--options runtime)
 [[ -d "$app/Contents" ]] || { echo "Missing application bundle: $app" >&2; exit 1; }
+# Local builds sign ad hoc. A release re-signs the finished Release bundle with a Developer ID
+# Application identity (MEANTIME_SIGN_IDENTITY); notarization then needs a secure timestamp.
+identity="${MEANTIME_SIGN_IDENTITY:--}"
+timestamp=(--timestamp=none)
+if [[ "$identity" != - ]]; then
+  [[ "$configuration" == Release ]] || { echo "Developer ID signing is for Release bundles only" >&2; exit 1; }
+  [[ "$identity" =~ ^Developer\ ID\ Application:\ .+\ \([A-Z0-9]{10}\)$ ]] \
+    || { echo "MEANTIME_SIGN_IDENTITY must be \"Developer ID Application: <name> (<TEAMID>)\"" >&2; exit 1; }
+  timestamp=(--timestamp)
+fi
 
 # Debug builds put __preview.dylib next to the executable. The arm64 linker ad-hoc signs it, the
 # x86_64 linker does not, and codesign refuses a bundle with an unsigned nested code object.
 sign_nested_dylibs() {
   local dylib
   for dylib in "$1"/Contents/MacOS/*.dylib; do
-    [[ -e "$dylib" ]] && /usr/bin/codesign --force --sign - --timestamp=none "$dylib"
+    [[ -e "$dylib" ]] && /usr/bin/codesign --force --sign "$identity" "${timestamp[@]}" "$dylib"
   done
   return 0
 }
@@ -31,7 +41,7 @@ while IFS= read -r -d '' extension; do
     /usr/bin/strip -x -no_code_signature_warning "$extension/Contents/MacOS/$executable"
   fi
   sign_nested_dylibs "$extension"
-  /usr/bin/codesign --force --sign - ${runtime[@]+"${runtime[@]}"} --timestamp=none --entitlements "$entitlements" "$extension"
+  /usr/bin/codesign --force --sign "$identity" ${runtime[@]+"${runtime[@]}"} "${timestamp[@]}" --entitlements "$entitlements" "$extension"
 done < <(find "$app/Contents" -name '*.appex' -type d -prune -print0)
 
 if [[ "$configuration" == Debug && -d "$app/Contents/Frameworks" ]]; then
@@ -52,6 +62,6 @@ if [[ "$configuration" == Release ]]; then
   /usr/bin/strip -x -no_code_signature_warning "$app/Contents/MacOS/Dayside"
 fi
 sign_nested_dylibs "$app"
-/usr/bin/codesign --force --sign - ${runtime[@]+"${runtime[@]}"} --timestamp=none \
+/usr/bin/codesign --force --sign "$identity" ${runtime[@]+"${runtime[@]}"} "${timestamp[@]}" \
   --entitlements "$app_policy" "$app"
 /usr/bin/codesign --verify --deep --strict "$app"
