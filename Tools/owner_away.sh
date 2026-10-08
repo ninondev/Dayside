@@ -5,9 +5,12 @@ set -euo pipefail
 export LC_ALL=C
 mode=${1:---wait}
 [[ $# -le 1 ]] || exit 2
+strict=0
 case "$mode" in
   --wait|--check) testing=0; unset DAYSIDE_OWNER_AWAY_TEST_HID_IDLE_NS DAYSIDE_OWNER_AWAY_TEST_POLL_SECONDS DAYSIDE_OWNER_AWAY_TEST_FLAG ;;
+  --strict-check) testing=0; strict=1; unset DAYSIDE_OWNER_AWAY_TEST_HID_IDLE_NS DAYSIDE_OWNER_AWAY_TEST_POLL_SECONDS DAYSIDE_OWNER_AWAY_TEST_FLAG ;;
   --unit-test-check|--unit-test-wait) testing=1 ;;
+  --unit-test-strict-check) testing=1; strict=1 ;;
   *) exit 2 ;;
 esac
 flag="$HOME/.dayside-launch-while-present"
@@ -51,7 +54,7 @@ if [[ "$testing" == 1 ]]; then
   [[ "$poll_seconds" =~ ^[0-9]+$ ]] || exit 2
 fi
 while true; do
-  if [[ -f "$flag" ]]; then
+  if [[ "$strict" == 0 && -f "$flag" ]]; then
     printf 'ADMITTED: launches allowed while this Mac is in use\n' >&2
     exit 0
   fi
@@ -65,7 +68,7 @@ while true; do
     exit 75
   fi
   if idle_enough "$idle"; then exit 0; fi
-  case "$mode" in --check|--unit-test-check) exit 75 ;; esac
+  case "$mode" in --check|--strict-check|--unit-test-check|--unit-test-strict-check) exit 75 ;; esac
   if [[ "${DAYSIDE_OWNER_AWAY_LOCK_HELD:-}" == 1 ]]; then
     printf 'DEFERRED: HID idle below 300 seconds while CPU lock held; release lock and retry.\n' >&2
     exit 75

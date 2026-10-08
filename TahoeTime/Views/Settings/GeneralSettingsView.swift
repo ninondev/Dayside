@@ -46,33 +46,33 @@ struct GeneralSettingsView: View {
             Section {
                 Picker("界面语言", selection: $model.settings.interfaceLanguage) {
                     ForEach(InterfaceLanguage.allCases) { lang in
-                        if lang == .system { Text("跟随系统").tag(lang) }
-                        else { Text(verbatim: lang.autonym).tag(lang) }
+                        if lang == .system { Text("跟随系统").modifier(SettingsMenuValueFont()).tag(lang) }
+                        else { Text(verbatim: lang.autonym).modifier(SettingsMenuValueFont()).tag(lang) }
                     }
                 }
                 Picker("城市显示语言", selection: $model.settings.cityLanguage) {
                     ForEach(CityLanguage.allCases) { lang in
                         switch lang {
-                        case .followInterface: Text("跟随界面").tag(lang)
-                        case .system: Text("跟随系统").tag(lang)
-                        case .none: Text("不显示城市名").tag(lang)
-                        default: Text(verbatim: lang.autonym).tag(lang)
+                        case .followInterface: Text("跟随界面").modifier(SettingsMenuValueFont()).tag(lang)
+                        case .system: Text("跟随系统").modifier(SettingsMenuValueFont()).tag(lang)
+                        case .none: Text("不显示城市名").modifier(SettingsMenuValueFont()).tag(lang)
+                        default: Text(verbatim: lang.autonym).modifier(SettingsMenuValueFont()).tag(lang)
                         }
                     }
                 }
                 Picker("小时制", selection: $model.settings.hourStyle) {
-                    ForEach(HourStyle.allCases) { Text($0.localizedKey).tag($0) }
+                    ForEach(HourStyle.allCases) { Text($0.localizedKey).modifier(SettingsMenuValueFont()).tag($0) }
                 }
             } header: { Text("语言与钟点").modifier(SettingsScaledFont(style: .headline)) }
             Section {
                 Picker("字体", selection: $model.settings.fontDesign) {
-                    ForEach(FontDesignOption.allCases) { Text($0.localizedKey).tag($0) }
+                    ForEach(FontDesignOption.allCases) { Text($0.localizedKey).modifier(SettingsMenuValueFont()).tag($0) }
                 }
                 Picker("字重", selection: $model.settings.weight) {
-                    ForEach(WeightOption.allCases) { Text($0.localizedKey).tag($0) }
+                    ForEach(WeightOption.allCases) { Text($0.localizedKey).modifier(SettingsMenuValueFont()).tag($0) }
                 }
                 Picker("文字大小", selection: $model.settings.textSize) {
-                    ForEach(TextSize.allCases) { Text($0.localizedKey).tag($0) }
+                    ForEach(TextSize.allCases) { Text($0.localizedKey).modifier(SettingsMenuValueFont()).tag($0) }
                 }
             } header: { Text("文字").modifier(SettingsScaledFont(style: .headline)) } footer: {
                 Text("字体和字重用于所有钟点；文字大小用于面板和窗口，菜单栏的字号由系统决定。")
@@ -84,14 +84,14 @@ struct GeneralSettingsView: View {
                     HStack(spacing: 4) {
                         Picker("醒着时段开始", selection: awakeStartMinute) {
                             ForEach(Self.awakeStartChoices, id: \.self) {
-                                Text(verbatim: ClockText.minute($0, hourStyle: model.settings.hourStyle)).tag($0)
+                                Text(verbatim: ClockText.minute($0, hourStyle: model.settings.hourStyle)).modifier(SettingsMenuValueFont()).tag($0)
                             }
                         }.labelsHidden()
                         Text(verbatim: "–")
                             .foregroundStyle(.readableSecondary)
                         Picker("醒着时段结束", selection: awakeEndMinute) {
                             ForEach(Self.awakeEndChoices, id: \.self) {
-                                Text(verbatim: ClockText.minute($0, hourStyle: model.settings.hourStyle)).tag($0)
+                                Text(verbatim: ClockText.minute($0, hourStyle: model.settings.hourStyle)).modifier(SettingsMenuValueFont()).tag($0)
                             }
                         }.labelsHidden()
                     }
@@ -127,4 +127,15 @@ struct GeneralSettingsView: View {
     }
 
     static let maximumDefaultHeight: CGFloat = 742
+}
+
+/// 新系统自行绘制菜单选中值，需要直接给选项文字设置字号。
+private struct SettingsMenuValueFont: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(macOS 27, *) {
+            content.appFont(.body)
+        } else {
+            content
+        }
+    }
 }

@@ -25,6 +25,15 @@ enum ApplicationSession {
 
     static var isIsolated: Bool { isTesting || isLocalPreview }
 
+    /// 截图宿主可以离屏画图，性能量尺遵守生产窗口的遮挡状态。
+    static var drawsOccludedMaps: Bool {
+        #if DEBUG
+        isTesting && !PerformanceProbe.isRequested
+        #else
+        false
+        #endif
+    }
+
     /// 隔离量尺可以强制逐帧跳转，生产会话仍遵守系统偏好。
     static var forceAnimation: Bool {
         isIsolated && ProcessInfo.processInfo.environment["MEANTIME_UI_TEST_FORCE_ANIMATION"] == "1"
@@ -64,7 +73,7 @@ enum ApplicationSession {
     }
 
     static let defaults: UserDefaults = {
-        if isLocalPreview {
+        if isLocalPreview && !isTesting {
             guard ProcessInfo.processInfo.environment["MEANTIME_UI_TEST_MEMORY_TOUR"] == "1" else { return .standard }
             for key in UserDefaults.standard.dictionaryRepresentation().keys
             where key.hasPrefix("NSSplitView Subview Frames") || key.hasPrefix("NSWindow Frame") {
@@ -149,7 +158,7 @@ enum ApplicationSession {
 /// 测试宿主保留窗口与绘制，只把激活和置前请求改成屏幕外的后台窗口。
 @MainActor
 enum TestHostWindowPolicy {
-    static var isQuiet: Bool { ApplicationSession.isTesting && !ApplicationSession.uiTestForeground }
+    static var isQuiet: Bool { ApplicationSession.isTesting && !ApplicationSession.uiTestForeground && PerformanceProbe.configuration?.scenario != "surfaces" }
     private static var installed = false
     private static var screenObserver: NSObjectProtocol?
     private static var launchObserver: NSObjectProtocol?

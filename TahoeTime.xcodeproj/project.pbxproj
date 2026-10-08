@@ -245,6 +245,8 @@
 		D39C2CEB6C6E8ABD22272FE4 /* DSTYearTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597EC94DBF9671DF216CEAFE;};
 		C4FBDD95EC4A854E730C9FF3 /* PeopleTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6347F7AFE30DF160D4A5E9;};
 		8D68481C495519AE1881572A /* PostcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99346465430E37B0C070061;};
+		C9B8ED8C01837EDEFE1C92A9 /* PerformanceProbe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CB8A5D83A6F878E43168C9;};
+		07CB1FD193C5FF205B1863F5 /* PerformanceProbeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380B42B820E784F893762FF7;};
 		B2876DC3BD25CB15FC142C4B /* AgendaStorePageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB15D1A6C7F0DEA1AC458F6;};
 		D6130DDB67BB0CFF290DDB58 /* AgendaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD635F6F272EFF5EB028C6E0;};
 		17AFF941F0455F59902E4280 /* AgendaDayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3203BFA2B1A470648084CEB4;};
@@ -503,6 +505,8 @@
 		597EC94DBF9671DF216CEAFE /* DSTYearTests.swift */ = {isa = PBXFileReference; path = "TahoeTimeTests/DSTYearTests.swift"; sourceTree = SOURCE_ROOT; lastKnownFileType = sourcecode.swift;};
 		DE6347F7AFE30DF160D4A5E9 /* PeopleTable.swift */ = {isa = PBXFileReference; path = "TahoeTime/Views/People/PeopleTable.swift"; sourceTree = SOURCE_ROOT; lastKnownFileType = sourcecode.swift;};
 		B99346465430E37B0C070061 /* PostcardView.swift */ = {isa = PBXFileReference; path = "TahoeTime/Views/Sharing/PostcardView.swift"; sourceTree = SOURCE_ROOT; lastKnownFileType = sourcecode.swift;};
+		E4CB8A5D83A6F878E43168C9 /* PerformanceProbe.swift */ = {isa = PBXFileReference; path = "TahoeTime/Models/Diagnostics/PerformanceProbe.swift"; sourceTree = SOURCE_ROOT; lastKnownFileType = sourcecode.swift;};
+		380B42B820E784F893762FF7 /* PerformanceProbeTests.swift */ = {isa = PBXFileReference; path = "TahoeTimeTests/PerformanceProbeTests.swift"; sourceTree = SOURCE_ROOT; lastKnownFileType = sourcecode.swift;};
 		BAB15D1A6C7F0DEA1AC458F6 /* AgendaStorePageTests.swift */ = {isa = PBXFileReference; path = "TahoeTimeTests/AgendaStorePageTests.swift"; sourceTree = SOURCE_ROOT; lastKnownFileType = sourcecode.swift;};
 		FD635F6F272EFF5EB028C6E0 /* AgendaTable.swift */ = {isa = PBXFileReference; path = "TahoeTime/Views/Agenda/AgendaTable.swift"; sourceTree = SOURCE_ROOT; lastKnownFileType = sourcecode.swift;};
 		3203BFA2B1A470648084CEB4 /* AgendaDayList.swift */ = {isa = PBXFileReference; path = "TahoeTime/Views/Agenda/AgendaDayList.swift"; sourceTree = SOURCE_ROOT; lastKnownFileType = sourcecode.swift;};
@@ -722,6 +726,8 @@
 			sourceTree = "<group>";
 		};
 		FC28A37D2C6C388A27D487D2 = {isa = PBXGroup; name = "Feature files"; children = (
+				380B42B820E784F893762FF7,
+				E4CB8A5D83A6F878E43168C9,
 				17767842658D3AAB274F6880,
 
 				E5A07416E6107203770AAFC1,
@@ -1255,6 +1261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9B8ED8C01837EDEFE1C92A9 /* PerformanceProbe.swift in Sources */,
 				52A5B423EF333B31B6DA5300 /* AgendaMenuBarReader.swift in Sources */,
 				17AFF941F0455F59902E4280 /* AgendaDayList.swift in Sources */,
 				D6130DDB67BB0CFF290DDB58 /* AgendaTable.swift in Sources */,
@@ -1431,6 +1438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07CB1FD193C5FF205B1863F5 /* PerformanceProbeTests.swift in Sources */,
 				AF648BDDC17EACF9530DFD41 /* SearchFieldEditingTests.swift in Sources */,
 				C1783D413254DED0679BA333 /* EpigraphAccessibilityTests.swift in Sources */,
 				235CDF3A4AFDBEC5E302C546 /* NearbyPlaceTests.swift in Sources */,

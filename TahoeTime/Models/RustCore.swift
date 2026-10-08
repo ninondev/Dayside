@@ -36,6 +36,10 @@ nonisolated enum RustCore {
     static func attempt<Input: Encodable, Output: Decodable>(
         _ operation: String, _ input: Input, as: Output.Type = Output.self
     ) throws -> Output {
+        #if DEBUG && os(macOS)
+        let performanceStart = PerformanceRustCalls.begin()
+        defer { PerformanceRustCalls.end(operation, started: performanceStart) }
+        #endif
         let encoded = try JSONEncoder().encode(Request(operation: operation, payload: input))
         let output = encoded.withUnsafeBytes { bytes in
             mt_core_call(bytes.bindMemory(to: UInt8.self).baseAddress, bytes.count)

@@ -10,6 +10,12 @@ APP=$1; OUT=$2; README=$3; VOL=${4:-Dayside}
 [ -d "$APP/Contents" ] || { echo "不是应用包: $APP" >&2; exit 1; }
 [ -f "$README" ] || { echo "缺 ReadMe: $README" >&2; exit 1; }
 [ ! -e "$OUT" ] || { echo "已存在,不覆盖: $OUT" >&2; exit 1; }
+case "$(basename "$OUT")" in
+  Dayside-All-tools-local-preview-*.dmg) ;;
+  *)
+    python3 "$ROOT/Tools/check_release_identity.py" "$APP" --asset-name "$(basename "$OUT")"
+    ;;
+esac
 STAGE=$(mktemp -d "${TMPDIR:-/tmp}/dayside-dmg-stage.XXXXXX")
 MNT=$(mktemp -d "${TMPDIR:-/tmp}/dayside-dmg-mount.XXXXXX")
 trap 'hdiutil detach "$MNT" >/dev/null 2>&1 || true; "$ROOT/Tools/trash.sh" "$STAGE"; "$ROOT/Tools/trash.sh" "$MNT" 2>/dev/null || true' EXIT

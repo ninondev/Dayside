@@ -88,6 +88,7 @@ struct TahoeTimeApp: App {
                     if let appearance = ApplicationSession.uiTestAppearance {
                         NSApp.appearance = NSAppearance(named: appearance == "dark" ? .darkAqua : .aqua)
                     }
+                    PerformanceProbe.runIfRequested(model: model, hub: features, open: { openWindow(id: $0) }, settings: { openSettings() })
                     DiagnosticsReport.runProbeIfRequested(model: model, hub: features)
                     EarthFullscreenProbe.runIfRequested(open: { openWindow(id: "earth") })
                     WindowCloseProbe.runIfRequested()
