@@ -1047,12 +1047,23 @@ impl CityIndex {
         let Some(mut cursor) = self.locate(q) else {
             return vec![];
         };
-        let mut best: Vec<Hit> = Vec::with_capacity(limit.min(64));
+        // 查询已完整叫出一座城时，名气不如它的城只是别名在后面另接了词（雅加达的「New York van Java」、
+        // 罗安达的「São Paulo da Assunção de Loanda」）多半是巧合：这样的别名前缀排在其它命中之后。
+        // 只叫出小地方的查询（「nova」）不算，大城多词别名的前半截（Nova York）照常联想。
+        let named = (cursor.key.as_slice() == q).then(|| {
+            (0..cursor.count)
+                .filter_map(|k| cursor.posting.checked_add(k).and_then(|p| self.posting(p)))
+                .map(|(city_index, _)| city_index)
+                .min()
+        }).flatten();
+        let rank = |(hit, coincidence): &(Hit, bool)| (*coincidence, hit.rank(short));
+        let mut best: Vec<(Hit, bool)> = Vec::with_capacity(limit.min(64));
         loop {
             if !cursor.key.starts_with(q) {
                 break;
             }
             let exact = cursor.key.len() == q.len();
+            let longer_name = cursor.key.get(q.len()) == Some(&b' ');
             let (start, count) = (cursor.posting, cursor.count);
             for k in 0..count.min(if exact { limit } else { 1 }) {
                 let Some((city_index, primary)) = start.checked_add(k).and_then(|p| self.posting(p)) else {
@@ -1067,20 +1078,21 @@ impl CityIndex {
                     (true, false) => 2,
                     (false, false) => 3,
                 };
-                let hit = Hit { city_index, tier };
-                if let Some(at) = best.iter().position(|h| h.city_index == city_index) {
-                    if best[at].tier <= tier {
+                let coincidence = longer_name && tier == 3 && named.is_some_and(|named| city_index > named);
+                let hit = (Hit { city_index, tier }, coincidence);
+                if let Some(at) = best.iter().position(|(h, _)| h.city_index == city_index) {
+                    if (best[at].0.tier, best[at].1) <= (tier, hit.1) {
                         continue;
                     }
                     best.remove(at);
                 } else if best.len() >= limit
-                    && best.last().is_some_and(|v| hit.rank(short) >= v.rank(short))
+                    && best.last().is_some_and(|v| rank(&hit) >= rank(v))
                 {
                     continue;
                 }
                 let at = best
                     .iter()
-                    .position(|v| v.rank(short) > hit.rank(short))
+                    .position(|v| rank(v) > rank(&hit))
                     .unwrap_or(best.len());
                 best.insert(at, hit);
                 if best.len() > limit {
@@ -1091,7 +1103,7 @@ impl CityIndex {
                 break;
             }
         }
-        best
+        best.into_iter().map(|(hit, _)| hit).collect()
     }
 }
 
@@ -1484,6 +1496,18 @@ mod tests {
             assert_eq!(hits[0].tier, 0, "{query}: {hits:?}");
             println!("{query} => {}:{}", hits[0].city_index, hits[0].tier);
         }
+    }
+
+    #[test]
+    fn complete_names_outrank_longer_alias_coincidences() {
+        let c = bundled();
+        let names = |q: &str| c.search(q, 3).iter().filter_map(|h| c.city(h.city_index)).map(|r| r.name).collect::<Vec<_>>();
+        // 雅加达的别名「New York van Java」、罗安达的旧名「São Paulo da Assunção de Loanda」只是接在完整城名后面。
+        assert_eq!(names("new york"), ["New York", "East New York", "West New York"]);
+        assert!(!names("sao paulo").iter().any(|name| name == "Luanda"), "{:?}", names("sao paulo"));
+        // 只叫出小地方的查询照常联想大城多词别名的前半截（葡语 Nova York）。
+        assert_eq!(names("nova")[0], "New York");
+        assert_eq!(names("york")[0], "New York");
     }
 
     #[test]

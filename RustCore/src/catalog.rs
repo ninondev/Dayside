@@ -411,7 +411,8 @@ impl Catalog {
             append(z.clone(), &mut out, &mut seen);
         }
         if let Some(city) = city {
-            for hit in city.search(&q, limit) {
+            // 与 `city.search` 同一套：常用缩写（la、hcmc）、拼音（niuyue）、ı/đ/ł 与行政区后缀（东京都）都在这里补上。
+            for hit in city.search_smart(&q, limit) {
                 if let Some(r) = city.city(hit.city_index) {
                     append(ZoneOption::city(hit.city_index, r), &mut out, &mut seen);
                 }
@@ -1157,6 +1158,40 @@ mod tests {
             json!({"handle":h,"query":"Tokyo","limit":8})
         )
         .is_err());
+    }
+
+    /// 主搜索框与 `city.search` 用同一套城市搜索：常用缩写、拼音、ı 回退与行政区后缀都要在第一名。
+    #[test]
+    fn catalog_search_uses_smart_city_search() {
+        let cities = city_index::dispatch(
+            "city.open",
+            json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")}),
+        )
+        .unwrap();
+        let city_handle = cities["handle"].as_u64().unwrap();
+        let opened = dispatch(
+            "catalog.open",
+            json!({"zones":[{"identifier":"Asia/Tokyo","coordinate":null}],"abbreviations":{}}),
+        )
+        .unwrap();
+        let h = opened["handle"].as_u64().unwrap();
+        for (query, name, zone) in [
+            ("la", "Los Angeles", "America/Los_Angeles"),
+            ("niuyue", "New York", "America/New_York"),
+            ("东京都", "Tokyo", "Asia/Tokyo"),
+            ("ığdır", "Iğdır", "Europe/Istanbul"),
+        ] {
+            let found = dispatch(
+                "catalog.search",
+                json!({"handle":h,"cityHandle":city_handle,"query":query,"limit":8,"localeID":"en",
+                       "context":{"countries":[],"localizedNames":{}}}),
+            )
+            .unwrap();
+            assert_eq!(found["results"][0]["cityName"], name, "{query}");
+            assert_eq!(found["results"][0]["identifier"], zone, "{query}");
+        }
+        assert_eq!(dispatch("catalog.close", json!({"handle":h})).unwrap(), true);
+        assert_eq!(city_index::dispatch("city.close", json!({"handle":city_handle})).unwrap(), true);
     }
 
     /// 性质测试：搜索折叠是幂等的（折两次等于折一次，索引侧与查询侧才对得上），结果里没有大写、没有
