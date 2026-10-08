@@ -124,10 +124,6 @@ fn create(source: &Path, requested_output: &Path) -> Result<()> {
         &entitlements,
     )
     .map_err(|e| e.to_string())?;
-    plist(
-        &entitlements,
-        "Delete :com.apple.security.application-groups",
-    )?;
     // `--options runtime`: the preview derives from a Release candidate, and notarization needs the
     // hardened runtime on every code object; the preview must not lose it while being re-signed.
     run(

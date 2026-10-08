@@ -99,8 +99,7 @@ step 'cargo test --lib --features intents-only' count_cargo "$root/RustCore" car
 step 'cargo clippy --all-targets -D warnings'   count_clippy "$root/RustCore" cargo clippy --locked --all-targets -- -D warnings
 step '应用测试 xcodebuild test'             count_xcode  "$root" \
     run_app_tests -project TahoeTime.xcodeproj -scheme TahoeTime \
-    -destination "platform=macOS,arch=$test_arch" -derivedDataPath "$derived_data" -parallel-testing-enabled NO \
-    -skip-testing:TahoeTimeTests/MigrationTests/testAppGroupSuiteIsUsableInSandbox
+    -destination "platform=macOS,arch=$test_arch" -derivedDataPath "$derived_data" -parallel-testing-enabled NO
 
 # 签名策略：所有签名配置都禁止网络权限。
 count_ent() { grep -c '签名策略检查通过' "$1"; }
@@ -140,10 +139,9 @@ if [[ "${MEANTIME_VERIFY_IOS:-0}" == 1 ]]; then
 fi
 
 # Intel 切片(可选):Rust 在 x86_64 target 上跑全部测试,应用测试用 Rosetta 目的地重跑一遍。
-# 同样跳过真实 App Group 探针——ad-hoc 签名下它会引出 TCC 对话框并把会话卡死。
 if [[ "${MEANTIME_VERIFY_ROSETTA:-0}" == 1 ]]; then
     step 'cargo test x86_64(Rosetta)'       count_cargo  "$root/RustCore"         cargo test --locked --all-targets --target x86_64-apple-darwin
-    step '应用测试 x86_64(Rosetta)'          count_xcode  "$root"         run_app_tests -project TahoeTime.xcodeproj -scheme TahoeTime         -destination 'platform=macOS,arch=x86_64' -derivedDataPath "$derived_data" -parallel-testing-enabled NO         -skip-testing:TahoeTimeTests/MigrationTests/testAppGroupSuiteIsUsableInSandbox
+    step '应用测试 x86_64(Rosetta)'          count_xcode  "$root"         run_app_tests -project TahoeTime.xcodeproj -scheme TahoeTime         -destination 'platform=macOS,arch=x86_64' -derivedDataPath "$derived_data" -parallel-testing-enabled NO
 fi
 
 summary

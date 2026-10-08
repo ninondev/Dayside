@@ -53,9 +53,7 @@ def identity_errors(app: Path, info: dict, entitlements: dict, asset_name: str |
             errors.append("container_migration")
     except (OSError, ValueError, plistlib.InvalidFileException):
         errors.append("container_migration")
-    groups = entitlements.get("com.apple.security.application-groups", [])
-    expected_groups = {"group.com.dayside.Dayside"}
-    if not isinstance(groups, list) or not any(group in groups for group in expected_groups):
+    if "com.apple.security.application-groups" in entitlements:
         errors.append("application_group")
     if entitlements.get("com.apple.security.app-sandbox") is not True:
         errors.append("sandbox")
@@ -76,10 +74,6 @@ def signing_errors(app: Path, metadata: bytes, entitlements: dict) -> list[str]:
     authority = re.search(rb"^Authority=Developer ID Application: .+$", metadata, re.MULTILINE)
     if team is None or authority is None or b"Signature=adhoc" in metadata:
         errors.append("release_signing_identity")
-    groups = entitlements.get("com.apple.security.application-groups", [])
-    if isinstance(groups, list) and any(isinstance(group, str) and group.startswith("group.") for group in groups):
-        if not (app / "Contents/embedded.provisionprofile").is_file():
-            errors.append("provisioning_profile_required")
     return errors
 
 

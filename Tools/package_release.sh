@@ -4,8 +4,7 @@
 # DMG（挂载逐文件对照 + 严格验签）→ 峰值量尺（arm64）→ 内存巡回连地球窗（arm64）→ 注销 LaunchServices 副本 → 删构建产物。
 # 用法：Tools/package_release.sh <标签，如 20260919a> [--install]
 #   产物：仓根 Dayside-All-tools-local-preview-<标签>-{arm64,x86_64}.dmg（+ .sha256 / .validation.json）；
-#   日志与门在 backup/pkg-<标签>/；--install 把 arm64 完整候选装到 /Applications/Dayside.app（会先退出运行中的 Dayside，
-#   换 cdhash 后首次开面板会再问一次「访问其他 App 的数据」）。
+#   日志与门在 backup/pkg-<标签>/；--install 把 arm64 完整候选装到 /Applications/Dayside.app（会先退出运行中的 Dayside）。
 # 前提：verify_all 已过；机器安静（swap 用满时 x86_64 的门会虚高）；磁盘 ≥ 20 GB。
 # 随盘 ReadMe 在 Tools/dmg/ReadMe-<arch>.txt，打包前改它的第一段。
 set -uo pipefail

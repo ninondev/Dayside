@@ -1,6 +1,6 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-only
-# 把 Debug 产物复制到 <outdir>/Dayside.app，去掉 App Group 权限重签（避免 TCC 对话框），打印副本路径。
+# 把 Debug 产物复制到 <outdir>/Dayside.app，重签，打印副本路径。
 # 转储、探针、截图脚本共用；调用方负责用完删除本轮副本，并注销它的 LaunchServices 记录。
 # 用法: Tools/make_debug_copy.sh <outdir>；MEANTIME_SKIP_BUILD=1 跳过 xcodebuild。
 # MEANTIME_DERIVED_DATA_PATH 指定缓存；MEANTIME_DEBUG_APP 指定已有 Debug 产物。
@@ -40,7 +40,6 @@ TEST_BUNDLES
 audit_id="com.dayside.Dayside.audit.$(/usr/bin/uuidgen | /usr/bin/tr '[:upper:]' '[:lower:]')"
 /usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier $audit_id" "$copy/Contents/Info.plist"
 ent="$out/debug-no-group.entitlements"; cp "$root/TahoeTime/TahoeTime-signing-Debug.entitlements" "$ent"
-/usr/libexec/PlistBuddy -c 'Delete :com.apple.security.application-groups' "$ent"
 sign() { /usr/bin/codesign --force --sign - --timestamp=none "$@" 2>/dev/null; }
 for dylib in "$copy"/Contents/MacOS/*.dylib; do [[ -e "$dylib" ]] && sign "$dylib"; done
 for framework in "$copy"/Contents/Frameworks/*.framework; do [[ -e "$framework" ]] && sign "$framework"; done
