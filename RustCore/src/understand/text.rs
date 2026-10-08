@@ -19,6 +19,11 @@ pub struct Folded {
 }
 
 impl Folded {
+    /// 折叠后 `from..to`（非空）对应的那段原文字节。
+    pub(super) fn source_text(&self, from: usize, to: usize) -> &str {
+        &self.source[self.source_bytes[from]..self.source_bytes[to - 1] + self.original[to - 1].len_utf8()]
+    }
+
     /// 附近名字核对原始字节，保留折叠时略过的附加符号和连接字符。
     pub(super) fn nearby_original(&self, from: usize, to: usize) -> &str {
         let start = if from == 0 { 0 } else { self.source_bytes[from - 1] + self.original[from - 1].len_utf8() };
@@ -37,7 +42,8 @@ pub fn is_hangul(c: char) -> bool {
     matches!(c as u32, 0xac00..=0xd7a3 | 0x1100..=0x11ff | 0x3130..=0x318f)
 }
 pub fn is_cjk(c: char) -> bool {
-    is_han(c) || is_kana(c) || is_hangul(c) || c == '々' || c == 'ー'
+    // 中日韩字母都在 U+1100（谚文字母）之后；前面的字符不必逐段比较。
+    (c as u32) >= 0x1100 && (is_han(c) || is_kana(c) || is_hangul(c) || c == '々' || c == 'ー')
 }
 
 fn decomposable(c: char) -> bool {
@@ -45,8 +51,24 @@ fn decomposable(c: char) -> bool {
     (c as u32) < 0x0530 || (0x1e00..=0x1eff).contains(&(c as u32))
 }
 
+/// ASCII 字符的折叠：与 `fold_char` 相同（回车→空格、垂直制表与换页→换行、~→-、`→'，再小写），总是正好一个字符。
+#[inline]
+fn fold_ascii(c: char) -> char {
+    match c {
+        '\r' => ' ',
+        '\u{b}' | '\u{c}' => '\n',
+        '~' => '-',
+        '`' => '\'',
+        _ => c.to_ascii_lowercase(),
+    }
+}
+
 /// 一个字符折成零到几个字符。
 fn fold_char(c: char, out: &mut Vec<char>) {
+    if c.is_ascii() {
+        out.push(fold_ascii(c));
+        return;
+    }
     // Joiners and the byte-order mark are formatting; a zero-width space separates words.
     if matches!(c, '\u{200c}' | '\u{200d}' | '\u{feff}') { return; }
     let c = match c as u32 {
@@ -114,6 +136,14 @@ pub fn fold(input: &str) -> Folded {
     let mut offset = 0usize;
     let mut buffer = Vec::new();
     for (byte, c) in input.char_indices() {
+        if c.is_ascii() {
+            folded.chars.push(fold_ascii(c));
+            folded.span.push((offset, offset + 1));
+            folded.original.push(c);
+            folded.source_bytes.push(byte);
+            offset += 1;
+            continue;
+        }
         let width = c.len_utf16();
         buffer.clear();
         fold_char(c, &mut buffer);
