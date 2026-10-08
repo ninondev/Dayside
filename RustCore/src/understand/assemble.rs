@@ -25,6 +25,8 @@ pub(super) struct Context<'a> {
     pub(super) region: &'a str,
     pub(super) ui_language: &'a str,
     pub(super) destinations: Vec<super::targets::Phrase>,
+    /// 原子按起点排好，且每个都是 from ≤ to：可以按位置二分取一段。
+    pub(super) atoms_ordered: bool,
 }
 
 /// 一处提到在装配期间的内部记录（单元区间与行号只在这里用）。
@@ -440,7 +442,15 @@ impl Context<'_> {
 
     /// 完整日期只连接紧挨日期与钟点的地名，普通叙述仍交原来的连接规则。
     fn calendar_date_attached(&self, s: usize, e: usize, clock_from: usize) -> bool {
-        e <= clock_from && self.atoms.iter().filter(|atom| {
+        if e > clock_from { return false; }
+        // 要找的日期落在 e..clock_from 之间：原子有序时只看起点在这一段里的。
+        let window = if self.atoms_ordered {
+            let first = self.atoms.partition_point(|atom| atom.from < e);
+            &self.atoms[first..first + self.atoms[first..].partition_point(|atom| atom.from <= clock_from)]
+        } else {
+            &self.atoms[..]
+        };
+        window.iter().filter(|atom| {
             matches!(atom.atom, Atom::Date(_) | Atom::DatePeriod(..))
                 && e <= atom.from && atom.to <= clock_from
         }).any(|date| {
@@ -719,16 +729,19 @@ impl Context<'_> {
         let mut built: Vec<Built> = Vec::new();
         // 没有独立提到的日期也能截断旧标题，须在筛掉日期锚之前保留位置。
         let mut written_dates = Vec::new();
+        // 次日原子很少，先记下位置，下面两处只看它们。
+        let next_days: Vec<usize> = all_atoms.iter().enumerate()
+            .filter(|(_, a)| matches!(a.atom, Atom::NextDay(_))).map(|(k, _)| k).collect();
         let day_after_previous = |m: &Mention| {
-            all_atoms.iter().any(|a| {
-                matches!(a.atom, Atom::NextDay(_))
-                    && m.parts.iter().any(|p| p.kind == "date" && p.span == self.span_of(a.from, a.to))
+            next_days.iter().map(|&k| &all_atoms[k]).any(|a| {
+                m.parts.iter().any(|p| p.kind == "date" && p.span == self.span_of(a.from, a.to))
             })
         };
         // 独立的次日标题只在同段后面还有钟点时保留。
         let next_day_heading = |a: &Located| {
-            all_atoms.iter().position(|original| {
-                matches!(original.atom, Atom::NextDay(_)) && original.from == a.from && original.to == a.to
+            next_days.iter().copied().find(|&k| {
+                let original = &all_atoms[k];
+                original.from == a.from && original.to == a.to
             }).is_some_and(|index| {
                 all_atoms[index + 1..].iter()
                     .take_while(|next| !matches!(next.atom, Atom::Boundary(Break::Paragraph)))

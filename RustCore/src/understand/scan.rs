@@ -1255,13 +1255,19 @@ impl<'a> Scanner<'a> {
         let day_cue = find(u, at, |s| s == Sem::DayBefore).filter(|(_, _, lang)| *lang == "vi");
         if let Some((n, _, _)) = day_cue { at += n; }
         // 写了自己的钟点、时段或时长单位时，不能把小时数字借读成日数。
-        if Self::explicit_clock(u, at)
+        // 各项都是只读判断：先读端点，读不出来（大多数位置）就不必再查这一串。
+        let endpoint = self.calendar_endpoint_at(i, at, day_cue.is_some())?;
+        let borrows_clock = Self::explicit_clock(u, at)
             || (at.saturating_sub(6)..at).any(|k| find(u, k, |s| s == Sem::ClockBefore).is_some_and(|(n, _, _)| k + n == at))
-            || find(u, at + 1, |s| matches!(s, Sem::Period(_) | Sem::HourUnit | Sem::MinuteUnit | Sem::DayUnit | Sem::DurationAfter)).is_some() {
-            return None;
-        }
+            || find(u, at + 1, |s| matches!(s, Sem::Period(_) | Sem::HourUnit | Sem::MinuteUnit | Sem::DayUnit | Sem::DurationAfter)).is_some();
+        (!borrows_clock).then_some(endpoint)
+    }
+
+    /// `calendar_endpoint` 跳过星期与 ngày 之后，从 `at` 读端点本身。
+    fn calendar_endpoint_at(&self, i: usize, at: usize, day_cue: bool) -> Option<CalendarEndpoint> {
+        let u = self.u;
         // ngày D/M[/YYYY] 明写日月顺序，只在闭合范围里使用这个端点。
-        if day_cue.is_some() && u.get(at + 1).is_some_and(|t| is_punct(t, "/") && !t.space_before) {
+        if day_cue && u.get(at + 1).is_some_and(|t| is_punct(t, "/") && !t.space_before) {
             let day = u.get(at).filter(|t| t.kind == UKind::Number && t.text.len() <= 2)?.text.parse().ok()?;
             let month = u.get(at + 2).filter(|t| t.kind == UKind::Number && t.text.len() <= 2 && !t.space_before)?.text.parse().ok()?;
             let mut to = at + 3;
@@ -2556,16 +2562,14 @@ impl<'a> Scanner<'a> {
         // Turkish proper names carry locative case after an apostrophe. The
         // suffix is a location clue even when its noun phrase precedes the clock.
         if u[i].kind == UKind::Word {
-            let mut name = String::new();
             for end in i..(i + 4).min(u.len()) {
                 if u[end].kind != UKind::Word { break; }
                 if end > i && !u[i].capital && u[end].capital { break; }
-                if !name.is_empty() { name.push(' '); }
-                name.push_str(&u[end].raw);
                 if u[end].text.split_once('\'').is_some_and(|(_, suffix)| ["da", "de", "ta", "te", "nda", "nde", "daki", "deki", "taki", "teki", "ndaki", "ndeki"].contains(&suffix)) {
                     // A lowercase-only sentence keeps the loose-name adjacency
                     // rule; only mixed-case text gains this new place cue.
                     if !u[i].capital && super::sentence_lowercase(u)[i] { break; }
+                    let name = u[i..=end].iter().map(|t| t.raw.as_str()).collect::<Vec<_>>().join(" ");
                     self.push(Atom::Place { text: name, strong: true, bare: None }, i, end + 1, Some("tr"));
                     return Some(end + 1 - i);
                 }

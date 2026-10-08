@@ -100,10 +100,13 @@ pub fn understand(input: &str, options: &Options) -> Output {
     scanner.out.retain(|a| matches!(a.atom, scan::Atom::Boundary(_)) || !destinations.iter().any(|p| a.from < p.to && p.from < a.to));
     let lowercase = sentence_lowercase(&u);
     let initial = clause_initial(&u);
+    let atoms_ordered = scanner.out.iter().all(|a| a.from <= a.to)
+        && scanner.out.windows(2).all(|pair| pair[0].from <= pair[1].from);
     let context = Context {
         units: &u,
         folded: &folded,
         atoms: scanner.out,
+        atoms_ordered,
         lookup: options.lookup,
         lowercase,
         initial,
