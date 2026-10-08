@@ -169,6 +169,10 @@ pub(super) fn units(f: &text::Folded) -> Vec<Unit> {
 
 /// 折叠区间对应的原文（一个原文字符折成两个时 `original` 里重复，去掉相邻的重复位）。
 pub(super) fn original_text(f: &text::Folded, start: usize, end: usize) -> String {
+    // 全是 ASCII 且一个接一个（每个折成一个字符，中间没有略过的字符）：就是原文那一段。
+    if start < end && (start..end).all(|i| f.original[i].is_ascii() && (i == start || f.span[i].0 == f.span[i - 1].1)) {
+        return f.source_text(start, end).to_owned();
+    }
     let mut out = String::with_capacity(end.saturating_sub(start));
     let mut last: Option<(usize, usize)> = None;
     for i in start..end {
@@ -376,6 +380,18 @@ fn prefix_phrases(text: &str) -> Option<&'static [Phrase]> {
     // 首词目录有两千来条：按散列查，与目录的二分查找结果相同。
     static INDEX: std::sync::OnceLock<FastMap<&'static str, &'static [Phrase]>> = std::sync::OnceLock::new();
     INDEX.get_or_init(|| matcher().by_first.entries.iter().copied().collect()).get(text).copied()
+}
+
+/// 时区整词目录（`matcher().zone_words`）按散列查，与目录的二分查找结果相同。
+pub(super) fn zone_words(text: &str) -> Option<&'static [ZoneWord]> {
+    static INDEX: std::sync::OnceLock<FastMap<&'static str, &'static [ZoneWord]>> = std::sync::OnceLock::new();
+    INDEX.get_or_init(|| matcher().zone_words.entries.iter().copied().collect()).get(text).copied()
+}
+
+/// 缩写目录（`matcher().abbreviations`）按散列查，与目录的二分查找结果相同。
+pub(super) fn abbreviation(text: &str) -> Option<&'static usize> {
+    static INDEX: std::sync::OnceLock<FastMap<&'static str, &'static usize>> = std::sync::OnceLock::new();
+    INDEX.get_or_init(|| matcher().abbreviations.entries.iter().copied().collect()).get(text).copied()
 }
 
 pub(super) fn is(units: &[Unit], i: usize, pred: impl Fn(Sem) -> bool) -> Option<usize> {

@@ -107,6 +107,7 @@ pub fn understand(input: &str, options: &Options) -> Output {
         folded: &folded,
         atoms: scanner.out,
         atoms_ordered,
+        countries: Default::default(),
         lookup: options.lookup,
         lowercase,
         initial,
