@@ -2,7 +2,7 @@
  "schemaVersion": 1,
  "continues": "handoff/v1-continuation.json",
  "branch": "codex/v1.0.1-handoff",
- "head": "f510644",
+ "head": "4f006b5",
  "scope": {
   "internalMilestone": "1.0.1",
   "publicVersion": "1.0.0",
@@ -13,9 +13,30 @@
  },
  "process": {
   "implementation": "Codex was unavailable in the cloud session (no CLI or API key). Per the user's instruction, Claude did the hard parts and delegated bounded pieces (tool scripts, doc edits, a read-only memory survey) to Haiku subagents with short prompts, then reviewed every change.",
-  "macAcceptancePrompt": "handoff/v1.0.1-mac-acceptance-prompt.md"
+  "macAcceptancePrompt": "handoff/v1.0.1-mac-acceptance-prompt.md",
+  "releaseTexts": "handoff/v1.0-build20-release-texts.md (README install paragraph replacement and GitHub release notes, with keep-conditions tied to acceptance steps)"
  },
+ "buildNumber": "CURRENT_PROJECT_VERSION raised from 19 to 20 in all 8 project build configurations; MARKETING_VERSION stays 1.0.",
+ "pendingOutsideTheRepo": [
+  "Apple Developer Program enrollment is under review (2026-10-08). The Developer ID certificate, notarytool credentials, signing, notarization and publishing wait for approval; every other Mac check can run now."
+ ],
  "commits": [
+  {
+   "commit": "4f006b5",
+   "subject": "Raise the build number to 20"
+  },
+  {
+   "commit": "441aa4c",
+   "subject": "Test current-time questions in Spanish, Dutch and Russian"
+  },
+  {
+   "commit": "25790d7",
+   "subject": "Seal UnitText's inline bytes and test both sides of the inline limit"
+  },
+  {
+   "commit": "115fa36",
+   "subject": "Record the cloud work and hand Mac acceptance to Codex"
+  },
   {
    "commit": "f510644",
    "subject": "Reserve the span list from the character count"
@@ -120,6 +141,10 @@
   {
    "item": "Release signing",
    "change": "Tools/release_sign_notarize.sh (Developer ID re-sign, DMG, notarytool, stapler, Gatekeeper check) and MEANTIME_SIGN_IDENTITY in sign_bundle.sh; TahoeTime.entitlements gains the calendar entitlement."
+  },
+  {
+   "item": "Inline unit text",
+   "change": "UnitText keeps up to 22 bytes inline behind a private representation; only TextBuilder writes the bytes, finish() re-checks UTF-8 in debug builds, and tests cover the 22/23-byte boundary, multi-byte characters across it and equality with the String-based text it replaced."
   },
   {
    "item": "Small fixes",
