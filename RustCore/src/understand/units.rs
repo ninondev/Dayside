@@ -8,7 +8,7 @@ use super::text::{self, fold, spans, tokens, Kind};
 use super::text::fold_str;
 #[cfg(test)]
 use std::collections::HashMap;
-use super::table_storage::{Slice, StrMap, WordsMap};
+use super::table_storage::{FastMap, Slice, StrMap, WordsMap};
 
 // ───────────────────────────── 单元 ─────────────────────────────
 
@@ -373,7 +373,9 @@ pub(super) fn nearby_ordinary(units: &[Unit], start: usize, end: usize, language
 fn prefix_phrases(text: &str) -> Option<&'static [Phrase]> {
     #[cfg(test)]
     LOOKUP_WORK.set(LOOKUP_WORK.get() + 1);
-    matcher().by_first.get(text)
+    // 首词目录有两千来条：按散列查，与目录的二分查找结果相同。
+    static INDEX: std::sync::OnceLock<FastMap<&'static str, &'static [Phrase]>> = std::sync::OnceLock::new();
+    INDEX.get_or_init(|| matcher().by_first.entries.iter().copied().collect()).get(text).copied()
 }
 
 pub(super) fn is(units: &[Unit], i: usize, pred: impl Fn(Sem) -> bool) -> Option<usize> {
