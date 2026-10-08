@@ -229,6 +229,13 @@ fn explicit_valid_date(u: &[Unit], i: usize, end: usize) -> bool {
     false
 }
 
+/// `numeric_date`、`named_date` 与日历端点只能从这里开始：数字、中日韩数字、月份词、ngày，或带撇号的土耳其语月份。
+/// 不满足就一定读不出日期（debug 构建里两处调用都核对这一点）。
+fn may_start_date(u: &[Unit], k: usize) -> bool {
+    u.get(k).is_some_and(|t| matches!(t.kind, UKind::Number | UKind::Cjk) || t.text.contains('\''))
+        || find(u, k, |s| matches!(s, Sem::DayBefore | Sem::Month(_))).is_some()
+}
+
 fn numeral_width(u: &[Unit], i: usize) -> Option<usize> {
     if u.get(i)?.kind == UKind::Number { Some(1) } else { is(u, i, |s| matches!(s, Sem::Number(_))) }
 }
@@ -402,8 +409,12 @@ impl<'a> Scanner<'a> {
         if let Some(n) = self.numeric_date(i) {
             return n;
         }
-        if let Some(n) = self.named_date(i) {
-            return n;
+        if may_start_date(u, i) {
+            if let Some(n) = self.named_date(i) {
+                return n;
+            }
+        } else {
+            debug_assert!(self.named_date(i).is_none(), "date read at {i} without a date start");
         }
         if let Some(n) = self.compact_clock(i) {
             return n;
@@ -1256,7 +1267,12 @@ impl<'a> Scanner<'a> {
         if let Some((n, _, _)) = day_cue { at += n; }
         // 写了自己的钟点、时段或时长单位时，不能把小时数字借读成日数。
         // 各项都是只读判断：先读端点，读不出来（大多数位置）就不必再查这一串。
-        let endpoint = self.calendar_endpoint_at(i, at, day_cue.is_some())?;
+        let endpoint = if may_start_date(u, at) {
+            self.calendar_endpoint_at(i, at, day_cue.is_some())?
+        } else {
+            debug_assert!(self.calendar_endpoint_at(i, at, day_cue.is_some()).is_none(), "date read at {at} without a date start");
+            return None;
+        };
         let borrows_clock = Self::explicit_clock(u, at)
             || (at.saturating_sub(6)..at).any(|k| find(u, k, |s| s == Sem::ClockBefore).is_some_and(|(n, _, _)| k + n == at))
             || find(u, at + 1, |s| matches!(s, Sem::Period(_) | Sem::HourUnit | Sem::MinuteUnit | Sem::DayUnit | Sem::DurationAfter)).is_some();

@@ -3,7 +3,7 @@
 use super::lexicon::{Sem, ABBREVIATIONS};
 #[cfg(test)]
 use super::lexicon::ENTRIES;
-use super::table_storage::{cmp_text, FastSet, Slice, Text};
+use super::table_storage::{cmp_text, FastMap, FastSet, Slice, Text};
 use super::text::is_hangul;
 #[cfg(test)]
 use super::text::fold;
@@ -353,12 +353,30 @@ fn reference_phrase_table() -> Lookup<Phrase> {
         table.finish()
 }
 
+/// 语言词表根节点有几千条边：按散列查（与二分查找结果相同），其余各层照常二分。
+fn phrase_child(node: usize, word: &str) -> Option<usize> {
+    static ROOT: OnceLock<FastMap<&'static str, usize>> = OnceLock::new();
+    if node != 0 { return phrases().child(node, word); }
+    ROOT.get_or_init(|| {
+        let table = phrases();
+        let root = &table.nodes[0];
+        table.edges[root.start..root.end].iter().map(|(key, next)| (key.as_ref(), *next)).collect()
+    }).get(word).copied()
+}
+
+/// `phrases().get` 的同一结果，根节点走散列。
+fn phrase_get<'w>(text: impl IntoIterator<Item = &'w str>) -> Option<&'static Phrase> {
+    let mut at = 0;
+    for word in text { at = phrase_child(at, word)?; }
+    phrases().value(at)
+}
+
 fn matching_phrases(u: &[Unit], at: usize, end: usize) -> Vec<&'static Phrase> {
     let table = phrases();
     let mut node = 0;
     let mut result = Vec::new();
     for unit in &u[at..end] {
-        let Some(next) = table.child(node, unit.text.as_str()) else { break; };
+        let Some(next) = phrase_child(node, unit.text.as_str()) else { break; };
         node = next;
         if let Some(phrase) = table.value(node) { result.push(phrase); }
     }
@@ -541,7 +559,7 @@ fn evidence_uncached(u: &[Unit], at: usize, len: usize, excluded: Option<(usize,
 /// 这个含义有独立证据支持时，返回相应语言。
 pub(super) fn supported_language(u: &[Unit], at: usize, len: usize, sem: Sem, excluded: Option<(usize, usize)>) -> Option<&'static str> {
     let span = u.get(at..at.checked_add(len)?)?;
-    let p = phrases().get(span.iter().map(|t| t.text.as_str()))?;
+    let p = phrase_get(span.iter().map(|t| t.text.as_str()))?;
     let langs = languages(u, at, p, sem);
     if let Evidence::Language(language, _) = evidence(u, at, len, excluded) {
         if langs.contains(&language) { return Some(language); }
