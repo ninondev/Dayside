@@ -269,7 +269,20 @@ pub(super) struct SegmentVoters {
     slice: usize,
     units: usize,
     end: usize,
-    at: Rc<[Vec<(usize, &'static EntryGroup)>]>,
+    at: Rc<VoterTable>,
+}
+
+/// 摊平存放的各位置候选：第 k 个位置的是 `entries[starts[k]..starts[k + 1]]`。
+#[derive(Debug)]
+pub(super) struct VoterTable {
+    entries: Vec<(usize, &'static EntryGroup)>,
+    starts: Vec<usize>,
+}
+
+impl VoterTable {
+    fn at(&self, k: usize) -> &[(usize, &'static EntryGroup)] {
+        &self.entries[self.starts[k]..self.starts[k + 1]]
+    }
 }
 
 /// 数字段分类完成后启用，生命周期与这次解析的单元相同。
@@ -371,16 +384,22 @@ fn phrase_get<'w>(text: impl IntoIterator<Item = &'w str>) -> Option<&'static Ph
     phrases().value(at)
 }
 
+#[cfg(test)]
 fn matching_phrases(u: &[Unit], at: usize, end: usize) -> Vec<&'static Phrase> {
+    let mut result = Vec::new();
+    matching_phrases_into(u, at, end, &mut result);
+    result
+}
+
+/// 从 `at` 起逐词对上的词表短语，由短到长追加到 `result`。
+fn matching_phrases_into(u: &[Unit], at: usize, end: usize, result: &mut Vec<&'static Phrase>) {
     let table = phrases();
     let mut node = 0;
-    let mut result = Vec::new();
     for unit in &u[at..end] {
         let Some(next) = phrase_child(node, unit.text.as_str()) else { break; };
         node = next;
         if let Some(phrase) = table.value(node) { result.push(phrase); }
     }
-    result
 }
 
 /// 原文拼法先选整组，再按含义取语言，保留词表里的先后次序。
@@ -475,25 +494,35 @@ pub(super) fn evidence(u: &[Unit], at: usize, len: usize, excluded: Option<(usiz
     result
 }
 
-/// 句段内一个位置的候选投票短语，从长到短；只做与被解释的词无关的筛选。
-fn position_voters(u: &[Unit], k: usize, end: usize) -> Vec<(usize, &'static EntryGroup)> {
-    matching_phrases(u, k, end).into_iter().rev().filter_map(|p| {
-        let n = p.len;
-        if needs_evidence(u, k, n) || neutral_word(u, k, n) || inside_place_name(u, k, n) || !whole_hangul_voter(u, k, p) { return None; }
-        // 货币与时区缩写、数字串和标点不证明语言。
-        if u[k..k + n].iter().any(|t| t.kind == UKind::Number)
-            || !u[k..k + n].iter().any(|t| t.raw.chars().any(char::is_alphabetic)) {
-            return None;
-        }
-        let group = p.raw_entries(u, k)?;
-        (!group.votes.is_empty()).then_some((n, group))
-    }).collect()
+/// 句段内一个位置的一条候选投票短语；只做与被解释的词无关的筛选。
+fn position_voter(u: &[Unit], k: usize, p: &'static Phrase) -> Option<(usize, &'static EntryGroup)> {
+    let n = p.len;
+    if needs_evidence(u, k, n) || neutral_word(u, k, n) || inside_place_name(u, k, n) || !whole_hangul_voter(u, k, p) { return None; }
+    // 货币与时区缩写、数字串和标点不证明语言。
+    if u[k..k + n].iter().any(|t| t.kind == UKind::Number)
+        || !u[k..k + n].iter().any(|t| t.raw.chars().any(char::is_alphabetic)) {
+        return None;
+    }
+    let group = p.raw_entries(u, k)?;
+    (!group.votes.is_empty()).then_some((n, group))
 }
 
 /// 同一句段反复判断不同的词时，各位置的候选只算一次（缓存启用后挂在句段首个单元上）。
 /// 计算与读取时都不持有借用：词表查询可能再回到这里。
-fn segment_voters(u: &[Unit], start: usize, end: usize) -> Rc<[Vec<(usize, &'static EntryGroup)>]> {
-    let compute = || (start..end).map(|k| position_voters(u, k, end)).collect::<Rc<[_]>>();
+fn segment_voters(u: &[Unit], start: usize, end: usize) -> Rc<VoterTable> {
+    let compute = || {
+        let mut table = VoterTable { entries: Vec::new(), starts: Vec::with_capacity(end - start + 1) };
+        let mut found = Vec::new();
+        for k in start..end {
+            table.starts.push(table.entries.len());
+            found.clear();
+            matching_phrases_into(u, k, end, &mut found);
+            // 从长到短。
+            table.entries.extend(found.iter().rev().filter_map(|&p| position_voter(u, k, p)));
+        }
+        table.starts.push(table.entries.len());
+        Rc::new(table)
+    };
     let anchor = &u[start].evidence_memo;
     if anchor.0.borrow().is_none() { return compute(); }
     let (slice, units) = (u.as_ptr() as usize, u.len());
@@ -525,7 +554,7 @@ fn evidence_uncached(u: &[Unit], at: usize, len: usize, excluded: Option<(usize,
             // 不同文字系统可构成局部句段；英文会议用语不能证明夹在其中的中日韩日词。
             if u[at].kind == UKind::Cjk && u[k].kind != UKind::Cjk { k += 1; continue; }
             let mut consumed = 1;
-            for &(n, group) in &voters[k - start] {
+            for &(n, group) in voters.at(k - start) {
                 if blocked(k, k + n) { continue; }
                 let unshared = group.votes.len() == 1;
                 let mut strong = None;
