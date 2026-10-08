@@ -15,6 +15,9 @@ use unicode_normalization::{char::canonical_combining_class, UnicodeNormalizatio
 use unicode_segmentation::UnicodeSegmentation;
 
 pub fn fold(s: &str) -> String {
+    if s.is_ascii() {
+        return fold_ascii(s);
+    }
     let decomposed: String =
         s.nfd()
             .filter(|c| canonical_combining_class(*c) == 0)
@@ -33,6 +36,27 @@ pub fn fold(s: &str) -> String {
         .join(" ")
         .nfc()
         .collect()
+}
+/// ASCII input: decomposition, composition and lowercasing are byte-wise here, so the result is identical to the general path.
+fn fold_ascii(s: &str) -> String {
+    let mut out = String::with_capacity(s.len());
+    let mut space = false;
+    for b in s.bytes() {
+        let c = match b {
+            b'.' | b'\'' | b',' | b'(' | b')' => continue,
+            b'-' | b'_' | b'/' | b' ' => {
+                space = !out.is_empty();
+                continue;
+            }
+            _ => b.to_ascii_lowercase(),
+        };
+        if space {
+            out.push(' ');
+            space = false;
+        }
+        out.push(char::from(c));
+    }
+    out
 }
 pub fn tz_city(s: &str) -> String {
     s.split('/')
@@ -780,6 +804,32 @@ mod tests {
             ("Asia/Tokyo", "asia tokyo"),
         ] {
             assert_eq!(fold(input), expected);
+        }
+    }
+    #[test]
+    fn ascii_fold_matches_general_fold() {
+        let general = |s: &str| -> String {
+            let decomposed: String = s.nfd().filter(|c| canonical_combining_class(*c) == 0)
+                .filter_map(|c| match c {
+                    '.' | '\'' | '\u{2019}' | '\u{02bc}' | ',' | '(' | ')' => None,
+                    '-' | '\u{2010}' | '\u{2011}' | '\u{2012}' | '\u{2013}' | '\u{2014}' | '_' | '/' => Some(' '),
+                    _ => Some(c),
+                }).collect();
+            decomposed.to_lowercase().split(' ').filter(|p| !p.is_empty()).collect::<Vec<_>>().join(" ").nfc().collect()
+        };
+        let alphabet: Vec<char> = (0u8..128).map(char::from).collect();
+        for a in &alphabet {
+            for b in &alphabet {
+                for c in [' ', '-', 'A', '.', '\t'] {
+                    let s: String = [*a, c, *b, ' '].iter().collect();
+                    assert_eq!(fold(&s), general(&s), "{s:?}");
+                    let s: String = [c, *a, *b].iter().collect();
+                    assert_eq!(fold(&s), general(&s), "{s:?}");
+                }
+            }
+        }
+        for s in ["  St. Petersburg  ", "Port_of_Spain", "N'Djamena", "a--b__c//d", "Winston-Salem", "", " ", "(x)", "Ho Chi  Minh City"] {
+            assert_eq!(fold(s), general(s), "{s:?}");
         }
     }
     #[test]

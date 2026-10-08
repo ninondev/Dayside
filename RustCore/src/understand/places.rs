@@ -261,8 +261,18 @@ pub(super) fn city_lookup(handle: Option<u64>, text: &str, strong: bool) -> Opti
         let matches = |name: &str| name.nfc().flat_map(char::to_lowercase).eq(written.chars());
         matches(&record.name) || index.names(city_index, false).values().any(|name| matches(name))
     };
+    // 同一个键在这次查找里会再查（先认主城，再列同名的别处城市）：索引只读一次。
+    let exact_hits = std::cell::RefCell::new(Vec::<(String, Vec<crate::city_index::Hit>)>::new());
+    let exact_all = |query: &str| {
+        if let Some((_, hits)) = exact_hits.borrow().iter().find(|(key, _)| key == query) {
+            return hits.clone();
+        }
+        let hits = index.exact_all(query);
+        exact_hits.borrow_mut().push((query.to_owned(), hits.clone()));
+        hits
+    };
     let exact = |query: &str| -> Option<usize> {
-        let hits = if marked { index.exact_all(query) } else { index.exact(query, 8) };
+        let hits = if marked { exact_all(query) } else { crate::city_index::CityIndex::exact_limited(exact_all(query), 8) };
         hits.into_iter().find(|hit| spelling_fits(hit.city_index)).map(|hit| hit.city_index)
     };
     // 有线索的国家名先认：「in Brazil」是巴西，不是美国印第安纳州的 Brazil 镇。同名的是大城（人口前 2,000 座）时城在前：
@@ -345,7 +355,7 @@ pub(super) fn city_lookup(handle: Option<u64>, text: &str, strong: bool) -> Opti
     let Some(matched_key) = matched_key else { return Some(primary) };
     // 先遍历全部倒排，再按时区合并，避免同一时区的小城挡住别的时区。
     let mut zones: HashMap<String, (usize, String, Option<u64>)> = HashMap::new();
-    for hit in index.exact_all(&matched_key) {
+    for hit in exact_all(&matched_key) {
         let candidate_index = hit.city_index;
         if !within(&candidate_index) || !spelling_fits(candidate_index) {
             continue;

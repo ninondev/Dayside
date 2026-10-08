@@ -45,18 +45,30 @@ impl Unit {
 }
 
 /// 只缓存首词对应的词表；复制单元后重新按文字准备。
+/// 第三格是词表前 64 条里在这个位置可能对上的短语（位掩码，按词表次序）：后面的词已经对不上的不再逐个试。
 #[derive(Debug, Default)]
-struct LexiconMemo(Option<Option<&'static [Phrase]>>, std::cell::Cell<(usize, usize)>);
+struct LexiconMemo(Option<Option<&'static [Phrase]>>, std::cell::Cell<(usize, usize)>, u64);
 
 impl Clone for LexiconMemo {
     fn clone(&self) -> Self { Self::default() }
 }
 
 pub(super) fn prepare_lexicon(units: &mut [Unit]) {
-    for unit in units {
+    for unit in units.iter_mut() {
         if unit.lexicon_memo.0.is_none() {
             unit.lexicon_memo.0 = Some(prefix_phrases(&unit.text));
         }
+    }
+    // 后面的单元可能刚改过（数字分类清空的片段），每次都按整段重算。
+    // 超出这段末尾的短语留作可能：更长的切片里仍要照常比较。
+    for i in 0..units.len() {
+        let list = units[i].lexicon_memo.0.flatten().unwrap_or(&[]);
+        let mask = list.iter().take(64).enumerate().fold(0u64, |mask, (k, phrase)| {
+            let n = phrase.units.len();
+            let mismatch = i + n <= units.len() && (0..n).any(|j| units[i + j].text != phrase.units[j]);
+            if mismatch { mask } else { mask | 1 << k }
+        });
+        units[i].lexicon_memo.2 = mask;
     }
 }
 
@@ -314,23 +326,30 @@ pub(super) const EXTRA_ZONE_WORDS: &[(&str, &str)] = &[
 /// 单元 `i` 起最长的、含义满足 `pred` 的词表短语：（长度，含义，语言）。
 pub(super) fn find(units: &[Unit], i: usize, pred: impl Fn(Sem) -> bool) -> Option<(usize, Sem, &'static str)> {
     let first = units.get(i)?;
-    let list = match first.lexicon_memo.0 {
-        Some(list) => list,
-        None => prefix_phrases(&first.text),
-    }?;
-    for phrase in list {
+    // 准备过的单元只试这里可能对上的短语；没准备过的逐条试。
+    let (list, mut mask) = match first.lexicon_memo.0 {
+        Some(list) => (list?, first.lexicon_memo.2),
+        None => (prefix_phrases(&first.text)?, u64::MAX),
+    };
+    let matches = |phrase: &Phrase| {
         let n = phrase.units.len();
         if i + n > units.len() {
-            continue;
+            return None;
         }
         // 两个条件都要成立：先查词义（比较枚举），大多数短语在这里就排除，不必逐词比字符串。
-        let Some(&(sem, lang)) = phrase.sems.iter().find(|(s, _)| pred(*s)) else { continue; };
+        let &(sem, lang) = phrase.sems.iter().find(|(s, _)| pred(*s))?;
         // 拉丁词要整词对上（「sat」不在「saturday」里），多词短语中间不能隔着标点以外的东西。
-        if (0..n).all(|k| units[i + k].text == phrase.units[k]) {
-            return Some((n, sem, lang));
+        (0..n).all(|k| units[i + k].text == phrase.units[k]).then_some((n, sem, lang))
+    };
+    while mask != 0 {
+        let k = mask.trailing_zeros() as usize;
+        mask &= mask - 1;
+        let Some(phrase) = list.get(k) else { break; };
+        if let Some(found) = matches(phrase) {
+            return Some(found);
         }
     }
-    None
+    list.iter().skip(64).find_map(matches)
 }
 
 /// 附近地点的整词否决；普通名词按分句语言，虚词仍沿用原有名字规则。
@@ -554,6 +573,25 @@ mod tests {
         prepare_lexicon(&mut changed);
         assert_eq!(find(&changed, 0, |_| true), None);
         assert_eq!(find(&cached, 0, |s| s == Sem::NonTimeAfter).unwrap().0, 2);
+    }
+
+    #[test]
+    fn prepared_phrase_masks_agree_with_plain_lookup() {
+        let text = "a las 3 de la tarde, on Monday at 9 am in New York; costs 3 dollars tomorrow, le 3 octobre à 14h, 明天下午三点 a.m.";
+        let mut prepared = units(&fold(text));
+        let mut plain = prepared.clone();
+        prepare_lexicon(&mut prepared);
+        super::super::scan::classify_numbers(&mut prepared);
+        prepare_lexicon(&mut prepared);
+        super::super::scan::classify_numbers(&mut plain);
+        let preds: [fn(Sem) -> bool; 4] = [|_| true, |s| matches!(s, Sem::Number(_)), |s| !matches!(s, Sem::Number(_)), |s| s == Sem::And];
+        for end in 1..=prepared.len() {
+            for at in 0..end {
+                for pred in preds {
+                    assert_eq!(find(&prepared[..end], at, pred), find(&plain[..end], at, pred), "{at}..{end}");
+                }
+            }
+        }
     }
 
     #[test]

@@ -847,11 +847,16 @@ impl CityIndex {
     /// 精确的键：主名或别名折叠后与查询逐字相等的城市（按人口名次，最多 `limit` 座），不做前缀、拼音与首字母的扩展。
     /// 「听懂时间」用：「bali」是巴黎的拼音，但「9am in bali」说的不是巴黎（search_smart 在这里
     /// 答了巴黎）。常用缩写（nyc、sf）照旧换成它指的城；ı / đ / ł 再按基本字母试一次（六语搜索同一条规矩）。
+    #[cfg(test)]
     pub fn exact(&self, query: &str, limit: usize) -> Vec<Hit> {
         if limit == 0 {
             return vec![];
         }
-        let mut hits = self.exact_all(query);
+        Self::exact_limited(self.exact_all(query), limit)
+    }
+
+    /// `exact` 的截取：已经取到 `exact_all` 的调用方按同一规则留前 `limit` 座。
+    pub fn exact_limited(mut hits: Vec<Hit>, limit: usize) -> Vec<Hit> {
         hits.truncate(limit.min(MAX_SEARCH_HITS));
         hits
     }
