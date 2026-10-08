@@ -620,7 +620,14 @@ private func clockChangeDescription(_ seconds: Int, locale: Locale) -> String {
 
 private struct ClockDrivenRowTimeText: View {
     @Environment(TimeCore.self) private var core
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
+    private var reduceMotion: Bool {
+        #if DEBUG
+        PerformanceProbe.isRequested ? false : systemReduceMotion
+        #else
+        systemReduceMotion
+        #endif
+    }
     let zone: TimeZoneEntry
     let clockFormat: ClockFormat
     let style: RowPrimaryTextStyle

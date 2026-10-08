@@ -396,6 +396,14 @@ final class AppModel {
     /// 带动画跳转的序号：行上 `.animation(_:value:)` 的键。键不是时刻：分钟 tick 与逐帧拖动就不会带着残留动画走。
     private(set) var scrubSerial = 0
 
+    private var performanceAllowsMotion: Bool {
+        #if DEBUG
+        PerformanceProbe.isRequested
+        #else
+        false
+        #endif
+    }
+
     private func applyScrub(_ kind: String, target: Date? = nil, animated: Bool = true) {
         struct Input: Encodable { let kind: String; let anchor: Double; let offset: Double; let now: Double; let target: Double? }
         struct Result: Decodable { let anchor: Double; let offset: Double; let display: Double }
@@ -409,7 +417,7 @@ final class AppModel {
         scrubRowAnimation = nil
         if animatedJump {
             scrubSerial += 1
-            if NSWorkspace.shared.accessibilityDisplayShouldReduceMotion && !ApplicationSession.forceAnimation {
+            if NSWorkspace.shared.accessibilityDisplayShouldReduceMotion && !ApplicationSession.forceAnimation && !performanceAllowsMotion {
                 scrubRowAnimation = .easeInOut(duration: JumpTiming.fadeDuration)
             } else {
                 animation = .easeInOut(duration: beats.map)

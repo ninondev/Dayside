@@ -251,10 +251,24 @@ struct DayLaneRibbonTests {
         #expect(memo.ribbon === retina)
     }
 
-    private func render(scene: [SceneCommand], size: CGSize, raster: Bool, dark: Bool, scale: Double) throws -> CGImage {
+    private func render(scene: [SceneCommand], size: CGSize, raster: Bool, dark: Bool, scale: Double, oracle: Bool = false) throws -> CGImage {
+        let references = try scene.map { command -> CGImage? in
+            guard oracle && command.kind == "gradient" else { return nil }
+            return try independentRibbon(command, scale: scale)
+        }
         let content = ZStack(alignment: .topLeading) {
-            ForEach(Array(scene.enumerated()), id: \.offset) { _, command in
-                if raster && command.kind == "gradient" {
+            ForEach(Array(scene.enumerated()), id: \.offset) { index, command in
+                if oracle, let reference = references[index] {
+                    Image(decorative: reference, scale: 1)
+                        .resizable().interpolation(.low)
+                        .frame(width: CGFloat(reference.width) / scale, height: size.height)
+                        .offset(x: command.geometry[0], y: command.geometry[1])
+                        .frame(width: size.width, height: size.height, alignment: .topLeading)
+                        .clipShape(SceneShape.path(for: command))
+                        .overlay {
+                            if dark { SceneShape.path(for: command).fill(Color.black.opacity(0.22)) }
+                        }
+                } else if raster && command.kind == "gradient" {
                     DayLaneGradient(command: command, size: size)
                 } else {
                     SceneShape(command: command)
@@ -270,6 +284,32 @@ struct DayLaneRibbonTests {
         renderer.proposedSize = ProposedViewSize(width: size.width, height: size.height)
         renderer.scale = scale
         return try #require(renderer.cgImage)
+    }
+
+    private func independentRibbon(_ command: SceneCommand, scale: Double) throws -> CGImage {
+        let width = max(2, Int((command.geometry[2] * scale).rounded(.up)))
+        let stops = try #require(command.stops)
+        try #require(stops.count >= 2)
+        let colors = try stops.map { stop -> (at: Double, rgb: [Double]) in
+            let hex = try #require(UInt32(stop.color.dropFirst(), radix: 16))
+            return (stop.at, [Double((hex >> 16) & 255), Double((hex >> 8) & 255), Double(hex & 255)])
+        }
+        var bytes = [UInt8](repeating: 255, count: width * 4)
+        for x in 0..<width {
+            let position = (Double(x) + 0.5) / Double(width)
+            let upper = colors.firstIndex { $0.at > position } ?? colors.count - 1
+            let first = colors[max(0, upper - 1)], last = colors[upper]
+            let fraction = last.at > first.at ? min(1, max(0, (position - first.at) / (last.at - first.at))) : 0
+            for channel in 0..<3 {
+                bytes[x * 4 + channel] = UInt8((first.rgb[channel] * (1 - fraction) + last.rgb[channel] * fraction).rounded())
+            }
+        }
+        let space = try #require(CGColorSpace(name: CGColorSpace.sRGB))
+        let provider = try #require(CGDataProvider(data: Data(bytes) as CFData))
+        return try #require(CGImage(width: width, height: 1, bitsPerComponent: 8, bitsPerPixel: 32,
+            bytesPerRow: width * 4, space: space,
+            bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue),
+            provider: provider, decode: nil, shouldInterpolate: true, intent: .defaultIntent))
     }
 
     private func rgba(_ image: CGImage) throws -> [UInt8] {
@@ -298,10 +338,18 @@ extension DayLaneRibbonTests {
                     available: [], windows: [], marks: true))
                 for dark in [false, true] {
                     for scale in [1.0, 2.0] {
-                        let original = try rgba(render(scene: scene, size: size, raster: false, dark: dark, scale: scale))
-                        let raster = try rgba(render(scene: scene, size: size, raster: true, dark: dark, scale: scale))
-                        try #require(original.count == raster.count)
-                        let difference = zip(original, raster).reduce(0) { max($0, abs(Int($1.0) - Int($1.1))) }
+                        let originalImage = try render(scene: scene, size: size, raster: false, dark: dark, scale: scale)
+                        let rasterImage = try render(scene: scene, size: size, raster: true, dark: dark, scale: scale)
+                        #expect(originalImage.width == rasterImage.width && originalImage.height == rasterImage.height)
+                        #expect(rasterImage.width == Int((width * scale).rounded()))
+                        #expect(rasterImage.height == Int((size.height * scale).rounded()))
+                        let raster = try rgba(rasterImage)
+                        let expectedImage = try render(scene: scene, size: size, raster: false, dark: dark, scale: scale, oracle: true)
+                        let expected = try rgba(expectedImage)
+                        try #require(expectedImage.width == rasterImage.width && expectedImage.height == rasterImage.height)
+                        try #require(expected.count == raster.count)
+                        let difference = zip(expected, raster).map { abs(Int($0) - Int($1)) }.max() ?? 0
+                        // 独立 sRGB 插值经过完整渲染，核对颜色、裁角、刻度、参考线和深色遮罩。
                         print("MEANTIME_RIBBON_ADDITIONAL width=\(width) case=\(index) dark=\(dark) scale=\(scale) max=\(difference)")
                         #expect(difference <= 3, "新天空与非整数宽度的所有像素通道差不超过三档")
                     }

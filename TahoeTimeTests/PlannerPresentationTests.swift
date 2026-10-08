@@ -171,7 +171,8 @@ private enum PlannerAXHarness {
     }
 
     private static let legacyKeys = ["accessibilityChildren": "AXChildren", "accessibilityRole": "AXRole",
-                                     "accessibilityLabel": "AXDescription"]
+                                     "accessibilityLabel": "AXDescription", "accessibilityTitle": "AXTitle",
+                                     "accessibilityValue": "AXValue"]
 
     private static func attribute(_ object: NSObject, _ key: String) -> Any? {
         var modern: Any?
@@ -197,7 +198,9 @@ private enum PlannerAXHarness {
 
     private static func collect(from element: Any, host: NSView, window: NSWindow, depth: Int, into nodes: inout [Node]) {
         guard depth < 48, nodes.count < 10_000, let object = element as? NSObject else { return }
-        let label = attribute(object, "accessibilityLabel") as? String ?? ""
+        // 菜单的标题在不同系统上可能由 label、title 或 value 暴露。
+        let label = ["accessibilityLabel", "accessibilityTitle", "accessibilityValue"]
+            .compactMap { attribute(object, $0) as? String }.first { !$0.isEmpty } ?? ""
         let role = attribute(object, "accessibilityRole") as? String ?? ""
         if !label.isEmpty || !role.isEmpty {
             let resolved = frame(of: object, host: host, window: window)
@@ -268,7 +271,7 @@ struct PlannerActionWrappingTests {
                 defer { window.close() }
                 var midYs: [CGFloat] = []
                 for label in expected {
-                    let matches = nodes.filter { $0.label == label }
+                    let matches = nodes.filter { $0.label == label && ["AXButton", "AXMenuButton"].contains($0.role) }
                     #expect(matches.count == 1, "\(language)×\(scale)×回\(hasReturn)：\(label) 应恰好一个，实得 \(matches.count)")
                     guard let node = matches.first, node.hasFrame, !node.frame.isInfinite else { continue }
                     midYs.append(node.frame.midY)
@@ -298,7 +301,7 @@ struct PlannerActionWrappingTests {
             width: Self.wideWidth)
         defer { window.close() }
         let midYs = expected.compactMap { label -> CGFloat? in
-            guard let node = nodes.first(where: { $0.label == label }), node.hasFrame, !node.frame.isInfinite else { return nil }
+            guard let node = nodes.first(where: { $0.label == label && ["AXButton", "AXMenuButton"].contains($0.role) }), node.hasFrame, !node.frame.isInfinite else { return nil }
             return node.frame.midY
         }
         #expect(midYs.count == expected.count, "\(language)：宽行每个动作都要有可用的框")
@@ -306,7 +309,7 @@ struct PlannerActionWrappingTests {
             #expect(top - bottom <= 2, "\(language)：宽行仍是一行")
         }
         let jump = L10n.string("在面板里看这一刻", locale: locale)
-        if let node = nodes.first(where: { $0.label == jump }), node.hasFrame, !node.frame.isInfinite {
+        if let node = nodes.first(where: { $0.label == jump && ["AXButton", "AXMenuButton"].contains($0.role) }), node.hasFrame, !node.frame.isInfinite {
             #expect(abs(node.frame.maxX - Self.wideWidth) <= 1, "\(language)：最后一样要靠右缘 \(node.frame)")
         }
     }

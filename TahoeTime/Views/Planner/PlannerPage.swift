@@ -76,7 +76,14 @@ struct PlannerPage: View {
     @Environment(TimeCore.self) private var core
     @Environment(\.locale) private var locale
     @Environment(\.featureHub) private var featureHub
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
+    private var reduceMotion: Bool {
+        #if DEBUG
+        PerformanceProbe.isRequested ? false : systemReduceMotion
+        #else
+        systemReduceMotion
+        #endif
+    }
 
     @State private var mode: Mode = .once
     @State private var selectedPeople: Set<UUID> = []
@@ -823,7 +830,7 @@ struct PlannerActionButtons: View {
                 PlannerMenuLabel(text: L10n.string("图片", locale: locale), style: nil)
                     .padding(.horizontal, 4)
                     .accessibilityElement(children: .ignore)
-                    .accessibilityLabel(Text("图片"))
+                    .modifier(MenuAccessibleTitle(title: Text("图片")))
             }
             .menuStyle(.button).buttonStyle(.plain).menuIndicator(.hidden).fixedSize()
             .disabled(stale)

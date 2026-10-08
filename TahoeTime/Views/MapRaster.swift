@@ -273,6 +273,10 @@ nonisolated final class MapRaster: @unchecked Sendable {
         MapRelief.ensureLoaded()
         let length = width * height * 4
         guard let buffer = PixelPool.take(length) else { return nil }
+        #if DEBUG
+        let performanceStart = PerformanceRustCalls.begin()
+        defer { PerformanceRustCalls.end("ffi.sky_map_raster", started: performanceStart) }
+        #endif
         guard mt_sky_map_raster(key.instant, UInt32(width), UInt32(height), key.north, key.south, lights,
                                 buffer.assumingMemoryBound(to: UInt8.self), length, Double(width) / Double(size.width), large),
               let provider = CGDataProvider(dataInfo: nil, data: buffer, size: length, releaseData: { _, data, size in
@@ -389,15 +393,15 @@ final class MapSurfaceView: NSView {
         observers.append(center.addObserver(forName: NSWindow.didChangeOcclusionStateNotification, object: window, queue: .main) { [weak self] _ in
             MainActor.assumeIsolated {
                 guard let self, let window = self.window else { return }
-                // 测试窗口在屏幕外仍要画地图；关窗与收起后照常还掉像素面。
-                if window.occlusionState.contains(.visible) || (ApplicationSession.isTesting && window.isVisible) {
+                // 截图窗口可以离屏画图；性能量尺按生产窗口的遮挡状态处理。
+                if window.occlusionState.contains(.visible) || (ApplicationSession.drawsOccludedMaps && window.isVisible) {
                     if self.surfaces.isEmpty, let w = self.wanted {
                         self.render(seconds: w.seconds, size: w.size, scale: w.scale, latitudes: w.latitudes, lights: w.lights, large: w.large)
                     }
                 } else {
                     #if DEBUG
                     // 窗口截图可能在遮挡时取图，隔离副本保留这一帧的底图。
-                    if ApplicationSession.isTesting,
+                    if ApplicationSession.drawsOccludedMaps,
                        ProcessInfo.processInfo.environment["MEANTIME_UI_TEST_CAPTURE"] == "1" { return }
                     #endif
                     self.releaseSurfaces()
@@ -413,8 +417,8 @@ final class MapSurfaceView: NSView {
     func render(seconds: Double, size: CGSize, scale: CGFloat, latitudes: ClosedRange<Double>, lights: Double, large: Bool) {
         wanted = (seconds, size, scale, latitudes, lights, large)
         // 窗口看不见就不画（面板收起后 SwiftUI 仍可能每分钟调一次更新）；再看得见时按 `wanted` 补画。
-        // 测试宿主（无障碍转储截图）不管遮挡：锁屏时窗口也算被遮住，转储要看得到地图。
-        if !ApplicationSession.isTesting, let window, !window.occlusionState.contains(.visible) { return }
+        // 无障碍截图不受遮挡限制，性能量尺仍遵守生产行为。
+        if !ApplicationSession.drawsOccludedMaps, let window, !window.occlusionState.contains(.visible) { return }
         guard let (width, height) = MapRaster.pixelSize(size, scale: scale) else { return }
         let key = Key(seconds: seconds, width: width, height: height, north: latitudes.upperBound, south: latitudes.lowerBound, lights: lights, large: large)
         guard key != last else { return }
@@ -435,6 +439,10 @@ final class MapSurfaceView: NSView {
         let back = surfaces.count == 1 ? 0 : (front == 0 ? 1 : 0)
         let surface = surfaces[back]
         surface.lock(options: [], seed: nil)
+        #if DEBUG
+        let performanceStart = PerformanceRustCalls.begin()
+        defer { PerformanceRustCalls.end("ffi.sky_map_raster_into", started: performanceStart) }
+        #endif
         let drawn = mt_sky_map_raster_into(seconds, UInt32(width), UInt32(height), key.north, key.south, lights,
                                            surface.baseAddress.assumingMemoryBound(to: UInt8.self), surface.bytesPerRow, true,
                                            Double(width) / Double(size.width), large)

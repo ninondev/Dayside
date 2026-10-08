@@ -183,7 +183,7 @@ struct SharingLensView: View {
                     PlannerMenuLabel(text: L10n.string("图片", locale: core.uiLocale), style: nil)
                         .padding(.horizontal, 4)
                         .accessibilityElement(children: .ignore)
-                        .accessibilityLabel(Text("图片"))
+                        .modifier(MenuAccessibleTitle(title: Text("图片")))
                 }
                 .menuStyle(.button).buttonStyle(.plain).menuIndicator(.hidden).fixedSize()
                 Button("保存 HTML…") { store.saveHTML() }.fixedSize()

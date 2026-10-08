@@ -21,7 +21,7 @@ enum FeatureFixture {
     static func install(into hub: FeatureHub, defaults: UserDefaults) {
         hub.register(.people) {
             let store = PeopleStore(defaults: defaults, contactsReader: FixtureContacts())
-            if !UITestFixture.isEmpty {
+            if !UITestFixture.isEmpty && !PerformanceProbe.isRequested {
                 for person in peopleSample() { _ = store.save(person) }
             }
             return PeopleModule(store: store)

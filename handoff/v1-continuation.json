@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "sourceBaseline": "4897939ad3a70f6a6336061f615ac3ccf9d24a8e",
+  "publicBase": "53c21c69fe096d0861bf633a5258b293941f59e0",
+  "scope": {
+    "internalMilestone": "1.0.1",
+    "publicVersion": "1.0.0",
+    "existingBundleVersion": "1.0",
+    "existingBuildNumber": "19",
+    "upgradeDataPreservationRequired": false,
+    "externalUsers": false,
+    "releaseAssetsReplacedByThisHandoff": false
+  },
+  "implemented": [
+    {
+      "paths": [
+        "TahoeTime/Views/Settings/HelpSettingsView.swift"
+      ],
+      "change": "Expose selectable version text through a static accessibility element; retain text selection."
+    },
+    {
+      "change": "macOS 27 menu accessibility, readable controls, and live settings fonts; original input editability hotfix remains present."
+    },
+    {
+      "paths": [
+        "Tools/check_release_identity.py",
+        "Tools/make_dmg.sh",
+        "Tools/test_release_identity.py"
+      ],
+      "change": "Reject Debug/local-preview bundles under release asset names, invalid integrations, ad-hoc signing and unsupported App Group identities. This is a precheck, not authenticated profile or runtime acceptance."
+    },
+    {
+      "paths": [
+        "Tools/perf_ruler.sh",
+        "Tools/perf_build.sh",
+        "TahoeTime/Models/Diagnostics/PerformanceProbe.swift"
+      ],
+      "change": "Guarded optimized test-host instrumentation and alternating isolated performance measurement tools. Production Rust optimization profile is unchanged."
+    }
+  ],
+  "recordedMacValidation": {
+    "quietSuite": {
+      "totalTestCount": 802,
+      "passedTests": 796,
+      "failedTests": 0,
+      "skippedTests": 6,
+      "result": "Passed",
+      "runtimeWarnings": []
+    },
+    "productionSwiftAndTestsUnchangedSinceQuietAcceptance": true,
+    "helpNativeAccessibility": {
+      "system": "macOS 27",
+      "languages": [
+        "zh-Hans",
+        "en",
+        "ru"
+      ],
+      "fontSizes": [
+        "standard",
+        "large",
+        "larger"
+      ],
+      "matrixPassed": 9,
+      "matrixTotal": 9,
+      "actualTextSelectionVerified": true,
+      "copyAndAccessibilityTextRangesVerified": false
+    },
+    "foregroundRuns": [
+      {
+        "total": 13,
+        "passed": 6,
+        "failed": 1,
+        "skipped": 6,
+        "result": "Failed"
+      },
+      {
+        "total": 13,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 6,
+        "result": "Passed"
+      }
+    ],
+    "foregroundFailedTest": "MapScrubTests/earthCopyCommandWorksInNativeFullscreen()",
+    "intermittentCrashResolved": false,
+    "nativeSceneFullscreenCopyExitCyclesPassed": 2,
+    "foregroundPriorityInversionWarningResolved": false,
+    "rawXcresultsAndNativeReceiptsAvailableInCloud": false,
+    "releasePrecheckNegativeControl": {
+      "exit": 1,
+      "outputCreated": false,
+      "errors": [
+        "release_signing_identity",
+        "provisioning_profile_required"
+      ]
+    }
+  },
+  "remaining": [
+    {
+      "priority": 1,
+      "paths": [
+        "TahoeTime/Models/Store.swift",
+        "RustCore/src/store.rs",
+        "TahoeTime/TahoeTime.entitlements",
+        "Tools/check_release_identity.py"
+      ],
+      "problem": "Prove new-install persistence across process restarts with the chosen sandbox/signing identity. Runtime uses group.com.dayside.Dayside; Team-qualified signing and provisioning must agree with runtime. Bare-group ad-hoc sandbox fixture read its writes in-process but failed to persist across a fresh process. No authenticated Developer ID/provisioned acceptance exists."
+    },
+    {
+      "priority": 1,
+      "paths": [
+        "TahoeTimeTests/MapScrubTests.swift",
+        "TahoeTime/Views/WorldMapView.swift"
+      ],
+      "problem": "An initial fullscreen copy/exit test crashed with SIGSEGV after a successful PNG copy. Same-source rerun and two native production Scene observations passed. Root cause remains unresolved; no complete crashing stack was captured."
+    },
+    {
+      "priority": 2,
+      "paths": [
+        "RustCore/src/understand/speed_tests.rs"
+      ],
+      "problem": "Existing 2 ms speed gate failed in all nine profile runs, including the default profile. Record machine conditions and improve the actual work without loosening this gate."
+    }
+  ],
+  "sizeAudit": {
+    "publishedBundle": {
+      "logicalBytes": 29227421,
+      "fileCount": 86,
+      "executableBytes": 11237680,
+      "cityIndexBytes": 14906070,
+      "populationBytes": 235764
+    },
+    "privateBaseline": {
+      "fileCount": 89,
+      "logicalBytes": 29245846,
+      "executableBytes": 11237984,
+      "executableSha256": "e46abf2a9e128b8b72948cb014a70536eaf26cf0324bc01d90f95f242e700224",
+      "dmgBytes": 15844456
+    },
+    "privateCandidatesUseVersion": "1.0",
+    "candidateSignatureAndFileEqualityDoNotEstablishShippingAcceptance": true,
+    "profiles": [
+      {
+        "optLevel": "s",
+        "lto": "thin",
+        "executableBytes": 11259040,
+        "dmgBytes": 15690046,
+        "dmgSavingBytes": 154410,
+        "mountedFilesCompared": 89,
+        "mountedFilesEqual": true,
+        "adopted": false
+      },
+      {
+        "optLevel": "z",
+        "lto": "thin",
+        "executableBytes": 10444608,
+        "dmgBytes": 15572062,
+        "dmgSavingBytes": 272394,
+        "mountedFilesCompared": 89,
+        "mountedFilesEqual": true,
+        "adopted": false
+      },
+      {
+        "optLevel": "3",
+        "lto": "fat",
+        "executableBytes": 11237984,
+        "dmgBytes": 15793748,
+        "dmgSavingBytes": 50708,
+        "mountedFilesCompared": 89,
+        "mountedFilesEqual": true,
+        "adopted": false
+      }
+    ],
+    "speedGate": {
+      "method": "25 samples per 4000-byte fixture, three repeats per profile, nice 10, shared CPU lock",
+      "thresholdMs": 2,
+      "runs": 9,
+      "failures": 9,
+      "profiles": [
+        {
+          "optLevel": "3",
+          "lto": "thin",
+          "runExitCodes": [
+            101,
+            101,
+            101
+          ],
+          "medianOfRunMediansMs": {
+            "place-heavy-prose": 2.634084,
+            "hostile-short-tokens": 4.727625,
+            "mixed-language-email": 3.515
+          }
+        },
+        {
+          "optLevel": "s",
+          "lto": "thin",
+          "runExitCodes": [
+            101,
+            101,
+            101
+          ],
+          "medianOfRunMediansMs": {
+            "place-heavy-prose": 2.860209,
+            "hostile-short-tokens": 5.39725,
+            "mixed-language-email": 3.208458
+          }
+        },
+        {
+          "optLevel": "z",
+          "lto": "thin",
+          "runExitCodes": [
+            101,
+            101,
+            101
+          ],
+          "medianOfRunMediansMs": {
+            "place-heavy-prose": 3.501291,
+            "hostile-short-tokens": 6.124125,
+            "mixed-language-email": 3.773042
+          }
+        }
+      ],
+      "comparableLoad": false,
+      "productionLatencyImprovementOrRegressionEstablished": false
+    },
+    "postingsRepackSuppliedExperiment": {
+      "postings_count": 1011468,
+      "city_count": 235740,
+      "max_city_index": 235739,
+      "old_bits_per_posting": 20,
+      "new_bits_per_posting": 19,
+      "old_bit_payload_bytes": 2528670,
+      "new_bit_payload_bytes": 2402237,
+      "raw_payload_saving_bytes": 126433,
+      "roundtrip_verified_entries": 1011468,
+      "original_section_bytes_with_padding": 2528680,
+      "old_payload_deflate9_bytes": 2407401,
+      "new_payload_deflate9_bytes": 2382422,
+      "old_payload_xz6_bytes": 2290240,
+      "new_payload_xz6_bytes": 2359284,
+      "limitation": "Requires a new versioned reader/writer or explicit width metadata; fewer than 262145 city records; no latency benchmark and no functional application build performed."
+    },
+    "postingsRepackAdopted": false,
+    "productionProfile": {
+      "optLevel": 3,
+      "lto": "thin",
+      "codegenUnits": 1,
+      "panicAbort": false
+    }
+  },
+  "cloudConstraints": {
+    "macOSRuntimeVerificationRequired": true,
+    "linuxRunsDoNotEstablishMacOSAcceptance": true,
+    "historicalOverlayBaseline": "72c423826313ce8b2399fd35eff9ea6f8d61b3f9",
+    "historicalOverlayBaselineIncludedInPublicHistory": false,
+    "historicalOverlayTestsRequireThatExactObject": "Unavailable clone reports an explicit optional-baseline skip; no substitute source is accepted.",
+    "performanceCoordination": "Set DAYSIDE_PERF_COORDINATION_ROOT to the existing host-wide coordination directory containing measure.state and the shared cpu-turn.lock. Every competing workload must use the same lock. No per-run lock directory.",
+    "performanceLaunchGate": "Committed strict HID idle check requires 300 seconds, ignores the launch-while-present flag, and rejects missing or malformed readings. Wrapper also checks the screen guard pause file and continuously monitors the frontmost application.",
+    "optimizedTestHostsAreStockRelease": false,
+    "releaseState": "Source handoff only; no new installer or tag. Existing v1.0 assets remain in place."
+  },
+  "toolValidation": {
+    "standardToolSuite": {
+      "tests": 49,
+      "failures": 0
+    },
+    "performanceToolSuiteInCanonicalSource": {
+      "tests": 58,
+      "failures": 0
+    },
+    "strictIdleLegacyRegressionSuite": {
+      "tests": 13,
+      "failures": 0
+    },
+    "shellSyntaxPassed": true
+  }
+}

@@ -314,7 +314,12 @@ struct WorldMapScene: View {
         let offscreen: Bool
         var animatableData: Double {
             get { seconds }
-            set { seconds = newValue }
+            set {
+                #if DEBUG
+                if seconds != newValue { PerformanceRustCalls.animationFrame() }
+                #endif
+                seconds = newValue
+            }
         }
 
         var body: some View {
