@@ -1,10 +1,10 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-only
-# 「用完之后内存回不回得去」探针：复制 Debug 产物、去掉 App Group 权限重签（与 window_close_probe.sh 同法），
+# 「用完之后内存回不回得去」探针：复制 Debug 产物、重签（与 window_close_probe.sh 同法），
 # 用 MEANTIME_UI_TEST_MEMORY_TOUR=1 让 App 自己走一遍：就绪 → 开面板 3 秒 → 关 → 开工具窗走完十页 → 关 → 静置 60 秒，
 # 每个阶段量一次 vmmap 的 Physical footprint，打印成表。Debug 产物的绝对值比 Release 大，看的是「关窗之后回不回去」的相对量。
 # 用法: Tools/memory_tour_probe.sh [输出目录] [--app <Dayside.app>]；MEANTIME_PROBE_SKIP_BUILD=1 跳过构建。
-#   --app：量给定的产物（Release 隔离预览，数字才是真的；没有 App Group，不弹授权框）。复制一份再跑，原件不动。
+#   --app：量给定的产物（Release 隔离预览，数字才是真的）。复制一份再跑，原件不动。
 #   --in-place：直接量指定的隔离预览，不复制产物。
 #   MEANTIME_TOUR_EARTH_ONLY=1：跳过面板与工具窗；MEANTIME_TOUR_ANIMATION=0：跳转不动画。
 #   MEANTIME_TOUR_FORCE_ANIMATION=1：隔离量尺忽略系统减弱动态效果，让跳转逐帧动。

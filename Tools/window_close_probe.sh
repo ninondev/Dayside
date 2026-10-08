@@ -1,6 +1,6 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-only
-# 自证「关掉工具窗不会退出 App」：复制 Debug 产物、去掉 App Group 权限重签（与 ax_dump_pages.sh 同法），
+# 自证「关掉工具窗不会退出 App」：复制 Debug 产物、重签（与 ax_dump_pages.sh 同法），
 # 用 MEANTIME_UI_TEST_FEATURE=planner 打开工具窗，MEANTIME_UI_TEST_CLOSE_TOOLS_AFTER=4 让它 4 秒后对工具窗 performClose，
 # 再过 2 秒还活着就打印 MEANTIME_TOOLS_CLOSED_STILL_RUNNING。没有这一行 = 关窗把 App 退出了。
 # 用法: Tools/window_close_probe.sh [输出目录]；MEANTIME_PROBE_SKIP_BUILD=1 跳过构建。结束时注销并删除副本，免得 LaunchServices 记住它。
@@ -20,7 +20,6 @@ app="$products/Dayside.app"
 copy="$out/Dayside.app"; "$root/Tools/trash.sh" "$copy"; ditto "$app" "$copy"
 "$root/Tools/trash.sh" "$copy/Contents/PlugIns/"*.xctest
 ent="$out/debug-no-group.entitlements"; cp "$root/TahoeTime/TahoeTime-signing-Debug.entitlements" "$ent"
-/usr/libexec/PlistBuddy -c 'Delete :com.apple.security.application-groups' "$ent"
 sign() { /usr/bin/codesign --force --sign - --timestamp=none "$@" 2>/dev/null; }
 for dylib in "$copy"/Contents/MacOS/*.dylib; do [[ -e "$dylib" ]] && sign "$dylib"; done
 for framework in "$copy"/Contents/Frameworks/*.framework; do [[ -e "$framework" ]] && sign "$framework"; done

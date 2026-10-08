@@ -5,7 +5,7 @@
 # 用法: Tools/ax_dump_pages.sh [输出目录]   默认 backup/ax-dump-<时间>；MEANTIME_AX_PAGES="earth panel" 选面，MEANTIME_AX_LANG=ru 换界面语言
 # MEANTIME_AX_APPEARANCE_POLICY=forced-native 要求两遍原生外观真实切换。
 # 默认 production 保留天色外观策略，分别记录请求与实测外观。
-# 被测 app 是 DerivedData 里 Debug 构建的副本：签名时去掉 application-groups（ad-hoc 签名带群组会引出 TCC 对话框），
+# 被测 app 是 DerivedData 里 Debug 构建的副本，
 # 走 MEANTIME_TEST_HOST=1 的一次性偏好域与 UITestFixture 假数据，不碰安装版数据。转储写在 app 容器的 tmp 里。
 # MEANTIME_AX_NATIVE_CAPTURE=1 或输出目录的 .native-capture 文件启用真实窗口采样。
 # 它沿用截图工具已有的屏幕录制权限；默认仍用进程内位图，不改变权限。
@@ -93,7 +93,6 @@ TEST_BUNDLES
 audit_id="com.dayside.Dayside.audit.$(/usr/bin/uuidgen | /usr/bin/tr '[:upper:]' '[:lower:]')"
 /usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier $audit_id" "$copy/Contents/Info.plist"
 ent="$out/debug-no-group.entitlements"; cp "$root/TahoeTime/TahoeTime-signing-Debug.entitlements" "$ent"
-/usr/libexec/PlistBuddy -c 'Delete :com.apple.security.application-groups' "$ent"
 sign() { /usr/bin/codesign --force --sign - --timestamp=none "$@"; }
 for dylib in "$copy"/Contents/MacOS/*.dylib; do [[ -e "$dylib" ]] && sign "$dylib"; done
 for framework in "$copy"/Contents/Frameworks/*.framework; do [[ -e "$framework" ]] && sign "$framework"; done
