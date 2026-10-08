@@ -1209,6 +1209,9 @@ impl<'a> Scanner<'a> {
 
     /// 只在封闭的列表或范围里补日数省略的月份和年份；普通数字不会从邻近日期借字段。
     fn shared_calendar(&mut self, i: usize) -> Option<usize> {
+        // 至少要有两端：第一端后面没有连接词就凑不成，不必先做端点里只会否决它的钟点检查（范围不受影响）。
+        let shape = self.calendar_endpoint_with(i, false)?;
+        self.calendar_connector(shape.to)?;
         let first = self.calendar_endpoint(i)?;
         let mut endpoints = vec![first];
         let mut separators = Vec::new();
@@ -1260,6 +1263,11 @@ impl<'a> Scanner<'a> {
 
     /// 日期端点可带星期或越南语 ngày；没有月份的端点暂存为日数，只有整段闭合后才发布。
     fn calendar_endpoint(&self, i: usize) -> Option<CalendarEndpoint> {
+        self.calendar_endpoint_with(i, true)
+    }
+
+    /// `checked = false` 时跳过只会否决端点的钟点检查（借读钟点、裸日数其实是钟点）；读出的端点范围相同。
+    fn calendar_endpoint_with(&self, i: usize, checked: bool) -> Option<CalendarEndpoint> {
         let u = self.u;
         let mut at = i;
         if let Some(n) = is(u, at, |s| matches!(s, Sem::Weekday(_))) { at += n; }
@@ -1268,11 +1276,12 @@ impl<'a> Scanner<'a> {
         // 写了自己的钟点、时段或时长单位时，不能把小时数字借读成日数。
         // 各项都是只读判断：先读端点，读不出来（大多数位置）就不必再查这一串。
         let endpoint = if may_start_date(u, at) {
-            self.calendar_endpoint_at(i, at, day_cue.is_some())?
+            self.calendar_endpoint_at(i, at, day_cue.is_some(), checked)?
         } else {
-            debug_assert!(self.calendar_endpoint_at(i, at, day_cue.is_some()).is_none(), "date read at {at} without a date start");
+            debug_assert!(self.calendar_endpoint_at(i, at, day_cue.is_some(), checked).is_none(), "date read at {at} without a date start");
             return None;
         };
+        if !checked { return Some(endpoint); }
         let borrows_clock = Self::explicit_clock(u, at)
             || (at.saturating_sub(6)..at).any(|k| find(u, k, |s| s == Sem::ClockBefore).is_some_and(|(n, _, _)| k + n == at))
             || find(u, at + 1, |s| matches!(s, Sem::Period(_) | Sem::HourUnit | Sem::MinuteUnit | Sem::DayUnit | Sem::DurationAfter)).is_some();
@@ -1280,7 +1289,7 @@ impl<'a> Scanner<'a> {
     }
 
     /// `calendar_endpoint` 跳过星期与 ngày 之后，从 `at` 读端点本身。
-    fn calendar_endpoint_at(&self, i: usize, at: usize, day_cue: bool) -> Option<CalendarEndpoint> {
+    fn calendar_endpoint_at(&self, i: usize, at: usize, day_cue: bool, checked: bool) -> Option<CalendarEndpoint> {
         let u = self.u;
         // ngày D/M[/YYYY] 明写日月顺序，只在闭合范围里使用这个端点。
         if day_cue && u.get(at + 1).is_some_and(|t| is_punct(t, "/") && !t.space_before) {
@@ -1311,9 +1320,11 @@ impl<'a> Scanner<'a> {
         let day = u.get(at).filter(|t| t.kind == UKind::Number && t.text.len() <= 2)?.text.parse::<u8>().ok()?;
         if !(1..=31).contains(&day) { return None; }
         // 省略月份的日数不能抢走完整钟点语法；分钟在前的钟点，以及由明确终点证明的裸起点都保留。
-        let mut clock_probe = Scanner { u, out: Vec::new() };
-        if clock_probe.clock(at).is_some() && clock_probe.out.iter().any(|a| matches!(a.atom, Atom::Clock { .. })) {
-            return None;
+        if checked {
+            let mut clock_probe = Scanner { u, out: Vec::new() };
+            if clock_probe.clock(at).is_some() && clock_probe.out.iter().any(|a| matches!(a.atom, Atom::Clock { .. })) {
+                return None;
+            }
         }
         // 黏着数字分隔符意味着还有自己的数段，不能截取其中的首个数字。
         if u.get(at + 1).is_some_and(|t| !t.space_before && matches!(t.text.as_str(), "/" | "." | ":")) { return None; }
