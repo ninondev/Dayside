@@ -20,9 +20,136 @@ pub(super) enum UKind {
     Punct,
 }
 
+/// 单元的文字。几乎所有词都不超过 22 字节，直接存在单元里，不必为每个词各分配、释放一次堆内存。
+#[derive(Clone)]
+pub(super) enum UnitText {
+    Inline(u8, [u8; UnitText::INLINE]),
+    Heap(Box<str>),
+}
+
+impl UnitText {
+    const INLINE: usize = 22;
+
+    pub(super) fn as_str(&self) -> &str {
+        match self {
+            // SAFETY: 内联字节只由 `TextBuilder` 按字符完整编码写入，长度就是写入的字节数。
+            UnitText::Inline(len, bytes) => unsafe { std::str::from_utf8_unchecked(&bytes[..usize::from(*len)]) },
+            UnitText::Heap(text) => text,
+        }
+    }
+
+    fn from_chars(chars: impl IntoIterator<Item = char>) -> Self {
+        let mut out = TextBuilder::default();
+        for c in chars { out.push(c); }
+        out.finish()
+    }
+}
+
+/// 逐字符拼单元文字：放得下就写进内联缓冲，放不下才转成堆上的字符串。
+#[derive(Default)]
+struct TextBuilder {
+    bytes: [u8; UnitText::INLINE],
+    len: usize,
+    heap: Option<String>,
+}
+
+impl TextBuilder {
+    fn push(&mut self, c: char) {
+        if let Some(heap) = &mut self.heap {
+            heap.push(c);
+        } else if self.len + c.len_utf8() <= UnitText::INLINE {
+            self.len += c.encode_utf8(&mut self.bytes[self.len..]).len();
+        } else {
+            let mut heap = String::with_capacity(2 * UnitText::INLINE);
+            heap.push_str(self.inline());
+            heap.push(c);
+            self.heap = Some(heap);
+        }
+    }
+
+    fn inline(&self) -> &str {
+        // SAFETY: `push` 只写完整编码的字符。
+        unsafe { std::str::from_utf8_unchecked(&self.bytes[..self.len]) }
+    }
+
+    fn finish(self) -> UnitText {
+        match self.heap {
+            Some(heap) => UnitText::Heap(heap.into_boxed_str()),
+            None => UnitText::Inline(self.len as u8, self.bytes),
+        }
+    }
+}
+
+impl From<&str> for UnitText {
+    fn from(text: &str) -> Self {
+        UnitText::from_chars(text.chars())
+    }
+}
+
+impl From<String> for UnitText {
+    fn from(text: String) -> Self {
+        if text.len() <= UnitText::INLINE { UnitText::from(text.as_str()) } else { UnitText::Heap(text.into_boxed_str()) }
+    }
+}
+
+impl Default for UnitText {
+    fn default() -> Self { UnitText::Inline(0, [0; UnitText::INLINE]) }
+}
+
+impl std::ops::Deref for UnitText {
+    type Target = str;
+    fn deref(&self) -> &str { self.as_str() }
+}
+
+impl AsRef<str> for UnitText {
+    fn as_ref(&self) -> &str { self.as_str() }
+}
+
+impl std::borrow::Borrow<str> for UnitText {
+    fn borrow(&self) -> &str { self.as_str() }
+}
+
+impl std::fmt::Debug for UnitText {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result { std::fmt::Debug::fmt(self.as_str(), f) }
+}
+
+impl std::fmt::Display for UnitText {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result { f.write_str(self.as_str()) }
+}
+
+impl PartialEq for UnitText {
+    fn eq(&self, other: &Self) -> bool { self.as_str() == other.as_str() }
+}
+
+impl Eq for UnitText {}
+
+impl PartialEq<str> for UnitText {
+    fn eq(&self, other: &str) -> bool { self.as_str() == other }
+}
+
+impl PartialEq<&str> for UnitText {
+    fn eq(&self, other: &&str) -> bool { self.as_str() == *other }
+}
+
+impl PartialEq<String> for UnitText {
+    fn eq(&self, other: &String) -> bool { self.as_str() == other.as_str() }
+}
+
+impl PartialEq<UnitText> for str {
+    fn eq(&self, other: &UnitText) -> bool { self == other.as_str() }
+}
+
+impl PartialEq<UnitText> for &str {
+    fn eq(&self, other: &UnitText) -> bool { *self == other.as_str() }
+}
+
+impl PartialEq<UnitText> for String {
+    fn eq(&self, other: &UnitText) -> bool { self.as_str() == other.as_str() }
+}
+
 #[derive(Debug, Clone)]
 pub(super) struct Unit {
-    pub(super) text: String,
+    pub(super) text: UnitText,
     pub(super) kind: UKind,
     /// 折叠文本里的字符区间。
     pub(super) start: usize,
@@ -34,7 +161,7 @@ pub(super) struct Unit {
     /// 原文里首字母大写（零散的拉丁词当地名要看：「Tokyo」可以、「meet」不行；整段都小写时不看）。
     pub(super) capital: bool,
     /// 原文（IANA 标识符要原样交给宿主：America/New_York）。
-    pub(super) raw: String,
+    pub(super) raw: UnitText,
     pub(super) evidence_memo: super::language::EvidenceMemo,
     lexicon_memo: LexiconMemo,
 }
@@ -103,7 +230,7 @@ pub(super) fn units(f: &text::Folded) -> Vec<Unit> {
                 space = true;
                 if let Some(last) = out.last_mut() {
                     if last.kind == UKind::Punct && last.text == "\n" {
-                        last.text = "\n\n".to_owned();
+                        last.text = "\n\n".into();
                         last.end = t.end;
                         continue;
                     }
@@ -112,11 +239,11 @@ pub(super) fn units(f: &text::Folded) -> Vec<Unit> {
                         continue;
                     }
                 }
-                out.push(Unit { text: "\n".to_owned(), kind: UKind::Punct, start: t.start, end: t.end, space_before: true, upper: false, capital: false, raw: "\n".to_owned(), evidence_memo: Default::default(), lexicon_memo: Default::default() });
+                out.push(Unit { text: "\n".into(), kind: UKind::Punct, start: t.start, end: t.end, space_before: true, upper: false, capital: false, raw: "\n".into(), evidence_memo: Default::default(), lexicon_memo: Default::default() });
             }
             Kind::Cjk => {
                 for i in t.start..t.end {
-                    out.push(Unit { text: f.chars[i].to_string(), kind: UKind::Cjk, start: i, end: i + 1, space_before: space && i == t.start, upper: false, capital: false, raw: f.original[i].to_string(), evidence_memo: Default::default(), lexicon_memo: Default::default() });
+                    out.push(Unit { text: UnitText::from_chars([f.chars[i]]), kind: UKind::Cjk, start: i, end: i + 1, space_before: space && i == t.start, upper: false, capital: false, raw: UnitText::from_chars([f.original[i]]), evidence_memo: Default::default(), lexicon_memo: Default::default() });
                 }
                 space = false;
             }
@@ -129,8 +256,8 @@ pub(super) fn units(f: &text::Folded) -> Vec<Unit> {
                     Kind::Number => UKind::Number,
                     _ => UKind::Punct,
                 };
-                let raw = original_text(f, t.start, t.end);
-                let text = f.chars[t.start..t.end].iter().collect();
+                let raw = unit_original(f, t.start, t.end);
+                let text = UnitText::from_chars(f.chars[t.start..t.end].iter().copied());
                 out.push(Unit { text, kind, start: t.start, end: t.end, space_before: space, upper, capital, raw, evidence_memo: Default::default(), lexicon_memo: Default::default() });
                 space = false;
             }
@@ -146,7 +273,7 @@ pub(super) fn units(f: &text::Folded) -> Vec<Unit> {
             && out[i + 2].text == "m"
         {
             let end = if i + 3 < out.len() && out[i + 3].text == "." { i + 3 } else { i + 2 };
-            out[i].text = format!("{}m", out[i].text);
+            out[i].text = format!("{}m", out[i].text).into();
             out[i].end = out[end].end;
             absorbed.extend(i + 1..=end);
             i = end + 1;
@@ -170,7 +297,7 @@ pub(super) fn units(f: &text::Folded) -> Vec<Unit> {
 /// 折叠区间对应的原文（一个原文字符折成两个时 `original` 里重复，去掉相邻的重复位）。
 pub(super) fn original_text(f: &text::Folded, start: usize, end: usize) -> String {
     // 全是 ASCII 且一个接一个（每个折成一个字符，中间没有略过的字符）：就是原文那一段。
-    if start < end && (start..end).all(|i| f.original[i].is_ascii() && (i == start || f.span[i].0 == f.span[i - 1].1)) {
+    if contiguous_ascii(f, start, end) {
         return f.source_text(start, end).to_owned();
     }
     let mut out = String::with_capacity(end.saturating_sub(start));
@@ -182,6 +309,26 @@ pub(super) fn original_text(f: &text::Folded, start: usize, end: usize) -> Strin
         last = Some(f.span[i]);
     }
     out
+}
+
+/// 同 `original_text`，给单元用：短的原文不上堆。
+fn unit_original(f: &text::Folded, start: usize, end: usize) -> UnitText {
+    if contiguous_ascii(f, start, end) {
+        return UnitText::from(f.source_text(start, end));
+    }
+    let mut out = TextBuilder::default();
+    let mut last: Option<(usize, usize)> = None;
+    for i in start..end {
+        if last != Some(f.span[i]) {
+            out.push(f.original[i]);
+        }
+        last = Some(f.span[i]);
+    }
+    out.finish()
+}
+
+fn contiguous_ascii(f: &text::Folded, start: usize, end: usize) -> bool {
+    start < end && (start..end).all(|i| f.original[i].is_ascii() && (i == start || f.span[i].0 == f.span[i - 1].1))
 }
 
 // ───────────────────────────── 词表匹配 ─────────────────────────────
@@ -594,7 +741,7 @@ mod tests {
         }
         let mut changed = cached.clone();
         assert!(changed.iter().all(|unit| unit.lexicon_memo.0.is_none()));
-        changed[0].text = "qzxxyzz".to_owned();
+        changed[0].text = "qzxxyzz".into();
         assert_eq!(find(&changed, 0, |_| true), None);
         prepare_lexicon(&mut changed);
         assert_eq!(find(&changed, 0, |_| true), None);

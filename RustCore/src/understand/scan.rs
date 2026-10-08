@@ -140,7 +140,7 @@ pub(super) fn classify_numbers(u: &mut [Unit]) {
     for (from, to) in claims {
         for t in &mut u[from..to] {
             t.kind = UKind::Punct;
-            t.text.clear();
+            t.text = Default::default();
             super::units::reset_lexicon(t);
         }
     }

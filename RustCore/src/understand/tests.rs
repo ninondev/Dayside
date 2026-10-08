@@ -909,7 +909,7 @@ fn debug_probe() {
     let text = std::env::var("PROBE").unwrap_or_default();
     let folded = fold(&text);
     let u = units(&folded);
-    println!("units: {:?}", u.iter().map(|t| (t.text.clone(), t.capital)).collect::<Vec<_>>());
+    println!("units: {:?}", u.iter().map(|t| (t.text.as_str().to_owned(), t.capital)).collect::<Vec<_>>());
     let mut scanner = Scanner { u: &u, out: Vec::new() };
     scanner.scan();
     for a in &scanner.out {
