@@ -278,6 +278,7 @@
 		AC3190000000000000000001 /* LateNotificationValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3190000000000000000002;};
 		C1783D413254DED0679BA333 /* EpigraphAccessibilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A07416E6107203770AAFC1;};
 		235CDF3A4AFDBEC5E302C546 /* NearbyPlaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F268D9E10C65973C7284E81F;};
+		AF648BDDC17EACF9530DFD41 /* SearchFieldEditingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17767842658D3AAB274F6880;};
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -535,6 +536,7 @@
 		AC3190000000000000000002 /* LateNotificationValueTests.swift */ = {isa = PBXFileReference; path = "TahoeTimeTests/LateNotificationValueTests.swift"; sourceTree = SOURCE_ROOT; lastKnownFileType = sourcecode.swift;};
 		E5A07416E6107203770AAFC1 /* EpigraphAccessibilityTests.swift */ = {isa = PBXFileReference; path = "TahoeTimeTests/EpigraphAccessibilityTests.swift"; sourceTree = SOURCE_ROOT; lastKnownFileType = sourcecode.swift;};
 		F268D9E10C65973C7284E81F /* NearbyPlaceTests.swift */ = {isa = PBXFileReference; path = "TahoeTimeTests/NearbyPlaceTests.swift"; sourceTree = SOURCE_ROOT; lastKnownFileType = sourcecode.swift;};
+		17767842658D3AAB274F6880 /* SearchFieldEditingTests.swift */ = {isa = PBXFileReference; path = "TahoeTimeTests/SearchFieldEditingTests.swift"; sourceTree = SOURCE_ROOT; lastKnownFileType = sourcecode.swift;};
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -720,6 +722,8 @@
 			sourceTree = "<group>";
 		};
 		FC28A37D2C6C388A27D487D2 = {isa = PBXGroup; name = "Feature files"; children = (
+				17767842658D3AAB274F6880,
+
 				E5A07416E6107203770AAFC1,
 				F268D9E10C65973C7284E81F,
 				AC3190000000000000000002,
@@ -1427,6 +1431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF648BDDC17EACF9530DFD41 /* SearchFieldEditingTests.swift in Sources */,
 				C1783D413254DED0679BA333 /* EpigraphAccessibilityTests.swift in Sources */,
 				235CDF3A4AFDBEC5E302C546 /* NearbyPlaceTests.swift in Sources */,
 				021B40024E32DBB0D163445A /* Copy2TravelHintTests.swift in Sources */,
@@ -1609,7 +1614,7 @@
 				/* 调试预览链接会覆盖快捷指令依赖清单，改用单一可执行文件。 */
 				ENABLE_DEBUG_DYLIB = NO;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = TahoeTime/Info.plist;
@@ -1643,7 +1648,7 @@
 				CODE_SIGN_STYLE = Manual;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = TahoeTime/Info.plist;
@@ -1676,7 +1681,7 @@
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGN_STYLE = Manual;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
@@ -1698,7 +1703,7 @@
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGN_STYLE = Manual;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
@@ -1714,8 +1719,8 @@
 		04B311DC209A17FA0B383CE2 = {isa = XCBuildConfiguration; name = Release; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 26.0; IPHONEOS_DEPLOYMENT_TARGET = 26.0; SDKROOT = auto; SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator"; SWIFT_VERSION = 6.0; ENABLE_USER_SCRIPT_SANDBOXING = NO; CODE_SIGNING_ALLOWED = NO; SWIFT_OPTIMIZATION_LEVEL = "-Osize"; };};
 		15A0AC871254CE1815A80591 = {isa = XCBuildConfiguration; name = Debug; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 26.0; SDKROOT = macosx; SWIFT_VERSION = 6.0; ENABLE_USER_SCRIPT_SANDBOXING = NO; CODE_SIGNING_ALLOWED = NO; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; };};
 		ED426DBAF980CAA93227E220 = {isa = XCBuildConfiguration; name = Release; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 26.0; SDKROOT = macosx; SWIFT_VERSION = 6.0; ENABLE_USER_SCRIPT_SANDBOXING = NO; CODE_SIGNING_ALLOWED = NO; SWIFT_OPTIMIZATION_LEVEL = "-Osize"; };};
-		AB1000000000000000000010 /* Debug */ = {isa = XCBuildConfiguration; name = Debug; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 26.0; SDKROOT = macosx; SWIFT_VERSION = 6.0; ENABLE_USER_SCRIPT_SANDBOXING = NO; CODE_SIGN_STYLE = Manual; CODE_SIGN_IDENTITY = "-"; "CODE_SIGN_IDENTITY[sdk=macosx*]" = "-"; GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = com.dayside.DaysideUITests; PRODUCT_NAME = "$(TARGET_NAME)"; CURRENT_PROJECT_VERSION = 18; MARKETING_VERSION = 1.0; SWIFT_EMIT_LOC_STRINGS = NO; TEST_TARGET_NAME = TahoeTime; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; };};
-		AB1000000000000000000011 /* Release */ = {isa = XCBuildConfiguration; name = Release; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 26.0; SDKROOT = macosx; SWIFT_VERSION = 6.0; ENABLE_USER_SCRIPT_SANDBOXING = NO; CODE_SIGN_STYLE = Manual; CODE_SIGN_IDENTITY = "-"; "CODE_SIGN_IDENTITY[sdk=macosx*]" = "-"; GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = com.dayside.DaysideUITests; PRODUCT_NAME = "$(TARGET_NAME)"; CURRENT_PROJECT_VERSION = 18; MARKETING_VERSION = 1.0; SWIFT_EMIT_LOC_STRINGS = NO; TEST_TARGET_NAME = TahoeTime; };};
+		AB1000000000000000000010 /* Debug */ = {isa = XCBuildConfiguration; name = Debug; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 26.0; SDKROOT = macosx; SWIFT_VERSION = 6.0; ENABLE_USER_SCRIPT_SANDBOXING = NO; CODE_SIGN_STYLE = Manual; CODE_SIGN_IDENTITY = "-"; "CODE_SIGN_IDENTITY[sdk=macosx*]" = "-"; GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = com.dayside.DaysideUITests; PRODUCT_NAME = "$(TARGET_NAME)"; CURRENT_PROJECT_VERSION = 19; MARKETING_VERSION = 1.0; SWIFT_EMIT_LOC_STRINGS = NO; TEST_TARGET_NAME = TahoeTime; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; };};
+		AB1000000000000000000011 /* Release */ = {isa = XCBuildConfiguration; name = Release; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 26.0; SDKROOT = macosx; SWIFT_VERSION = 6.0; ENABLE_USER_SCRIPT_SANDBOXING = NO; CODE_SIGN_STYLE = Manual; CODE_SIGN_IDENTITY = "-"; "CODE_SIGN_IDENTITY[sdk=macosx*]" = "-"; GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = com.dayside.DaysideUITests; PRODUCT_NAME = "$(TARGET_NAME)"; CURRENT_PROJECT_VERSION = 19; MARKETING_VERSION = 1.0; SWIFT_EMIT_LOC_STRINGS = NO; TEST_TARGET_NAME = TahoeTime; };};
 		I0500000000000000000003 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1735,7 +1740,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Dayside;
 				INFOPLIST_FILE = DaysideiOS/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "扫描 Mac 上 Dayside 的二维码，把地点清单导进来。";
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dayside.Dayside;
 				PRODUCT_MODULE_NAME = DaysideiOS;
@@ -1770,7 +1775,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Dayside;
 				INFOPLIST_FILE = DaysideiOS/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "扫描 Mac 上 Dayside 的二维码，把地点清单导进来。";
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dayside.Dayside;
 				PRODUCT_MODULE_NAME = DaysideiOS;

@@ -5,6 +5,7 @@ R1 可交互控件没有任何可读名字（label/title/value/placeholder 全�
 R2 图片是可达元素却没有描述（装饰图应 accessibilityHidden）；
 R3 可交互控件的命中区域小于 24×24 pt；
 R4 可交互控件被禁用但没有名字（VoiceOver 只会念「按钮，已停用」）。
+R7 搜索框被读成静态文字，或带占位文字的输入框没有可编辑文字角色。
 用法: ax_check.py <目录>  （目录里是 <page>.json）"""
 import json, sys, os, glob
 
@@ -17,7 +18,7 @@ TEXT_ENTRY = {"AXTextField", "AXSearchField", "AXComboBox", "AXTextArea"}
 
 def name_of(n):
     # 输入框的内容不是它的名字：只有 label/title/placeholder 算。
-    keys = ("label", "title", "titleUIElement", "placeholder", "help") if n.get("role") in TEXT_ENTRY else ("label", "title", "titleUIElement", "value", "placeholder", "help")
+    keys = ("label", "title", "titleUIElement", "placeholderValue", "placeholder", "help") if n.get("role") in TEXT_ENTRY else ("label", "title", "titleUIElement", "value", "placeholderValue", "placeholder", "help")
     for k in keys:
         v = n.get(k)
         if isinstance(v, str) and v.strip():
@@ -90,14 +91,18 @@ def check_nodes(nodes, shades):
     findings = []
     compact = 0
     for n in nodes:
-        if n.get("class", "").startswith(SYSTEM):
-            continue
         role = n.get("role", "")
         f = n.get("frame", {})
         # A lazy layout container reports an infinite size, written as null; treat it as zero-size.
         w, h = (f.get("w") or 0), (f.get("h") or 0)
         x, y = (f.get('x') or 0), (f.get('y') or 0)
         where = f"{role} {n.get('class','')} @({x:.0f},{y:.0f}) {w:.0f}×{h:.0f}"
+        placeholder = n.get("placeholderValue") or n.get("placeholder")
+        if ((role == "AXStaticText" and n.get("subrole") == "AXSearchField")
+                or (isinstance(placeholder, str) and placeholder.strip() and role not in TEXT_ENTRY)):
+            findings.append(("R7 输入框没有可编辑文字角色", f"{where} subrole={n.get('subrole', '')} 「{name_of(n)}」"))
+        if n.get("class", "").startswith(SYSTEM):
+            continue
         if role in INTERACTIVE and n.get("isElement", True):
             if not name_of(n):
                 findings.append(("R1 无名字的控件", where))

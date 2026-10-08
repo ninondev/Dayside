@@ -42,7 +42,7 @@ def frontmost() -> dict:
     if front == "[ NULL ]":
         return {"front": None, "info": None, "dayside": False}
     info = subprocess.check_output(
-        ["/usr/bin/lsappinfo", "info", "-only", "name,bundleid,pid,bundlepath", front], text=True, timeout=0.4
+        ["/usr/bin/lsappinfo", "-all", "info", "-only", "name,bundleid,pid,bundlepath", front], text=True, timeout=0.4
     ).strip()
     if not re.fullmatch(r"ASN:0x[0-9a-fA-F]+-0x[0-9a-fA-F]+:", front):
         raise ValueError("Missing frontmost application identity")
