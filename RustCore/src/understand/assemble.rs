@@ -174,7 +174,7 @@ impl Context<'_> {
                 continue;
             }
             let start = j;
-            let mut text = u[j].text.clone();
+            let mut text = u[j].text.as_str().to_owned();
             j += 1;
             while j + 1 < e && glued_joint(u, j) {
                 text.push_str(&u[j].text);
@@ -241,7 +241,7 @@ impl Context<'_> {
                 if time_word && !(CITY_HEAD_GLUE.contains(&u[j].text.as_str()) && words.first().is_some_and(|head: &String| CITY_HEADS.contains(&head.as_str()))) || (words.is_empty() && (find(u, j, |x| matches!(x, Sem::Stop)).is_some() && !(u[j].capital && ["los", "las", "la", "le", "el", "il", "l"][..].contains(&u[j].text.as_str()) && u.get(j + 1).is_some_and(|t| t.capital)) || super::language::ordinary_noun(u, j))) {
                     break;
                 }
-                let mut word = u[j].text.clone();
+                let mut word = u[j].text.as_str().to_owned();
                 j += 1;
                 while j + 1 < u.len() && glued_joint(u, j) && !taken[j + 1] {
                     word.push_str(&u[j].text);
@@ -604,7 +604,7 @@ impl Context<'_> {
             let mut seq = base.clone();
             let mut k = i + 1;
             while seq.len() < units.len() - 1 && k < u.len() {
-                seq.push(u[k].text.clone());
+                seq.push(u[k].text.as_str().to_owned());
                 k += 1;
             }
             if seq.len() == units.len() - 1 && (0..seq.len()).all(|x| seq[x] == units[x + 1]) {

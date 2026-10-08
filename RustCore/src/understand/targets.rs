@@ -6,7 +6,7 @@ use super::scan::{words_after, Atom, Located};
 use super::text::fold_str;
 use super::types::ZoneRef;
 use super::units::{find, phrase_units, UKind, Unit};
-use super::table_storage::FastMap;
+use super::table_storage::{FastMap, FastSet};
 use std::sync::OnceLock;
 
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -345,7 +345,7 @@ fn table(entries: &[(&'static str, &[&str])]) -> Table {
     out
 }
 fn matched<'a>(table: &'a Table, u: &[Unit], at: usize) -> Option<&'a Form> {
-    table.get(&u.get(at)?.text)?.iter().find(|form| {
+    table.get(u.get(at)?.text.as_str())?.iter().find(|form| {
         u.get(at..at + form.units.len()).is_some_and(|span| {
             span.iter()
                 .zip(&form.units)
@@ -521,12 +521,18 @@ pub(super) fn scan(u: &[Unit], atoms: &[Located]) -> Vec<Phrase> {
     let prefix = PREFIX_TABLE.get_or_init(|| table(PREFIX));
     let suffix = SUFFIX_TABLE.get_or_init(|| table(SUFFIX));
     let local = LOCAL_TABLE.get_or_init(|| table(LOCAL));
+    // 三张表的首词合在一起：这个位置的词不是任何说法的开头时，不必逐表再查。
+    static FIRST_WORDS: OnceLock<FastSet<&'static str>> = OnceLock::new();
+    let first_words = FIRST_WORDS.get_or_init(|| [prefix, suffix, local].iter().flat_map(|t| t.keys().map(String::as_str)).collect());
     let mut out: Vec<Phrase> = Vec::new();
     let mut i = 0;
     while i < u.len() {
+        let starts_form = first_words.contains(u[i].text.as_str());
+        let at = i;
+        let here = move |table: &'static Table| if starts_form { matched(table, u, at) } else { None };
         let arrow =
             u[i].text == "→" || u[i].text == "-" && u.get(i + 1).is_some_and(|t| t.text == ">");
-        if let Some(form) = matched(prefix, u, i) {
+        if let Some(form) = here(prefix) {
             let name_from = i + form.units.len();
             // 问句末尾的介词可与本地说法共用：「jam berapa di sini」。
             let local_match = matched(local, u, name_from).map(|form| (name_from, form))
@@ -596,7 +602,7 @@ pub(super) fn scan(u: &[Unit], atoms: &[Located]) -> Vec<Phrase> {
                 continue;
             }
         }
-        if let Some(form) = matched(local, u, i).filter(|form| {
+        if let Some(form) = here(local).filter(|form| {
             // 法语 hier 是昨天；德荷语的系词或独立荷语证据才能把它读作这里。
             u[i].text != "hier" || here_copula_end(u, i, i + form.units.len()) > i + form.units.len()
                 || super::language::supported_language(u, i, form.units.len(), Sem::LocalZone, None) == Some("nl")
@@ -628,7 +634,7 @@ pub(super) fn scan(u: &[Unit], atoms: &[Located]) -> Vec<Phrase> {
             i = to;
             continue;
         }
-        if let Some(form) = matched(suffix, u, i) {
+        if let Some(form) = here(suffix) {
             if let Some((mut from, name_to)) = name_before(u, i, form.lang) {
                 // Word-form clocks share a CJK run with the topic and place:
                 // 九点是纽约几点 / 9時は東京では何時. A name cannot eat the
