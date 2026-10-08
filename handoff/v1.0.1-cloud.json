@@ -1,0 +1,292 @@
+{
+ "schemaVersion": 1,
+ "continues": "handoff/v1-continuation.json",
+ "branch": "codex/v1.0.1-handoff",
+ "head": "f510644",
+ "scope": {
+  "internalMilestone": "1.0.1",
+  "publicVersion": "1.0.0",
+  "bundleVersion": "1.0",
+  "nextBuildNumber": "20",
+  "upgradeDataPreservationRequired": false,
+  "externalUsers": false
+ },
+ "process": {
+  "implementation": "Codex was unavailable in the cloud session (no CLI or API key). Per the user's instruction, Claude did the hard parts and delegated bounded pieces (tool scripts, doc edits, a read-only memory survey) to Haiku subagents with short prompts, then reviewed every change.",
+  "macAcceptancePrompt": "handoff/v1.0.1-mac-acceptance-prompt.md"
+ },
+ "commits": [
+  {
+   "commit": "f510644",
+   "subject": "Reserve the span list from the character count"
+  },
+  {
+   "commit": "85f2e71",
+   "subject": "Reserve the folded text up front and skip checks whose answer is fixed"
+  },
+  {
+   "commit": "c1e2017",
+   "subject": "Keep short unit text inline and look up question forms once per word"
+  },
+  {
+   "commit": "b6804ea",
+   "subject": "Fold ASCII directly and hash the zone, abbreviation and country lookups"
+  },
+  {
+   "commit": "ad7f4d3",
+   "subject": "Store segment language voters in one flat table"
+  },
+  {
+   "commit": "9310ec2",
+   "subject": "Defer calendar endpoint clock checks until a connector follows"
+  },
+  {
+   "commit": "b118960",
+   "subject": "Answer \"what time is it in X\" with the time there now"
+  },
+  {
+   "commit": "e66518e",
+   "subject": "Hash the hot lexicon lookups and skip date readers that cannot start"
+  },
+  {
+   "commit": "5972941",
+   "subject": "Skip work the parser repeats or does not need"
+  },
+  {
+   "commit": "e59316d",
+   "subject": "Add Developer ID signing and notarization for release DMGs"
+  },
+  {
+   "commit": "2bef563",
+   "subject": "Use the smart city search in the search box; rank alias coincidences last"
+  },
+  {
+   "commit": "fa74259",
+   "subject": "Skip phrases that cannot match and repeated city index reads"
+  },
+  {
+   "commit": "5ad8b74",
+   "subject": "Fix dangling \"and\" in the privacy page storage sentence"
+  },
+  {
+   "commit": "755e396",
+   "subject": "Trim per-token allocations in understand front end"
+  },
+  {
+   "commit": "aef1d65",
+   "subject": "Remove string comparisons, clones and SipHash from parser hot paths"
+  },
+  {
+   "commit": "146fbc1",
+   "subject": "Cut repeated work in the understand parser"
+  },
+  {
+   "commit": "9ecd68e",
+   "subject": "Return Earth poster pixels when CoreGraphics releases the image; keep crash reports"
+  },
+  {
+   "commit": "366cb67",
+   "subject": "Store preferences in the sandbox container instead of an App Group"
+  }
+ ],
+ "resolvedInCloud": [
+  {
+   "priority": 1,
+   "item": "New-install persistence and signing",
+   "change": "Preferences moved from the App Group suite to the sandbox container's UserDefaults.standard; no signing policy declares an App Group; check_entitlements.sh and check_release_identity.py reject one; testAppGroupSuiteIsUsableInSandbox is no longer skipped.",
+   "macProofStillRequired": true
+  },
+  {
+   "priority": 1,
+   "item": "Fullscreen copy/exit crash",
+   "change": "EarthPoster pixel buffers are returned to PixelPool by the CGDataProvider release callback, so the buffer lives exactly as long as the CGImage; test_swift_suite.sh copies new crash reports (Tools/collect_crash_reports.py) into the log directory after every run.",
+   "rootCauseConfirmed": false,
+   "macProofStillRequired": true
+  },
+  {
+   "priority": 2,
+   "item": "2 ms understand speed gate",
+   "change": "Equivalence-preserving optimizations only; gate, fixtures, sample count and Rust release profile (opt 3, thin LTO, cgu 1) unchanged; output checksums identical after every batch.",
+   "macProofStillRequired": true
+  },
+  {
+   "item": "City search",
+   "change": "The search box uses search_smart (la, niuyue, 东京都, ığdır); alias continuations of a complete name rank after the other hits (new york no longer lists Jakarta)."
+  },
+  {
+   "item": "Current-time questions",
+   "change": "Present-tense target questions without a clock (what time is it in Tokyo, 东京几点) answer relativeMinutes 0 with the target; referring/future forms stay unanswered. User approved changing the pinned blank-line test."
+  },
+  {
+   "item": "Release signing",
+   "change": "Tools/release_sign_notarize.sh (Developer ID re-sign, DMG, notarytool, stapler, Gatekeeper check) and MEANTIME_SIGN_IDENTITY in sign_bundle.sh; TahoeTime.entitlements gains the calendar entitlement."
+  },
+  {
+   "item": "Small fixes",
+   "change": "privacy.html dangling 'and'; stale App Group build-phase comment; debug-no-group entitlement copies renamed."
+  }
+ ],
+ "speedMeasurement": {
+  "method": "valgrind callgrind instruction counts (Ir) inside understand::dispatch, median of the 27 calls per fixture in one understand_speed_gate run, Linux x86_64 release build with debuginfo. Wall time on the shared cloud VM is too noisy to compare.",
+  "projection": "Projected Mac ms = Ir (millions) x Mac ms per M Ir from the 1.0 baseline (recorded Mac medians / baseline Ir). The instruction mix changed, so this is an estimate; the Mac run decides.",
+  "macMsPerMillionIr": {
+   "place-heavy-prose": 0.13,
+   "hostile-short-tokens": 0.126,
+   "mixed-language-email": 0.16
+  },
+  "macBaselineMs": {
+   "place-heavy-prose": 2.634084,
+   "hostile-short-tokens": 4.727625,
+   "mixed-language-email": 3.515
+  },
+  "batches": [
+   {
+    "label": "1.0 baseline",
+    "commit": "f5d5cb3",
+    "ir": {
+     "place-heavy-prose": 20.29,
+     "hostile-short-tokens": 37.56,
+     "mixed-language-email": 22.01
+    }
+   },
+   {
+    "label": "batch 3",
+    "commit": "aef1d65",
+    "ir": {
+     "place-heavy-prose": 15.67,
+     "hostile-short-tokens": 22.12,
+     "mixed-language-email": 16.02
+    }
+   },
+   {
+    "label": "batch 4",
+    "commit": "755e396",
+    "ir": {
+     "place-heavy-prose": 15.28,
+     "hostile-short-tokens": 21.52,
+     "mixed-language-email": 15.57
+    }
+   },
+   {
+    "label": "batches 5-6",
+    "commit": "fa74259",
+    "ir": {
+     "place-heavy-prose": 13.47,
+     "hostile-short-tokens": 19.3,
+     "mixed-language-email": 13.97
+    }
+   },
+   {
+    "label": "batch 7",
+    "commit": "5972941",
+    "ir": {
+     "place-heavy-prose": 12.38,
+     "hostile-short-tokens": 17.64,
+     "mixed-language-email": 12.68
+    }
+   },
+   {
+    "label": "batch 8",
+    "commit": "e66518e",
+    "ir": {
+     "place-heavy-prose": 11.66,
+     "hostile-short-tokens": 16.42,
+     "mixed-language-email": 11.93
+    }
+   },
+   {
+    "label": "batch 9",
+    "commit": "9310ec2",
+    "ir": {
+     "place-heavy-prose": 11.66,
+     "hostile-short-tokens": 15.85,
+     "mixed-language-email": 11.88
+    }
+   },
+   {
+    "label": "batch 10",
+    "commit": "ad7f4d3",
+    "ir": {
+     "place-heavy-prose": 11.52,
+     "hostile-short-tokens": 15.7,
+     "mixed-language-email": 11.71
+    }
+   },
+   {
+    "label": "batches 11-12",
+    "commit": "b6804ea",
+    "ir": {
+     "place-heavy-prose": 11.01,
+     "hostile-short-tokens": 14.91,
+     "mixed-language-email": 11.11
+    }
+   },
+   {
+    "label": "batch 13",
+    "commit": "c1e2017",
+    "ir": {
+     "place-heavy-prose": 10.48,
+     "hostile-short-tokens": 13.91,
+     "mixed-language-email": 10.49
+    }
+   },
+   {
+    "label": "batch 14",
+    "commit": "85f2e71",
+    "ir": {
+     "place-heavy-prose": 10.35,
+     "hostile-short-tokens": 13.5,
+     "mixed-language-email": 10.43
+    }
+   },
+   {
+    "label": "batch 15",
+    "commit": "f510644",
+    "ir": {
+     "place-heavy-prose": 10.3,
+     "hostile-short-tokens": 13.46,
+     "mixed-language-email": 10.4
+    }
+   }
+  ],
+  "projectedMacMs": {
+   "place-heavy-prose": 1.34,
+   "hostile-short-tokens": 1.7,
+   "mixed-language-email": 1.66
+  }
+ },
+ "notDoneInCloud": [
+  "Swift build and the 802-test suite (no Swift toolchain on Linux).",
+  "Cross-process persistence on a fresh install with ad hoc and Developer ID signing.",
+  "Foreground fullscreen copy/exit loop with crash collection.",
+  "Mac speed gate under the recorded method.",
+  "Memory tour of the Earth window (README known issue 4); suspects listed in the acceptance prompt.",
+  "Developer ID certificate, notarytool credentials, signing, notarization, DMG, release gates, publishing.",
+  "Eyeballing the new current-time answer and search results in the UI."
+ ],
+ "binarySize": {
+  "source": "User's earlier audit of the published v1.0 arm64 DMG (not committed) plus a Linux x86_64 link probe of the Rust staticlib that keeps all 20 exported C symbols with --gc-sections.",
+  "auditFindings": "Dayside.app 29.23 MB: cities.ttcity 14.91 MB, main executable 11.24 MB (90% together); __swift5_typeref 590 KB with deep concrete SwiftUI compositions; no stray debug files, duplicates or embedded runtimes.",
+  "rustEstimateLinuxX86_64": {
+   "codeMB": 3.0,
+   "staticTablesMB": 1.5,
+   "unwindTablesMB": 0.27,
+   "largestCode": {
+    "core generic instantiations": "0.80 MB",
+    "understand::assemble": "0.21 MB",
+    "serde_json": "0.17 MB",
+    "understand::scan": "0.14 MB"
+   }
+  },
+  "conclusion": "Rust is roughly 4.5-5 MB of the 11.24 MB executable, Swift the rest; nothing large can be dropped without losing features. Size work is optional after acceptance (prompt step 11)."
+ },
+ "releaseIdentity": "The published v1.0 assets carry the local-preview identity and ad hoc signing (audit). check_release_identity.py rejects that; package_release.sh only produces Dayside-All-tools-local-preview-* DMGs; official assets come only from Tools/release_sign_notarize.sh.",
+ "decisionsForTheUser": [
+  "How to publish the signed 1.0 (build 20) given the existing v1.0 tag and release: A) move the v1.0 tag and replace the assets (recommended, no external users), or B) keep v1.0 and add a new tag such as v1.0-build20.",
+  "Keep New York's display name 'New York' (renaming back to 'New York City' keeps recognition of 'new york' but breaks the pinyin 'niuyue' unless the errata and pinyin table are regenerated).",
+  "'time in tokyo' / 'tokyo time' without a question word still yield nothing; adding them would change how existing sentences read."
+ ],
+ "preexistingNotes": [
+  "cargo clippy --all-targets fails on Linux only because src/bin/make_local_preview.rs uses macOS-only libc::renamex_np."
+ ]
+}
