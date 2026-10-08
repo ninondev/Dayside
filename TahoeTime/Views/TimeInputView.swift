@@ -219,6 +219,9 @@ struct TimeInputView: View {
                 let end = peek == nil ? endDate(chosen.item) : nil
                 let zones = Self.resultZones(target: chosen.item.target, source: chosen.item.zone, local: .autoupdatingCurrent,
                                              saved: model.zones.map(\.timeZone))
+                #if DEBUG
+                let _ = PerformanceProbe.recordConversion(places: zones.count)
+                #endif
                 MomentTable(places: zones.map { place($0, item: chosen.item, at: start) }, start: start, end: endDate(chosen.item),
                             dayReference: chosen.item.zone, peek: $peek)
                     .padding(.top, 24)
@@ -584,12 +587,13 @@ struct TimeInputView: View {
                 HStack(spacing: 4) {
                     Text("其他写法")
                     Image(systemName: "chevron.down").font(.system(size: 9, weight: .semibold)).foregroundStyle(.readableSecondary)
+                        .accessibilityHidden(true)
                 }
                 .padding(.horizontal, 4)
                 .frame(minHeight: 24)
                 .contentShape(Rectangle())
                 .accessibilityElement(children: .ignore)
-                .accessibilityLabel(Text("其他写法"))
+                .modifier(MenuAccessibleTitle(title: Text("其他写法")))
             }
             .menuStyle(.button)
             .buttonStyle(.plain)

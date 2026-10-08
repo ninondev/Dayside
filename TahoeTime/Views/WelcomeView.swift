@@ -14,7 +14,14 @@ struct WelcomeView: View {
     @Environment(AppModel.self) private var model
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
+    private var reduceMotion: Bool {
+        #if DEBUG
+        PerformanceProbe.isRequested ? false : systemReduceMotion
+        #else
+        systemReduceMotion
+        #endif
+    }
     @Environment(\.colorSchemeContrast) private var contrast
     /// 题记按打开欢迎页那一刻放（地图每分钟走一点，字不跟着跳）。
     @State private var opened = Date()

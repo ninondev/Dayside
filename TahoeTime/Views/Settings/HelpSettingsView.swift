@@ -44,6 +44,8 @@ struct HelpSettingsView: View {
                         .appFont(.caption)
                         .foregroundStyle(.readableSecondary)
                         .textSelection(.enabled)
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityAddTraits(.isStaticText)
                         .accessibilityLabel(Text(verbatim: String(format: L10n.string("Dayside，版本%@", locale: locale), Self.versionText)))
                         .frame(maxWidth: .infinity)
                         .padding(.top, 4)

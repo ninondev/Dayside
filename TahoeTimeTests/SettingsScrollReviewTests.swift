@@ -117,6 +117,10 @@ struct SettingsScrollReviewTests {
         host.layoutSubtreeIfNeeded()
         let document = try #require(Self.visibleForm(in: host)?.documentView)
         let controls = Self.nativePopups(in: document)
+        if #available(macOS 27, *), controls.isEmpty {
+            try await Self.drawnPopupFontsRestore(model: model)
+            return
+        }
         #expect(controls.count == 8, "必须取得页面真正显示的八个原生菜单")
         let baseline = try controls.map { try #require($0.font) }
         let popupNames = controls.map(Self.nativeLogicalName)
@@ -233,6 +237,142 @@ struct SettingsScrollReviewTests {
             }
             if let output { try await Self.capture(host, window: window, position: stage.name, directory: output) }
         }
+    }
+
+    private static func popupValues(_ model: AppModel) -> [String: String] {
+        let locale = model.uiLocale
+        let values = [
+            ("界面语言", model.settings.interfaceLanguage.autonym),
+            ("城市显示语言", L10n.string("跟随界面", locale: locale)),
+            ("小时制", L10n.string("24 小时", locale: locale)),
+            ("字体", L10n.string("默认", locale: locale)),
+            ("字重", L10n.string("常规", locale: locale)),
+            ("文字大小", L10n.string(model.settings.textSize == .standard ? "标准" : model.settings.textSize == .large ? "大" : "更大", locale: locale)),
+            ("醒着时段开始", ClockText.minute(model.settings.awakeWindow.startMinute, hourStyle: model.settings.hourStyle)),
+            ("醒着时段结束", ClockText.minute(model.settings.awakeWindow.endMinute, hourStyle: model.settings.hourStyle))
+        ]
+        return Dictionary(uniqueKeysWithValues: values.map { (L10n.string($0.0, locale: locale), $0.1) })
+    }
+
+    private struct PopupReferenceRoot: View {
+        let model: AppModel
+        var body: some View {
+            VStack(alignment: .leading, spacing: 12) {
+                GeneralSettingsView()
+                ForEach(Self.names(model), id: \.self) { name in
+                    Text(verbatim: SettingsScrollReviewTests.popupValues(model)[name]!)
+                        .appFont(.body).fixedSize()
+                        .accessibilityIdentifier("popup-reference-" + name)
+                        .padding(.leading, 8)
+                }
+            }
+            .padding(8)
+            .background(Color(nsColor: .windowBackgroundColor))
+            .environment(model).environment(model.core)
+            .environment(\.locale, model.uiLocale)
+            .environment(\.textScale, model.settings.textSize.scale)
+        }
+        private static func names(_ model: AppModel) -> [String] {
+            SettingsScrollReviewTests.popupValues(model).keys.sorted()
+        }
+    }
+
+    private static func drawnPopupFontsRestore(model: AppModel) async throws {
+        model.settings.hourStyle = .force24
+        model.settings.fontDesign = .system
+        model.settings.weight = .regular
+        model.settings.cityLanguage = .followInterface
+        let host = NSHostingView(rootView: PopupReferenceRoot(model: model))
+        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: SettingsRootView.width, height: 1700),
+                              styleMask: [.titled, .resizable], backing: .buffered, defer: false)
+        window.appearance = NSAppearance(named: .aqua)
+        window.contentView = host
+        TestHostWindowPolicy.prepare(window)
+        window.orderBack(nil)
+        defer { window.orderOut(nil); window.contentView = nil }
+        let previousAX = enhancedAccessibilityValue()
+        setEnhancedAccessibility(true)
+        defer { setEnhancedAccessibility(previousAX) }
+        var baseline: [String: NSSize] = [:]
+        for (stage, size) in [("standard-start", TextSize.standard), ("larger", .larger),
+                              ("large", .large), ("standard-restored", .standard)] {
+            model.settings.textSize = size
+            try await Task.sleep(for: .milliseconds(400))
+            host.layoutSubtreeIfNeeded()
+            let bitmap = try lightBitmap(host, window: window)
+            let nodes = popupElements(in: host)
+            let popups = nodes.filter { $0.role == "AXPopUpButton" }
+            let expected = popupValues(model)
+            #expect(popups.count == 8)
+            #expect(Set(popups.map(\.name)) == Set(expected.keys))
+            for popup in popups {
+                let value = try #require(expected[popup.name])
+                #expect(popup.enabled)
+                #expect(popup.value == value)
+                #expect(bitmap.contentRect.insetBy(dx: -0.5, dy: -0.5).contains(popup.frame))
+                let reference = try #require(nodes.first { $0.identifier == "popup-reference-" + popup.name })
+                // 右侧的原生箭头不属于文字取样区。
+                let textFrame = NSRect(x: popup.frame.minX, y: popup.frame.minY,
+                                       width: popup.frame.width - 22, height: popup.frame.height)
+                let actual = try glyphBounds(DrawnButton(name: popup.name, value: value, frame: textFrame), bitmap: bitmap)
+                let wanted = try glyphBounds(DrawnButton(name: popup.name, value: value,
+                                                         frame: reference.frame.insetBy(dx: -3, dy: -3)), bitmap: bitmap)
+                let points = AppFont.size(.body) * size.scale
+                #expect(abs(actual.height - wanted.height) <= 1)
+                #expect(abs(actual.width - wanted.width) * points / wanted.width <= 1,
+                        "选中值必须按正文目标字号完整绘制")
+                if stage == "standard-start" { baseline[popup.name] = actual.size }
+                // 文字大小这一项会随档位改标题，其余七项可以直接比实际墨迹。
+                if popup.name != L10n.string("文字大小", locale: model.uiLocale) {
+                    let original = try #require(baseline[popup.name])
+                    if size == .standard {
+                        #expect(abs(actual.width - original.width) <= 0.5 && abs(actual.height - original.height) <= 0.5)
+                    } else {
+                        #expect(actual.height > original.height)
+                    }
+                }
+                print("SETTINGS_POPUP_INK \(stage) \(popup.name) value=\(value) actual=\(actual.size) reference=\(wanted.size)")
+            }
+        }
+    }
+
+    private struct PopupElement {
+        let role: String
+        let name: String
+        let value: String?
+        let identifier: String
+        let frame: NSRect
+        let enabled: Bool
+    }
+
+    private static func popupElements(in root: NSView) -> [PopupElement] {
+        var visited = Set<ObjectIdentifier>()
+        var result: [PopupElement] = []
+        func text(_ object: NSObject) -> String {
+            for key in ["accessibilityLabel", "accessibilityTitle", "accessibilityValue"] {
+                if let value = axAttribute(object, key) as? String, !value.isEmpty { return value }
+            }
+            return ""
+        }
+        func visit(_ object: NSObject, depth: Int) {
+            guard depth < 48, visited.count < 10_000, visited.insert(ObjectIdentifier(object)).inserted else { return }
+            if let role = axAttribute(object, "accessibilityRole") as? String {
+                var name = (axAttribute(object, "accessibilityLabel") as? String) ?? ""
+                if name.isEmpty, let label = axAttribute(object, "accessibilityTitleUIElement") as? NSObject {
+                    name = text(label)
+                }
+                result.append(PopupElement(role: role, name: name,
+                    value: axAttribute(object, "accessibilityValue") as? String,
+                    identifier: axAttribute(object, "accessibilityIdentifier") as? String ?? "",
+                    frame: (axAttribute(object, "accessibilityFrame") as? NSValue)?.rectValue ?? .zero,
+                    enabled: axAttribute(object, "accessibilityEnabled") as? Bool ?? false))
+            }
+            for case let child as NSObject in (axAttribute(object, "accessibilityChildren") as? [Any]) ?? [] {
+                visit(child, depth: depth + 1)
+            }
+        }
+        visit(root, depth: 0)
+        return result
     }
 
     private struct LiveSettingsRoot: View {

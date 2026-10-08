@@ -9,7 +9,7 @@ import Foundation
 @MainActor
 enum UITestFixture {
     static var isActive: Bool {
-        ApplicationSession.uiTestPage != nil || ApplicationSession.uiTestSurface != nil
+        PerformanceProbe.isRequested || ApplicationSession.uiTestPage != nil || ApplicationSession.uiTestSurface != nil
             || (ApplicationSession.isTesting && ProcessInfo.processInfo.environment["MEANTIME_UI_TEST_MEMORY_TOUR"] == "1")
             || (ApplicationSession.isTesting && ProcessInfo.processInfo.environment["MEANTIME_UI_TEST_AGENDA_MENU_BAR"] == "1")
     }
@@ -129,6 +129,7 @@ enum UITestFixture {
         } else {
             Store.saveZones(zones, to: defaults)
         }
+        if PerformanceProbe.isRequested { PerformanceProbe.seed(defaults) }
         if isErrors {
             // 往已存好的 JSON 数组里塞一条 Foundation 认不得的时区：启动时整条丢弃、备份、置恢复标记（面板顶部那行提示）。
             if let data = defaults.data(forKey: "tahoetime.zones.v1"), var array = try? JSONSerialization.jsonObject(with: data) as? [[String: Any]] {

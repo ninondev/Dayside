@@ -224,3 +224,16 @@ extension View {
         if hidden { labelsHidden() } else { self }
     }
 }
+
+/// 新系统的菜单按钮把可读标题放在值属性里。
+struct MenuAccessibleTitle: ViewModifier {
+    let title: Text
+
+    func body(content: Content) -> some View {
+        if #available(macOS 27, *) {
+            content.accessibilityLabel(title).accessibilityValue(title)
+        } else {
+            content.accessibilityLabel(title)
+        }
+    }
+}

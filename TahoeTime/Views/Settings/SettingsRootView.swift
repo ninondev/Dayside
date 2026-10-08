@@ -95,11 +95,9 @@ struct SettingsScaledFont: ViewModifier {
     let style: Font.TextStyle
 
     func body(content: Content) -> some View {
-        if scale == 1 {
-            content
-        } else {
-            content.appFont(style, weight: style == .headline ? .semibold : nil)
-        }
+        // 字号变化保留控件身份，避免读屏仍引用已替换的原生控件。
+        content.font(scale == 1 ? nil : .system(size: AppFont.size(style) * scale,
+                                               weight: style == .headline ? .semibold : .regular))
     }
 }
 
