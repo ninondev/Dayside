@@ -21,8 +21,12 @@ pub(super) enum UKind {
 }
 
 /// 单元的文字。几乎所有词都不超过 22 字节，直接存在单元里，不必为每个词各分配、释放一次堆内存。
+/// 表示形式不对外：只有 `TextBuilder` 按完整字符写入内联字节，所以内联部分总是合法的 UTF-8。
 #[derive(Clone)]
-pub(super) enum UnitText {
+pub(super) struct UnitText(Repr);
+
+#[derive(Clone)]
+enum Repr {
     Inline(u8, [u8; UnitText::INLINE]),
     Heap(Box<str>),
 }
@@ -31,10 +35,10 @@ impl UnitText {
     const INLINE: usize = 22;
 
     pub(super) fn as_str(&self) -> &str {
-        match self {
-            // SAFETY: 内联字节只由 `TextBuilder` 按字符完整编码写入，长度就是写入的字节数。
-            UnitText::Inline(len, bytes) => unsafe { std::str::from_utf8_unchecked(&bytes[..usize::from(*len)]) },
-            UnitText::Heap(text) => text,
+        match &self.0 {
+            // SAFETY: 内联字节只由 `TextBuilder` 按字符完整编码写入，长度就是写入的字节数（`finish` 在调试构建里再核一次）。
+            Repr::Inline(len, bytes) => unsafe { std::str::from_utf8_unchecked(&bytes[..usize::from(*len)]) },
+            Repr::Heap(text) => text,
         }
     }
 
@@ -74,8 +78,11 @@ impl TextBuilder {
 
     fn finish(self) -> UnitText {
         match self.heap {
-            Some(heap) => UnitText::Heap(heap.into_boxed_str()),
-            None => UnitText::Inline(self.len as u8, self.bytes),
+            Some(heap) => UnitText(Repr::Heap(heap.into_boxed_str())),
+            None => {
+                debug_assert!(std::str::from_utf8(&self.bytes[..self.len]).is_ok());
+                UnitText(Repr::Inline(self.len as u8, self.bytes))
+            }
         }
     }
 }
@@ -88,12 +95,12 @@ impl From<&str> for UnitText {
 
 impl From<String> for UnitText {
     fn from(text: String) -> Self {
-        if text.len() <= UnitText::INLINE { UnitText::from(text.as_str()) } else { UnitText::Heap(text.into_boxed_str()) }
+        if text.len() <= UnitText::INLINE { UnitText::from(text.as_str()) } else { UnitText(Repr::Heap(text.into_boxed_str())) }
     }
 }
 
 impl Default for UnitText {
-    fn default() -> Self { UnitText::Inline(0, [0; UnitText::INLINE]) }
+    fn default() -> Self { UnitText(Repr::Inline(0, [0; UnitText::INLINE])) }
 }
 
 impl std::ops::Deref for UnitText {
@@ -715,6 +722,48 @@ mod table_snapshot {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn unit_text_round_trips_on_both_sides_of_the_inline_limit() {
+        let samples = [
+            String::new(), "a".to_owned(), "a".repeat(22), "a".repeat(23),
+            format!("{}é", "a".repeat(20)), format!("{}é", "a".repeat(21)),
+            format!("{}東", "a".repeat(19)), format!("{}東", "a".repeat(20)),
+            format!("{}😀", "a".repeat(18)), format!("{}😀", "a".repeat(19)),
+            "東京都千代田区丸の内".to_owned(), "donaudampfschifffahrtsgesellschaft".to_owned(),
+        ];
+        for sample in &samples {
+            let built = UnitText::from_chars(sample.chars());
+            let inline = matches!(built.0, Repr::Inline(..));
+            assert_eq!(inline, sample.len() <= UnitText::INLINE, "{sample:?}");
+            for text in [built, UnitText::from(sample.as_str()), UnitText::from(sample.clone())] {
+                assert_eq!(text.as_str(), sample.as_str());
+                assert_eq!(text.len(), sample.len());
+                assert_eq!(text, *sample);
+                assert_eq!(format!("{text}"), *sample);
+                assert_eq!(format!("{text:?}"), format!("{sample:?}"));
+            }
+        }
+        assert_eq!(UnitText::default().as_str(), "");
+    }
+
+    #[test]
+    fn unit_text_matches_the_string_it_replaced() {
+        let text = "Meet İstanbul'da at 9 a.m., then Donaudampfschifffahrtsgesellschaft Straße ﬃ 東京都 10:30 \
+            São Paulo — Llanfairpwllgwyngyllgogerychwyrndrobwll 😀 ÉTÉ 3pm\n\nnext 서울 몇 시예요";
+        let f = fold(text);
+        let u = units(&f);
+        let mut checked = 0;
+        for t in &u {
+            if !matches!(t.kind, UKind::Word | UKind::Number | UKind::Cjk) || matches!(t.text.as_str(), "am" | "pm") { continue; }
+            let folded: String = f.chars[t.start..t.end].iter().collect();
+            assert_eq!(t.text.as_str(), folded);
+            assert_eq!(t.raw.as_str(), original_text(&f, t.start, t.end));
+            checked += 1;
+        }
+        assert!(checked > 20);
+        assert!(u.iter().any(|t| matches!(t.text.0, Repr::Heap(_))), "a long word takes the heap path");
+    }
 
     #[test]
     fn prepared_prefixes_preserve_predicates_and_phrase_boundaries() {
