@@ -1,6 +1,6 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-only
-# 全局快捷键自证探针：Debug 副本（去掉 application-groups 以免引出 TCC 框）在测试宿主下启动，
+# 全局快捷键自证探针：Debug 副本在测试宿主下启动，
 # 2 秒后自己点一下菜单栏项，把窗口清单与结果写到标准输出。用法: Tools/hotkey_probe.sh [输出目录]
 set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
@@ -17,7 +17,6 @@ app="$products/Dayside.app"
 copy="$out/Dayside.app"; "$root/Tools/trash.sh" "$copy"; ditto "$app" "$copy"
 "$root/Tools/trash.sh" "$copy/Contents/PlugIns/"*.xctest
 ent="$out/debug-no-group.entitlements"; cp "$root/TahoeTime/TahoeTime-signing-Debug.entitlements" "$ent"
-/usr/libexec/PlistBuddy -c 'Delete :com.apple.security.application-groups' "$ent"
 sign() { /usr/bin/codesign --force --sign - --timestamp=none "$@"; }
 for dylib in "$copy"/Contents/MacOS/*.dylib; do [[ -e "$dylib" ]] && sign "$dylib"; done
 for framework in "$copy"/Contents/Frameworks/*.framework; do [[ -e "$framework" ]] && sign "$framework"; done

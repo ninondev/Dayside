@@ -53,7 +53,7 @@ pub fn dispatch(operation: &str, input: Value) -> Result<Value, String> {
         "store.entry" => json!(entry(&input)),
         "store.keys" => {
             json!({"zones":ZONES,"settings":SETTINGS,"snapshot":SNAPSHOT,"marker":"tahoetime.migrated.v1",
-            "group":"group.com.dayside.Dayside","lastNonEmptySuffix":".last-nonempty","corruptBackupSuffix":".corrupt-backup",
+            "lastNonEmptySuffix":".last-nonempty","corruptBackupSuffix":".corrupt-backup",
             "migrated":[ZONES,SNAPSHOT,"tahoetime.zones.v1.corrupt-backup",SETTINGS,"tahoetime.settings.v1.corrupt-backup"]})
         }
         "store.load_zones" => {

@@ -7,7 +7,7 @@
 	     (1.1.0 dmg,未沙盒,bundle id com.tahoetime.TahoeTime)写在 ~/Library/Preferences 的偏好。
 	     搬进来后它落在本容器的 Library/Preferences 下,Store.legacySources 里的
 	     UserDefaults(suiteName: "com.tahoetime.TahoeTime") 就能读到,再由 migrateIfNeeded
-	     一次性迁进 App Group 域。只在容器首次创建时生效;已装过本 app 的机器不会重跑。 -->
+	     一次性迁进本容器的标准偏好域。只在容器首次创建时生效;已装过本 app 的机器不会重跑。 -->
 	<key>Move</key>
 	<array>
 		<string>${Library}/Preferences/com.tahoetime.TahoeTime.plist</string>

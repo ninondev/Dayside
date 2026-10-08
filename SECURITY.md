@@ -18,8 +18,7 @@ update and check whether the problem still occurs.
 
 This section covers the macOS Release build.
 
-- Dayside runs in the App Sandbox. It stores settings and saved records locally,
-  including in its App Group.
+- Dayside runs in the App Sandbox. It stores settings and saved records locally.
 - The app makes no direct network requests and does not automatically upload usage or
   diagnostic data. Its Release entitlements grant no network client or server
   permission. Web links open in another application, which may access the internet.

@@ -25,8 +25,7 @@ class ReleaseIdentityTests(unittest.TestCase):
             "NSServices": [{"NSMessage": "convertTime", "NSPortName": "Dayside",
                             "NSSendTypes": ["NSStringPboardType"], "NSMenuItem": {"default": "Convert Time with Dayside"}}],
         }
-        self.entitlements = {"com.apple.security.app-sandbox": True,
-                             "com.apple.security.application-groups": ["group.com.dayside.Dayside"]}
+        self.entitlements = {"com.apple.security.app-sandbox": True}
 
     def errors(self, info=None, entitlements=None, asset_name="Dayside-1.0.1-arm64.dmg"):
         return check_release_identity.identity_errors(
@@ -45,7 +44,7 @@ class ReleaseIdentityTests(unittest.TestCase):
         info.pop("CFBundleURLTypes")
         info.pop("NSServices")
         entitlements = dict(self.entitlements)
-        entitlements.pop("com.apple.security.application-groups")
+        entitlements["com.apple.security.application-groups"] = ["group.com.dayside.Dayside"]
         for code in ["bundle_identifier", "bundle_name", "local_preview", "url_scheme",
                      "time_conversion_service", "application_group"]:
             self.assertIn(code, self.errors(info, entitlements))
@@ -85,7 +84,13 @@ class ReleaseIdentityTests(unittest.TestCase):
         for key, code in [("CFBundleURLTypes", "url_scheme"), ("NSServices", "time_conversion_service")]:
             self.assertIn(code, self.errors({**self.info, key: "unexpected"}))
 
-    def test_qualified_only_group_is_rejected_while_runtime_uses_bare_group(self):
+    def test_any_app_group_entitlement_is_rejected(self):
+        group = {**self.entitlements, "com.apple.security.application-groups": ["group.com.dayside.Dayside"]}
+        self.assertEqual(self.errors(entitlements=group), ["application_group"])
+        empty = {**self.entitlements, "com.apple.security.application-groups": []}
+        self.assertEqual(self.errors(entitlements=empty), ["application_group"])
+
+    def test_qualified_only_group_is_rejected(self):
         entitlements = {**self.entitlements, "com.apple.security.application-groups": ["ABCDE12345.group.com.dayside.Dayside"]}
         for team in [None, "ABCDE12345", "OTHER12345", "ABCDE"]:
             self.assertIn("application_group", check_release_identity.identity_errors(
@@ -96,9 +101,9 @@ class ReleaseIdentityTests(unittest.TestCase):
                          b"Authority=Apple Development: Fixture\nTeamIdentifier=ABCDE12345\n"]:
             self.assertIn("release_signing_identity", check_release_identity.signing_errors(self.app, metadata, self.entitlements))
 
-    def test_bare_runtime_groups_require_an_embedded_profile(self):
+    def test_developer_id_bundle_without_app_group_needs_no_profile(self):
         metadata = b"Authority=Developer ID Application: Fixture\nTeamIdentifier=ABCDE12345\n"
-        self.assertEqual(check_release_identity.signing_errors(self.app, metadata, self.entitlements), ["provisioning_profile_required"])
+        self.assertEqual(check_release_identity.signing_errors(self.app, metadata, self.entitlements), [])
         self.assertNotIn("release_signing_identity", check_release_identity.signing_errors(self.app, metadata, self.entitlements))
 
     def test_service_must_declare_text_input_and_menu_item(self):

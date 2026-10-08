@@ -8,15 +8,16 @@ enum Store {
     private static let settingsKey: String = keys["settings"].decode()
     private static let snapshotKey: String = keys["snapshot"].decode()
     static let migrationMarkerKey: String = keys["marker"].decode()
-    static let appGroupIdentifier: String = keys["group"].decode()
     static let lastNonEmptySuffix: String = keys["lastNonEmptySuffix"].decode()
     private static let corruptBackupSuffix: String = keys["corruptBackupSuffix"].decode()
     private static let migratedKeys: [String] = keys["migrated"].decode()
-    static var appDefaults: UserDefaults { UserDefaults(suiteName: appGroupIdentifier) ?? .standard }
+    /// 沙盒容器自己的偏好域。没有扩展共享数据，不用 App Group：`group.` 前缀的群组在 macOS 15+ 要 provisioning
+    /// profile 授权，ad-hoc 签名下写入只留在进程缓存里，换个进程就读不到。
+    static var appDefaults: UserDefaults { .standard }
     static var legacySources: [UserDefaults] {
-        [.standard] + [UserDefaults(suiteName: "com.tahoetime.TahoeTime")].compactMap { $0 }
+        [UserDefaults(suiteName: "com.tahoetime.TahoeTime")].compactMap { $0 }
     }
-    /// 旧版 Meantime 的 App Group：签名 entitlements 仍列着它，新版首启才读得到旧数据。
+    /// 旧版 Meantime 的 App Group。签名不再声明任何 App Group，启动不再搬它；保留给显式传入来源的整域搬迁。
     static let previousAppGroupIdentifier = "group.com.meantime.Meantime"
     /// 改名后的一次性整域搬迁：目标域空白时把上一个 App Group 里 App 自己的键（地点、设置、人物、旅行、计时器、
     /// 夏令时提醒、扩展快照……）原样复制过来并写迁移标记；哪些键算「App 自己的」由 Rust 决定，来源不清空。返回搬了几个键。

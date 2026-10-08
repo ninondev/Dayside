@@ -3,7 +3,7 @@
 //  MigrationTests.swift
 //  TahoeTimeTests
 //
-//  偏好域迁移:从旧域一次性搬进 App Group 域。
+//  偏好域迁移:从旧域一次性搬进沙盒容器的标准域。
 //  三个独立 suite 模拟 目标 / 旧 .standard / 旧 bundle id 域,绝不碰真实偏好。
 //
 
@@ -127,7 +127,7 @@ final class MigrationTests: XCTestCase {
     }
 
     func testAppGroupSuiteIsUsableInSandbox() {
-        // 测试宿主就是沙盒 app 本体:App Group suite 必须可写可读。
+        // 测试宿主就是沙盒 app 本体:生产偏好域必须可写可读。跨进程落盘由 macOS 验收另行证明。
         let group = Store.appDefaults
         let key = "tahoetime.tests.appgroup-probe"
         group.set("ok", forKey: key)

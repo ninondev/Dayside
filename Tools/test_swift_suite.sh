@@ -76,7 +76,7 @@ for argument in "$@"; do
       ;;
   esac
 done
-selection=(-skip-testing:TahoeTimeTests/MigrationTests/testAppGroupSuiteIsUsableInSandbox)
+selection=()
 test_feature=""
 if [[ "$foreground" == 1 ]]; then
   selection+=(-only-testing:TahoeTimeTests/PageShortcutTests

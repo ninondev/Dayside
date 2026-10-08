@@ -1,6 +1,6 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0-only
-# 自证「诊断包」在沙盒里读得到上一次启动的日志：把 Debug 产物复制出来、去掉 App Group 权限重签
+# 自证「诊断包」在沙盒里读得到上一次启动的日志：把 Debug 产物复制出来、重签
 # （与 Tools/ax_dump_pages.sh 同一套），用 MEANTIME_UI_TEST_DIAGNOSTICS=1 连跑两次；每次启动都写一条带 pid 的
 # 探针日志，两秒后把完整诊断包打到标准输出。第二次的诊断包里若有第一次的 pid，OSLogStore 跨启动可读就证实了。
 # 用法: Tools/diagnostics_probe.sh [输出目录]   默认 backup/diagnostics-probe-<时间>；MEANTIME_PROBE_SKIP_BUILD=1 跳过构建。
@@ -20,7 +20,6 @@ app="$products/Dayside.app"
 copy="$out/Dayside.app"; "$root/Tools/trash.sh" "$copy"; ditto "$app" "$copy"
 "$root/Tools/trash.sh" "$copy/Contents/PlugIns/"*.xctest
 ent="$out/debug-no-group.entitlements"; cp "$root/TahoeTime/TahoeTime-signing-Debug.entitlements" "$ent"
-/usr/libexec/PlistBuddy -c 'Delete :com.apple.security.application-groups' "$ent"
 sign() { /usr/bin/codesign --force --sign - --timestamp=none "$@" 2>/dev/null; }
 for dylib in "$copy"/Contents/MacOS/*.dylib; do [[ -e "$dylib" ]] && sign "$dylib"; done
 for framework in "$copy"/Contents/Frameworks/*.framework; do [[ -e "$framework" ]] && sign "$framework"; done

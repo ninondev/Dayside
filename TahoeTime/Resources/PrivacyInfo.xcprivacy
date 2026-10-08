@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<!-- 按此目标实际 API 与数据用途声明。
-	     CA92.1：本应用自有偏好及旧偏好迁移；1C8F.1：同 App Group 偏好与扩展快照。
-	     C617.1：应用自身文件及 App Group 命令文件的元数据；Rust 静态库包含 stat/fstat 系列 API。
+	     CA92.1：本应用自有偏好及旧偏好迁移；不声明 App Group，故无 1C8F.1。
+	     C617.1：应用自身文件的元数据；Rust 静态库包含 stat/fstat 系列 API。
 	     当前计时使用 mach_continuous_time；Apple 当前必需理由列表未列该 API，未据此添加 SystemBootTime。
 	     必需理由按应用与静态库实际使用的 API 声明；发布时须核对最终链接的 SDK 与符号。 -->
 	<key>NSPrivacyTracking</key>
@@ -21,7 +21,6 @@
 			<key>NSPrivacyAccessedAPITypeReasons</key>
 			<array>
 				<string>CA92.1</string>
-				<string>1C8F.1</string>
 			</array>
 		</dict>
 		<dict>

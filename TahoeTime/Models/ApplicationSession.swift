@@ -7,7 +7,7 @@ import ObjectiveC
 #endif
 
 /// The test runner's app entry point follows the same fixture isolation as its test cases.
-/// Production launches keep the established App Group and migration behavior.
+/// Production launches use the sandbox container's standard defaults and the legacy-domain migration.
 @MainActor
 enum ApplicationSession {
     /// A separately identified local build uses only its own sandbox while signing is unavailable.

@@ -241,15 +241,14 @@ final class AppModel {
     @ObservationIgnored
     private let defaults: UserDefaults
 
-    /// `defaults` 默认是 App Group suite;`migrate` 为 true 时启动先做一次性迁移。
+    /// `defaults` 默认是沙盒容器的标准域;`migrate` 为 true 时启动先做一次性迁移。
     init(defaults: UserDefaults = Store.appDefaults, migrate: Bool = true,
          applySystemIntegration: Bool = true) {
         self.defaults = defaults
         if migrate {
-            // 先看上一个 App Group（改名前的 Meantime 数据，整域搬），再看更早的两个旧域（只搬地点与设置）。
-            Store.migrateFromPreviousGroupIfNeeded(into: defaults)
+            // 只看容器迁移清单搬进来的旧 TahoeTime 域（只搬地点与设置）；目标域本身就是标准域，不再把它当来源。
             Store.migrateIfNeeded(into: defaults, from: Store.legacySources,
-                                  sourceNames: ["standard", "com.tahoetime.TahoeTime"])
+                                  sourceNames: ["com.tahoetime.TahoeTime"])
         }
         // 加载时不回写:TimeCore 直接用加载值构造,不走 settings setter。
         let loaded = Store.loadZones(from: defaults)
