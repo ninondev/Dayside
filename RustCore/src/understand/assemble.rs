@@ -9,6 +9,7 @@ use super::text;
 use super::types::{Alternative, Clock, DateSpec, Issue, Mention, Output, Part, Unresolved, Writer, ZoneRef};
 use super::units::{find, matcher, UKind, Unit};
 use std::collections::HashMap;
+use std::sync::OnceLock;
 
 pub(super) struct Context<'a> {
     pub(super) units: &'a [Unit],
@@ -47,14 +48,19 @@ const GROUP_PUNCT: [&str; 14] = ["/", "|", "=", "→", "-", ">", "·", ",", ";",
 impl Context<'_> {
     /// 写得不成立的一段：原文与位置。
     fn issue(&self, kind: &'static str, mut from: usize, mut to: usize) -> Issue {
-        let words = |phrase: &str| super::units::phrase_units(&text::fold_str(phrase));
-        let prefix = super::lexicon::ISSUE_PREFIXES.iter().filter_map(|phrase| {
-            let p = words(phrase);
+        // 词表短语折叠、切词的结果与本次输入无关，整个进程只算一次。
+        static PREFIXES: OnceLock<Vec<Vec<String>>> = OnceLock::new();
+        static SUFFIXES: OnceLock<Vec<Vec<String>>> = OnceLock::new();
+        let words = |phrases: &[&str]| -> Vec<Vec<String>> {
+            phrases.iter().map(|phrase| super::units::phrase_units(&text::fold_str(phrase))).collect()
+        };
+        let prefixes = PREFIXES.get_or_init(|| words(super::lexicon::ISSUE_PREFIXES));
+        let suffixes = SUFFIXES.get_or_init(|| words(super::lexicon::ISSUE_SUFFIXES));
+        let prefix = prefixes.iter().filter_map(|p| {
             (p.len() < to - from && p.iter().zip(&self.units[from..]).all(|(p, u)| *p == u.text)).then_some(p.len())
         }).max().unwrap_or(0);
         from += prefix;
-        let suffix = super::lexicon::ISSUE_SUFFIXES.iter().filter(|_| kind == "conflictingDeadline").filter_map(|phrase| {
-            let p = words(phrase);
+        let suffix = suffixes.iter().filter(|_| kind == "conflictingDeadline").filter_map(|p| {
             (p.len() < to - from && p.iter().zip(&self.units[to.saturating_sub(p.len())..to]).all(|(p, u)| *p == u.text)).then_some(p.len())
         }).max().unwrap_or(0);
         to -= suffix;
