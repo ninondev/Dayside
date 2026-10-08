@@ -1840,7 +1840,7 @@ impl<'a> Scanner<'a> {
         }
         // 数字后的钟点词：o'clock / Uhr / uur / 点 / 時 / 시 / giờ / h / hs / ч。
         // 钟点词正好是时区整词的开头（「9:00 heure de l'est」「9:00 heure du Pacifique」）时留给时区词。
-        let starts_zone_word = matcher().zone_words.get(&u.get(end).map(|t| t.text.clone()).unwrap_or_default()).is_some_and(|list| {
+        let starts_zone_word = matcher().zone_words.get(u.get(end).map_or("", |t| t.text.as_str())).is_some_and(|list| {
             list.iter().any(|(phrase, _)| end + phrase.len() <= u.len() && phrase.len() > 1 && (0..phrase.len()).all(|k| u[end + k].text == phrase[k]))
         });
         // 钟点词正好是更长的时长词的开头（韩「5시간」、日「2時間」：시 / 時 后面紧跟 간 / 間）：那是几个小时，不是几点

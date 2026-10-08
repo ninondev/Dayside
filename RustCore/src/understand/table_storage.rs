@@ -1,6 +1,55 @@
 // SPDX-License-Identifier: GPL-3.0-only
 //! 只读词表借用静态切片；测试保留原建表器的所有权。
+use std::cmp::Ordering;
+use std::hash::{BuildHasherDefault, Hasher};
 use std::ops::Deref;
+
+/// 只装静态词表的散列表用的快速散列（FxHash 同法）：键都来自词表，用户文字只用来查。
+/// 查表结果与散列函数无关；这些表也不按迭代顺序产生输出。
+#[derive(Clone, Copy, Default)]
+pub(super) struct FxHasher(u64);
+
+impl FxHasher {
+    #[inline]
+    fn add(&mut self, word: u64) {
+        self.0 = (self.0.rotate_left(5) ^ word).wrapping_mul(0x51_7c_c1_b7_27_22_0a_95);
+    }
+}
+
+impl Hasher for FxHasher {
+    #[inline]
+    fn write(&mut self, bytes: &[u8]) {
+        let mut chunks = bytes.chunks_exact(8);
+        for chunk in &mut chunks {
+            self.add(u64::from_le_bytes(chunk.try_into().expect("eight bytes")));
+        }
+        let rest = chunks.remainder();
+        if !rest.is_empty() {
+            let mut word = [0u8; 8];
+            word[..rest.len()].copy_from_slice(rest);
+            self.add(u64::from_le_bytes(word));
+        }
+    }
+    #[inline]
+    fn write_u8(&mut self, value: u8) { self.add(u64::from(value)); }
+    #[inline]
+    fn write_usize(&mut self, value: usize) { self.add(value as u64); }
+    #[inline]
+    fn finish(&self) -> u64 { self.0 }
+}
+
+pub(super) type FastMap<K, V> = std::collections::HashMap<K, V, BuildHasherDefault<FxHasher>>;
+pub(super) type FastSet<K> = std::collections::HashSet<K, BuildHasherDefault<FxHasher>>;
+
+/// 与 `str::cmp` 相同的字节字典序。词表键很短，逐字节比较比调用 `memcmp` 省事。
+#[inline]
+pub(super) fn cmp_text(a: &str, b: &str) -> Ordering {
+    let (a, b) = (a.as_bytes(), b.as_bytes());
+    for (x, y) in a.iter().zip(b) {
+        if x != y { return x.cmp(y); }
+    }
+    a.len().cmp(&b.len())
+}
 
 #[derive(Debug)]
 pub(super) enum Slice<T: 'static> {
@@ -60,7 +109,7 @@ pub(super) struct StrMap<V: ?Sized + 'static> {
 
 impl<V: ?Sized + 'static> StrMap<V> {
     pub(super) fn get(&self, key: &str) -> Option<&'static V> {
-        self.entries.binary_search_by(|(candidate, _)| candidate.cmp(&key))
+        self.entries.binary_search_by(|(candidate, _)| cmp_text(candidate, key))
             .ok().map(|index| self.entries[index].1)
     }
 

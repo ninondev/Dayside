@@ -3,7 +3,7 @@
 use super::lexicon::{Sem, ABBREVIATIONS};
 #[cfg(test)]
 use super::lexicon::ENTRIES;
-use super::table_storage::{Slice, Text};
+use super::table_storage::{cmp_text, FastSet, Slice, Text};
 use super::text::is_hangul;
 #[cfg(test)]
 use super::text::fold;
@@ -13,6 +13,7 @@ use super::units::units;
 use std::borrow::Cow;
 #[cfg(test)]
 use std::collections::HashMap;
+#[cfg(test)]
 use std::collections::HashSet;
 use std::num::NonZeroUsize;
 use std::rc::Rc;
@@ -34,7 +35,7 @@ const WEAK_WORDS: &[&str] = &[
 ];
 
 pub(super) fn needs_evidence(u: &[Unit], at: usize, len: usize) -> bool {
-    static WORDS: OnceLock<HashSet<&'static str>> = OnceLock::new();
+    static WORDS: OnceLock<FastSet<&'static str>> = OnceLock::new();
     len == 1 && u.get(at).is_some_and(|t| WORDS.get_or_init(|| WEAK_WORDS.iter().copied().collect()).contains(t.text.as_str()))
 }
 
@@ -194,7 +195,7 @@ impl<T: 'static> Lookup<T> {
     fn child(&self, node: usize, word: &str) -> Option<usize> {
         let node = &self.nodes[node];
         let edges = &self.edges[node.start..node.end];
-        edges.binary_search_by(|(key, _)| key.as_ref().cmp(word)).ok().map(|index| edges[index].1)
+        edges.binary_search_by(|(key, _)| cmp_text(key.as_ref(), word)).ok().map(|index| edges[index].1)
     }
 
     fn value(&self, node: usize) -> Option<&T> {
@@ -391,7 +392,7 @@ fn voter(sem: Sem) -> bool {
 }
 
 fn neutral_word(u: &[Unit], at: usize, len: usize) -> bool {
-    static WORDS: OnceLock<HashSet<&'static str>> = OnceLock::new();
+    static WORDS: OnceLock<FastSet<&'static str>> = OnceLock::new();
     len == 1 && (WORDS.get_or_init(|| ABBREVIATIONS.iter().map(|a| a.text).collect()).contains(u[at].raw.as_str())
         || matches!(u[at].text.as_str(), "usd" | "gbp" | "eur" | "pln" | "tl" | "kg" | "cm" | "yoga" | "deadline" | "am" | "pm" | "h" | "g" | "年" | "月" | "日"))
 }
