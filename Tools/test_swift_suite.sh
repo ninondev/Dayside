@@ -129,6 +129,8 @@ run_suite() {
   run_xcodebuild test-without-building "$@" >> "$log" 2>&1
 }
 : > "$log"
+# 本轮开始时刻：结束后把此后系统写下的测试宿主崩溃报告原样留进日志目录（成功的轮次也留，重跑通过不抹掉证据）。
+suite_started="$(date +%s)"
 run_suite "$@" &
 test_pid=$!
 while kill -0 "$test_pid" 2>/dev/null; do
@@ -141,6 +143,10 @@ while kill -0 "$test_pid" 2>/dev/null; do
 done
 if wait "$test_pid"; then status=0; else status=$?; fi
 test_pid=""
+# 系统写崩溃报告有几秒延迟。
+sleep 5
+python3 "$root/Tools/collect_crash_reports.py" --since "$suite_started" --out "$logdir/crash-reports" \
+  || printf 'Crash report collection failed; check ~/Library/Logs/DiagnosticReports manually\n' >&2
 if [[ "$foreground" == 1 ]]; then dayside_require_foreground_window "Foreground Swift completion"; fi
 if [[ "$status" != 0 ]]; then
   printf 'Swift tests failed (exit %s); log: %s\n' "$status" "$log" >&2
