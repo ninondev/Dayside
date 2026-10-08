@@ -1285,13 +1285,14 @@ impl<'a> Scanner<'a> {
             }
             return None;
         }
+        // 裸日数端点只能是 1–31 的一两位数字；先查这一条，不是数字的位置不必再试读钟点。
+        let day = u.get(at).filter(|t| t.kind == UKind::Number && t.text.len() <= 2)?.text.parse::<u8>().ok()?;
+        if !(1..=31).contains(&day) { return None; }
         // 省略月份的日数不能抢走完整钟点语法；分钟在前的钟点，以及由明确终点证明的裸起点都保留。
         let mut clock_probe = Scanner { u, out: Vec::new() };
         if clock_probe.clock(at).is_some() && clock_probe.out.iter().any(|a| matches!(a.atom, Atom::Clock { .. })) {
             return None;
         }
-        let day = u.get(at).filter(|t| t.kind == UKind::Number && t.text.len() <= 2)?.text.parse::<u8>().ok()?;
-        if !(1..=31).contains(&day) { return None; }
         // 黏着数字分隔符意味着还有自己的数段，不能截取其中的首个数字。
         if u.get(at + 1).is_some_and(|t| !t.space_before && matches!(t.text.as_str(), "/" | "." | ":")) { return None; }
         Some(CalendarEndpoint { from: i, to: at + 1, day, month: None, year: None, lang: None })

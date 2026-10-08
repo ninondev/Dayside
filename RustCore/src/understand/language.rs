@@ -11,8 +11,11 @@ use super::units::{find, glued, UKind, Unit};
 #[cfg(test)]
 use super::units::units;
 use std::borrow::Cow;
-use std::collections::{HashMap, HashSet};
+#[cfg(test)]
+use std::collections::HashMap;
+use std::collections::HashSet;
 use std::num::NonZeroUsize;
+use std::rc::Rc;
 use std::sync::OnceLock;
 
 /// 封闭的同形弱词表；新增词必须附碰撞反例，不能按语言或词类整批扩张。
@@ -242,11 +245,21 @@ struct EvidenceKey {
 }
 
 /// 只在单元不再修改后启用；复制单元时不继承原句的缓存。
+/// 第二格挂在句段首个单元上：这一句段里每个位置可投票的短语（与被解释的词无关的筛选已做完）。
 #[derive(Debug, Default)]
-pub(super) struct EvidenceMemo(std::cell::RefCell<Option<Vec<(EvidenceKey, Evidence)>>>);
+pub(super) struct EvidenceMemo(std::cell::RefCell<Option<Vec<(EvidenceKey, Evidence)>>>, std::cell::RefCell<Vec<SegmentVoters>>);
 
 impl Clone for EvidenceMemo {
     fn clone(&self) -> Self { Self::default() }
+}
+
+/// 一个句段（`start..end`）内各位置按长度从长到短排好的候选投票短语：（单元数，拼法选定的词条组）。
+#[derive(Debug)]
+pub(super) struct SegmentVoters {
+    slice: usize,
+    units: usize,
+    end: usize,
+    at: Rc<[Vec<(usize, &'static EntryGroup)>]>,
 }
 
 /// 数字段分类完成后启用，生命周期与这次解析的单元相同。
@@ -434,6 +447,35 @@ pub(super) fn evidence(u: &[Unit], at: usize, len: usize, excluded: Option<(usiz
     result
 }
 
+/// 句段内一个位置的候选投票短语，从长到短；只做与被解释的词无关的筛选。
+fn position_voters(u: &[Unit], k: usize, end: usize) -> Vec<(usize, &'static EntryGroup)> {
+    matching_phrases(u, k, end).into_iter().rev().filter_map(|p| {
+        let n = p.len;
+        if needs_evidence(u, k, n) || neutral_word(u, k, n) || inside_place_name(u, k, n) || !whole_hangul_voter(u, k, p) { return None; }
+        // 货币与时区缩写、数字串和标点不证明语言。
+        if u[k..k + n].iter().any(|t| t.kind == UKind::Number)
+            || !u[k..k + n].iter().any(|t| t.raw.chars().any(char::is_alphabetic)) {
+            return None;
+        }
+        let group = p.raw_entries(u, k)?;
+        (!group.votes.is_empty()).then_some((n, group))
+    }).collect()
+}
+
+/// 同一句段反复判断不同的词时，各位置的候选只算一次（缓存启用后挂在句段首个单元上）。
+/// 计算与读取时都不持有借用：词表查询可能再回到这里。
+fn segment_voters(u: &[Unit], start: usize, end: usize) -> Rc<[Vec<(usize, &'static EntryGroup)>]> {
+    let compute = || (start..end).map(|k| position_voters(u, k, end)).collect::<Rc<[_]>>();
+    let anchor = &u[start].evidence_memo;
+    if anchor.0.borrow().is_none() { return compute(); }
+    let (slice, units) = (u.as_ptr() as usize, u.len());
+    let hit = anchor.1.borrow().iter().find(|s| s.slice == slice && s.units == units && s.end == end).map(|s| Rc::clone(&s.at));
+    if let Some(at) = hit { return at; }
+    let at = compute();
+    anchor.1.borrow_mut().push(SegmentVoters { slice, units, end, at: Rc::clone(&at) });
+    at
+}
+
 fn evidence_uncached(u: &[Unit], at: usize, len: usize, excluded: Option<(usize, usize)>) -> Evidence {
     #[cfg(test)]
     add_work(|work| work.evidence_calls += 1);
@@ -441,50 +483,48 @@ fn evidence_uncached(u: &[Unit], at: usize, len: usize, excluded: Option<(usize,
     let end = (at + len..u.len()).find(|&k| boundary(u, k)).unwrap_or(u.len());
     let dispute = (at, at + len);
     let blocked = |a, b| overlaps(a, b, dispute) || excluded.is_some_and(|e| overlaps(a, b, e));
-    let mut scores: HashMap<&'static str, (usize, bool)> = HashMap::new();
+    // 语言很少，按出现先后存；并列最高分时弃权，所以与先后次序无关。
+    let mut scores: Vec<(&'static str, (usize, bool))> = Vec::new();
     let mut exclusive = None;
     let mut conflict = false;
-    let mut k = start;
-    while k < end {
-        #[cfg(test)]
-        add_work(|work| work.evidence_units += 1);
-        if blocked(k, k + 1) { k += 1; continue; }
-        let mut consumed = 1;
-        for p in matching_phrases(u, k, end).into_iter().rev() {
-            let n = p.len;
-            if blocked(k, k + n) { continue; }
-            if needs_evidence(u, k, n) || neutral_word(u, k, n) || inside_place_name(u, k, n) || !whole_hangul_voter(u, k, p) { continue; }
+    let voters = segment_voters(u, start, end);
+    {
+        let mut k = start;
+        while k < end {
+            #[cfg(test)]
+            add_work(|work| work.evidence_units += 1);
+            if blocked(k, k + 1) { k += 1; continue; }
             // 不同文字系统可构成局部句段；英文会议用语不能证明夹在其中的中日韩日词。
-            if u[at].kind == UKind::Cjk && u[k].kind != UKind::Cjk { continue; }
-            // 货币与时区缩写、数字串和标点不证明语言。
-            if u[k..k + n].iter().any(|t| t.kind == UKind::Number)
-                || !u[k..k + n].iter().any(|t| t.raw.chars().any(char::is_alphabetic)) {
-                continue;
+            if u[at].kind == UKind::Cjk && u[k].kind != UKind::Cjk { k += 1; continue; }
+            let mut consumed = 1;
+            for &(n, group) in &voters[k - start] {
+                if blocked(k, k + n) { continue; }
+                let unshared = group.votes.len() == 1;
+                let mut strong = None;
+                let mut strong_count = 0;
+                for &(language, grammar) in &group.votes {
+                    let score = match scores.iter().position(|(l, _)| *l == language) {
+                        Some(index) => &mut scores[index].1,
+                        None => { scores.push((language, (0, false))); &mut scores.last_mut().unwrap().1 }
+                    };
+                    score.0 += if n > 1 { 3 } else if grammar { 2 } else { 1 };
+                    score.1 |= grammar;
+                    if grammar { strong = Some(language); strong_count += 1; }
+                }
+                if unshared && strong_count == 1 {
+                    let language = strong.unwrap();
+                    conflict |= exclusive.is_some_and(|previous| previous != language);
+                    exclusive = Some(language);
+                }
+                consumed = n;
+                break;
             }
-            let Some(group) = p.raw_entries(u, k) else { continue; };
-            if group.votes.is_empty() { continue; }
-            let unshared = group.votes.len() == 1;
-            let mut strong = None;
-            let mut strong_count = 0;
-            for &(language, grammar) in &group.votes {
-                let score = scores.entry(language).or_default();
-                score.0 += if n > 1 { 3 } else if grammar { 2 } else { 1 };
-                score.1 |= grammar;
-                if grammar { strong = Some(language); strong_count += 1; }
-            }
-            if unshared && strong_count == 1 {
-                let language = strong.unwrap();
-                conflict |= exclusive.is_some_and(|previous| previous != language);
-                exclusive = Some(language);
-            }
-            consumed = n;
-            break;
+            k += consumed;
         }
-        k += consumed;
     }
     if conflict { return Evidence::Conflicting; }
-    let Some((&language, &(best, grammar))) = scores.iter().max_by_key(|(_, score)| score.0) else { return Evidence::Unknown };
-    if scores.iter().any(|(&other, &(score, _))| other != language && score == best) { Evidence::Unknown }
+    let Some(&(language, (best, grammar))) = scores.iter().max_by_key(|(_, score)| score.0) else { return Evidence::Unknown };
+    if scores.iter().any(|&(other, (score, _))| other != language && score == best) { Evidence::Unknown }
     else { Evidence::Language(language, grammar) }
 }
 
