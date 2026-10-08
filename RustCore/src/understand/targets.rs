@@ -6,7 +6,7 @@ use super::scan::{words_after, Atom, Located};
 use super::text::fold_str;
 use super::types::ZoneRef;
 use super::units::{find, phrase_units, UKind, Unit};
-use std::collections::HashMap;
+use super::table_storage::FastMap;
 use std::sync::OnceLock;
 
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -300,9 +300,9 @@ struct Form {
     units: Vec<String>,
     lang: &'static str,
 }
-type Table = HashMap<String, Vec<Form>>;
+type Table = FastMap<String, Vec<Form>>;
 fn table(entries: &[(&'static str, &[&str])]) -> Table {
-    let mut out: Table = HashMap::new();
+    let mut out: Table = FastMap::default();
     for &(lang, forms) in entries {
         for &form in forms {
             let units = phrase_units(&fold_str(form));

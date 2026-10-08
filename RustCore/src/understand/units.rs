@@ -108,8 +108,8 @@ pub(super) fn units(f: &text::Folded) -> Vec<Unit> {
             }
         }
     }
-    // 「a.m.」「p.m.」「a. m.」拼回一个单元（词表里写作 am / pm）。
-    let mut merged: Vec<Unit> = Vec::new();
+    // 「a.m.」「p.m.」「a. m.」拼回一个单元（词表里写作 am / pm）：就地改首个单元，去掉被并进来的几个。
+    let mut absorbed = Vec::new();
     let mut i = 0;
     while i < out.len() {
         if i + 2 < out.len()
@@ -118,17 +118,25 @@ pub(super) fn units(f: &text::Folded) -> Vec<Unit> {
             && out[i + 2].text == "m"
         {
             let end = if i + 3 < out.len() && out[i + 3].text == "." { i + 3 } else { i + 2 };
-            let mut u = out[i].clone();
-            u.text = format!("{}m", out[i].text);
-            u.end = out[end].end;
-            merged.push(u);
+            out[i].text = format!("{}m", out[i].text);
+            out[i].end = out[end].end;
+            absorbed.extend(i + 1..=end);
             i = end + 1;
             continue;
         }
-        merged.push(out[i].clone());
         i += 1;
     }
-    merged
+    if !absorbed.is_empty() {
+        let mut index = 0;
+        let mut next = absorbed.iter().peekable();
+        out.retain(|_| {
+            let keep = next.peek() != Some(&&index);
+            if !keep { next.next(); }
+            index += 1;
+            keep
+        });
+    }
+    out
 }
 
 /// 折叠区间对应的原文（一个原文字符折成两个时 `original` 里重复，去掉相邻的重复位）。
@@ -307,11 +315,10 @@ pub(super) fn find(units: &[Unit], i: usize, pred: impl Fn(Sem) -> bool) -> Opti
         if i + n > units.len() {
             continue;
         }
-        if !(0..n).all(|k| units[i + k].text == phrase.units[k]) {
-            continue;
-        }
+        // 两个条件都要成立：先查词义（比较枚举），大多数短语在这里就排除，不必逐词比字符串。
+        let Some(&(sem, lang)) = phrase.sems.iter().find(|(s, _)| pred(*s)) else { continue; };
         // 拉丁词要整词对上（「sat」不在「saturday」里），多词短语中间不能隔着标点以外的东西。
-        if let Some(&(sem, lang)) = phrase.sems.iter().find(|(s, _)| pred(*s)) {
+        if (0..n).all(|k| units[i + k].text == phrase.units[k]) {
             return Some((n, sem, lang));
         }
     }

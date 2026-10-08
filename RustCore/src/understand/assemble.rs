@@ -2428,13 +2428,13 @@ const CITY_HEAD_GLUE: &[&str] = &["de", "di", "da", "do", "del", "dos", "das", "
 /// 一段零散词开头的「城市」通名：（通名占几个词，专名从第几个词起）。没有通名时 (0, 0)。
 fn city_head_rest(tokens: &[(usize, usize, String)]) -> (usize, usize) {
     for head in CITY_HEADS {
-        let words: Vec<&str> = head.split(' ').collect();
-        if tokens.len() >= words.len() && words.iter().enumerate().all(|(k, w)| tokens[k].2 == *w) {
-            let mut rest = words.len();
+        let words = head.split(' ').count();
+        if tokens.len() >= words && head.split(' ').zip(tokens).all(|(w, t)| t.2 == w) {
+            let mut rest = words;
             while tokens.get(rest).is_some_and(|t| CITY_HEAD_GLUE.contains(&t.2.as_str())) {
                 rest += 1;
             }
-            return (words.len(), rest);
+            return (words, rest);
         }
     }
     (0, 0)
