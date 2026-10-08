@@ -139,12 +139,10 @@ pub enum Kind {
     Newline,
 }
 
-/// 一个词：`start..end` 是折叠文本里的字符下标。
+/// 一个词：种类与折叠后的文字（字符下标见 `spans`）。
 #[derive(Debug, Clone)]
 pub struct Token {
     pub kind: Kind,
-    pub start: usize,
-    pub end: usize,
     pub text: String,
 }
 
@@ -155,6 +153,13 @@ fn is_word_char(c: char) -> bool {
 
 /// 切词：数字串、字母串（撇号夹在字母中间算词内，`let's` / `l'est` / `o'clock`）、中日韩串、标点、空白、换行。
 pub fn tokens(f: &Folded) -> Vec<Token> {
+    spans(f).into_iter()
+        .map(|(kind, start, end)| Token { kind, text: f.chars[start..end].iter().collect() })
+        .collect()
+}
+
+/// 与 `tokens` 同样切分，只给（种类，起，止），需要文字的调用方自己取。
+pub(super) fn spans(f: &Folded) -> Vec<(Kind, usize, usize)> {
     let chars = &f.chars;
     let mut out = Vec::new();
     let mut i = 0;
@@ -191,7 +196,7 @@ pub fn tokens(f: &Folded) -> Vec<Token> {
             i += 1;
             Kind::Punct
         };
-        out.push(Token { kind, start, end: i, text: chars[start..i].iter().collect() });
+        out.push((kind, start, i));
     }
     out
 }

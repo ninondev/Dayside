@@ -3,7 +3,7 @@
 use super::lexicon::Sem;
 #[cfg(test)]
 use super::lexicon::{ABBREVIATIONS, ENTRIES};
-use super::text::{self, fold, tokens, Kind};
+use super::text::{self, fold, spans, tokens, Kind};
 #[cfg(test)]
 use super::text::fold_str;
 #[cfg(test)]
@@ -64,10 +64,17 @@ pub(super) fn reset_lexicon(unit: &mut Unit) {
     unit.lexicon_memo = LexiconMemo::default();
 }
 
+struct Span {
+    kind: Kind,
+    start: usize,
+    end: usize,
+}
+
 pub(super) fn units(f: &text::Folded) -> Vec<Unit> {
     let mut out: Vec<Unit> = Vec::new();
     let mut space = false;
-    for t in tokens(f) {
+    for (kind, start, end) in spans(f) {
+        let t = Span { kind, start, end };
         match t.kind {
             Kind::Space => space = true,
             Kind::Newline => {
@@ -103,7 +110,8 @@ pub(super) fn units(f: &text::Folded) -> Vec<Unit> {
                     _ => UKind::Punct,
                 };
                 let raw = original_text(f, t.start, t.end);
-                out.push(Unit { text: t.text, kind, start: t.start, end: t.end, space_before: space, upper, capital, raw, evidence_memo: Default::default(), lexicon_memo: Default::default() });
+                let text = f.chars[t.start..t.end].iter().collect();
+                out.push(Unit { text, kind, start: t.start, end: t.end, space_before: space, upper, capital, raw, evidence_memo: Default::default(), lexicon_memo: Default::default() });
                 space = false;
             }
         }
@@ -141,7 +149,7 @@ pub(super) fn units(f: &text::Folded) -> Vec<Unit> {
 
 /// 折叠区间对应的原文（一个原文字符折成两个时 `original` 里重复，去掉相邻的重复位）。
 pub(super) fn original_text(f: &text::Folded, start: usize, end: usize) -> String {
-    let mut out = String::new();
+    let mut out = String::with_capacity(end.saturating_sub(start));
     let mut last: Option<(usize, usize)> = None;
     for i in start..end {
         if last != Some(f.span[i]) {
