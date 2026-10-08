@@ -301,24 +301,33 @@ enum EarthPoster {
     }
 
     /// 像素直接画进系统页，编码器顺着写出，不留大块 malloc 缓冲。
+    /// 页由图的数据源在 CoreGraphics 放掉这张图时交回 `PixelPool`（与 `MapRaster` 同法）：ImageIO 可能比本函数
+    /// 更晚放手，按作用域归还会让还活着的图指向已复用或已 `vm_deallocate` 的页。
     static func data(_ input: Input, type: CFString = "public.png" as CFString) -> Data? {
         defer { MapRelief.usedOffscreen() }
         let pixelWidth = Int(width * 2), pixelHeight = Int(height * 2)
         let length = pixelWidth * pixelHeight * 4
         guard let pixels = PixelPool.take(length) else { return nil }
-        defer { PixelPool.give(pixels, length: length) }
         let space = CGColorSpace(name: CGColorSpace.sRGB) ?? CGColorSpaceCreateDeviceRGB()
-        guard let context = CGContext(data: pixels, width: pixelWidth, height: pixelHeight, bitsPerComponent: 8,
-                                      bytesPerRow: pixelWidth * 4, space: space,
-                                      bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return nil }
-        let renderer = ImageRenderer(content: Content(instant: input.instant, places: input.places, labels: input.labels,
-                                                       caption: input.caption, locale: input.locale))
-        renderer.render(rasterizationScale: 2) { _, draw in
-            context.scaleBy(x: 2, y: 2)
-            draw(context)
+        let rendered: Bool = {
+            guard let context = CGContext(data: pixels, width: pixelWidth, height: pixelHeight, bitsPerComponent: 8,
+                                          bytesPerRow: pixelWidth * 4, space: space,
+                                          bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return false }
+            let renderer = ImageRenderer(content: Content(instant: input.instant, places: input.places, labels: input.labels,
+                                                           caption: input.caption, locale: input.locale))
+            renderer.render(rasterizationScale: 2) { _, draw in
+                context.scaleBy(x: 2, y: 2)
+                draw(context)
+            }
+            return true
+        }()
+        guard rendered, let provider = CGDataProvider(dataInfo: nil, data: pixels, size: length, releaseData: { _, data, size in
+            PixelPool.give(data, length: size)
+        }) else {
+            PixelPool.give(pixels, length: length)
+            return nil
         }
-        guard let provider = CGDataProvider(dataInfo: nil, data: pixels, size: length, releaseData: { _, _, _ in }),
-              let image = CGImage(width: pixelWidth, height: pixelHeight, bitsPerComponent: 8, bitsPerPixel: 32,
+        guard let image = CGImage(width: pixelWidth, height: pixelHeight, bitsPerComponent: 8, bitsPerPixel: 32,
                                   bytesPerRow: pixelWidth * 4, space: space,
                                   bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.noneSkipLast.rawValue),
                                   provider: provider, decode: nil, shouldInterpolate: false, intent: .defaultIntent) else { return nil }
