@@ -30,10 +30,9 @@ struct SearchField: NSViewRepresentable {
     var onPaste: (() -> Void)? = nil
 
     func makeNSView(context: Context) -> NSSearchField {
-        let field = NSSearchField()
-        let cell = PasteAwareCell(textCell: "")
+        let field = PasteAwareSearchField()
+        let cell = field.cell as! PasteAwareCell
         cell.editor.onPaste = { [weak coordinator = context.coordinator] in coordinator?.parent.onPaste?() }
-        field.cell = cell
         field.delegate = context.coordinator
         field.placeholderString = placeholder
         // 搜索框、单元与编辑器都用已按界面语言取出的名称。
@@ -79,6 +78,14 @@ struct SearchField: NSViewRepresentable {
     }
 
     func makeCoordinator() -> Coordinator { Coordinator(self) }
+
+    /// 由 AppKit 创建单元，保留原生搜索框的编辑与选择默认值。
+    final class PasteAwareSearchField: NSSearchField {
+        override class var cellClass: AnyClass? {
+            get { PasteAwareCell.self }
+            set { super.cellClass = newValue }
+        }
+    }
 
     /// 保留 NSSearchField 的编辑、输入法和键盘路径，只在原生粘贴动作前报告来源。
     final class PasteAwareCell: NSSearchFieldCell {
