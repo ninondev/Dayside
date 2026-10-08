@@ -192,7 +192,8 @@ pub fn tokens(f: &Folded) -> Vec<Token> {
 /// 与 `tokens` 同样切分，只给（种类，起，止），需要文字的调用方自己取。
 pub(super) fn spans(f: &Folded) -> Vec<(Kind, usize, usize)> {
     let chars = &f.chars;
-    let mut out = Vec::new();
+    // 每段至少一个字符：按字符数预留，追加时不再扩容复制。
+    let mut out = Vec::with_capacity(chars.len());
     let mut i = 0;
     while i < chars.len() {
         let c = chars[i];
