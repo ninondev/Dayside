@@ -54,15 +54,22 @@ impl Clone for LexiconMemo {
 }
 
 pub(super) fn prepare_lexicon(units: &mut [Unit]) {
-    for unit in units.iter_mut() {
+    // 改了文字的单元必须先 `reset_lexicon`（数字分类清空的片段就是这样），这里把它们重新准备。
+    let mut fresh = vec![false; units.len()];
+    for (unit, fresh) in units.iter_mut().zip(&mut fresh) {
         if unit.lexicon_memo.0.is_none() {
             unit.lexicon_memo.0 = Some(prefix_phrases(&unit.text));
+            *fresh = true;
         }
     }
-    // 后面的单元可能刚改过（数字分类清空的片段），每次都按整段重算。
+    // 只重算本身刚准备的、或短语可能伸到刚准备的单元上的位置；其余位置后面的词没变，掩码照旧。
     // 超出这段末尾的短语留作可能：更长的切片里仍要照常比较。
     for i in 0..units.len() {
         let list = units[i].lexicon_memo.0.flatten().unwrap_or(&[]);
+        let reach = list.iter().take(64).map(|phrase| phrase.units.len()).max().unwrap_or(0);
+        if !fresh[i] && !fresh[i..(i + reach).min(units.len())].contains(&true) {
+            continue;
+        }
         let mask = list.iter().take(64).enumerate().fold(0u64, |mask, (k, phrase)| {
             let n = phrase.units.len();
             let mismatch = i + n <= units.len() && (0..n).any(|j| units[i + j].text != phrase.units[j]);
@@ -83,9 +90,10 @@ struct Span {
 }
 
 pub(super) fn units(f: &text::Folded) -> Vec<Unit> {
-    let mut out: Vec<Unit> = Vec::new();
+    let spans = spans(f);
+    let mut out: Vec<Unit> = Vec::with_capacity(spans.len());
     let mut space = false;
-    for (kind, start, end) in spans(f) {
+    for (kind, start, end) in spans {
         let t = Span { kind, start, end };
         match t.kind {
             Kind::Space => space = true,
