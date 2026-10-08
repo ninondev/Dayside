@@ -1784,11 +1784,9 @@ impl<'a> Scanner<'a> {
             return Some(n);
         }
         // 前置线索（at / um / alle / om / pukul / lúc / saat / a las / в / o）。
-        let cue_len = match find(u, i, |s| s == Sem::ClockBefore) {
-            Some((n, _, _)) => n,
-            None => 0,
-        };
-        let cue_lang = if cue_len > 0 { find(u, i, |s| s == Sem::ClockBefore).map(|(_, _, l)| l) } else { None };
+        let cue = find(u, i, |s| s == Sem::ClockBefore);
+        let cue_len = cue.map_or(0, |(n, _, _)| n);
+        let cue_lang = cue.filter(|_| cue_len > 0).map(|(_, _, l)| l);
         let j = i + cue_len;
         if j >= u.len() {
             return None;
@@ -1858,7 +1856,8 @@ impl<'a> Scanner<'a> {
             }
         }
         // H:MM、H:MM:SS、15h30、15.30（有线索、分钟 ≥ 13 或 09.00 这种月份不合法的）。
-        let dotted_ok = !hour_is_word
+        // 只有小时后面紧跟「.」时 `minutes_after` 才看它，别的情况不必判断上下文。
+        let dotted_ok = !hour_is_word && u.get(end).is_some_and(|sep| is_punct(sep, "."))
             && (dotted_clock_context(u, j) || cue_len > 0
                 || u.get(j + 3).is_some_and(|t| find(u, j + 3, |s| matches!(s, Sem::ClockAfter | Sem::Period(Period::Am | Period::Pm))).is_some() && t.kind != UKind::Number)
                 || u.get(j + 2).is_some_and(|m| m.kind == UKind::Number && m.text.len() == 2 && !m.space_before && is_punct(&u[j + 1], ".") && !u[j + 1].space_before && m.text.parse::<u8>().ok().is_some_and(|v| v >= 13 || (v == 0 && u[j].text.starts_with('0')))));

@@ -132,7 +132,8 @@ pub fn fold_str(s: &str) -> String {
 }
 
 pub fn fold(input: &str) -> Folded {
-    let mut folded = Folded { chars: Vec::new(), span: Vec::new(), original: Vec::new(), source: input.to_owned(), source_bytes: Vec::with_capacity(input.len()) };
+    // 折叠后的字符数通常不超过原文字节数：按它预留，不在逐字追加时反复扩容复制。
+    let mut folded = Folded { chars: Vec::with_capacity(input.len()), span: Vec::with_capacity(input.len()), original: Vec::with_capacity(input.len()), source: input.to_owned(), source_bytes: Vec::with_capacity(input.len()) };
     let mut offset = 0usize;
     let mut buffer = Vec::new();
     for (byte, c) in input.char_indices() {

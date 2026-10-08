@@ -550,11 +550,13 @@ fn evidence_uncached(u: &[Unit], at: usize, len: usize, excluded: Option<(usize,
         while k < end {
             #[cfg(test)]
             add_work(|work| work.evidence_units += 1);
-            if blocked(k, k + 1) { k += 1; continue; }
+            let here = voters.at(k - start);
+            // 没有候选投票短语的位置只前进一格（下面哪条路都一样），不必再看别的条件。
+            if here.is_empty() || blocked(k, k + 1) { k += 1; continue; }
             // 不同文字系统可构成局部句段；英文会议用语不能证明夹在其中的中日韩日词。
             if u[at].kind == UKind::Cjk && u[k].kind != UKind::Cjk { k += 1; continue; }
             let mut consumed = 1;
-            for &(n, group) in voters.at(k - start) {
+            for &(n, group) in here {
                 if blocked(k, k + n) { continue; }
                 let unshared = group.votes.len() == 1;
                 let mut strong = None;
