@@ -17732,9 +17732,14 @@
       "startedAt": "2026-10-09T07:51:27.614379+00:00",
       "sourceCommit": "8c7275442dfc9e4ffc86c56bb7b63e9372d7bda1",
       "logPath": "backup/mac-acceptance-20261008T112635Z/00-local-save-checkpoint.log",
-      "status": "running",
+      "status": "passed",
       "workingTreeDiffSha256": "bf6ff189add167ed3c00c7ffd164f937d7626947d00b39cc9d31a240c2b65894",
-      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/00-local-save-checkpoint-before.diff"
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/00-local-save-checkpoint-before.diff",
+      "exitCode": 0,
+      "finishedAt": "2026-10-09T07:51:28.101394+00:00",
+      "durationSeconds": 0.487,
+      "outputSummary": "Saved validated source and incomplete acceptance ledger in local commit e191132e1bfc4b9560a882e5604c9708dc0ff81b. No push, tag, or installer publication.",
+      "resultCommit": "e191132e1bfc4b9560a882e5604c9708dc0ff81b"
     }
   ],
   "sourceAtStart": "8c7275442dfc9e4ffc86c56bb7b63e9372d7bda1",
@@ -17862,7 +17867,7 @@
       "scope": "Continue functional acceptance; performance and memory remain deferred until a quiet machine by owner instruction."
     }
   ],
-  "updatedAt": "2026-10-09T07:51:27.952275+00:00",
+  "updatedAt": "2026-10-09T07:51:28.101409+00:00",
   "stage1Checkpoint": {
     "recordedAt": "2026-10-09T07:22:34.710035+00:00",
     "complete": false,
@@ -17889,7 +17894,7 @@
     ],
     "nativeToolBlocker": "Latest native app inventory contains no Dayside ordinary window. Owner actual macOS logout/login and Settings-open confirmation remain pending; menu-only process existence cannot substitute for native persistence acceptance.",
     "otherActiveWorkPreserved": "VS Code has an active agent; it was not quit",
-    "commitCreated": false,
+    "commitCreated": true,
     "pushed": false,
     "installerUploaded": false,
     "tagCreated": false,
@@ -17926,6 +17931,8 @@
       "authorized": true,
       "scope": "Save current owned source and acceptance record in local Git commits; preserve incomplete gates and raw evidence."
     },
-    "localSaveReceiptPath": "backup/mac-acceptance-20261008T112635Z/00-local-save-checkpoint.json"
+    "localSaveReceiptPath": "backup/mac-acceptance-20261008T112635Z/00-local-save-checkpoint.json",
+    "localSourceCheckpointCommit": "e191132e1bfc4b9560a882e5604c9708dc0ff81b",
+    "localSaveLedgerFinalization": "The subsequent local ledger-only commit saves this actual commit receipt. Its outcome and final HEAD are recorded in localSaveReceiptPath."
   }
 }
