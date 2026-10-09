@@ -65,12 +65,12 @@ trap 'exit 130' INT
 trap 'exit 143' TERM
 if [[ "${MEANTIME_AX_SKIP_BUILD:-0}" != 1 && -z "${DAYSIDE_DEBUG_APP:-${MEANTIME_DEBUG_APP:-}}" ]]; then
   dayside_require_measurement_window "AX build"
-  xcodebuild -project TahoeTime.xcodeproj -scheme TahoeTime -configuration Debug ${build_args[@]+"${build_args[@]}"} -jobs 3 CODE_SIGNING_ALLOWED=NO build > "$out/build.log" 2>&1 \
+  xcodebuild -project Dayside.xcodeproj -scheme Dayside -configuration Debug ${build_args[@]+"${build_args[@]}"} -jobs 3 CODE_SIGNING_ALLOWED=NO build > "$out/build.log" 2>&1 \
     || { grep -E ': error:|\*\* ' "$out/build.log" | sort -u | head >&2; echo "构建失败，见 $out/build.log" >&2; exit 1; }
 fi
 app="${DAYSIDE_DEBUG_APP:-${MEANTIME_DEBUG_APP:-}}"
 if [[ -z "$app" ]]; then
-  products="$(xcodebuild -project TahoeTime.xcodeproj -scheme TahoeTime -configuration Debug ${build_args[@]+"${build_args[@]}"} -showBuildSettings 2>/dev/null | awk '/ BUILT_PRODUCTS_DIR = /{print $3; exit}')"
+  products="$(xcodebuild -project Dayside.xcodeproj -scheme Dayside -configuration Debug ${build_args[@]+"${build_args[@]}"} -showBuildSettings 2>/dev/null | awk '/ BUILT_PRODUCTS_DIR = /{print $3; exit}')"
   app="$products/Dayside.app"
 fi
 [[ -d "$app" ]] || { echo "没有 Debug 产物：$app" >&2; exit 1; }
@@ -92,7 +92,7 @@ TEST_BUNDLES
 # 原生窗口自动保存写标准域，副本使用独立标识以隔离安装版。
 audit_id="com.dayside.Dayside.audit.$(/usr/bin/uuidgen | /usr/bin/tr '[:upper:]' '[:lower:]')"
 /usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier $audit_id" "$copy/Contents/Info.plist"
-ent="$out/debug.entitlements"; cp "$root/TahoeTime/TahoeTime-signing-Debug.entitlements" "$ent"
+ent="$out/debug.entitlements"; cp "$root/Dayside/Dayside-signing-Debug.entitlements" "$ent"
 sign() { /usr/bin/codesign --force --sign - --timestamp=none "$@"; }
 for dylib in "$copy"/Contents/MacOS/*.dylib; do [[ -e "$dylib" ]] && sign "$dylib"; done
 for framework in "$copy"/Contents/Frameworks/*.framework; do [[ -e "$framework" ]] && sign "$framework"; done

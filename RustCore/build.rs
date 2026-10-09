@@ -3,7 +3,7 @@ use std::{env, fs, path::PathBuf};
 
 fn main() {
     let manifest = PathBuf::from(env::var_os("CARGO_MANIFEST_DIR").expect("Cargo manifest directory"));
-    let source = manifest.join("../TahoeTime/Resources/relief.png");
+    let source = manifest.join("../Dayside/Resources/relief.png");
     println!("cargo:rerun-if-changed={}", source.display());
     let bytes = fs::read(source).expect("bundled relief image");
     let checksum = bytes.iter().fold(0xcbf2_9ce4_8422_2325_u64, |hash, byte| {

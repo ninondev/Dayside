@@ -601,7 +601,7 @@ fn equivalence_groups_follow_separators_and_lines() {
 fn the_baseline_resolves_places_against_the_bundled_city_index() {
     let opened = crate::city_index::dispatch(
         "city.open",
-        json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")}),
+        json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")}),
     )
     .unwrap();
     let handle = opened["handle"].as_u64().unwrap();
@@ -699,7 +699,7 @@ fn the_baseline_resolves_places_against_the_bundled_city_index() {
 fn real_message_forms_read_what_was_written() {
     let opened = crate::city_index::dispatch(
         "city.open",
-        json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")}),
+        json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")}),
     )
     .unwrap();
     let handle = opened["handle"].as_u64().unwrap();
@@ -891,7 +891,7 @@ fn place_names_are_read_whole_and_not_hijacked() {
 fn exam_probe() {
     let path = std::env::var("EXAM_FILE").expect("EXAM_FILE");
     let items: Vec<serde_json::Value> = serde_json::from_str(&std::fs::read_to_string(path).unwrap()).unwrap();
-    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = |t: &str, strong: bool| city_lookup(Some(handle), t, strong);
     for item in items {
@@ -915,7 +915,7 @@ fn debug_probe() {
     for a in &scanner.out {
         println!("atom {:?} [{}..{}]", a.atom, a.from, a.to);
     }
-    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = |t: &str, strong: bool| { let r = city_lookup(Some(handle), t, strong); println!("lookup {t:?} strong={strong} -> {r:?}"); r };
     let language = std::env::var("PROBE_LANG").unwrap_or_else(|_| "en".into());
@@ -932,7 +932,7 @@ fn debug_probe() {
 fn corpus_probe() {
     let path = std::env::var("PROBE_FILE").expect("PROBE_FILE");
     let region = std::env::var("PROBE_REGION").unwrap_or_default();
-    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = |t: &str, strong: bool| city_lookup(Some(handle), t, strong);
     let mut tally: std::collections::BTreeMap<String, (usize, usize)> = Default::default();
@@ -965,7 +965,7 @@ fn corpus_probe() {
 /// 修正的缺陷」。
 #[cfg(not(feature = "intents-only"))]
 fn migration_results(path: &str) -> Vec<(String, String, bool, String, Vec<String>)> {
-    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = |t: &str, strong: bool| city_lookup(Some(handle), t, strong);
     let mut out = Vec::new();
@@ -1050,7 +1050,7 @@ fn migration_gate_old_sentences_stay_read() {
 /// 同样的钟点（含秒）、终点、日期、时区；旧版读不懂的，新引擎不许读出成立的钟点。返回（原文，对不对，旧答案，新读法）。
 #[cfg(not(feature = "intents-only"))]
 fn converter_migration_results() -> Vec<(String, bool, String, Vec<String>)> {
-    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = |t: &str, strong: bool| city_lookup(Some(handle), t, strong);
     let path = concat!(env!("CARGO_MANIFEST_DIR"), "/tests/corpus/migration-converter.jsonl");
@@ -1169,7 +1169,7 @@ fn crosscheck_dispatch_round_trip() {
 fn sentencegen_round_trip_report() {
     let opened = crate::city_index::dispatch(
         "city.open",
-        json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")}),
+        json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")}),
     )
     .unwrap();
     let handle = opened["handle"].as_u64().unwrap();
@@ -1690,7 +1690,7 @@ fn clock_period_prefixes_and_inflected_midnight() {
 #[cfg(not(feature = "intents-only"))]
 #[test]
 fn places_followup_regressions() {
-    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = |text: &str, strong: bool| city_lookup(Some(handle), text, strong);
     // The retained conflicting request uses an exact indexed alternate name,
@@ -1718,7 +1718,7 @@ fn places_followup_regressions() {
 #[cfg(not(feature = "intents-only"))]
 #[test]
 fn lowercase_words_after_place_prepositions() {
-    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = |text: &str, strong: bool| city_lookup(Some(handle), text, strong);
     let mut failures = Vec::new();
@@ -1774,7 +1774,7 @@ fn lowercase_place_written_diacritics_keep_exact_city_spelling() {
             city => city,
         }
     }
-    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = |text: &str, strong: bool| city_lookup(Some(handle), text, strong);
     for (text, want) in [
@@ -2030,7 +2030,7 @@ fn u9_unit_quantities_are_not_dates() {
 #[test]
 #[cfg(not(feature = "intents-only"))]
 fn real9_places_targets_and_attached_local() {
-    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = |text: &str, strong: bool| city_lookup(Some(handle), text, strong);
     let cases: &[(&str, &[&str])] = &[
@@ -2091,7 +2091,7 @@ fn real9_places_targets_and_attached_local() {
 #[test]
 #[cfg(not(feature = "intents-only"))]
 fn real9_portuguese_fair_is_common_noun_but_full_city_survives() {
-    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = |text: &str, strong: bool| city_lookup(Some(handle), text, strong);
     for (text, want) in [
@@ -2133,7 +2133,7 @@ fn real9_independent_place_cue_and_dotted_date_priority() {
 #[test]
 #[cfg(not(feature = "intents-only"))]
 fn here_copulas_attach_only_to_clocks() {
-    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = |text: &str, strong: bool| city_lookup(Some(handle), text, strong);
     let cases: &[(&str, &[&str])] = &[
@@ -2195,7 +2195,7 @@ fn word_and_numeric_clock_restatements_are_one_mention() {
 #[cfg(not(feature = "intents-only"))]
 #[test]
 fn alarm_city_before_iso_date_keeps_its_clock_source() {
-    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+    let opened = crate::city_index::dispatch("city.open", json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = |text: &str, strong: bool| city_lookup(Some(handle), text, strong);
     let mut failures = Vec::new();

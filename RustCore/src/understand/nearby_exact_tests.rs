@@ -3,7 +3,7 @@ use super::*;
 
 #[cfg(not(feature = "intents-only"))]
 fn read(text: &str, language: &str) -> Output {
-    let path = concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity");
+    let path = concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity");
     let opened = crate::dispatch("city.open", serde_json::json!({"path": path})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = memoized_lookup(|name, strong| city_lookup(Some(handle), name, strong));

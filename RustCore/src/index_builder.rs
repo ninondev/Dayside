@@ -4611,7 +4611,7 @@ mod tests {
         let path = std::env::var("MEANTIME_TEST_INDEX").unwrap_or_else(|_| {
             concat!(
                 env!("CARGO_MANIFEST_DIR"),
-                "/../TahoeTime/Resources/cities.ttcity"
+                "/../Dayside/Resources/cities.ttcity"
             )
             .to_owned()
         });

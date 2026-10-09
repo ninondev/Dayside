@@ -8,7 +8,7 @@
 //    curl -L -o GRAY_50M_SR_OB.zip https://naciscdn.org/naturalearth/50m/raster/GRAY_50M_SR_OB.zip
 //    unzip GRAY_50M_SR_OB.zip GRAY_50M_SR_OB.tif     # 10800 × 5400，8 位灰度，覆盖 90°N … 90°S
 //  生成：
-//    swift Tools/make_relief.swift GRAY_50M_SR_OB.tif TahoeTime/Resources/relief.png [宽，默认 1800]
+//    swift Tools/make_relief.swift GRAY_50M_SR_OB.tif Dayside/Resources/relief.png [宽，默认 1800]
 //  纬度范围写死在这里与 `WorldMapScene.latitudes` 同一组：80°N … 58°S（两极只有冰与空海）。
 //
 

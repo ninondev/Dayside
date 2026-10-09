@@ -7,7 +7,7 @@ source "$root/Tools/test_screen_guard.sh"
 if [[ -n "${MEANTIME_PRODUCTS:-}" ]]; then
   products="$MEANTIME_PRODUCTS"
 else
-  products="$(xcodebuild -project "$root/TahoeTime.xcodeproj" -scheme TahoeTime -configuration Debug -showBuildSettings -json 2>/dev/null | python3 -c 'import json,sys; print(next(x["buildSettings"]["BUILT_PRODUCTS_DIR"] for x in json.load(sys.stdin) if x["target"]=="TahoeTime"))')"
+  products="$(xcodebuild -project "$root/Dayside.xcodeproj" -scheme Dayside -configuration Debug -showBuildSettings -json 2>/dev/null | python3 -c 'import json,sys; print(next(x["buildSettings"]["BUILT_PRODUCTS_DIR"] for x in json.load(sys.stdin) if x["target"]=="Dayside"))')"
 fi
 preview="${MEANTIME_PREVIEW:-$root/build/DaysideFeaturePreview.app}"
 [[ -f "$products/libdayside_core.a" ]] || { echo 'Build the Debug scheme first.' >&2; exit 1; }
@@ -16,7 +16,7 @@ trap '"$root/Tools/trash.sh" "$preview_work"' EXIT
 cp "$products/libdayside_core.a" "$preview_work/libdayside_core.a"
 mkdir -p "$preview/Contents/MacOS" "$preview/Contents/Resources"
 sources=()
-while IFS= read -r -d '' source; do sources+=("$source"); done < <(find "$root/TahoeTime/Models" "$root/TahoeTime/Views" "$root/Shared" -name '*.swift' -print0)
+while IFS= read -r -d '' source; do sources+=("$source"); done < <(find "$root/Dayside/Models" "$root/Dayside/Views" "$root/Shared" -name '*.swift' -print0)
 xcrun swiftc -swift-version 6 -strict-concurrency=complete -target arm64-apple-macos26.0 \
   -parse-as-library -import-objc-header "$root/RustCore/include/dayside_core.h" \
   "${sources[@]}" "$root/Tools/FeaturePreview.swift" "$preview_work/libdayside_core.a" \

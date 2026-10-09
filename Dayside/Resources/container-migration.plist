@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Reserved legacy domain, distinct from the app's standard preferences.
+	     This milestone accepts fresh installations only; no prior-release compatibility is claimed. -->
+	<key>Move</key>
+	<array>
+		<string>${Library}/Preferences/com.dayside.Dayside.legacy.plist</string>
+	</array>
+</dict>
+</plist>

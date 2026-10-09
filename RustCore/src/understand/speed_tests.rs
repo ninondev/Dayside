@@ -16,7 +16,7 @@ struct BundledIndex(u64);
 
 impl BundledIndex {
     fn open() -> Self {
-        let path = concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity");
+        let path = concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity");
         assert!(std::path::Path::new(path).with_extension("ttpop").is_file(), "missing bundled population companion");
         let opened = crate::dispatch("city.open", json!({ "path": path })).unwrap();
         Self(opened["handle"].as_u64().unwrap())
@@ -156,7 +156,7 @@ fn understanding_lookup_cache_preserves_keys_and_scope() {
 
 #[test]
 fn understanding_name_predicate_matches_localized_map() {
-    let index = crate::city_index::CityIndex::open(concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")).unwrap();
+    let index = crate::city_index::CityIndex::open(concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")).unwrap();
     for city in [0, 1, 63, 64, 255, 256, 4_999, 50_000, index.city_count() - 1] {
         let names = index.names(city, false);
         for query in names.values() {

@@ -9,7 +9,9 @@ profile=app-debug
 profile_args=(--profile app-debug)
 if [[ "${CONFIGURATION:-Release}" == Release ]]; then
   profile=release
-  profile_args=(--release)
+  # Build-only proc macros must remain loadable on macOS 27 (rust-lang/rust#157750).
+  # The app library keeps its existing release optimization and strip settings.
+  profile_args=(--release --config 'profile.release.build-override.strip="none"')
 fi
 target_dir="${DERIVED_FILE_DIR:-$root/RustCore/target/xcode}/rust-target"
 output_dir="${BUILT_PRODUCTS_DIR:-$root/RustCore/target/xcode}"

@@ -643,7 +643,7 @@ mod tests {
     #[cfg(not(feature = "intents-only"))]
     fn bundled_same_name_cities_rank_by_population() {
         let path = std::env::var("MEANTIME_TEST_INDEX").unwrap_or_else(|_| {
-            concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity").to_owned()
+            concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity").to_owned()
         });
         let opened = crate::city_index::dispatch("city.open", serde_json::json!({ "path": path })).unwrap();
         let fixture = FixtureIndex { handle: opened["handle"].as_u64().unwrap() };

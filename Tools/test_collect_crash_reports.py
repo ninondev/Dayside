@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import collect_crash_reports
 
@@ -61,12 +62,12 @@ class CollectCrashReportsTests(unittest.TestCase):
 
     def test_header_keys_name_and_procname_also_match(self):
         write_file(self.reports / "a.ips", ips_bytes({"name": "xctest"}))
-        write_file(self.reports / "b.ips", ips_bytes({"procName": "TahoeTimeTests"}))
+        write_file(self.reports / "b.ips", ips_bytes({"procName": "DaysideTests"}))
 
         reports = self.collect()
 
         self.assertEqual({r["file"]: r["process"] for r in reports},
-                         {"a.ips": "xctest", "b.ips": "TahoeTimeTests"})
+                         {"a.ips": "xctest", "b.ips": "DaysideTests"})
         self.assertIsNone(reports[0]["bug_type"])
 
     def test_older_file_is_skipped_and_exact_since_is_kept(self):
@@ -93,7 +94,7 @@ class CollectCrashReportsTests(unittest.TestCase):
 
     def test_filename_prefix_matches_crash_files(self):
         write_file(self.reports / "xctest_2026-10-01-120000.crash")
-        write_file(self.reports / "TahoeTimeTests-2026-10-01.crash")
+        write_file(self.reports / "DaysideTests-2026-10-01.crash")
         write_file(self.reports / "Dayside.crash")  # exact name only counts for .ips
 
         reports = self.collect()
@@ -101,7 +102,7 @@ class CollectCrashReportsTests(unittest.TestCase):
         self.assertEqual(
             {r["file"]: (r["process"], r["bug_type"]) for r in reports},
             {"xctest_2026-10-01-120000.crash": ("xctest", None),
-             "TahoeTimeTests-2026-10-01.crash": ("TahoeTimeTests", None)},
+             "DaysideTests-2026-10-01.crash": ("DaysideTests", None)},
         )
 
     def test_missing_reports_dir_gives_empty_manifest_and_exit_zero(self):
@@ -150,6 +151,80 @@ class CollectCrashReportsTests(unittest.TestCase):
 
         self.assertTrue(source.exists())
         self.assertEqual(source.read_bytes(), before)
+
+    def test_strict_missing_primary_directory_fails_with_incomplete_receipt(self):
+        code = collect_crash_reports.main([
+            "--strict", "--since", str(SINCE), "--out", str(self.out),
+            "--reports-dir", str(self.reports),
+        ])
+        self.assertEqual(code, 1)
+        self.assertFalse(self.manifest()["scan"]["complete"])
+        self.assertEqual(self.manifest()["reports"], [])
+
+    def test_strict_missing_optional_retired_directory_is_recorded(self):
+        self.reports.mkdir()
+        code = collect_crash_reports.main([
+            "--strict", "--since", str(SINCE), "--out", str(self.out),
+            "--reports-dir", str(self.reports),
+            "--reports-dir", str(self.reports / "Retired"),
+        ])
+        self.assertEqual(code, 0)
+        self.assertTrue(self.manifest()["scan"]["complete"])
+        self.assertEqual([d["status"] for d in self.manifest()["scan"]["directories"]],
+                         ["scanned", "missing"])
+
+    def test_strict_unreadable_directory_cannot_pass_as_zero_crashes(self):
+        self.reports.mkdir()
+        with patch.object(Path, "iterdir", side_effect=PermissionError("denied")):
+            code = collect_crash_reports.main([
+                "--strict", "--since", str(SINCE), "--out", str(self.out),
+                "--reports-dir", str(self.reports),
+            ])
+        self.assertEqual(code, 1)
+        self.assertFalse(self.manifest()["scan"]["complete"])
+        self.assertEqual(self.manifest()["scan"]["directories"][0]["status"], "unreadable")
+
+    def test_fail_on_reports_preserves_crash_and_returns_failure(self):
+        source = write_file(self.reports / "Dayside-keep.ips", ips_bytes({"app_name": "Dayside"}))
+        code = collect_crash_reports.main([
+            "--strict", "--fail-on-reports", "--since", str(SINCE), "--out", str(self.out),
+            "--reports-dir", str(self.reports),
+        ])
+        self.assertEqual(code, 1)
+        self.assertTrue(self.manifest()["scan"]["complete"])
+        self.assertEqual((self.out / "Dayside-keep.ips").read_bytes(), source.read_bytes())
+
+    def test_strict_existing_manifest_is_never_overwritten(self):
+        self.reports.mkdir()
+        self.collect()
+        before = (self.out / "manifest.json").read_bytes()
+        with self.assertRaises(SystemExit) as result:
+            collect_crash_reports.main([
+                "--strict", "--since", str(SINCE), "--out", str(self.out),
+                "--reports-dir", str(self.reports),
+            ])
+        self.assertEqual(result.exception.code, 2)
+        self.assertEqual((self.out / "manifest.json").read_bytes(), before)
+
+    def test_strict_unreadable_header_cannot_pass_as_zero_crashes(self):
+        report = write_file(self.reports / "random.ips", ips_bytes({"app_name": "Dayside"}))
+        original_open = Path.open
+        def open_path(path, *args, **kwargs):
+            if path == report:
+                raise PermissionError("header denied")
+            return original_open(path, *args, **kwargs)
+        with patch.object(Path, "open", open_path):
+            collect_crash_reports.collect(SINCE, self.out, [self.reports],
+                                          collect_crash_reports.DEFAULT_PROCESSES, strict=True)
+        self.assertFalse(self.manifest()["scan"]["complete"])
+        self.assertIn("header denied", self.manifest()["scan"]["issues"][0])
+
+    def test_strict_malformed_header_cannot_pass_as_zero_crashes(self):
+        write_file(self.reports / "random.ips", b'{"app_name":\n')
+        collect_crash_reports.collect(SINCE, self.out, [self.reports],
+                                      collect_crash_reports.DEFAULT_PROCESSES, strict=True)
+        self.assertFalse(self.manifest()["scan"]["complete"])
+        self.assertEqual(self.manifest()["reports"], [])
 
 
 if __name__ == "__main__":

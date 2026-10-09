@@ -13,7 +13,8 @@ class OverlayTests(unittest.TestCase):
                                    capture_output=True, check=False)
         if available.returncode != 0:
             raise unittest.SkipTest('Pinned historical source is unavailable in this clone: ' + overlay.BASE)
-        cls.originals = {path: subprocess.check_output(['git', 'show', overlay.BASE + ':' + path], text=True)
+        resolved = overlay.baseline_paths('.')
+        cls.originals = {path: subprocess.check_output(['git', 'show', overlay.BASE + ':' + resolved[path]], text=True)
                          for path in overlay.PATHS}
 
     def test_all_adapters_match_exact_0924c_originals(self):
@@ -21,10 +22,10 @@ class OverlayTests(unittest.TestCase):
         self.assertEqual(set(patched), set(overlay.PATHS))
         for path in overlay.PATHS:
             self.assertNotEqual(patched[path], self.originals[path])
-        self.assertIn('model.jump(to: date)', patched['TahoeTime/Views/TimeInputView.swift'])
-        self.assertIn('parts: "dynamic"', patched['TahoeTime/Views/WorldMapView.swift'])
+        self.assertIn('model.jump(to: date)', patched['Dayside/Views/TimeInputView.swift'])
+        self.assertIn('parts: "dynamic"', patched['Dayside/Views/WorldMapView.swift'])
         self.assertIn('PerformanceProbe.recordConversion(places: resultZones.count)',
-                      patched['TahoeTime/Views/TimeInputView.swift'])
+                      patched['Dayside/Views/TimeInputView.swift'])
 
     def test_changed_original_or_duplicate_match_refused(self):
         with self.assertRaises(ValueError):
@@ -32,29 +33,29 @@ class OverlayTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             overlay.replace_once('old old', 'old', 'replacement', 'test')
         altered = dict(self.originals)
-        path = 'TahoeTime/Models/ApplicationSession.swift'
+        path = 'Dayside/Models/ApplicationSession.swift'
         altered[path] = altered[path].replace('if isLocalPreview { return .standard }', 'if isLocalPreview { return .custom }')
         with self.assertRaises(ValueError):
             overlay.patch_plan(altered)
 
     def test_old_motion_override_uses_only_existing_app_model_gate(self):
         patched = overlay.patch_plan(self.originals)
-        self.assertNotIn('transformEnvironment', patched['TahoeTime/TahoeTimeApp.swift'])
-        self.assertIn('guard animatesScrub, !reduced', patched['TahoeTime/Models/AppModel.swift'])
-        self.assertNotIn('accessibilityReduceMotion', self.originals['TahoeTime/Views/WorldMapView.swift'])
+        self.assertNotIn('transformEnvironment', patched['Dayside/DaysideApp.swift'])
+        self.assertIn('guard animatesScrub, !reduced', patched['Dayside/Models/AppModel.swift'])
+        self.assertNotIn('accessibilityReduceMotion', self.originals['Dayside/Views/WorldMapView.swift'])
 
     def test_panel_visibility_read_is_test_build_only(self):
-        patched = overlay.patch_plan(self.originals)['TahoeTime/Models/AppModel.swift']
+        patched = overlay.patch_plan(self.originals)['Dayside/Models/AppModel.swift']
         self.assertIn('#if DEBUG\n    private(set) var isPanelVisible = false\n    #else\n    private var isPanelVisible = false\n    #endif', patched)
         self.assertEqual(patched.count('private(set) var isPanelVisible = false'), 1)
 
     def test_every_production_adapter_has_test_host_guard(self):
         patched = overlay.patch_plan(self.originals)
-        self.assertIn('if isLocalPreview && !isTesting', patched['TahoeTime/Models/ApplicationSession.swift'])
-        for path in ('TahoeTime/Models/AppModel.swift', 'TahoeTime/Models/RustCore.swift',
-                     'TahoeTime/Views/WorldMapView.swift', 'TahoeTime/Views/TimeInputView.swift'):
+        self.assertIn('if isLocalPreview && !isTesting', patched['Dayside/Models/ApplicationSession.swift'])
+        for path in ('Dayside/Models/AppModel.swift', 'Dayside/Models/RustCore.swift',
+                     'Dayside/Views/WorldMapView.swift', 'Dayside/Views/TimeInputView.swift'):
             self.assertIn('#if DEBUG', patched[path])
-        self.assertIn('PerformanceProbe.isRequested', patched['TahoeTime/Models/UITestFixture.swift'])
+        self.assertIn('PerformanceProbe.isRequested', patched['Dayside/Models/UITestFixture.swift'])
 
 
 class PortableOverlayTests(unittest.TestCase):

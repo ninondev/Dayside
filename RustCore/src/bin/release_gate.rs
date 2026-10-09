@@ -79,9 +79,9 @@ fn run(o: Options) -> Result<bool> {
             build
                 .args([
                     "-project",
-                    "TahoeTime.xcodeproj",
+                    "Dayside.xcodeproj",
                     "-scheme",
-                    "TahoeTime",
+                    "Dayside",
                     "-configuration",
                     "Release",
                     "-derivedDataPath",

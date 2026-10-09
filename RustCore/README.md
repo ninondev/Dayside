@@ -30,7 +30,7 @@ The two `understand` migration checks use frozen answers in `tests/corpus/migrat
 
 ## City index
 
-The bundled `TahoeTime/Resources/cities.ttcity` uses TTCITY12: columnar fixed-point records, static symbol tables, prefix-compressed search keys, and grouped localized-name streams. The reader uses mmap on demand. Menu-bar display names are saved with each place; displaying saved places does not query the index.
+The bundled `Dayside/Resources/cities.ttcity` uses TTCITY12: columnar fixed-point records, static symbol tables, prefix-compressed search keys, and grouped localized-name streams. The reader uses mmap on demand. Menu-bar display names are saved with each place; displaying saved places does not query the index.
 
 `src/bin/build_city_index.rs` supports builds from raw GeoNames data, transcoding old images, adding languages, and repairing names. The raw dumps come from GeoNames. Normal builds do not rebuild the index. `data/*_names_wikidata.tsv` supplies Wikidata labels; `data/admin1_zh_supplement.tsv` fills missing Chinese administrative-region names. A place without a translated label keeps its primary name.
 

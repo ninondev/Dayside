@@ -14,7 +14,7 @@
   "implemented": [
     {
       "paths": [
-        "TahoeTime/Views/Settings/HelpSettingsView.swift"
+        "Dayside/Views/Settings/HelpSettingsView.swift"
       ],
       "change": "Expose selectable version text through a static accessibility element; retain text selection."
     },
@@ -33,7 +33,7 @@
       "paths": [
         "Tools/perf_ruler.sh",
         "Tools/perf_build.sh",
-        "TahoeTime/Models/Diagnostics/PerformanceProbe.swift"
+        "Dayside/Models/Diagnostics/PerformanceProbe.swift"
       ],
       "change": "Guarded optimized test-host instrumentation and alternating isolated performance measurement tools. Production Rust optimization profile is unchanged."
     }
@@ -99,9 +99,9 @@
     {
       "priority": 1,
       "paths": [
-        "TahoeTime/Models/Store.swift",
+        "Dayside/Models/Store.swift",
         "RustCore/src/store.rs",
-        "TahoeTime/TahoeTime.entitlements",
+        "Dayside/Dayside.entitlements",
         "Tools/check_release_identity.py"
       ],
       "problem": "Prove new-install persistence across process restarts with the chosen sandbox/signing identity. Runtime uses group.com.dayside.Dayside; Team-qualified signing and provisioning must agree with runtime. Bare-group ad-hoc sandbox fixture read its writes in-process but failed to persist across a fresh process. No authenticated Developer ID/provisioned acceptance exists."
@@ -109,8 +109,8 @@
     {
       "priority": 1,
       "paths": [
-        "TahoeTimeTests/MapScrubTests.swift",
-        "TahoeTime/Views/WorldMapView.swift"
+        "DaysideTests/MapScrubTests.swift",
+        "Dayside/Views/WorldMapView.swift"
       ],
       "problem": "An initial fullscreen copy/exit test crashed with SIGSEGV after a successful PNG copy. Same-source rerun and two native production Scene observations passed. Root cause remains unresolved; no complete crashing stack was captured."
     },

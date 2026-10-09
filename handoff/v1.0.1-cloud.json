@@ -140,7 +140,7 @@
   },
   {
    "item": "Release signing",
-   "change": "Tools/release_sign_notarize.sh (Developer ID re-sign, DMG, notarytool, stapler, Gatekeeper check) and MEANTIME_SIGN_IDENTITY in sign_bundle.sh; TahoeTime.entitlements gains the calendar entitlement."
+   "change": "Tools/release_sign_notarize.sh (Developer ID re-sign, DMG, notarytool, stapler, Gatekeeper check) and MEANTIME_SIGN_IDENTITY in sign_bundle.sh; Dayside.entitlements gains the calendar entitlement."
   },
   {
    "item": "Inline unit text",

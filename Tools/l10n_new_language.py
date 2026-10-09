@@ -6,7 +6,7 @@
 它只在加语言时跑几次、不常驻；要与 `l10n_check.py`、`l10n_apple_style.py` 同一种写法读写目录（两空格缩进、键按原序、
 非 ASCII 原样），换成 Rust 得给 serde_json 开 preserve_order，会改掉 RustCore 里所有 JSON 的键序。
 
-四份目录：界面 `TahoeTime/Resources/Localizable.xcstrings`，
+四份目录：界面 `Dayside/Resources/Localizable.xcstrings`，
 以及 `InfoPlist` / `AppShortcuts` / `ServicesMenu` 三份系统文案目录。
 
 用法：
@@ -28,10 +28,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CATALOGS = {
-    "interface": ROOT / "TahoeTime/Resources/Localizable.xcstrings",
-    "infoplist": ROOT / "TahoeTime/Resources/InfoPlist.xcstrings",
-    "shortcuts": ROOT / "TahoeTime/Resources/AppShortcuts.xcstrings",
-    "services": ROOT / "TahoeTime/Resources/ServicesMenu.xcstrings",
+    "interface": ROOT / "Dayside/Resources/Localizable.xcstrings",
+    "infoplist": ROOT / "Dayside/Resources/InfoPlist.xcstrings",
+    "shortcuts": ROOT / "Dayside/Resources/AppShortcuts.xcstrings",
+    "services": ROOT / "Dayside/Resources/ServicesMenu.xcstrings",
 }
 PLURAL = {"it": ["one", "other"], "nl": ["one", "other"], "pl": ["one", "few", "many", "other"],
           "tr": None, "vi": None, "id": None}

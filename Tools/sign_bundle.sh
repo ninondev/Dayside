@@ -5,7 +5,7 @@ set -euo pipefail
 root="${SRCROOT:-$(cd "$(dirname "$0")/.." && pwd)}"
 app="${1:?Pass the complete Dayside.app path}"
 configuration="${CONFIGURATION:-Release}"
-app_policy="$root/TahoeTime/TahoeTime-signing-$configuration.entitlements"
+app_policy="$root/Dayside/Dayside-signing-$configuration.entitlements"
 [[ -f "$app_policy" ]] || { echo "Missing signing policy: $app_policy" >&2; exit 1; }
 # Notarization requires the hardened runtime; Xcode would add it from ENABLE_HARDENED_RUNTIME, but this script signs instead.
 runtime=()

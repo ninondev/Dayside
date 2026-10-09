@@ -443,7 +443,7 @@ fn hostile_payloads_never_panic_any_operation() {
     // The city index is absent from the intents-only build; the sweep then runs without a handle.
     let handle = dispatch(
         "city.open",
-        json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")}),
+        json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")}),
     )
     .ok()
     .and_then(|opened| opened["handle"].as_u64());

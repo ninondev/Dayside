@@ -56,8 +56,6 @@ Dayside 是一个住在 Mac 菜单栏里的世界时钟。你加的每个地方�
 
 需要 macOS 26 或更新版本、Xcode 27、Rust 1.85 或更新版本、Python 3，以及你要构建的架构对应的 Rust Apple target。Cargo 依赖固定在 `RustCore/Cargo.lock` 里。下面的命令都离线跑，所以这些依赖要事先在本机的 Cargo 缓存里。
 
-Xcode 工程、target、scheme 和 Swift 模块还用着项目最早的名字 TahoeTime，构建出来的 App 是 `Dayside.app`。
-
 在 `RustCore/` 里运行：
 
 ```sh
@@ -80,7 +78,7 @@ node Tools/site_tests/when_test.mjs
 只编译 Mac App 和它的测试包、不运行的话，先把 `DAYSIDE_DERIVED_DATA` 设成一个构建输出目录，再在仓库根目录运行：
 
 ```sh
-xcodebuild -project TahoeTime.xcodeproj -scheme TahoeTime -configuration Debug \
+xcodebuild -project Dayside.xcodeproj -scheme Dayside -configuration Debug \
   -destination 'platform=macOS,arch=arm64' -derivedDataPath "$DAYSIDE_DERIVED_DATA" \
   -jobs 3 CODE_SIGNING_ALLOWED=NO build-for-testing
 ```
@@ -90,8 +88,8 @@ xcodebuild -project TahoeTime.xcodeproj -scheme TahoeTime -configuration Debug \
 代码按目录分开放。
 
 - `RustCore/`：规则、城市索引、搜索、读时间、天文、排程、绘图几何和存储。详见 [RustCore/README.zh-Hans.md](RustCore/README.zh-Hans.md)。
-- `TahoeTime/` 和 `Shared/`：SwiftUI 视图和 Apple 框架的接入。
-- `TahoeTimeTests/`、`TahoeTimeUITests/` 和 `RustCore/tests/`：测试和测试数据。
+- `Dayside/` 和 `Shared/`：SwiftUI 视图和 Apple 框架的接入。
+- `DaysideTests/`、`DaysideUITests/` 和 `RustCore/tests/`：测试和测试数据。
 - `DaysideiOS/`：和 Mac 共用 Rust 核心的 iPhone 原型，功能少一些。
 - `Tools/`：构建、测试、打包、测量和生成数据的工具。
 - `site/`：分享时间名片用的网页，还有隐私与支持页的草稿。
@@ -123,4 +121,4 @@ Dayside 是自由软件，采用 GPL-3.0-only。所有功能都免费，Dayside 
 - 一天里各时段的叫法：Unicode CLDR，Unicode License v3。
 - 中文界面欢迎页上那幅「天涯共此时」毛笔草书，字形取自 Liu Jian Mao Cao，SIL Open Font License 1.1。题记出自唐代张九龄和 John Muir。
 
-详细说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)；随包 Rust crate 的声明在 `TahoeTime/Resources/ThirdPartyNotices.txt`。
+详细说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)；随包 Rust crate 的声明在 `Dayside/Resources/ThirdPartyNotices.txt`。

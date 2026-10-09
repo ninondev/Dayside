@@ -5,7 +5,7 @@ components below come from other sources and keep their own licenses.
 
 ## GeoNames (city data)
 
-`TahoeTime/Resources/cities.ttcity` is a read-only index compiled from the GeoNames `cities500`
+`Dayside/Resources/cities.ttcity` is a read-only index compiled from the GeoNames `cities500`
 dump: place names, alternate names, coordinates, time zone, country and first-level
 administrative region. Localized display names come from the GeoNames `alternateNamesV2` dump.
 `RustCore/data/lights.bin` (the night-time city lights on the map) is derived from the population
@@ -40,7 +40,7 @@ which method was used for each row.
 ## IANA Time Zone Database
 
 Time zone rules come from the tzdata that ships with macOS and are read at run time.
-`TahoeTime/Resources/tzcoords.json` holds reference coordinates taken from the time zone
+`Dayside/Resources/tzcoords.json` holds reference coordinates taken from the time zone
 database's `zone.tab`; it is used only when the system copy cannot be read. The time zone
 database is in the public domain. `RustCore/data/country_zones.tsv` is generated from
 its `zone.tab` by `Tools/make_country_zones.py`.
@@ -52,13 +52,13 @@ Unicode data is covered by the Unicode License v3, reproduced in the bundled not
 
 ## Natural Earth (map relief)
 
-`TahoeTime/Resources/relief.png` is derived from Natural Earth "Gray Earth with Shaded Relief,
+`Dayside/Resources/relief.png` is derived from Natural Earth "Gray Earth with Shaded Relief,
 Hypsography, and Ocean Bottom" at 1:50m (https://www.naturalearthdata.com), which is in the public
 domain. It was cropped and resized by `Tools/make_relief.swift`.
 
 ## Liu Jian Mao Cao (epigraph artwork)
 
-The brush-calligraphy image `TahoeTime/Assets.xcassets/EpigraphZh.imageset/Epigraph.pdf` is made
+The brush-calligraphy image `Dayside/Assets.xcassets/EpigraphZh.imageset/Epigraph.pdf` is made
 from glyph outlines of Liu Jian Mao Cao (Copyright 2018 The Liu Jian Mao Cao Project Authors,
 https://github.com/googlefonts/liujianmaocao; designers Liu Zhengjiang, Kimberly Geswein and
 ZhongQi), licensed under the SIL Open Font License, Version 1.1 (https://openfontlicense.org).
@@ -69,5 +69,5 @@ the Mountains" (1938).
 ## Rust crates
 
 The versions of the Rust dependencies are pinned in `RustCore/Cargo.lock`. Their license and
-attribution texts are reproduced in `TahoeTime/Resources/ThirdPartyNotices.txt`, which ships inside
+attribution texts are reproduced in `Dayside/Resources/ThirdPartyNotices.txt`, which ships inside
 the app bundle.

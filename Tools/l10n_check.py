@@ -21,12 +21,12 @@ from pathlib import Path
 import l10n_apple_style as apple_style
 
 ROOT = Path(__file__).resolve().parents[1]
-CATALOG = ROOT / "TahoeTime/Resources/Localizable.xcstrings"
-SHORTCUT_CATALOG = ROOT / "TahoeTime/Resources/AppShortcuts.xcstrings"
-SYSTEM_CATALOGS = [ROOT / "TahoeTime/Resources/InfoPlist.xcstrings",
-                   ROOT / "TahoeTime/Resources/ServicesMenu.xcstrings"]
+CATALOG = ROOT / "Dayside/Resources/Localizable.xcstrings"
+SHORTCUT_CATALOG = ROOT / "Dayside/Resources/AppShortcuts.xcstrings"
+SYSTEM_CATALOGS = [ROOT / "Dayside/Resources/InfoPlist.xcstrings",
+                   ROOT / "Dayside/Resources/ServicesMenu.xcstrings"]
 LANGUAGES = ["zh-Hans", "en", "zh-Hant", "ja", "ko", "de", "es", "fr", "ru", "pt-BR", "it", "nl", "pl", "tr", "vi", "id"]
-SWIFT_ROOTS = ["TahoeTime", "Shared", "TahoeTimeTests", "DaysideiOS", "TahoeTimeUITests"]
+SWIFT_ROOTS = ["Dayside", "Shared", "DaysideTests", "DaysideiOS", "DaysideUITests"]
 
 
 def sources() -> dict[Path, str]:
@@ -92,7 +92,7 @@ SWIFT_DATA_FILES = {"UITestFixture.swift"}
 # 明确允许的非目录字面量（各自的理由）。
 ALLOWED_LITERALS = {
     "简体中文", "繁體中文", "日本語", "한국어",   # settings.rs：界面语言的名字各用自己的文字显示，不翻译
-    "Dayside Panel",                              # TahoeTimeApp.swift：Debug 转储专用的 audit-panel 窗口标题，用户看不到
+    "Dayside Panel",                              # DaysideApp.swift：Debug 转储专用的 audit-panel 窗口标题，用户看不到
     "天涯共此时", "天涯共此時",                   # 海报题记原文，只在中文界面出现，不翻译。
 }
 ERROR_LINE = re.compile(r"\bErr\(|panic!\(|assert(_eq|_ne)?!\(|\.expect\(|unreachable!\(|preconditionFailure\(|fatalError\(|assertionFailure\(")
@@ -122,9 +122,9 @@ def _strip_line_comment(line: str) -> str:
 def compiled_string_keys(files: dict[Path, str], derived_data: Path | None = None,
                          configuration: str = "Debug", arch: str | None = None) -> tuple[dict[str, str], list[str], str]:
     """只核对当前工作区的编译提取，返回键、问题与证据范围。"""
-    pattern = f"Build/Intermediates.noindex/TahoeTime.build/{configuration}/TahoeTime.build/Objects-normal/{arch or '*'}/*.stringsdata"
+    pattern = f"Build/Intermediates.noindex/Dayside.build/{configuration}/Dayside.build/Objects-normal/{arch or '*'}/*.stringsdata"
     custom = derived_data or os.environ.get("DAYSIDE_DERIVED_DATA")
-    candidates = sorted(Path(custom).glob(pattern) if custom else DERIVED_DATA.glob("TahoeTime-*/" + pattern))
+    candidates = sorted(Path(custom).glob(pattern) if custom else DERIVED_DATA.glob("Dayside-*/" + pattern))
     extracts: list[tuple[Path, Path, dict]] = []
     for path in candidates:
         data = json.loads(path.read_text(encoding="utf-8"))
