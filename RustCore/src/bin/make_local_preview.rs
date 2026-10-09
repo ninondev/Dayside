@@ -120,7 +120,7 @@ fn create(source: &Path, requested_output: &Path) -> Result<()> {
         .ok_or("Missing repository root")?;
     let entitlements = scratch.0.join("preview.entitlements");
     fs::copy(
-        root.join("TahoeTime/TahoeTime-signing-Release.entitlements"),
+        root.join("Dayside/Dayside-signing-Release.entitlements"),
         &entitlements,
     )
     .map_err(|e| e.to_string())?;

@@ -5,7 +5,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 exec /usr/bin/python3 - <<'CHECK'
 import pathlib, plistlib, sys
-paths = sorted(pathlib.Path("TahoeTime").glob("*.entitlements"))
+paths = sorted(pathlib.Path("Dayside").glob("*.entitlements"))
 problems = []
 for path in paths:
     with path.open("rb") as stream:

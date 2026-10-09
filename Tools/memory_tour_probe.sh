@@ -80,7 +80,7 @@ else
     build_args=()
     if [[ -n "${MEANTIME_DERIVED_DATA_PATH:-}" ]]; then build_args=(-derivedDataPath "$MEANTIME_DERIVED_DATA_PATH"); fi
     dayside_require_measurement_window "Memory tour build"
-    xcodebuild -project TahoeTime.xcodeproj -scheme TahoeTime -configuration Debug ${build_args[@]+"${build_args[@]}"} -jobs 3 CODE_SIGNING_ALLOWED=NO build > "$out/build.log" 2>&1 \
+    xcodebuild -project Dayside.xcodeproj -scheme Dayside -configuration Debug ${build_args[@]+"${build_args[@]}"} -jobs 3 CODE_SIGNING_ALLOWED=NO build > "$out/build.log" 2>&1 \
       || { grep -E ': error:|\*\* ' "$out/build.log" | sort -u | head >&2; echo "构建失败，见 $out/build.log" >&2; exit 1; }
   fi
   copy="$out/Dayside.app"
@@ -108,16 +108,39 @@ fi
 # 合成与显示在窗口服务器里做，本进程的数看不见：另记整机 GPU 占用（`ioreg` 的 Device Utilization %，每 0.25 秒一次，
 # 取这一阶段里的最高与平均）与 WindowServer 这一阶段的 CPU（`ps`，秒）。两者都是整机的，机器上别的东西也算在里面，只作 A/B。
 # vmmap 仍每阶段量一次，用来拆分区（App 在每行之后停 2.5 秒，vmmap 量到的是这一步做完、下一步还没开始的样子）。
-cpu_seconds() { ps -o time= -p "$1" 2>/dev/null | awk -F: '{ if (NF == 3) print $1 * 3600 + $2 * 60 + $3; else if (NF == 2) print $1 * 60 + $2; else print $1 }'; }
+cpu_seconds() {
+  local sample
+  sample=$(ps -o time= -p "$1" 2>/dev/null) || return 0
+  awk -F: '{ if (NF == 3) print $1 * 3600 + $2 * 60 + $3; else if (NF == 2) print $1 * 60 + $2; else print $1 }' <<< "$sample"
+}
 field() { echo "$1" | tr ' ' '\n' | awk -F= -v k="$2" '$1 == k {print $2; exit}'; }
+measurement_delta() {
+  local current="$1" previous="$2" divisor="$3"
+  if [[ "$current" =~ ^[0-9]+$ && "$previous" =~ ^[0-9]+$ ]]; then
+    awk -v a="$current" -v b="$previous" -v d="$divisor" 'BEGIN { printf "%.0f", (a - b) / d }'
+  else
+    printf '%s' '-'
+  fi
+}
+require_footprint() {
+  [[ "$1" =~ ^[0-9]+$ && "$2" =~ ^[0-9]+$ && "$1" != 0 && "$2" != 0 ]]
+}
+seconds_delta() {
+  local current="$1" previous="$2"
+  if [[ "$current" =~ ^[0-9]+([.][0-9]+)?$ && "$previous" =~ ^[0-9]+([.][0-9]+)?$ ]]; then
+    awk -v a="$current" -v b="$previous" 'BEGIN { printf "%.2f", a - b }'
+  else
+    printf '%s' '-'
+  fi
+}
 gpu_log="$out/gpu.log"; : > "$gpu_log"
 ( while kill -0 "$pid" 2>/dev/null; do
     ioreg -r -d 1 -w 0 -c IOAccelerator 2>/dev/null | grep -o '"Device Utilization %"=[0-9]*' | head -1 | cut -d= -f2
     sleep 0.25
   done ) >> "$gpu_log" &
 sampler=$!
-ws=$(pgrep -x WindowServer | head -1)
-last_ws=$(cpu_seconds "$ws"); last_ws=${last_ws:-0}
+ws=$(pgrep -x WindowServer | head -1) || ws=""
+last_ws=$(cpu_seconds "$ws")
 last_cpu=0 last_energy=0 last_gpu=0 gpu_seen=0
 printf '%-12s %8s %8s %9s %9s %8s %9s %8s %8s %9s %9s\n' 阶段 footprint 峰值 small空 图形 CPU毫秒 能耗毫焦 GPU本进程 整机GPU峰 整机GPU均 WS_CPU秒 | tee "$out/table.txt"
 seen=0 tour_done=0
@@ -130,23 +153,32 @@ for _ in $(seq 1 480); do
     seen=$((seen + 1))
     line=$(grep '^MEANTIME_TOUR ' "$out/probe.stdout" | sed -n "${seen}p")
     phase=$(echo "$line" | awk '{print $2}')
-    ws_now=$(cpu_seconds "$ws"); ws_now=${ws_now:-0}
+    ws_now=$(cpu_seconds "$ws")
     lines=$(wc -l < "$gpu_log" | tr -d ' ')
     gpu_stats=$(sed -n "$((gpu_seen + 1)),${lines}p" "$gpu_log" | awk 'NF { if ($1 > m) m = $1; s += $1; n++ } END { if (n) printf "%d %.0f", m, s / n; else print "- -" }')
     gpu_seen=$lines
-    summary=$(vmmap --summary "$pid" 2>/dev/null || true)
+    vmmap_status=0
+    summary=$(vmmap --summary "$pid" 2>"$out/vm-$phase.stderr") || vmmap_status=$?
+    printf '%s\n' "$vmmap_status" > "$out/vm-$phase.exit-code"
     echo "$summary" > "$out/vm-$phase.txt"
-    empty=$(echo "$summary" | awk '$1 == "MALLOC_SMALL" && $2 == "(empty)" {print $5; exit}')
+    empty=$(echo "$summary" | awk '
+      tolower($1) == "malloc_small" && $2 == "(empty)" {print $5; exit}
+      tolower($1) == "malloc" && tolower($2) == "small" && $3 == "(empty)" {print $6; exit}
+    ')
     gfx=$(echo "$summary" | awk '/^owned unmapped \(graphics\)/{print $5}')
     fp=$(field "$line" fp); peak=$(field "$line" peak); cpu=$(field "$line" cpu_ns); energy=$(field "$line" energy_nj); gpu=$(field "$line" gpu)
+    if ! require_footprint "$fp" "$peak"; then
+      echo "Memory tour has no valid footprint at $phase; raw measurements: $out/probe.stdout" >&2
+      exit 1
+    fi
     printf '%-12s %8s %8s %9s %9s %8s %9s %8s %8s %9s %9s\n' "$phase" \
-      "$(awk -v v="${fp:-0}" 'BEGIN { printf "%.1fM", v / 1048576 }')" "$(awk -v v="${peak:-0}" 'BEGIN { printf "%.1fM", v / 1048576 }')" \
+      "$(awk -v v="$fp" 'BEGIN { printf "%.1fM", v / 1048576 }')" "$(awk -v v="$peak" 'BEGIN { printf "%.1fM", v / 1048576 }')" \
       "${empty:--}" "${gfx:--}" \
-      "$(awk -v a="${cpu:-0}" -v b="$last_cpu" 'BEGIN { printf "%.0f", (a - b) / 1e6 }')" \
-      "$(awk -v a="${energy:-0}" -v b="$last_energy" 'BEGIN { printf "%.0f", (a - b) / 1e6 }')" \
-      "$(awk -v a="${gpu:-0}" -v b="$last_gpu" 'BEGIN { printf "%.0f", a - b }')" \
-      $gpu_stats "$(awk -v a="$ws_now" -v b="$last_ws" 'BEGIN { printf "%.2f", a - b }')" | tee -a "$out/table.txt"
-    last_cpu=${cpu:-0} last_energy=${energy:-0} last_gpu=${gpu:-0} last_ws=$ws_now
+      "$(measurement_delta "$cpu" "$last_cpu" 1000000)" \
+      "$(measurement_delta "$energy" "$last_energy" 1000000)" \
+      "$(measurement_delta "$gpu" "$last_gpu" 1)" \
+      $gpu_stats "$(seconds_delta "$ws_now" "$last_ws")" | tee -a "$out/table.txt"
+    last_cpu="$cpu" last_energy="$energy" last_gpu="$gpu" last_ws=$ws_now
     [[ "$phase" == done ]] && { tour_done=1; kill "$pid" 2>/dev/null || true; break 2; }
   done
 done

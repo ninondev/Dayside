@@ -26,7 +26,7 @@ echo "== 磁盘"; df -h /System/Volumes/Data | tail -1
 status=0
 for arch in arm64 x86_64; do
   "$root/Tools/trash.sh" "$pkg/dd-$arch"
-  xcodebuild -project TahoeTime.xcodeproj -scheme TahoeTime -configuration Release ARCHS=$arch ONLY_ACTIVE_ARCH=NO ${jobs_args[@]+"${jobs_args[@]}"} \
+  xcodebuild -project Dayside.xcodeproj -scheme Dayside -configuration Release ARCHS=$arch ONLY_ACTIVE_ARCH=NO ${jobs_args[@]+"${jobs_args[@]}"} \
     -derivedDataPath "$pkg/dd-$arch" build > "$pkg/build-$arch.log" 2>&1 || { echo "build $arch 失败，看 $pkg/build-$arch.log"; exit 1; }
   echo "build $arch ok"
   app="$pkg/dd-$arch/Build/Products/Release/Dayside.app"

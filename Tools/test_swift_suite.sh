@@ -9,6 +9,8 @@ root="$(cd "$(dirname "$0")/.." && pwd)"
 source "$root/Tools/test_screen_guard.sh"
 test_pid=""
 derived_data=""
+logdir=""
+suite_started=""
 stop_test() {
   [[ -n "$test_pid" ]] || return 0
   # 独立进程组只包含本轮构建及其子进程。
@@ -32,6 +34,18 @@ cleanup() {
       cleanup_status=$?
       printf 'Owned test host cleanup failed; original exit: %s; cleanup exit: %s\n' "$status" "$cleanup_status" >&2
       status=1
+    fi
+  fi
+  if [[ -n "$suite_started" && -n "$logdir" ]]; then
+    # Collect after host teardown, including interrupted and screen-guard failures.
+    sleep 5
+    if python3 "$root/Tools/collect_crash_reports.py" --strict --fail-on-reports \
+      --since "$suite_started" --out "$logdir/crash-reports"; then
+      :
+    else
+      cleanup_status=$?
+      printf 'Crash evidence failed; original exit: %s; collection exit: %s\n' "$status" "$cleanup_status" >&2
+      if [[ "$status" == 0 ]]; then status="$cleanup_status"; fi
     fi
   fi
   "$root/Tools/ls_unregister_copies.sh" >/dev/null 2>&1 || true
@@ -68,26 +82,55 @@ log="$logdir/xcodebuild.log"
 cd "$root"
 
 # 完整运行的范围固定，调用方可补结果包、构建并发等参数。
+earth_copy_only=0
+result_bundle=""
+expects_result_bundle=0
+forwarded_arguments=()
 for argument in "$@"; do
+  if [[ "$expects_result_bundle" == 1 ]]; then
+    [[ "$argument" != -* ]] || { printf 'Missing result bundle path.\n' >&2; exit 2; }
+    result_bundle="$argument"
+    expects_result_bundle=0
+    forwarded_arguments+=("$argument")
+    continue
+  fi
   case "$argument" in
+    -resultBundlePath) expects_result_bundle=1; forwarded_arguments+=("$argument");;
+    -resultBundlePath=*) result_bundle="${argument#-resultBundlePath=}"; forwarded_arguments+=("$argument");;
+    -only-testing:DaysideTests/MapScrubTests/earthCopyCommandWorksInNativeFullscreen|'-only-testing:DaysideTests/MapScrubTests/earthCopyCommandWorksInNativeFullscreen()')
+      if [[ "$foreground" != 1 || "$earth_copy_only" == 1 ]]; then
+        printf 'Earth copy selection requires --foreground and exactly one selector.\n' >&2
+        exit 2
+      fi
+      earth_copy_only=1
+      ;;
     -only-testing*|-skip-testing*|test|test-without-building|build|build-for-testing|-xctestrun)
       printf 'Unsupported suite override: %s\n' "$argument" >&2
       exit 2
       ;;
+    *) forwarded_arguments+=("$argument");;
   esac
 done
+[[ "$expects_result_bundle" == 0 ]] || { printf 'Missing result bundle path.\n' >&2; exit 2; }
+set -- ${forwarded_arguments[@]+"${forwarded_arguments[@]}"}
 selection=()
 test_feature=""
-if [[ "$foreground" == 1 ]]; then
-  selection+=(-only-testing:TahoeTimeTests/PageShortcutTests
-              -only-testing:TahoeTimeTests/EarthFullscreenTests
-              -only-testing:TahoeTimeTests/QuietTestHostTests
-              '-only-testing:TahoeTimeTests/MapScrubTests/earthCopyCommandWorksInNativeFullscreen()'
-              '-only-testing:TahoeTimeTests/SettingsLayoutTests/russianLargestTextPageScrollsInAShortWindow()'
-              '-only-testing:TahoeTimeTests/SettingsScrollReviewTests/largestTextScrollsToTheBottomInAShortWindow(page:language:)')
+if [[ "$earth_copy_only" == 1 ]]; then
+  selection+=('-only-testing:DaysideTests/MapScrubTests/earthCopyCommandWorksInNativeFullscreen()')
+  if [[ -z "$result_bundle" ]]; then
+    result_bundle="$logdir/earth-copy.xcresult"
+    set -- "$@" -resultBundlePath "$result_bundle"
+  fi
+elif [[ "$foreground" == 1 ]]; then
+  selection+=(-only-testing:DaysideTests/PageShortcutTests
+              -only-testing:DaysideTests/EarthFullscreenTests
+              -only-testing:DaysideTests/QuietTestHostTests
+              '-only-testing:DaysideTests/MapScrubTests/earthCopyCommandWorksInNativeFullscreen()'
+              '-only-testing:DaysideTests/SettingsLayoutTests/russianLargestTextPageScrollsInAShortWindow()'
+              '-only-testing:DaysideTests/SettingsScrollReviewTests/largestTextScrollsToTheBottomInAShortWindow(page:language:)')
   test_feature=agenda
 else
-  selection+=(-skip-testing:TahoeTimeTests/PageShortcutTests)
+  selection+=(-skip-testing:DaysideTests/PageShortcutTests)
 fi
 printf 'Swift test mode: %s; log: %s\n' "$([[ "$foreground" == 1 ]] && echo foreground || echo quiet)" "$log"
 if [[ "$foreground" == 1 ]]; then
@@ -101,7 +144,7 @@ run_xcodebuild() {
   local requested_action="$1"; shift
   env MEANTIME_TEST_HOST=1 MEANTIME_UI_TEST_FOREGROUND="$foreground" MEANTIME_UI_TEST_FEATURE="$test_feature" \
     TEST_RUNNER_MEANTIME_TEST_HOST=1 TEST_RUNNER_MEANTIME_UI_TEST_FOREGROUND="$foreground" TEST_RUNNER_MEANTIME_UI_TEST_FEATURE="$test_feature" \
-    xcodebuild "$requested_action" "$@" -project TahoeTime.xcodeproj -scheme TahoeTime -configuration Debug \
+    xcodebuild "$requested_action" "$@" -project Dayside.xcodeproj -scheme Dayside -configuration Debug \
       -destination "platform=macOS,arch=$(uname -m)" -derivedDataPath "$derived_data" \
       -parallel-testing-enabled NO -jobs 3 CODE_SIGNING_ALLOWED=NO "${selection[@]}"
 }
@@ -128,6 +171,7 @@ run_suite() {
   fi
   run_xcodebuild test-without-building "$@" >> "$log" 2>&1
 }
+[[ ! -e "$log" ]] || { printf 'Refusing to overwrite test evidence: %s\n' "$log" >&2; exit 2; }
 : > "$log"
 # 本轮开始时刻：结束后把此后系统写下的测试宿主崩溃报告原样留进日志目录（成功的轮次也留，重跑通过不抹掉证据）。
 suite_started="$(date +%s)"
@@ -143,10 +187,16 @@ while kill -0 "$test_pid" 2>/dev/null; do
 done
 if wait "$test_pid"; then status=0; else status=$?; fi
 test_pid=""
-# 系统写崩溃报告有几秒延迟。
-sleep 5
-python3 "$root/Tools/collect_crash_reports.py" --since "$suite_started" --out "$logdir/crash-reports" \
-  || printf 'Crash report collection failed; check ~/Library/Logs/DiagnosticReports manually\n' >&2
+if [[ "$status" == 0 && "$earth_copy_only" == 1 ]]; then
+  if python3 "$root/Tools/verify_swift_test_result.py" --result-bundle "$result_bundle" \
+    --test-id 'DaysideTests/MapScrubTests/earthCopyCommandWorksInNativeFullscreen()' \
+    --out "$logdir/test-execution"; then
+    :
+  else
+    status=$?
+  fi
+fi
+# The EXIT trap retains crash evidence after cleanup on every exit path.
 if [[ "$foreground" == 1 ]]; then dayside_require_foreground_window "Foreground Swift completion"; fi
 if [[ "$status" != 0 ]]; then
   printf 'Swift tests failed (exit %s); log: %s\n' "$status" "$log" >&2

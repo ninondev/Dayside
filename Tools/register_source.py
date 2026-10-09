@@ -2,9 +2,9 @@
 # SPDX-License-Identifier: GPL-3.0-only
 """往手写的 Xcode 工程里登记一个 Swift 源文件（或改一个已登记文件的路径）。
 
-    Tools/register_source.py TahoeTime/Models/Foo.swift            # 主程序 target
-    Tools/register_source.py TahoeTimeTests/FooTests.swift --test  # 单元测试 target
-    Tools/register_source.py TahoeTime/Models/Foo.swift --ios      # 主程序 + iPhone 原型
+    Tools/register_source.py Dayside/Models/Foo.swift            # 主程序 target
+    Tools/register_source.py DaysideTests/FooTests.swift --test  # 单元测试 target
+    Tools/register_source.py Dayside/Models/Foo.swift --ios      # 主程序 + iPhone 原型
     Tools/register_source.py --move 旧路径 新路径                    # 文件挪了目录，只改 path
 
 文件引用一律 `sourceTree = SOURCE_ROOT` + 仓根相对路径（与 register_features.py 加的那批同一写法），
@@ -16,7 +16,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PROJECT = ROOT / "TahoeTime.xcodeproj/project.pbxproj"
+PROJECT = ROOT / "Dayside.xcodeproj/project.pbxproj"
 APP_SOURCES = "AA000000000000000000000C"
 TEST_SOURCES = "CC0000000000000000000023"
 IOS_SOURCES = "I0500000000000000000005"

@@ -98,7 +98,7 @@ step 'cargo test --release --lib'          count_cargo  "$root/RustCore" cargo t
 step 'cargo test --lib --features intents-only' count_cargo "$root/RustCore" cargo test --locked --lib --features intents-only
 step 'cargo clippy --all-targets -D warnings'   count_clippy "$root/RustCore" cargo clippy --locked --all-targets -- -D warnings
 step '应用测试 xcodebuild test'             count_xcode  "$root" \
-    run_app_tests -project TahoeTime.xcodeproj -scheme TahoeTime \
+    run_app_tests -project Dayside.xcodeproj -scheme Dayside \
     -destination "platform=macOS,arch=$test_arch" -derivedDataPath "$derived_data" -parallel-testing-enabled NO
 
 # 签名策略：所有签名配置都禁止网络权限。
@@ -134,14 +134,14 @@ fi
 count_ios() { grep -c 'BUILD SUCCEEDED' "$1"; }
 if [[ "${MEANTIME_VERIFY_IOS:-0}" == 1 ]]; then
     step 'iPhone 原型 xcodebuild build'      count_ios    "$root" \
-        xcodebuild -project TahoeTime.xcodeproj -scheme DaysideiOS -configuration Debug \
+        xcodebuild -project Dayside.xcodeproj -scheme DaysideiOS -configuration Debug \
         -destination 'platform=iOS Simulator,name=iPhone 17 Pro' -derivedDataPath "${TMPDIR:-/tmp}/dayside-ios-verify" build
 fi
 
 # Intel 切片(可选):Rust 在 x86_64 target 上跑全部测试,应用测试用 Rosetta 目的地重跑一遍。
 if [[ "${MEANTIME_VERIFY_ROSETTA:-0}" == 1 ]]; then
     step 'cargo test x86_64(Rosetta)'       count_cargo  "$root/RustCore"         cargo test --locked --all-targets --target x86_64-apple-darwin
-    step '应用测试 x86_64(Rosetta)'          count_xcode  "$root"         run_app_tests -project TahoeTime.xcodeproj -scheme TahoeTime         -destination 'platform=macOS,arch=x86_64' -derivedDataPath "$derived_data" -parallel-testing-enabled NO
+    step '应用测试 x86_64(Rosetta)'          count_xcode  "$root"         run_app_tests -project Dayside.xcodeproj -scheme Dayside         -destination 'platform=macOS,arch=x86_64' -derivedDataPath "$derived_data" -parallel-testing-enabled NO
 fi
 
 summary

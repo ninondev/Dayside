@@ -7,7 +7,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PROJECT = ROOT / "TahoeTime.xcodeproj/project.pbxproj"
+PROJECT = ROOT / "Dayside.xcodeproj/project.pbxproj"
 text = PROJECT.read_text()
 
 def uid(value):
@@ -52,8 +52,8 @@ def build_file(path, target, phase):
 
 app_sources = "AA000000000000000000000C"
 test_sources = "CC0000000000000000000023"
-build_file("TahoeTime/Resources/ServicesMenu.xcstrings", APP, "AA000000000000000000000E")
-for folder, target, phase in [("TahoeTime", APP, app_sources), ("Shared", APP, app_sources), ("TahoeTimeTests", "tests", test_sources)]:
+build_file("Dayside/Resources/ServicesMenu.xcstrings", APP, "AA000000000000000000000E")
+for folder, target, phase in [("Dayside", APP, app_sources), ("Shared", APP, app_sources), ("DaysideTests", "tests", test_sources)]:
     for path in sorted((ROOT / folder).rglob("*.swift")):
         rel = str(path.relative_to(ROOT))
         # Existing sources are referenced relative to their group; added ones use SOURCE_ROOT.
@@ -85,7 +85,7 @@ append(PROJECT_ID,"targets",rust)
 text=text.replace('\t\t\t\tEE0000000000000000000003 /* Build Rust Core */,\n','')
 dependency(APP,rust)
 
-for name, intents in [("TahoeTimeIntents",True),("TahoeTimeWidgets",False)]:
+for name, intents in [("DaysideIntents",True),("DaysideWidgets",False)]:
     target=uid(name);sources=uid(name+"sources");resources=uid(name+"resources");frameworks=uid(name+"frameworks")
     for section,identifier in [("PBXSourcesBuildPhase",sources),("PBXResourcesBuildPhase",resources),("PBXFrameworksBuildPhase",frameworks)]:
         node(section,identifier,f'isa = {section}; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0;')
@@ -105,20 +105,20 @@ for name, intents in [("TahoeTimeIntents",True),("TahoeTimeWidgets",False)]:
     if intents: dependency(target,rust)
     source_files=[f'{name}/Dayside{"Intents" if intents else "Widgets"}.swift','Shared/SharedTimeData.swift']
     if not intents: source_files.append('Shared/DaysideControlIntents.swift')
-    if intents: source_files += ['Shared/CivilCalendar.swift','TahoeTime/Models/RustCore.swift','TahoeTime/Models/TimeInput.swift','TahoeTime/Models/Planner/Availability.swift','TahoeTime/Models/Planner/OverlapPlanner.swift']
+    if intents: source_files += ['Shared/CivilCalendar.swift','Dayside/Models/RustCore.swift','Dayside/Models/TimeInput.swift','Dayside/Models/Planner/Availability.swift','Dayside/Models/Planner/OverlapPlanner.swift']
     for path in source_files: build_file(path,target,sources)
     # Each extension carries only the keys extracted from its own compiled sources.
-    obsolete = uid('build:' + target + ':TahoeTime/Generated/Localizable.xcstrings')
+    obsolete = uid('build:' + target + ':Dayside/Generated/Localizable.xcstrings')
     text = re.sub(r'^[^\n]*' + obsolete + r' = \{[^\n]*\n', '', text, flags=re.M)
     text = re.sub(r'^[ \t]*' + obsolete + r',\n', '', text, flags=re.M)
     for path in [f'{name}/PrivacyInfo.xcprivacy', f'{name}/Resources/Localizable.xcstrings']: build_file(path,target,resources)
-    if intents: build_file('TahoeTime/Resources/AppShortcuts.xcstrings',target,resources)
+    if intents: build_file('Dayside/Resources/AppShortcuts.xcstrings',target,resources)
     for path in [f'{name}/Info.plist',f'{name}/Extension.entitlements']: file(path)
     copy=uid(name+"copy");copyfile=uid(name+"embed")
     node("PBXBuildFile",copyfile,f'isa = PBXBuildFile; fileRef = {product}; settings = {{ATTRIBUTES = (RemoveHeadersOnCopy,);}};')
     node("PBXCopyFilesBuildPhase",copy,f'isa = PBXCopyFilesBuildPhase; buildActionMask = 2147483647; dstPath = "{"$(CONTENTS_FOLDER_PATH)/Extensions" if intents else ""}"; dstSubfolderSpec = {16 if intents else 13}; files = ({copyfile},); name = "Embed {name}"; runOnlyForDeploymentPostprocessing = 0;')
     # Embed before signing the host.
-    if copy not in re.search(r'\b'+APP+r' /\* TahoeTime \*/ = \{[\s\S]*?buildPhases = \(([\s\S]*?)\);',text)[1]:
+    if copy not in re.search(r'\b'+APP+r' /\* Dayside \*/ = \{[\s\S]*?buildPhases = \(([\s\S]*?)\);',text)[1]:
         text=text.replace('\t\t\t\tAA00000000000000000000D0 /* Sign (ad-hoc, full entitlements) */,',f'\t\t\t\t{copy},\n\t\t\t\tAA00000000000000000000D0 /* Sign (ad-hoc, full entitlements) */,')
 
 PROJECT.write_text("\n".join(line.rstrip() for line in text.splitlines()) + "\n")
@@ -140,7 +140,7 @@ dependency(sign_target, APP)
 PROJECT.write_text(text)
 
 import xml.etree.ElementTree as ET
-scheme = ROOT / "TahoeTime.xcodeproj/xcshareddata/xcschemes/TahoeTime.xcscheme"
+scheme = ROOT / "Dayside.xcodeproj/xcshareddata/xcschemes/Dayside.xcscheme"
 tree = ET.parse(scheme)
 entries = tree.getroot().find("BuildAction/BuildActionEntries")
 if not any(ref.get("BlueprintIdentifier") == sign_target for ref in entries.iter("BuildableReference")):
@@ -148,6 +148,6 @@ if not any(ref.get("BlueprintIdentifier") == sign_target for ref in entries.iter
         "buildForTesting": "NO", "buildForRunning": "YES", "buildForProfiling": "YES",
         "buildForArchiving": "YES", "buildForAnalyzing": "YES"})
     ET.SubElement(entry, "BuildableReference", {"BuildableIdentifier": "primary", "BlueprintIdentifier": sign_target,
-        "BuildableName": "DaysideSign", "BlueprintName": "DaysideSign", "ReferencedContainer": "container:TahoeTime.xcodeproj"})
+        "BuildableName": "DaysideSign", "BlueprintName": "DaysideSign", "ReferencedContainer": "container:Dayside.xcodeproj"})
     ET.indent(tree, space="   ")
     tree.write(scheme, encoding="UTF-8", xml_declaration=True)

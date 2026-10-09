@@ -1048,7 +1048,7 @@ impl CityIndex {
             return vec![];
         };
         // 查询已完整叫出一座城时，名气不如它的城只是别名在后面另接了词（雅加达的「New York van Java」、
-        // 罗安达的「São Paulo da Assunção de Loanda」）多半是巧合：这样的别名前缀排在其它命中之后。
+        // 罗安达的「São Paulo da Assunção de Luanda」）多半是巧合：完整地名不列出这样的别名前缀。
         // 只叫出小地方的查询（「nova」）不算，大城多词别名的前半截（Nova York）照常联想。
         let named = (cursor.key.as_slice() == q).then(|| {
             (0..cursor.count)
@@ -1079,6 +1079,9 @@ impl CityIndex {
                     (false, false) => 3,
                 };
                 let coincidence = longer_name && tier == 3 && named.is_some_and(|named| city_index > named);
+                if !short && coincidence {
+                    continue;
+                }
                 let hit = (Hit { city_index, tier }, coincidence);
                 if let Some(at) = best.iter().position(|(h, _)| h.city_index == city_index) {
                     if (best[at].0.tier, best[at].1) <= (tier, hit.1) {
@@ -1200,7 +1203,7 @@ mod tests {
         let path = std::env::var("MEANTIME_TEST_INDEX").unwrap_or_else(|_| {
             concat!(
                 env!("CARGO_MANIFEST_DIR"),
-                "/../TahoeTime/Resources/cities.ttcity"
+                "/../Dayside/Resources/cities.ttcity"
             )
             .to_owned()
         });
@@ -1502,12 +1505,32 @@ mod tests {
     fn complete_names_outrank_longer_alias_coincidences() {
         let c = bundled();
         let names = |q: &str| c.search(q, 3).iter().filter_map(|h| c.city(h.city_index)).map(|r| r.name).collect::<Vec<_>>();
-        // 雅加达的别名「New York van Java」、罗安达的旧名「São Paulo da Assunção de Loanda」只是接在完整城名后面。
+        // 雅加达的别名「New York van Java」、罗安达的旧名「São Paulo da Assunção de Luanda」只是接在完整城名后面。
         assert_eq!(names("new york"), ["New York", "East New York", "West New York"]);
         assert!(!names("sao paulo").iter().any(|name| name == "Luanda"), "{:?}", names("sao paulo"));
         // 只叫出小地方的查询照常联想大城多词别名的前半截（葡语 Nova York）。
         assert_eq!(names("nova")[0], "New York");
         assert_eq!(names("york")[0], "New York");
+        for limit in [8, MAX_SEARCH_HITS] {
+            for smart in [false, true] {
+                for (query, expected, unrelated) in [("new york", "New York", "Jakarta"), ("sao paulo", "São Paulo", "Luanda")] {
+                    let hits = if smart { c.search_smart(query, limit) } else { c.search(query, limit) };
+                    let found: Vec<_> = hits.iter().filter_map(|hit| c.city(hit.city_index)).map(|city| city.name).collect();
+                    assert_eq!(found[0], expected, "{query}, limit={limit}, smart={smart}: {found:?}");
+                    assert!(!found.iter().any(|name| name == unrelated), "{query}, limit={limit}, smart={smart}: {found:?}");
+                    if query == "new york" {
+                        assert!(found.iter().any(|name| name == "New York Mills"), "{found:?}");
+                    }
+                }
+            }
+        }
+        for (alias, expected) in [("New York van Java", "Jakarta"), ("São Paulo da Assunção de Luanda", "Luanda"), ("São Paulo de Loanda", "Luanda")] {
+            let query = crate::catalog::fold(alias);
+            let hits = c.search_smart(&query, 8);
+            assert!(!hits.is_empty(), "{alias}");
+            assert_eq!(c.city(hits[0].city_index).unwrap().name, expected, "{alias}");
+            assert!(c.exact_all(&query).iter().any(|hit| c.city(hit.city_index).unwrap().name == expected), "{alias}");
+        }
     }
 
     #[test]
@@ -1977,7 +2000,7 @@ mod tests {
 
     #[test]
     fn released_handles_cannot_be_used() {
-        let value=dispatch("city.open",json!({"path":concat!(env!("CARGO_MANIFEST_DIR"),"/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+        let value=dispatch("city.open",json!({"path":concat!(env!("CARGO_MANIFEST_DIR"),"/../Dayside/Resources/cities.ttcity")})).unwrap();
         let h = value["handle"].as_u64().unwrap();
         assert_eq!(dispatch("city.close", json!({"handle":h})).unwrap(), true);
         assert!(dispatch(
@@ -2059,7 +2082,7 @@ mod golan_probe {
     fn list_israeli_records_in_the_golan_box() {
         let index = CityIndex::open(concat!(
             env!("CARGO_MANIFEST_DIR"),
-            "/../TahoeTime/Resources/cities.ttcity"
+            "/../Dayside/Resources/cities.ttcity"
         ))
         .unwrap();
         for i in 0..index.city_count() {

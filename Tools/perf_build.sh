@@ -17,8 +17,20 @@ while [[ $# -gt 0 ]]; do
 done
 [[ -n "$out" && ! -e "$out" ]] || { echo 'Choose a new scratch output directory.' >&2; exit 1; }
 source_root="$(cd "$source_root" && pwd)"
-[[ -f "$source_root/TahoeTime.xcodeproj/project.pbxproj" ]] || exit 1
-[[ -f "$source_root/TahoeTime/Models/Diagnostics/PerformanceProbe.swift" ]] || { echo 'The checkout needs the committed performance test-host hooks.' >&2; exit 1; }
+project_name=Dayside
+if (( legacy )); then
+  project_name="$(python3 - "$source_root" <<'PY'
+from pathlib import Path
+import sys
+projects = [p for p in Path(sys.argv[1]).glob('*.xcodeproj') if (p / 'project.pbxproj').is_file()]
+if len(projects) != 1:
+    raise SystemExit('Expected exactly one pinned baseline project')
+print(projects[0].stem)
+PY
+)"
+fi
+[[ -f "$source_root/$project_name.xcodeproj/project.pbxproj" ]] || exit 1
+[[ -f "$source_root/$project_name/Models/Diagnostics/PerformanceProbe.swift" ]] || { echo 'The checkout needs the committed performance test-host hooks.' >&2; exit 1; }
 out="$(python3 - "$out" <<'PY'
 from pathlib import Path
 import sys
@@ -40,7 +52,7 @@ if (( legacy )); then flags="$flags DAYSIDE_PRO DAYSIDE_PERF_LEGACY"; fi
 nice -n 10 \
   /bin/bash -c '
     set -euo pipefail
-    source_root=$1; out=$2; flags=$3; root=$4
+    source_root=$1; out=$2; flags=$3; root=$4; project_name=$5
     printf "started\n" > "$out/command-started"
     trap '\''"$root/Tools/ls_unregister_copies.sh" >/dev/null 2>&1 || true'\'' EXIT
     cd "$source_root"
@@ -48,7 +60,7 @@ nice -n 10 \
     printf "%s\n" "$flags" > "$out/build-flags.txt"
     git diff --binary > "$out/source-overlay.patch"
     git ls-files --others --exclude-standard -z > "$out/untracked-paths.nul"
-    xcodebuild -project TahoeTime.xcodeproj -scheme TahoeTime -configuration Release \
+    xcodebuild -project "$project_name.xcodeproj" -scheme "$project_name" -configuration Release \
       -destination "platform=macOS,arch=arm64" -derivedDataPath "$out/dd" -jobs 3 \
       ARCHS=arm64 ONLY_ACTIVE_ARCH=NO CODE_SIGNING_ALLOWED=NO \
       "SWIFT_ACTIVE_COMPILATION_CONDITIONS=$flags" build > "$out/build.log" 2>&1
@@ -67,4 +79,4 @@ for name in ("dd", "tool-target"):
     shutil.rmtree(out / name)
 PY
     echo "$out/Dayside.app"
-  ' perf-build "$source_root" "$out" "$flags" "$root"
+  ' perf-build "$source_root" "$out" "$flags" "$root" "$project_name"

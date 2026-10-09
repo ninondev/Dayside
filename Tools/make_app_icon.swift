@@ -5,7 +5,7 @@
 //  颜色由 `DaysidePalette` 的系统蓝与系统橙构成；limb 样式绘制暗色行星边缘的日出。
 //  1024 满幅不透明（macOS 26 自己裁 squircle；自绘圆角会出现灰框）。
 //
-//  现行：swift Tools/make_app_icon.swift TahoeTime/Assets.xcassets/AppIcon.appiconset --style limb --svg <网站标记.svg>
+//  现行：swift Tools/make_app_icon.swift Dayside/Assets.xcassets/AppIcon.appiconset --style limb --svg <网站标记.svg>
 //  用法：swift Tools/make_app_icon.swift <输出目录> [--window <lon0> <latMax> <span>] [--sun <lat> <lon>] [--preview <px>]
 //    默认输出十个 icon_*.png 到 <输出目录>；--preview 只出一张预览；--svg <文件> 另写网站用的标记（同一几何，无陆地）。
 //
