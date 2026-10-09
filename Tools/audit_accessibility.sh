@@ -19,7 +19,7 @@ if echo "$status" | grep -qi 'disabled'; then
   echo "  sudo /usr/bin/automationmodetool enable-automationmode-without-authentication"
 fi
 cd "$root"
-if ! xcodebuild build-for-testing -project TahoeTime.xcodeproj -scheme TahoeTimeUITests -configuration Debug > "$out/build.log" 2>&1; then
+if ! xcodebuild build-for-testing -project Dayside.xcodeproj -scheme DaysideUITests -configuration Debug > "$out/build.log" 2>&1; then
   grep -E ': error:|\*\* .* \*\*' "$out/build.log" | sort -u | head -20 >&2
   echo "构建失败，完整日志：$out/build.log" >&2
   exit 1
@@ -28,7 +28,7 @@ fi
 /bin/bash "$root/Tools/owner_away.sh" --wait || exit "$?"
 dayside_require_launch_window "Accessibility audit launch" || exit "$?"
 set +e
-xcodebuild test-without-building -project TahoeTime.xcodeproj -scheme TahoeTimeUITests \
+xcodebuild test-without-building -project Dayside.xcodeproj -scheme DaysideUITests \
   -resultBundlePath "$out/run.xcresult" > "$out/test.log" 2>&1
 code=$?
 set -e

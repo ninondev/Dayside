@@ -4,9 +4,9 @@
 use crate::settings;
 use base64::{engine::general_purpose::STANDARD, Engine};
 use serde_json::{json, Map, Value};
-const ZONES: &str = "tahoetime.zones.v1";
-const SETTINGS: &str = "tahoetime.settings.v1";
-const SNAPSHOT: &str = "tahoetime.zones.v1.last-nonempty";
+const ZONES: &str = "dayside.zones.v1";
+const SETTINGS: &str = "dayside.settings.v1";
+const SNAPSHOT: &str = "dayside.zones.v1.last-nonempty";
 
 pub fn entry(value: &Value) -> Option<Value> {
     let zone = value["timezoneID"].as_str()?;
@@ -52,9 +52,9 @@ pub fn dispatch(operation: &str, input: Value) -> Result<Value, String> {
     Ok(match operation {
         "store.entry" => json!(entry(&input)),
         "store.keys" => {
-            json!({"zones":ZONES,"settings":SETTINGS,"snapshot":SNAPSHOT,"marker":"tahoetime.migrated.v1",
+            json!({"zones":ZONES,"settings":SETTINGS,"snapshot":SNAPSHOT,"marker":"dayside.migrated.v1",
             "lastNonEmptySuffix":".last-nonempty","corruptBackupSuffix":".corrupt-backup",
-            "migrated":[ZONES,SNAPSHOT,"tahoetime.zones.v1.corrupt-backup",SETTINGS,"tahoetime.settings.v1.corrupt-backup"]})
+            "migrated":[ZONES,SNAPSHOT,"dayside.zones.v1.corrupt-backup",SETTINGS,"dayside.settings.v1.corrupt-backup"]})
         }
         "store.load_zones" => {
             let primary = &input["primary"];
@@ -123,9 +123,9 @@ pub fn dispatch(operation: &str, input: Value) -> Result<Value, String> {
                 for key in [
                     ZONES,
                     SNAPSHOT,
-                    "tahoetime.zones.v1.corrupt-backup",
+                    "dayside.zones.v1.corrupt-backup",
                     SETTINGS,
-                    "tahoetime.settings.v1.corrupt-backup",
+                    "dayside.settings.v1.corrupt-backup",
                 ] {
                     if let Some(value) = source.get(key) {
                         writes.insert(key.into(), value.clone());
@@ -143,7 +143,7 @@ pub fn dispatch(operation: &str, input: Value) -> Result<Value, String> {
             }
         }
         // 从旧版 Meantime 的 App Group 整域搬一次：目标域一片空白（没有迁移标记、
-        // 没有地点、没有设置）才搬；只搬 App 自己的持久化键（`tahoetime.*` / `meantime.*`，后者是改名时明确不改的键名），
+        // 没有地点、没有设置）才搬；只搬 App 自己的持久化键（`dayside.*` / `meantime.*`，后者是改名时明确不改的键名），
         // 其余（NSGlobalDomain 混进来的、系统窗口帧）一律不搬。来源不清空。
         "store.migrate_domain" => {
             let target = &input["target"];
@@ -158,8 +158,8 @@ pub fn dispatch(operation: &str, input: Value) -> Result<Value, String> {
                 .ok_or("Missing source keys")?
                 .iter()
                 .filter_map(Value::as_str)
-                .filter(|k| k.starts_with("tahoetime.") || k.starts_with("meantime."))
-                .filter(|k| *k != "tahoetime.migrated.v1")
+                .filter(|k| k.starts_with("dayside.") || k.starts_with("meantime."))
+                .filter(|k| *k != "dayside.migrated.v1")
                 .collect();
             if keys.is_empty() {
                 Value::Null
@@ -219,13 +219,13 @@ mod tests {
 
     #[test]
     fn domain_migration_copies_only_app_keys_into_a_blank_target() {
-        let keys = json!(["tahoetime.zones.v1", "meantime.people.v1", "NSWindow Frame tools", "AppleLanguages",
-            "tahoetime.migrated.v1", "meantime.travel.v1", "other.thing"]);
+        let keys = json!(["dayside.zones.v1", "meantime.people.v1", "NSWindow Frame tools", "AppleLanguages",
+            "dayside.migrated.v1", "meantime.travel.v1", "other.thing"]);
         let blank = dispatch("store.migrate_domain", json!({"target": {"marker": null}, "keys": keys})).unwrap();
-        assert_eq!(blank["copy"], json!(["tahoetime.zones.v1", "meantime.people.v1", "meantime.travel.v1"]));
+        assert_eq!(blank["copy"], json!(["dayside.zones.v1", "meantime.people.v1", "meantime.travel.v1"]));
         let marked = dispatch("store.migrate_domain", json!({"target": {"marker": "x"}, "keys": keys})).unwrap();
         assert!(marked.is_null());
-        let populated = dispatch("store.migrate_domain", json!({"target": {"marker": null, "tahoetime.zones.v1": "W10="}, "keys": keys})).unwrap();
+        let populated = dispatch("store.migrate_domain", json!({"target": {"marker": null, "dayside.zones.v1": "W10="}, "keys": keys})).unwrap();
         assert!(populated.is_null());
         let nothing = dispatch("store.migrate_domain", json!({"target": {}, "keys": ["AppleLanguages"]})).unwrap();
         assert!(nothing.is_null());

@@ -11,15 +11,15 @@ out="${1:-$root/backup/diagnostics-probe-$(date +%Y%m%d-%H%M%S)}"
 mkdir -p "$out"; out="$(cd "$out" && pwd)"
 cd "$root"
 if [[ "${MEANTIME_PROBE_SKIP_BUILD:-0}" != 1 ]]; then
-  xcodebuild -project TahoeTime.xcodeproj -scheme TahoeTime -configuration Debug build > "$out/build.log" 2>&1 \
+  xcodebuild -project Dayside.xcodeproj -scheme Dayside -configuration Debug build > "$out/build.log" 2>&1 \
     || { grep -E ': error:|\*\* ' "$out/build.log" | sort -u | head >&2; echo "构建失败，见 $out/build.log" >&2; exit 1; }
 fi
-products="$(xcodebuild -project TahoeTime.xcodeproj -scheme TahoeTime -configuration Debug -showBuildSettings 2>/dev/null | awk '/ BUILT_PRODUCTS_DIR = /{print $3; exit}')"
+products="$(xcodebuild -project Dayside.xcodeproj -scheme Dayside -configuration Debug -showBuildSettings 2>/dev/null | awk '/ BUILT_PRODUCTS_DIR = /{print $3; exit}')"
 app="$products/Dayside.app"
 [[ -d "$app" ]] || { echo "没有 Debug 产物：$app" >&2; exit 1; }
 copy="$out/Dayside.app"; "$root/Tools/trash.sh" "$copy"; ditto "$app" "$copy"
 "$root/Tools/trash.sh" "$copy/Contents/PlugIns/"*.xctest
-ent="$out/debug.entitlements"; cp "$root/TahoeTime/TahoeTime-signing-Debug.entitlements" "$ent"
+ent="$out/debug.entitlements"; cp "$root/Dayside/Dayside-signing-Debug.entitlements" "$ent"
 sign() { /usr/bin/codesign --force --sign - --timestamp=none "$@" 2>/dev/null; }
 for dylib in "$copy"/Contents/MacOS/*.dylib; do [[ -e "$dylib" ]] && sign "$dylib"; done
 for framework in "$copy"/Contents/Frameworks/*.framework; do [[ -e "$framework" ]] && sign "$framework"; done

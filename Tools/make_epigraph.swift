@@ -9,7 +9,7 @@
 //
 //  字体下载（Google Fonts 仓库，约 5 MB）：
 //    curl -sSL -o LiuJianMaoCao-Regular.ttf https://github.com/google/fonts/raw/main/ofl/liujianmaocao/LiuJianMaoCao-Regular.ttf
-//  用法：swift Tools/make_epigraph.swift <LiuJianMaoCao-Regular.ttf> TahoeTime/Assets.xcassets/EpigraphZh.imageset [预览.png]
+//  用法：swift Tools/make_epigraph.swift <LiuJianMaoCao-Regular.ttf> Dayside/Assets.xcassets/EpigraphZh.imageset [预览.png]
 //
 
 import AppKit

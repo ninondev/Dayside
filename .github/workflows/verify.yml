@@ -39,7 +39,7 @@ jobs:
       - name: Release gate (Release ${{ matrix.arch }}, isolated preview)
         if: ${{ inputs.gate }}
         run: |
-          xcodebuild -project TahoeTime.xcodeproj -scheme TahoeTime -configuration Release \
+          xcodebuild -project Dayside.xcodeproj -scheme Dayside -configuration Release \
             -derivedDataPath "$RUNNER_TEMP/dd" build ARCHS=${{ matrix.arch }} ONLY_ACTIVE_ARCH=NO | tail -5
           Tools/make_local_preview.sh "$RUNNER_TEMP/dd/Build/Products/Release/Dayside.app" "$RUNNER_TEMP/preview/Dayside Local Preview.app"
           Tools/release_gate.sh --app "$RUNNER_TEMP/preview/Dayside Local Preview.app" | tee "$RUNNER_TEMP/gate-${{ matrix.arch }}.md"

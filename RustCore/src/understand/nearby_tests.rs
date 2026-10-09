@@ -115,7 +115,7 @@ fn nearby_place_keeps_existing_cjk_name_boundaries_and_german_strength() {
 #[cfg(not(feature = "intents-only"))]
 #[test]
 fn nearby_place_real_index_respects_strength_and_country_table() {
-    let opened = crate::city_index::dispatch("city.open", serde_json::json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+    let opened = crate::city_index::dispatch("city.open", serde_json::json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     for text in ["Berlin sync at 18:00", "柏林 同步 18点", "call with Tokyo team at 9", "China sync at 18:00"] {
         let lookup = |name: &str, strong: bool| city_lookup(Some(handle), name, strong);

@@ -30,7 +30,7 @@ Dayside 全部功能免费，源码采用 GPL-3.0-only。文本理解由本地�
 
 ## 城市索引
 
-随包 `TahoeTime/Resources/cities.ttcity` 使用 TTCITY12：列式定点记录、静态符号表、前缀压缩搜索键及分组本地化名字流。读取器按需 mmap；菜单栏显示名随地点保存，显示已保存地点时不查询索引。
+随包 `Dayside/Resources/cities.ttcity` 使用 TTCITY12：列式定点记录、静态符号表、前缀压缩搜索键及分组本地化名字流。读取器按需 mmap；菜单栏显示名随地点保存，显示已保存地点时不查询索引。
 
 `src/bin/build_city_index.rs` 支持 GeoNames 原始数据构建、旧镜像转码、增加语言和修正名字。构建所需的原始转储来自 GeoNames，重建不会由普通构建自动触发。`data/*_names_wikidata.tsv` 提供 Wikidata 标签；`data/admin1_zh_supplement.tsv` 补充缺失的中文行政区名。现有标签必须有数据依据，缺失时保留主名。
 

@@ -785,7 +785,7 @@ fn third_pass_iana(zone: &ZoneRef) -> Option<&str> {
 
 #[cfg(not(feature = "intents-only"))]
 fn third_pass_with_places(text: &str, language: &str) -> Output {
-    let opened = crate::city_index::dispatch("city.open", serde_json::json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+    let opened = crate::city_index::dispatch("city.open", serde_json::json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = |name: &str, strong: bool| city_lookup(Some(handle), name, strong);
     let out = understand(text, &Options { region: "GB", ui_language: language, lookup: &lookup });

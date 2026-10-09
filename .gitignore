@@ -37,4 +37,4 @@ RustCore/target/
 .claude/settings.local.json
 
 # 十语文案两份真源合并出来的构建用目录（Tools/l10n_partition.py --merge 生成）
-TahoeTime/Generated/
+Dayside/Generated/

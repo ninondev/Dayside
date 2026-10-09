@@ -40,7 +40,7 @@ fn nearby_revision_rejects_small_cities_even_in_mid_sentence() {
 #[test]
 fn nearby_revision_real_index_ordinary_sentences_in_all_languages() {
     let opened = crate::city_index::dispatch("city.open", serde_json::json!({"path":
-        concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+        concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     for (language, text) in [
         ("en", "I arrive around 4:30"), ("zh-Hans", "我大约4点30分到"),
@@ -91,7 +91,7 @@ fn nearby_revision_filters_every_city_alternative() {
 #[test]
 fn nearby_revision_complete_names_and_cjk_prefixes() {
     let opened = crate::city_index::dispatch("city.open", serde_json::json!({"path":
-        concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+        concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     for (text, language, iana) in [("Los Angeles team at 9", "en", "America/Los_Angeles"),
         ("New York sync at 18:00", "en", "America/New_York"), ("San José sync at 18:00", "en", "America/Costa_Rica"),
@@ -178,7 +178,7 @@ fn nearby_revision_multiple_famous_places_remain_candidates() {
 #[test]
 fn nearby_new_york_primary_and_previous_spelling_offer_city_then_local() {
     let opened = crate::city_index::dispatch("city.open", serde_json::json!({"path":
-        concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")})).unwrap();
+        concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")})).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     for text in ["New York sync at 18:00", "New York City sync at 18:00"] {
         let lookup = |name: &str, strong: bool| city_lookup(Some(handle), name, strong);

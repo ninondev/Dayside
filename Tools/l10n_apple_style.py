@@ -40,10 +40,10 @@ from types import SimpleNamespace
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEFAULT_FILES = [
-    'TahoeTime/Resources/Localizable.xcstrings',
-    'TahoeTime/Resources/InfoPlist.xcstrings',
-    'TahoeTime/Resources/AppShortcuts.xcstrings',
-    'TahoeTime/Resources/ServicesMenu.xcstrings',
+    'Dayside/Resources/Localizable.xcstrings',
+    'Dayside/Resources/InfoPlist.xcstrings',
+    'Dayside/Resources/AppShortcuts.xcstrings',
+    'Dayside/Resources/ServicesMenu.xcstrings',
 ]
 
 LANGS = ['zh-Hans', 'zh-Hant', 'en', 'ja', 'ko', 'de', 'es', 'fr', 'ru', 'pt-BR']
@@ -767,7 +767,7 @@ def write_report(path, args, files, changes, counts, notes, latin_stats, active_
     lines.append('')
     lines.append('## 脚本改不到、要跟着做的事')
     lines.append('')
-    lines.append('1. `ClockText.duration`（`TahoeTime/Models/ClockText.swift`）把「%lld 小时」「%lld 分钟」两段用普通空格相接，目录改成「%lld小时」后中文会成「11小时 30分钟」；'
+    lines.append('1. `ClockText.duration`（`Dayside/Models/ClockText.swift`）把「%lld 小时」「%lld 分钟」两段用普通空格相接，目录改成「%lld小时」后中文会成「11小时 30分钟」；'
                  'zh-Hans / zh-Hant / ja 要改成不加分隔（Apple「%@小时%@分钟」），对应测试 `ClockTextTests.swift`（「11 小时 30 分钟」四条）与 '
                  '`CatalogAndFormattingTests.swift`（`durationText(90)`）的期望值跟着改。')
     lines.append('2. 日期与钟点相接的「\\(day) \\(time)」（`ClockText.dateTime` / `interval`）保留空格：Apple 中文在日期与星期 / 时刻之间也留一个空格（zh-Hans 指南「Date And Time」条）。')

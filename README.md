@@ -85,9 +85,6 @@ You need macOS 26 or later, Xcode 27, Rust 1.85 or later, Python 3 and the Rust 
 the architectures you build. Cargo dependencies are pinned in `RustCore/Cargo.lock`. The commands
 below run offline, so those dependencies must already be in your local Cargo cache.
 
-The Xcode project, targets, scheme and Swift module still use the project's first name,
-TahoeTime. The app they build is `Dayside.app`.
-
 From `RustCore/`, run:
 
 ```sh
@@ -113,7 +110,7 @@ To compile the Mac app and its test bundle without running it, set `DAYSIDE_DERI
 build-output directory, then run from the repository root:
 
 ```sh
-xcodebuild -project TahoeTime.xcodeproj -scheme TahoeTime -configuration Debug \
+xcodebuild -project Dayside.xcodeproj -scheme Dayside -configuration Debug \
   -destination 'platform=macOS,arch=arm64' -derivedDataPath "$DAYSIDE_DERIVED_DATA" \
   -jobs 3 CODE_SIGNING_ALLOWED=NO build-for-testing
 ```
@@ -127,8 +124,8 @@ Where things are:
 
 - `RustCore/`: rules, the city index, search, time reading, astronomy, planning, drawing geometry
   and saved data. See [RustCore/README.md](RustCore/README.md).
-- `TahoeTime/` and `Shared/`: SwiftUI views and Apple framework code.
-- `TahoeTimeTests/`, `TahoeTimeUITests/` and `RustCore/tests/`: tests and their fixtures.
+- `Dayside/` and `Shared/`: SwiftUI views and Apple framework code.
+- `DaysideTests/`, `DaysideUITests/` and `RustCore/tests/`: tests and their fixtures.
 - `DaysideiOS/`: an iPhone prototype that shares the Rust core, with fewer features.
 - `Tools/`: build, test, packaging, measurement and data tools.
 - `site/`: the page for shared time cards, and draft privacy and support pages.
@@ -165,4 +162,4 @@ sold. See [LICENSE](LICENSE) and [COPYING](COPYING).
   (Tang dynasty) and John Muir.
 
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) has the details, and
-`TahoeTime/Resources/ThirdPartyNotices.txt` has the notices for the bundled Rust crates.
+`Dayside/Resources/ThirdPartyNotices.txt` has the notices for the bundled Rust crates.

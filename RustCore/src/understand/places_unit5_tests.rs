@@ -84,7 +84,7 @@ fn korean_complete_place_names_survive_embedded_time_syllables() {
 #[test]
 #[cfg(not(feature = "intents-only"))]
 fn real_index_place_probe_and_location_morphology() {
-    let opened = crate::city_index::dispatch("city.open", serde_json::json!({ "path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity") })).unwrap();
+    let opened = crate::city_index::dispatch("city.open", serde_json::json!({ "path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity") })).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = |t: &str, strong| places::city_lookup(Some(handle), t, strong);
     let flight = understand("Через 3 часа вылет в Нью-Йорк.", &Options { region: "US", ui_language: "ru", lookup: &lookup });
@@ -160,7 +160,7 @@ fn writer_location_suggests_only_in_its_sentence() {
 #[test]
 #[cfg(not(feature = "intents-only"))]
 fn country_suggestions_keep_display_identity_and_ordinary_nouns_do_not_supply_zones() {
-    let opened = crate::city_index::dispatch("city.open", serde_json::json!({ "path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity") })).unwrap();
+    let opened = crate::city_index::dispatch("city.open", serde_json::json!({ "path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity") })).unwrap();
     let handle = opened["handle"].as_u64().unwrap();
     let lookup = |t: &str, strong| places::city_lookup(Some(handle), t, strong);
     for text in ["I live in Japan; call at 14:00", "日本にいます、14時に電話してください。", "The support team in Japan opens at 14:00."] {

@@ -1056,7 +1056,7 @@ mod tests {
     fn cities() -> CityIndex {
         CityIndex::open(concat!(
             env!("CARGO_MANIFEST_DIR"),
-            "/../TahoeTime/Resources/cities.ttcity"
+            "/../Dayside/Resources/cities.ttcity"
         ))
         .unwrap()
     }
@@ -1165,7 +1165,7 @@ mod tests {
     fn catalog_search_uses_smart_city_search() {
         let cities = city_index::dispatch(
             "city.open",
-            json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../TahoeTime/Resources/cities.ttcity")}),
+            json!({"path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity")}),
         )
         .unwrap();
         let city_handle = cities["handle"].as_u64().unwrap();
@@ -1189,6 +1189,16 @@ mod tests {
             .unwrap();
             assert_eq!(found["results"][0]["cityName"], name, "{query}");
             assert_eq!(found["results"][0]["identifier"], zone, "{query}");
+        }
+        for (query, expected, unrelated) in [("new york", "New York", "Jakarta"), ("sao paulo", "São Paulo", "Luanda")] {
+            let found = dispatch(
+                "catalog.search",
+                json!({"handle":h,"cityHandle":city_handle,"query":query,"limit":8,"localeID":"en",
+                       "context":{"countries":[],"localizedNames":{}}}),
+            ).unwrap();
+            let results = found["results"].as_array().unwrap();
+            assert_eq!(results[0]["cityName"], expected, "{query}: {found}");
+            assert!(!results.iter().any(|result| result["cityName"] == unrelated), "{query}: {found}");
         }
         assert_eq!(dispatch("catalog.close", json!({"handle":h})).unwrap(), true);
         assert_eq!(city_index::dispatch("city.close", json!({"handle":city_handle})).unwrap(), true);
