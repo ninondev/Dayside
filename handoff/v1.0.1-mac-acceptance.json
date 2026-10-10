@@ -6359,7 +6359,7 @@
         "releaseBodyPath": "backup/adhoc-v1.0-build20-20261010/release-notes-apple-only.md",
         "knownMemoryIssuePreserved": true,
         "englishNativeSpeakerReviewed": false,
-        "chineseReadmeReviewPending": true,
+        "chineseReadmeReviewPending": false,
         "newTagCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
         "publishedArchitectures": [
           "arm64"
@@ -6420,6 +6420,75 @@
           "repair": "Compare the entire unmodified source file exactly; no whitespace normalization or weaker product gate.",
           "strictRetryLabel": "10-verify-apple-only-publication-exact-text-20261010",
           "comparisonReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/release-notes-exact-body-receipt.json"
+        },
+        "READMEChineseInstallUpdatedAfterOwnerApproval": true,
+        "chineseReadmeOwnerApprovalReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/chinese-readme-owner-approval.json",
+        "knownIssueReconciliation": {
+          "checkedAt": "2026-10-10T23:27:32.494422+00:00",
+          "sourceCommit": "add39899d24f10f0e836956f090b08e55b8904f5",
+          "scope": [
+            "README.md#known-issues",
+            "README.zh-Hans.md#已知问题",
+            "GitHub v1.0 release body"
+          ],
+          "knownIssuesPerReadme": 5,
+          "removedKnownIssueCount": 0,
+          "resolvedBugsHaveNoMatchingCurrentKnownIssue": true,
+          "resolvedTopicsCompared": [
+            "editable city input",
+            "sandbox preference persistence",
+            "Earth copy buffer lifetime",
+            "smart city search and alias ranking",
+            "current-time question parsing"
+          ],
+          "retainedIssues": [
+            {
+              "issue": 1,
+              "decision": "retain",
+              "reason": "Native-speaker review remains outstanding; no acceptance record completes it."
+            },
+            {
+              "issue": 2,
+              "decision": "retain",
+              "reason": "Automated AX and help-copy checks passed; a complete external VoiceOver walkthrough remains unverified.",
+              "evidence": [
+                "handoff/v1.0.1-mac-acceptance.json#steps/7/latestFinalAccessibilityAudit"
+              ]
+            },
+            {
+              "issue": 3,
+              "decision": "retain",
+              "reason": "Only 2026 Shanghai and Hong Kong closures use official tables; other years use general rules and regular sessions omit half days.",
+              "evidence": [
+                "RustCore/src/markets.rs:55",
+                "RustCore/src/markets.rs:432",
+                "RustCore/src/markets.rs:478",
+                "RustCore/src/markets.rs:627",
+                "RustCore/src/markets.rs:660",
+                "Dayside/Models/Markets/MarketStore.swift:188"
+              ]
+            },
+            {
+              "issue": 4,
+              "decision": "retain",
+              "reason": "Final Debug and Release tours still retain footprint above launch after closing; no production before/after improvement was proved.",
+              "evidence": [
+                "backup/adhoc-v1.0-build20-20261010/ReleaseMemoryTour/acceptance-receipt.json",
+                "backup/adhoc-v1.0-build20-20261010/DebugVerifiedMemoryTour/acceptance-receipt.json"
+              ]
+            },
+            {
+              "issue": 5,
+              "decision": "retain",
+              "reason": "Time-zone conversions still use system Foundation data; known-change probes warn instead of replacing system rules.",
+              "evidence": [
+                "Dayside/Models/DSTWatch/TZDataCheck.swift:35"
+              ]
+            }
+          ],
+          "publishedReleaseMemoryLimitationStillValid": true,
+          "applicationSourceChanged": false,
+          "releaseAssetsOrTagChanged": false
         }
       },
       "formalReleaseStatus": "deferred_until_owner_confirms_Apple_approval"
@@ -19256,6 +19325,29 @@
       "receiptPath": "backup/adhoc-v1.0-build20-20261010/logs/apple-only-main-and-branch-push.json",
       "sourceCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
       "outputSummary": "To https://github.com/ninondev/Dayside.git\n   bc4602c..f8661ae  HEAD -> codex/v1.0.1-handoff\n   53c21c6..f8661ae  HEAD -> main\n"
+    },
+    {
+      "step": 10,
+      "label": "10-approved-chinese-and-known-issues-doc-check-20261010",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T23:27:51.907663+00:00",
+      "sourceCommit": "add39899d24f10f0e836956f090b08e55b8904f5",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-approved-chinese-and-known-issues-doc-check-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "50ebee5829bb199711590b7dec6a3343b7ef103730115be1231f4740f751868d",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/50ebee5829bb199711590b7dec6a3343b7ef103730115be1231f4740f751868d.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T23:27:51.992792+00:00",
+      "durationSeconds": 0.061,
+      "outputSummary": ""
     }
   ],
   "sourceAtStart": "8c7275442dfc9e4ffc86c56bb7b63e9372d7bda1",
@@ -19383,7 +19475,7 @@
       "scope": "Continue functional acceptance; performance and memory remain deferred until a quiet machine by owner instruction."
     }
   ],
-  "updatedAt": "2026-10-10T23:16:27.241496+00:00",
+  "updatedAt": "2026-10-10T23:27:32.494422+00:00",
   "stage1Checkpoint": {
     "recordedAt": "2026-10-10T15:22:36.208259+00:00",
     "complete": false,
@@ -19580,7 +19672,6 @@
     "tagMoved": true,
     "releaseAssetsTouched": true,
     "remaining": [
-      "Owner review of the two minimal Chinese README corrections.",
       "Known Earth memory limitation: no measured production fix yet.",
       "Intel runtime validation deferred by owner; Intel installer not published.",
       "Developer ID signing, notarization and formal/new-user acceptance deferred.",
@@ -19650,7 +19741,9 @@
     "publicationReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/release-apple-only-publication-receipt.json",
     "downloadVerificationReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/verified-apple-downloads.json",
     "oldIntelAssetRemovedAfterBackup": true,
-    "chineseReadmeReviewPending": true
+    "chineseReadmeReviewPending": false,
+    "chineseReadmeOwnerApprovalReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/chinese-readme-owner-approval.json",
+    "knownIssuesReconciliationReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/known-issues-reconciliation.json"
   },
   "cloudContinuationPrompt": "Continue ninondev/Dayside from main. Read handoff/v1.0.1-mac-acceptance.json and the complete current source first. Public 1.0 build20 is already published for Apple silicon only, signed ad hoc and not notarized; v1.0 points to f8661ae8a437fb7dc394502f9e856142fdde8071. The main remaining bug is retained Earth-window memory after closing. Existing measurements do not prove a production improvement. Investigate the retained Mac evidence summaries and propose a focused, output-equivalent fix with meaningful tests and a precise Mac before/after verification plan. Keep all existing thresholds, fixtures, sample counts and Rust release settings (opt-level 3, thin LTO, codegen-units 1). Keep public version 1.0 and build20. Formal signing and Intel runtime are deferred. Do not publish, move tags, install Rosetta or claim Mac performance from Linux results. Preserve failed evidence and distinguish hypotheses from measured results."
 }
