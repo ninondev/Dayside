@@ -33,10 +33,9 @@ Dayside 是一个住在 Mac 菜单栏里的世界时钟。你加的每个地方�
 
 ## 安装
 
-需要 macOS 26 或更新版本。安装包有两个，在 [Releases](https://github.com/ninondev/Dayside/releases) 页面下载。
+需要 macOS 26 或更新版本。本次只提供 Apple 芯片版，在 [Releases](https://github.com/ninondev/Dayside/releases) 页面下载。
 
 - 文件名以 `-arm64.dmg` 结尾的，给 Apple 芯片的 Mac。
-- 以 `-x86_64.dmg` 结尾的，给 Intel Mac。这个我只在 Apple 芯片 Mac 的 Rosetta 下验过，还没在真的 Intel Mac 上跑过。你的 Mac 是 Apple 芯片的话，必须用 arm64 那个。
 
 打开磁盘映像，把 Dayside.app 拖进「应用程序」。
 
@@ -83,7 +82,7 @@ xcodebuild -project Dayside.xcodeproj -scheme Dayside -configuration Debug \
   -jobs 3 CODE_SIGNING_ALLOWED=NO build-for-testing
 ```
 
-`DaysideCore` 会先运行 `Tools/build_rust_core.sh` 生成 Rust 静态库，再编译 Swift。`Tools/sign_bundle.sh` 给本地构建做 ad-hoc 签名，所以不需要开发者账号。正式发布的安装包由 `Tools/release_sign_notarize.sh` 用 Developer ID 重签并公证。`Tools/verify_all.sh` 还会跑 Swift 测试，这些测试以 App 作为宿主启动。构建成功不代表 Swift 测试和 App 里的交互都能通过。
+`DaysideCore` 会先运行 `Tools/build_rust_core.sh` 生成 Rust 静态库，再编译 Swift。`Tools/sign_bundle.sh` 给本地构建做 ad-hoc 签名，所以不需要开发者账号。`Tools/release_sign_notarize.sh` 用于 Developer ID 签名和公证；当前下载版使用 ad-hoc 签名，未经公证。`Tools/verify_all.sh` 还会跑 Swift 测试，这些测试以 App 作为宿主启动。构建成功不代表 Swift 测试和 App 里的交互都能通过。
 
 代码按目录分开放。
 
