@@ -1228,7 +1228,9 @@
         "newInstalledNativeTypingAcceptance": false,
         "newInstalledThreeSettingsManualAcceptance": false,
         "bindingFailureReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/canonical-ui-binding-final.json",
-        "ownerSettingsWindowRequestPending": true
+        "ownerSettingsWindowRequestPending": false,
+        "ownerReportedSettingsOpen": true,
+        "additionalNativeProbeStatus": "Unable to bind canonical app using CUA; no new manual typing or three-settings persistence pass claimed."
       }
     },
     "5": {
@@ -6207,7 +6209,7 @@
     "8": {
       "status": "deferred_until_owner_confirms_Apple_approval",
       "adHocOwnerAuthorizedAlternative": {
-        "status": "arm64-runtime-checked; intel-runtime-blocked; formal-signing-deferred",
+        "status": "arm64-runtime-checked; intel-deferred-by-owner; formal-signing-deferred",
         "identityUnitTestsPassed": 19,
         "formalGateUnchanged": true,
         "arm64IdleResourceGate": {
@@ -6224,8 +6226,12 @@
         },
         "arm64PeakScenariosPassed": 12,
         "intelRuntimeError": "Bad CPU type in executable (os error 86)",
-        "rosettaInstallationPermissionPending": true,
-        "officialRosettaReference": "https://support.apple.com/en-us/102527"
+        "rosettaInstallationPermissionPending": false,
+        "officialRosettaReference": "https://support.apple.com/en-us/102527",
+        "rosettaInstallationAuthorized": false,
+        "publicArchitectures": [
+          "arm64"
+        ]
       }
     },
     "9": {
@@ -6308,7 +6314,7 @@
     "10": {
       "status": "deferred_until_owner_confirms_Apple_approval",
       "adHocPublication": {
-        "status": "packages-prepared; replacement-not-published",
+        "status": "arm64-preflight-passed; replacing-existing-v1.0-authorized",
         "ownerAuthorizedReplaceExistingRelease": true,
         "ownerAuthorizedMoveV1Tag": true,
         "originalV1TagCommit": "53c21c69fe096d0861bf633a5258b293941f59e0",
@@ -6341,10 +6347,19 @@
         "sourcePushedCommit": "b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb",
         "pushedBranch": "codex/v1.0.1-handoff",
         "mainUpdated": false,
-        "mainUpdatePermissionPending": true,
+        "mainUpdatePermissionPending": false,
         "tagMoved": false,
         "assetsUploaded": false,
-        "assetsDeleted": false
+        "assetsDeleted": false,
+        "mainUpdateAuthorized": true,
+        "publishArchitectures": [
+          "arm64"
+        ],
+        "intelAssetWillBeRemovedAfterBackup": true,
+        "releaseBodyPath": "backup/adhoc-v1.0-build20-20261010/release-notes-apple-only.md",
+        "knownMemoryIssuePreserved": true,
+        "englishNativeSpeakerReviewed": false,
+        "chineseReadmeReviewPending": true
       }
     },
     "11": {
@@ -18847,6 +18862,91 @@
       "recordedAt": "2026-10-10T16:04:56.152104+00:00",
       "receiptPath": "backup/adhoc-v1.0-build20-20261010/logs/source-branch-push.json",
       "outputSummary": "To https://github.com/ninondev/Dayside.git\n   8c72754..b2a81aa  HEAD -> codex/v1.0.1-handoff\n"
+    },
+    {
+      "step": 10,
+      "label": "10-fetch-main-apple-only-20261010",
+      "command": [
+        "git",
+        "fetch",
+        "origin",
+        "main",
+        "codex/v1.0.1-handoff"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T23:04:22.271231+00:00",
+      "sourceCommit": "bc4602c1b831a05e4cf85ceb24a38302bc394e72",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-fetch-main-apple-only-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T23:04:23.642478+00:00",
+      "durationSeconds": 1.35,
+      "outputSummary": "From https://github.com/ninondev/Dayside\n * branch            main       -> FETCH_HEAD\n * branch            codex/v1.0.1-handoff -> FETCH_HEAD"
+    },
+    {
+      "step": 7,
+      "label": "07-installed-launchservices-rebind-apple-only-20261010",
+      "command": [
+        "python3",
+        "backup/adhoc-v1.0-build20-20261010/10-rebind-installed-only.py"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T23:04:34.159787+00:00",
+      "sourceCommit": "bc4602c1b831a05e4cf85ceb24a38302bc394e72",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/07-installed-launchservices-rebind-apple-only-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T23:04:34.239550+00:00",
+      "durationSeconds": 0.06,
+      "outputSummary": "{\n  \"source\": \"./backup/adhoc-v1.0-build20-20261010/dd-arm64/Build/Products/Release/Dayside.app\",\n  \"installed\": \"/Applications/Dayside.app\",\n  \"duplicatePID\": 5551,\n  \"observedDuplicateExecutable\": \"./backup/adhoc-v1.0-build20-20261010/dd-arm64/Build/Products/Release/Dayside.app/Contents/MacOS/Dayside\",\n  \"stoppedOwnedDuplicate\": true,\n  \"installedExecutableProcesses\": \"PID   UID COMM\\n84153   502 /Applications/Dayside.app/Contents/MacOS/Dayside\"\n}"
+    },
+    {
+      "step": 10,
+      "label": "10-apple-only-preflight-20261010",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "python3",
+        "backup/adhoc-v1.0-build20-20261010/10-apple-only-preflight.py"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T23:09:00.667660+00:00",
+      "sourceCommit": "bc4602c1b831a05e4cf85ceb24a38302bc394e72",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-apple-only-preflight-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T23:09:01.232186+00:00",
+      "durationSeconds": 0.541,
+      "outputSummary": "{\n  \"recordedAt\": \"2026-10-10T23:09:01.170661+00:00\",\n  \"sourceCommit\": \"bc4602c1b831a05e4cf85ceb24a38302bc394e72\",\n  \"publicArchitecture\": \"arm64\",\n  \"oldAssetsBackupVerified\": true,\n  \"sourceUnchangedSinceNativePreviewAcceptance\": true,\n  \"installedAppFilesEqualCanonicalSource\": true,\n  \"installedFilesCompared\": 89,\n  \"arm64ResourceAndPeakChecksPassed\": true,\n  \"threeSpeedRunsPassed\": true,\n  \"publicNameHits\": [],\n  \"packageSha256\": \"0b88099ad2de77feed021ecc9483f6f994125224aaecf3ecf2bde34331476654\",\n  \"knownMemoryLimitationRetained\": true,\n  \"formalSigningAcceptanceClaimed\": false,\n  \"additionalInstalledNativeSmoke\": \"unobserved because CUA cannot bind the canonical identity\",\n  \"priorNativePreviewAcceptanceRemainsSeparate\": true\n}"
+    },
+    {
+      "step": 7,
+      "label": "07-installed-canonical-cua-resume-20261010",
+      "command": [
+        "cua.getApp",
+        "canonical identifier/path/name after owner opened Settings and LaunchServices refresh"
+      ],
+      "status": "tool_blocked",
+      "exitCode": null,
+      "recordedAt": "2026-10-10T23:09:30.365778+00:00",
+      "receiptPath": "backup/adhoc-v1.0-build20-20261010/logs/canonical-ui-resume-attempts.json",
+      "outputSummary": "Timeout, stale preview identifier resolution, and Invalid app. No native input was delivered. Installed canonical identity and source-equivalent binary independently verified; this supplemental probe is not counted as passed."
     }
   ],
   "sourceAtStart": "8c7275442dfc9e4ffc86c56bb7b63e9372d7bda1",
@@ -18974,7 +19074,7 @@
       "scope": "Continue functional acceptance; performance and memory remain deferred until a quiet machine by owner instruction."
     }
   ],
-  "updatedAt": "2026-10-10T16:25:08.219362+00:00",
+  "updatedAt": "2026-10-10T23:09:30.365778+00:00",
   "stage1Checkpoint": {
     "recordedAt": "2026-10-10T15:22:36.208259+00:00",
     "complete": false,
@@ -19074,7 +19174,7 @@
     "otherTestThresholdsMayChange": false
   },
   "adHocReleaseCheckpoint": {
-    "status": "source-pushed; packages-built; intel-runtime-and-final-native-smoke-pending",
+    "status": "arm64-preflight-passed; main-and-v1.0-publication-authorized",
     "evidenceRoot": "backup/adhoc-v1.0-build20-20261010",
     "ownerAuthorizationPath": "backup/adhoc-v1.0-build20-20261010/owner-authorization.json",
     "oldAssetsBackupVerified": true,
@@ -19162,16 +19262,25 @@
     "arm64PeakScenariosPassed": 12,
     "intelRuntimeVerified": false,
     "newInstalledNativeSmokeVerified": false,
-    "mainUpdatePermissionPending": true,
+    "mainUpdatePermissionPending": false,
     "tagMoved": false,
     "releaseAssetsTouched": false,
     "remaining": [
-      "Resolve Rosetta installation permission and test Intel runtime using unchanged resource/peak gates.",
-      "Finish additional native checks on the installed canonical bundle after a Settings window can be bound.",
-      "Resolve permission to fast-forward main; original push scope is the handoff branch and current main still has the earlier names.",
-      "Only replace assets and move v1.0 after applicable acceptance passes; retain known memory issue and all failed evidence."
+      "Publish arm64 only, synchronize main, move the explicitly authorized v1.0 tag, and verify downloaded assets.",
+      "Apply the two minimal Chinese README corrections after owner review."
     ],
     "checkpointScriptFailureReceipt": "backup/adhoc-v1.0-build20-20261010/logs/checkpoint-script-failure-v1.json",
-    "checkpointScriptRepair": "Filter optional historical labels; no product code, acceptance assertions, budgets or test thresholds changed."
+    "checkpointScriptRepair": "Filter optional historical labels; no product code, acceptance assertions, budgets or test thresholds changed.",
+    "mainUpdateAuthorized": true,
+    "publishArchitectures": [
+      "arm64"
+    ],
+    "installRosettaAuthorized": false,
+    "intelRuntimeStatus": "Deferred by owner; Intel package retained locally and excluded from this publication.",
+    "ownerScopeUpdatePath": "backup/adhoc-v1.0-build20-20261010/owner-authorization.json",
+    "latestNativeBindingAttemptPath": "backup/adhoc-v1.0-build20-20261010/logs/canonical-ui-resume-attempts.json",
+    "additionalInstalledNativeSmokeStatus": "Tool blocked; not counted as a passed test. Prior native local-preview acceptance uses unchanged application sources.",
+    "nativeBindingFailureReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/canonical-ui-resume-attempts.json",
+    "arm64PreflightReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/arm64-publication-preflight.json"
   }
 }
