@@ -10,9 +10,10 @@
   "policy": {
     "signing": "ad-hoc only in stage 1",
     "upgradeMigrationRequired": false,
-    "publishAuthorized": false,
+    "publishAuthorized": true,
     "failedEvidenceMustBeRetained": true,
-    "testThresholdsMayChange": false
+    "testThresholdsMayChange": false,
+    "currentDistribution": "ad-hoc; explicitly not Developer ID or notarized"
   },
   "steps": {
     "0": {
@@ -461,6 +462,106 @@
         "allThreeChecksumsUnchanged": true,
         "maximumMedianMs": 1.598958,
         "quietHostVerifiedDuringTheseRuns": false
+      },
+      "adHocFinalConfirmation": {
+        "status": "passed",
+        "runs": [
+          {
+            "label": "02-adhoc-final-speed-1-20261010",
+            "samples": [
+              {
+                "fixture": "place-heavy-prose",
+                "bytes": 4000,
+                "runs": 25,
+                "medianMilliseconds": 0.720833,
+                "checksum": "79fc5e6f694ae820"
+              },
+              {
+                "fixture": "hostile-short-tokens",
+                "bytes": 4000,
+                "runs": 25,
+                "medianMilliseconds": 0.69825,
+                "checksum": "da4399ae60f807f7"
+              },
+              {
+                "fixture": "mixed-language-email",
+                "bytes": 4000,
+                "runs": 25,
+                "medianMilliseconds": 0.490708,
+                "checksum": "3f4f620f55573cfe"
+              }
+            ],
+            "cpuIdleSnapshotsPercent": [
+              87.68,
+              83.14
+            ]
+          },
+          {
+            "label": "02-adhoc-final-speed-2-20261010",
+            "samples": [
+              {
+                "fixture": "place-heavy-prose",
+                "bytes": 4000,
+                "runs": 25,
+                "medianMilliseconds": 0.450166,
+                "checksum": "79fc5e6f694ae820"
+              },
+              {
+                "fixture": "hostile-short-tokens",
+                "bytes": 4000,
+                "runs": 25,
+                "medianMilliseconds": 0.565709,
+                "checksum": "da4399ae60f807f7"
+              },
+              {
+                "fixture": "mixed-language-email",
+                "bytes": 4000,
+                "runs": 25,
+                "medianMilliseconds": 0.461166,
+                "checksum": "3f4f620f55573cfe"
+              }
+            ],
+            "cpuIdleSnapshotsPercent": [
+              88.76,
+              86.49
+            ]
+          },
+          {
+            "label": "02-adhoc-final-speed-3-20261010",
+            "samples": [
+              {
+                "fixture": "place-heavy-prose",
+                "bytes": 4000,
+                "runs": 25,
+                "medianMilliseconds": 0.442917,
+                "checksum": "79fc5e6f694ae820"
+              },
+              {
+                "fixture": "hostile-short-tokens",
+                "bytes": 4000,
+                "runs": 25,
+                "medianMilliseconds": 0.57275,
+                "checksum": "da4399ae60f807f7"
+              },
+              {
+                "fixture": "mixed-language-email",
+                "bytes": 4000,
+                "runs": 25,
+                "medianMilliseconds": 0.460209,
+                "checksum": "3f4f620f55573cfe"
+              }
+            ],
+            "cpuIdleSnapshotsPercent": [
+              88.47,
+              88.84
+            ]
+          }
+        ],
+        "methodUnchanged": true,
+        "sharedCpuLockHeld": true,
+        "nice": 10,
+        "maximumMedianMilliseconds": 0.720833,
+        "environmentInterpretation": "Low host load observed at each start/end (83.14 to 88.84 percent CPU idle); snapshots are not continuous host monitoring."
       }
     },
     "3": {
@@ -1111,6 +1212,23 @@
         "threeSettingsIndependentlyVerifiedAfterLogin": true,
         "receiptPath": "backup/mac-acceptance-20261008T112635Z/04-owner-login-20261010T151729Z-receipt.json",
         "receiptSha256": "814d3cdad1b60582c62dfd944eb0dee01e1dd4dbb9d0ead5ca454640507376f7"
+      },
+      "canonicalAdHocInstalled": {
+        "recordedAt": "2026-10-10T16:11:34.118795+00:00",
+        "installed": "/Applications/Dayside.app",
+        "source": "backup/adhoc-v1.0-build20-20261010/dd-arm64/Build/Products/Release/Dayside.app",
+        "previousAppRetained": "backup/adhoc-v1.0-build20-20261010/installed-before-canonical/Dayside.app",
+        "retainedOldFilesUnchanged": true,
+        "installedFilesEqualValidatedPackageSource": true,
+        "sourceExecutableSha256": "946cfcea5e12bc027b8fb94bfcc7fd87f127d407b4baa9e3c272eec3d50699ac",
+        "bundleIdentifier": "com.dayside.Dayside",
+        "distribution": "ad-hoc, not notarized",
+        "noPreferenceMigrationPerformed": true,
+        "priorPreviewAcceptanceRemainsSeparate": true,
+        "newInstalledNativeTypingAcceptance": false,
+        "newInstalledThreeSettingsManualAcceptance": false,
+        "bindingFailureReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/canonical-ui-binding-final.json",
+        "ownerSettingsWindowRequestPending": true
       }
     },
     "5": {
@@ -5918,6 +6036,63 @@
           "Reopen witnesses prove native visibility and object presence, not working controls or rendered-output equivalence.",
           "If initial native objects were absent before the action, or destruction was not observed, the unmount attribution is inconclusive."
         ]
+      },
+      "adHocFinalMeasurements": {
+        "runs": {
+          "Release isolated preview": {
+            "receiptPath": "backup/adhoc-v1.0-build20-20261010/ReleaseMemoryTour/acceptance-receipt.json",
+            "launchFootprintBytes": 20038592,
+            "peakFootprintBytes": 68469768,
+            "closedPlus15": {
+              "elapsedSeconds": 15.757859666666667,
+              "fp": 50430984,
+              "peak": 68469768,
+              "cpu_ns": 1777327500,
+              "energy_nj": 7753675596,
+              "wake": 380,
+              "idlewake": 4,
+              "gpu": 0,
+              "task_energy": 7753675596
+            },
+            "idle60FootprintBytes": 50365448,
+            "crashReports": 0,
+            "measurementCompleted": true,
+            "productionImprovementClaimed": false,
+            "cpuIdleSnapshotsPercent": [
+              74.46,
+              79.3
+            ]
+          },
+          "Debug audit copy rebuilt from current source": {
+            "receiptPath": "backup/adhoc-v1.0-build20-20261010/DebugVerifiedMemoryTour/acceptance-receipt.json",
+            "launchFootprintBytes": 20775944,
+            "peakFootprintBytes": 76612808,
+            "closedPlus15": {
+              "elapsedSeconds": 15.691836291666666,
+              "fp": 59573424,
+              "peak": 76612808,
+              "cpu_ns": 2376548375,
+              "energy_nj": 6723693476,
+              "wake": 375,
+              "idlewake": 196,
+              "gpu": 0,
+              "task_energy": 6723693476
+            },
+            "idle60FootprintBytes": 48415920,
+            "crashReports": 0,
+            "measurementCompleted": true,
+            "productionImprovementClaimed": false,
+            "cpuIdleSnapshotsPercent": [
+              86.2,
+              79.29
+            ]
+          }
+        },
+        "productionMemoryChange": false,
+        "productionImprovementProven": false,
+        "READMEIssue4Changed": false,
+        "unusedEarlierDebugCopyRetained": "backup/adhoc-v1.0-build20-20261010/DebugMemoryTour/Dayside.app",
+        "interpretation": "The early cached Debug copy was not measured. A freshly rebuilt Debug audit copy and a preview derived from the canonical Release were measured. Both retain footprint above first launch; this does not establish a production before/after improvement or finish the original memory-fix requirement."
       }
     },
     "7": {
@@ -6030,7 +6205,28 @@
       }
     },
     "8": {
-      "status": "deferred_until_owner_confirms_Apple_approval"
+      "status": "deferred_until_owner_confirms_Apple_approval",
+      "adHocOwnerAuthorizedAlternative": {
+        "status": "arm64-runtime-checked; intel-runtime-blocked; formal-signing-deferred",
+        "identityUnitTestsPassed": 19,
+        "formalGateUnchanged": true,
+        "arm64IdleResourceGate": {
+          "label": "08-adhoc-release-resource-gate-arm64-onboarded-20261010",
+          "status": "passed",
+          "footprintMB": 19.7,
+          "rssMB": 83.8,
+          "cpuSecondsPer60": 0.01,
+          "bundleMB": 28.2,
+          "idleCityIndexMappings": 0,
+          "onboardingCompletedThroughNativeWelcome": true,
+          "firstWelcomeOpenFailureRetained": true,
+          "thresholdsUnchanged": true
+        },
+        "arm64PeakScenariosPassed": 12,
+        "intelRuntimeError": "Bad CPU type in executable (os error 86)",
+        "rosettaInstallationPermissionPending": true,
+        "officialRosettaReference": "https://support.apple.com/en-us/102527"
+      }
     },
     "9": {
       "status": "passed-native-current-time-questions",
@@ -6110,7 +6306,46 @@
       }
     },
     "10": {
-      "status": "deferred_until_owner_confirms_Apple_approval"
+      "status": "deferred_until_owner_confirms_Apple_approval",
+      "adHocPublication": {
+        "status": "packages-prepared; replacement-not-published",
+        "ownerAuthorizedReplaceExistingRelease": true,
+        "ownerAuthorizedMoveV1Tag": true,
+        "originalV1TagCommit": "53c21c69fe096d0861bf633a5258b293941f59e0",
+        "oldAssetsBackedUp": true,
+        "oldAssetBackupReceipt": "backup/adhoc-v1.0-build20-20261010/replaced-v1.0/backup-receipt.json",
+        "artifacts": [
+          {
+            "architecture": "arm64",
+            "path": "backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-arm64.dmg",
+            "bytes": 15826239,
+            "sha256": "0b88099ad2de77feed021ecc9483f6f994125224aaecf3ecf2bde34331476654",
+            "mountedFilesCompared": 89,
+            "strictSignature": true,
+            "fullApplicationIdentityVerifiedExceptExplicitlyDeferredDeveloperID": true,
+            "formalReleaseIdentityPassed": false,
+            "runtimeAcceptance": "resource-budget-and-all-12-peak-scenarios-passed"
+          },
+          {
+            "architecture": "x86_64",
+            "path": "backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-x86_64.dmg",
+            "bytes": 16488840,
+            "sha256": "ab17eaa108e76752015a4ea3f8f7d69a38a052a8cff0620c43da0665a8f42b00",
+            "mountedFilesCompared": 89,
+            "strictSignature": true,
+            "fullApplicationIdentityVerifiedExceptExplicitlyDeferredDeveloperID": true,
+            "formalReleaseIdentityPassed": false,
+            "runtimeAcceptance": "blocked-by-missing-Rosetta; package-byte-and-identity-checks-only"
+          }
+        ],
+        "sourcePushedCommit": "b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb",
+        "pushedBranch": "codex/v1.0.1-handoff",
+        "mainUpdated": false,
+        "mainUpdatePermissionPending": true,
+        "tagMoved": false,
+        "assetsUploaded": false,
+        "assetsDeleted": false
+      }
     },
     "11": {
       "status": "optional_deferred"
@@ -17819,6 +18054,799 @@
       "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
       "outputSummary": "KeyError: 'status' in local save precheck; stopped before staging or commit. Historical command entries without a status are preserved; retry uses get('status') to check for running jobs.",
       "receiptPath": "backup/mac-acceptance-20261008T112635Z/04-owner-login-save-20261010T151729Z.json"
+    },
+    {
+      "step": 10,
+      "label": "10-init-adhoc-release-20261010",
+      "command": [
+        "python3",
+        "backup/mac-acceptance-20261008T112635Z/10-init-adhoc-release-20261010.py"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:34:49.851648+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-init-adhoc-release-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T15:34:58.727223+00:00",
+      "durationSeconds": 8.837,
+      "outputSummary": "From https://github.com/ninondev/Dayside\n * [new branch]      codex/v1.0.1-handoff -> origin/codex/v1.0.1-handoff\n * tag               v1.0                 -> FETCH_HEAD\n{\"evidenceRoot\": \"./backup/adhoc-v1.0-build20-20261010\", \"oldAssetsVerified\": 3, \"currentReleaseId\": 405935350, \"ownerAuthorizedTagMove\": true}"
+    },
+    {
+      "step": 3,
+      "label": "03-adhoc-release-arm64-build-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "env",
+        "CARGO_BUILD_JOBS=3",
+        "MEANTIME_SIGN_IDENTITY=-",
+        "xcodebuild",
+        "-project",
+        "Dayside.xcodeproj",
+        "-scheme",
+        "Dayside",
+        "-configuration",
+        "Release",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=NO",
+        "-derivedDataPath",
+        "backup/adhoc-v1.0-build20-20261010/dd-arm64",
+        "-jobs",
+        "3",
+        "CODE_SIGNING_ALLOWED=NO",
+        "LD_GENERATE_MAP_FILE=YES",
+        "DEBUG_INFORMATION_FORMAT=dwarf-with-dsym",
+        "build"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:35:32.458986+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/03-adhoc-release-arm64-build-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T15:37:12.959003+00:00",
+      "durationSeconds": 100.466,
+      "outputSummary": "    export XPCSERVICES_FOLDER_PATH\\=/XPCServices\n    export YACC\\=yacc\n    export _BOOL_\\=NO\n    export _BOOL_NO\\=NO\n    export _BOOL_YES\\=YES\n    export _DEVELOPMENT_TEAM_IS_EMPTY\\=YES\n    export _DISCOVER_COMMAND_LINE_LINKER_INPUTS\\=YES\n    export _DISCOVER_COMMAND_LINE_LINKER_INPUTS_INCLUDE_WL\\=YES\n    export _IS_EMPTY_\\=YES\n    export _LD_MULTIARCH\\=YES\n    export _MACOSX_DEPLOYMENT_TARGET_IS_EMPTY\\=NO\n    export _SWIFT_EXPLICIT_MODULES_ALLOW_CXX_INTEROP\\=YES\n    export __ARCHS__\\=arm64\n    export __DIAGNOSE_DEPRECATED_ARCHS\\=YES\n    export __DIAGNOSE_INVALID_DEPLOYMENT_TARGET_AS_ERROR\\=YES\n    export __ORIGINAL_SDK_DEFINED_LLVM_TARGET_TRIPLE_SYS\\=macos\n    export arch\\=undefined_arch\n    export variant\\=normal\n    /bin/sh -c ./backup/adhoc-v1.0-build20-20261010/dd-arm64/Build/Intermediates.noindex/Dayside.build/Release/DaysideSign.build/Script-67ACAB0C23F79BD3A965334D.sh\n./backup/adhoc-v1.0-build20-20261010/dd-arm64/Build/Products/Release/Dayside.app: replacing existing signature\n\nPruneExplicitPrecompiledModules ./backup/adhoc-v1.0-build20-20261010/dd-arm64/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules\n\nPruneExplicitPrecompiledModules ./backup/adhoc-v1.0-build20-20261010/dd-arm64/SDKExplicitPrecompiledModules\n\nPruneExplicitPrecompiledModules ./backup/adhoc-v1.0-build20-20261010/dd-arm64/Build/Intermediates.noindex/ExplicitPrecompiledModules\n\nnote: Run script build phase 'Build Rust Core' will be run during every build because the option to run the script phase \"Based on dependency analysis\" is unchecked. (in target 'DaysideCore' from project 'Dayside')\nnote: Run script build phase 'Seal complete bundle' will be run during every build because the option to run the script phase \"Based on dependency analysis\" is unchecked. (in target 'DaysideSign' from project 'Dayside')\nnote: Run script build phase 'Sign (ad-hoc, full entitlements)' will be run during every build because the option to run the script phase \"Based on dependency analysis\" is unchecked. (in target 'Dayside' from project 'Dayside')\n** BUILD SUCCEEDED **\n"
+    },
+    {
+      "step": 3,
+      "label": "03-adhoc-release-x86_64-build-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "env",
+        "CARGO_BUILD_JOBS=3",
+        "MEANTIME_SIGN_IDENTITY=-",
+        "xcodebuild",
+        "-project",
+        "Dayside.xcodeproj",
+        "-scheme",
+        "Dayside",
+        "-configuration",
+        "Release",
+        "ARCHS=x86_64",
+        "ONLY_ACTIVE_ARCH=NO",
+        "-derivedDataPath",
+        "backup/adhoc-v1.0-build20-20261010/dd-x86_64",
+        "-jobs",
+        "3",
+        "CODE_SIGNING_ALLOWED=NO",
+        "LD_GENERATE_MAP_FILE=YES",
+        "DEBUG_INFORMATION_FORMAT=dwarf-with-dsym",
+        "build"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:37:50.644593+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/03-adhoc-release-x86_64-build-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T15:39:24.369835+00:00",
+      "durationSeconds": 93.693,
+      "outputSummary": "    export XPCSERVICES_FOLDER_PATH\\=/XPCServices\n    export YACC\\=yacc\n    export _BOOL_\\=NO\n    export _BOOL_NO\\=NO\n    export _BOOL_YES\\=YES\n    export _DEVELOPMENT_TEAM_IS_EMPTY\\=YES\n    export _DISCOVER_COMMAND_LINE_LINKER_INPUTS\\=YES\n    export _DISCOVER_COMMAND_LINE_LINKER_INPUTS_INCLUDE_WL\\=YES\n    export _IS_EMPTY_\\=YES\n    export _LD_MULTIARCH\\=YES\n    export _MACOSX_DEPLOYMENT_TARGET_IS_EMPTY\\=NO\n    export _SWIFT_EXPLICIT_MODULES_ALLOW_CXX_INTEROP\\=YES\n    export __ARCHS__\\=x86_64\n    export __DIAGNOSE_DEPRECATED_ARCHS\\=YES\n    export __DIAGNOSE_INVALID_DEPLOYMENT_TARGET_AS_ERROR\\=YES\n    export __ORIGINAL_SDK_DEFINED_LLVM_TARGET_TRIPLE_SYS\\=macos\n    export arch\\=undefined_arch\n    export variant\\=normal\n    /bin/sh -c ./backup/adhoc-v1.0-build20-20261010/dd-x86_64/Build/Intermediates.noindex/Dayside.build/Release/DaysideSign.build/Script-67ACAB0C23F79BD3A965334D.sh\n./backup/adhoc-v1.0-build20-20261010/dd-x86_64/Build/Products/Release/Dayside.app: replacing existing signature\n\nPruneExplicitPrecompiledModules ./backup/adhoc-v1.0-build20-20261010/dd-x86_64/SDKExplicitPrecompiledModules\n\nPruneExplicitPrecompiledModules ./backup/adhoc-v1.0-build20-20261010/dd-x86_64/Build/Intermediates.noindex/ExplicitPrecompiledModules\n\nPruneExplicitPrecompiledModules ./backup/adhoc-v1.0-build20-20261010/dd-x86_64/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules\n\nnote: Run script build phase 'Seal complete bundle' will be run during every build because the option to run the script phase \"Based on dependency analysis\" is unchecked. (in target 'DaysideSign' from project 'Dayside')\nnote: Run script build phase 'Build Rust Core' will be run during every build because the option to run the script phase \"Based on dependency analysis\" is unchecked. (in target 'DaysideCore' from project 'Dayside')\nnote: Run script build phase 'Sign (ad-hoc, full entitlements)' will be run during every build because the option to run the script phase \"Based on dependency analysis\" is unchecked. (in target 'Dayside' from project 'Dayside')\n** BUILD SUCCEEDED **\n"
+    },
+    {
+      "step": 10,
+      "label": "10-adhoc-and-formal-identity-tool-tests-20261010",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "Tools",
+        "-p",
+        "test_*identity.py"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:41:43.139261+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-adhoc-and-formal-identity-tool-tests-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T15:41:43.275991+00:00",
+      "durationSeconds": 0.113,
+      "outputSummary": "...................\n----------------------------------------------------------------------\nRan 19 tests in 0.013s\n\nOK"
+    },
+    {
+      "step": 8,
+      "label": "08-adhoc-release-bundle-identities-20261010",
+      "command": [
+        "python3",
+        "backup/adhoc-v1.0-build20-20261010/inspect-artifacts.py"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:42:40.304579+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/08-adhoc-release-bundle-identities-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T15:42:40.819658+00:00",
+      "durationSeconds": 0.494,
+      "outputSummary": "{\"status\": \"passed-for-owner-authorized-ad-hoc-distribution\", \"architectures\": [{\"arch\": \"arm64\", \"version\": \"1.0\", \"build\": \"20\", \"bundleIdentifier\": \"com.dayside.Dayside\", \"formalGateErrors\": [\"release_signing_identity\"], \"matchingDsym\": true}, {\"arch\": \"x86_64\", \"version\": \"1.0\", \"build\": \"20\", \"bundleIdentifier\": \"com.dayside.Dayside\", \"formalGateErrors\": [\"release_signing_identity\"], \"matchingDsym\": true}], \"localPreviewRejected\": true}"
+    },
+    {
+      "step": 8,
+      "label": "08-adhoc-release-resource-gate-arm64-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "env",
+        "CARGO_BUILD_JOBS=3",
+        "Tools/release_gate.sh",
+        "--skip-build",
+        "--app",
+        "backup/adhoc-v1.0-build20-20261010/dd-arm64/Build/Products/Release/Dayside.app"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:42:45.462408+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/08-adhoc-release-resource-gate-arm64-20261010.log",
+      "status": "failed",
+      "workingTreeDiffSha256": "72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 1,
+      "finishedAt": "2026-10-10T15:44:01.853200+00:00",
+      "durationSeconds": 76.371,
+      "outputSummary": "ADMITTED: launches allowed while this Mac is in use\n### 发布门 · 2026-10-10 08:44 PDT · 1.0 (20) · commit 2598e8b+dirty · Apple M5/16GB/macOS 27.0.1 · 静置 60s\n\n| 指标 | 实测 | 预算 | 结果 |\n|---|---|---|---|\n| 空闲 CPU(累计差值,折算每 60s) | 0.00 s | ≤ 0.1 | 通过 |\n| Physical footprint | 42.3 MB | ≤ 20 | **超标** |\n| RSS | 124.6 MB | ≤ 95 | **超标** |\n| 包体 | 28.2 MB | ≤ 40 | 通过 |\n| 空闲时索引映射段 | 0 | ≤ 0 | 通过 |\n\n口径:CPU=`ps -o time=` 累计差值;footprint=`vmmap --summary`;映射段=`vmmap | grep -c cities.ttcity`;包体=`du -sk`。"
+    },
+    {
+      "step": 8,
+      "label": "08-canonical-welcome-vmmap-arm64-20261010",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "vmmap",
+        "--summary",
+        "56580"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:50:02.245109+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/08-canonical-welcome-vmmap-arm64-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T15:50:02.926557+00:00",
+      "durationSeconds": 0.658,
+      "outputSummary": "__AUTH                            6594K    3011K     908K       0K       0K       0K       0K      701 \n__AUTH_CONST                      99.0M    34.7M       0K       0K       0K       0K       0K     1054 \n__CTF                               824      824       0K       0K       0K       0K       0K        1 \n__DATA                            40.7M    10.9M    3262K       0K       0K       0K       0K     1060 \n__DATA_CONST                      37.9M    17.1M      16K       0K       0K       0K       0K     1060 \n__DATA_DIRTY                      14.6M    4081K    2528K       0K       0K       0K       0K      943 \n__FONT_DATA                        2352     2352       0K       0K       0K       0K       0K        1 \n__LINKEDIT                         1.6G    41.0M       0K       0K       0K       0K       0K        3 \n__OBJC_RO                        118.0M    54.4M       0K       0K       0K       0K       0K        1 \n__OBJC_RW                         2735K    2223K      47K       0K       0K       0K       0K        1 \n__TEXT                             1.4G   321.0M       0K       0K       0K       0K       0K     1147 \n__TPRO_CONST                       132K     116K     112K       0K       0K       0K       0K        4 \nmapped file                      320.1M    24.8M     320K       0K       0K       0K       0K       46 \nowned unmapped                      32K      32K      32K       0K       0K       0K       0K        1 \npage table in kernel               721K     721K     721K       0K       0K       0K       0K        1 \nshared memory                      912K     288K     288K       0K       0K       0K       0K       17 \nunused but dirty shlib __DATA      647K     647K     647K       0K       0K       0K       0K      460 \n===========                     ======= ========    =====  ======= ========   ======    =====  ======= \nTOTAL                            388.8G   544.4M    38.2M       0K       0K    2032K       0K     6694 \n\n                                         VIRTUAL   RESIDENT      DIRTY    SWAPPED ALLOCATION      BYTES DIRTY+SWAP          REGION\nMALLOC ZONE                                 SIZE       SIZE       SIZE       SIZE      COUNT  ALLOCATED  FRAG SIZE  % FRAG   COUNT\n===========                              =======  =========  =========  =========  =========  =========  =========  ======  ======\nDefaultMallocZone_0x101798000              59.6M      22.5M      22.5M         0K      80604      15.9M      6741K     30%      66\nAttributeGraph_0x77554bc000                1024K       736K       736K         0K      16335       610K       126K     18%       1\nQuartzCore_0x10186c000                      848K       736K       736K         0K       1698       123K       613K     84%      25\nAttributeGraph graph data_0x105db4000       480K       368K       368K         0K        573       159K       209K     57%      20\nLSBindingEvaluator_0x105d90000              176K       176K       176K         0K          0         0K       176K    100%       3\nobjc-class_rw_t_0x101848000                 128K       128K       128K         0K       4278       100K        28K     22%       6\n===========                              =======  =========  =========  =========  =========  =========  =========  ======  ======\nTOTAL                                      62.2M      24.6M      24.6M         0K     103488      16.9M      7893K     32%     121\n"
+    },
+    {
+      "step": 8,
+      "label": "08-canonical-welcome-closed-vmmap-arm64-20261010",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "vmmap",
+        "--summary",
+        "56580"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:50:42.082550+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/08-canonical-welcome-closed-vmmap-arm64-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T15:50:42.706115+00:00",
+      "durationSeconds": 0.601,
+      "outputSummary": "__AUTH                            6594K    3011K     908K       0K       0K       0K       0K      701 \n__AUTH_CONST                      99.0M    34.7M       0K       0K       0K       0K       0K     1054 \n__CTF                               824      824       0K       0K       0K       0K       0K        1 \n__DATA                            40.7M    10.9M    3262K       0K       0K       0K       0K     1060 \n__DATA_CONST                      37.9M    17.1M      16K       0K       0K       0K       0K     1060 \n__DATA_DIRTY                      14.6M    4081K    2528K       0K       0K       0K       0K      943 \n__FONT_DATA                        2352     2352       0K       0K       0K       0K       0K        1 \n__LINKEDIT                         1.6G    44.5M       0K       0K       0K       0K       0K        3 \n__OBJC_RO                        118.0M    54.5M       0K       0K       0K       0K       0K        1 \n__OBJC_RW                         2735K    2223K      47K       0K       0K       0K       0K        1 \n__TEXT                             1.4G   323.5M       0K       0K       0K       0K       0K     1147 \n__TPRO_CONST                       132K     116K     112K       0K       0K       0K       0K        4 \nmapped file                      316.5M    21.4M     320K       0K       0K       0K       0K       46 \nowned unmapped                    1616K    1616K    1616K       0K       0K       0K       0K        4 \npage table in kernel               721K     721K     721K       0K       0K       0K       0K        1 \nshared memory                      896K     272K     272K       0K       0K       0K       0K       16 \nunused but dirty shlib __DATA      647K     647K     647K       0K       0K       0K       0K      460 \n===========                     ======= ========    =====  ======= ========   ======    =====  ======= \nTOTAL                            388.8G   547.7M    38.3M       0K       0K     512K       0K     6696 \n\n                                         VIRTUAL   RESIDENT      DIRTY    SWAPPED ALLOCATION      BYTES DIRTY+SWAP          REGION\nMALLOC ZONE                                 SIZE       SIZE       SIZE       SIZE      COUNT  ALLOCATED  FRAG SIZE  % FRAG   COUNT\n===========                              =======  =========  =========  =========  =========  =========  =========  ======  ======\nDefaultMallocZone_0x101798000              59.6M      23.2M      22.6M         0K      79123      13.2M      9643K     42%      66\nAttributeGraph_0x77554bc000                1024K       736K       704K         0K      15804       590K       114K     17%       1\nQuartzCore_0x10186c000                      848K       736K       736K         0K       1601       116K       620K     85%      25\nAttributeGraph graph data_0x105db4000       480K       368K       368K         0K        553       155K       213K     58%      20\nLSBindingEvaluator_0x105d90000              176K       176K       176K         0K          0         0K       176K    100%       3\nobjc-class_rw_t_0x101848000                 128K       128K       128K         0K       4288       100K        28K     22%       6\n===========                              =======  =========  =========  =========  =========  =========  =========  ======  ======\nTOTAL                                      62.2M      25.2M      24.7M         0K     101369      14.1M      10.5M     43%     121\n"
+    },
+    {
+      "step": 8,
+      "label": "08-adhoc-release-resource-gate-arm64-onboarded-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "Tools/release_gate.sh",
+        "--skip-build",
+        "--app",
+        "backup/adhoc-v1.0-build20-20261010/dd-arm64/Build/Products/Release/Dayside.app"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:50:42.887220+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/08-adhoc-release-resource-gate-arm64-onboarded-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/72a21a4de103fed91b265b9f72cd1b83846308232d163c3b5f3006d6e98276d1.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T15:51:58.520008+00:00",
+      "durationSeconds": 75.605,
+      "outputSummary": "ADMITTED: launches allowed while this Mac is in use\n### 发布门 · 2026-10-10 08:51 PDT · 1.0 (20) · commit 2598e8b+dirty · Apple M5/16GB/macOS 27.0.1 · 静置 60s\n\n| 指标 | 实测 | 预算 | 结果 |\n|---|---|---|---|\n| 空闲 CPU(累计差值,折算每 60s) | 0.01 s | ≤ 0.1 | 通过 |\n| Physical footprint | 19.7 MB | ≤ 20 | 通过 |\n| RSS | 83.8 MB | ≤ 95 | 通过 |\n| 包体 | 28.2 MB | ≤ 40 | 通过 |\n| 空闲时索引映射段 | 0 | ≤ 0 | 通过 |\n\n口径:CPU=`ps -o time=` 累计差值;footprint=`vmmap --summary`;映射段=`vmmap | grep -c cities.ttcity`;包体=`du -sk`。"
+    },
+    {
+      "step": 8,
+      "label": "08-adhoc-release-resource-gate-x86_64-onboarded-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "Tools/release_gate.sh",
+        "--skip-build",
+        "--app",
+        "backup/adhoc-v1.0-build20-20261010/dd-x86_64/Build/Products/Release/Dayside.app"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:52:39.852728+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/08-adhoc-release-resource-gate-x86_64-onboarded-20261010.log",
+      "status": "failed",
+      "workingTreeDiffSha256": "73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 1,
+      "finishedAt": "2026-10-10T15:52:41.494912+00:00",
+      "durationSeconds": 1.617,
+      "outputSummary": "ADMITTED: launches allowed while this Mac is in use\n发布门失败: 无法启动 ./backup/adhoc-v1.0-build20-20261010/dd-x86_64/Build/Products/Release/Dayside.app/Contents/MacOS/Dayside: Bad CPU type in executable (os error 86)"
+    },
+    {
+      "step": 8,
+      "label": "08-adhoc-peak-gate-arm64-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "Tools/peak_gate.sh",
+        "--app",
+        "backup/adhoc-v1.0-build20-20261010/dd-arm64/Build/Products/Release/Dayside.app"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:54:00.935914+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/08-adhoc-peak-gate-arm64-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T15:56:28.486366+00:00",
+      "durationSeconds": 147.527,
+      "outputSummary": "ADMITTED: launches allowed while this Mac is in use\nADMITTED: launches allowed while this Mac is in use\n| planner | 找碰头时间 | 0.25 s（0.02 + 0.21） | 0.30 s | 50.6 MB | 50.8 MB | 131.1 MB | 1 |\nADMITTED: launches allowed while this Mac is in use\nADMITTED: launches allowed while this Mac is in use\n| agenda | 日历 | 0.24 s（0.02 + 0.21） | 0.28 s | 49.8 MB | 50.0 MB | 129.5 MB | 1 |\nADMITTED: launches allowed while this Mac is in use\nADMITTED: launches allowed while this Mac is in use\n| people | 人物时钟 | 0.24 s（0.02 + 0.22） | 0.34 s | 54.0 MB | 54.2 MB | 134.2 MB | 1 |\nADMITTED: launches allowed while this Mac is in use\nADMITTED: launches allowed while this Mac is in use\n| convert | 换算一句话（要查城市索引） | 0.24 s（0.02 + 0.21） | 0.35 s | 58.0 MB | 58.2 MB | 147.6 MB | 1 |\nADMITTED: launches allowed while this Mac is in use\nADMITTED: launches allowed while this Mac is in use\n| timers | 计时器 | 0.26 s（0.02 + 0.20） | 0.35 s | 56.7 MB | 56.9 MB | 142.1 MB | 1 |\nADMITTED: launches allowed while this Mac is in use\nADMITTED: launches allowed while this Mac is in use\n| dstWatch | 夏令时提醒（39 条规则自检） | 0.27 s（0.02 + 0.19） | 0.31 s | 53.5 MB | 53.8 MB | 136.0 MB | 1 |\nADMITTED: launches allowed while this Mac is in use\nADMITTED: launches allowed while this Mac is in use\n| astronomy | 太阳与月亮 | 0.27 s（0.02 + 0.19） | 0.30 s | 53.5 MB | 53.5 MB | 136.7 MB | 1 |\nADMITTED: launches allowed while this Mac is in use\nADMITTED: launches allowed while this Mac is in use\n| markets | 市场时钟（休市日按规则算） | 0.27 s（0.02 + 0.20） | 0.35 s | 59.5 MB | 59.6 MB | 147.4 MB | 1 |\nADMITTED: launches allowed while this Mac is in use\nADMITTED: launches allowed while this Mac is in use\n| travel | 旅行 | 0.25 s（0.02 + 0.19） | 0.32 s | 56.1 MB | 56.3 MB | 141.3 MB | 1 |\nADMITTED: launches allowed while this Mac is in use\nADMITTED: launches allowed while this Mac is in use\n| sharing | 分享（预览 + 二维码） | 0.26 s（0.02 + 0.19） | 0.31 s | 54.5 MB | 54.7 MB | 139.3 MB | 1 |\n\n口径：就绪耗时 = 从 exec 到菜单栏就绪信号，括号里是 App 自报的两段（exec → App.init 的 dyld 与静态初始化，App.init → 就绪的我们自己的代码；刚换签名后的首次启动前一段会因系统验签虚高，看第二次）；场景内 CPU = 就绪后静 3 秒起、发 URL 后停 dwell 秒内的 `ps -o time=` 增量；footprint 与峰值 = `vmmap --summary`（峰值是进程生命周期内的最高点）；映射段 = `vmmap | grep -c cities.ttcity`。"
+    },
+    {
+      "step": 2,
+      "label": "02-adhoc-final-speed-1-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "/bin/bash",
+        "backup/adhoc-v1.0-build20-20261010/02-speed-with-environment.sh"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:57:01.386757+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/02-adhoc-final-speed-1-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T15:58:23.091441+00:00",
+      "durationSeconds": 81.683,
+      "outputSummary": "Processes: 523 total, 2 running, 521 sleeping, 3082 threads \n2026/10/10 08:57:01\nLoad Avg: 1.50, 1.52, 2.66 \nCPU usage: 3.35% user, 8.95% sys, 87.68% idle \nSharedLibs: 593M resident, 132M data, 124M linkedit.\nMemRegions: 458746 total, 4721M resident, 235M private, 959M shared.\nPhysMem: 15G used (2209M wired, 5264M compressor), 204M unused.\nVM: 276T vsize, 57G framework vsize, 10786835(0) swapins, 11870618(0) swapouts.\nNetworks: packets: 155955746/131G in, 81388414/52G out.\nDisks: 113850375/2137G read, 26318006/800G written.\n   Compiling dayside_core v0.1.0 (./RustCore)\n    Finished `release` profile [optimized] target(s) in 1m 19s\n     Running unittests src/lib.rs (target/release/deps/dayside_core-3e8d6be462c2abde)\n\nrunning 1 test\ntest understand::speed_tests::understand_speed_gate ... SPEED place-heavy-prose bytes=4000 runs=25 median_ms=0.720833 checksum=79fc5e6f694ae820 Work { exact_queries: 17, postings: 150, records: 164, localized_queries: 60, localized_entries: 2056 } LanguageWork EvidenceWork { evidence_calls: 47, evidence_units: 843 } LexiconLookups 941\nSPEED hostile-short-tokens bytes=4000 runs=25 median_ms=0.698250 checksum=da4399ae60f807f7 Work { exact_queries: 13, postings: 39, records: 39, localized_queries: 0, localized_entries: 0 } LanguageWork EvidenceWork { evidence_calls: 155, evidence_units: 5066 } LexiconLookups 1767\nSPEED mixed-language-email bytes=4000 runs=25 median_ms=0.490708 checksum=3f4f620f55573cfe Work { exact_queries: 28, postings: 89, records: 98, localized_queries: 19, localized_entries: 569 } LanguageWork EvidenceWork { evidence_calls: 66, evidence_units: 843 } LexiconLookups 1014\nok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 721 filtered out; finished in 0.09s\n\nProcesses: 462 total, 2 running, 460 sleeping, 2973 threads \n2026/10/10 08:58:23\nLoad Avg: 1.65, 1.57, 2.58 \nCPU usage: 3.37% user, 13.48% sys, 83.14% idle \nSharedLibs: 587M resident, 130M data, 115M linkedit.\nMemRegions: 455067 total, 1969M resident, 120M private, 795M shared.\nPhysMem: 13G used (2128M wired, 7179M compressor), 2083M unused.\nVM: 249T vsize, 57G framework vsize, 10787406(0) swapins, 11870618(0) swapouts.\nNetworks: packets: 155963581/131G in, 81393331/52G out.\nDisks: 113872754/2137G read, 26325697/800G written."
+    },
+    {
+      "step": 2,
+      "label": "02-adhoc-final-speed-2-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "/bin/bash",
+        "backup/adhoc-v1.0-build20-20261010/02-speed-with-environment.sh"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:58:23.147232+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/02-adhoc-final-speed-2-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T15:58:23.884294+00:00",
+      "durationSeconds": 0.714,
+      "outputSummary": "Note: No CPU power status has been recorded\nProcesses: 463 total, 2 running, 461 sleeping, 2966 threads \n2026/10/10 08:58:23\nLoad Avg: 1.65, 1.57, 2.58 \nCPU usage: 2.62% user, 8.61% sys, 88.76% idle \nSharedLibs: 587M resident, 130M data, 115M linkedit.\nMemRegions: 455088 total, 1999M resident, 121M private, 796M shared.\nPhysMem: 13G used (2127M wired, 7171M compressor), 2056M unused.\nVM: 249T vsize, 57G framework vsize, 10787406(0) swapins, 11870618(0) swapouts.\nNetworks: packets: 155963590/131G in, 81393338/52G out.\nDisks: 113872883/2137G read, 26325704/800G written.\n    Finished `release` profile [optimized] target(s) in 0.03s\n     Running unittests src/lib.rs (target/release/deps/dayside_core-3e8d6be462c2abde)\n\nrunning 1 test\ntest understand::speed_tests::understand_speed_gate ... SPEED place-heavy-prose bytes=4000 runs=25 median_ms=0.450166 checksum=79fc5e6f694ae820 Work { exact_queries: 17, postings: 150, records: 164, localized_queries: 60, localized_entries: 2056 } LanguageWork EvidenceWork { evidence_calls: 47, evidence_units: 843 } LexiconLookups 941\nSPEED hostile-short-tokens bytes=4000 runs=25 median_ms=0.565709 checksum=da4399ae60f807f7 Work { exact_queries: 13, postings: 39, records: 39, localized_queries: 0, localized_entries: 0 } LanguageWork EvidenceWork { evidence_calls: 155, evidence_units: 5066 } LexiconLookups 1767\nSPEED mixed-language-email bytes=4000 runs=25 median_ms=0.461166 checksum=3f4f620f55573cfe Work { exact_queries: 28, postings: 89, records: 98, localized_queries: 19, localized_entries: 569 } LanguageWork EvidenceWork { evidence_calls: 66, evidence_units: 843 } LexiconLookups 1014\nok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 721 filtered out; finished in 0.05s\n\nProcesses: 463 total, 3 running, 460 sleeping, 2964 threads \n2026/10/10 08:58:23\nLoad Avg: 1.65, 1.57, 2.58 \nCPU usage: 4.1% user, 9.48% sys, 86.49% idle \nSharedLibs: 587M resident, 130M data, 115M linkedit.\nMemRegions: 455084 total, 2009M resident, 121M private, 796M shared.\nPhysMem: 13G used (2127M wired, 7167M compressor), 2039M unused.\nVM: 249T vsize, 57G framework vsize, 10787406(0) swapins, 11870618(0) swapouts.\nNetworks: packets: 155963625/131G in, 81393357/52G out.\nDisks: 113873210/2137G read, 26325705/800G written."
+    },
+    {
+      "step": 2,
+      "label": "02-adhoc-final-speed-3-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "/bin/bash",
+        "backup/adhoc-v1.0-build20-20261010/02-speed-with-environment.sh"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:58:23.924917+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/02-adhoc-final-speed-3-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T15:58:24.650726+00:00",
+      "durationSeconds": 0.706,
+      "outputSummary": "Note: No CPU power status has been recorded\nProcesses: 462 total, 2 running, 460 sleeping, 2965 threads \n2026/10/10 08:58:24\nLoad Avg: 1.65, 1.57, 2.58 \nCPU usage: 2.23% user, 9.29% sys, 88.47% idle \nSharedLibs: 587M resident, 130M data, 115M linkedit.\nMemRegions: 455049 total, 2015M resident, 121M private, 796M shared.\nPhysMem: 13G used (2127M wired, 7165M compressor), 2036M unused.\nVM: 249T vsize, 57G framework vsize, 10787406(0) swapins, 11870618(0) swapouts.\nNetworks: packets: 155963627/131G in, 81393359/52G out.\nDisks: 113873215/2137G read, 26325711/800G written.\n    Finished `release` profile [optimized] target(s) in 0.01s\n     Running unittests src/lib.rs (target/release/deps/dayside_core-3e8d6be462c2abde)\n\nrunning 1 test\ntest understand::speed_tests::understand_speed_gate ... SPEED place-heavy-prose bytes=4000 runs=25 median_ms=0.442917 checksum=79fc5e6f694ae820 Work { exact_queries: 17, postings: 150, records: 164, localized_queries: 60, localized_entries: 2056 } LanguageWork EvidenceWork { evidence_calls: 47, evidence_units: 843 } LexiconLookups 941\nSPEED hostile-short-tokens bytes=4000 runs=25 median_ms=0.572750 checksum=da4399ae60f807f7 Work { exact_queries: 13, postings: 39, records: 39, localized_queries: 0, localized_entries: 0 } LanguageWork EvidenceWork { evidence_calls: 155, evidence_units: 5066 } LexiconLookups 1767\nSPEED mixed-language-email bytes=4000 runs=25 median_ms=0.460209 checksum=3f4f620f55573cfe Work { exact_queries: 28, postings: 89, records: 98, localized_queries: 19, localized_entries: 569 } LanguageWork EvidenceWork { evidence_calls: 66, evidence_units: 843 } LexiconLookups 1014\nok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 721 filtered out; finished in 0.05s\n\nProcesses: 462 total, 2 running, 460 sleeping, 2960 threads \n2026/10/10 08:58:24\nLoad Avg: 1.75, 1.59, 2.58 \nCPU usage: 2.60% user, 8.55% sys, 88.84% idle \nSharedLibs: 587M resident, 130M data, 115M linkedit.\nMemRegions: 455041 total, 2015M resident, 121M private, 796M shared.\nPhysMem: 13G used (2127M wired, 7165M compressor), 2035M unused.\nVM: 249T vsize, 57G framework vsize, 10787406(0) swapins, 11870618(0) swapouts.\nNetworks: packets: 155963629/131G in, 81393361/52G out.\nDisks: 113873215/2137G read, 26325711/800G written."
+    },
+    {
+      "step": 10,
+      "label": "10-adhoc-dmg-arm64-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "python3",
+        "Tools/make_adhoc_dmg.py",
+        "backup/adhoc-v1.0-build20-20261010/dd-arm64/Build/Products/Release/Dayside.app",
+        "backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-arm64.dmg",
+        "Tools/dmg/ReadMe-arm64.txt"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:59:06.550495+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-adhoc-dmg-arm64-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T15:59:27.877643+00:00",
+      "durationSeconds": 21.306,
+      "outputSummary": "created: ./backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-arm64.dmghdiutil: WARNING: 'hdiutil create -volname -format ...' is deprecated. Please use 'diskutil image create from/blank --volumeName --format ...' instead.\n\n正在检查“Protective Master Boot Record（MBR：0）”的校验和…\nProtective Master Boot Record（MBR：0）：已验证CRC32 $1BE2F818\n正在检查“GPT Header（Primary GPT Header：1）”的校验和…\n    GPT Header（Primary GPT Header：1）：已验证CRC32 $AAEC52D5\n正在检查“GPT Partition Data（Primary GPT Table：2）”的校验和…\nGPT Partition Data（Primary GPT Table：已验证CRC32 $225633DE\n正在检查“（Apple_Free：3）”的校验和…\n                      （Apple_Free：3）：已验证CRC32 $00000000\n正在检查“disk image（Apple_APFS：4）”的校验和…\n            disk image（Apple_APFS：4）：已验证CRC32 $1F0BA238\n正在检查“（Apple_Free：5）”的校验和…\n                      （Apple_Free：5）：已验证CRC32 $00000000\n正在检查“GPT Partition Data（Backup GPT Table：6）”的校验和…\nGPT Partition Data（Backup GPT Table：：已验证CRC32 $225633DE\n正在检查“GPT Header（Backup GPT Header：7）”的校验和…\n     GPT Header（Backup GPT Header：7）：已验证CRC32 $C568B9D8\n已验证CRC32 $1E10B44B\nhdiutil: verify: checksum of \"./backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-arm64.dmg\" is VALID\n预计CRC32 $1E10B44B\nhdiutil: WARNING: 'hdiutil attach -readonly -nobrowse -mountpoint ...' is deprecated. Please use 'diskutil image attach --readOnly --mountOptions nobrowse --mountPoint ...' instead.\n/dev/disk4          \tGUID_partition_scheme          \t\n/dev/disk4s1        \tApple_APFS                     \t\n/dev/disk5          \tEF57347C-0000-11AA-AA11-0030654\t\n/dev/disk5s1        \t41504653-0000-11AA-AA11-0030654\t./backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-arm64.mount-21005406\nhdiutil: WARNING: 'hdiutil detach ...' is deprecated. Please use 'diskutil eject ...' instead.\n\"disk4\" ejected.\n{\"path\": \"./backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-arm64.dmg\", \"bytes\": 15826239, \"sha256\": \"0b88099ad2de77feed021ecc9483f6f994125224aaecf3ecf2bde34331476654\", \"format\": \"ULMO (LZMA), APFS\", \"distribution\": \"ad-hoc, not notarized\", \"mountedFilesCompared\": 89, \"mountedFilesEqualSourceBundle\": true, \"strictSignature\": true, \"applicationsLink\": true, \"identity\": {\"ok\": true, \"distribution\": \"ad-hoc, not notarized\", \"structuralIdentityPassed\": true, \"adHocSignatureConfirmed\": true, \"formalReleaseIdentityGate\": {\"app\": \"./backup/adhoc-v1.0-build20-20261010/dd-arm64/Build/Products/Release/Dayside.app\", \"ok\": false, \"errors\": [\"release_signing_identity\"], \"signingTeam\": null, \"bundleIdentifier\": \"com.dayside.Dayside\", \"version\": \"1.0\"}}, \"mountedIdentity\": {\"ok\": true, \"distribution\": \"ad-hoc, not notarized\", \"structuralIdentityPassed\": true, \"adHocSignatureConfirmed\": true, \"formalReleaseIdentityGate\": {\"app\": \"./backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-arm64.mount-21005406/Dayside.app\", \"ok\": false, \"errors\": [\"release_signing_identity\"], \"signingTeam\": null, \"bundleIdentifier\": \"com.dayside.Dayside\", \"version\": \"1.0\"}}, \"retainedStagePath\": \"./backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-arm64.stage-655b12e4\"}"
+    },
+    {
+      "step": 10,
+      "label": "10-adhoc-dmg-x86_64-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "python3",
+        "Tools/make_adhoc_dmg.py",
+        "backup/adhoc-v1.0-build20-20261010/dd-x86_64/Build/Products/Release/Dayside.app",
+        "backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-x86_64.dmg",
+        "Tools/dmg/ReadMe-x86_64.txt"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T16:00:22.318660+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-adhoc-dmg-x86_64-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T16:00:33.885731+00:00",
+      "durationSeconds": 11.531,
+      "outputSummary": "created: ./backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-x86_64.dmghdiutil: WARNING: 'hdiutil create -volname -format ...' is deprecated. Please use 'diskutil image create from/blank --volumeName --format ...' instead.\n\n正在检查“Protective Master Boot Record（MBR：0）”的校验和…\nProtective Master Boot Record（MBR：0）：已验证CRC32 $2ECBB300\n正在检查“GPT Header（Primary GPT Header：1）”的校验和…\n    GPT Header（Primary GPT Header：1）：已验证CRC32 $96633CD8\n正在检查“GPT Partition Data（Primary GPT Table：2）”的校验和…\nGPT Partition Data（Primary GPT Table：已验证CRC32 $F5299AF4\n正在检查“（Apple_Free：3）”的校验和…\n                      （Apple_Free：3）：已验证CRC32 $00000000\n正在检查“disk image（Apple_APFS：4）”的校验和…\n            disk image（Apple_APFS：4）：已验证CRC32 $FBECB428\n正在检查“（Apple_Free：5）”的校验和…\n                      （Apple_Free：5）：已验证CRC32 $00000000\n正在检查“GPT Partition Data（Backup GPT Table：6）”的校验和…\nGPT Partition Data（Backup GPT Table：：已验证CRC32 $F5299AF4\n正在检查“GPT Header（Backup GPT Header：7）”的校验和…\n     GPT Header（Backup GPT Header：7）：已验证CRC32 $E37828BD\n已验证CRC32 $7948CE63\nhdiutil: verify: checksum of \"./backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-x86_64.dmg\" is VALID\n预计CRC32 $7948CE63\nhdiutil: WARNING: 'hdiutil attach -readonly -nobrowse -mountpoint ...' is deprecated. Please use 'diskutil image attach --readOnly --mountOptions nobrowse --mountPoint ...' instead.\n/dev/disk4          \tGUID_partition_scheme          \t\n/dev/disk4s1        \tApple_APFS                     \t\n/dev/disk5          \tEF57347C-0000-11AA-AA11-0030654\t\n/dev/disk5s1        \t41504653-0000-11AA-AA11-0030654\t./backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-x86_64.mount-f5fa15d5\nhdiutil: WARNING: 'hdiutil detach ...' is deprecated. Please use 'diskutil eject ...' instead.\n\"disk4\" ejected.\n{\"path\": \"./backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-x86_64.dmg\", \"bytes\": 16488840, \"sha256\": \"ab17eaa108e76752015a4ea3f8f7d69a38a052a8cff0620c43da0665a8f42b00\", \"format\": \"ULMO (LZMA), APFS\", \"distribution\": \"ad-hoc, not notarized\", \"mountedFilesCompared\": 89, \"mountedFilesEqualSourceBundle\": true, \"strictSignature\": true, \"applicationsLink\": true, \"identity\": {\"ok\": true, \"distribution\": \"ad-hoc, not notarized\", \"structuralIdentityPassed\": true, \"adHocSignatureConfirmed\": true, \"formalReleaseIdentityGate\": {\"app\": \"./backup/adhoc-v1.0-build20-20261010/dd-x86_64/Build/Products/Release/Dayside.app\", \"ok\": false, \"errors\": [\"release_signing_identity\"], \"signingTeam\": null, \"bundleIdentifier\": \"com.dayside.Dayside\", \"version\": \"1.0\"}}, \"mountedIdentity\": {\"ok\": true, \"distribution\": \"ad-hoc, not notarized\", \"structuralIdentityPassed\": true, \"adHocSignatureConfirmed\": true, \"formalReleaseIdentityGate\": {\"app\": \"./backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-x86_64.mount-f5fa15d5/Dayside.app\", \"ok\": false, \"errors\": [\"release_signing_identity\"], \"signingTeam\": null, \"bundleIdentifier\": \"com.dayside.Dayside\", \"version\": \"1.0\"}}, \"retainedStagePath\": \"./backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-x86_64.stage-ee6dc1aa\"}"
+    },
+    {
+      "step": 6,
+      "label": "06-fresh-release-memory-preview-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "Tools/make_local_preview.sh",
+        "backup/adhoc-v1.0-build20-20261010/dd-arm64/Build/Products/Release/Dayside.app",
+        "backup/adhoc-v1.0-build20-20261010/ReleaseMemoryTour/Dayside.app"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T16:02:26.940960+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/06-fresh-release-memory-preview-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T16:02:28.494682+00:00",
+      "durationSeconds": 1.516,
+      "outputSummary": "{\"bundleIdentifier\":\"com.dayside.Dayside.localpreview\",\"candidate\":\"./backup/adhoc-v1.0-build20-20261010/dd-arm64/Build/Products/Release/Dayside.app\",\"migratesProductionData\":false,\"preview\":\"./backup/adhoc-v1.0-build20-20261010/ReleaseMemoryTour/Dayside.app\",\"sharedSystemSurfacesIncluded\":false}"
+    },
+    {
+      "step": 6,
+      "label": "06-fresh-release-earth-memory-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "/bin/bash",
+        "backup/adhoc-v1.0-build20-20261010/06-measure-fresh-memory.sh",
+        "Release"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T16:03:00.757007+00:00",
+      "sourceCommit": "2598e8bd4411bf5801b12eafd036b3ecc085c205",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/06-fresh-release-earth-memory-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/73d6e9907f051bccc652f3ede0d686ad818b77acdd1890dd6d7299ca41ae1e5a.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T16:04:58.965732+00:00",
+      "durationSeconds": 118.186,
+      "outputSummary": "MemRegions: 453725 total, 5733M resident, 231M private, 855M shared.\nPhysMem: 15G used (2173M wired, 4266M compressor), 742M unused.\nVM: 250T vsize, 57G framework vsize, 10787767(0) swapins, 11870618(0) swapouts.\nNetworks: packets: 156002047/131G in, 81416311/52G out.\nDisks: 114145018/2139G read, 26333287/801G written.\nADMITTED: launches allowed while this Mac is in use\n阶段       footprint   峰值  small空    图形 CPU毫秒 能耗毫焦 GPU本进程 整机GPU峰 整机GPU均 WS_CPU秒\nlaunched        19.1M    19.1M      336K         -      105       348        0       32         1      0.30\nearthOpen       39.3M    39.4M      640K         -      188       645        0        1         0      0.40\nearthScrubbed    47.8M    48.7M      672K         -     1293      6065        0        4         0      0.90\nearthPoster     63.4M    65.3M     5424K         -      157       683        0        0         0      0.20\nearthClosed     64.3M    65.3M     5424K         -       30        12        0        7         0      0.20\nidle10          48.1M    65.3M     5360K         -        4         1        0        0         0      0.70\nidle20          48.1M    65.3M     5360K         -        0         0        0        0         0      0.70\nidle30          48.1M    65.3M     5360K         -        7         1        0        0         0      0.70\nidle40          48.1M    65.3M     5360K         -        1         0        0        0         0      0.60\nidle50          48.0M    65.3M     5360K         -        1         0        0        0         0      0.70\nidle60          48.0M    65.3M     5360K         -        0         0        0        0         0      0.70\ndone            48.0M    65.3M     5360K         -        0         0        0        0         0      0.10\n结果：./backup/adhoc-v1.0-build20-20261010/ReleaseMemoryTour/table.txt\nFRONTMOST_MONITOR {\"commandExit\": 0, \"daysideFrontmost\": 101, \"deferred\": false, \"foregroundAllowed\": true, \"foreignDaysideFrontmost\": 0, \"interruptedBy\": null, \"maxSamplingGapSeconds\": 1.0168317920179106, \"samples\": 113, \"samplingFailures\": 0, \"violated\": false}\nCRASH_REPORTS 0 ./backup/adhoc-v1.0-build20-20261010/ReleaseMemoryTour/crash-reports\nProcesses: 474 total, 4 running, 470 sleeping, 3061 threads \n2026/10/10 09:04:58\nLoad Avg: 1.89, 1.74, 2.27 \nCPU usage: 12.2% user, 8.93% sys, 79.3% idle \nSharedLibs: 623M resident, 134M data, 122M linkedit.\nMemRegions: 454184 total, 5997M resident, 267M private, 866M shared.\nPhysMem: 15G used (2145M wired, 4098M compressor), 355M unused.\nVM: 254T vsize, 57G framework vsize, 10787811(0) swapins, 11870618(0) swapouts.\nNetworks: packets: 156046025/131G in, 81447955/52G out.\nDisks: 114158769/2139G read, 26336189/801G written."
+    },
+    {
+      "step": 6,
+      "label": "06-fresh-debug-memory-copy-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "env",
+        "MEANTIME_SKIP_BUILD=1",
+        "MEANTIME_DEBUG_APP=backup/mac-acceptance-20261008T112635Z/DerivedData/Build/Products/Debug/Dayside.app",
+        "Tools/make_debug_copy.sh",
+        "backup/adhoc-v1.0-build20-20261010/DebugMemoryTour"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T16:06:09.470405+00:00",
+      "sourceCommit": "b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/06-fresh-debug-memory-copy-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T16:06:09.828157+00:00",
+      "durationSeconds": 0.336,
+      "outputSummary": "./backup/adhoc-v1.0-build20-20261010/DebugMemoryTour/Dayside.app"
+    },
+    {
+      "step": 6,
+      "label": "06-fresh-debug-source-build-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "env",
+        "CARGO_BUILD_JOBS=3",
+        "MEANTIME_SIGN_IDENTITY=-",
+        "xcodebuild",
+        "-project",
+        "Dayside.xcodeproj",
+        "-scheme",
+        "Dayside",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "backup/mac-acceptance-20261008T112635Z/PostRenameDerivedData",
+        "-jobs",
+        "3",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T16:07:19.741393+00:00",
+      "sourceCommit": "b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/06-fresh-debug-source-build-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T16:07:26.620694+00:00",
+      "durationSeconds": 6.858,
+      "outputSummary": "    export YACC\\=yacc\n    export _BOOL_\\=NO\n    export _BOOL_NO\\=NO\n    export _BOOL_YES\\=YES\n    export _DEVELOPMENT_TEAM_IS_EMPTY\\=YES\n    export _DISCOVER_COMMAND_LINE_LINKER_INPUTS\\=YES\n    export _DISCOVER_COMMAND_LINE_LINKER_INPUTS_INCLUDE_WL\\=YES\n    export _IS_EMPTY_\\=YES\n    export _LD_MULTIARCH\\=YES\n    export _MACOSX_DEPLOYMENT_TARGET_IS_EMPTY\\=NO\n    export _SWIFT_EXPLICIT_MODULES_ALLOW_CXX_INTEROP\\=YES\n    export __ARCHS__\\=arm64\\ x86_64\n    export __DIAGNOSE_DEPRECATED_ARCHS\\=YES\n    export __DIAGNOSE_INVALID_DEPLOYMENT_TARGET_AS_ERROR\\=YES\n    export __ORIGINAL_SDK_DEFINED_LLVM_TARGET_TRIPLE_SYS\\=macos\n    export arch\\=undefined_arch\n    export variant\\=normal\n    /bin/sh -c ./backup/mac-acceptance-20261008T112635Z/PostRenameDerivedData/Build/Intermediates.noindex/Dayside.build/Debug/DaysideSign.build/Script-67ACAB0C23F79BD3A965334D.sh\n./backup/mac-acceptance-20261008T112635Z/PostRenameDerivedData/Build/Products/Debug/Dayside.app: replacing existing signature\n\nPruneExplicitPrecompiledModules ./backup/mac-acceptance-20261008T112635Z/PostRenameDerivedData/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules\n\nPruneExplicitPrecompiledModules ./backup/mac-acceptance-20261008T112635Z/PostRenameDerivedData/SDKExplicitPrecompiledModules\n\nPruneExplicitPrecompiledModules ./backup/mac-acceptance-20261008T112635Z/PostRenameDerivedData/Build/Intermediates.noindex/ExplicitPrecompiledModules\n\nnote: Removed stale file './backup/mac-acceptance-20261008T112635Z/PostRenameDerivedData/Build/Products/Debug/Dayside.app/Contents/PlugIns'\n\nnote: Run script build phase 'Build Rust Core' will be run during every build because the option to run the script phase \"Based on dependency analysis\" is unchecked. (in target 'DaysideCore' from project 'Dayside')\nnote: Run script build phase 'Seal complete bundle' will be run during every build because the option to run the script phase \"Based on dependency analysis\" is unchecked. (in target 'DaysideSign' from project 'Dayside')\n** BUILD SUCCEEDED **\n"
+    },
+    {
+      "step": 6,
+      "label": "06-fresh-debug-verified-copy-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "env",
+        "MEANTIME_SKIP_BUILD=1",
+        "MEANTIME_DEBUG_APP=backup/mac-acceptance-20261008T112635Z/PostRenameDerivedData/Build/Products/Debug/Dayside.app",
+        "Tools/make_debug_copy.sh",
+        "backup/adhoc-v1.0-build20-20261010/DebugVerifiedMemoryTour"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T16:09:12.428893+00:00",
+      "sourceCommit": "b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/06-fresh-debug-verified-copy-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T16:09:12.747264+00:00",
+      "durationSeconds": 0.293,
+      "outputSummary": "./backup/adhoc-v1.0-build20-20261010/DebugVerifiedMemoryTour/Dayside.app"
+    },
+    {
+      "step": 6,
+      "label": "06-fresh-debug-earth-memory-20261010",
+      "command": [
+        "/usr/bin/lockf",
+        "-k",
+        "-t",
+        "3600",
+        "/Users/Shared/zlane/cpu-turn.lock",
+        "nice",
+        "-n",
+        "10",
+        "/bin/bash",
+        "backup/adhoc-v1.0-build20-20261010/06-measure-fresh-memory.sh",
+        "DebugVerified"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T16:09:12.807151+00:00",
+      "sourceCommit": "b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/06-fresh-debug-earth-memory-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T16:11:08.966982+00:00",
+      "durationSeconds": 116.141,
+      "outputSummary": "MemRegions: 456593 total, 4386M resident, 215M private, 959M shared.\nPhysMem: 15G used (2190M wired, 5315M compressor), 375M unused.\nVM: 267T vsize, 57G framework vsize, 10788359(0) swapins, 11870618(0) swapouts.\nNetworks: packets: 156070961/131G in, 81463434/52G out.\nDisks: 114212500/2140G read, 26343243/801G written.\nADMITTED: launches allowed while this Mac is in use\n阶段       footprint   峰值  small空    图形 CPU毫秒 能耗毫焦 GPU本进程 整机GPU峰 整机GPU均 WS_CPU秒\nlaunched        19.8M    19.8M      384K         -      115       377        0        1         0      0.30\nearthOpen       50.4M    50.4M     5232K         -      322      1375        0        1         0      0.50\nearthScrubbed    58.6M    59.8M     5280K         -     1668      4023        0        3         0      0.90\nearthPoster     71.2M    73.1M     6464K         -      226       926        0        0         0      0.20\nearthClosed     72.1M    73.1M     6464K         -       38        21        0       12         1      0.30\nidle10          56.8M    73.1M     6480K         -        6         1        0        0         0      0.60\nidle20          51.3M    73.1M      864K         -        8         1        0        1         0      0.70\nidle30          51.2M    73.1M      864K         -        1         0        0        0         0      0.60\nidle40          51.2M    73.1M      864K         -        1         0        0        0         0      0.70\nidle50          46.2M    73.1M      368K         -        1         0        0        0         0      0.70\nidle60          46.2M    73.1M      368K         -        1         0        0        0         0      0.60\ndone            46.2M    73.1M      368K         -        1         0        0        0         0      0.10\n结果：./backup/adhoc-v1.0-build20-20261010/DebugVerifiedMemoryTour/table.txt\nFRONTMOST_MONITOR {\"commandExit\": 0, \"daysideFrontmost\": 98, \"deferred\": false, \"foregroundAllowed\": true, \"foreignDaysideFrontmost\": 0, \"interruptedBy\": null, \"maxSamplingGapSeconds\": 1.0148235829838086, \"samples\": 111, \"samplingFailures\": 0, \"violated\": false}\nCRASH_REPORTS 0 ./backup/adhoc-v1.0-build20-20261010/DebugVerifiedMemoryTour/crash-reports\nProcesses: 508 total, 3 running, 505 sleeping, 3231 threads \n2026/10/10 09:11:08\nLoad Avg: 1.98, 1.70, 2.04 \nCPU usage: 11.92% user, 8.77% sys, 79.29% idle \nSharedLibs: 518M resident, 116M data, 121M linkedit.\nMemRegions: 456797 total, 5849M resident, 255M private, 873M shared.\nPhysMem: 15G used (2169M wired, 4226M compressor), 354M unused.\nVM: 270T vsize, 57G framework vsize, 10788471(0) swapins, 11870618(0) swapouts.\nNetworks: packets: 156085382/131G in, 81471931/52G out.\nDisks: 114345845/2141G read, 26346952/801G written."
+    },
+    {
+      "step": 4,
+      "label": "04-canonical-adhoc-install-20261010",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "python3",
+        "backup/adhoc-v1.0-build20-20261010/04-install-canonical.py"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T16:11:33.797598+00:00",
+      "sourceCommit": "b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/04-canonical-adhoc-install-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T16:11:34.133419+00:00",
+      "durationSeconds": 0.301,
+      "outputSummary": "{\"ok\": true, \"distribution\": \"ad-hoc, not notarized\", \"structuralIdentityPassed\": true, \"adHocSignatureConfirmed\": true, \"formalReleaseIdentityGate\": {\"app\": \"/Applications/Dayside.app\", \"ok\": false, \"errors\": [\"release_signing_identity\"], \"signingTeam\": null, \"bundleIdentifier\": \"com.dayside.Dayside\", \"version\": \"1.0\"}}\n{\"recordedAt\": \"2026-10-10T16:11:34.118795+00:00\", \"installed\": \"/Applications/Dayside.app\", \"source\": \"backup/adhoc-v1.0-build20-20261010/dd-arm64/Build/Products/Release/Dayside.app\", \"previousAppRetained\": \"backup/adhoc-v1.0-build20-20261010/installed-before-canonical/Dayside.app\", \"retainedOldFilesUnchanged\": true, \"installedFilesEqualValidatedPackageSource\": true, \"sourceExecutableSha256\": \"946cfcea5e12bc027b8fb94bfcc7fd87f127d407b4baa9e3c272eec3d50699ac\", \"bundleIdentifier\": \"com.dayside.Dayside\", \"distribution\": \"ad-hoc, not notarized\", \"noPreferenceMigrationPerformed\": true}"
+    },
+    {
+      "step": 10,
+      "label": "10-save-adhoc-checkpoint-20261010",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "python3",
+        "backup/adhoc-v1.0-build20-20261010/10-save-release-checkpoint.py"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T16:24:15.963655+00:00",
+      "sourceCommit": "b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-save-adhoc-checkpoint-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T16:24:16.119658+00:00",
+      "durationSeconds": 0.119,
+      "outputSummary": "{\"checkpointSaved\": true, \"sourceCommit\": \"b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb\", \"packageCount\": 2, \"allSpeedMediansUnder2ms\": true, \"newMemoryToursCompleted\": 2, \"arm64ResourceGatePassed\": true, \"arm64PeakScenariosPassed\": 12, \"intelRuntimeVerified\": false, \"normalNativeSmokeVerified\": false, \"published\": false}"
+    },
+    {
+      "step": 10,
+      "label": "10-source-packaging-commit-20261010",
+      "command": [
+        "git",
+        "commit",
+        "-m",
+        "Package explicitly authorized ad-hoc releases while preserving formal signing checks"
+      ],
+      "sourceCommit": "b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb",
+      "status": "passed",
+      "exitCode": 0,
+      "recordedAt": "2026-10-10T16:04:49.917516+00:00",
+      "receiptPath": "backup/adhoc-v1.0-build20-20261010/logs/source-packaging-commit.json",
+      "outputSummary": "[codex/v1.0.1-handoff b2a81aa] Package explicitly authorized ad-hoc releases while preserving formal signing checks\n 4 files changed, 184 insertions(+), 1 deletion(-)\n create mode 100644 Tools/check_adhoc_identity.py\n create mode 100644 Tools/make_adhoc_dmg.py\n create mode 100644 Tools/test_adhoc_identity.py\n"
+    },
+    {
+      "step": 10,
+      "label": "10-source-branch-push-20261010",
+      "command": [
+        "git",
+        "push",
+        "origin",
+        "HEAD:refs/heads/codex/v1.0.1-handoff"
+      ],
+      "sourceCommit": "b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb",
+      "status": "passed",
+      "exitCode": 0,
+      "recordedAt": "2026-10-10T16:04:56.152104+00:00",
+      "receiptPath": "backup/adhoc-v1.0-build20-20261010/logs/source-branch-push.json",
+      "outputSummary": "To https://github.com/ninondev/Dayside.git\n   8c72754..b2a81aa  HEAD -> codex/v1.0.1-handoff\n"
     }
   ],
   "sourceAtStart": "8c7275442dfc9e4ffc86c56bb7b63e9372d7bda1",
@@ -17946,11 +18974,11 @@
       "scope": "Continue functional acceptance; performance and memory remain deferred until a quiet machine by owner instruction."
     }
   ],
-  "updatedAt": "2026-10-10T15:24:03.614085+00:00",
+  "updatedAt": "2026-10-10T16:25:08.219362+00:00",
   "stage1Checkpoint": {
     "recordedAt": "2026-10-10T15:22:36.208259+00:00",
     "complete": false,
-    "releaseAuthorized": false,
+    "releaseAuthorized": true,
     "completedEvidence": [
       "Requested Rust tests and both clippy modes passed on the renamed parser source.",
       "Three original speed-gate runs passed all nine medians and unchanged checksums; maximum median 0.626875 ms with ambient load retained.",
@@ -17978,15 +19006,17 @@
     "tagCreated": false,
     "scopeDecisionPending": {
       "ownerQuestionSent": true,
-      "decisionReceived": false,
+      "decisionReceived": true,
       "choices": [
         "Continue investigating memory before commit",
         "Push already verified changes and incomplete record; continue investigating memory"
       ],
       "existingBranchPushAuthorizationRetained": true,
-      "noInstallerOrTagPublicationAllowed": true,
+      "noInstallerOrTagPublicationAllowed": false,
       "localCheckpointAuthorizedNow": true,
-      "localSaveDoesNotResolvePushOrMemoryAcceptance": true
+      "localSaveDoesNotResolvePushOrMemoryAcceptance": true,
+      "resolvedAt": "2026-10-10T15:34:49.914036+00:00",
+      "decision": "Finish available local checks and publish owner-authorized ad-hoc build20, replacing existing v1.0 and moving its tag. Preserve the known memory limitation."
     },
     "currentSourceDiffExcludingLedgerSha256": "0e856cb2c59fd7b1dcc28012f3d47b618a57409bf43a9fad6c42256fe3d68c41",
     "noProductionMemoryPatchAdopted": true,
@@ -18024,6 +19054,124 @@
     "localRecordSaveAttemptReceipts": [
       "backup/mac-acceptance-20261008T112635Z/04-owner-login-save-20261010T151729Z.json",
       "backup/mac-acceptance-20261008T112635Z/04-owner-login-save-20261010T151729Z-retry2.json"
-    ]
+    ],
+    "authorizedReleaseKind": "ad-hoc, not notarized",
+    "latestSourcePushedCommit": "b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb",
+    "latestAdHocReleaseCheckpointStatus": "source-pushed; packages-built; intel-runtime-and-final-native-smoke-pending"
+  },
+  "ownerAdHocReleaseAuthorization": {
+    "recordedAt": "2026-10-10T15:34:49.914036+00:00",
+    "source": "Current direct owner instruction and release-location card answer",
+    "finishAllAvailableMacWork": true,
+    "pushBranch": "codex/v1.0.1-handoff",
+    "publishAdHocUnnotarized": true,
+    "replaceExistingV1ReleaseAssets": true,
+    "moveExistingV1Tag": true,
+    "DeveloperIDAndNotarizationDeferred": true,
+    "oldAssetsMustBeBackedUp": true,
+    "knownMemoryIssueMustRemainDisclosed": true,
+    "formalIdentityGateMustRemainUnchanged": true,
+    "otherTestThresholdsMayChange": false
+  },
+  "adHocReleaseCheckpoint": {
+    "status": "source-pushed; packages-built; intel-runtime-and-final-native-smoke-pending",
+    "evidenceRoot": "backup/adhoc-v1.0-build20-20261010",
+    "ownerAuthorizationPath": "backup/adhoc-v1.0-build20-20261010/owner-authorization.json",
+    "oldAssetsBackupVerified": true,
+    "formalIdentityGateAccepted": false,
+    "DeveloperIDAndNotarizationDeferred": true,
+    "productionMemoryImprovementProven": false,
+    "pushed": true,
+    "published": false,
+    "sourcePushedCommit": "b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb",
+    "artifacts": [
+      {
+        "architecture": "arm64",
+        "path": "backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-arm64.dmg",
+        "bytes": 15826239,
+        "sha256": "0b88099ad2de77feed021ecc9483f6f994125224aaecf3ecf2bde34331476654",
+        "mountedFilesCompared": 89,
+        "strictSignature": true,
+        "fullApplicationIdentityVerifiedExceptExplicitlyDeferredDeveloperID": true,
+        "formalReleaseIdentityPassed": false,
+        "runtimeAcceptance": "resource-budget-and-all-12-peak-scenarios-passed"
+      },
+      {
+        "architecture": "x86_64",
+        "path": "backup/adhoc-v1.0-build20-20261010/dist/Dayside-1.0-x86_64.dmg",
+        "bytes": 16488840,
+        "sha256": "ab17eaa108e76752015a4ea3f8f7d69a38a052a8cff0620c43da0665a8f42b00",
+        "mountedFilesCompared": 89,
+        "strictSignature": true,
+        "fullApplicationIdentityVerifiedExceptExplicitlyDeferredDeveloperID": true,
+        "formalReleaseIdentityPassed": false,
+        "runtimeAcceptance": "blocked-by-missing-Rosetta; package-byte-and-identity-checks-only"
+      }
+    ],
+    "memoryMeasurementReceipts": {
+      "Release isolated preview": {
+        "receiptPath": "backup/adhoc-v1.0-build20-20261010/ReleaseMemoryTour/acceptance-receipt.json",
+        "launchFootprintBytes": 20038592,
+        "peakFootprintBytes": 68469768,
+        "closedPlus15": {
+          "elapsedSeconds": 15.757859666666667,
+          "fp": 50430984,
+          "peak": 68469768,
+          "cpu_ns": 1777327500,
+          "energy_nj": 7753675596,
+          "wake": 380,
+          "idlewake": 4,
+          "gpu": 0,
+          "task_energy": 7753675596
+        },
+        "idle60FootprintBytes": 50365448,
+        "crashReports": 0,
+        "measurementCompleted": true,
+        "productionImprovementClaimed": false,
+        "cpuIdleSnapshotsPercent": [
+          74.46,
+          79.3
+        ]
+      },
+      "Debug audit copy rebuilt from current source": {
+        "receiptPath": "backup/adhoc-v1.0-build20-20261010/DebugVerifiedMemoryTour/acceptance-receipt.json",
+        "launchFootprintBytes": 20775944,
+        "peakFootprintBytes": 76612808,
+        "closedPlus15": {
+          "elapsedSeconds": 15.691836291666666,
+          "fp": 59573424,
+          "peak": 76612808,
+          "cpu_ns": 2376548375,
+          "energy_nj": 6723693476,
+          "wake": 375,
+          "idlewake": 196,
+          "gpu": 0,
+          "task_energy": 6723693476
+        },
+        "idle60FootprintBytes": 48415920,
+        "crashReports": 0,
+        "measurementCompleted": true,
+        "productionImprovementClaimed": false,
+        "cpuIdleSnapshotsPercent": [
+          86.2,
+          79.29
+        ]
+      }
+    },
+    "arm64IdleResourceGatePassed": true,
+    "arm64PeakScenariosPassed": 12,
+    "intelRuntimeVerified": false,
+    "newInstalledNativeSmokeVerified": false,
+    "mainUpdatePermissionPending": true,
+    "tagMoved": false,
+    "releaseAssetsTouched": false,
+    "remaining": [
+      "Resolve Rosetta installation permission and test Intel runtime using unchanged resource/peak gates.",
+      "Finish additional native checks on the installed canonical bundle after a Settings window can be bound.",
+      "Resolve permission to fast-forward main; original push scope is the handoff branch and current main still has the earlier names.",
+      "Only replace assets and move v1.0 after applicable acceptance passes; retain known memory issue and all failed evidence."
+    ],
+    "checkpointScriptFailureReceipt": "backup/adhoc-v1.0-build20-20261010/logs/checkpoint-script-failure-v1.json",
+    "checkpointScriptRepair": "Filter optional historical labels; no product code, acceptance assertions, budgets or test thresholds changed."
   }
 }
