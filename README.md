@@ -52,11 +52,9 @@ Vietnamese and Indonesian. City names can use a different language from the inte
 
 ## Install
 
-Dayside needs macOS 26 or later. There are two disk images on the [Releases](https://github.com/ninondev/Dayside/releases) page:
-
-- The file ending in `-arm64.dmg` is for Macs with Apple silicon.
-- The file ending in `-x86_64.dmg` is for Intel Macs. I have checked it only under Rosetta on an
-  Apple silicon Mac, not on a real Intel Mac. If your Mac has Apple silicon, you must use the arm64 one.
+Dayside needs macOS 26 or later. Download `Dayside-1.0-arm64.dmg` for Macs with Apple silicon
+from the [Releases](https://github.com/ninondev/Dayside/releases) page. An Intel package is not
+included in this release.
 
 Open the disk image and drag Dayside.app to Applications.
 

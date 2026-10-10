@@ -6312,9 +6312,9 @@
       }
     },
     "10": {
-      "status": "deferred_until_owner_confirms_Apple_approval",
+      "status": "owner-authorized-ad-hoc-arm64-release-published",
       "adHocPublication": {
-        "status": "arm64-preflight-passed; replacing-existing-v1.0-authorized",
+        "status": "published-and-redownload-verified",
         "ownerAuthorizedReplaceExistingRelease": true,
         "ownerAuthorizedMoveV1Tag": true,
         "originalV1TagCommit": "53c21c69fe096d0861bf633a5258b293941f59e0",
@@ -6344,13 +6344,13 @@
             "runtimeAcceptance": "blocked-by-missing-Rosetta; package-byte-and-identity-checks-only"
           }
         ],
-        "sourcePushedCommit": "b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb",
+        "sourcePushedCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
         "pushedBranch": "codex/v1.0.1-handoff",
-        "mainUpdated": false,
+        "mainUpdated": true,
         "mainUpdatePermissionPending": false,
-        "tagMoved": false,
-        "assetsUploaded": false,
-        "assetsDeleted": false,
+        "tagMoved": true,
+        "assetsUploaded": true,
+        "assetsDeleted": true,
         "mainUpdateAuthorized": true,
         "publishArchitectures": [
           "arm64"
@@ -6359,8 +6359,70 @@
         "releaseBodyPath": "backup/adhoc-v1.0-build20-20261010/release-notes-apple-only.md",
         "knownMemoryIssuePreserved": true,
         "englishNativeSpeakerReviewed": false,
-        "chineseReadmeReviewPending": true
-      }
+        "chineseReadmeReviewPending": true,
+        "newTagCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
+        "publishedArchitectures": [
+          "arm64"
+        ],
+        "publishedAssets": [
+          {
+            "apiUrl": "https://api.github.com/repos/ninondev/Dayside/releases/assets/629220785",
+            "contentType": "application/x-apple-diskimage",
+            "createdAt": "2026-10-10T23:10:31Z",
+            "digest": "sha256:0b88099ad2de77feed021ecc9483f6f994125224aaecf3ecf2bde34331476654",
+            "downloadCount": 0,
+            "id": "RA_kwDOU_xgXs4lgSWx",
+            "label": "",
+            "name": "Dayside-1.0-arm64.dmg",
+            "size": 15826239,
+            "state": "uploaded",
+            "updatedAt": "2026-10-10T23:10:35Z",
+            "url": "https://github.com/ninondev/Dayside/releases/download/v1.0/Dayside-1.0-arm64.dmg"
+          },
+          {
+            "apiUrl": "https://api.github.com/repos/ninondev/Dayside/releases/assets/629220787",
+            "contentType": "application/octet-stream",
+            "createdAt": "2026-10-10T23:10:31Z",
+            "digest": "sha256:9ee915638eb30c25a78aa5ca4bb9119f60c0046e2dc3ad6419a94ed16e9a0a43",
+            "downloadCount": 0,
+            "id": "RA_kwDOU_xgXs4lgSWz",
+            "label": "",
+            "name": "Dayside-1.0-arm64.dmg.sha256",
+            "size": 88,
+            "state": "uploaded",
+            "updatedAt": "2026-10-10T23:10:32Z",
+            "url": "https://github.com/ninondev/Dayside/releases/download/v1.0/Dayside-1.0-arm64.dmg.sha256"
+          },
+          {
+            "apiUrl": "https://api.github.com/repos/ninondev/Dayside/releases/assets/629220786",
+            "contentType": "text/plain; charset=utf-8",
+            "createdAt": "2026-10-10T23:10:31Z",
+            "digest": "sha256:9ee915638eb30c25a78aa5ca4bb9119f60c0046e2dc3ad6419a94ed16e9a0a43",
+            "downloadCount": 0,
+            "id": "RA_kwDOU_xgXs4lgSWy",
+            "label": "",
+            "name": "SHA256SUMS.txt",
+            "size": 88,
+            "state": "uploaded",
+            "updatedAt": "2026-10-10T23:10:32Z",
+            "url": "https://github.com/ninondev/Dayside/releases/download/v1.0/SHA256SUMS.txt"
+          }
+        ],
+        "downloadHashesVerified": true,
+        "releaseURL": "https://github.com/ninondev/Dayside/releases/tag/v1.0",
+        "publicationReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/release-apple-only-publication-receipt.json",
+        "READMEEnglishInstallUpdatedAfterUpload": true,
+        "READMEKnownIssue4Changed": false,
+        "publicationVerifierInitialFailure": {
+          "label": "10-verify-apple-only-publication-20261010",
+          "originalScriptPath": "backup/adhoc-v1.0-build20-20261010/10-verify-apple-publication-failed-v1.py",
+          "rootCause": "Expected body incorrectly removed the final newline; remote text exactly matches the unmodified original file.",
+          "repair": "Compare the entire unmodified source file exactly; no whitespace normalization or weaker product gate.",
+          "strictRetryLabel": "10-verify-apple-only-publication-exact-text-20261010",
+          "comparisonReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/release-notes-exact-body-receipt.json"
+        }
+      },
+      "formalReleaseStatus": "deferred_until_owner_confirms_Apple_approval"
     },
     "11": {
       "status": "optional_deferred"
@@ -18947,6 +19009,253 @@
       "recordedAt": "2026-10-10T23:09:30.365778+00:00",
       "receiptPath": "backup/adhoc-v1.0-build20-20261010/logs/canonical-ui-resume-attempts.json",
       "outputSummary": "Timeout, stale preview identifier resolution, and Invalid app. No native input was delivered. Installed canonical identity and source-equivalent binary independently verified; this supplemental probe is not counted as passed."
+    },
+    {
+      "step": 10,
+      "label": "10-upload-apple-only-assets-20261010",
+      "command": [
+        "gh",
+        "release",
+        "upload",
+        "v1.0",
+        "backup/adhoc-v1.0-build20-20261010/publish-arm64/Dayside-1.0-arm64.dmg",
+        "backup/adhoc-v1.0-build20-20261010/publish-arm64/Dayside-1.0-arm64.dmg.sha256",
+        "backup/adhoc-v1.0-build20-20261010/publish-arm64/SHA256SUMS.txt",
+        "--repo",
+        "ninondev/Dayside",
+        "--clobber"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T23:10:29.626532+00:00",
+      "sourceCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-upload-apple-only-assets-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T23:10:35.554089+00:00",
+      "durationSeconds": 5.905,
+      "outputSummary": ""
+    },
+    {
+      "step": 10,
+      "label": "10-download-apple-only-published-assets-20261010",
+      "command": [
+        "gh",
+        "release",
+        "download",
+        "v1.0",
+        "--repo",
+        "ninondev/Dayside",
+        "--pattern",
+        "Dayside-1.0-arm64.dmg",
+        "--pattern",
+        "Dayside-1.0-arm64.dmg.sha256",
+        "--pattern",
+        "SHA256SUMS.txt",
+        "--dir",
+        "backup/adhoc-v1.0-build20-20261010/download-verification"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T23:10:49.113855+00:00",
+      "sourceCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-download-apple-only-published-assets-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T23:10:53.885983+00:00",
+      "durationSeconds": 4.75,
+      "outputSummary": ""
+    },
+    {
+      "step": 10,
+      "label": "10-verify-apple-only-downloads-20261010",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "python3",
+        "backup/adhoc-v1.0-build20-20261010/10-verify-apple-downloads.py"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T23:11:37.901025+00:00",
+      "sourceCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-verify-apple-only-downloads-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T23:11:38.977353+00:00",
+      "durationSeconds": 1.054,
+      "outputSummary": "{\n  \"recordedAt\": \"2026-10-10T23:11:38.916972+00:00\",\n  \"releaseURL\": \"https://github.com/ninondev/Dayside/releases/tag/v1.0\",\n  \"downloadsMatchValidatedLocalAssets\": true,\n  \"remoteDigestsMatchLocalAssets\": true,\n  \"assets\": {\n    \"Dayside-1.0-arm64.dmg.sha256\": {\n      \"bytes\": 88,\n      \"sha256\": \"9ee915638eb30c25a78aa5ca4bb9119f60c0046e2dc3ad6419a94ed16e9a0a43\"\n    },\n    \"SHA256SUMS.txt\": {\n      \"bytes\": 88,\n      \"sha256\": \"9ee915638eb30c25a78aa5ca4bb9119f60c0046e2dc3ad6419a94ed16e9a0a43\"\n    },\n    \"Dayside-1.0-arm64.dmg\": {\n      \"bytes\": 15826239,\n      \"sha256\": \"0b88099ad2de77feed021ecc9483f6f994125224aaecf3ecf2bde34331476654\"\n    }\n  },\n  \"oldIntelAssetStillPresentUntilRemoval\": true\n}"
+    },
+    {
+      "step": 10,
+      "label": "10-remove-backed-up-old-intel-asset-20261010",
+      "command": [
+        "gh",
+        "release",
+        "delete-asset",
+        "v1.0",
+        "Dayside-1.0-x86_64.dmg",
+        "--repo",
+        "ninondev/Dayside",
+        "--yes"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T23:11:52.856607+00:00",
+      "sourceCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-remove-backed-up-old-intel-asset-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T23:11:54.383485+00:00",
+      "durationSeconds": 1.505,
+      "outputSummary": ""
+    },
+    {
+      "step": 10,
+      "label": "10-update-apple-only-release-notes-20261010",
+      "command": [
+        "gh",
+        "release",
+        "edit",
+        "v1.0",
+        "--repo",
+        "ninondev/Dayside",
+        "--title",
+        "Dayside 1.0 (build 20)",
+        "--notes-file",
+        "backup/adhoc-v1.0-build20-20261010/release-notes-apple-only.md"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T23:12:17.646203+00:00",
+      "sourceCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-update-apple-only-release-notes-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "96bb1dbf84fa1200b67cfda3b3615d6c3fb207978c8d2f0670f74d922cd54d63",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/96bb1dbf84fa1200b67cfda3b3615d6c3fb207978c8d2f0670f74d922cd54d63.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T23:12:19.360451+00:00",
+      "durationSeconds": 1.691,
+      "outputSummary": "https://github.com/ninondev/Dayside/releases/tag/v1.0"
+    },
+    {
+      "step": 10,
+      "label": "10-move-owner-authorized-v1-tag-20261010",
+      "command": [
+        "python3",
+        "backup/adhoc-v1.0-build20-20261010/10-move-authorized-tag.py"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T23:12:43.465586+00:00",
+      "sourceCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-move-owner-authorized-v1-tag-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "96bb1dbf84fa1200b67cfda3b3615d6c3fb207978c8d2f0670f74d922cd54d63",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/96bb1dbf84fa1200b67cfda3b3615d6c3fb207978c8d2f0670f74d922cd54d63.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T23:12:48.146916+00:00",
+      "durationSeconds": 4.658,
+      "outputSummary": "Updated tag 'v1.0' (was 53c21c6)\nTo https://github.com/ninondev/Dayside.git\n + 53c21c6...f8661ae v1.0 -> v1.0 (forced update)\n{\n  \"recordedAt\": \"2026-10-10T23:12:48.131013+00:00\",\n  \"ownerExplicitlyAuthorized\": true,\n  \"oldTagCommit\": \"53c21c69fe096d0861bf633a5258b293941f59e0\",\n  \"newTagCommit\": \"f8661ae8a437fb7dc394502f9e856142fdde8071\",\n  \"remoteTagVerified\": true,\n  \"exactOldCommitLeaseUsed\": true\n}"
+    },
+    {
+      "step": 10,
+      "label": "10-verify-apple-only-publication-20261010",
+      "command": [
+        "python3",
+        "backup/adhoc-v1.0-build20-20261010/10-verify-apple-publication.py"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T23:13:53.012376+00:00",
+      "sourceCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-verify-apple-only-publication-20261010.log",
+      "status": "failed",
+      "workingTreeDiffSha256": "96bb1dbf84fa1200b67cfda3b3615d6c3fb207978c8d2f0670f74d922cd54d63",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/96bb1dbf84fa1200b67cfda3b3615d6c3fb207978c8d2f0670f74d922cd54d63.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 1,
+      "finishedAt": "2026-10-10T23:13:54.155385+00:00",
+      "durationSeconds": 1.119,
+      "outputSummary": "Traceback (most recent call last):\n  File \"./backup/adhoc-v1.0-build20-20261010/10-verify-apple-publication.py\", line 13, in <module>\n    assert release[\"body\"] == (evidence / \"release-notes-apple-only.md\").read_text().rstrip()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+    },
+    {
+      "step": 10,
+      "label": "10-verify-apple-only-publication-exact-text-20261010",
+      "command": [
+        "python3",
+        "backup/adhoc-v1.0-build20-20261010/10-verify-apple-publication.py"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T23:14:37.535252+00:00",
+      "sourceCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/10-verify-apple-only-publication-exact-text-20261010.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "96bb1dbf84fa1200b67cfda3b3615d6c3fb207978c8d2f0670f74d922cd54d63",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/96bb1dbf84fa1200b67cfda3b3615d6c3fb207978c8d2f0670f74d922cd54d63.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T23:14:39.807901+00:00",
+      "durationSeconds": 2.251,
+      "outputSummary": "      \"downloadCount\": 0,\n      \"id\": \"RA_kwDOU_xgXs4lgSWz\",\n      \"label\": \"\",\n      \"name\": \"Dayside-1.0-arm64.dmg.sha256\",\n      \"size\": 88,\n      \"state\": \"uploaded\",\n      \"updatedAt\": \"2026-10-10T23:10:32Z\",\n      \"url\": \"https://github.com/ninondev/Dayside/releases/download/v1.0/Dayside-1.0-arm64.dmg.sha256\"\n    },\n    {\n      \"apiUrl\": \"https://api.github.com/repos/ninondev/Dayside/releases/assets/629220786\",\n      \"contentType\": \"text/plain; charset=utf-8\",\n      \"createdAt\": \"2026-10-10T23:10:31Z\",\n      \"digest\": \"sha256:9ee915638eb30c25a78aa5ca4bb9119f60c0046e2dc3ad6419a94ed16e9a0a43\",\n      \"downloadCount\": 0,\n      \"id\": \"RA_kwDOU_xgXs4lgSWy\",\n      \"label\": \"\",\n      \"name\": \"SHA256SUMS.txt\",\n      \"size\": 88,\n      \"state\": \"uploaded\",\n      \"updatedAt\": \"2026-10-10T23:10:32Z\",\n      \"url\": \"https://github.com/ninondev/Dayside/releases/download/v1.0/SHA256SUMS.txt\"\n    }\n  ],\n  \"downloadHashesVerified\": true,\n  \"oldIntelAssetRemovedAfterBackup\": true,\n  \"DeveloperIDAndNotarizationDeferred\": true,\n  \"knownMemoryIssueDisclosed\": true,\n  \"fullOriginalAcceptanceClaimed\": false,\n  \"supplementalCanonicalNativeProbeClaimed\": false,\n  \"formalIdentityGateAccepted\": false\n}"
+    },
+    {
+      "step": 10,
+      "label": "10-apple-only-prepublication-source-commit-20261010",
+      "command": [
+        "git",
+        "commit",
+        "-m",
+        "Record Apple silicon release scope and preserve native probe limits"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "recordedAt": "2026-10-10T23:09:30.365778+00:00",
+      "receiptPath": "backup/adhoc-v1.0-build20-20261010/logs/apple-only-prepublication-commit.json",
+      "sourceCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
+      "outputSummary": "[codex/v1.0.1-handoff f8661ae] Record Apple silicon release scope and preserve native probe limits\n Committer: medusa <medusa@macbook.local>\nYour name and email address were configured automatically based\non your username and hostname. Please check that they are accurate.\nYou can suppress this message by setting them explicitly. Run the\nfollowing command and follow the instructions in your editor to edit\nyour configuration file:\n\n    git config --global --edit\n\nAfter doing this, you may fix the identity used for this commit with:\n\n    git commit --amend --reset-author\n\n 1 file changed, 124 insertions(+), 15 deletions(-)\n"
+    },
+    {
+      "step": 10,
+      "label": "10-apple-only-main-and-branch-push-20261010",
+      "command": [
+        "git",
+        "push",
+        "--atomic",
+        "origin",
+        "HEAD:refs/heads/main",
+        "HEAD:refs/heads/codex/v1.0.1-handoff"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "recordedAt": "2026-10-10T23:09:40.487355+00:00",
+      "receiptPath": "backup/adhoc-v1.0-build20-20261010/logs/apple-only-main-and-branch-push.json",
+      "sourceCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
+      "outputSummary": "To https://github.com/ninondev/Dayside.git\n   bc4602c..f8661ae  HEAD -> codex/v1.0.1-handoff\n   53c21c6..f8661ae  HEAD -> main\n"
     }
   ],
   "sourceAtStart": "8c7275442dfc9e4ffc86c56bb7b63e9372d7bda1",
@@ -19074,7 +19383,7 @@
       "scope": "Continue functional acceptance; performance and memory remain deferred until a quiet machine by owner instruction."
     }
   ],
-  "updatedAt": "2026-10-10T23:09:30.365778+00:00",
+  "updatedAt": "2026-10-10T23:16:27.241496+00:00",
   "stage1Checkpoint": {
     "recordedAt": "2026-10-10T15:22:36.208259+00:00",
     "complete": false,
@@ -19095,15 +19404,16 @@
       "Private direct encoding50 and75-batch diagnostics and paired native subtree attribution were retained with strict receipts. The additional varying25 did not increase settled footprint in that finite run. These do not complete memory acceptance or prove a production improvement; all paused Pylance runs restored the original process."
     ],
     "remaining": [
-      "Step6 remains unaccepted: exact residual ownership and a reproducible quiet production before/after improvement are unproven. README issue4 is unchanged; scope-sequencing question remains unanswered.",
-      "Stage 2: Developer ID, credentials entered by owner, notarization, formal DMGs, new-user checks, formal manual20 and release confirmation after explicit Apple approval."
+      "Original Step6 production memory improvement requirement remains unaccepted; disclosed as a known issue in this owner-authorized ad-hoc release.",
+      "Formal Developer ID/notarization/new-user acceptance remains deferred.",
+      "Intel runtime deferred by owner; only arm64 published."
     ],
     "nativeToolBlocker": null,
     "otherActiveWorkPreserved": "VS Code has an active agent; it was not quit",
     "commitCreated": true,
-    "pushed": false,
-    "installerUploaded": false,
-    "tagCreated": false,
+    "pushed": true,
+    "installerUploaded": true,
+    "tagCreated": true,
     "scopeDecisionPending": {
       "ownerQuestionSent": true,
       "decisionReceived": true,
@@ -19156,8 +19466,10 @@
       "backup/mac-acceptance-20261008T112635Z/04-owner-login-save-20261010T151729Z-retry2.json"
     ],
     "authorizedReleaseKind": "ad-hoc, not notarized",
-    "latestSourcePushedCommit": "b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb",
-    "latestAdHocReleaseCheckpointStatus": "source-pushed; packages-built; intel-runtime-and-final-native-smoke-pending"
+    "latestSourcePushedCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
+    "latestAdHocReleaseCheckpointStatus": "owner-authorized-arm64-ad-hoc-v1.0-published; formal-and-incomplete-checks-disclosed",
+    "originalFullAcceptanceComplete": false,
+    "ownerAuthorizedAdHocPublicationDelivered": true
   },
   "ownerAdHocReleaseAuthorization": {
     "recordedAt": "2026-10-10T15:34:49.914036+00:00",
@@ -19174,7 +19486,7 @@
     "otherTestThresholdsMayChange": false
   },
   "adHocReleaseCheckpoint": {
-    "status": "arm64-preflight-passed; main-and-v1.0-publication-authorized",
+    "status": "owner-authorized-arm64-ad-hoc-v1.0-published; formal-and-incomplete-checks-disclosed",
     "evidenceRoot": "backup/adhoc-v1.0-build20-20261010",
     "ownerAuthorizationPath": "backup/adhoc-v1.0-build20-20261010/owner-authorization.json",
     "oldAssetsBackupVerified": true,
@@ -19182,8 +19494,8 @@
     "DeveloperIDAndNotarizationDeferred": true,
     "productionMemoryImprovementProven": false,
     "pushed": true,
-    "published": false,
-    "sourcePushedCommit": "b2a81aa0a5bb0fbb795f7344c3bf4bcc8901a9fb",
+    "published": true,
+    "sourcePushedCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
     "artifacts": [
       {
         "architecture": "arm64",
@@ -19194,7 +19506,8 @@
         "strictSignature": true,
         "fullApplicationIdentityVerifiedExceptExplicitlyDeferredDeveloperID": true,
         "formalReleaseIdentityPassed": false,
-        "runtimeAcceptance": "resource-budget-and-all-12-peak-scenarios-passed"
+        "runtimeAcceptance": "resource-budget-and-all-12-peak-scenarios-passed",
+        "published": true
       },
       {
         "architecture": "x86_64",
@@ -19205,7 +19518,8 @@
         "strictSignature": true,
         "fullApplicationIdentityVerifiedExceptExplicitlyDeferredDeveloperID": true,
         "formalReleaseIdentityPassed": false,
-        "runtimeAcceptance": "blocked-by-missing-Rosetta; package-byte-and-identity-checks-only"
+        "runtimeAcceptance": "blocked-by-missing-Rosetta; package-byte-and-identity-checks-only",
+        "published": false
       }
     ],
     "memoryMeasurementReceipts": {
@@ -19263,11 +19577,14 @@
     "intelRuntimeVerified": false,
     "newInstalledNativeSmokeVerified": false,
     "mainUpdatePermissionPending": false,
-    "tagMoved": false,
-    "releaseAssetsTouched": false,
+    "tagMoved": true,
+    "releaseAssetsTouched": true,
     "remaining": [
-      "Publish arm64 only, synchronize main, move the explicitly authorized v1.0 tag, and verify downloaded assets.",
-      "Apply the two minimal Chinese README corrections after owner review."
+      "Owner review of the two minimal Chinese README corrections.",
+      "Known Earth memory limitation: no measured production fix yet.",
+      "Intel runtime validation deferred by owner; Intel installer not published.",
+      "Developer ID signing, notarization and formal/new-user acceptance deferred.",
+      "Additional installed canonical native probe was tool blocked; earlier native local-preview acceptance remains separately recorded."
     ],
     "checkpointScriptFailureReceipt": "backup/adhoc-v1.0-build20-20261010/logs/checkpoint-script-failure-v1.json",
     "checkpointScriptRepair": "Filter optional historical labels; no product code, acceptance assertions, budgets or test thresholds changed.",
@@ -19281,6 +19598,59 @@
     "latestNativeBindingAttemptPath": "backup/adhoc-v1.0-build20-20261010/logs/canonical-ui-resume-attempts.json",
     "additionalInstalledNativeSmokeStatus": "Tool blocked; not counted as a passed test. Prior native local-preview acceptance uses unchanged application sources.",
     "nativeBindingFailureReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/canonical-ui-resume-attempts.json",
-    "arm64PreflightReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/arm64-publication-preflight.json"
-  }
+    "arm64PreflightReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/arm64-publication-preflight.json",
+    "mainUpdated": true,
+    "publishedAt": "2026-10-10T23:16:27.241496+00:00",
+    "tagCommit": "f8661ae8a437fb7dc394502f9e856142fdde8071",
+    "releaseURL": "https://github.com/ninondev/Dayside/releases/tag/v1.0",
+    "publishedAssets": [
+      {
+        "apiUrl": "https://api.github.com/repos/ninondev/Dayside/releases/assets/629220785",
+        "contentType": "application/x-apple-diskimage",
+        "createdAt": "2026-10-10T23:10:31Z",
+        "digest": "sha256:0b88099ad2de77feed021ecc9483f6f994125224aaecf3ecf2bde34331476654",
+        "downloadCount": 0,
+        "id": "RA_kwDOU_xgXs4lgSWx",
+        "label": "",
+        "name": "Dayside-1.0-arm64.dmg",
+        "size": 15826239,
+        "state": "uploaded",
+        "updatedAt": "2026-10-10T23:10:35Z",
+        "url": "https://github.com/ninondev/Dayside/releases/download/v1.0/Dayside-1.0-arm64.dmg"
+      },
+      {
+        "apiUrl": "https://api.github.com/repos/ninondev/Dayside/releases/assets/629220787",
+        "contentType": "application/octet-stream",
+        "createdAt": "2026-10-10T23:10:31Z",
+        "digest": "sha256:9ee915638eb30c25a78aa5ca4bb9119f60c0046e2dc3ad6419a94ed16e9a0a43",
+        "downloadCount": 0,
+        "id": "RA_kwDOU_xgXs4lgSWz",
+        "label": "",
+        "name": "Dayside-1.0-arm64.dmg.sha256",
+        "size": 88,
+        "state": "uploaded",
+        "updatedAt": "2026-10-10T23:10:32Z",
+        "url": "https://github.com/ninondev/Dayside/releases/download/v1.0/Dayside-1.0-arm64.dmg.sha256"
+      },
+      {
+        "apiUrl": "https://api.github.com/repos/ninondev/Dayside/releases/assets/629220786",
+        "contentType": "text/plain; charset=utf-8",
+        "createdAt": "2026-10-10T23:10:31Z",
+        "digest": "sha256:9ee915638eb30c25a78aa5ca4bb9119f60c0046e2dc3ad6419a94ed16e9a0a43",
+        "downloadCount": 0,
+        "id": "RA_kwDOU_xgXs4lgSWy",
+        "label": "",
+        "name": "SHA256SUMS.txt",
+        "size": 88,
+        "state": "uploaded",
+        "updatedAt": "2026-10-10T23:10:32Z",
+        "url": "https://github.com/ninondev/Dayside/releases/download/v1.0/SHA256SUMS.txt"
+      }
+    ],
+    "publicationReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/release-apple-only-publication-receipt.json",
+    "downloadVerificationReceiptPath": "backup/adhoc-v1.0-build20-20261010/logs/verified-apple-downloads.json",
+    "oldIntelAssetRemovedAfterBackup": true,
+    "chineseReadmeReviewPending": true
+  },
+  "cloudContinuationPrompt": "Continue ninondev/Dayside from main. Read handoff/v1.0.1-mac-acceptance.json and the complete current source first. Public 1.0 build20 is already published for Apple silicon only, signed ad hoc and not notarized; v1.0 points to f8661ae8a437fb7dc394502f9e856142fdde8071. The main remaining bug is retained Earth-window memory after closing. Existing measurements do not prove a production improvement. Investigate the retained Mac evidence summaries and propose a focused, output-equivalent fix with meaningful tests and a precise Mac before/after verification plan. Keep all existing thresholds, fixtures, sample counts and Rust release settings (opt-level 3, thin LTO, codegen-units 1). Keep public version 1.0 and build20. Formal signing and Intel runtime are deferred. Do not publish, move tags, install Rosetta or claim Mac performance from Linux results. Preserve failed evidence and distinguish hypotheses from measured results."
 }
