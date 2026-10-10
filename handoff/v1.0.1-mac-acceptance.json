@@ -927,9 +927,9 @@
       }
     },
     "4": {
-      "status": "final-preview-normal-relaunch-passed-actual-logout-login-pending",
+      "status": "ad-hoc-native-persistence-and-owner-logout-login-passed-formal-signature-deferred",
       "adHoc": {
-        "status": "final-preview-normal-relaunch-passed-actual-logout-login-pending",
+        "status": "passed-native-three-settings-after-normal-relaunch-and-owner-logout-login",
         "buildExitCode": 65,
         "failedArtifact": {
           "path": "backup/mac-acceptance-20261008T112635Z/04-linkedit-failure/libserde_derive-bbc6905122a59d89.dylib",
@@ -998,6 +998,12 @@
           "bundleIdentifier": "com.dayside.Dayside.localpreview",
           "getApp": "timeoutReached -10005 with menu-only application",
           "ordinarySettingsRequestedFromUser": true
+        },
+        "latestAfterOwnerLogin": {
+          "checkedAt": "2026-10-10T15:22:36.208259+00:00",
+          "normalSettingsAndSavedCityAccessible": true,
+          "bindingResolved": true,
+          "operatorFailuresPreservedIn": "backup/mac-acceptance-20261008T112635Z/04-owner-login-20261010T151729Z-receipt.json"
         }
       },
       "preRenameNativePersistence": {
@@ -1069,7 +1075,7 @@
         "freshDataResetReceiptPath": "backup/mac-acceptance-20261008T112635Z/04-final-clean-install-receipt.json",
         "threeSettingsBaselinePath": "backup/mac-acceptance-20261008T112635Z/04-native-final-before-quit.json",
         "normalRelaunchVerified": true,
-        "actualLogoutLoginVerified": false,
+        "actualLogoutLoginVerified": true,
         "nativeWindowBindingFailurePath": "backup/mac-acceptance-20261008T112635Z/04-final-native-bind-initial-failure.json",
         "normalRelaunchReceiptPath": "backup/mac-acceptance-20261008T112635Z/04-final-normal-relaunch-ui.json",
         "nativeScope": "Observed current normal app UI only; owner opening Settings was outside captured period. Actual owner logout/login is still required.",
@@ -1082,7 +1088,10 @@
           "restorationReceiptSha256": "c60cc8db86d89bee92f9000af04d47eaa51a39f336bbefef917ecf6e4dadbe5f",
           "scope": "Normal app quit; remove only acceptance-created Nanjing UUID from zones and last-nonempty, with original plist backup; unrelated preferences exact-value preserved. This script mutation does not count as UI persistence acceptance.",
           "normalRelaunchVerifiedAfterRestoration": false
-        }
+        },
+        "actualLogoutLoginReceiptPath": "backup/mac-acceptance-20261008T112635Z/04-owner-login-20261010T151729Z-receipt.json",
+        "actualLogoutLoginReceiptSha256": "814d3cdad1b60582c62dfd944eb0dee01e1dd4dbb9d0ead5ca454640507376f7",
+        "nativePostRestorationSettingsVerified": true
       },
       "logoutCheckpoint": {
         "preparedAt": "2026-10-09T06:04:50.438989+00:00",
@@ -1092,10 +1101,16 @@
           "awake window starts 09:00 and ends 22:00"
         ],
         "ownerActionRequested": true,
-        "actualLogoutLoginVerified": false,
-        "reason": "Acceptance explicitly requires a real macOS logout/login. It closes Codex and other active work and requires the owner to sign back in. Agent has not initiated system logout.",
+        "actualLogoutLoginVerified": true,
+        "reason": "Owner performed the real macOS logout/login; native UI, unchanged installed executable, and own sandbox preferences independently confirm the three expected settings after login.",
         "nativeRelaunchAfterRestoration": "Cua getApp launch timed out because normal app has no ordinary window bound; request owner open Settings after actual login.",
-        "failureEvidence": "Native Cua tool transcript: getApp /Applications/Dayside.app -> timeoutReached"
+        "failureEvidence": "Native Cua tool transcript: getApp /Applications/Dayside.app -> timeoutReached",
+        "verifiedAt": "2026-10-10T15:22:36.208259+00:00",
+        "ownerReportedLogoutAndLogin": true,
+        "logoutLoginIntervalIndependentlyObserved": false,
+        "threeSettingsIndependentlyVerifiedAfterLogin": true,
+        "receiptPath": "backup/mac-acceptance-20261008T112635Z/04-owner-login-20261010T151729Z-receipt.json",
+        "receiptSha256": "814d3cdad1b60582c62dfd944eb0dee01e1dd4dbb9d0ead5ca454640507376f7"
       }
     },
     "5": {
@@ -17740,6 +17755,70 @@
       "durationSeconds": 0.487,
       "outputSummary": "Saved validated source and incomplete acceptance ledger in local commit e191132e1bfc4b9560a882e5604c9708dc0ff81b. No push, tag, or installer publication.",
       "resultCommit": "e191132e1bfc4b9560a882e5604c9708dc0ff81b"
+    },
+    {
+      "step": 4,
+      "label": "04-verify-owner-login-20261010T151729Z",
+      "command": [
+        "python3",
+        "backup/mac-acceptance-20261008T112635Z/04-verify-owner-login-20261010.py"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:21:15.670992+00:00",
+      "sourceCommit": "e0e965a7d46b439b19617b6156034419c5288dd6",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/04-verify-owner-login-20261010T151729Z.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T15:21:15.993047+00:00",
+      "durationSeconds": 0.277,
+      "outputSummary": "{\"status\": \"passed\", \"version\": \"1.0\", \"build\": \"20\", \"selectedSettings\": {\"city\": \"America/Los_Angeles\", \"cityIdentityMatchesBeforeLogout\": true, \"awakeStartMinute\": 540, \"awakeEndMinute\": 1320, \"separator\": \"middleDot\"}, \"receiptPath\": \"./backup/mac-acceptance-20261008T112635Z/04-owner-login-20261010T151729Z-receipt.json\", \"reviewImages\": [\"backup/mac-acceptance-20261008T112635Z/04-login-20261010T151729Z-general-review1280.png\", \"backup/mac-acceptance-20261008T112635Z/04-login-20261010T151729Z-appearance-review1280.png\", \"backup/mac-acceptance-20261008T112635Z/04-login-20261010T151729Z-city-review1280.png\"]}"
+    },
+    {
+      "step": 4,
+      "label": "04-record-owner-login-20261010T151729Z",
+      "command": [
+        "python3",
+        "backup/mac-acceptance-20261008T112635Z/04-record-owner-login-20261010.py"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:22:36.159770+00:00",
+      "sourceCommit": "e0e965a7d46b439b19617b6156034419c5288dd6",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/04-record-owner-login-20261010T151729Z.log",
+      "status": "passed",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "interruptedSignal": null,
+      "cleanupTimedOut": false,
+      "exitCode": 0,
+      "finishedAt": "2026-10-10T15:22:36.242955+00:00",
+      "durationSeconds": 0.057,
+      "outputSummary": "{\"step4Status\": \"ad-hoc-native-persistence-and-owner-logout-login-passed-formal-signature-deferred\", \"threeSettingsAfterLogin\": \"passed\", \"receiptPath\": \"backup/mac-acceptance-20261008T112635Z/04-owner-login-20261010T151729Z-receipt.json\", \"receiptSha256\": \"814d3cdad1b60582c62dfd944eb0dee01e1dd4dbb9d0ead5ca454640507376f7\", \"remaining\": [\"Step6 remains unaccepted: exact residual ownership and a reproducible quiet production before/after improvement are unproven. README issue4 is unchanged; scope-sequencing question remains unanswered.\", \"Stage 2: Developer ID, credentials entered by owner, notarization, formal DMGs, new-user checks, formal manual20 and release confirmation after explicit Apple approval.\"], \"stage1Complete\": false}"
+    },
+    {
+      "step": 4,
+      "label": "04-owner-login-save-precheck-failure-20261010T151729Z",
+      "command": [
+        "python3",
+        "-"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "startedAt": "2026-10-10T15:23:01.722362+00:00",
+      "sourceCommit": "e0e965a7d46b439b19617b6156034419c5288dd6",
+      "logPath": "backup/mac-acceptance-20261008T112635Z/04-owner-login-save-20261010T151729Z.log",
+      "status": "failed",
+      "exitCode": 1,
+      "finishedAt": "2026-10-10T15:24:03.608997+00:00",
+      "workingTreeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSnapshotPath": "backup/mac-acceptance-20261008T112635Z/source-snapshots/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.patch",
+      "outputSummary": "KeyError: 'status' in local save precheck; stopped before staging or commit. Historical command entries without a status are preserved; retry uses get('status') to check for running jobs.",
+      "receiptPath": "backup/mac-acceptance-20261008T112635Z/04-owner-login-save-20261010T151729Z.json"
     }
   ],
   "sourceAtStart": "8c7275442dfc9e4ffc86c56bb7b63e9372d7bda1",
@@ -17867,9 +17946,9 @@
       "scope": "Continue functional acceptance; performance and memory remain deferred until a quiet machine by owner instruction."
     }
   ],
-  "updatedAt": "2026-10-09T07:51:28.101409+00:00",
+  "updatedAt": "2026-10-10T15:24:03.614085+00:00",
   "stage1Checkpoint": {
-    "recordedAt": "2026-10-09T07:22:34.710035+00:00",
+    "recordedAt": "2026-10-10T15:22:36.208259+00:00",
     "complete": false,
     "releaseAuthorized": false,
     "completedEvidence": [
@@ -17881,18 +17960,17 @@
       "Native Help copying and genuine rendered read-only range getters passed all nine language/size combinations; external VoiceOver has not been observed.",
       "Final global AX captured 27 requested states in light/dark, zero findings; simplified tooltip has no duplicate city/time-zone suffix.",
       "Current tracked paths and production/preview candidates normalized to Dayside. Final 1.0/build20 local preview installed; earlier installed app retained.",
-      "Final installed preview normal relaunch preserved all three original settings; actual owner logout/login is still outstanding.",
+      "Final installed preview preserved Los Angeles, middleDot, and the 09:00–22:00 awake window after the owner-reported real macOS logout/login; native UI, unchanged 1.0/build20 executable, own container preferences, and three scaled screenshots independently verified.",
       "Final installed preview completed 20 native fullscreen/copy/exit/close cycles with fresh PNG receipts and a complete empty crash scan; failed and recovered attempts are preserved separately.",
       "Final installed shared search field returned the six expected city identities; ten exact time/current-time/anaphoric queries were observed. Unicode used native paste, and the two search surfaces and operator failures are disclosed.",
       "Additional private three-cycle Release, poster-omission and buffer-lifetime diagnostics completed. Omission removes purgeable-zone growth; every observed application pixel buffer deallocates successfully and all three renderer weak checks are nil. These are attribution witnesses, not a production fix or quiet-host acceptance.",
       "Private direct encoding50 and75-batch diagnostics and paired native subtree attribution were retained with strict receipts. The additional varying25 did not increase settled footprint in that finite run. These do not complete memory acceptance or prove a production improvement; all paused Pylance runs restored the original process."
     ],
     "remaining": [
-      "Owner performs real macOS logout/login and opens installed Dayside Settings; verify all three settings and normal restored-city state in native UI.",
       "Step6 remains unaccepted: exact residual ownership and a reproducible quiet production before/after improvement are unproven. README issue4 is unchanged; scope-sequencing question remains unanswered.",
       "Stage 2: Developer ID, credentials entered by owner, notarization, formal DMGs, new-user checks, formal manual20 and release confirmation after explicit Apple approval."
     ],
-    "nativeToolBlocker": "Latest native app inventory contains no Dayside ordinary window. Owner actual macOS logout/login and Settings-open confirmation remain pending; menu-only process existence cannot substitute for native persistence acceptance.",
+    "nativeToolBlocker": null,
     "otherActiveWorkPreserved": "VS Code has an active agent; it was not quit",
     "commitCreated": true,
     "pushed": false,
@@ -17933,6 +18011,19 @@
     },
     "localSaveReceiptPath": "backup/mac-acceptance-20261008T112635Z/00-local-save-checkpoint.json",
     "localSourceCheckpointCommit": "e191132e1bfc4b9560a882e5604c9708dc0ff81b",
-    "localSaveLedgerFinalization": "The subsequent local ledger-only commit saves this actual commit receipt. Its outcome and final HEAD are recorded in localSaveReceiptPath."
+    "localSaveLedgerFinalization": "The subsequent local ledger-only commit saves this actual commit receipt. Its outcome and final HEAD are recorded in localSaveReceiptPath.",
+    "nativeToolBlockerResolvedAt": "2026-10-10T15:22:36.208259+00:00",
+    "latestLogoutLoginReceipt": {
+      "path": "backup/mac-acceptance-20261008T112635Z/04-owner-login-20261010T151729Z-receipt.json",
+      "sha256": "814d3cdad1b60582c62dfd944eb0dee01e1dd4dbb9d0ead5ca454640507376f7",
+      "status": "passed",
+      "signature": "ad-hoc-local-preview",
+      "ownerActionProvenance": "Owner reported real OS logout/login; agent observed current native UI only."
+    },
+    "latestLocalRecordSaveReceiptPath": "backup/mac-acceptance-20261008T112635Z/04-owner-login-save-20261010T151729Z-retry2.json",
+    "localRecordSaveAttemptReceipts": [
+      "backup/mac-acceptance-20261008T112635Z/04-owner-login-save-20261010T151729Z.json",
+      "backup/mac-acceptance-20261008T112635Z/04-owner-login-save-20261010T151729Z-retry2.json"
+    ]
   }
 }
