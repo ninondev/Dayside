@@ -146,7 +146,8 @@ Feedback goes to [GitHub Issues](https://github.com/ninondev/Dayside/issues).
 ## License
 
 Dayside is free software under GPL-3.0-only. Every feature is free, and Dayside will never be
-sold. See [LICENSE](LICENSE) and [COPYING](COPYING).
+sold. Copyright (C) 2026 Ninon. See [LICENSE](LICENSE). Pull requests need a one-time
+[CLA](CLA.md) comment before merge.
 
 ## Data sources and credits
 

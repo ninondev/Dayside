@@ -1,7 +1,7 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-3.0-only
 # 用法:Tools/make_dmg.sh <Dayside*.app> <out.dmg> <ReadMe.txt> [卷名]
-# 把一个已签名的 .app 连同 LICENSE、COPYING、THIRD_PARTY_NOTICES.md、应用内的 ThirdPartyNotices.txt、ReadMe 和 Applications 链接
+# 把一个已签名的 .app 连同 LICENSE、THIRD_PARTY_NOTICES.md、应用内的 ThirdPartyNotices.txt、ReadMe 和 Applications 链接
 # 打成 LZMA(ULMO)/APFS 只读 DMG,然后 hdiutil verify、只读挂载、逐文件 SHA-256 对照源 app、严格验签,
 # 把结果写到 <out.dmg>.sha256 与 <out.dmg>.validation.json;任一步失败即非零退出。不覆盖已存在的 DMG。
 set -eu
@@ -20,7 +20,7 @@ STAGE=$(mktemp -d "${TMPDIR:-/tmp}/dayside-dmg-stage.XXXXXX")
 MNT=$(mktemp -d "${TMPDIR:-/tmp}/dayside-dmg-mount.XXXXXX")
 trap 'hdiutil detach "$MNT" >/dev/null 2>&1 || true; "$ROOT/Tools/trash.sh" "$STAGE"; "$ROOT/Tools/trash.sh" "$MNT" 2>/dev/null || true' EXIT
 ditto "$APP" "$STAGE/$(basename "$APP")"
-cp "$ROOT/LICENSE" "$ROOT/COPYING" "$ROOT/THIRD_PARTY_NOTICES.md" "$STAGE/"
+cp "$ROOT/LICENSE" "$ROOT/THIRD_PARTY_NOTICES.md" "$STAGE/"
 cp "$APP/Contents/Resources/ThirdPartyNotices.txt" "$STAGE/ThirdPartyNotices.txt"
 cp "$README" "$STAGE/ReadMe.txt"
 ln -s /Applications "$STAGE/Applications"

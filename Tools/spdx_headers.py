@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-only
 """SPDX license headers for source files.
 
-The whole project is licensed under GPL-3.0-only (full text in `COPYING`). Every `.swift`, `.rs`,
+The whole project is licensed under GPL-3.0-only (full text in `LICENSE`). Every `.swift`, `.rs`,
 `.py`, `.sh` and `.mjs` file starts with `SPDX-License-Identifier: GPL-3.0-only` on its first line
 (second line when the file has a shebang), as recommended in the "How to Apply" section of the GPL.
 

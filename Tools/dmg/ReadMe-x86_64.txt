@@ -17,7 +17,7 @@ bottom, click "Open Anyway" and confirm with your password.
 Dayside keeps its data on this Mac. It has no telemetry and no account.
 Calendars and contacts are read only after you allow access.
 
-License: GPL-3.0-only, see LICENSE and COPYING. Third-party notices are in
+License: GPL-3.0-only, see LICENSE. Third-party notices are in
 THIRD_PARTY_NOTICES.md and ThirdPartyNotices.txt.
 
 
@@ -35,5 +35,5 @@ Apple 芯片的 Mac 必须用 Apple 芯片版。在那上面打开这个 Intel �
 
 数据只存在这台 Mac 上，没有遥测，也不需要账号。日历与通讯录只在你允许后才读取。
 
-许可：GPL-3.0-only，见 LICENSE 与 COPYING。第三方声明见 THIRD_PARTY_NOTICES.md 与
+许可：GPL-3.0-only，见 LICENSE。第三方声明见 THIRD_PARTY_NOTICES.md 与
 ThirdPartyNotices.txt。
