@@ -27,4 +27,5 @@ node Tools/site_tests/when_test.mjs
 On macOS, `Tools/verify_all.sh` also runs the app-hosted Swift tests.
 For interface changes, describe what you checked in the app and attach screenshots if helpful.
 
+- [ ] I have read the [CLA](https://github.com/ninondev/Dayside/blob/main/CLA.md) and agree to it (once per contributor; also post the comment it asks for).
 - [ ] New source files start with `SPDX-License-Identifier: GPL-3.0-only` in a comment, after any shebang.

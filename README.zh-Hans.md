@@ -109,7 +109,7 @@ xcodebuild -project Dayside.xcodeproj -scheme Dayside -configuration Debug \
 
 ## 许可
 
-Dayside 是自由软件，采用 GPL-3.0-only。所有功能都免费，Dayside 永远不会出售。见 [LICENSE](LICENSE) 和 [COPYING](COPYING)。
+Dayside 是自由软件，采用 GPL-3.0-only。所有功能都免费，Dayside 永远不会出售。见 [LICENSE](LICENSE)。提 PR 前请看 [CLA.md](CLA.md)，合并前需要在 PR 里留一次同意的评论。
 
 ## 数据来源与致谢
 

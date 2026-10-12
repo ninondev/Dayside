@@ -44,7 +44,7 @@ def package(app: Path, output: Path, readme: Path) -> dict:
     stage.mkdir()
     mount.mkdir()
     run("/usr/bin/ditto", str(app), str(stage / app.name))
-    for name in ("LICENSE", "COPYING", "THIRD_PARTY_NOTICES.md"):
+    for name in ("LICENSE", "THIRD_PARTY_NOTICES.md"):
         shutil.copy2(root / name, stage / name)
     shutil.copy2(app / "Contents/Resources/ThirdPartyNotices.txt", stage / "ThirdPartyNotices.txt")
     shutil.copy2(readme, stage / "ReadMe.txt")

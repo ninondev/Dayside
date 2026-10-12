@@ -1,6 +1,6 @@
 # Third-party notices
 
-Dayside's own code is licensed under GPL-3.0-only (see `LICENSE` and `COPYING`). The data and
+Dayside's own code is licensed under GPL-3.0-only (see `LICENSE`). The data and
 components below come from other sources and keep their own licenses.
 
 ## GeoNames (city data)
