@@ -17,6 +17,14 @@ target_dir="${DERIVED_FILE_DIR:-$root/RustCore/target/xcode}/rust-target"
 output_dir="${BUILT_PRODUCTS_DIR:-$root/RustCore/target/xcode}"
 mkdir -p "$output_dir"
 libraries=()
+# 产物里不留本机路径（用户目录、crates 镜像目录）：panic 和错误信息里的源码路径一律改写。
+cargo_home="${CARGO_HOME:-$HOME/.cargo}"
+remap=("--remap-path-prefix=$HOME=/home" "--remap-path-prefix=$root=/dayside")
+for src in "$cargo_home"/registry/src/*/ "$cargo_home"/git/checkouts/*/; do
+  [[ -d "$src" ]] && remap+=("--remap-path-prefix=${src%/}=/cargo")
+done
+CARGO_ENCODED_RUSTFLAGS=$(IFS=$'\x1f'; echo "${remap[*]}")
+export CARGO_ENCODED_RUSTFLAGS
 # iOS 原型：Xcode 给 iphonesimulator / iphoneos 时换 Rust 三元组；macOS 路径不变。
 platform="${PLATFORM_NAME:-macosx}"
 for arch in ${ARCHS:-arm64 x86_64}; do
