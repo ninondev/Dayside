@@ -39,7 +39,7 @@ Dayside 是一个住在 Mac 菜单栏里的世界时钟。你加的每个地方�
 
 打开磁盘映像，把 Dayside.app 拖进「应用程序」。
 
-这一版是 ad-hoc 签名，没有经过苹果公证，所以第一次打开会被系统拦下来。到「系统设置 › 隐私与安全性」，拉到最下面，点「仍要打开」，再输入密码确认，就能打开了。
+这一版是 Developer ID 签名，经过了苹果公证。
 
 版本号在 App 的「设置 › 帮助」里。
 
@@ -58,10 +58,10 @@ Dayside 是一个住在 Mac 菜单栏里的世界时钟。你加的每个地方�
 在 `RustCore/` 里运行：
 
 ```sh
-cargo test --locked --offline -j 3 --all-targets
-cargo test --locked --offline -j 3 --release --lib
-cargo test --locked --offline -j 3 --lib --features intents-only
-cargo clippy --locked --offline -j 3 --all-targets -- -D warnings
+cargo test --locked --offline --all-targets
+cargo test --locked --offline --release --lib
+cargo test --locked --offline --lib --features intents-only
+cargo clippy --locked --offline --all-targets -- -D warnings
 ```
 
 在仓库根目录检查许可证头、本地化目录和分享页：
@@ -79,10 +79,10 @@ node Tools/site_tests/when_test.mjs
 ```sh
 xcodebuild -project Dayside.xcodeproj -scheme Dayside -configuration Debug \
   -destination 'platform=macOS,arch=arm64' -derivedDataPath "$DAYSIDE_DERIVED_DATA" \
-  -jobs 3 CODE_SIGNING_ALLOWED=NO build-for-testing
+  CODE_SIGNING_ALLOWED=NO build-for-testing
 ```
 
-`DaysideCore` 会先运行 `Tools/build_rust_core.sh` 生成 Rust 静态库，再编译 Swift。`Tools/sign_bundle.sh` 给本地构建做 ad-hoc 签名，所以不需要开发者账号。`Tools/release_sign_notarize.sh` 用于 Developer ID 签名和公证；当前下载版使用 ad-hoc 签名，未经公证。`Tools/verify_all.sh` 还会跑 Swift 测试，这些测试以 App 作为宿主启动。构建成功不代表 Swift 测试和 App 里的交互都能通过。
+`DaysideCore` 会先运行 `Tools/build_rust_core.sh` 生成 Rust 静态库，再编译 Swift。`Tools/sign_bundle.sh` 给本地构建做 ad-hoc 签名，所以不需要开发者账号。`Tools/release_sign_notarize.sh` 用于 Developer ID 签名和公证；当前下载版就是用它签名和公证的。`Tools/verify_all.sh` 还会跑 Swift 测试，这些测试以 App 作为宿主启动。构建成功不代表 Swift 测试和 App 里的交互都能通过。
 
 代码按目录分开放。
 
@@ -91,7 +91,9 @@ xcodebuild -project Dayside.xcodeproj -scheme Dayside -configuration Debug \
 - `DaysideTests/`、`DaysideUITests/` 和 `RustCore/tests/`：测试和测试数据。
 - `DaysideiOS/`：和 Mac 共用 Rust 核心的 iPhone 原型，功能少一些。
 - `Tools/`：构建、测试、打包、测量和生成数据的工具。
-- `site/`：分享时间名片用的网页，还有隐私与支持页的草稿。
+- `site/`：打开分享时间名片的网页。
+
+Dayside 开发时叫 Meantime。保存数据用的键名没改，这样旧版本的设置还能读到；很多构建和测试用的变量也还以 `MEANTIME_` 开头。
 
 ## 地名
 
