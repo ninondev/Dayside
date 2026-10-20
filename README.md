@@ -10,9 +10,9 @@ Dayside is a world clock for the Mac menu bar. Every place you add gets a row, a
 painted in the real color of its sky at this moment: dark at night, bright in the daytime,
 a little rose at dawn and amber at dusk. You can tell at a glance who is asleep.
 
-Talking across time zones has too many problems that come up again and again. I made Dayside to
-solve them in one place: the time difference, whether someone is awake, how to set a meeting
-without making someone stay up late, and when daylight saving will change.
+I made Dayside for the questions that come up every time I talk to someone in another time zone:
+what time it is there, whether they are awake, when we can meet without someone staying up late,
+and when daylight saving time changes.
 
 ## What it looks like
 
@@ -84,10 +84,10 @@ below run offline, so those dependencies must already be in your local Cargo cac
 From `RustCore/`, run:
 
 ```sh
-cargo test --locked --offline -j 3 --all-targets
-cargo test --locked --offline -j 3 --release --lib
-cargo test --locked --offline -j 3 --lib --features intents-only
-cargo clippy --locked --offline -j 3 --all-targets -- -D warnings
+cargo test --locked --offline --all-targets
+cargo test --locked --offline --release --lib
+cargo test --locked --offline --lib --features intents-only
+cargo clippy --locked --offline --all-targets -- -D warnings
 ```
 
 From the repository root, check the license headers, localization catalogs and sharing page:
@@ -108,7 +108,7 @@ build-output directory, then run from the repository root:
 ```sh
 xcodebuild -project Dayside.xcodeproj -scheme Dayside -configuration Debug \
   -destination 'platform=macOS,arch=arm64' -derivedDataPath "$DAYSIDE_DERIVED_DATA" \
-  -jobs 3 CODE_SIGNING_ALLOWED=NO build-for-testing
+  CODE_SIGNING_ALLOWED=NO build-for-testing
 ```
 
 `DaysideCore` runs `Tools/build_rust_core.sh` to create the Rust static library before compiling
@@ -124,7 +124,10 @@ Where things are:
 - `DaysideTests/`, `DaysideUITests/` and `RustCore/tests/`: tests and their fixtures.
 - `DaysideiOS/`: an iPhone prototype that shares the Rust core, with fewer features.
 - `Tools/`: build, test, packaging, measurement and data tools.
-- `site/`: the page for shared time cards, and draft privacy and support pages.
+- `site/`: the page that opens a shared time card.
+
+Dayside was called Meantime during development. Saved-data keys keep that name so settings from
+earlier builds still load, and many build and test variables still start with `MEANTIME_`.
 
 ## Place names
 
