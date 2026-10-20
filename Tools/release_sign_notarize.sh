@@ -42,7 +42,7 @@ run() {
   if [[ $dry_run == 1 ]]; then printf 'DRY-RUN:'; printf ' %q' "$@"; printf '\n'; else "$@"; fi
 }
 
-echo "== 版本 $version，架构 $arch，团队 $team，公证配置 $profile"
+echo "== 版本 ${version}，架构 ${arch}，团队 ${team}，公证配置 ${profile}"
 run mkdir -p "$log_dir"
 
 echo "== 1. Developer ID 重签（hardened runtime + 安全时间戳 + Release 签名策略）"
@@ -58,7 +58,7 @@ if [[ $dry_run == 0 ]]; then
   grep -Eq "^CodeDirectory .*flags=0x[0-9a-f]*\(.*runtime.*\)" <<<"$details" || { echo "没有 hardened runtime 标志" >&2; exit 1; }
   grep -q "^Timestamp=" <<<"$details" || { echo "没有安全时间戳" >&2; exit 1; }
 else
-  echo "DRY-RUN: codesign -dvvv 检查 TeamIdentifier=$team、Developer ID Application、runtime 标志与 Timestamp"
+  echo "DRY-RUN: codesign -dvvv 检查 TeamIdentifier=${team}、Developer ID Application、runtime 标志与 Timestamp"
 fi
 run /usr/bin/python3 "$root/Tools/check_release_identity.py" "$app" --asset-name "$(basename "$dmg")"
 
@@ -74,7 +74,7 @@ if [[ $dry_run == 0 ]]; then
   submission=$(/usr/bin/python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); print(d.get("id",""), d.get("status",""))' "$log_dir/notary-submit.json")
   id=${submission%% *}; status=${submission#* }
   [[ -n "$id" ]] && /usr/bin/xcrun notarytool log "$id" --keychain-profile "$profile" "$log_dir/notary-log.json" || true
-  [[ "$status" == Accepted ]] || { echo "公证未通过：$status（详情 $log_dir/notary-log.json）" >&2; exit 1; }
+  [[ "$status" == Accepted ]] || { echo "公证未通过：${status}（详情 $log_dir/notary-log.json）" >&2; exit 1; }
 else
   run /usr/bin/xcrun notarytool submit "$dmg" --keychain-profile "$profile" --wait --output-format json
   echo "DRY-RUN: 状态必须是 Accepted；随后取 notarytool log 存到 $log_dir/notary-log.json"

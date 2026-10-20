@@ -58,9 +58,7 @@ included in this release.
 
 Open the disk image and drag Dayside.app to Applications.
 
-The app is signed ad hoc and is not notarized, so macOS blocks it the first time you open it.
-To open it, go to System Settings › Privacy & Security, scroll to the bottom, click
-"Open Anyway" and confirm with your password.
+The app is signed with a Developer ID and notarized by Apple.
 
 You can find the version number in the app under Settings › Help.
 
@@ -114,7 +112,7 @@ xcodebuild -project Dayside.xcodeproj -scheme Dayside -configuration Debug \
 ```
 
 `DaysideCore` runs `Tools/build_rust_core.sh` to create the Rust static library before compiling
-Swift. `Tools/sign_bundle.sh` signs local builds ad hoc, so you do not need a developer account. Developer ID signing and notarization use `Tools/release_sign_notarize.sh`; the current download is signed ad hoc and is not notarized.
+Swift. `Tools/sign_bundle.sh` signs local builds ad hoc, so you do not need a developer account. Developer ID signing and notarization use `Tools/release_sign_notarize.sh`; the current download was signed and notarized with it.
 `Tools/verify_all.sh` also runs the Swift tests, which launch the app as their host. A build that
 succeeds does not show that the Swift tests or the app's interactions pass.
 

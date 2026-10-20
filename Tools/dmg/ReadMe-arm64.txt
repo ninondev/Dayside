@@ -6,9 +6,7 @@ Settings > Help.
 
 Install: drag Dayside.app to Applications.
 
-This build is signed ad hoc and is not notarized, so macOS blocks it the first
-time. To open it, go to System Settings > Privacy & Security, scroll to the
-bottom, click "Open Anyway" and confirm with your password.
+This build is signed with a Developer ID and notarized by Apple.
 
 Dayside keeps its data on this Mac. It has no telemetry and no account.
 Calendars and contacts are read only after you allow access.
@@ -24,8 +22,7 @@ App 的「设置 › 帮助」里。
 
 安装：把 Dayside.app 拖进「应用程序」。
 
-这一版是 ad-hoc 签名、未经公证，第一次打开会被系统拦下。打开方法：到「系统设置 ›
-隐私与安全性」拉到最下面，点「仍要打开」，输入密码确认。
+这一版是 Developer ID 签名，经过了苹果公证。
 
 数据只存在这台 Mac 上，没有遥测，也不需要账号。日历与通讯录只在你允许后才读取。
 
