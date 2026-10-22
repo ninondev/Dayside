@@ -131,7 +131,43 @@ const COUNTRY_SHORT: &[(&str, &str)] = &[
     ("turkey", "TR"), ("터키", "TR"), ("scotland", "GB"), ("wales", "GB"), ("northern ireland", "GB"), ("burma", "MM"),
     ("ivory coast", "CI"), ("east timor", "TL"), ("vatican", "VA"), ("bosnia", "BA"), ("swaziland", "SZ"),
     ("dr congo", "CD"), ("democratic republic of the congo", "CD"),
+    // 俄语日常的叫法（系统表里是 Беларусь、Республика Корея、КНДР），和词尾规则还原不出来的不规则变格（w Niemczech、в Египте）。
+    ("белоруссия", "BY"), ("корея", "KR"), ("южная корея", "KR"), ("северная корея", "KP"),
+    ("египте", "EG"), ("niemczech", "DE"), ("włoszech", "IT"), ("węgrzech", "HU"), ("białorusi", "BY"),
 ];
+
+/// 有线索时国家名的变格（俄语前置格、波兰语方位格）：（词尾，原形的词尾）。逐词套，组合起来还要精确等于表里的国家名：
+/// в Украине → Украина、w Kanadzie → Kanada、в Новой Зеландии → Новая Зеландия、w Arabii Saudyjskiej → Arabia Saudyjska。
+/// 没有这些规则时，变了格的国名会落到音近的小镇（в Аргентине 读成美国密歇根州的 Argentine）。
+const COUNTRY_CASE_ENDINGS: &[(&str, &str)] = &[
+    // 俄语
+    ("ах", "ы"), ("ях", "и"), ("ии", "ия"), ("ае", "ай"), ("ее", "ея"), ("ее", "ей"), ("е", "а"), ("е", ""), ("е", "ь"), ("и", "ь"), ("ой", "ая"),
+    // 波兰语
+    ("ach", "y"), ("iach", "ie"), ("ii", "ia"), ("ji", "ja"), ("ei", "ea"), ("li", "la"), ("ie", "a"), ("ie", ""), ("dzie", "da"), ("dzie", "d"),
+    ("cie", "ta"), ("cie", "t"), ("rze", "ra"), ("rze", "r"), ("ce", "ka"), ("u", ""), ("u", "o"), ("iej", "a"), ("ej", "a"), ("ych", "e"), ("ich", "ie"),
+];
+
+/// 逐词还原变格，组合后查表（最多 4 个词；全是原样的那一种调用处已经查过）。
+fn restored_country(key: &str, names: &FastMap<String, &'static str>) -> Option<&'static str> {
+    let words: Vec<&str> = key.split(' ').collect();
+    if words.len() > 4 {
+        return None;
+    }
+    let mut candidates = vec![String::new()];
+    for (i, word) in words.iter().enumerate() {
+        let forms: Vec<String> = std::iter::once((*word).to_owned())
+            .chain(COUNTRY_CASE_ENDINGS.iter().filter_map(|(ending, restore)| {
+                let stem = word.strip_suffix(fold(ending).as_str()).filter(|stem| stem.chars().count() >= 2)?;
+                Some(fold(&format!("{stem}{restore}")))
+            }))
+            .collect();
+        candidates = candidates.iter().flat_map(|prefix| forms.iter().map(move |form| if i == 0 { form.clone() } else { format!("{prefix} {form}") })).collect();
+    }
+    candidates.iter().skip(1).find_map(|name| names.get(name).copied())
+}
+
+/// zone.tab 备注栏里各对应一个时区的地区名。不是国家名，不给国家码（提示里不念国家）。
+const REGION_ZONES: &[(&str, &str)] = &[("west bank", "Asia/Hebron"), ("gaza strip", "Asia/Gaza")];
 
 /// 国家名表与查询用引擎自己的折叠（快捷指令进程也有）；城市索引的键用 `crate::catalog::fold`（见 `city_lookup`）。
 fn fold(text: &str) -> String {
@@ -208,16 +244,16 @@ pub(super) fn country_code(text: &str) -> Option<&'static str> {
         }
     }
     let names = country_names();
-    names.get(&key).copied().or_else(|| {
-        // Only restore closed case endings, and require an exact country name.
-        [("ах", "ы"), ("ях", "и"), ("ии", "ия"), ("ае", "ай"),
-         ("ach", "y"), ("ii", "ia"), ("ji", "ja"), ("lii", "lia")]
-            .iter().find_map(|(ending, restore)| key.strip_suffix(ending).and_then(|stem| names.get(&fold(&format!("{stem}{restore}")))).copied())
-    }).or_else(|| ["에서는", "에서", "에는", "은", "는", "에", "의"].iter()
+    names.get(&key).copied().or_else(|| restored_country(&key, names))
+        .or_else(|| ["에서는", "에서", "에는", "은", "는", "에", "의"].iter()
         .find_map(|ending| key.strip_suffix(ending).and_then(|stem| names.get(stem)).copied()))
 }
 
 pub(super) fn country_lookup(text: &str) -> Option<ZoneRef> {
+    let key = fold(place_modifier_stem(text));
+    if let Some((_, iana)) = REGION_ZONES.iter().find(|(name, _)| *name == key) {
+        return Some(ZoneRef::Region { iana: (*iana).to_owned() });
+    }
     let code = country_code(text)?;
     let zones = country_zones(code);
     match zones.as_slice() {
@@ -462,6 +498,29 @@ mod tests {
             assert!(!zones(system).is_empty(), "{system}");
             assert_eq!(zones(name), zones(system), "{name}");
         }
+    }
+
+    #[test]
+    fn russian_and_polish_locatives_restore_to_country_names() {
+        for (written, code) in [
+            ("Украине", "UA"), ("Канаде", "CA"), ("Польше", "PL"), ("Аргентине", "AR"), ("Мальте", "MT"), ("Кубе", "CU"), ("Палестине", "PS"),
+            ("Израиле", "IL"), ("Казахстане", "KZ"), ("Беларуси", "BY"), ("Белоруссии", "BY"), ("Египте", "EG"), ("Брунее", "BN"),
+            ("Новой Зеландии", "NZ"), ("Саудовской Аравии", "SA"), ("Южной Корее", "KR"), ("Северной Корее", "KP"),
+            ("Ukrainie", "UA"), ("Kanadzie", "CA"), ("Argentynie", "AR"), ("Litwie", "LT"), ("Malcie", "MT"), ("Cyprze", "CY"), ("Egipcie", "EG"),
+            ("Iranie", "IR"), ("Indiach", "IN"), ("Maroku", "MA"), ("Gwatemali", "GT"), ("Jamajce", "JM"), ("Czadzie", "TD"), ("Andorze", "AD"),
+            ("Niemczech", "DE"), ("Włoszech", "IT"), ("Węgrzech", "HU"), ("Białorusi", "BY"), ("Wielkiej Brytanii", "GB"), ("Nowej Zelandii", "NZ"),
+            ("Arabii Saudyjskiej", "SA"), ("Korei Południowej", "KR"), ("Korei Północnej", "KP"), ("Zjednoczonych Emiratach Arabskich", "AE"),
+        ] {
+            assert_eq!(country_code(written), Some(code), "{written}");
+        }
+        // 城市的变格还原不成国家，留给城市索引。
+        for city in ["Москве", "Киеве", "Риге", "Warszawie", "Krakowie", "Londynie", "Paryżu"] {
+            assert_eq!(country_code(city), None, "{city}");
+        }
+        // zone.tab 备注里的地区各给一个时区，不算国家。
+        assert_eq!(country_lookup("West Bank"), Some(ZoneRef::Region { iana: "Asia/Hebron".into() }));
+        assert_eq!(country_lookup("Gaza Strip"), Some(ZoneRef::Region { iana: "Asia/Gaza".into() }));
+        assert_eq!(country_code("West Bank"), None);
     }
 
     #[cfg(not(feature = "intents-only"))]

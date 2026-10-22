@@ -416,14 +416,15 @@ impl Context<'_> {
         if !strong || bare == Some("") { return None; }
         let u = self.units;
         let name_start = s + find(u, s, |sem| matches!(sem, Sem::PlaceIn | Sem::PlaceInArticle | Sem::ZoneBefore | Sem::SelfLocation | Sem::TargetTo | Sem::TargetAsk)).map_or(0, |(n, _, _)| n);
-        let article_words = self.lowercase_place_needs_big_city(text, s, bare, lang).then(|| bare.map_or(0, |noun| text.split_whitespace().count().saturating_sub(noun.split_whitespace().count())));
+        // 截短到只剩冠词的不再查：「9am in the Office」的「the」会对上特雷西纳机场的代码 THE。
+        let article_words = bare.map_or(0, |noun| text.split_whitespace().count().saturating_sub(noun.split_whitespace().count()));
         for end in (s + 1..e).rev() {
             if end <= name_start { continue; }
             let cjk = u.get(name_start).is_some_and(|unit| unit.kind == UKind::Cjk)
                 && u[name_start..end].iter().all(|unit| unit.kind == UKind::Cjk);
             if !cjk && (u[end].kind != UKind::Word || !u[end].space_before) { continue; }
             let trimmed = super::units::original_text(self.folded, u[name_start].start, u[end - 1].end);
-            if article_words.is_some_and(|count| trimmed.split_whitespace().count() <= count) { continue; }
+            if trimmed.split_whitespace().count() <= article_words { continue; }
             let bare = bare.map(|b| b.rsplitn(u[end..e].iter().filter(|t| t.kind == UKind::Word).count() + 1, ' ').last().unwrap_or(b));
             if let Some(zone) = self.find_candidate_place(&trimmed, true, s, bare, lang) { return Some((zone, end)); }
         }

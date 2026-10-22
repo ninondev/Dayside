@@ -483,6 +483,7 @@ pub(super) const EXTRA_ZONE_WORDS: &[(&str, &str)] = &[
     ("waktu indonesia barat", "Asia/Jakarta"), ("waktu indonesia tengah", "Asia/Makassar"), ("waktu indonesia timur", "Asia/Jayapura"),
     ("pacific", "America/Los_Angeles"), ("eastern", "America/New_York"), ("central", "America/Chicago"), ("mountain", "America/Denver"),
     ("us/pacific", "America/Los_Angeles"), ("us/eastern", "America/New_York"), ("us/central", "America/Chicago"),
+    ("east coast time", "America/New_York"), ("east coast", "America/New_York"), ("west coast time", "America/Los_Angeles"), ("west coast", "America/Los_Angeles"),
     ("hora peninsular", "Europe/Madrid"), ("hora de canarias", "Atlantic/Canary"), ("hora canarias", "Atlantic/Canary"), ("heure française", "Europe/Paris"),
     ("heure de france", "Europe/Paris"), ("heure du québec", "America/Toronto"), ("mitteleuropäische zeit", "Europe/Berlin"),
     ("österreichische zeit", "Europe/Vienna"), ("schweizer zeit", "Europe/Zurich"), ("hora de brasil", "America/Sao_Paulo"),

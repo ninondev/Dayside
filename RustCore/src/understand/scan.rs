@@ -2447,7 +2447,8 @@ impl<'a> Scanner<'a> {
                 let after_clock = self.out.last().is_some_and(|l| matches!(l.atom, Atom::Clock { .. } | Atom::Instant(_)) && l.to + 1 >= i);
                 let accept = cur.upper && (cur.text.len() >= 2)
                     || matches!(cur.text.as_str(), "aoe" | "мск")
-                    || (after_clock && cur.text.len() >= 3 && !matches!(cur.text.as_str(), "art" | "cat" | "pet" | "wat" | "ist" | "est" | "ast" | "eat" | "wit" | "gst"));
+                    // 小写或首字母大写的常用词不当缩写：「9am West Bank time」不是西欧夏令时 WEST。
+                    || (after_clock && cur.text.len() >= 3 && !matches!(cur.text.as_str(), "art" | "cat" | "pet" | "wat" | "ist" | "est" | "ast" | "eat" | "wit" | "gst" | "west"));
                 if accept {
                     let abbrev = &ABBREVIATIONS[index];
                     let options: Vec<ZoneRef> = abbrev
@@ -2553,6 +2554,15 @@ impl<'a> Scanner<'a> {
             let place = words_after(u, i + n, 3, false);
             if let Some(lang) = cue_lang(n, sem, lang, Some((i + n, place.1))).filter(|_| !place.0.is_empty()) {
                 self.push(Atom::Place { text: place.0, strong: true, bare: place.2 }, i, place.1, Some(lang));
+                return Some(place.1 - i);
+            }
+        }
+        // 波兰语的 we 是 w 在辅音丛前的写法（we Francji、we Włoszech）。它和英语、荷兰语的代词 we 同形，放进词表会给英文句子
+        // 投波兰语的票，所以不进词表：只在这一段已经是波兰语、后面是首字母大写的词时当地点线索。
+        if u[i].text == "we" && u.get(i + 1).is_some_and(|t| t.kind == UKind::Word && t.capital && t.space_before) {
+            let place = words_after(u, i + 1, 3, false);
+            if !place.0.is_empty() && matches!(super::language::evidence(u, i, 1, Some((i + 1, place.1))), super::language::Evidence::Language("pl", _)) {
+                self.push(Atom::Place { text: place.0, strong: true, bare: place.2 }, i, place.1, Some("pl"));
                 return Some(place.1 - i);
             }
         }

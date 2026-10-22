@@ -168,6 +168,53 @@ fn real_index_country_names_beat_same_named_towns() {
 }
 
 #[test]
+#[cfg(not(feature = "intents-only"))]
+fn real_index_inflected_country_names_regions_and_article_only_spans() {
+    let opened = crate::city_index::dispatch("city.open", serde_json::json!({ "path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity") })).unwrap();
+    let handle = opened["handle"].as_u64().unwrap();
+    let lookup = |t: &str, strong| places::city_lookup(Some(handle), t, strong);
+    let source = |sentence: &str, language: &str| {
+        understand(sentence, &Options { region: "US", ui_language: language, lookup: &lookup }).mentions.first().and_then(|m| m.source.clone())
+    };
+    let mut failures = Vec::new();
+    // 变了格的国名与原形同一个结果。此前 в Аргентине 读成密歇根州的 Argentine 镇、на Мальте 读成蒙大拿州的 Malta 镇，
+    // в Украине、w Ukrainie 认不出；во、we 是 в、w 在辅音丛前的写法。
+    for (language, sentence, country) in [
+        ("ru", "Встреча в 10:00 в Украине", "Украина"), ("ru", "Встреча в 10:00 на Украине", "Украина"), ("ru", "в 10:00 в Аргентине", "Аргентина"),
+        ("ru", "в 10:00 на Мальте", "Мальта"), ("ru", "в 10:00 на Кубе", "Куба"), ("ru", "в 10:00 в Молдове", "Молдова"),
+        ("ru", "в 10:00 в Палестине", "Палестина"), ("ru", "в 10:00 в Казахстане", "Казахстан"), ("ru", "в 10:00 во Франции", "Франция"),
+        ("ru", "в 10:00 в Новой Зеландии", "Новая Зеландия"),
+        ("pl", "Spotkanie o 9:00 w Ukrainie", "Ukraina"), ("pl", "Spotkanie o 9:00 na Ukrainie", "Ukraina"), ("pl", "o 9:00 w Kanadzie", "Kanada"),
+        ("pl", "o 9:00 w Niemczech", "Niemcy"), ("pl", "o 9:00 we Francji", "Francja"), ("pl", "o 9:00 we Włoszech", "Włochy"),
+        ("pl", "o 9:00 w Iranie", "Iran"), ("pl", "o 9:00 w Wielkiej Brytanii", "Wielka Brytania"),
+    ] {
+        let found = source(sentence, language);
+        if found.is_none() || found != places::country_lookup(country) {
+            failures.push(format!("{sentence}: {found:?}"));
+        }
+    }
+    // zone.tab 备注里的地区；截短到只剩冠词的不查（the 是特雷西纳机场的代码 THE）；钟点后首字母大写的 West 不是西欧夏令时。
+    for (sentence, iana) in [
+        ("9am in the West Bank", Some("Asia/Hebron")), ("9am West Bank time", Some("Asia/Hebron")), ("9am in the Gaza Strip", Some("Asia/Gaza")),
+        ("9am East Coast time", Some("America/New_York")), ("9am West Coast time", Some("America/Los_Angeles")),
+        ("9am in the Office", None), ("lunch in the Park at 1pm", None), ("At 9am we Zoom", None),
+    ] {
+        let found = source(sentence, "en");
+        if found != iana.map(|iana| ZoneRef::Region { iana: iana.into() }) {
+            failures.push(format!("{sentence}: {found:?}"));
+        }
+    }
+    if !matches!(source("9am in the Hague", "en"), Some(ZoneRef::City { name, .. }) if name == "The Hague") {
+        failures.push("9am in the Hague".into());
+    }
+    if source("9am WEST", "en") != Some(ZoneRef::Fixed { minutes: 60, region: Some("Europe/Lisbon".into()) }) {
+        failures.push("9am WEST".into());
+    }
+    crate::city_index::dispatch("city.close", serde_json::json!({ "handle": handle })).unwrap();
+    assert!(failures.is_empty(), "{}", failures.join("\n"));
+}
+
+#[test]
 fn possessive_time_and_at_our_place_are_distinct() {
     assert!(source("De bus stopt om 7:40 bij ons.", "nl").is_none());
     assert!(source("Вечером в 19:30 у нас йога.", "ru").is_none());

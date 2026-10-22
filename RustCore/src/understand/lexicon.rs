@@ -738,7 +738,7 @@ pub const ENTRIES: &[Entry] = &[
     ("в", ClockBefore, "ru"), ("к", ClockBefore, "ru"), ("около", ClockBefore, "ru"), ("ч", ClockAfter, "ru"), ("часов", ClockAfter, "ru"),
     ("часа", ClockAfter, "ru"), ("через", RelIn, "ru"), ("часа", HourUnit, "ru"), ("часов", HourUnit, "ru"), ("час", OneHour, "ru"), ("минут", MinuteUnit, "ru"),
     ("минуты", MinuteUnit, "ru"), ("полчаса", HalfHour, "ru"), ("назад", RelAgo, "ru"), ("с", From, "ru"), ("до", RangeSep, "ru"), ("между", Between, "ru"),
-    ("и", And, "ru"), ("том же", Stop, "ru"), ("по", ZoneBefore, "ru"), ("по времени", ZoneBefore, "ru"), ("в", PlaceIn, "ru"), ("на", PlaceIn, "ru"), ("сколько будет в", TargetAsk, "ru"),
+    ("и", And, "ru"), ("том же", Stop, "ru"), ("по", ZoneBefore, "ru"), ("по времени", ZoneBefore, "ru"), ("в", PlaceIn, "ru"), ("во", PlaceIn, "ru"), ("на", PlaceIn, "ru"), ("сколько будет в", TargetAsk, "ru"),
     ("сколько в", TargetAsk, "ru"), ("сколько времени в", TargetAsk, "ru"), ("который час в", TargetAsk, "ru"), ("в", TargetTo, "ru"),
     ("встреча", Stop, "ru"), ("созвон", Stop, "ru"), ("давайте", Stop, "ru"), ("на", Stop, "ru"), ("это", Stop, "ru"), ("удобно", Stop, "ru"),
     ("времени", Stop, "ru"), ("время", Stop, "ru"),

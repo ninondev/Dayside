@@ -1,7 +1,7 @@
 {
   "generated": true,
   "generated_files": {
-    "generated_tables.rs": "bcb32c363564d27208855875abd42176d77f2bc6aaae299ff324a7216381af37"
+    "generated_tables.rs": "3c243bd3cc0970be804bff6dd59c7e473973e27c91ed58110ea28d9c38a4c6d1"
   },
   "inputs_relative_to": "RustCore",
   "normalization": {
@@ -12,15 +12,15 @@
   "schema": 1,
   "source_sha256": {
     "Cargo.lock": "fc8e6310b1116a627fcb312daa662447b5a8c444d87dfca2d14fe940195d942a",
-    "Cargo.toml": "9f980f93982757d68ddeabacd28454935045dbb063a6bd50315596b7eb9b6b31",
+    "Cargo.toml": "778a6716c2f96e8336b23042b9909c3ea7d7eecf60f813b94319cb13442f9e3e",
     "src/understand/generated_tables_bootstrap.rs": "fb01abf505d4b0be4b8c50296fd20b39a096be64ac023333f8e5398f54dfb281",
-    "src/understand/language.rs": "eff478ee62d20af52e719ba0eebce76a9ff396883cc37b6dcd0f7dc7d9c50ac2",
-    "src/understand/lexicon.rs": "3557f37c3f68afdf056efa1d9d757eb7706ec92f22208d8d7b2a44325d244c82",
-    "src/understand/mod.rs": "d440ed08215d9ee746a2aae76291f78bbfe6ad23a8297da563b36b73b257896f",
+    "src/understand/language.rs": "dd362c3f0e17064a41dad2690e50d1ef86dc8b5c6d947136a9c77bb14b271039",
+    "src/understand/lexicon.rs": "aaacddad065fcb294ac6cdf34a19161f47be0838e264644a6fbfb50fd4f776ca",
+    "src/understand/mod.rs": "32a3084de4427adade685ae73165d4ac8a10dac4c00cd2aab1861c1f7ebe9502",
     "src/understand/table_generation.rs": "afce9518ad06fef6afdf387292114fef458b05f642762ae791e8c82d37c15d5a",
-    "src/understand/table_storage.rs": "d365aa69ec42b9171366e32c7ede95c75e8e216b89737378f938f0d2764b61c3",
-    "src/understand/text.rs": "770df7c6086005c8b672de8b668c06a9c661982f96ce9b127c07320e8a9db5e6",
-    "src/understand/units.rs": "8191e810df7d95ba1ea8888d094739d595ab9a06f2558476c872e0f4d2d494fa"
+    "src/understand/table_storage.rs": "a14bcd369cd678de37b28061c6195eb2a6cbdb20d6d8aac88d7a0eb02ddc9f09",
+    "src/understand/text.rs": "27d11948108a031882128faba5a2c5a838bbf79b59d6379171ff6241fe75add6",
+    "src/understand/units.rs": "68db4a3d953e8de559a96953d522b35fbca64ae95c8b267e7710a2a867081f51"
   },
   "spdx_license": "GPL-3.0-only"
 }
