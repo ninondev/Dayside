@@ -161,9 +161,11 @@ for _ in $(seq 1 480); do
     summary=$(vmmap --summary "$pid" 2>"$out/vm-$phase.stderr") || vmmap_status=$?
     printf '%s\n' "$vmmap_status" > "$out/vm-$phase.exit-code"
     echo "$summary" > "$out/vm-$phase.txt"
+    # 读完整段再停：提前 exit 会让还在写的 echo 收到断管，pipefail 之下整轮巡回中途退出。
     empty=$(echo "$summary" | awk '
-      tolower($1) == "malloc_small" && $2 == "(empty)" {print $5; exit}
-      tolower($1) == "malloc" && tolower($2) == "small" && $3 == "(empty)" {print $6; exit}
+      found { next }
+      tolower($1) == "malloc_small" && $2 == "(empty)" {print $5; found = 1}
+      tolower($1) == "malloc" && tolower($2) == "small" && $3 == "(empty)" {print $6; found = 1}
     ')
     gfx=$(echo "$summary" | awk '/^owned unmapped \(graphics\)/{print $5}')
     fp=$(field "$line" fp); peak=$(field "$line" peak); cpu=$(field "$line" cpu_ns); energy=$(field "$line" energy_nj); gpu=$(field "$line" gpu)
