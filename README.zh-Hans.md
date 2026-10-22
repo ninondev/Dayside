@@ -33,13 +33,13 @@ Dayside 是一个住在 Mac 菜单栏里的世界时钟。你加的每个地方�
 
 ## 安装
 
-需要 macOS 26 或更新版本。本次只提供 Apple 芯片版，在 [Releases](https://github.com/ninondev/Dayside/releases) 页面下载 `Dayside-1.0-arm64.dmg`。
+需要 macOS 26 或更新版本。本次只提供 Apple 芯片版，在 [Releases](https://github.com/ninondev/Dayside/releases) 页面下载 `Dayside-1.0.1-arm64.dmg`。
 
 打开磁盘映像，把 Dayside.app 拖进「应用程序」。
 
 这一版是 Developer ID 签名，经过了苹果公证。
 
-想核对下载的文件，可以在终端里运行 `shasum -a 256 Dayside-1.0-arm64.dmg`，把结果和同一个 Releases 页面上的 `SHA256SUMS.txt` 对一下。
+想核对下载的文件，可以在终端里运行 `shasum -a 256 Dayside-1.0.1-arm64.dmg`，把结果和同一个 Releases 页面上的 `SHA256SUMS.txt` 对一下。
 
 版本号在 App 的「设置 › 帮助」里。
 

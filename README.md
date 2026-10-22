@@ -52,7 +52,7 @@ Vietnamese and Indonesian. City names can use a different language from the inte
 
 ## Install
 
-Dayside needs macOS 26 or later. Download `Dayside-1.0-arm64.dmg` for Macs with Apple silicon
+Dayside needs macOS 26 or later. Download `Dayside-1.0.1-arm64.dmg` for Macs with Apple silicon
 from the [Releases](https://github.com/ninondev/Dayside/releases) page. An Intel package is not
 included in this release.
 
