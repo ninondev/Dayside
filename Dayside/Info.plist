@@ -37,7 +37,7 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>NSCalendarsFullAccessUsageDescription</key>
-	<string>开启日历功能后，Dayside 读取你选择的日历，用于显示议程和下一场会议。</string>
+	<string>开启日历功能后，Dayside 读取你选择的日历，用于显示日程和下一场会议。</string>
 	<key>NSContactsUsageDescription</key>
 	<string>仅在你选择从通讯录导入时，Dayside 读取姓名以建立人物时钟，不会修改通讯录。</string>
 	<key>CFBundleURLTypes</key>

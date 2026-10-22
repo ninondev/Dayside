@@ -12640,7 +12640,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "地点清单暂时生成不了二维码。"
+            "value": "地点列表暂时生成不了二维码。"
           }
         },
         "zh-Hant": {
@@ -13448,7 +13448,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "拷贝Slack日期令牌"
+            "value": "拷贝Slack日期标记"
           }
         },
         "zh-Hant": {
@@ -90896,7 +90896,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Slack日期令牌"
+            "value": "Slack日期标记"
           }
         },
         "en": {

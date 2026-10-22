@@ -108,7 +108,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "开启日历功能后，Dayside读取你选择的日历，用于显示议程和下一场会议。"
+            "value": "开启日历功能后，Dayside读取你选择的日历，用于显示日程和下一场会议。"
           }
         },
         "en": {
@@ -120,7 +120,7 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "開啟行事曆功能後，Dayside會讀取你選擇的行事曆，以顯示議程和下一場會議。"
+            "value": "開啟行事曆功能後，Dayside會讀取你選擇的行事曆，以顯示行程和下一場會議。"
           }
         },
         "ja": {

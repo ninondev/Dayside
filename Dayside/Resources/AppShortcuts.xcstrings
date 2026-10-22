@@ -115,7 +115,7 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "用${applicationName}尋找共同工作時段"
+            "value": "用${applicationName}找碰面時間"
           }
         },
         "ja": {
