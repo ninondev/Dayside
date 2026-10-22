@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-only
-//! 城市灯火：地球窗的夜半球上，人口够多的城市在太阳落到地平线下 6° 之后亮起，
+//! 城市灯火：地球窗的夜半球上，人口够多的都会区在太阳落到地平线下 6° 之后亮起，
 //! 曙暮里（−6° … −0.833°）先亮一半。扫动时间能看见灯一路往西点亮：夜里有人的地方是亮的，这张图才算画到了人。
 //!
-//! 资格：人口 ≥ 111 万才亮，欧洲（洲码 EU）与加拿大、澳大利亚、新西兰 ≥ 100 万；亮度分三档，
+//! 资格：城市连同方圆 30 公里内的城镇合计 ≥ 111 万才亮，欧洲（洲码 EU）与加拿大、澳大利亚、新西兰 ≥ 100 万（只看市区人口时
+//! 美国只亮 8 盏，亚特兰大市区只有 51 万）；亮度按城市自己的人口分三档，
 //! 上两档按联合国城市规模线：门槛–500 万、500–1000 万、≥ 1000 万（超大城市），越大越亮越大。同一片都会区只点一盏
-//! （相距 ≥ 0.6°）。数据由 `Tools/make_lights_bin.py` 从 GeoNames cities500 生成 `data/lights.bin`（392 盏，1.9 KB）。
+//! （相距 ≥ 0.6°）。数据由 `Tools/make_lights_bin.py` 从 GeoNames cities500 生成 `data/lights.bin`（592 盏，2.9 KB）。
 //! 灯由 `sky::add_lights` 逐像素画进地图的位图（面板、地球窗、海报都亮，−0.833° 起渐亮、−6° 全亮）；
 //! 这里只剩数据本身。原来给宿主画点的 `lights.scene` 那条路随之删掉。
 
@@ -22,15 +23,17 @@ mod tests {
     use super::*;
 
     #[test]
-    fn only_cities_of_1_11_million_qualify_one_light_per_metro_area_in_three_size_classes() {
+    fn only_metro_areas_of_1_11_million_qualify_one_light_per_metro_area_in_three_size_classes() {
         let lights = points();
-        assert_eq!(lights.len(), 392, "cities500 2026-09-15 按 ≥ 111 万（欧洲、加拿大、澳新 ≥ 100 万）、0.6° 去重");
+        assert_eq!(lights.len(), 592, "cities500 2026-10-02 方圆 30 公里合计 ≥ 111 万（欧洲、加拿大、澳新 ≥ 100 万）、0.6° 去重");
         assert!(lights.iter().all(|&(lon, lat, tier)| (-180.0..=180.0).contains(&lon) && (-90.0..=90.0).contains(&lat) && (1..=3).contains(&tier)));
         let count = |t: u8| lights.iter().filter(|l| l.2 == t).count();
-        assert_eq!((count(1), count(2), count(3)), (328, 40, 24));
+        assert_eq!((count(1), count(2), count(3)), (528, 40, 24));
         // 酌情降到 100 万的地区：科隆、布鲁塞尔、都柏林、奥斯陆、渥太华这些 100–111 万的城市有灯（按经纬度框认）。
         let has = |lon: f64, lat: f64| lights.iter().any(|p| (p.0 - lon).abs() < 0.3 && (p.1 - lat).abs() < 0.3);
         assert!(has(6.95, 50.94) && has(4.35, 50.85) && has(-6.26, 53.35) && has(10.75, 59.91) && has(-75.7, 45.42));
+        // 市区不到 111 万、都会区够的：亚特兰大、波士顿、华盛顿、迈阿密、西雅图。
+        assert!(has(-84.39, 33.75) && has(-71.06, 42.36) && has(-77.04, 38.90) && has(-80.19, 25.77) && has(-122.33, 47.61));
         // 按人口从大到小：档只会往下走，不会回升。
         assert!(lights.windows(2).all(|w| w[0].2 >= w[1].2));
         // 生成规则：任何两盏至少隔 0.6°（经度按跨日界线取近的那边）。独立地两两核一遍。

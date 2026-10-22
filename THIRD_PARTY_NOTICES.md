@@ -8,8 +8,9 @@ components below come from other sources and keep their own licenses.
 `Dayside/Resources/cities.ttcity` is a read-only index compiled from the GeoNames `cities500`
 dump: place names, alternate names, coordinates, time zone, country and first-level
 administrative region. Localized display names come from the GeoNames `alternateNamesV2` dump.
-`RustCore/data/lights.bin` (the night-time city lights on the map) is derived from the population
-column of the same `cities500` dump by `Tools/make_lights_bin.py`.
+`RustCore/data/lights.bin` (the night-time city lights on the map) is derived from the populations
+and coordinates in a `cities500` dump, with the continent column of the GeoNames `countryInfo.txt`,
+by `Tools/make_lights_bin.py`.
 
 - Source: https://www.geonames.org
 - License: Creative Commons Attribution 4.0 (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/
