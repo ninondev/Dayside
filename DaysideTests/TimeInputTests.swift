@@ -187,6 +187,15 @@ struct TimeInputTests {
         #expect(gap.before == -18_000 && gap.after == -14_400)
         #expect(resolve("2026-03-08 03:30 America/New_York").gap == nil)
     }
+
+    /// 缺口在一天的末尾也要带上：努克 2027-03-27 23:30 不存在（01:00Z 拨快，23:00 −2h → 0:00 −1h，换钟那一刻正是这天的终点）。
+    @Test func nonexistentTimeAtTheEndOfTheDayCarriesTheGap() throws {
+        let resolution = resolve("2027-03-27 23:30", zone: "America/Nuuk")
+        #expect(resolution.error == "nonexistentTime")
+        let gap = try #require(resolution.gap)
+        #expect(gap.at == date("2027-03-28T01:00:00Z"))
+        #expect(gap.before == -7_200 && gap.after == -3_600)
+    }
     /// 换算结果与面板行说同一句话：与本机差多少写「快 8小时 / 慢 8小时 / 快 4小时45分钟」，同一时间不写；
     /// 标记（原文、本机）在前。跨日写「次日（周一）」「前一日（周六）」，星期是那边那一天的。
     /// 判据各自独立：时差拿 Foundation 两个偏移相减，星期拿 Calendar 在那边的时区里算。

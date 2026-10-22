@@ -132,9 +132,9 @@ nonisolated enum TimeInput {
         let resolved: Candidates = RustCore.invoke("converter.resolve", ["candidates": candidates])
         var resolution = Resolution(error: resolved.error, dates: resolved.instants.map(Date.init(timeIntervalSince1970:)), timeZone: zone)
         if resolved.error == "nonexistentTime" {
-            // 那天里偏移变大（拨快）的那一次换钟就是缺口。
+            // 那天里偏移变大（拨快）的那一次换钟就是缺口。拨快落在午夜时（努克 23:00 → 0:00）换钟那一刻正是这天的终点，也算。
             var probe = interval.start.addingTimeInterval(-1)
-            while let transition = zone.nextDaylightSavingTimeTransition(after: probe), transition < interval.end, transition > probe {
+            while let transition = zone.nextDaylightSavingTimeTransition(after: probe), transition <= interval.end, transition > probe {
                 let before = zone.secondsFromGMT(for: transition.addingTimeInterval(-1)), after = zone.secondsFromGMT(for: transition)
                 if after > before { resolution.gap = (transition, before, after); break }
                 probe = transition
