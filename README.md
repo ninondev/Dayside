@@ -139,8 +139,7 @@ to the recorded name.
 1. The translations have not been read by native speakers yet. Corrections are welcome.
 2. Automated accessibility checks pass on every page. A full hands-on VoiceOver walkthrough has not been done yet.
 3. Market Clock includes the official 2026 holiday closures for Shanghai and Hong Kong. Other years follow general rules that can miss a bridging holiday. Half-day sessions are not shown.
-4. The Earth window and a few pages use somewhat more memory than before. Making them lighter is planned for 1.0.1.
-5. Time zone rules come from macOS. Dayside warns when this Mac's data is older than known rule changes.
+4. Time zone rules come from macOS. Dayside warns when this Mac's data is older than known rule changes.
 
 Feedback goes to [GitHub Issues](https://github.com/ninondev/Dayside/issues).
 
