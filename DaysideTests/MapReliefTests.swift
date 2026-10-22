@@ -37,6 +37,29 @@ struct MapReliefTests {
         #expect(view.ownedSurfaceCount == 1)
     }
 
+    /// 窗口关上：像素面交出去之前标成可回收（系统可能已经收走，那就是空的）。SwiftUI 留着关掉的地球窗，
+    /// 窗口服务器还挂着最后一帧，不标的话这块面一直算在本进程名下。
+    @MainActor @Test func closingTheWindowLetsTheSystemReclaimTheMapSurface() throws {
+        func purgeability(_ surface: IOSurface) -> IOSurfacePurgeabilityState {
+            var state = IOSurfacePurgeabilityState.purgeableKeepCurrent
+            _ = surface.setPurgeable(.purgeableKeepCurrent, oldState: &state)
+            return state
+        }
+        let view = MapSurfaceView(frame: CGRect(x: 0, y: 0, width: 32, height: 16))
+        let window = NSWindow(contentRect: CGRect(x: 0, y: 0, width: 32, height: 16), styleMask: [.titled, .closable],
+                              backing: .buffered, defer: true)
+        window.isReleasedWhenClosed = false
+        window.contentView = view
+        defer { window.contentView = nil; MapRelief.usedOffscreen() }
+        view.render(seconds: 1_790_000_000, size: CGSize(width: 32, height: 16), scale: 1,
+                    latitudes: WorldMapScene.standard, lights: 1, large: true)
+        let surface = try #require(view.ownedSurfaces.first)
+        #expect(purgeability(surface) != .purgeableVolatile)
+        window.close()
+        #expect(view.ownedSurfaceCount == 0)
+        #expect([IOSurfacePurgeabilityState.purgeableVolatile, .purgeableEmpty].contains(purgeability(surface)))
+    }
+
     @Test func reliefIsReleasedOnlyWhenNobodyHasLookedSinceTheLastMapWentAway() {
         var life = ReliefLifecycle(loaded: true)
         life.retain()                                   // 面板打开

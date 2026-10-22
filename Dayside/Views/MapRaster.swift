@@ -359,6 +359,7 @@ final class MapSurfaceView: NSView {
 
     #if DEBUG
     var ownedSurfaceCount: Int { surfaces.count }
+    var ownedSurfaces: [IOSurface] { surfaces }
     #endif
 
     override init(frame: NSRect) {
@@ -388,7 +389,7 @@ final class MapSurfaceView: NSView {
         guard let window else { releaseSurfaces(); return }
         let center = NotificationCenter.default
         observers.append(center.addObserver(forName: NSWindow.willCloseNotification, object: window, queue: .main) { [weak self] _ in
-            MainActor.assumeIsolated { self?.releaseSurfaces() }
+            MainActor.assumeIsolated { self?.releaseSurfaces(closing: true) }
         })
         observers.append(center.addObserver(forName: NSWindow.didChangeOcclusionStateNotification, object: window, queue: .main) { [weak self] _ in
             MainActor.assumeIsolated {
@@ -469,11 +470,14 @@ final class MapSurfaceView: NSView {
         }
     }
 
-    func releaseSurfaces() {
+    /// `closing`：窗口关上后 SwiftUI 留着这扇窗，窗口服务器里还挂着它的最后一帧，像素面不随本进程放手而还掉，
+    /// 一直算在本进程名下（内存巡回里关窗后的 4.8 MB owned unmapped）。交出去之前标成可回收：内容在系统收走之前不变。
+    func releaseSurfaces(closing: Bool = false) {
         releaseSpare?.cancel()
         releaseSpare = nil
         redrawTimes = []
         layer?.contents = nil
+        if closing { surfaces.forEach { _ = $0.setPurgeable(.purgeableVolatile, oldState: nil) } }
         surfaces = []
         front = -1
         last = nil
