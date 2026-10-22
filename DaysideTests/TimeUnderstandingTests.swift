@@ -74,8 +74,7 @@ struct TimeUnderstandingTests {
     /// 新路少了旧版「拼回来仍是同一天」的检查，平年的 2 月 29 日被挪到 3 月 1 日。
     @Test func datesThatDoNotExistThereAreSaidSo() throws {
         let feb29 = try first("Feb 29 9am UTC")
-        #expect(feb29.problem == .invalidDate, "2026-09 说的 2 月 29 日是 2027 年的，平年没有这一天")
-        #expect(feb29.intervals.isEmpty)
+        #expect(iso(feb29.start) == "2028-02-29T09:00:00Z", "2026-09 没写年的 2 月 29 日是下一个闰年的，不挪到 2027-03-01")
         let leap = try first("Feb 29 9am UTC", reference: ISO8601DateFormatter().date(from: "2027-12-01T12:00:00Z")!)
         #expect(iso(leap.start) == "2028-02-29T09:00:00Z", "2028 年是闰年")
         let apia = try first("2011-12-30 12:00 Apia")
@@ -314,6 +313,24 @@ struct TimeUnderstandingTests {
         #expect(day?.year == 2027)
         let soon = TimeUnderstanding.civilDay(.monthDay(month: 9, day: 20), reference: reference, in: losAngeles)
         #expect(soon?.year == 2026, "四天前的月日仍是今年")
+    }
+
+    /// 一个月的宽限跨年也算：一月初说的「12月20日」是上个月那天，不是 349 天后。平年说的「2月29日」落到下一个闰年。
+    @Test func monthDayGraceCrossesTheYearAndFeb29FindsALeapYear() throws {
+        let parse = ISO8601DateFormatter()
+        func year(_ month: Int, _ day: Int, on reference: String) -> Int? {
+            TimeUnderstanding.civilDay(.monthDay(month: month, day: day), reference: parse.date(from: reference)!, in: losAngeles)?.year
+        }
+        #expect(year(12, 20, on: "2027-01-05T20:00:00Z") == 2026, "十六天前")
+        #expect(year(12, 1, on: "2027-01-05T20:00:00Z") == 2027, "三十五天前，算明年的")
+        #expect(year(1, 10, on: "2027-01-05T20:00:00Z") == 2027)
+        #expect(year(2, 29, on: "2026-09-24T12:00:00Z") == 2028)
+        #expect(year(2, 29, on: "2028-03-15T20:00:00Z") == 2028, "半个月前的闰日")
+        #expect(year(2, 29, on: "2028-04-15T20:00:00Z") == 2032)
+        #expect(year(2, 29, on: "2096-04-01T20:00:00Z") == 2104, "2100 年不闰")
+        let january = parse.date(from: "2027-01-05T20:00:00Z")!
+        #expect(iso(try first("Dec 20 9:00", reference: january).start) == "2026-12-20T17:00:00Z")
+        #expect(iso(try first("12月20日 9:00", reference: january).start) == "2026-12-20T17:00:00Z")
     }
 
     /// 原文写了写信人在哪儿（「我在柏林」）：「我这边」先按那里算，本机仍在表里让人改回去；没写时照今天的做法。

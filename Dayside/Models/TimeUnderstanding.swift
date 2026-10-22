@@ -35,7 +35,7 @@ nonisolated enum TimeUnderstanding {
 
     enum DateSpec: Decodable, Hashable, Sendable {
         case absolute(year: Int, month: Int, day: Int)
-        /// 没写年：最近的将来那一年（今年这一天过去一个月以上就是明年）。
+        /// 没写年：不早于一个月前的最近一次（一月的「12月20日」是上个月的，十一月的「10月3日」是明年的，「2月29日」找下一个闰年）。
         case monthDay(month: Int, day: Int)
         case offset(days: Int)
         /// ISO 星期（1 = 星期一）；`week` 是 this / next / last，nil = 从今天起下一个（今天就是也算今天）。
@@ -796,8 +796,9 @@ nonisolated enum TimeUnderstanding {
         return make(intervals)
     }
 
-    /// 日期说明 → 该时区里的民用日（年月日）。没写日期就是 `reference` 那天。那一天在这个时区不存在时（平年的 2 月 29 日、
+    /// 日期说明 → 该时区里的民用日（年月日）。没写日期就是 `reference` 那天。写了年而那一天在这个时区不存在时（2027-02-29、
     /// Apia 跳过的 2011-12-30）给 nil：拼回来要还是同一天，不让 Foundation 悄悄挪到下一天（旧 `TimeInput` 有这道检查，新路补上）。
+    /// 没写年就跳过没有这一天的年份。
     static func civilDay(_ spec: DateSpec?, reference: Date, in zone: TimeZone) -> DateComponents? {
         let calendar = Calendar.gregorianUTC(zone)
         let today = calendar.dateComponents([.year, .month, .day, .weekday], from: reference)
@@ -817,13 +818,16 @@ nonisolated enum TimeUnderstanding {
         case let .absolute(year, month, day):
             return existing(year, month, day)
         case let .monthDay(month, day):
-            guard let year = today.year else { return nil }
-            // 今年这一天已经过去一个月以上，就是明年的（「Oct 3」在 11 月说是明年十月）。
-            if let thisYear = calendar.date(from: DateComponents(year: year, month: month, day: day, hour: 12)),
-               let limit = calendar.date(byAdding: .day, value: -30, to: reference), thisYear < limit {
-                return existing(year + 1, month, day)
+            guard let year = today.year, let limit = calendar.date(byAdding: .day, value: -30, to: reference) else { return nil }
+            // 不早于一个月前的最近一次：一月说「Dec 20」是上个月那天，十一月说「Oct 3」是明年十月，
+            // 平年说「Feb 29」是下一个闰年的（闰年最多隔 8 年：2096 之后是 2104）。
+            for candidate in (year - 1)...(year + 8) {
+                guard let wanted = existing(candidate, month, day),
+                      let noon = calendar.date(from: DateComponents(year: candidate, month: month, day: day, hour: 12)),
+                      noon >= limit else { continue }
+                return wanted
             }
-            return existing(year, month, day)
+            return nil
         case let .offset(days):
             return shifted(days)
         case let .weekday(target, week):
