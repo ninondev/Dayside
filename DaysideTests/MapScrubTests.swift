@@ -132,6 +132,47 @@ struct MapScrubTests {
         }
     }
 
+    /// 豪勋爵岛春天只拨快半小时（2:00 → 2:30）：钟面上 1:00 之后的整点是 3:00，3:00 之前的整点是 1:00（2:30 只是整刻钟）。
+    /// 判据另算：从起点逐分钟往后（往前）找钟面读数第一次落在整点（整刻钟）的时刻；半小时、45 分、拨两小时的地方
+    /// 2026–2027 年每次换钟前后三小时都要对上。
+    @Test func arrowKeysLandOnTheClockFaceAcrossHalfHourAndTwoHourClockChanges() {
+        let lordHowe = TimeZone(identifier: "Australia/Lord_Howe")!
+        let one = Date(timeIntervalSince1970: 1_791_037_800)           // 2026-10-04 01:00 +10:30
+        let halfPastTwo = Date(timeIntervalSince1970: 1_791_041_400)   // 02:30 +11:00，换钟那一刻
+        let three = Date(timeIntervalSince1970: 1_791_043_200)         // 03:00 +11:00
+        #expect(MapScrub.step(from: one, minutes: 60, forward: true, in: lordHowe) == three)
+        #expect(MapScrub.step(from: one.addingTimeInterval(45 * 60), minutes: 60, forward: true, in: lordHowe) == three)
+        #expect(MapScrub.step(from: three, minutes: 60, forward: false, in: lordHowe) == one)
+        #expect(MapScrub.step(from: halfPastTwo, minutes: 60, forward: false, in: lordHowe) == one)
+        #expect(MapScrub.step(from: one.addingTimeInterval(50 * 60), minutes: 15, forward: true, in: lordHowe) == halfPastTwo)
+
+        let ids = ["Australia/Lord_Howe", "Pacific/Chatham", "America/St_Johns", "America/Los_Angeles", "Antarctica/Troll"]
+        var changes = 0
+        for zone in ids.compactMap(TimeZone.init(identifier:)) {
+            func onClockFace(_ instant: Date, _ seconds: Int) -> Bool {
+                (Int(instant.timeIntervalSince1970) + zone.secondsFromGMT(for: instant)) % seconds == 0
+            }
+            var cursor = Date(timeIntervalSince1970: 1_767_225_600)   // 2026-01-01T00:00:00Z
+            while let change = zone.nextDaylightSavingTimeTransition(after: cursor), change.timeIntervalSince1970 < 1_830_297_600 {
+                cursor = change
+                changes += 1
+                for k in stride(from: -180, through: 180, by: 5) {
+                    let from = change.addingTimeInterval(Double(k * 60))
+                    for minutes in [60, 15] {
+                        for forward in [true, false] {
+                            let expected = (1...(minutes + 180)).lazy
+                                .map { from.addingTimeInterval(Double((forward ? $0 : -$0) * 60)) }
+                                .first { onClockFace($0, minutes * 60) }
+                            #expect(MapScrub.step(from: from, minutes: minutes, forward: forward, in: zone) == expected,
+                                    "\(zone.identifier) \(from) \(minutes) \(forward)")
+                        }
+                    }
+                }
+            }
+        }
+        #expect(changes >= 16)
+    }
+
     /// 「拷贝地图图片」：一张 1200 × 460 pt 的海报、2 倍像素（2400 × 920），能编成 PNG；
     /// 图本身就是海报（没有深色边框），四个角是地图上的天色，不是同一个底色。
     @MainActor @Test func mapImageIsAPosterAtTwiceItsSize() throws {

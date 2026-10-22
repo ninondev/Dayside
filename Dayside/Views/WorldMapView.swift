@@ -73,16 +73,21 @@ nonisolated enum MapScrub {
         let step = Double(max(1, minutes) * 60)
         let t = date.timeIntervalSince1970
         guard t.isFinite else { return date }
-        let offset = Double(zone.secondsFromGMT(for: date))
-        let wall = t + offset
-        let target = forward ? (floor(wall / step) + 1) * step : (ceil(wall / step) - 1) * step
-        var result = target - offset
-        let newOffset = Double(zone.secondsFromGMT(for: Date(timeIntervalSince1970: result)))
-        if newOffset != offset, (result + newOffset).truncatingRemainder(dividingBy: step) != 0 {
-            let adjusted = target - newOffset
-            if forward ? adjusted > t : adjusted < t { result = adjusted }
+        func offset(_ u: Double) -> Double { Double(zone.secondsFromGMT(for: Date(timeIntervalSince1970: u))) }
+        // 一步之内最多跨一次换钟：换钟前后两种偏移各按自己的钟面数出下一个（上一个）整点，只认那一刻真用这个偏移的，取最近的。
+        // 豪勋爵岛拨快半小时（2:00 → 2:30）：1:00 之后的整点是 3:00，2:30 不算。
+        let reach = step + 3 * 3600
+        let direction: Double = forward ? 1 : -1
+        var best: Double?
+        var fallback: Double?
+        for zoneOffset in [offset(t), offset(t + direction * reach)] {
+            let wall = t + zoneOffset
+            var candidate = (forward ? floor(wall / step) + 1 : ceil(wall / step) - 1) * step - zoneOffset
+            fallback = fallback ?? candidate
+            while abs(candidate - t) <= reach, offset(candidate) != zoneOffset { candidate += direction * step }
+            if abs(candidate - t) <= reach, best.map({ forward ? candidate < $0 : candidate > $0 }) ?? true { best = candidate }
         }
-        return Date(timeIntervalSince1970: result)
+        return Date(timeIntervalSince1970: best ?? fallback ?? t)
     }
 }
 
