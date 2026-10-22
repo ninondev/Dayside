@@ -321,15 +321,10 @@ private struct TravelPlanView: View {
         return words.filter { !$0.isEmpty }.joined(separator: ", ")
     }
 
-    /// 一段的当地钟点：跨日的写「次日 / 前一日」。
+    /// 一段的当地钟点：跨日的写「次日 / 前一日」，日期线两侧差两天的写「两日后 / 两日前」。
     private func segmentText(_ segment: TravelFixedTimeRows.Segment?) -> String {
         guard let segment else { return "" }
-        let clock = wallTime(segment.minute)
-        switch segment.dayOffset {
-        case 1: return String(format: L10n.string("次日 %@", locale: core.uiLocale), clock)
-        case -1: return String(format: L10n.string("前一日 %@", locale: core.uiLocale), clock)
-        default: return clock
-        }
+        return ClockText.dayClock(segment.dayOffset, wallTime(segment.minute), locale: core.uiLocale)
     }
 
     /// 「2026-10-25」→ 按界面语言的日期写法。

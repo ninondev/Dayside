@@ -46,6 +46,20 @@ struct TravelFixedTimeTests {
         #expect(rows[0].segments.first?.night == true)
     }
 
+    @Test func fixedTimesAcrossTheDateLineCanBeTwoDaysLater() {
+        // 帕果帕果（家，UTC−11）→ 莱恩群岛（UTC+14）：家里 23:30 = 当地两日后 0:30；家里 22:00 = 当地次日 23:00。
+        let trip = Self.trip(origin: "Pacific/Pago_Pago", destination: "Pacific/Kiritimati",
+                             arrival: "2026-10-01T12:00:00Z")
+        let times = [TravelFixedTime(id: UUID(), label: "服药", minute: 23 * 60 + 30),
+                     TravelFixedTime(id: UUID(), label: "通话", minute: 22 * 60)]
+        let rows = TravelFixedTimeConverter.rows(times: times, trip: trip).rows
+        #expect(rows.count == 2)
+        #expect(rows[0].segments.first?.minute == 30)
+        #expect(rows[0].segments.first?.dayOffset == 2)
+        #expect(rows[1].segments.first?.minute == 23 * 60)
+        #expect(rows[1].segments.first?.dayOffset == 1)
+    }
+
     @Test func aClockChangeInsideTheWeekSplitsTheSegment() {
         // 家在东京（不换钟），目的地伦敦 2026-10-25 退夏令时：家里 17:00 JST 在伦敦
         // 10-25 之前是 9:00 BST、之后是 8:00 GMT → 两段。

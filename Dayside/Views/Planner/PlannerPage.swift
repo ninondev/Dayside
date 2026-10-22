@@ -1065,10 +1065,15 @@ enum PlannerText {
     static func clock(_ date: Date, in zone: TimeZone, from reference: TimeZone = .autoupdatingCurrent,
                       format: ClockFormat, locale: Locale) -> String {
         let time = TimeFormatting.string(for: date, in: zone, format: format)
-        let offset = ClockText.dayOffset(of: date, in: zone, from: reference)
-        guard offset != 0 else { return time }
-        return String(format: L10n.string(offset > 0 ? "次日（%1$@）%2$@" : "前一日（%1$@）%2$@", locale: locale), locale: locale,
-                      ClockText.weekday(date, in: zone, locale: locale), time)
+        let format: String
+        switch ClockText.dayOffset(of: date, in: zone, from: reference) {
+        case 0: return time
+        case 1: format = L10n.string("次日（%1$@）%2$@", locale: locale)
+        case -1: format = L10n.string("前一日（%1$@）%2$@", locale: locale)
+        case 2...: format = L10n.string("两日后（%1$@）%2$@", locale: locale)
+        default: format = L10n.string("两日前（%1$@）%2$@", locale: locale)
+        }
+        return String(format: format, locale: locale, ClockText.weekday(date, in: zone, locale: locale), time)
     }
 
     private static func outside(_ fit: OverlapPlanner.Fit) -> Bool {

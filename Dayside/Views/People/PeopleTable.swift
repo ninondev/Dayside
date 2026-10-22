@@ -230,7 +230,7 @@ struct PeopleTable: View {
         let zone = row.participant.timeZone
         let clock = TimeFormatting.string(for: date, in: zone, format: ClockFormat(hourStyle: core.settings.hourStyle, showSeconds: false))
         let offset = ClockText.dayOffset(of: date, in: zone, from: .current)
-        let day: String? = offset == 0 ? nil : L10n.string(offset > 0 ? "次日" : "前一日", locale: core.uiLocale)
+        let day = ClockText.dayWord(offset, locale: core.uiLocale)
         let content = VStack(alignment: .trailing, spacing: 1) {
             if row.zoneKnown {
                 Text(verbatim: clock).font(ClockFace.medium(core.settings, scale: textScale))

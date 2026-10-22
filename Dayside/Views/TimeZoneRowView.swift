@@ -570,7 +570,7 @@ private struct RowAccessibility: ViewModifier {
                 parts.append(L10n.string(path.up ? "极昼" : "极夜", locale: core.uiLocale))
             }
         }
-        if day != 0 { parts.append(L10n.string(day > 0 ? "次日" : "前一日", locale: core.uiLocale)) }
+        if let word = ClockText.dayWord(day, locale: core.uiLocale) { parts.append(word) }
         parts.append(time)
         if shift != 0 {
             parts.append(clockChangeDescription(shift, locale: core.uiLocale))
@@ -651,7 +651,7 @@ private struct ClockDrivenRowTimeText: View {
                 .fixedSize()
             if offset != 0 || signed != nil {
                 HStack(spacing: 6) {
-                    if offset != 0 { Text(offset > 0 ? "次日" : "前一日") }
+                    if let word = ClockText.dayWord(offset, locale: core.uiLocale) { Text(verbatim: word) }
                     // 换钟徽标：图标 + 有符号的偏移（「+1」「−0:30」），挤不下「夏令时」三个字，意思交给读屏。
                     if let signed {
                         Label(signed, systemImage: "clock.arrow.2.circlepath")
@@ -669,7 +669,7 @@ private struct ClockDrivenRowTimeText: View {
         .accessibilityElement(children: .ignore)
         .accessibilityLabel({
             var parts = [time]
-            if offset != 0 { parts.insert(L10n.string(offset > 0 ? "次日" : "前一日", locale: core.uiLocale), at: 0) }
+            if let word = ClockText.dayWord(offset, locale: core.uiLocale) { parts.insert(word, at: 0) }
             if shift != 0 { parts.append(clockChangeDescription(shift, locale: core.uiLocale)) }
             if let spokenName { parts.insert(spokenName, at: 0) }
             return Text(verbatim: parts.joined(separator: ", "))

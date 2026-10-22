@@ -85,7 +85,7 @@ enum TravelFixedTimeConverter {
                 else { return nil }
                 let dayOffset = Self.utc.dateComponents([.day], from: homeCivil, to: thereCivil).day ?? 0
                 return Day(date: formatter.string(from: moment), minute: hour * 60 + minute,
-                           dayOffset: max(-1, min(1, dayOffset)))
+                           dayOffset: max(-2, min(2, dayOffset)))
             }
         }
         let input = Input(times: times.map { Entry(id: $0.id, label: $0.label, minute: $0.minute) },

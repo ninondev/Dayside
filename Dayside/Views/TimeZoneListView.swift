@@ -222,7 +222,7 @@ enum RowOffsetLayout {
         var clockWidth = width(time, font: timeFont)
         let day = ClockText.dayOffset(of: core.referenceDate, in: zone.timeZone, from: .current)
         let shift = zone.timeZone.secondsFromGMT(for: core.referenceDate) - zone.timeZone.secondsFromGMT(for: core.now)
-        var lowerWidth: CGFloat = day == 0 ? 0 : width(L10n.string(day > 0 ? "次日" : "前一日", locale: core.uiLocale), font: detailFont)
+        var lowerWidth: CGFloat = ClockText.dayWord(day, locale: core.uiLocale).map { width($0, font: detailFont) } ?? 0
         if shift != 0 {
             let signed: String = PresentationCore.call("signed_offset", ["seconds": shift])
             lowerWidth += width(signed, font: detailFont) + 20 + (day == 0 ? 0 : 6)

@@ -461,7 +461,7 @@ pub fn fixed_times(input: &Value) -> Value {
                 .collect()
         })
         .unwrap_or_default();
-    // 宿主按「每条 × 每天」算好目的地的墙钟分钟与民用日差（跨日 ±1），顺序与 times 一致。
+    // 宿主按「每条 × 每天」算好目的地的墙钟分钟与民用日差（跨日 ±1，日期线两侧差两天时 ±2），顺序与 times 一致。
     let converted = input["converted"].as_array().cloned().unwrap_or_default();
     let rows: Vec<Value> = entries
         .iter()
@@ -474,7 +474,7 @@ pub fn fixed_times(input: &Value) -> Value {
                     list.iter()
                         .filter_map(|day| {
                             let minute = day["minute"].as_i64().filter(|n| (0..1440).contains(n))?;
-                            let offset = day["dayOffset"].as_i64().filter(|n| (-1..=1).contains(n))?;
+                            let offset = day["dayOffset"].as_i64().filter(|n| (-2..=2).contains(n))?;
                             let date = day["date"].as_str().unwrap_or("").to_owned();
                             Some(json!({"date":date,"minute":minute,"dayOffset":offset,
                                 "night": !(NIGHT_END..NIGHT_START).contains(&minute)}))
@@ -1561,6 +1561,22 @@ mod fixed_time_tests {
         assert_eq!(rows[0]["segments"][0]["fromDate"], json!("2026-10-01"));
         assert_eq!(rows[0]["segments"][0]["toDate"], json!("2026-10-02"));
         assert_eq!(rows[0]["segments"][0]["days"], json!(2));
+    }
+
+    #[test]
+    fn two_days_across_the_date_line_are_kept_and_more_are_dropped() {
+        // 帕果帕果（UTC−11）家里 23:30 = 莱恩群岛（UTC+14）两日后 0:30。差三天不是真的民用日差，那一天丢掉。
+        let result = fixed_times(&json!({
+            "times":[{"id":id(1),"label":"服药","minute":1410}],
+            "converted":[[
+                {"date":"2026-10-01","minute":30,"dayOffset":2},
+                {"date":"2026-10-02","minute":30,"dayOffset":3}
+            ]]
+        }));
+        let days = result["rows"][0]["days"].as_array().unwrap();
+        assert_eq!(days.len(), 1);
+        assert_eq!(days[0]["dayOffset"], json!(2));
+        assert_eq!(result["rows"][0]["segments"][0]["dayOffset"], json!(2));
     }
 
     #[test]

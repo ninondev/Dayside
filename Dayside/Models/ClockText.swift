@@ -85,6 +85,7 @@ enum ClockText {
     /// 该地在 `date` 这一刻的当地日期比 `reference` 时区的当地日期晚几天：+1 = 次日，−1 = 前一日，0 = 同一天。
     /// 排会、例会轮换与日历页的「各地时间」行只在行首写一次日期，其余地点跨日时靠它标「次日 / 前一日」
     /// （Rust `presentation.window_places` 的 `dayOffset`）。比较的是各自时区里的年月日，不是 24 小时的倍数。
+    /// 日期线两侧（UTC−11 的帕果帕果与 UTC+14 的圣诞岛差 25 小时）每天有一小时差两天，所以还会有 ±2。
     static func dayOffset(of date: Date, in zone: TimeZone, from reference: TimeZone) -> Int {
         let components: Set<Calendar.Component> = [.year, .month, .day]
         let utc = Calendar.gregorianUTC(TimeZone(secondsFromGMT: 0)!)
@@ -92,6 +93,29 @@ enum ClockText {
               let there = utc.date(from: Calendar.gregorianUTC(reference).dateComponents(components, from: date))
         else { return 0 }
         return utc.dateComponents([.day], from: there, to: here).day ?? 0
+    }
+
+    /// `dayOffset` 的叫法：「次日」「前一日」，差两天「两日后」「两日前」；同一天给 nil。
+    static func dayWord(_ offset: Int, locale: Locale) -> String? {
+        switch offset {
+        case 0: nil
+        case 1: L10n.string("次日", locale: locale)
+        case -1: L10n.string("前一日", locale: locale)
+        case 2...: L10n.string("两日后", locale: locale)
+        default: L10n.string("两日前", locale: locale)
+        }
+    }
+
+    /// 钟点带上跨日：「次日 9:00」「两日后 0:00」（en「9:00 next day」）；同一天只写钟点。
+    static func dayClock(_ offset: Int, _ clock: String, locale: Locale) -> String {
+        let format: String? = switch offset {
+        case 0: nil
+        case 1: L10n.string("次日 %@", locale: locale)
+        case -1: L10n.string("前一日 %@", locale: locale)
+        case 2...: L10n.string("两日后 %@", locale: locale)
+        default: L10n.string("两日前 %@", locale: locale)
+        }
+        return format.map { String(format: $0, clock) } ?? clock
     }
 
     /// 一天里的第几分钟 → 钟点文本（可约时段、例会漂移的「此前 4:00」、分享页的可约时段）。

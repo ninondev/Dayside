@@ -104,6 +104,27 @@ struct ClockTextTests {
         #expect(!TimeInputView.isDifferentDay(instant, in: london, from: tokyo))
     }
 
+    /// 日期线两侧差 25 小时（帕果帕果 UTC−11、莱恩群岛 UTC+14），每天有一小时两地差两天：
+    /// 帕果帕果周四 23:00 = 莱恩群岛周六 0:00。跨日的叫法写「两日后 / 两日前」，不写成「次日 / 前一日」。
+    @MainActor @Test
+    func twoDaysApartAcrossTheDateLineAreNamedSo() {
+        let pagoPago = TimeZone(identifier: "Pacific/Pago_Pago")!
+        let kiritimati = TimeZone(identifier: "Pacific/Kiritimati")!
+        let late = ISO8601DateFormatter().date(from: "2026-10-23T10:00:00Z")!   // 帕果帕果 10-22 23:00、莱恩群岛 10-24 0:00
+        let zh = Locale(identifier: "zh-Hans"), en = Locale(identifier: "en")
+        #expect(ClockText.dayOffset(of: late, in: kiritimati, from: pagoPago) == 2)
+        #expect(ClockText.dayOffset(of: late, in: pagoPago, from: kiritimati) == -2)
+        #expect(MomentTable.dayNote(late, in: kiritimati, from: pagoPago, locale: zh) == "两日后（周六）")
+        #expect(MomentTable.dayNote(late, in: pagoPago, from: kiritimati, locale: zh) == "两日前（周四）")
+        #expect(MomentTable.dayNote(late, in: kiritimati, from: pagoPago, locale: en) == "two days later (Sat)")
+        #expect(WorldMapView.clock(late, in: kiritimati, hourStyle: .force24, locale: zh, reference: pagoPago) == "两日后 0:00")
+        #expect(WorldMapView.clock(late, in: pagoPago, hourStyle: .force24, locale: en, reference: kiritimati) == "23:00 two days earlier")
+        #expect(PlannerText.clock(late, in: kiritimati, from: pagoPago, format: ClockFormat(hourStyle: .force24, showSeconds: false),
+                                  locale: zh) == "两日后（周六）0:00")
+        // 一小时后两地只差一天，仍写「次日」。
+        #expect(MomentTable.dayNote(late.addingTimeInterval(3_600), in: kiritimati, from: pagoPago, locale: zh) == "次日（周六）")
+    }
+
     // MARK: - 分钟、区间、只在非本年写年份
 
     /// 一天里的第几分钟 → 钟点（可约时段、例会漂移、分享页可约时段共用）。

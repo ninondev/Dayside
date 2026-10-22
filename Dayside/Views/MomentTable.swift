@@ -230,12 +230,12 @@ struct MomentTable: View {
         return ClockText.range(from, sameDay ? to : "\(ClockText.day(end, in: zone, locale: locale, now: now)) \(to)")
     }
 
-    /// 「次日（周日）」「前一日（周四）」：与 `reference` 那个钟的那一天比；同一天给 nil。星期是那边那一天的：只写「次日」时还要再算一遍是星期几。
+    /// 「次日（周日）」「前一日（周四）」「两日后（周六）」：与 `reference` 那个钟的那一天比；同一天给 nil。
+    /// 星期是那边那一天的：只写「次日」时还要再算一遍是星期几。
     static func dayNote(_ date: Date, in zone: TimeZone, from reference: TimeZone, locale: Locale) -> String? {
-        let offset = ClockText.dayOffset(of: date, in: zone, from: reference)
-        guard offset != 0 else { return nil }
+        guard let word = ClockText.dayWord(ClockText.dayOffset(of: date, in: zone, from: reference), locale: locale) else { return nil }
         return String(format: L10n.string("%1$@（%2$@）", locale: locale), locale: locale,
-                      L10n.string(offset > 0 ? "次日" : "前一日", locale: locale), ClockText.weekday(date, in: zone, locale: locale))
+                      word, ClockText.weekday(date, in: zone, locale: locale))
     }
 
     /// 读屏念的值：竖线在本机几点（点过别处时再说原来那一刻），每个地方那一刻是白天还是夜晚。钟点由各行自己念，这里不重复。

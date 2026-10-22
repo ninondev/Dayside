@@ -825,13 +825,11 @@ struct WorldMapView: View {
                  time: clock(core.referenceDate, in: zone.timeZone, hourStyle: model.settings.hourStyle, locale: model.uiLocale))
     }
 
-    /// 地图上写的钟点：那边已是次日 / 还是前一日时套「次日 %@ / 前一日 %@」（与面板行、排会结果同一套判据
-    /// `ClockText.dayOffset` 与同两条文案；en 是「9:00 next day」）。同一天只写钟点。
+    /// 地图上写的钟点：那边已是次日 / 还是前一日时套「次日 %@ / 前一日 %@」，差两天套「两日后 %@ / 两日前 %@」
+    /// （与面板行、排会结果同一套判据 `ClockText.dayOffset` 与同一组文案；en 是「9:00 next day」）。同一天只写钟点。
     static func clock(_ date: Date, in zone: TimeZone, hourStyle: HourStyle, locale: Locale, reference: TimeZone = .current) -> String {
         let time = TimeFormatting.string(for: date, in: zone, format: ClockFormat(hourStyle: hourStyle, showSeconds: false))
-        let offset = ClockText.dayOffset(of: date, in: zone, from: reference)
-        guard offset != 0 else { return time }
-        return String(format: L10n.string(offset > 0 ? "次日 %@" : "前一日 %@", locale: locale), time)
+        return ClockText.dayClock(ClockText.dayOffset(of: date, in: zone, from: reference), time, locale: locale)
     }
 
     var body: some View {
