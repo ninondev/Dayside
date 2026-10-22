@@ -114,7 +114,8 @@ pub(super) fn with_exact_city_spelling<T>(lookup: impl FnOnce() -> T) -> T {
 const COUNTRY_ZONES: &str = include_str!("../../data/country_zones.tsv");
 const COUNTRY_NAMES: &str = include_str!("../../data/country_names.tsv");
 
-/// 系统地区名里没有、人们却常这么写的短称（系统把 CN 叫「中国大陆 / China mainland」）。
+/// 系统地区名里没有、人们却常这么写的短称（系统把 CN 叫「中国大陆 / China mainland」）。认不出的国家名会落到同名的小镇：
+/// 「9am in Palestine」此前读成得州的 Palestine（芝加哥时间），「in Scotland」读成美国的 Scotland 镇，「in Burma」读成约旦的 Burmā。
 const COUNTRY_SHORT: &[(&str, &str)] = &[
     ("china", "CN"), ("中国", "CN"), ("中國", "CN"), ("chine", "CN"), ("cina", "CN"), ("chiny", "CN"), ("китай", "CN"),
     ("중국", "CN"), ("trung quoc", "CN"), ("tiongkok", "CN"), ("cin", "CN"),
@@ -125,6 +126,11 @@ const COUNTRY_SHORT: &[(&str, &str)] = &[
     ("korea", "KR"), ("한국", "KR"), ("holland", "NL"), ("czechia", "CZ"), ("czech republic", "CZ"), ("viet nam", "VN"),
     ("соединенные штаты", "US"), ("соединенных штатах", "US"), ("сша", "US"),
     ("stanach zjednoczonych", "US"), ("chiny", "CN"),
+    ("palestine", "PS"), ("state of palestine", "PS"), ("palestina", "PS"), ("palästina", "PS"), ("palestyna", "PS"), ("filistin", "PS"),
+    ("палестина", "PS"), ("パレスチナ", "PS"), ("팔레스타인", "PS"), ("巴勒斯坦", "PS"),
+    ("turkey", "TR"), ("터키", "TR"), ("scotland", "GB"), ("wales", "GB"), ("northern ireland", "GB"), ("burma", "MM"),
+    ("ivory coast", "CI"), ("east timor", "TL"), ("vatican", "VA"), ("bosnia", "BA"), ("swaziland", "SZ"),
+    ("dr congo", "CD"), ("democratic republic of the congo", "CD"),
 ];
 
 /// 国家名表与查询用引擎自己的折叠（快捷指令进程也有）；城市索引的键用 `crate::catalog::fold`（见 `city_lookup`）。
@@ -163,6 +169,10 @@ fn country_names() -> &'static FastMap<String, &'static str> {
             let Some(code) = fields.next() else { continue };
             for name in fields {
                 add(name, code);
+                // 系统的英文名用「&」（Bosnia & Herzegovina、Trinidad & Tobago），人多半写 and。
+                if name.contains(" & ") {
+                    add(&name.replace(" & ", " and "), code);
+                }
             }
         }
         for (name, code) in COUNTRY_SHORT {
@@ -172,9 +182,10 @@ fn country_names() -> &'static FastMap<String, &'static str> {
     })
 }
 
-/// 官方只有一个时间、tz 却另列了地方习惯时区的国家：按官方时间给（中国全国用北京时间，Asia/Urumqi 是新疆民间
-/// 另用的时间，「中国 9 点」不该弹出二选一）。
-const COUNTRY_ZONE_OVERRIDES: &[(&str, &[&str])] = &[("CN", &["Asia/Shanghai"])];
+/// 不照 zone.tab 给的国家。官方只有一个时间、tz 却另列了地方习惯时区的，按官方时间给（中国全国用北京时间，Asia/Urumqi
+/// 是新疆民间另用的时间，「中国 9 点」不该弹出二选一）。乌克兰基辅在前、Simferopol 在后：zone.tab 是反的，宿主按人口排序，
+/// 没有城市索引时也要是这个顺序。
+const COUNTRY_ZONE_OVERRIDES: &[(&str, &[&str])] = &[("CN", &["Asia/Shanghai"]), ("UA", &["Europe/Kyiv", "Europe/Simferopol"])];
 
 /// 国家码 → 时区（zone.tab 的顺序）。
 fn country_zones(code: &str) -> Vec<&'static str> {
@@ -188,7 +199,7 @@ fn country_zones(code: &str) -> Vec<&'static str> {
         .unwrap_or_default()
 }
 
-/// 国家名 → 时区：一个时区的国家直接给那个时区，几个的给候选（同一个钟的几个标识由宿主按系统规则合并、排序）。
+/// 国家名 → 时区：一个时区的国家直接给那个时区，几个的给候选（宿主按各时区最大城市的人口排序，同一个钟的几个标识按系统规则合并）。
 pub(super) fn country_code(text: &str) -> Option<&'static str> {
     let mut key = fold(place_modifier_stem(text));
     if let Some((stem, suffix)) = key.split_once('\'') {
@@ -436,6 +447,21 @@ mod tests {
         assert_eq!(zones("Japan"), vec!["Asia/Tokyo".to_owned()]);
         assert_eq!(zones("中国"), vec!["Asia/Shanghai".to_owned()]);
         assert!(zones("Nowhere").is_empty());
+        assert_eq!(zones("Ukraine"), vec!["Europe/Kyiv".to_owned(), "Europe/Simferopol".to_owned()]);
+        let palestine = zones("Palestine");
+        assert_eq!(palestine, vec!["Asia/Gaza".to_owned(), "Asia/Hebron".to_owned()]);
+        for name in ["State of Palestine", "Palestina", "Palästina", "Palestyna", "Filistin", "Палестина", "パレスチナ", "팔레스타인", "巴勒斯坦"] {
+            assert_eq!(zones(name), palestine, "{name}");
+        }
+        assert_eq!(zones("Turkey"), vec!["Europe/Istanbul".to_owned()]);
+        for (name, system) in [("터키", "Türkiye"), ("Scotland", "United Kingdom"), ("Wales", "United Kingdom"), ("Northern Ireland", "United Kingdom"),
+                               ("Burma", "Myanmar"), ("Ivory Coast", "Côte d’Ivoire"), ("East Timor", "Timor-Leste"), ("Vatican", "Vatican City"),
+                               ("Bosnia", "Bosnia & Herzegovina"), ("Bosnia and Herzegovina", "Bosnia & Herzegovina"),
+                               ("Trinidad and Tobago", "Trinidad & Tobago"), ("Swaziland", "Eswatini"), ("DR Congo", "Congo - Kinshasa"),
+                               ("Democratic Republic of the Congo", "Congo - Kinshasa")] {
+            assert!(!zones(system).is_empty(), "{system}");
+            assert_eq!(zones(name), zones(system), "{name}");
+        }
     }
 
     #[cfg(not(feature = "intents-only"))]

@@ -435,6 +435,8 @@ nonisolated enum TimeUnderstanding {
                     }
                     return
                 }
+                // 一国几个时区先按人口排：zone.tab 按地理排，问澳大利亚第一项是豪勋爵岛，问巴西是费尔南多-迪诺罗尼亚，问俄罗斯是加里宁格勒。
+                if reason == "country" { expanded = byPopulation(expanded) }
                 // 用户自己的地点里有的排前面（加了孟买的人写 IST 多半是印度时间；加了丹佛的人说「美国」先给山地时间）。
                 let mine = expanded.filter { option in option.anchor.map { context.preferredZones.contains($0) } ?? false }
                 expanded = mine + expanded.filter { !mine.contains($0) }
@@ -488,6 +490,13 @@ nonisolated enum TimeUnderstanding {
         let regional = region.secondsFromGMT(for: noon)
         if literal.secondsFromGMT() == regional { return .same }
         return region.isDaylightSavingTime(for: noon) && literal.secondsFromGMT() == regional - 3_600 ? .daylight : .other
+    }
+
+    /// 按时区里人口最多的城排：城市索引按人口从多到少存，代表城市的名次就是人口名次。索引里没有城的时区（豪勋爵岛、南极的站）
+    /// 排最后，名次相同的保持原顺序。
+    private static func byPopulation(_ options: [ZoneOption]) -> [ZoneOption] {
+        let rank = options.map { option in option.anchor.flatMap { CityIndex.shared.representativeCity(forTimezone: $0)?.index } ?? .max }
+        return options.indices.sorted { (rank[$0], $0) < (rank[$1], $1) }.map { options[$0] }
     }
 
     /// 一国几个时区里钟走法一样的只留第一个（纽约、底特律、路易斯维尔都是美东；雅加达与坤甸都是西印尼）。

@@ -135,6 +135,38 @@ fn real_index_place_probe_and_location_morphology() {
     assert!(failures.is_empty(), "{}", failures.join("\n"));
 }
 
+/// 国家名认不出时落到同名小镇：Palestine 是得州的镇（芝加哥时间），Scotland 是美国的镇，Burma 是约旦的村子。
+#[test]
+#[cfg(not(feature = "intents-only"))]
+fn real_index_country_names_beat_same_named_towns() {
+    let opened = crate::city_index::dispatch("city.open", serde_json::json!({ "path": concat!(env!("CARGO_MANIFEST_DIR"), "/../Dayside/Resources/cities.ttcity") })).unwrap();
+    let handle = opened["handle"].as_u64().unwrap();
+    let lookup = |t: &str, strong| places::city_lookup(Some(handle), t, strong);
+    let mut failures = Vec::new();
+    for (language, sentence, iana) in [
+        ("en", "9am in Palestine", "Asia/Gaza"),
+        ("en", "9am Palestine time", "Asia/Gaza"),
+        ("es", "9h en Palestina", "Asia/Gaza"),
+        ("ko", "팔레스타인 시간 9시", "Asia/Gaza"),
+        ("en", "9am in Scotland", "Europe/London"),
+        ("en", "9am in Burma", "Asia/Yangon"),
+        ("en", "9am in Turkey", "Europe/Istanbul"),
+        ("en", "9am in Bosnia and Herzegovina", "Europe/Sarajevo"),
+        ("en", "9am in Ukraine", "Europe/Kyiv"),
+    ] {
+        let out = understand(sentence, &Options { region: "US", ui_language: language, lookup: &lookup });
+        let zone = match out.mentions.first().and_then(|m| m.source.as_ref()) {
+            Some(ZoneRef::Options { reason: "country", options }) => options.first(),
+            plain => plain,
+        };
+        if zone != Some(&ZoneRef::Region { iana: iana.into() }) {
+            failures.push(format!("{sentence}: {out:?}"));
+        }
+    }
+    crate::city_index::dispatch("city.close", serde_json::json!({ "handle": handle })).unwrap();
+    assert!(failures.is_empty(), "{}", failures.join("\n"));
+}
+
 #[test]
 fn possessive_time_and_at_our_place_are_distinct() {
     assert!(source("De bus stopt om 7:40 bij ons.", "nl").is_none());

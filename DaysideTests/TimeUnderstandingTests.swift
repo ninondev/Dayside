@@ -149,6 +149,19 @@ struct TimeUnderstandingTests {
         #expect(mine.zone.identifier == "America/Denver")
     }
 
+    /// 国家的第一项是人口最多的那座城的钟：zone.tab 按地理排，问乌克兰第一项曾是 Simferopol，问澳大利亚是豪勋爵岛。
+    /// 乌克兰基辅第一、Simferopol 第二；用户自己的地点仍在最前。
+    @Test func countriesStartWithTheClockOfTheirBiggestCity() throws {
+        #expect(try first("9am in Ukraine").zoneOptions.map(\.id) == ["zone:Europe/Kyiv", "zone:Europe/Simferopol"])
+        for (text, zone) in [("9am in Russia", "Europe/Moscow"), ("9am in Australia", "Australia/Sydney"), ("9am in Brazil", "America/Sao_Paulo"),
+                             ("9am in Canada", "America/Toronto"), ("9am in Uzbekistan", "Asia/Tashkent")] {
+            #expect(try first(text).zone.identifier == zone, "\(text)")
+        }
+        #expect(try first("9am in Australia", preferred: ["Australia/Perth"]).zone.identifier == "Australia/Perth")
+        let palestine = try first("9am in Palestine").zone.identifier
+        #expect(["Asia/Gaza", "Asia/Hebron"].contains(palestine), "不是得州的 Palestine 镇：\(palestine)")
+    }
+
     /// 沿用的日期跟着来源那一处选的读法走：「10/3」改成 3 月 10 日，后面的东京也跟着改。
     @Test func inheritedDatesFollowTheReadingChosenAtTheirSource() throws {
         let output = TimeUnderstanding.read("10/3: 9:00 Berlin, 14:00 Tokyo", region: "US")
